@@ -48,7 +48,7 @@
     <string name="update_message">Actualizar mensaje</string>
     <string name="send_now">Enviar ahora</string>
     <!-- Message details -->
-    <string name="message_details">Message details</string>
+    <string name="message_details">Detalles del mensaje</string>
     <string name="message_details_sender">Remitente</string>
     <string name="message_details_receiver">Destinatario</string>
     <string name="message_details_sent_at">Enviado a</string>
