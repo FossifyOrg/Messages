@@ -12,7 +12,7 @@ androidx-lifecycleprocess = "2.6.1"
 eventbus = "3.3.1"
 #Room
 room = "2.6.0-alpha03"
-#Simple Mobile Tools
+#Fossify
 commons = "e764105103"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
@@ -40,7 +40,7 @@ androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefre
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-#Simple Mobile Tools
+#Fossify
 fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 indicator-fast-scroll = { module = "com.github.tibbi:IndicatorFastScroll", version.ref = "indicator-fast-scroll" }
 android-smsmms = { module = "com.github.tibbi:android-smsmms", version.ref = "android-smsmms" }

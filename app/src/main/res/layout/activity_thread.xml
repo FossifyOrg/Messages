@@ -57,7 +57,7 @@
                 android:background="@color/divider_grey"
                 android:importantForAccessibility="no" />
 
-            <com.simplemobiletools.commons.views.MyAutoCompleteTextView
+            <org.fossify.commons.views.MyAutoCompleteTextView
                 android:id="@+id/add_contact_or_number"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_icon_size"
@@ -106,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@id/thread_add_contacts"
             app:supportSwipeToRefresh="true">
 
-            <com.simplemobiletools.commons.views.MyRecyclerView
+            <org.fossify.commons.views.MyRecyclerView
                 android:id="@+id/thread_messages_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -114,14 +114,14 @@
                 android:overScrollMode="ifContentScrolls"
                 android:paddingBottom="@dimen/medium_margin"
                 android:scrollbars="none"
-                app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+                app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
                 app:stackFromEnd="true"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_message" />
 
         </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
 
-        <com.simplemobiletools.commons.views.MyFloatingActionButton
+        <org.fossify.commons.views.MyFloatingActionButton
             android:id="@+id/scroll_to_bottom_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -35,7 +35,7 @@
             android:paddingBottom="@dimen/medium_margin"
             android:src="@drawable/ic_clock_vector" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/scheduled_message_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/thread_type_message" />
 
-    <com.simplemobiletools.commons.views.MyEditText
+    <org.fossify.commons.views.MyEditText
         android:id="@+id/thread_type_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
         tools:textColor="@color/dark_grey"
         tools:visibility="visible" />
 
-    <com.simplemobiletools.commons.views.MyTextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/thread_character_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
         tools:ignore="HardcodedText"
         tools:visibility="visible" />
 
-    <com.simplemobiletools.commons.views.MyButton
+    <org.fossify.commons.views.MyButton
         android:id="@+id/thread_send_message"
         android:layout_width="@dimen/normal_icon_size"
         android:layout_height="@dimen/normal_icon_size"

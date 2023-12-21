@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <com.simplemobiletools.commons.views.MyEditText
+        <org.fossify.commons.views.MyEditText
             android:id="@+id/new_conversation_address"
             android:layout_width="match_parent"
             android:layout_height="@dimen/normal_icon_size"
@@ -51,7 +51,7 @@
             android:layout_below="@+id/new_conversation_address"
             android:background="@color/divider_grey" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/no_contacts_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             android:textStyle="italic"
             android:visibility="gone" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/no_contacts_placeholder_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:textSize="@dimen/bigger_text_size"
             android:visibility="gone" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/suggestions_label"
             style="@style/MaterialSectionLabelStyle"
             android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
 
         </HorizontalScrollView>
 
-        <com.simplemobiletools.commons.views.MyRecyclerView
+        <org.fossify.commons.views.MyRecyclerView
             android:id="@+id/contacts_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -119,7 +119,7 @@
             android:layoutAnimation="@anim/layout_animation"
             android:overScrollMode="ifContentScrolls"
             android:scrollbars="none"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
+            app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager" />
 
         <com.reddit.indicatorfastscroll.FastScrollerView
             android:id="@+id/contacts_letter_fastscroller"

@@ -45,7 +45,7 @@
                     app:showDelay="250"
                     tools:visibility="visible" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/no_conversations_placeholder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.simplemobiletools.commons.views.MyRecyclerView
+                    <org.fossify.commons.views.MyRecyclerView
                         android:id="@+id/conversations_list"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -73,7 +73,7 @@
                         android:layoutAnimation="@anim/layout_animation"
                         android:overScrollMode="ifContentScrolls"
                         android:scrollbars="none"
-                        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
+                        app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager" />
 
                 </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
             </RelativeLayout>

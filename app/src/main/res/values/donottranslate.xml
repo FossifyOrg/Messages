@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="package_name">com.simplemobiletools.smsmessenger</string>
+    <string name="package_name">org.fossify.smsmessenger</string>
 
     <string name="mms_file_size_limit_100kb">100KB</string>
     <string name="mms_file_size_limit_200kb">200KB</string>
