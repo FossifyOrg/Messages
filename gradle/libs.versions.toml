@@ -13,7 +13,7 @@ eventbus = "3.3.1"
 #Room
 room = "2.6.0-alpha03"
 #Simple Mobile Tools
-simple-commons = "b72ded2a75"
+commons = "e764105103"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
@@ -41,7 +41,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 #Simple Mobile Tools
-simple-mobile-tools-commons = { module = "com.github.SimpleMobileTools:Simple-Commons", version.ref = "simple-commons" }
+fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 indicator-fast-scroll = { module = "com.github.tibbi:IndicatorFastScroll", version.ref = "indicator-fast-scroll" }
 android-smsmms = { module = "com.github.tibbi:android-smsmms", version.ref = "android-smsmms" }
 #EventBus
