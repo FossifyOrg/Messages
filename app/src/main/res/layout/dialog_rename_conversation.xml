@@ -6,7 +6,7 @@
     android:paddingTop="@dimen/normal_margin"
     android:paddingBottom="@dimen/normal_margin">
 
-    <com.simplemobiletools.commons.views.MyTextInputLayout
+    <org.fossify.commons.views.MyTextInputLayout
         android:id="@+id/rename_conv_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,5 +28,5 @@
             android:maxLength="30"
             android:maxLines="1" />
 
-    </com.simplemobiletools.commons.views.MyTextInputLayout>
+    </org.fossify.commons.views.MyTextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

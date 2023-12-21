@@ -30,6 +30,6 @@
 }
 
 # Gson
--keep class com.simplemobiletools.commons.models.SimpleContact { *; }
--keep class com.simplemobiletools.smsmessenger.models.Attachment { *; }
--keep class com.simplemobiletools.smsmessenger.models.MessageAttachment { *; }
+-keep class org.fossify.commons.models.SimpleContact { *; }
+-keep class org.fossify.smsmessenger.models.Attachment { *; }
+-keep class org.fossify.smsmessenger.models.MessageAttachment { *; }

@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/activity_margin"
         android:paddingEnd="@dimen/activity_margin">
 
-        <com.simplemobiletools.commons.views.MyTextInputLayout
+        <org.fossify.commons.views.MyTextInputLayout
             android:id="@+id/export_messages_filename_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,15 +30,15 @@
                 android:textSize="@dimen/normal_text_size"
                 tools:text="Messages" />
 
-        </com.simplemobiletools.commons.views.MyTextInputLayout>
+        </org.fossify.commons.views.MyTextInputLayout>
 
-        <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+        <org.fossify.commons.views.MyAppCompatCheckbox
             android:id="@+id/export_sms_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/export_sms" />
 
-        <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+        <org.fossify.commons.views.MyAppCompatCheckbox
             android:id="@+id/export_mms_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -12,12 +12,12 @@ androidx-lifecycleprocess = "2.6.1"
 eventbus = "3.3.1"
 #Room
 room = "2.6.0-alpha03"
-#Simple Mobile Tools
-simple-commons = "b72ded2a75"
+#Fossify
+commons = "e764105103"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "8.1.1"
+gradlePlugins-agp = "8.2.0"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
@@ -28,9 +28,9 @@ app-build-kotlinJVMTarget = "17"
 ez-vcard = "0.11.3"
 shortcut-badger = "1.1.22"
 #versioning
-app-version-appId = "com.simplemobiletools.smsmessenger"
-app-version-versionCode = "85"
-app-version-versionName = "5.19.3"
+app-version-appId = "org.fossify.smsmessenger"
+app-version-versionCode = "1"
+app-version-versionName = "1.0.0"
 [libraries]
 #AndroidX
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
@@ -40,8 +40,8 @@ androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefre
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-#Simple Mobile Tools
-simple-mobile-tools-commons = { module = "com.github.SimpleMobileTools:Simple-Commons", version.ref = "simple-commons" }
+#Fossify
+fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 indicator-fast-scroll = { module = "com.github.tibbi:IndicatorFastScroll", version.ref = "indicator-fast-scroll" }
 android-smsmms = { module = "com.github.tibbi:android-smsmms", version.ref = "android-smsmms" }
 #EventBus

@@ -134,6 +134,6 @@
     <string name="faq_3_text">Ja, du kan schemalägga meddelanden så att de skickas i framtiden genom att trycka länge på knappen Skicka och välja önskat datum och tid.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

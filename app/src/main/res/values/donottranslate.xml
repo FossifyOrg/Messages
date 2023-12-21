@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="package_name">com.simplemobiletools.smsmessenger</string>
+    <string name="package_name">org.fossify.smsmessenger</string>
 
     <string name="mms_file_size_limit_100kb">100KB</string>
     <string name="mms_file_size_limit_200kb">200KB</string>
@@ -11,11 +11,5 @@
     <string name="sms">SMS</string>
     <string name="mms">MMS</string>
     <string name="message_details_sim">SIM</string>
-
-    <string name="release_62">Allow scheduling messages by long pressing the Send button</string>
-    <string name="release_48">
-        Disabled delivery reports by default\n
-        Avoid sending long messages as MMS
-    </string>
 
 </resources>
