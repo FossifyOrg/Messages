@@ -12,10 +12,4 @@
     <string name="mms">MMS</string>
     <string name="message_details_sim">SIM</string>
 
-    <string name="release_62">Allow scheduling messages by long pressing the Send button</string>
-    <string name="release_48">
-        Disabled delivery reports by default\n
-        Avoid sending long messages as MMS
-    </string>
-
 </resources>
