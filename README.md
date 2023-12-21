@@ -1,5 +1,5 @@
 # Simple SMS Messenger
-<img alt="Logo" src="graphics/icon.png" width="120" />
+<img alt="Logo" src="graphics/icon.webp" width="120" />
 
 A great way to stay in touch with your relatives, by sending both SMS and MMS messages. The app properly handles group messaging too, just like blocking numbers from Android 7+. Keep in touch with all of your contacts using the messaging app on your phone. It's never been easier to share photos, send emojis, or just say a quick hello. There's so much you can do with your messages, like mute conversations or assign special message tones for certain contacts. With this text message and group messaging app, you can enjoy the daily private messaging and group messaging in a more fun way.
 
