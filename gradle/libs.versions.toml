@@ -28,9 +28,9 @@ app-build-kotlinJVMTarget = "17"
 ez-vcard = "0.11.3"
 shortcut-badger = "1.1.22"
 #versioning
-app-version-appId = "com.simplemobiletools.smsmessenger"
-app-version-versionCode = "85"
-app-version-versionName = "5.19.3"
+app-version-appId = "org.fossify.smsmessenger"
+app-version-versionCode = "1"
+app-version-versionName = "1.0.0"
 [libraries]
 #AndroidX
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
