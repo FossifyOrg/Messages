@@ -16,7 +16,7 @@ It comes with material design and dark theme by default, provides great user exp
 Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors. You can also customize the font of your text message in both group messaging and private messaging. 
 
 Check out the full suite of apps here:
-https://github.com/FossifyX
+https://github.com/FossifyOrg
 
 <div style="display:flex;">
 <img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.jpeg" width="30%">
