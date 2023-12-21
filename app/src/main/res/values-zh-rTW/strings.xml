@@ -131,6 +131,6 @@
     <string name="faq_3_text">是的，您可以長按「送出」按鈕並選擇所需的日期和時間，以排程將訊息送出。</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

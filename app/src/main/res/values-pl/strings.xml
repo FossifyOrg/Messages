@@ -140,6 +140,6 @@
     <string name="faq_3_text">Tak. Możesz zaplanować wysłanie wiadomości w przyszłości, naciskając długo przycisk Wyślij i wybierając czas docelowy.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

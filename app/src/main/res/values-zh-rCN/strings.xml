@@ -131,6 +131,6 @@
     <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间安排将来要发送的消息。</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>
