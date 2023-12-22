@@ -44,6 +44,7 @@ const val USE_RECYCLE_BIN = "use_recycle_bin"
 const val LAST_RECYCLE_BIN_CHECK = "last_recycle_bin_check"
 const val IS_RECYCLE_BIN = "is_recycle_bin"
 const val IS_ARCHIVE_AVAILABLE = "is_archive_available"
+const val CUSTOM_NOTIFICATIONS = "custom_notifications"
 
 private const val PATH = "org.fossify.smsmessenger.action."
 const val MARK_AS_READ = PATH + "mark_as_read"

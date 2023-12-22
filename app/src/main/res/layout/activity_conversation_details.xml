@@ -22,6 +22,50 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/notifications_heading"
+            style="@style/MaterialSectionLabelStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:visibility="gone"
+            android:text="@string/notifications" />
+
+        <RelativeLayout
+            android:id="@+id/custom_notifications_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <org.fossify.commons.views.MyAppCompatCheckbox
+                android:id="@+id/custom_notifications"
+                style="@style/SettingsCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/bigger_margin"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/bigger_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:text="@string/use_custom_notifications" />
+
+        </RelativeLayout>
+
+        <org.fossify.commons.views.MyTextView
+            android:id="@+id/custom_notifications_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/bigger_margin"
+            android:visibility="gone"
+            android:text="@string/customize_notifications" />
+
+        <include
+            android:id="@+id/settings_conversation_notifications_divider"
+            layout="@layout/divider" />
+
+        <TextView
             android:id="@+id/conversation_name_heading"
             style="@style/MaterialSectionLabelStyle"
             android:layout_width="match_parent"

@@ -45,9 +45,14 @@ class NotificationHelper(private val context: Context) {
         sender: String?,
         alertOnlyOnce: Boolean = false
     ) {
-        maybeCreateChannel(name = context.getString(R.string.channel_received_sms))
-
         val notificationId = threadId.hashCode()
+
+        val hasCustomNotifications = context.config.customNotifications.contains(threadId.toString())
+        val notificationChannel = if (hasCustomNotifications) notificationId.toString() else NOTIFICATION_CHANNEL
+        if (!hasCustomNotifications) {
+            maybeCreateChannel(notificationChannel, context.getString(R.string.channel_received_sms))
+        }
+
         val contentIntent = Intent(context, ThreadActivity::class.java).apply {
             putExtra(THREAD_ID, threadId)
         }
@@ -98,7 +103,7 @@ class NotificationHelper(private val context: Context) {
         } else {
             null
         }
-        val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL).apply {
+        val builder = NotificationCompat.Builder(context, notificationChannel).apply {
             when (context.config.lockScreenVisibilitySetting) {
                 LOCK_SCREEN_SENDER_MESSAGE -> {
                     setLargeIcon(largeIcon)
@@ -129,20 +134,24 @@ class NotificationHelper(private val context: Context) {
         }
 
         builder.addAction(org.fossify.commons.R.drawable.ic_check_vector, context.getString(R.string.mark_as_read), markAsReadPendingIntent)
-            .setChannelId(NOTIFICATION_CHANNEL)
+            .setChannelId(notificationChannel)
         if (isNoReplySms) {
             builder.addAction(
                 org.fossify.commons.R.drawable.ic_delete_vector,
                 context.getString(org.fossify.commons.R.string.delete),
                 deleteSmsPendingIntent
-            ).setChannelId(NOTIFICATION_CHANNEL)
+            ).setChannelId(notificationChannel)
         }
         notificationManager.notify(notificationId, builder.build())
     }
 
     @SuppressLint("NewApi")
     fun showSendingFailedNotification(recipientName: String, threadId: Long) {
-        maybeCreateChannel(name = context.getString(R.string.message_not_sent_short))
+        val hasCustomNotifications = context.config.customNotifications.contains(threadId.toString())
+        val notificationChannel = if (hasCustomNotifications) threadId.hashCode().toString() else NOTIFICATION_CHANNEL
+        if (!hasCustomNotifications) {
+            maybeCreateChannel(notificationChannel, context.getString(R.string.message_not_sent_short))
+        }
 
         val notificationId = generateRandomId().hashCode()
         val intent = Intent(context, ThreadActivity::class.java).apply {
@@ -152,7 +161,7 @@ class NotificationHelper(private val context: Context) {
 
         val summaryText = String.format(context.getString(R.string.message_sending_error), recipientName)
         val largeIcon = SimpleContactsHelper(context).getContactLetterIcon(recipientName)
-        val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL)
+        val builder = NotificationCompat.Builder(context, notificationChannel)
             .setContentTitle(context.getString(R.string.message_not_sent_short))
             .setContentText(summaryText)
             .setColor(context.getProperPrimaryColor())
@@ -164,12 +173,12 @@ class NotificationHelper(private val context: Context) {
             .setDefaults(Notification.DEFAULT_LIGHTS)
             .setCategory(Notification.CATEGORY_MESSAGE)
             .setAutoCancel(true)
-            .setChannelId(NOTIFICATION_CHANNEL)
+            .setChannelId(notificationChannel)
 
         notificationManager.notify(notificationId, builder.build())
     }
 
-    private fun maybeCreateChannel(name: String) {
+    private fun maybeCreateChannel(id: String, name: String) {
         if (isOreoPlus()) {
             val audioAttributes = AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_NOTIFICATION)
@@ -177,7 +186,6 @@ class NotificationHelper(private val context: Context) {
                 .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
                 .build()
 
-            val id = NOTIFICATION_CHANNEL
             val importance = IMPORTANCE_HIGH
             NotificationChannel(id, name, importance).apply {
                 setBypassDnd(false)
