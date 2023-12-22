@@ -47,7 +47,7 @@
                 android:layout_marginEnd="@dimen/activity_margin"
                 android:layout_marginBottom="@dimen/bigger_margin"
                 android:paddingBottom="@dimen/activity_margin"
-                android:text="@string/use_custom_notifications" />
+                android:text="@string/enable_custom_notifications" />
 
         </RelativeLayout>
 
