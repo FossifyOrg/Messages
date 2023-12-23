@@ -1,1 +1,0 @@
-Aplikacija za pošiljanje SMS in MMS za Android, hitro pošiljanje in lep vmesnik

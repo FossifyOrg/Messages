@@ -1,1 +1,0 @@
-SMS och MMS-meddelanden app för Android, skicka meddelanden snabbt
