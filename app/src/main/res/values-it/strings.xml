@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Messaggi SMS Semplici</string>
     <string name="app_launcher_name">Messaggi SMS</string>
     <string name="type_a_message">Componi un messaggio…</string>
     <string name="message_not_sent_short">Messaggio non inviato</string>

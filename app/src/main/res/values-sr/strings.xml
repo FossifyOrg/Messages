@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Једноставан СМС Мессенгер</string>
     <string name="app_launcher_name">СМС Мессенгер</string>
     <string name="type_a_message">Унесите поруку…</string>
     <string name="message_not_sent_short">Порука није послата</string>

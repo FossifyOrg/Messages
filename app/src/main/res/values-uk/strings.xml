@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Прості Повідомлення</string>
     <string name="app_launcher_name">Повідомлення</string>
     <string name="type_a_message">Введіть повідомлення…</string>
     <string name="message_not_sent_short">Повідомлення не надіслано</string>

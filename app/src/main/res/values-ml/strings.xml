@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple SMS Messenger</string>
     <string name="app_launcher_name">SMS മെസഞ്ചർ</string>
     <string name="type_a_message">ഒരു സന്ദേശം ടൈപ്പ് ചെയ്യുക…</string>
     <string name="message_not_sent_short">സന്ദേശം അയച്ചിട്ടില്ല</string>

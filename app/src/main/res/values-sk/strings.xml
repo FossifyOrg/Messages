@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Jednoduché SMS správy</string>
     <string name="app_launcher_name">SMS správy</string>
     <string name="type_a_message">Zadajte správu…</string>
     <string name="message_not_sent_short">Správa nebola odoslaná</string>

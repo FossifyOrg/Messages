@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">تطبيق مراسلة SMS البسيط</string>
     <string name="app_launcher_name">الرسائل القصيرة</string>
     <string name="type_a_message">اكتب رسالة…</string>
     <string name="message_not_sent_short">لم يتم إرسال الرسالة</string>

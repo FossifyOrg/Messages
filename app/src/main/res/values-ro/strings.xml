@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Messenger SMS simplu</string>
     <string name="app_launcher_name">Mesaje</string>
     <string name="type_a_message">Introduceţi un mesaj…</string>
     <string name="message_not_sent_short">Mesajul nu a fost trimis</string>

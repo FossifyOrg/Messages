@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mensageiro SMS Simples</string>
     <string name="app_launcher_name">Mensageiro SMS</string>
     <string name="type_a_message">Escreva uma mensagem…</string>
     <string name="message_not_sent_short">Mensagem não enviada</string>

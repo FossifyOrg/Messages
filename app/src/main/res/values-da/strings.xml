@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Enkel SMS Beskeder</string>
     <string name="app_launcher_name">Beskeder</string>
     <string name="type_a_message">Skriv en besked…</string>
     <string name="message_not_sent_short">Beskeden blev ikke sendt</string>
