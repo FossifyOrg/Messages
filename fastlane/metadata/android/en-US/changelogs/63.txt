@@ -1,4 +1,0 @@
- * Allow sending any file attachment, not just images
- * Add an option to enable sending messages at pressing Enter
- * Require Simple Thank You for blocking numbers
- * Added many translation, UX and stability improvements

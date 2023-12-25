@@ -1,2 +1,0 @@
- * Fixed a glitch at renaming conversations being reset
- * Added some stability and translation improvements

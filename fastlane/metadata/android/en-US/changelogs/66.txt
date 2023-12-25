@@ -1,3 +1,0 @@
- * Allow renaming group conversations
- * Added a Conversation details screen at the group conversations
- * Added some translation, UI and stability improvements

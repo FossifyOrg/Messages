@@ -1,3 +1,0 @@
- * Fixed some smaller glitches at sending and receiving messages
- * Fixed an issue at importing messages
- * Added some stability and translation improvements

@@ -1,2 +1,0 @@
- * Allow showing conversation details at non-group conversations too
- * Added some UI, translation and stability improvements
