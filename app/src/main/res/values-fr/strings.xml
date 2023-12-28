@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_launcher_name">Messagerie SMS</string>
-    <string name="type_a_message">Rédigez un message…</string>
+    <string name="type_a_message">Écrivez un message…</string>
     <string name="message_not_sent_short">Message non envoyé</string>
     <string name="message_not_sent_touch_retry">Non envoyé. Appuyez pour réessayer.</string>
     <string name="message_sending_error">Votre message à %s n\'a pas été envoyé</string>
@@ -63,7 +63,7 @@
     <string name="empty_archive">Supprimer toutes les conversations archivées</string>
     <string name="archived_conversations">Archive</string>
     <string name="show_archived_conversations">Afficher les conversations archivées</string>
-    <string name="archive">Archive</string>
+    <string name="archive">Archiver</string>
     <string name="no_archived_conversations">Aucune conversation archivée n\'a été trouvée</string>
     <string name="archive_emptied_successfully">L\'archive a été vidée avec succès</string>
     <string name="empty_archive_confirmation">Voulez-vous vraiment vider l\'archive \? Toutes les conversations archivées seront définitivement perdues.</string>
@@ -130,7 +130,7 @@
     <!-- FAQ -->
     <string name="faq_1_title">Pourquoi l\'application nécessite-t-elle un accès à Internet \?</string>
     <string name="faq_1_text">Malheureusement, il est nécessaire pour envoyer des pièces jointes MMS. Ne pas pouvoir envoyer de MMS serait un énorme inconvénient par rapport à d\'autres applications. Nous avons donc décidé de suivre cette voie. Cependant, comme d’habitude, il n’y a aucune publicité, suivi ou analyse. Internet est utilisé uniquement pour l’envoi de MMS.</string>
-    <string name="faq_2_title">Le destinataire ne reçoit pas mes MMS. Y a-t-il quelque chose que je puisse faire \?</string>
+    <string name="faq_2_title">Le destinataire ne reçoit pas mes MMS. Y a-t-il quelque chose que je peux faire ?</string>
     <string name="faq_2_text">La taille des MMS est limitée par les opérateurs. Vous pouvez essayer de fixer une limite plus petite dans les paramètres de l\'application.</string>
     <string name="faq_3_title">L\'application prend-elle en charge les messages planifiés \?</string>
     <string name="faq_3_text">Oui, vous pouvez planifier l\'envoi de messages dans le futur en appuyant longuement sur le bouton Envoyer et en choisissant la date et l\'heure souhaitées.</string>
