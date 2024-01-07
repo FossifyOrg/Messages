@@ -1,0 +1,24 @@
+Una gran manera de mantenerse en contacto con sus familiares, enviando mensajes SMS y MMS. La aplicación maneja correctamente la mensajería de grupo también, al igual que el bloqueo de números de Android 7 +. Mantente en contacto con todos tus contactos mediante la aplicación de mensajería de tu teléfono. Nunca ha sido tan fácil compartir fotos, enviar emojis o simplemente saludar rápidamente. Hay muchas cosas que puedes hacer con tus mensajes, como silenciar conversaciones o asignar tonos especiales a determinados contactos. Con esta aplicación de mensajería de texto y de grupo, puedes disfrutar de la mensajería diaria privada y de grupo de una manera más divertida.
+
+Ofrece muchos formatos de fecha para elegir, para que se sienta cómodo en su uso. También puede alternar entre 12 y 24 horas formato de tiempo. Esta aplicación también le da la flexibilidad de la copia de seguridad de SMS. De esta manera, usted no tiene que guardar los mensajes en cualquier dispositivo externo o utilizar cualquier otro hardware para guardarlos. Esta función de copia de seguridad de sms le ayudará a ahorrar eficientemente mensajes de texto y datos de mms sin ser una carga en el almacenamiento interno.
+
+Esta aplicación de mensajería tiene un tamaño muy pequeño en comparación con la competencia, por lo que es muy rápido para descargar. La técnica de copia de seguridad de SMS es útil cuando tienes que cambiar tu dispositivo o te lo roban. De esta manera, puede recuperar el mensaje de texto tanto de la mensajería grupal como de la mensajería privada fácilmente utilizando la copia de seguridad de SMS en esta aplicación de mensajería.
+
+La función de bloqueo ayuda a prevenir mensajes no deseados fácilmente, puede bloquear todos los mensajes de contactos no almacenados también. Los números bloqueados se pueden exportar e importar para facilitar la copia de seguridad. Todas las conversaciones se pueden exportar fácilmente a un archivo para realizar copias de seguridad sencillas o migrar entre dispositivos.
+
+También puede personalizar qué parte del mensaje es visible en la pantalla de bloqueo. Usted puede elegir si desea que sólo se muestre el remitente, el mensaje, o nada para una mayor privacidad.
+
+Esta aplicación de mensajería también proporciona a los usuarios la capacidad de buscar mensajes de forma rápida y eficiente. Atrás han quedado los días en que tienes que desplazarte hacia abajo a través de todas las conversaciones de mensajería privada y de grupo para llegar a tu mensaje deseado. Simplemente busque y obtenga lo que desea con esta aplicación de mensajería de texto.
+
+Viene con material design y tema oscuro por defecto, proporciona una gran experiencia de usuario para un uso fácil. La falta de acceso a Internet te da más privacidad, seguridad y estabilidad que otras aplicaciones.
+
+No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto, proporciona colores personalizables.
+
+Echa un vistazo a la suite completa de Simple Tools aquí:
+Sitio web: https://www.fossify.org
+
+En Reddit:
+Sitio web: https://www.reddit.com/r/Fossify
+
+Telegram:
+Sitio web: https://t.me/Fossify
