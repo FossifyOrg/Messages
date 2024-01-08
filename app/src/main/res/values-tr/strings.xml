@@ -40,6 +40,7 @@
     <string name="schedule_send_warning">Telefonu açık tutun ve arka planda uygulamayı sonlandıran hiçbir şey olmadığından emin olun.</string>
     <string name="update_message">İletiyi güncelle</string>
     <string name="send_now">Şimdi gönder</string>
+    <string name="message_details">İleti ayrıntıları</string>
     <string name="message_details_sender">Gönderen</string>
     <string name="message_details_receiver">Alıcı</string>
     <string name="message_details_sent_at">Gönderildi</string>
