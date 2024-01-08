@@ -19,46 +19,36 @@
     <string name="unpin_conversation">Odepnout</string>
     <string name="forward_message">Přeposlat</string>
     <string name="compress_error">Nepodařilo se komprimovat obrázek na požadovanou velikost</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Duplicitní položka nebyla zahrnuta</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">a %d další</item>
         <item quantity="few">a %d další</item>
         <item quantity="other">a %d dalších</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Nová konverzace</string>
     <string name="add_contact_or_number">Přidejte kontakt nebo číslo…</string>
     <string name="suggestions">Návrhy</string>
-    <!-- Group conversation -->
     <string name="members">Členové</string>
     <string name="conversation_name">Název konverzace</string>
     <string name="conversation_details">Detail konverzace</string>
     <string name="rename_conversation">Přejmenovat konverzaci</string>
     <string name="rename_conversation_warning">Tento název konverzace vidíte pouze vy</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Naplánovaná zpráva</string>
     <string name="schedule_message">Naplánovat zprávu</string>
     <string name="schedule_send">Naplánovat odeslání</string>
     <string name="cancel_schedule_send">Zrušit plánované odeslání</string>
     <string name="must_pick_time_in_the_future">Musíte vybrat čas v budoucnosti</string>
     <string name="schedule_send_warning">Ponechte telefon zapnutý a ujistěte se, že nic nezabije aplikaci běžící na pozadí.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">Odeslat nyní</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
     <string name="message_details_sender">Odesílatel</string>
     <string name="message_details_receiver">Příjemce</string>
     <string name="message_details_sent_at">Odesláno na</string>
     <string name="message_details_received_at">Přijato na</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Přijaté SMS</string>
     <string name="new_message">Nová zpráva</string>
     <string name="mark_as_read">Označit jako přečtené</string>
     <string name="mark_as_unread">Označit jako nepřečtené</string>
     <string name="me">Mé</string>
-    <!-- Archive -->
     <string name="unarchive">Odarchivovat</string>
     <string name="empty_archive">Odstranit všechny archivované konverzace</string>
     <string name="archived_conversations">Archiv</string>
@@ -67,29 +57,24 @@
     <string name="no_archived_conversations">Nenalezeny žádné archivované konverzace</string>
     <string name="archive_emptied_successfully">Archiv byl úspěšně vyprázdněn</string>
     <string name="empty_archive_confirmation">Opravdu chcete archiv vyprázdnit\? Všechny archivované konverzace budou nenávratně ztraceny.</string>
-    <!-- Recycle bin -->
     <string name="restore">Obnovit</string>
     <string name="restore_all_messages">Obnovit všechny zprávy</string>
     <string name="empty_recycle_bin_messages_confirmation">Opravdu chcete vyprázdnit Koš\? Zprávy budou nenávratně ztraceny.</string>
     <string name="skip_the_recycle_bin_messages">Vynechat koš – odstranit zprávy přímo</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Opravdu chcete smazat všechny zprávy v této konverzaci\?</string>
     <string name="archive_confirmation">Opravdu chcete archivovat %s\?</string>
     <string name="restore_whole_conversation_confirmation">Opravdu chcete obnovit všechny zprávy této konverzace\?</string>
     <string name="restore_confirmation">Opravdu chcete obnovit %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d konverzace</item>
         <item quantity="few">%d konverzace</item>
         <item quantity="other">%d konverzací</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d zpráva</item>
         <item quantity="few">%d zprávy</item>
         <item quantity="other">%d zpráv</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Klíčové slovo</string>
     <string name="blocked_keywords">Blokovaná klíčová slova</string>
     <string name="manage_blocked_keywords">Spravovat blokovaná klíčová slova</string>
@@ -106,16 +91,13 @@
     <string name="outgoing_messages">Odchozí zprávy</string>
     <string name="group_message_mms">Odesílat skupinové zprávy jako MMS</string>
     <string name="send_long_message_mms">Odesílat dlouhé zprávy jako MMS</string>
-    <!-- Export / Import -->
     <string name="export_messages">Export zpráv</string>
     <string name="messages">Zprávy</string>
-    <string name="export_sms">Export SMS</string>
     <string name="export_mms">Exportovat MMS</string>
     <string name="import_messages">Import zpráv</string>
     <string name="import_sms">Importovat SMS</string>
     <string name="import_mms">Importovat MMS</string>
     <string name="no_option_selected">Musíte vybrat alespoň jednu položku</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Nelze poslat zprávu na prázdné číslo</string>
     <string name="unable_to_save_message">Zprávu nelze uložit do databáze telefonu</string>
     <string name="error_service_is_unavailable">Zprávu nelze odeslat, služba není dostupná</string>
@@ -126,16 +108,10 @@
     <string name="invalid_short_code_desc">Lze odpovídat pouze na krátké kódy s čísly, jako „503501“, ale ne na kódy obsahující čísla a písmena, jako „AB-CD0“.</string>
     <string name="attachment_sized_exceeds_max_limit">Velikost přílohy přesahuje maximální limit MMS</string>
     <string name="sim_card_not_available">SIM karta není dostupná</string>
-    <string name="couldnt_download_mms">Couldn\'t download MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Proč aplikace vyžaduje přístup k internetu\?</string>
     <string name="faq_1_text">Je smutné, že je to nutné pro odesílání příloh MMS. Nemít schopnost posílat MMS by byla opravdu obrovská nevýhoda ve srovnání s jinými aplikacemi, proto jsme se rozhodli jít touto cestou. Jako obvykle však neexistují žádné reklamy, sledování ani analytika. Internet se používá pouze k odesílání MMS.</string>
     <string name="faq_2_title">Druhá strana nepřijímá mé MMS. Je něco, co s tím mohu udělat\?</string>
     <string name="faq_2_text">Velikost MMS je omezena operátory. Můžete zkusit nastavit menší limit v nastavení aplikace.</string>
     <string name="faq_3_title">Podporuje aplikace naplánované zprávy\?</string>
     <string name="faq_3_text">Ano, odeslání zpráv můžete naplánovat na budoucí čas dlouhým stisknutím tlačítka Odeslat a výběrem požadovaného data a času.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

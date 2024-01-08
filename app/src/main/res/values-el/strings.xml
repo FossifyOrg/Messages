@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">SMS Messenger</string>
     <string name="type_a_message">Πληκτρολογήστε ένα μήνυμα…</string>
     <string name="message_not_sent_short">Το μήνυμα δεν εστάλη</string>
     <string name="message_not_sent_touch_retry">Δεν εστάλη. Αγγίξτε για επανάληψη.</string>
@@ -19,24 +18,19 @@
     <string name="unpin_conversation">Ξεκαρφίτσωμα</string>
     <string name="forward_message">Προώθηση</string>
     <string name="compress_error">Αδυναμία συμπίεσης εικόνας στο επιλεγμένο μέγεθος</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Δεν συμπεριλήφθηκε διπλότυπο στοιχείο</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">και άλλος %d</item>
         <item quantity="other">και άλλοι %d</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Νέα συνομιλία</string>
     <string name="add_contact_or_number">Προσθήκη επαφής ή αριθμού…</string>
     <string name="suggestions">Προτάσεις</string>
-    <!-- Group conversation -->
     <string name="members">Μέλη</string>
     <string name="conversation_name">Όνομα συνομιλίας</string>
     <string name="conversation_details">Λεπτομέρειες συνομιλίας</string>
     <string name="rename_conversation">Μετονομασία συνομιλίας</string>
     <string name="rename_conversation_warning">Μόνο εσείς βλέπετε αυτό το όνομα συνομιλίας</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Προγραμματισμένο μήνυμα</string>
     <string name="schedule_message">Προγραμματισμός μηνύματος</string>
     <string name="schedule_send">Προγραμματισμός αποστολής</string>
@@ -45,19 +39,16 @@
     <string name="schedule_send_warning">Κρατήστε το τηλέφωνο ανοιχτό και βεβαιωθείτε ότι δεν υπάρχει τίποτα που να κλείνει την εφαρμογή ενώ βρίσκεται στο παρασκήνιο.</string>
     <string name="update_message">Ενημέρωση μηνύματος</string>
     <string name="send_now">Αποστολή τώρα</string>
-    <!-- Message details -->
     <string name="message_details">Λεπτομέρειες μηνύματος</string>
     <string name="message_details_sender">Αποστολέας</string>
     <string name="message_details_receiver">Παραλήπτης</string>
     <string name="message_details_sent_at">Εστάλη στις</string>
     <string name="message_details_received_at">Ελήφθη στις</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Ελήφθη SMS</string>
     <string name="new_message">Νέο μήνυμα</string>
     <string name="mark_as_read">Σήμανση ως Αναγνωσμένο</string>
     <string name="mark_as_unread">Σήμανση ως Μη Αναγνωσμένο</string>
     <string name="me">Εγώ</string>
-    <!-- Archive -->
     <string name="unarchive">Μη αρχειοθέτηση</string>
     <string name="empty_archive">Διαγραφή όλων των αρχειοθετημένων συνομιλιών</string>
     <string name="archived_conversations">Αρχειοθέτηση</string>
@@ -66,27 +57,22 @@
     <string name="no_archived_conversations">Δεν βρέθηκαν αρχειοθετημένες συνομιλίες</string>
     <string name="archive_emptied_successfully">Το αρχείο άδειασε με επιτυχία</string>
     <string name="empty_archive_confirmation">Είστε σίγουροι ότι θέλετε να αδειάσετε το αρχείο; Όλες οι αρχειοθετημένες συνομιλίες θα χαθούν οριστικά.</string>
-    <!-- Recycle bin -->
     <string name="restore">Επαναφορά</string>
     <string name="restore_all_messages">Επαναφορά όλων των μηνυμάτων</string>
     <string name="empty_recycle_bin_messages_confirmation">Είστε σίγουροι ότι θέλετε να αδειάσετε τον Κάδο Ανακύκλωσης; Τα μηνύματα θα χαθούν οριστικά.</string>
     <string name="skip_the_recycle_bin_messages">Παρακάμψτε τον Κάδο Ανακύκλωσης, διαγράψτε τα μηνύματα απευθείας</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα μηνύματα αυτής της συνομιλίας;</string>
     <string name="archive_confirmation">Σίγουρα θέλετε να αρχειοθετήσετε %s;</string>
     <string name="restore_whole_conversation_confirmation">Είστε σίγουροι ότι θέλετε να επαναφέρετε όλα τα μηνύματα αυτής της συνομιλίας;</string>
     <string name="restore_confirmation">Είστε σίγουροι ότι θέλετε να επαναφέρετε %s;</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d συνομιλία</item>
         <item quantity="other">%d συνομιλίες</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d μήνυμα</item>
         <item quantity="other">%d μηνύματα</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Λέξη-κλειδί</string>
     <string name="blocked_keywords">Αποκλεισμένες λέξεις-κλειδιά</string>
     <string name="manage_blocked_keywords">Διαχείριση αποκλεισμένων λέξεων-κλειδιών</string>
@@ -103,7 +89,6 @@
     <string name="outgoing_messages">Εξερχόμενα μηνύματα</string>
     <string name="group_message_mms">Αποστολή ομαδικών μηνυμάτων ως MMS</string>
     <string name="send_long_message_mms">Αποστολή μεγάλων μηνυμάτων ως MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Μηνύματα</string>
     <string name="export_messages">Εξαγωγή μηνυμάτων</string>
     <string name="export_sms">Εξαγωγή SMS</string>
@@ -112,7 +97,6 @@
     <string name="import_sms">Εισαγωγή SMS</string>
     <string name="import_mms">Εισαγωγή MMS</string>
     <string name="no_option_selected">Πρέπει να επιλέξετε τουλάχιστον ένα στοιχείο</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Αδυναμία αποστολής του μηνύματος σε έναν κενό αριθμό</string>
     <string name="unable_to_save_message">Αδυναμία αποθήκευσης μηνύματος στη βάση δεδομένων τηλεφωνίας</string>
     <string name="error_service_is_unavailable">Αδυναμία αποστολής μηνύματος. Η υπηρεσία δεν είναι διαθέσιμη</string>
@@ -124,15 +108,10 @@
     <string name="attachment_sized_exceeds_max_limit">Το μέγεθος συνημμένου υπερβαίνει το μέγιστο όριο MMS</string>
     <string name="sim_card_not_available">Δεν διατίθεται κάρτα SIM</string>
     <string name="couldnt_download_mms">Δεν ήταν δυνατή η λήψη MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Γιατί η εφαρμογή απαιτεί πρόσβαση στο διαδίκτυο;</string>
     <string name="faq_1_text">Δυστυχώς, απαιτείται για την αποστολή συνημμένων MMS. Το να μην είμαστε σε θέση να στείλουμε MMS θα αποτελούσε πραγματικά τεράστιο μειονέκτημα σε σύγκριση με άλλες εφαρμογές, επομένως αποφασίσαμε να ακολουθήσουμε αυτόν τον δρόμο. Ωστόσο, όπως συνήθως, δεν υπάρχουν καθόλου διαφημίσεις, παρακολούθηση ή αναλύσεις, το διαδίκτυο χρησιμοποιείται μόνο για την αποστολή MMS.</string>
     <string name="faq_2_title">Το άλλο άκρο δεν λαμβάνει τα MMS μου, μπορώ να κάνω κάτι γι\' αυτό;</string>
     <string name="faq_2_text">Το μέγεθος των MMS περιορίζεται από τους παρόχους, μπορείτε να δοκιμάσετε να ορίσετε ένα μικρότερο όριο στις ρυθμίσεις της εφαρμογής.</string>
     <string name="faq_3_title">Υποστηρίζει η εφαρμογή προγραμματισμένα μηνύματα;</string>
     <string name="faq_3_text">Ναι, μπορείτε να προγραμματίσετε την αποστολή μηνυμάτων στο μέλλον πατώντας παρατεταμένα το κουμπί \"Αποστολή\" και επιλέγοντας την επιθυμητή ημερομηνία και ώρα.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -19,45 +19,34 @@
     <string name="unpin_conversation">No fixis</string>
     <string name="forward_message">Reenvia</string>
     <string name="compress_error">No s\'ha pogut comprimir la imatge a la mida seleccionada</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">No s\'ha inclòs l\'element duplicat</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">i %d altra</item>
         <item quantity="other">i %d altres</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Conversa nova</string>
     <string name="add_contact_or_number">Afegeix un contacte o número…</string>
     <string name="suggestions">Suggeriments</string>
-    <!-- Group conversation -->
     <string name="members">Membres</string>
     <string name="conversation_name">Nom de la conversa</string>
     <string name="conversation_details">Detalls de la conversa</string>
     <string name="rename_conversation">Canvia el nom de la conversa</string>
     <string name="rename_conversation_warning">Només vós podeu veure el nom d\'aquesta conversa</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Missatge programat</string>
     <string name="schedule_message">Programa un missatge</string>
     <string name="schedule_send">Programa l\'enviament</string>
     <string name="cancel_schedule_send">Cancel·la la programació de l\'enviament</string>
     <string name="must_pick_time_in_the_future">Cal triar una hora futura</string>
     <string name="schedule_send_warning">Mantingueu el telèfon engegat i assegureu-vos que no hi hagi res que mati les aplicacions en segon pla.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">Envia ara</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
     <string name="message_details_sender">Remitent</string>
     <string name="message_details_receiver">Receptor</string>
     <string name="message_details_sent_at">Enviat a</string>
     <string name="message_details_received_at">Rebut a</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">SMS rebut</string>
     <string name="new_message">Missatge nou</string>
     <string name="mark_as_read">Marca com a llegit</string>
     <string name="mark_as_unread">Marcar com no llegit</string>
-    <string name="me">Me</string>
-    <!-- Archive -->
     <string name="unarchive">Desarxivar</string>
     <string name="empty_archive">Suprimeix totes les converses arxivades</string>
     <string name="archived_conversations">Arxiva</string>
@@ -66,27 +55,22 @@
     <string name="no_archived_conversations">No s\'ha trobat cap conversa arxivada</string>
     <string name="archive_emptied_successfully">L\'arxiu s\'ha buidat correctament</string>
     <string name="empty_archive_confirmation">Segur que voleu buidar l\'arxiu\? Totes les converses arxivades es perdran permanentment.</string>
-    <!-- Recycle bin -->
     <string name="restore">Restaura</string>
     <string name="restore_all_messages">Restaura tots els missatges</string>
     <string name="empty_recycle_bin_messages_confirmation">Segur que voleu buidar la paperera de reciclatge\? Els missatges es perdran definitivament.</string>
     <string name="skip_the_recycle_bin_messages">Omet la paperera de reciclatge, suprimeix directament els missatges</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Confirmeu que voleu suprimir tots els missatges d\'aquesta conversa\?</string>
     <string name="archive_confirmation">Segur que voleu arxivar %s\?</string>
     <string name="restore_whole_conversation_confirmation">Segur que voleu restaurar tots els missatges d\'aquesta conversa\?</string>
     <string name="restore_confirmation">Segur que voleu restaurar %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d conversa</item>
         <item quantity="other">%d converses</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d missatge</item>
         <item quantity="other">%d missatges</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Paraula clau</string>
     <string name="blocked_keywords">Paraules clau blocades</string>
     <string name="manage_blocked_keywords">Gestiona les paraules clau blocades</string>
@@ -103,7 +87,6 @@
     <string name="outgoing_messages">Missatges sortints</string>
     <string name="group_message_mms">Envia missatges de grup com a MMS</string>
     <string name="send_long_message_mms">Envia missatges llargs com a MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Missatges</string>
     <string name="export_messages">Exporta els missatges</string>
     <string name="export_sms">Exporta SMS</string>
@@ -112,7 +95,6 @@
     <string name="import_sms">Importa SMS</string>
     <string name="import_mms">Importa MMS</string>
     <string name="no_option_selected">Cal seleccionar almenys un element</string>
-    <!-- Errors -->
     <string name="empty_destination_address">El missatge no es pot enviar a un número buit</string>
     <string name="unable_to_save_message">No es pot desar el missatge a la base de dades de telefonia</string>
     <string name="error_service_is_unavailable">No s\'ha pogut enviar el missatge, servei no disponible</string>
@@ -124,15 +106,10 @@
     <string name="attachment_sized_exceeds_max_limit">La mida del fitxer adjunt supera el límit màxim dels MMS</string>
     <string name="sim_card_not_available">La targeta SIM no està disponible</string>
     <string name="couldnt_download_mms">No es poden baixar MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Per què l\'aplicació requereix accés a Internet\?</string>
     <string name="faq_1_text">Malauradament, és necessari per enviar adjunts MMS. No poder enviar MMS seria un gran desavantatge en comparació amb altres aplicacions, així que vam decidir anar per aquest camí. Tanmateix, com sol ser, no hi ha cap anunci, seguiment o anàlisi de cap mena, Internet només s\'utilitza per enviar MMS.</string>
     <string name="faq_2_text">La mida dels MMS està limitada pels operadors, podeu provar d\'establir un límit més petit a la configuració de l\'aplicació.</string>
     <string name="faq_3_title">L\'aplicació admet missatges programats\?</string>
     <string name="faq_3_text">Sí, podeu programar missatges per enviar-los en el futur prement prolongadament el botó Envia i escollint la data i l\'hora desitjades.</string>
     <string name="faq_2_title">L\'altre extrem no ha rebut el meu MMS, hi puc fer alguna cosa\?</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

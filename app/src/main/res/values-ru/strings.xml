@@ -19,26 +19,21 @@
     <string name="unpin_conversation">Открепить</string>
     <string name="forward_message">Переслать</string>
     <string name="compress_error">Невозможно сжать изображение до выбранного размера</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Дубликат не включён</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">и ещё %d</item>
         <item quantity="few">и ещё %d</item>
         <item quantity="many">и ещё %d</item>
         <item quantity="other">и ещё %d</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Новая переписка</string>
     <string name="add_contact_or_number">Добавить контакт или номер…</string>
     <string name="suggestions">Предложения</string>
-    <!-- Group conversation -->
     <string name="members">Участники</string>
     <string name="conversation_name">Название переписки</string>
     <string name="conversation_details">Подробности переписки</string>
     <string name="rename_conversation">Переименовать переписку</string>
     <string name="rename_conversation_warning">Только вы можете видеть это название переписки</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Отложенная отправка</string>
     <string name="schedule_message">Отложенная отправка</string>
     <string name="schedule_send">Отложенная отправка</string>
@@ -47,19 +42,16 @@
     <string name="schedule_send_warning">Держите устройство включённым и убедитесь, что ничто не завершает принудительно приложение в фоновом режиме.</string>
     <string name="update_message">Обновить сообщение</string>
     <string name="send_now">Отправить сейчас</string>
-    <!-- Message details -->
     <string name="message_details">Сведения о сообщении</string>
     <string name="message_details_sender">Отправитель</string>
     <string name="message_details_receiver">Получатель</string>
     <string name="message_details_sent_at">Отправлено в</string>
     <string name="message_details_received_at">Получено в</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Получено сообщение</string>
     <string name="new_message">Новое сообщение</string>
     <string name="mark_as_read">Прочитано</string>
     <string name="mark_as_unread">Не прочитано</string>
     <string name="me">Я</string>
-    <!-- Archive -->
     <string name="unarchive">Разархивировать</string>
     <string name="empty_archive">Удалить все архивные переписки</string>
     <string name="archived_conversations">Архивная</string>
@@ -68,31 +60,26 @@
     <string name="no_archived_conversations">Нет архивных переписок</string>
     <string name="archive_emptied_successfully">Архив успешно очищен</string>
     <string name="empty_archive_confirmation">Очистить архив\? Все архивные переписки будут безвозвратно потеряны.</string>
-    <!-- Recycle bin -->
     <string name="restore">Восстановить</string>
     <string name="restore_all_messages">Восстановить все сообщения</string>
     <string name="empty_recycle_bin_messages_confirmation">Очистить корзину\? Сообщения в ней будут безвозвратно утрачены.</string>
     <string name="skip_the_recycle_bin_messages">Не использовать корзину для удаляемых сообщений</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Удалить все сообщения в этой переписке\?</string>
     <string name="archive_confirmation">Архивировать %s\?</string>
     <string name="restore_whole_conversation_confirmation">Восстановить все сообщения этой переписки\?</string>
     <string name="restore_confirmation">Восстановить %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d переписку</item>
         <item quantity="few">%d переписки</item>
         <item quantity="many">%d переписок</item>
         <item quantity="other">%d переписок</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d сообщение</item>
         <item quantity="few">%d сообщения</item>
         <item quantity="many">%d сообщений</item>
         <item quantity="other">%d сообщений</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Ключевое слово</string>
     <string name="blocked_keywords">Блокируемые ключевые слова</string>
     <string name="manage_blocked_keywords">Управление блокируемыми ключевыми словами</string>
@@ -109,7 +96,6 @@
     <string name="outgoing_messages">Исходящие сообщения</string>
     <string name="group_message_mms">Отправлять групповые сообщения как MMS</string>
     <string name="send_long_message_mms">Отправлять длинные сообщения как MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Сообщения</string>
     <string name="export_messages">Экспорт сообщений</string>
     <string name="export_sms">Экспорт SMS</string>
@@ -118,7 +104,6 @@
     <string name="import_sms">Импорт SMS</string>
     <string name="import_mms">Импорт MMS</string>
     <string name="no_option_selected">Необходимо выбрать хотя бы один элемент</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Невозможно отправить сообщение на пустой номер</string>
     <string name="unable_to_save_message">Невозможно сохранить сообщение в базу данных</string>
     <string name="error_service_is_unavailable">Невозможно отправить сообщение: служба недоступна</string>
@@ -130,15 +115,10 @@
     <string name="attachment_sized_exceeds_max_limit">Размер вложения превышает максимальный лимит MMS</string>
     <string name="sim_card_not_available">SIM-карта недоступна</string>
     <string name="couldnt_download_mms">Невозможно загрузить MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Почему приложение требует доступ в интернет\?</string>
     <string name="faq_1_text">К сожалению, это необходимо для отправки вложений MMS. Отсутствие возможности отправлять MMS-сообщения было бы огромным недостатком нашего приложения по сравнению с другими, поэтому мы решили пойти этим путём. Тем не менее, как и в других наших приложениях, это не содержит никакой рекламы, отслеживания или аналитики, интернет используется только для отправки MMS.</string>
     <string name="faq_2_title">MMS не доходят до получателя, можно ли что-нибудь с этим сделать\?</string>
     <string name="faq_2_text">Размер MMS ограничивается операторами связи, можно попробовать уменьшить лимит в настройках приложения.</string>
     <string name="faq_3_title">Приложение поддерживает отложенную отправку сообщений\?</string>
     <string name="faq_3_text">Да, вы можете запланировать отправку сообщений в будущем, нажав и удерживая кнопку \"Отправить\" и выбрав нужную дату и время.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

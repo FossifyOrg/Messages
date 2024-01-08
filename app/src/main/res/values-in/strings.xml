@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">SMS Messenger</string>
     <string name="type_a_message">Ketik pesan…</string>
     <string name="message_not_sent_short">Pesan tidak terkirim</string>
     <string name="message_not_sent_touch_retry">Tidak terkirim. Sentuh untuk mencoba lagi.</string>
@@ -15,80 +14,39 @@
     <string name="no_reply_support">Pengirim tidak mendukung balasan</string>
     <string name="draft">Draf</string>
     <string name="sending">Mengirim…</string>
-    <string name="pin_conversation">Pin to the top</string>
     <string name="unpin_conversation">Lepas sematan</string>
     <string name="forward_message">Teruskan</string>
     <string name="compress_error">Tidak dapat mengompres gambar ke ukuran yang dipilih</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Item duplikat tidak termasuk</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="other">and %d others</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Percakapan baru</string>
     <string name="add_contact_or_number">Tambahkan Kontak atau Nomor…</string>
     <string name="suggestions">Saran</string>
-    <!-- Group conversation -->
     <string name="members">Anggota</string>
     <string name="conversation_name">Nama percakapan</string>
     <string name="conversation_details">Detail percakapan</string>
     <string name="rename_conversation">Ubah nama percakapan</string>
     <string name="rename_conversation_warning">Hanya Anda yang dapat melihat nama percakapan ini</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Pesan terjadwal</string>
     <string name="schedule_message">Jadwalkan pesan</string>
     <string name="schedule_send">Jadwalkan pengiriman</string>
     <string name="cancel_schedule_send">Batalkan jadwal pengiriman</string>
     <string name="must_pick_time_in_the_future">Anda harus memilih waktu di masa depan</string>
     <string name="schedule_send_warning">Tetap nyalakan ponsel dan pastikan tidak ada apa pun yang menutup aplikasi selagi di latar belakang.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">Kirim sekarang</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
-    <string name="message_details_sender">Sender</string>
-    <string name="message_details_receiver">Receiver</string>
-    <string name="message_details_sent_at">Sent at</string>
-    <string name="message_details_received_at">Received at</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Menerima SMS</string>
     <string name="new_message">Pesan baru</string>
     <string name="mark_as_read">Tandai sebagai Dibaca</string>
     <string name="mark_as_unread">Tandai sebagai Belum dibaca</string>
-    <string name="me">Me</string>
-    <!-- Archive -->
-    <string name="unarchive">Unarchive</string>
-    <string name="empty_archive">Delete all archived conversations</string>
-    <string name="archived_conversations">Archive</string>
-    <string name="show_archived_conversations">Show archived conversations</string>
-    <string name="archive">Archive</string>
-    <string name="no_archived_conversations">No archived conversations have been found</string>
-    <string name="archive_emptied_successfully">The archive has been emptied successfully</string>
-    <string name="empty_archive_confirmation">Are you sure you want to empty the archive? All archived conversations will be permanently lost.</string>
-    <!-- Recycle bin -->
-    <string name="restore">Restore</string>
-    <string name="restore_all_messages">Restore all messages</string>
-    <string name="empty_recycle_bin_messages_confirmation">Are you sure you want to empty the Recycle Bin? The messages will be permanently lost.</string>
-    <string name="skip_the_recycle_bin_messages">Skip the Recycle Bin, delete messages directly</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Apakah Anda yakin ingin menghapus semua pesan dari percakapan ini\?</string>
-    <string name="archive_confirmation">Are you sure you want to archive %s?</string>
-    <string name="restore_whole_conversation_confirmation">Are you sure you want to restore all messages of this conversation?</string>
-    <string name="restore_confirmation">Are you sure you want to restore %s?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="other">%d percakapan</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="other">%d pesan</item>
     </plurals>
-    <!-- Settings -->
-    <string name="keyword">Keyword</string>
-    <string name="blocked_keywords">Blocked keywords</string>
-    <string name="manage_blocked_keywords">Manage blocked keywords</string>
-    <string name="not_blocking_keywords">You are not blocking any keywords. You may add keywords here to block all messages containing them.</string>
-    <string name="add_a_blocked_keyword">Add a blocked keyword</string>
     <string name="lock_screen_visibility">Keterlihatan notifikasi layar kunci</string>
     <string name="sender_and_message">Pengirim dan pesan</string>
     <string name="sender_only">Hanya pengirim</string>
@@ -100,16 +58,9 @@
     <string name="outgoing_messages">Pesan keluar</string>
     <string name="group_message_mms">Kirim pesan grup sebagai MMS</string>
     <string name="send_long_message_mms">Kirim pesan panjang sebagai MMS</string>
-    <!-- Export / Import -->
-    <string name="messages">Messages</string>
-    <string name="export_messages">Export messages</string>
-    <string name="export_sms">Export SMS</string>
     <string name="export_mms">Ekspor MMS</string>
-    <string name="import_messages">Import messages</string>
-    <string name="import_sms">Import SMS</string>
     <string name="import_mms">Impor MMS</string>
     <string name="no_option_selected">Anda harus memilih setidaknya satu item</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Tidak dapat mengirim pesan ke nomor kosong</string>
     <string name="unable_to_save_message">Tidak dapat menyimpan pesan ke basis data telefoni</string>
     <string name="error_service_is_unavailable">Tidak dapat mengirim pesan, layanan tidak tersedia</string>
@@ -118,18 +69,10 @@
     <string name="unknown_error_occurred_sending_message">Tidak dapat mengirim pesan, kode kesalahan: %d</string>
     <string name="invalid_short_code">Tidak dapat membalas ke kode pendek seperti ini</string>
     <string name="invalid_short_code_desc">Anda hanya dapat membalas ke kode pendek dengan nomor seperti \"503501\" tetapi tidak ke kode berisi huruf dan angka seperti \"AB-CD0\".</string>
-    <string name="attachment_sized_exceeds_max_limit">Attachment size exceeds max MMS limit</string>
-    <string name="sim_card_not_available">SIM card not available</string>
-    <string name="couldnt_download_mms">Couldn\'t download MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Mengapa aplikasi ini membutuhkan akses ke internet\?</string>
     <string name="faq_1_text">Sayangnya itu diperlukan untuk mengirim lampiran MMS. Tidak dapat mengirim MMS akan menjadi kerugian yang sangat besar dibandingkan dengan aplikasi lain, jadi kami memutuskan untuk menggunakan cara ini. Namun, seperti biasanya, tidak ada iklan, pelacakan atau analitik apa pun, internet hanya digunakan untuk mengirim MMS.</string>
     <string name="faq_2_title">Pihak lain tidak menerima MMS saya, adakah sesuatu yang saya bisa lakukan\?</string>
     <string name="faq_2_text">Ukuran MMS dibatasi oleh penyedia, Anda dapat menetapkan batas yang lebih kecil dalam pengaturan aplikasi.</string>
     <string name="faq_3_title">Apakah aplikasi mendukung penjadwalan pesan\?</string>
     <string name="faq_3_text">Ya, Anda bisa menjadwalkan pesan untuk dikirim di masa depan dengan menekan lama pada tombol Kirim dan memilih tanggal dan waktu yang diinginkan.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

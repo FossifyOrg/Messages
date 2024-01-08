@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">SMS Messenger</string>
     <string name="type_a_message">Kirjoita viesti…</string>
     <string name="message_not_sent_short">Viestiä ei lähetetty</string>
     <string name="message_not_sent_touch_retry">Ei lähetetty. Yritä uudelleen koskemalla.</string>
@@ -19,24 +18,19 @@
     <string name="unpin_conversation">Poista</string>
     <string name="forward_message">Välitä</string>
     <string name="compress_error">Kuvan pakkaaminen valittuun kokoon ei onnistu</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Kaksoiskappaletta ei sisällytetty</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">ja %d muu</item>
         <item quantity="other">ja %d muuta</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Uusi keskustelu</string>
     <string name="add_contact_or_number">Lisää yhteystieto tai numero…</string>
     <string name="suggestions">Ehdotuksia</string>
-    <!-- Group conversation -->
     <string name="members">Jäsenet</string>
     <string name="conversation_name">Keskustelun nimi</string>
     <string name="conversation_details">Keskustelun tiedot</string>
     <string name="rename_conversation">Nimeä keskustelu uudelleen</string>
     <string name="rename_conversation_warning">Vain sinä voit nähdä tämän keskustelun nimen</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Ajastettu viesti</string>
     <string name="schedule_message">Ajoita viestin lähetys</string>
     <string name="schedule_send">Ajasta lähetys</string>
@@ -45,19 +39,16 @@
     <string name="schedule_send_warning">Pidä puhelin päällä ja varmista, ettei sovellusta lopeteta taustalla.</string>
     <string name="update_message">Päivitä viesti</string>
     <string name="send_now">Lähetä nyt</string>
-    <!-- Message details -->
     <string name="message_details">Viestin yksityiskohdat</string>
     <string name="message_details_sender">Lähettäjä</string>
     <string name="message_details_receiver">Vastaanottaja</string>
     <string name="message_details_sent_at">Lähetetty</string>
     <string name="message_details_received_at">Vastaanotettu</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Vastaanotettu tekstiviesti</string>
     <string name="new_message">Uusi viesti</string>
     <string name="mark_as_read">Merkitse luetuksi</string>
     <string name="mark_as_unread">Merkitse lukemattomaksi</string>
     <string name="me">Minä</string>
-    <!-- Archive -->
     <string name="unarchive">Poista arkivointi</string>
     <string name="empty_archive">Poista kaikki arkivoidut keskustelut</string>
     <string name="archived_conversations">Arkisto</string>
@@ -66,27 +57,22 @@
     <string name="no_archived_conversations">Arkivoituja keskusteluja ei löytynyt</string>
     <string name="archive_emptied_successfully">Arkisto tyhjennettiin onnistuneesti</string>
     <string name="empty_archive_confirmation">Haluatko tyhjentää arkiston\? Kaikki arkivoidut keskustelut menetetään pysyvästi.</string>
-    <!-- Recycle bin -->
     <string name="restore">Palauta</string>
     <string name="restore_all_messages">Palauta kaikki viestit</string>
     <string name="empty_recycle_bin_messages_confirmation">Haluatko tyhjentää Roskakorin\? Viestit menetetään pysyvästi.</string>
     <string name="skip_the_recycle_bin_messages">Ohita Roskakori, poista viestit välittömästi</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Haluatko varmasti poistaa kaikki tämän keskustelun viestit\?</string>
     <string name="archive_confirmation">Haluatko arkivoida %s\?</string>
     <string name="restore_whole_conversation_confirmation">Haluatko palauttaa tämän keskustelun kaikki viestit\?</string>
     <string name="restore_confirmation">Haluatko palauttaa %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d keskustelu</item>
         <item quantity="other">%d keskustelut</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d viesti</item>
         <item quantity="other">%d viestit</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Avainsana</string>
     <string name="blocked_keywords">Estetyt avainsanat</string>
     <string name="manage_blocked_keywords">Hallitse estettyjä avainsanoja</string>
@@ -103,7 +89,6 @@
     <string name="outgoing_messages">Lähtevät viestit</string>
     <string name="group_message_mms">Lähetä ryhmäviestit MMS:nä</string>
     <string name="send_long_message_mms">Lähetä pitkät viestit MMS:nä</string>
-    <!-- Export / Import -->
     <string name="messages">Viestit</string>
     <string name="export_messages">Vie viestejä</string>
     <string name="export_sms">Vie tekstiviestit</string>
@@ -112,7 +97,6 @@
     <string name="import_sms">Tuo tekstiviestejä</string>
     <string name="import_mms">Tuo kuvaviestejä</string>
     <string name="no_option_selected">Sinun on valittava vähintään yksi kohde</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Et voi lähettää viestiä tyhjään numeroon</string>
     <string name="unable_to_save_message">Viestin tallennus puhelintietokantaan ei onnistu</string>
     <string name="error_service_is_unavailable">Viestin lähetys ei onnistu, palvelua ei tavoiteta</string>
@@ -124,15 +108,10 @@
     <string name="attachment_sized_exceeds_max_limit">Liitteen koko ylittää MMS-viestin enimmäiskoon</string>
     <string name="sim_card_not_available">SIM kortti ei saatavilla</string>
     <string name="couldnt_download_mms">MMS lataus epäonnistui</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Miksi sovellus vaatii Internet-yhteyden\?</string>
     <string name="faq_1_text">Valitettavasti sitä tarvitaan multimediaviestin liitteiden lähettämiseen. Multimediaviestien lähettämättä jättäminen olisi todella valtava haitta muihin sovelluksiin verrattuna, joten päätimme mennä tällä tavalla. Kuten yleensä, mainoksia, seurantaa tai analytiikkaa ei kuitenkaan ole, internetiä käytetään vain multimediaviestien lähettämiseen.</string>
     <string name="faq_2_title">Vastaanottaja ei vastaanota MMS-viestejäni, voinko tehdä asialle mitään\?</string>
     <string name="faq_2_text">Operaattorit rajoittavat MMS-kokoa, voit yrittää asettaa pienemmän rajan sovelluksen asetuksissa.</string>
     <string name="faq_3_title">Tukeeko sovellus ajoitettua viestien lähetystä\?</string>
     <string name="faq_3_text">Kyllä tukee ja voit ajoittaa viestin lähetyksen painamalla lähetyspainiketta pitkään ja valitsemalla halutun päivän ja kellonajan.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

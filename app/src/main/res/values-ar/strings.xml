@@ -19,9 +19,7 @@
     <string name="unpin_conversation">ازالة التثبيت</string>
     <string name="forward_message">اعادة ارسال</string>
     <string name="compress_error">غير قادر على ضغط الصورة إلى الحجم المحدد</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">لم يتم تضمين عنصر مكرر</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="zero">و %d أخرى</item>
         <item quantity="one">و %d أخرى</item>
@@ -30,38 +28,29 @@
         <item quantity="many">و %d أخرون</item>
         <item quantity="other">و %d أخرى</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">محادثة جديدة</string>
     <string name="add_contact_or_number">إضافة جهة اتصال أو رقم …</string>
     <string name="suggestions">اقتراحات</string>
-    <!-- Group conversation -->
     <string name="members">الأعضاء</string>
     <string name="conversation_name">اسم المحادثة</string>
     <string name="conversation_details">تفاصيل المحادثة</string>
     <string name="rename_conversation">إعادة تسمية المحادثة</string>
     <string name="rename_conversation_warning">يمكنك أنت وحدك رؤية اسم المحادثة هذا</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">رسالة مجدولة</string>
     <string name="schedule_message">جدولة الرسالة</string>
     <string name="schedule_send">جدولة الإرسال</string>
     <string name="cancel_schedule_send">إلغاء جدولة الإرسال</string>
     <string name="must_pick_time_in_the_future">يجب عليك اختيار وقت في المستقبل</string>
     <string name="schedule_send_warning">استمر في تشغيل الهاتف وتأكد من عدم وجود شيء يقتل التطبيق أثناء وجوده في الخلفية.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">ارسل الان</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
     <string name="message_details_sender">المرسل</string>
     <string name="message_details_receiver">المتلقي</string>
     <string name="message_details_sent_at">أرسلت في</string>
     <string name="message_details_received_at">تلقيت في</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">تم تلقي الرسائل القصيرة</string>
     <string name="new_message">رسالة جديدة</string>
     <string name="mark_as_read">ضع إشارة مقروء</string>
     <string name="mark_as_unread">وضع علامة كغير مقروءة</string>
-    <string name="me">Me</string>
-    <!-- Archive -->
     <string name="unarchive">إلغاء الأرشفة</string>
     <string name="empty_archive">حذف جميع المحادثات المؤرشفة</string>
     <string name="archived_conversations">أرشيف</string>
@@ -70,17 +59,14 @@
     <string name="no_archived_conversations">لم يتم العثور على محادثات مؤرشفة</string>
     <string name="archive_emptied_successfully">تم إفراغ الأرشيف بنجاح</string>
     <string name="empty_archive_confirmation">هل أنت متأكد من أنك تريد إفراغ الأرشيف؟ ستفقد جميع المحادثات المؤرشفة نهائيا.</string>
-    <!-- Recycle bin -->
     <string name="restore">استعادة</string>
     <string name="restore_all_messages">استعادة جميع الرسائل</string>
     <string name="empty_recycle_bin_messages_confirmation">هل تريد بالتأكيد إفراغ سلة المحذوفات ؟ سيتم فقدان الرسائل نهائياً.</string>
     <string name="skip_the_recycle_bin_messages">تخطي سلة المحذوفات ، وحذف الرسائل مباشرة</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">هل أنت متأكد أنك تريد حذف كافة رسائل هذه المحادثة؟</string>
     <string name="archive_confirmation">هل أنت متأكد من أنك تريد أرشفة %s؟</string>
     <string name="restore_whole_conversation_confirmation">هل أنت متأكد من أنك تريد استعادة جميع رسائل هذه المحادثة؟</string>
     <string name="restore_confirmation">هل أنت متأكد من أنك تريد استعادة %s؟</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="zero">محادثة %d</item>
         <item quantity="one">محادثة %d</item>
@@ -89,7 +75,6 @@
         <item quantity="many">محادثات %d</item>
         <item quantity="other">محادثات %d</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="zero">%d رسالة</item>
         <item quantity="one">%d رسالة</item>
@@ -98,7 +83,6 @@
         <item quantity="many">%d رسائل</item>
         <item quantity="other">%d رسائل</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">الكلمة الرئيسية</string>
     <string name="blocked_keywords">الكلمات الرئيسية المحظورة</string>
     <string name="manage_blocked_keywords">إدارة الكلمات الرئيسية المحظورة</string>
@@ -115,7 +99,6 @@
     <string name="outgoing_messages">الرسائل المرسلة</string>
     <string name="group_message_mms">إرسال رسائل جماعية كرسائل MMS</string>
     <string name="send_long_message_mms">إرسال رسائل طويلة كرسائل MMS</string>
-    <!-- Export / Import -->
     <string name="messages">الرسائل</string>
     <string name="export_messages">تصدير الرسائل</string>
     <string name="export_sms">تصدير الرسائل القصيرة</string>
@@ -124,7 +107,6 @@
     <string name="import_sms">استيراد الرسائل القصيرة</string>
     <string name="import_mms">استيراد رسائل الوسائط المتعددة</string>
     <string name="no_option_selected">يجب عليك تحديد عنصر واحد على الأقل</string>
-    <!-- Errors -->
     <string name="empty_destination_address">لا يمكن إرسال رسالة إلى رقم فارغ</string>
     <string name="unable_to_save_message">غير قادر على حفظ الرسالة في قاعدة بيانات الاتصالات الهاتفية</string>
     <string name="error_service_is_unavailable">لا يمكن إرسال رسالة، الخدمة غير متوفرة</string>
@@ -136,15 +118,10 @@
     <string name="attachment_sized_exceeds_max_limit">يتجاوز حجم المرفق الحد الأقصى لرسائل الوسائط المتعددة</string>
     <string name="sim_card_not_available">بطاقة SIM غير متوفرة</string>
     <string name="couldnt_download_mms">لا يمكن تحميل MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">لماذا يتطلب التطبيق الوصول إلى الإنترنت؟</string>
     <string name="faq_1_text">للأسف هناك حاجة لإرسال مرفقات رسائل الوسائط . عدم القدرة على إرسال رسائل الوسائط هذا سيكون عيبا كبيرا حقا بالمقارنة مع التطبيقات الأخرى ، لذلك قررنا الذهاب من هذا الطريق. ومع ذلك ، كما هو الحال عادة ، لا توجد إعلانات أو تتبع أو تحليلات للنشاط على الإطلاق ، يتم استخدام صلاحية الإنترنت فقط لإرسال رسائل الوسائط المتعددة.</string>
     <string name="faq_2_title">الطرف الآخر لا يستقبل رسائل الوسائط المتعددة الخاصة بي ، فهل هناك أي شيء يمكنني القيام به حيال ذلك؟</string>
     <string name="faq_2_text">حجم MMS محدود بواسطة شركات الاتصالات ، يمكنك محاولة تعيين حد أصغر في إعدادات التطبيق.</string>
     <string name="faq_3_title">هل يدعم التطبيق الرسائل المجدولة؟</string>
     <string name="faq_3_text">نعم ، يمكنك جدولة الرسائل ليتم إرسالها في المستقبل عن طريق الضغط مع الاستمرار على الزر \"إرسال\" واختيار التاريخ والوقت المطلوبين.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

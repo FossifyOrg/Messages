@@ -19,25 +19,20 @@
     <string name="unpin_conversation">Desanclar</string>
     <string name="forward_message">Reenviar</string>
     <string name="compress_error">Incapaz de comprimir la imagen al tamaño seleccionado</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Los elementos duplicados no fueron incluidos</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">y %d otro</item>
         <item quantity="many">y %d otros</item>
         <item quantity="other">y %d otros</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Nueva conversación</string>
     <string name="add_contact_or_number">Escribe contacto o número…</string>
     <string name="suggestions">Sugerencias</string>
-    <!-- Group conversation -->
     <string name="members">Miembros</string>
     <string name="conversation_name">Nombre de la conversación</string>
     <string name="conversation_details">Detalles de la conversación</string>
     <string name="rename_conversation">Renombrar la conversación</string>
     <string name="rename_conversation_warning">Sólo tú puedes ver el nombre de esta conversación</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Mensaje programado</string>
     <string name="schedule_message">Programar mensaje</string>
     <string name="schedule_send">Programar envío</string>
@@ -46,19 +41,16 @@
     <string name="schedule_send_warning">Mantenga el teléfono encendido y asegúrese de que no hay nada que mate la aplicación en segundo plano.</string>
     <string name="update_message">Actualizar mensaje</string>
     <string name="send_now">Enviar ahora</string>
-    <!-- Message details -->
     <string name="message_details">Detalles del mensaje</string>
     <string name="message_details_sender">Remitente</string>
     <string name="message_details_receiver">Destinatario</string>
     <string name="message_details_sent_at">Enviado a</string>
     <string name="message_details_received_at">Recibido en</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Mensaje recibido</string>
     <string name="new_message">Nuevo mensaje</string>
     <string name="mark_as_read">Marcar como leído</string>
     <string name="mark_as_unread">Marcar como no leído</string>
     <string name="me">Yo</string>
-    <!-- Archive -->
     <string name="unarchive">Desarchivar</string>
     <string name="empty_archive">Borrar todas las conversaciones archivadas</string>
     <string name="archived_conversations">Archivar</string>
@@ -67,29 +59,24 @@
     <string name="no_archived_conversations">No se han encontrado conversaciones archivadas</string>
     <string name="archive_emptied_successfully">El archivo se ha vaciado correctamente</string>
     <string name="empty_archive_confirmation">¿Estás seguro de que quieres vaciar el archivo\? Todas las conversaciones archivadas se perderán permanentemente.</string>
-    <!-- Recycle bin -->
     <string name="restore">Restaurar</string>
     <string name="restore_all_messages">Restaurar todos los mensajes</string>
     <string name="empty_recycle_bin_messages_confirmation">¿Estás seguro de que quieres vaciar la papelera de reciclaje\? Los mensajes se perderán definitivamente.</string>
     <string name="skip_the_recycle_bin_messages">Olvídate de la papelera de reciclaje, borra los mensajes directamente</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">¿Estás seguro que quieres eliminar todos los mensajes en esta conversación\?</string>
     <string name="archive_confirmation">¿Seguro que quieres archivar %s\?</string>
     <string name="restore_whole_conversation_confirmation">¿Estás seguro de que quieres restaurar todos los mensajes de esta conversación\?</string>
     <string name="restore_confirmation">¿Estás seguro de que quieres restaurar %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d conversación</item>
         <item quantity="many">%d conversaciones</item>
         <item quantity="other">%d conversaciones</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d mensaje</item>
         <item quantity="many">%d mensajes</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Teclado</string>
     <string name="blocked_keywords">Teclado bloqueado</string>
     <string name="manage_blocked_keywords">Gestionar los teclados bloqueados</string>
@@ -106,7 +93,6 @@
     <string name="outgoing_messages">Mensajes salientes</string>
     <string name="group_message_mms">Enviar mensajes de grupo como MMS</string>
     <string name="send_long_message_mms">Enviar mensajes largos como MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Mensajes</string>
     <string name="export_messages">Exportar mensajes</string>
     <string name="export_sms">Exportar SMS</string>
@@ -115,7 +101,6 @@
     <string name="import_sms">Importar SMS</string>
     <string name="import_mms">Importar MMS</string>
     <string name="no_option_selected">Tienes que seleccionar al menos un elemento</string>
-    <!-- Errors -->
     <string name="empty_destination_address">No se puede enviar un mensaje sino hay un número de teléfono</string>
     <string name="unable_to_save_message">No se puede guardar el mensaje en la base de datos del teléfono</string>
     <string name="error_service_is_unavailable">No se ha podido enviar el mensaje, el servicio no está disponible</string>
@@ -127,15 +112,10 @@
     <string name="attachment_sized_exceeds_max_limit">El tamaño del archivo adjunto supera el límite máximo de MMS</string>
     <string name="sim_card_not_available">No hay una tarjeta SIM disponible</string>
     <string name="couldnt_download_mms">No se puede descargar el MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">¿Por qué la aplicación requiere acceso a internet\?</string>
     <string name="faq_1_text">Tristemente es necesitado para enviar archivos adjuntos MMS. El no poder enviar MMS sería una desventaja realmente enorme comparada con otras aplicaciones, así que decidimos tomar este camino. Sin embargo, como siempre, no hay anuncios, rastreo o análisis, por lo que el internet solo es usado para enviar MMS.</string>
     <string name="faq_2_title">El otro extremo no recibe mi MMS, ¿hay algo que pueda hacer al respecto\?</string>
     <string name="faq_2_text">El tamaño de los MMS está limitado por los operadores, puede intentar establecer un límite más pequeño en la configuración de la aplicación.</string>
     <string name="faq_3_title">¿La aplicación admite mensajes programados\?</string>
     <string name="faq_3_text">Sí, puedes programar el envío de mensajes en el futuro pulsando prolongadamente el botón de envío y eligiendo la fecha y hora deseadas.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>
