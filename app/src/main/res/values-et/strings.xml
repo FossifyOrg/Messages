@@ -19,45 +19,35 @@
     <string name="unpin_conversation">Eemalda kinnitus</string>
     <string name="forward_message">Edasta</string>
     <string name="compress_error">Pildi muutmine valitud suurusesse ei õnnestu</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Topeltelement jäi välja</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">ja %d muu</item>
         <item quantity="other">ja %d muud</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Uus vestlus</string>
     <string name="add_contact_or_number">Lisa kontakt või number…</string>
     <string name="suggestions">Ettepanekud</string>
-    <!-- Group conversation -->
     <string name="members">Liikmed</string>
     <string name="conversation_name">Vestluse nimi</string>
     <string name="conversation_details">Vestluse üksikasjad</string>
     <string name="rename_conversation">Muuda vestluse nime</string>
     <string name="rename_conversation_warning">Ainult sina näed seda vestluse nime</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Ajastatud sõnum</string>
     <string name="schedule_message">Ajasta sõnumi saatmine</string>
     <string name="schedule_send">Ajasta saatmine</string>
     <string name="cancel_schedule_send">Tühista ajastatud saatmine</string>
     <string name="must_pick_time_in_the_future">Palun vali ajahetk tulevikust</string>
     <string name="schedule_send_warning">Vaata, et telefon oleks sisse lülitatud ja mitte miski ei katkestaks selle rakenduse tööd taustal.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">Saada kohe</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
     <string name="message_details_sender">Saatja</string>
     <string name="message_details_receiver">Saaja</string>
     <string name="message_details_sent_at">Saatmise aeg</string>
     <string name="message_details_received_at">Saabumise aeg</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Vastuvõetud SMS</string>
     <string name="new_message">Uus sõnum</string>
     <string name="mark_as_read">Märgi loetuks</string>
     <string name="mark_as_unread">Märgi mitteloetuks</string>
     <string name="me">Mina</string>
-    <!-- Archive -->
     <string name="unarchive">Eemalda arhiivist</string>
     <string name="empty_archive">Kustuta kõik arhiveeritud vestlused</string>
     <string name="archived_conversations">Vestluste arhiiv</string>
@@ -66,27 +56,22 @@
     <string name="no_archived_conversations">Arhiveeritud vestlusi ei leidu</string>
     <string name="archive_emptied_successfully">Arhiiv on edukalt tühjendatud</string>
     <string name="empty_archive_confirmation">Kas kindlasti soovid arhiivi tühjendada\? Kõik arhiveeritud vestlused lähevad jäädavalt kaotsi.</string>
-    <!-- Recycle bin -->
     <string name="restore">Taasta</string>
     <string name="restore_all_messages">Taasta kõik sõnumid</string>
     <string name="empty_recycle_bin_messages_confirmation">Kas sa oled kindel, et soovid prügikasti tühjendada\? Kõik seal leiduvad sõnumid lähevad lõplikult kaduma.</string>
     <string name="skip_the_recycle_bin_messages">Jäta prügikast vahele, kustuta sõnumid kohe lõplikult</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Kas oled kindel, et soovid kustutada kõik selle vestluse sõnumid\?</string>
     <string name="archive_confirmation">Kas sa oled kindel, et soovid lisada „%s“ arhiivi\?</string>
     <string name="restore_whole_conversation_confirmation">Kas oled kindel, et soovid taastada kõik selle vestluse sõnumid\?</string>
     <string name="restore_confirmation">Kas sa oled kindel, et soovid taastada %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d vestlus</item>
         <item quantity="other">%d vestlust</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d sõnum</item>
         <item quantity="other">%d sõnumit</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Märksõna</string>
     <string name="blocked_keywords">Blokeeritud märksõnad</string>
     <string name="manage_blocked_keywords">Halda blokeeritud märksõnu</string>
@@ -103,7 +88,6 @@
     <string name="outgoing_messages">Väljuvad sõnumid</string>
     <string name="group_message_mms">Saada rühmasõnumid MMS-sõnumitena</string>
     <string name="send_long_message_mms">Saada pikad sõnumid MMS-ina</string>
-    <!-- Export / Import -->
     <string name="messages">Sõnumid</string>
     <string name="export_messages">Ekspordi sõnumid</string>
     <string name="export_sms">Ekspordi tekstisõnumid</string>
@@ -112,7 +96,6 @@
     <string name="import_sms">Impordi tekstisõnumid</string>
     <string name="import_mms">Impordi MMS-sõnumid</string>
     <string name="no_option_selected">Palun vali vähemalt üks kirje</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Kui number on sisestamata, siis sõnumit saata ei saa</string>
     <string name="unable_to_save_message">Sõnumi salvestamine ei õnnestu</string>
     <string name="error_service_is_unavailable">Kuna teenus pole saadaval, siis sõnumi saatmine ei õnnestu</string>
@@ -124,15 +107,10 @@
     <string name="attachment_sized_exceeds_max_limit">Manuse suurus ületab MMS-sõnumite mahu ülempiiri</string>
     <string name="sim_card_not_available">SIM-kaart pole saadaval</string>
     <string name="couldnt_download_mms">MMS\'i allalaadimine ei õnnestu</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Miks on selle rakenduse jaoks vajalik ligipääs internetile\?</string>
     <string name="faq_1_text">Kahjuks saadetakse MMS-sõnumite manused üle interneti. Kuna muudel sarnastel rakendustel on MMS-sõnumite saatmise võimalus, siis me ei saanud sellest funktsionaalsusest ka loobuda. Aga nagu kõikide meie rakenduste puhul standardiks on, siis me ei näita reklaame ega kasuta kasutajate jälgmist ega ka analüütikat ning internetiühendus on kasutusel vaid MMS-sõnumite saatmisel.</string>
     <string name="faq_2_title">Teine osapool ei saa minu saadetud MMS-sõnumeid kätte. Kas ma saan seda olukorda kuidagi mõjutada\?</string>
     <string name="faq_2_text">Erinevatel mobiilsideteenuse pakkujatel on erinevad MMS-sõnumite mahupiirid. Proovi rakendusest määrata väiksema sõnumi suuruse piirangu.</string>
     <string name="faq_3_title">Kas see rakendus võimaldab ajastatud sõnumite saatmist\?</string>
     <string name="faq_3_text">Jah, sa saad saata sõnumeid tulevikus - selleks kasuta pikka vajutust nupul „Saada“ ning vali soovitud kuupäev ja kellaaeg.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

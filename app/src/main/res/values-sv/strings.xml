@@ -19,24 +19,19 @@
     <string name="unpin_conversation">Lossa</string>
     <string name="forward_message">Vidarebefordra</string>
     <string name="compress_error">Det gick inte att komprimera bilden till den valda storleken</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Dubblettobjekt inkluderades inte</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">och %d annan</item>
         <item quantity="other">och %d andra</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Ny konversation</string>
     <string name="add_contact_or_number">Lägg till kontakt eller nummer…</string>
     <string name="suggestions">Förslag</string>
-    <!-- Group conversation -->
     <string name="members">Medlemmar</string>
     <string name="conversation_name">Konversationsnamn</string>
     <string name="conversation_details">Konversationsinformation</string>
     <string name="rename_conversation">Byt namn på konversation</string>
     <string name="rename_conversation_warning">Bara du kan se det här konversationsnamnet</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Schemalagt meddelande</string>
     <string name="schedule_message">Schemalägg meddelande</string>
     <string name="schedule_send">Schemalägg skicka</string>
@@ -45,19 +40,16 @@
     <string name="schedule_send_warning">Ha telefonen påslagen och kontrollera att inget avslutar appen i bakgrunden.</string>
     <string name="update_message">Uppdatera meddelande</string>
     <string name="send_now">Skicka nu</string>
-    <!-- Message details -->
     <string name="message_details">Meddelandeinformation</string>
     <string name="message_details_sender">Avsändare</string>
     <string name="message_details_receiver">Mottagare</string>
     <string name="message_details_sent_at">Skickat</string>
     <string name="message_details_received_at">Mottaget</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Tog emot sms</string>
     <string name="new_message">Nytt meddelande</string>
     <string name="mark_as_read">Markera som läst</string>
     <string name="mark_as_unread">Markera som oläst</string>
     <string name="me">Jag</string>
-    <!-- Archive -->
     <string name="unarchive">Ångra arkivering</string>
     <string name="empty_archive">Ta bort alla arkiverade konversationer</string>
     <string name="archived_conversations">Arkiv</string>
@@ -66,27 +58,22 @@
     <string name="no_archived_conversations">Inga arkiverade konversationer hittades</string>
     <string name="archive_emptied_successfully">Arkivet har tömts</string>
     <string name="empty_archive_confirmation">Är du säker på att du vill tömma arkivet\? Alla arkiverade konversationer tas bort permanent.</string>
-    <!-- Recycle bin -->
     <string name="restore">Återställ</string>
     <string name="restore_all_messages">Återställ alla meddelanden</string>
     <string name="empty_recycle_bin_messages_confirmation">Är du säker på att du vill tömma papperskorgen\? Meddelandena tas bort permanent.</string>
     <string name="skip_the_recycle_bin_messages">Hoppa över papperskorgen, ta bort meddelanden direkt</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Är du säker på att du vill ta bort alla meddelanden i den här konversationen\?</string>
     <string name="archive_confirmation">Är du säker på att du vill arkivera %s\?</string>
     <string name="restore_whole_conversation_confirmation">Är du säker på att du vill återställa alla meddelanden i den här konversationen\?</string>
     <string name="restore_confirmation">Är du säker på att du vill återställa %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d konversation</item>
         <item quantity="other">%d konversationer</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d meddelande</item>
         <item quantity="other">%d meddelanden</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Nyckelord</string>
     <string name="blocked_keywords">Blockerade nyckelord</string>
     <string name="manage_blocked_keywords">Hantera blockerade nyckelord</string>
@@ -103,7 +90,6 @@
     <string name="outgoing_messages">Utgående meddelanden</string>
     <string name="group_message_mms">Skicka gruppmeddelanden som mms</string>
     <string name="send_long_message_mms">Skicka långa meddelanden som mms</string>
-    <!-- Export / Import -->
     <string name="messages">Meddelanden</string>
     <string name="export_messages">Exportera meddelanden</string>
     <string name="export_sms">Exportera sms</string>
@@ -112,7 +98,6 @@
     <string name="import_sms">Importera sms</string>
     <string name="import_mms">Importera mms</string>
     <string name="no_option_selected">Du måste välja minst ett alternativ</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Det går inte att skicka meddelanden utan nummer</string>
     <string name="unable_to_save_message">Det går inte att spara meddelandet på telefonen</string>
     <string name="error_service_is_unavailable">Det gick inte att skicka meddelandet, tjänsten är inte tillgänglig</string>
@@ -124,15 +109,10 @@
     <string name="attachment_sized_exceeds_max_limit">Bilagans storlek överskrider maxgränsen för mms</string>
     <string name="sim_card_not_available">SIM-kortet är inte tillgängligt</string>
     <string name="couldnt_download_mms">Det gick inte att hämta mms-meddelandet</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Varför kräver appen åtkomst till internet\?</string>
     <string name="faq_1_text">Tyvärr behövs den för att skicka mms-bilagor. Att inte kunna skicka mms är en enorm nackdel jämfört med andra appar, och vi har därför beslutat att göra så här. Som vanligt förekommer ingen reklam, spårning eller datainsamling, internet används bara för att skicka mms.</string>
     <string name="faq_2_title">Mina mms kommer inte fram, finns det något jag kan göra åt det\?</string>
     <string name="faq_2_text">Storleken på mms begränsas av operatörer, du kan testa att ställa in en lägre gräns i appens inställningar.</string>
     <string name="faq_3_title">Stöder appen schemalagda meddelanden\?</string>
     <string name="faq_3_text">Ja, du kan schemalägga meddelanden så att de skickas i framtiden genom att trycka länge på knappen Skicka och välja önskat datum och tid.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

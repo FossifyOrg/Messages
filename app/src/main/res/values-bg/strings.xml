@@ -19,45 +19,34 @@
     <string name="unpin_conversation">Откачване</string>
     <string name="forward_message">Препращане</string>
     <string name="compress_error">Невъзможно е да се компресира изображението до избрания размер</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Дублиращият се елемент не беше включен</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">и %d друг</item>
         <item quantity="other">и %d други</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Нов разговор</string>
     <string name="add_contact_or_number">Добавете контакт или номер…</string>
     <string name="suggestions">Предложения</string>
-    <!-- Group conversation -->
     <string name="members">Членове</string>
     <string name="conversation_name">Име на разговора</string>
     <string name="conversation_details">Подробности за разговора</string>
     <string name="rename_conversation">Преименуване на разговора</string>
     <string name="rename_conversation_warning">Само вие можете да видите името на този разговор</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Насрочено съобщение</string>
     <string name="schedule_message">Насрочи съобщение по график</string>
     <string name="schedule_send">Планирайте изпращане</string>
     <string name="cancel_schedule_send">Отмяна на насрочено изпращане</string>
     <string name="must_pick_time_in_the_future">Трябва да изберете време в бъдещето</string>
     <string name="schedule_send_warning">Дръжте телефона включен и се уверете, че нищо не убива приложението, докато е във фонов режим.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">Изпрати Сега</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
     <string name="message_details_sender">Подател</string>
     <string name="message_details_receiver">Получател</string>
     <string name="message_details_sent_at">Изпратено на</string>
     <string name="message_details_received_at">Получено на</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Получено съобщение</string>
     <string name="new_message">Ново съобщение</string>
     <string name="mark_as_read">Отбележи като прочетено</string>
     <string name="mark_as_unread">Отбележи като непрочетено</string>
-    <string name="me">Me</string>
-    <!-- Archive -->
     <string name="unarchive">Разархивирай</string>
     <string name="empty_archive">Изтрий всички архивирани разговори</string>
     <string name="archived_conversations">Архив</string>
@@ -66,27 +55,22 @@
     <string name="no_archived_conversations">Не са намерени архивирани разговори</string>
     <string name="archive_emptied_successfully">Архивът е изпразнен успешно</string>
     <string name="empty_archive_confirmation">Сигурни ли сте, че искате да изпразните архива\? Всички архивирани разговори ще бъдат изтрити завинаги.</string>
-    <!-- Recycle bin -->
     <string name="restore">Възстанови</string>
     <string name="restore_all_messages">Възстанови всички съобщения</string>
     <string name="empty_recycle_bin_messages_confirmation">Сигурни ли сте, че искате да изпразните кошчето\? Съобщенията ще бъдат изтрити завинаги.</string>
     <string name="skip_the_recycle_bin_messages">Пропусни кошчето, изтрий съобщенията директно</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Сигурни ли сте, че искате да изтриете всички съобщения от този разговор\?</string>
     <string name="archive_confirmation">Сигурни ли сте, че искате да архивирате %s\?</string>
     <string name="restore_whole_conversation_confirmation">Сигурни ли сте, че искате да възстановите всички съобщения от този разговор\?</string>
     <string name="restore_confirmation">Сигурни ли сте, че искате да възстановите %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d разговор</item>
         <item quantity="other">%d разговори</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d съобщение</item>
         <item quantity="other">%d съобщения</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Ключова дума</string>
     <string name="blocked_keywords">Блокирани ключови думи</string>
     <string name="manage_blocked_keywords">Управление на блокираните ключови думи</string>
@@ -103,7 +87,6 @@
     <string name="outgoing_messages">Изходящи съобщения</string>
     <string name="group_message_mms">Изпращане на групови съобщения като MMS</string>
     <string name="send_long_message_mms">Изпращане на дълги съобщения като MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Съобщения</string>
     <string name="export_messages">Експортиране на съобщения</string>
     <string name="export_sms">Експортиране на SMS</string>
@@ -112,7 +95,6 @@
     <string name="import_sms">Импортиране на SMS</string>
     <string name="import_mms">Импортиране на MMS</string>
     <string name="no_option_selected">Трябва да изберете поне един елемент</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Не може да се изпрати съобщение до празен номер</string>
     <string name="unable_to_save_message">Неуспешен запис на съобщението в телефонната база данни</string>
     <string name="error_service_is_unavailable">Неуспешно изпращане на съобщението, услугата на оператора е недостъпна</string>
@@ -124,15 +106,10 @@
     <string name="attachment_sized_exceeds_max_limit">Размерът на прикачения файл надвишава максималното ограничение за MMS</string>
     <string name="sim_card_not_available">SIM картата не е налична</string>
     <string name="couldnt_download_mms">Неуспешно изтегляне на MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Защо приложението изисква достъп до интернет\?</string>
     <string name="faq_1_text">За съжаление това е нужно за изпращане на прикачени MMS. Да не може да се праща MMS би било наистина голям недостатък в сравнение с други приложения, така че решихме да тръгнем по този път. Въпреки това, както обикновено, няма реклами, следене или каквито и да е други анализаторски програми, интернетът се ползва само за изпращане на MMS.</string>
     <string name="faq_2_title">От другата страна не получават моя MMS, мога ли да направя нещо\?</string>
     <string name="faq_2_text">Размерът на MMS е ограничен от оператора, може да се опитате да зададете по-малък лимит в настройките на приложението.</string>
     <string name="faq_3_title">Приложението поддържа ли планирани съобщения\?</string>
     <string name="faq_3_text">Да, можете да планирате изпращане на съобщения в бъдеще, като натиснете продължително бутона Изпрати и изберете желаната дата и час.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

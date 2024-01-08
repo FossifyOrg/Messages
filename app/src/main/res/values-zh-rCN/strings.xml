@@ -19,23 +19,18 @@
     <string name="unpin_conversation">取消固定</string>
     <string name="forward_message">转发</string>
     <string name="compress_error">无法将图像压缩到选定的大小</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">未包含重复项</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="other">及其他 %d 个联系人</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">新的对话</string>
     <string name="add_contact_or_number">添加联系人或者号码…</string>
     <string name="suggestions">建议</string>
-    <!-- Group conversation -->
     <string name="members">成员</string>
     <string name="conversation_name">对话名</string>
     <string name="conversation_details">对话详情</string>
     <string name="rename_conversation">重命名对话</string>
     <string name="rename_conversation_warning">只有你能看到这个对话的名称</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">定时消息</string>
     <string name="schedule_message">消息定时</string>
     <string name="schedule_send">定时发送</string>
@@ -44,19 +39,16 @@
     <string name="schedule_send_warning">保持手机开机，并确保应用后台不被终止.</string>
     <string name="update_message">更新消息</string>
     <string name="send_now">立即发送</string>
-    <!-- Message details -->
     <string name="message_details">消息详情</string>
     <string name="message_details_sender">发送者</string>
     <string name="message_details_receiver">接收者</string>
     <string name="message_details_sent_at">发送于</string>
     <string name="message_details_received_at">接收于</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">接收到的短信</string>
     <string name="new_message">新消息</string>
     <string name="mark_as_read">标记为已读</string>
     <string name="mark_as_unread">标记为未读</string>
     <string name="me">自己</string>
-    <!-- Archive -->
     <string name="unarchive">解压缩</string>
     <string name="empty_archive">删除所有已归档对话</string>
     <string name="archived_conversations">归档</string>
@@ -65,25 +57,20 @@
     <string name="no_archived_conversations">尚未找到已归档对话</string>
     <string name="archive_emptied_successfully">已成功清空归档</string>
     <string name="empty_archive_confirmation">你确定要清空归档吗？所有已归档对话将永久丢失。</string>
-    <!-- Recycle bin -->
     <string name="restore">恢复</string>
     <string name="restore_all_messages">恢复所有消息</string>
     <string name="empty_recycle_bin_messages_confirmation">你确定想清空回收站吗？你将永久失去已删除的消息。</string>
     <string name="skip_the_recycle_bin_messages">跳过回收站，直接删除消息</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">您确定要删除此对话的所有消息吗\?</string>
     <string name="archive_confirmation">你确定要归档 %s 吗？</string>
     <string name="restore_whole_conversation_confirmation">你确定想要恢复此对话的所有消息吗？</string>
     <string name="restore_confirmation">你确定想恢复 %s？</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="other">%d 个对话</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="other">%d 个消息</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">关键词</string>
     <string name="blocked_keywords">关键词黑名单</string>
     <string name="manage_blocked_keywords">管理关键词黑名单</string>
@@ -100,7 +87,6 @@
     <string name="outgoing_messages">外发消息</string>
     <string name="group_message_mms">将群组信息作为彩信发送</string>
     <string name="send_long_message_mms">将长消息作为彩信发送</string>
-    <!-- Export / Import -->
     <string name="messages">消息</string>
     <string name="export_messages">导出消息</string>
     <string name="export_sms">导出短信</string>
@@ -109,7 +95,6 @@
     <string name="import_sms">导入短信</string>
     <string name="import_mms">导入彩信</string>
     <string name="no_option_selected">您必须至少选择一项</string>
-    <!-- Errors -->
     <string name="empty_destination_address">无法发送消息到空号</string>
     <string name="unable_to_save_message">无法保存消息到电话通信（telephony）数据库</string>
     <string name="error_service_is_unavailable">无法发送消息，服务不可用</string>
@@ -121,15 +106,10 @@
     <string name="attachment_sized_exceeds_max_limit">附件大小超出了彩信上限</string>
     <string name="sim_card_not_available">SIM 卡不可用</string>
     <string name="couldnt_download_mms">无法下载彩信</string>
-    <!-- FAQ -->
     <string name="faq_1_title">为什么该应用需要访问互联网？</string>
     <string name="faq_1_text">很遗憾这对于发送彩信附件是必须的。如果不能发送彩信的话这相比其他应用会是一个巨大的劣势，所以我们决定这么采取现在的方式。 但是和其他应用一样，不包含广告、追踪或者任意的分析工具， 互联网访问仅用于发送彩信。</string>
     <string name="faq_2_title">对方没有收到我的彩信，我能做些什么吗\?</string>
     <string name="faq_2_text">彩信大小受运营商限制，你可以尝试在程序设置中设定一个较小的限制。</string>
     <string name="faq_3_title">本应用支持定时消息吗？</string>
     <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间安排将来要发送的消息。</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

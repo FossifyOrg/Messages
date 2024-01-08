@@ -19,25 +19,15 @@
     <string name="unpin_conversation">Oткопчати</string>
     <string name="forward_message">Напред</string>
     <string name="compress_error">Није могуће компримовати слику на изабрану величину</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Дупликат ставке није укључен</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">и %d друго</item>
         <item quantity="few">и %d других</item>
         <item quantity="other">и %d други</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Нови разговор</string>
     <string name="add_contact_or_number">Додајте контакт или број…</string>
     <string name="suggestions">Предлози</string>
-    <!-- Group conversation -->
-    <string name="members">Members</string>
-    <string name="conversation_name">Conversation name</string>
-    <string name="conversation_details">Conversation details</string>
-    <string name="rename_conversation">Rename conversation</string>
-    <string name="rename_conversation_warning">Only you can see this conversation name</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Заказана порука</string>
     <string name="schedule_message">Закажите поруку</string>
     <string name="schedule_send">Закажите слање</string>
@@ -46,19 +36,16 @@
     <string name="schedule_send_warning">Држите телефон укључен и уверите се да ништа не убија апликацију док је у позадини.</string>
     <string name="update_message">Ажурирајте поруку</string>
     <string name="send_now">Пошаљи одмах</string>
-    <!-- Message details -->
     <string name="message_details">Детаљи о поруци</string>
     <string name="message_details_sender">Шалје</string>
     <string name="message_details_receiver">Прима</string>
     <string name="message_details_sent_at">Послано</string>
     <string name="message_details_received_at">Примлјено</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Примите СМС</string>
     <string name="new_message">Нова порука</string>
     <string name="mark_as_read">Означи као прочитано</string>
     <string name="mark_as_unread">Означи као непрочитанo</string>
     <string name="me">Ja</string>
-    <!-- Archive -->
     <string name="unarchive">Врати из архиве</string>
     <string name="empty_archive">Обриши све архивиране конверзације</string>
     <string name="archived_conversations">Архива</string>
@@ -67,29 +54,24 @@
     <string name="no_archived_conversations">Нема архивираних разговора</string>
     <string name="archive_emptied_successfully">Архива је успјешно испражнјена</string>
     <string name="empty_archive_confirmation">Да ли сте сигурни да желите да испразните архиву? Све архивиране поруке ће бити избрисане.</string>
-    <!-- Recycle bin -->
     <string name="restore">Врати</string>
     <string name="restore_all_messages">Врати све поруке</string>
     <string name="empty_recycle_bin_messages_confirmation">Да ли сте сигурни да желите испразнити канту за отпазке? Поруке ће бити трајно обрисане.</string>
     <string name="skip_the_recycle_bin_messages">Прескочи канту за отпатке, обриши поруке директно</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Да ли сте сигурни да желите да избришете све поруке ове конверзације\?</string>
     <string name="archive_confirmation">Да ли сте сигурни да желите да архивирате %s?</string>
     <string name="restore_whole_conversation_confirmation">Да ли сте сигурни да желите да вратите све поруке ове конверзације?</string>
     <string name="restore_confirmation">Да ли сте сигурни да желите да вратите %s?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d разговор</item>
         <item quantity="few">%d разговорa</item>
         <item quantity="other">%d разговори</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d порука</item>
         <item quantity="few">%d порука</item>
         <item quantity="other">%d порукe</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Ријеч</string>
     <string name="blocked_keywords">Блокиране ријечи</string>
     <string name="manage_blocked_keywords">Управљање блокираним ријечима</string>
@@ -106,7 +88,6 @@
     <string name="outgoing_messages">Одлазне поруке</string>
     <string name="group_message_mms">Пошаљите групне поруке као ММС</string>
     <string name="send_long_message_mms">Шаљите дугачке поруке као ММС</string>
-    <!-- Export / Import -->
     <string name="messages">Поруке</string>
     <string name="export_messages">Извезите поруке</string>
     <string name="export_sms">Извези СМС</string>
@@ -115,19 +96,7 @@
     <string name="import_sms">Увезите СМС</string>
     <string name="import_mms">Увези ММС</string>
     <string name="no_option_selected">Морате да изаберете најмање једну ставку</string>
-    <!-- Errors -->
-    <string name="empty_destination_address">Can\'t send message to an empty number</string>
-    <string name="unable_to_save_message">Unable to save message to the telephony database</string>
-    <string name="error_service_is_unavailable">Couldn\'t send message, service unavailable</string>
-    <string name="error_radio_turned_off">Couldn\'t send message, radio turned off</string>
-    <string name="carrier_send_error">Couldn\'t send message, carrier error</string>
     <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
-    <string name="invalid_short_code">Can\'t reply to short codes like this</string>
-    <string name="invalid_short_code_desc">You can only reply to short codes with numbers like \"503501\" but not to codes containing letters and numbers like \"AB-CD0\".</string>
-    <string name="attachment_sized_exceeds_max_limit">Attachment size exceeds max MMS limit</string>
-    <string name="sim_card_not_available">SIM card not available</string>
-    <string name="couldnt_download_mms">Couldn\'t download MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Зашто је апликацији потребан приступ интернету\?</string>
     <string name="faq_1_text">Нажалост, то је потребно за слање ММС прилога. Немогућност слања ММС-а била би заиста велика мана у поређењу са другим апликацијама, па смо одлучили да идемо овим путем. Међутим, као и обично, нема реклама, праћења или аналитике, интернет се користи само за слање ММС-а.</string>
     <string name="faq_2_title">Други крај не прима мој ММС, да ли могу нешто да урадим поводом тога\?</string>
