@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Egyszerű SMS üzenetküldő</string>
     <string name="app_launcher_name">SMS üzenetküldő</string>
     <string name="type_a_message">Írjon be egy üzenetet…</string>
     <string name="message_not_sent_short">Az üzenet nem lett elküldve</string>
@@ -20,24 +19,19 @@
     <string name="unpin_conversation">Kitűzés megszüntetése</string>
     <string name="forward_message">Továbbítás</string>
     <string name="compress_error">Nem lehet tömöríteni a képet a kiválasztott méretre</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Az ismételt elem nem lett belevéve</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">és még %d fő</item>
         <item quantity="other">és még %d fő</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Új beszélgetés</string>
     <string name="add_contact_or_number">Névjegy vagy szám hozzáadása…</string>
     <string name="suggestions">Javaslatok</string>
-    <!-- Group conversation -->
     <string name="members">Tagok</string>
     <string name="conversation_name">Beszélgetés neve</string>
     <string name="conversation_details">Beszélgetés részletei</string>
     <string name="rename_conversation">Beszélgetés átnevezése</string>
     <string name="rename_conversation_warning">Csak Ön láthatja a beszélgetés nevét</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Ütemezett üzenet</string>
     <string name="schedule_message">Üzenet ütemezése</string>
     <string name="schedule_send">Küldés ütemezése</string>
@@ -46,53 +40,20 @@
     <string name="schedule_send_warning">Tartsa bekapcsolva a telefont, és győződjön meg róla, hogy semmi sem lövi ki az alkalmazást a háttérben.</string>
     <string name="update_message">Üzenet frissítése</string>
     <string name="send_now">Küldés most</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
-    <string name="message_details_sender">Sender</string>
-    <string name="message_details_receiver">Receiver</string>
-    <string name="message_details_sent_at">Sent at</string>
-    <string name="message_details_received_at">Received at</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">SMS fogadva</string>
     <string name="new_message">Új üzenet</string>
     <string name="mark_as_read">Megjelölés olvasottként</string>
     <string name="mark_as_unread">Megjelölés olvasatlanként</string>
     <string name="me">Nekem</string>
-    <!-- Archive -->
-    <string name="unarchive">Unarchive</string>
-    <string name="empty_archive">Delete all archived conversations</string>
-    <string name="archived_conversations">Archive</string>
-    <string name="show_archived_conversations">Show archived conversations</string>
-    <string name="archive">Archive</string>
-    <string name="no_archived_conversations">No archived conversations have been found</string>
-    <string name="archive_emptied_successfully">The archive has been emptied successfully</string>
-    <string name="empty_archive_confirmation">Are you sure you want to empty the archive? All archived conversations will be permanently lost.</string>
-    <!-- Recycle bin -->
-    <string name="restore">Restore</string>
-    <string name="restore_all_messages">Restore all messages</string>
-    <string name="empty_recycle_bin_messages_confirmation">Are you sure you want to empty the Recycle Bin? The messages will be permanently lost.</string>
-    <string name="skip_the_recycle_bin_messages">Skip the Recycle Bin, delete messages directly</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Biztos, hogy törli az összes üzenetet ebből a beszélgetésből\?</string>
-    <string name="archive_confirmation">Are you sure you want to archive %s?</string>
-    <string name="restore_whole_conversation_confirmation">Are you sure you want to restore all messages of this conversation?</string>
-    <string name="restore_confirmation">Are you sure you want to restore %s?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d beszélgetést</item>
         <item quantity="other">%d beszélgetéseket</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d üzenetet</item>
         <item quantity="other">%d üzeneteket</item>
     </plurals>
-    <!-- Settings -->
-    <string name="keyword">Keyword</string>
-    <string name="blocked_keywords">Blocked keywords</string>
-    <string name="manage_blocked_keywords">Manage blocked keywords</string>
-    <string name="not_blocking_keywords">You are not blocking any keywords. You may add keywords here to block all messages containing them.</string>
-    <string name="add_a_blocked_keyword">Add a blocked keyword</string>
     <string name="lock_screen_visibility">Értesítés láthatósága zárolt képernyőnél</string>
     <string name="sender_and_message">Feladó és üzenet</string>
     <string name="sender_only">Csak a feladó</string>
@@ -104,7 +65,6 @@
     <string name="outgoing_messages">Kimenő üzenetek</string>
     <string name="group_message_mms">Csoportos üzenetek küldése MMS-ként</string>
     <string name="send_long_message_mms">Hosszú üzenetek küldése MMS-ként</string>
-    <!-- Export / Import -->
     <string name="messages">Üzenetek</string>
     <string name="export_messages">Üzenetek exportálása</string>
     <string name="export_sms">SMS exportálása</string>
@@ -113,7 +73,6 @@
     <string name="import_sms">SMS importálása</string>
     <string name="import_mms">MMS importálása</string>
     <string name="no_option_selected">Legalább egy elemet ki kell választania</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Üres számra nem küldhető üzenet</string>
     <string name="unable_to_save_message">Az üzenet nem menthető a telefónia-adatbázisba</string>
     <string name="error_service_is_unavailable">Nem sikerült az üzenet elküldése, a szolgáltatás nem érhető el</string>
@@ -122,18 +81,10 @@
     <string name="unknown_error_occurred_sending_message">Nem sikerült az üzenet elküldése, hibakód: %d</string>
     <string name="invalid_short_code">Nem válaszolhat így a rövid kódokra</string>
     <string name="invalid_short_code_desc">Csak a számokat tartalmazó rövid kódokra válaszolhat, például a „503501”-re, de a számokat és betűket tartalmazókra, például a „AB-CD0”-ra, nem.</string>
-    <string name="attachment_sized_exceeds_max_limit">Attachment size exceeds max MMS limit</string>
-    <string name="sim_card_not_available">SIM card not available</string>
-    <string name="couldnt_download_mms">Couldn\'t download MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Miért kér az alkalmazás hozzáférést az internethez\?</string>
     <string name="faq_1_text">Sajnos szükséges az MMS-mellékletek küldéséhez. Az MMS-küldés hiánya olyan nagy hátrány más alkalmazásokhoz képest, hogy inkább mellette döntöttünk. Viszont, mint általában, nincsenek reklámok, követés, vagy analitika és az internetet csak az MMS küldéséhez használjuk.</string>
     <string name="faq_2_title">A másik fél nem kapja meg az MMS-emet, tehetek valamit ez ellen\?</string>
     <string name="faq_2_text">Az MMS méretét korlátozzák a szolgáltatók, próbáljon kisebb korlátot beállítani az alkalmazásbeállításokban.</string>
     <string name="faq_3_title">Az alkalmazás támogatja az ütemezett üzeneteket\?</string>
     <string name="faq_3_text">Igen, a Küldés gomb hosszú megnyomásával, és a kívánt dátum és idő kiválasztásával beütemezheti a jövőben elküldendő üzeneteket.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Прості Повідомлення</string>
     <string name="app_launcher_name">Повідомлення</string>
     <string name="type_a_message">Введіть повідомлення…</string>
     <string name="message_not_sent_short">Повідомлення не надіслано</string>
@@ -20,26 +19,21 @@
     <string name="unpin_conversation">Відкріпити</string>
     <string name="forward_message">Переслати</string>
     <string name="compress_error">Не вдається стиснути зображення до вибраного розміру</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Дубльований елемент не включено</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">та інший %d</item>
         <item quantity="few">та інші %d</item>
         <item quantity="many">та інші %d</item>
         <item quantity="other">та інші %d</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Нове листування</string>
     <string name="add_contact_or_number">Додати контакт аба номер…</string>
     <string name="suggestions">Пропозиція</string>
-    <!-- Group conversation -->
     <string name="members">Учасники</string>
     <string name="conversation_name">Назва розмови</string>
     <string name="conversation_details">Деталі розмови</string>
     <string name="rename_conversation">Перейменувати розмову</string>
     <string name="rename_conversation_warning">Тільки ви можете бачити цю назву розмови</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Заплановане повідомлення</string>
     <string name="schedule_message">Розклад повідомлення</string>
     <string name="schedule_send">Розклад відправки</string>
@@ -48,19 +42,16 @@
     <string name="schedule_send_warning">Тримайте телефон увімкненим і переконайтеся, що ніщо не завершує застосунок у фоновому режимі.</string>
     <string name="update_message">Оновити повідомлення</string>
     <string name="send_now">Надіслати зараз</string>
-    <!-- Message details -->
     <string name="message_details">Деталі повідомлення</string>
     <string name="message_details_sender">Відправник</string>
     <string name="message_details_receiver">Отримувач</string>
     <string name="message_details_sent_at">Надіслано о</string>
     <string name="message_details_received_at">Отримано о</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Отримано повідомлення</string>
     <string name="new_message">Нове повідомлення</string>
     <string name="mark_as_read">Прочитано</string>
     <string name="mark_as_unread">Не прочитано</string>
     <string name="me">Я</string>
-    <!-- Archive -->
     <string name="unarchive">Розархівувати</string>
     <string name="empty_archive">Видалити всі архівовані розмови</string>
     <string name="archived_conversations">Архівувати</string>
@@ -69,31 +60,26 @@
     <string name="no_archived_conversations">Не знайдено архівованих розмов</string>
     <string name="archive_emptied_successfully">Успішно спустошано архів</string>
     <string name="empty_archive_confirmation">Ви дійсно хочете спустошити архів? Всі архівовані розмови будуть остаточно видалено.</string>
-    <!-- Recycle bin -->
     <string name="restore">Відновити</string>
     <string name="restore_all_messages">Віновити всі повідомлення</string>
     <string name="empty_recycle_bin_messages_confirmation">Ви дійсно хочете спустошити кошик? Всі архівовані розмови будуть остаточно видалено.</string>
     <string name="skip_the_recycle_bin_messages">Пропустити кошик, видалити повідомлення безпосередньо</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Справді видалити всі повідомлення у цьому листуванні\?</string>
     <string name="archive_confirmation">Ви впевнені, ви хочете архівувати %s?</string>
     <string name="restore_whole_conversation_confirmation">Ви впевнені, ви хочете відновити всі повідомлення цієї розмови?</string>
     <string name="restore_confirmation">Ви впевнені, ви хочете відновити %s?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d листування</item>
         <item quantity="few">%d листувань</item>
         <item quantity="many">%d листувань</item>
         <item quantity="other">%d листувань</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d повідомлення</item>
         <item quantity="few">%d повідомлень</item>
         <item quantity="many">%d повідомлень</item>
         <item quantity="other">%d повідомлень</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Ключове слово</string>
     <string name="blocked_keywords">Заблоковані ключові слова</string>
     <string name="manage_blocked_keywords">Керувати заблокованими ключовими словами</string>
@@ -110,7 +96,6 @@
     <string name="outgoing_messages">Вихідні повідомлення</string>
     <string name="group_message_mms">Надсилати групові повідомлення як MMS</string>
     <string name="send_long_message_mms">Надсилати довгі повідомлення як MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Повідомлення</string>
     <string name="export_messages">Експортувати повідомлення</string>
     <string name="export_sms">Експортувати SMS</string>
@@ -119,7 +104,6 @@
     <string name="import_sms">Імпортувати SMS</string>
     <string name="import_mms">Імпортувати MMS</string>
     <string name="no_option_selected">Потрібно вибрати принаймні один елемент</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Неможливо надіслати повідомлення на порожній номер</string>
     <string name="unable_to_save_message">Неможливо зберегти повідомлення до бази даних телефону</string>
     <string name="error_service_is_unavailable">Не вдалося надіслати повідомлення, послуга недоступна</string>
@@ -131,15 +115,10 @@
     <string name="attachment_sized_exceeds_max_limit">Розмір вкладеного файлу перевищує максимальний ліміт MMS</string>
     <string name="sim_card_not_available">SIM-картка не доступна</string>
     <string name="couldnt_download_mms">Не вдалося завантажити MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Чому додаток вимагає доступ до Інтернету\?</string>
     <string name="faq_1_text">Нажаль, це необхідно для відправки вкладень MMS. Неспроможність надсилати MMS-повідомлення була б великим недоліком нашого додатку порівняно з іншими, тому ми так зробили. Тим не менше, як і в інших наших додатках, цей не містить реклами, відстеження та аналітики. Інтернет використовується лише для відправки MMS.</string>
     <string name="faq_2_title">Інша сторона не отримує мого MMS, чи можу я щось з цим зробити\?</string>
     <string name="faq_2_text">Розмір MMS обмежений операторами, ви можете спробувати зменшити ліміт у налаштуваннях програми.</string>
     <string name="faq_3_title">Чи підтримує застосунок заплановані повідомлення\?</string>
     <string name="faq_3_text">Так, ви можете запланувати надсилання повідомлень у майбутньому, довго натискаючи кнопку «Надіслати» та вибираючи потрібну дату й час.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

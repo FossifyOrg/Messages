@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Schlichter SMS Messenger</string>
     <string name="app_launcher_name">SMS-Messenger</string>
     <string name="type_a_message">Schreibe eine Nachricht …</string>
     <string name="message_not_sent_short">Nachricht nicht gesendet</string>
@@ -20,45 +19,37 @@
     <string name="unpin_conversation">Lösen</string>
     <string name="forward_message">Weiterleiten</string>
     <string name="compress_error">Bild kann nicht auf ausgewählte Größe komprimiert werden</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Doppeltes Element wurde nicht aufgenommen</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">und %d andere</item>
         <item quantity="other">und %d anderen</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Neue Unterhaltung</string>
     <string name="add_contact_or_number">Kontakt oder Nummer hinzufügen …</string>
     <string name="suggestions">Vorschläge</string>
-    <!-- Group conversation -->
     <string name="members">Mitglieder</string>
     <string name="conversation_name">Unterhaltungsname</string>
     <string name="conversation_details">Unterhaltungsdetails</string>
     <string name="rename_conversation">Unterhaltung umbenennen</string>
     <string name="rename_conversation_warning">Nur du kannst den Namen dieser Unterhaltung sehen</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Geplante Nachricht</string>
     <string name="schedule_message">Nachricht planen</string>
     <string name="schedule_send">Versand planen</string>
     <string name="cancel_schedule_send">Geplanten Versand abbrechen</string>
     <string name="must_pick_time_in_the_future">Es muss ein Zeitpunkt in der Zukunft gewählt werden</string>
-    <string name="schedule_send_warning">Lassen Sie das Telefon eingeschaltet und vergewissern Sie sich, dass die Anwendung im Hintergrund nicht abgeschaltet wird.</string>
+    <string name="schedule_send_warning">Lasse das Telefon eingeschaltet und vergewissern dich, dass die App im Hintergrund nicht abgeschaltet wird.</string>
     <string name="update_message">Nachricht aktualisieren</string>
     <string name="send_now">Jetzt senden</string>
-    <!-- Message details -->
     <string name="message_details">Nachrichtendetails</string>
     <string name="message_details_sender">Absender</string>
     <string name="message_details_receiver">Empfänger</string>
     <string name="message_details_sent_at">Gesendet am</string>
     <string name="message_details_received_at">Empfangen am</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Empfangene SMS</string>
     <string name="new_message">Neue Nachricht</string>
     <string name="mark_as_read">Als gelesen markieren</string>
     <string name="mark_as_unread">Als ungelesen markieren</string>
     <string name="me">Ich</string>
-    <!-- Archive -->
     <string name="unarchive">Dearchivieren</string>
     <string name="empty_archive">Alle archivierten Unterhaltungen löschen</string>
     <string name="archived_conversations">Archiv</string>
@@ -67,27 +58,22 @@
     <string name="no_archived_conversations">Es wurden keine archivierten Unterhaltungen gefunden</string>
     <string name="archive_emptied_successfully">Das Archiv wurde erfolgreich geleert</string>
     <string name="empty_archive_confirmation">Das Archiv wirklich leeren\? Alle archivierten Unterhaltungen sind dann unwiederbringlich gelöscht.</string>
-    <!-- Recycle bin -->
     <string name="restore">Wiederherstellen</string>
     <string name="restore_all_messages">Alle Nachrichten wiederherstellen</string>
     <string name="empty_recycle_bin_messages_confirmation">Den Papierkorb wirklich leeren\? Die Nachrichten sind dann unwiederbringlich gelöscht.</string>
     <string name="skip_the_recycle_bin_messages">Den Papierkorb auslassen, Nachrichten sofort löschen</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Sollen wirklich alle Nachrichten dieser Unterhaltung gelöscht werden\?</string>
     <string name="archive_confirmation">%s wirklich archivieren\?</string>
     <string name="restore_whole_conversation_confirmation">Sollen wirklich alle Nachrichten dieser Unterhaltung wiederhergestellt werden\?</string>
     <string name="restore_confirmation">%s wirklich wiederherstellen\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d Unterhaltung</item>
         <item quantity="other">%d Unterhaltungen</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d Nachricht</item>
         <item quantity="other">%d Nachrichten</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Schlüsselwort</string>
     <string name="blocked_keywords">Blockierte Schlüsselwörter</string>
     <string name="manage_blocked_keywords">Blockierte Schlüsselwörter verwalten</string>
@@ -104,7 +90,6 @@
     <string name="outgoing_messages">Ausgehende Nachrichten</string>
     <string name="group_message_mms">Gruppennachrichten als MMS versenden</string>
     <string name="send_long_message_mms">Lange Nachrichten als MMS senden</string>
-    <!-- Export / Import -->
     <string name="messages">Nachrichten</string>
     <string name="export_messages">Nachrichten exportieren</string>
     <string name="export_sms">SMS exportieren</string>
@@ -113,7 +98,6 @@
     <string name="import_sms">SMS importieren</string>
     <string name="import_mms">MMS importieren</string>
     <string name="no_option_selected">Mindestens ein Element muss auswählt werden</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Nachricht kann nicht an eine leere Nummer gesendet werden</string>
     <string name="unable_to_save_message">Nachricht konnte nicht in der Telefondatenbank gespeichert werden</string>
     <string name="error_service_is_unavailable">Nachricht konnte nicht gesendet werden, Dienst nicht verfügbar</string>
@@ -125,15 +109,10 @@
     <string name="attachment_sized_exceeds_max_limit">Die Größe des Anhangs überschreitet das MMS-Limit</string>
     <string name="sim_card_not_available">SIM-Karte nicht vorhanden</string>
     <string name="couldnt_download_mms">MMS konnte nicht heruntergeladen werden</string>
-    <!-- FAQ -->
-    <string name="faq_1_title">Warum benötigt die Anwendung einen Internetzugang\?</string>
+    <string name="faq_1_title">Warum benötigt die App einen Internetzugang?</string>
     <string name="faq_1_text">Leider ist dies nötig, um MMS-Anhänge zu versenden. Es wäre ein großer Nachteil gegenüber anderen Apps, wenn keine MMS versendet werden könnten, also haben wir uns für diesen Weg entschieden. Jedoch gibt es wie immer keine Werbung, Tracking oder Analytics, der Internetzugriff wird also nur für das Versenden von MMS verwendet.</string>
     <string name="faq_2_title">Die Gegenseite empfängt meine MMS nicht. Kann ich etwas dagegen tun\?</string>
-    <string name="faq_2_text">Die MMS-Größe wird von den Netzbetreibern begrenzt. Du kannst versuchen, in den Anwendungseinstellungen ein kleineres Limit einzustellen.</string>
-    <string name="faq_3_title">Unterstützt die Anwendung geplante Nachrichten\?</string>
+    <string name="faq_2_text">Die MMS-Größe wird von den Netzbetreibern begrenzt. Du kannst versuchen, in den Einstellungen ein kleineres Limit einzustellen.</string>
+    <string name="faq_3_title">Unterstützt die App geplante Nachrichten?</string>
     <string name="faq_3_text">Ja, du kannst den Versand von Nachrichten für die Zukunft planen, indem du lange auf die Senden-Schaltfläche drückst und das gewünschte Datum und die Uhrzeit auswählst.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple SMS Messenger</string>
     <string name="app_launcher_name">SMS sporočila</string>
     <string name="type_a_message">Vtipkajte sporočilo …</string>
     <string name="message_not_sent_short">Sporočilo ni bilo poslano</string>
@@ -20,85 +19,46 @@
     <string name="unpin_conversation">Odpni</string>
     <string name="forward_message">Posreduj</string>
     <string name="compress_error">Slike ni mogoče stisniti na izbrano velikost</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Podvojeni predmet ni bil vključen</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">in %d drug</item>
         <item quantity="two">in %d druga</item>
         <item quantity="few">in %d drugi</item>
         <item quantity="other">in %d drugih</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Nov pogovor</string>
     <string name="add_contact_or_number">Dodaj stik ali številko …</string>
     <string name="suggestions">Predlogi</string>
-    <!-- Group conversation -->
     <string name="members">Člani</string>
     <string name="conversation_name">Ime pogovora</string>
     <string name="conversation_details">Podrobnosti pogovora</string>
     <string name="rename_conversation">Preimenuj pogovor</string>
     <string name="rename_conversation_warning">Samo vi lahko vidite ime tega pogovora</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Načrtovano sporočilo</string>
     <string name="schedule_message">Sporočilo o razporedu</string>
     <string name="schedule_send">Pošiljanje načrta</string>
     <string name="cancel_schedule_send">Prekliči pošiljanje načrta</string>
     <string name="must_pick_time_in_the_future">Izberite čas v prihodnosti</string>
     <string name="schedule_send_warning">Telefon vklopite in poskrbite, da bo aplikacija v ozadju delovala.</string>
-    <string name="update_message">Update message</string>
     <string name="send_now">Sedaj pošlji</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
-    <string name="message_details_sender">Sender</string>
-    <string name="message_details_receiver">Receiver</string>
-    <string name="message_details_sent_at">Sent at</string>
-    <string name="message_details_received_at">Received at</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Prejeto SMS sporočilo</string>
     <string name="new_message">Novo sporočilo</string>
     <string name="mark_as_read">Označi kot prebrano</string>
     <string name="mark_as_unread">Označi kot neprebrano</string>
     <string name="me">Jaz</string>
-    <!-- Archive -->
-    <string name="unarchive">Unarchive</string>
-    <string name="empty_archive">Delete all archived conversations</string>
-    <string name="archived_conversations">Archive</string>
-    <string name="show_archived_conversations">Show archived conversations</string>
-    <string name="archive">Archive</string>
-    <string name="no_archived_conversations">No archived conversations have been found</string>
-    <string name="archive_emptied_successfully">The archive has been emptied successfully</string>
-    <string name="empty_archive_confirmation">Are you sure you want to empty the archive? All archived conversations will be permanently lost.</string>
-    <!-- Recycle bin -->
-    <string name="restore">Restore</string>
-    <string name="restore_all_messages">Restore all messages</string>
-    <string name="empty_recycle_bin_messages_confirmation">Are you sure you want to empty the Recycle Bin? The messages will be permanently lost.</string>
-    <string name="skip_the_recycle_bin_messages">Skip the Recycle Bin, delete messages directly</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Ste prepričani, da želite izbrisati vsa sporočila tega pogovora\?</string>
-    <string name="archive_confirmation">Are you sure you want to archive %s?</string>
-    <string name="restore_whole_conversation_confirmation">Are you sure you want to restore all messages of this conversation?</string>
-    <string name="restore_confirmation">Are you sure you want to restore %s?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d pogovor</item>
         <item quantity="two">%d pogovora</item>
         <item quantity="few">%d pogovori</item>
         <item quantity="other">%d pogovorov</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d sporočilo</item>
         <item quantity="two">%d sporočili</item>
         <item quantity="few">%d sporočila</item>
         <item quantity="other">%d sporočil</item>
     </plurals>
-    <!-- Settings -->
-    <string name="keyword">Keyword</string>
-    <string name="blocked_keywords">Blocked keywords</string>
-    <string name="manage_blocked_keywords">Manage blocked keywords</string>
-    <string name="not_blocking_keywords">You are not blocking any keywords. You may add keywords here to block all messages containing them.</string>
-    <string name="add_a_blocked_keyword">Add a blocked keyword</string>
     <string name="lock_screen_visibility">Vidnost obvestil na zaklenjenem zaslonu</string>
     <string name="sender_and_message">Pošiljatelj in sporočilo</string>
     <string name="sender_only">Samo pošiljatelj</string>
@@ -110,7 +70,6 @@
     <string name="outgoing_messages">Odhodna sporočila</string>
     <string name="group_message_mms">Pošlji skupinska sporočila kot MMS</string>
     <string name="send_long_message_mms">Pošlji dolga sporočila kot MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Sporočila</string>
     <string name="export_messages">Izvozi sporočila</string>
     <string name="export_sms">Izvozi SMS</string>
@@ -119,27 +78,10 @@
     <string name="import_sms">Uvozi SMS</string>
     <string name="import_mms">Uvozi MMS</string>
     <string name="no_option_selected">Izbrati morate vsaj en element</string>
-    <!-- Errors -->
-    <string name="empty_destination_address">Can\'t send message to an empty number</string>
-    <string name="unable_to_save_message">Unable to save message to the telephony database</string>
-    <string name="error_service_is_unavailable">Couldn\'t send message, service unavailable</string>
-    <string name="error_radio_turned_off">Couldn\'t send message, radio turned off</string>
-    <string name="carrier_send_error">Couldn\'t send message, carrier error</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
-    <string name="invalid_short_code">Can\'t reply to short codes like this</string>
-    <string name="invalid_short_code_desc">You can only reply to short codes with numbers like \"503501\" but not to codes containing letters and numbers like \"AB-CD0\".</string>
-    <string name="attachment_sized_exceeds_max_limit">Attachment size exceeds max MMS limit</string>
-    <string name="sim_card_not_available">SIM card not available</string>
-    <string name="couldnt_download_mms">Couldn\'t download MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Zakaj aplikacija potrebuje dostop do interneta\?</string>
     <string name="faq_1_text">Žal je potreben za pošiljanje priponk MMS. Če ne bi mogli pošiljati MMS-ov, bi bila to res velika pomanjkljivost v primerjavi z drugimi aplikacijami, zato smo se odločili za to pot. Vendar kot običajno ni nobenih oglasov, sledenja ali kakršne koli analitike. Internet se uporablja samo za pošiljanje MMS-ov.</string>
     <string name="faq_2_title">Druga stran ne prejema mojih MMS-ov, ali lahko kaj storim v zvezi s tem\?</string>
     <string name="faq_2_text">Velikost sporočil MMS omejujejo operaterji, zato lahko poskusite nastaviti manjšo omejitev v nastavitvah aplikacije.</string>
     <string name="faq_3_title">Ali aplikacija podpira načrtovana sporočila\?</string>
     <string name="faq_3_text">Da, lahko načrtujete pošiljanje sporočil v prihodnosti, da dolgo pritisnete gumb Pošlji in izberete želeni datum in čas.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

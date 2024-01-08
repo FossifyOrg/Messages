@@ -1,4 +1,0 @@
- * Fixed a search related glitch
- * Do not allow replying to some short codes
- * Show a loading progress bar at first app launch
- * Added some message sending/receiving reliability related improvements

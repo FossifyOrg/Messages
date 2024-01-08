@@ -1,1 +1,0 @@
-Aplicació de missatgeria SMS i MMS per a Android, envieu missatges ràpidament

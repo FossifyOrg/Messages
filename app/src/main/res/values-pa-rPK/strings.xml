@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">سادے سنہے</string>
     <string name="app_launcher_name">سنہے</string>
     <string name="type_a_message">سنہا لکھو…</string>
     <string name="message_not_sent_short">سنہا نہیں بھیجیا</string>
@@ -20,91 +19,34 @@
     <string name="unpin_conversation">لگݨ اُلٹاؤ</string>
     <string name="forward_message">اگے</string>
     <string name="compress_error">تصویر نوں چݨے ہوۓ اکار وچ سنکُچت کر نہیں سکدی</string>
-    <!-- Attachments -->
-    <string name="duplicate_item_warning">Duplicate item was not included</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">تے %d ہور</item>
         <item quantity="other">تے %d ہور</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">گل بات کرو</string>
     <string name="add_contact_or_number">ویاکتی یا فون نمبر جوڑو…</string>
     <string name="suggestions">سُجھے</string>
-    <!-- Group conversation -->
-    <string name="members">Members</string>
-    <string name="conversation_name">Conversation name</string>
-    <string name="conversation_details">Conversation details</string>
-    <string name="rename_conversation">Rename conversation</string>
-    <string name="rename_conversation_warning">Only you can see this conversation name</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">نیت سنہے</string>
     <string name="schedule_message">تالکا وچ سنیہا پایو</string>
     <string name="schedule_send">بھیجݨ دی سمان سارݨی بݨاؤ</string>
     <string name="cancel_schedule_send">سماں دا بھیجݨ رد کرو</string>
     <string name="must_pick_time_in_the_future">بھوِکھ وچ سماں چݨیو</string>
-    <string name="schedule_send_warning">Keep the phone on and make sure there is nothing killing the app while in background.</string>
     <string name="update_message">سنیہا بدلو</string>
     <string name="send_now">ہݨے بھیجو</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
-    <string name="message_details_sender">Sender</string>
-    <string name="message_details_receiver">Receiver</string>
-    <string name="message_details_sent_at">Sent at</string>
-    <string name="message_details_received_at">Received at</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">سنیہا لیا گیا</string>
     <string name="new_message">نواں سنیہا</string>
     <string name="mark_as_read">پرھے وجوں چنھت کرو</string>
     <string name="mark_as_unread">نا پڑھے وجوں چنھت کرو</string>
     <string name="me">میں</string>
-    <!-- Archive -->
-    <string name="unarchive">Unarchive</string>
-    <string name="empty_archive">Delete all archived conversations</string>
-    <string name="archived_conversations">Archive</string>
-    <string name="show_archived_conversations">Show archived conversations</string>
-    <string name="archive">Archive</string>
-    <string name="no_archived_conversations">No archived conversations have been found</string>
-    <string name="archive_emptied_successfully">The archive has been emptied successfully</string>
-    <string name="empty_archive_confirmation">Are you sure you want to empty the archive? All archived conversations will be permanently lost.</string>
-    <!-- Recycle bin -->
-    <string name="restore">Restore</string>
-    <string name="restore_all_messages">Restore all messages</string>
-    <string name="empty_recycle_bin_messages_confirmation">Are you sure you want to empty the Recycle Bin? The messages will be permanently lost.</string>
-    <string name="skip_the_recycle_bin_messages">Skip the Recycle Bin, delete messages directly</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">تسیں پکے اے، سارے سنیہے مٹاؤ؟</string>
-    <string name="archive_confirmation">Are you sure you want to archive %s?</string>
-    <string name="restore_whole_conversation_confirmation">Are you sure you want to restore all messages of this conversation?</string>
-    <string name="restore_confirmation">Are you sure you want to restore %s?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
-    <plurals name="delete_conversations">
-        <item quantity="one">%d conversation</item>
-        <item quantity="other">%d conversations</item>
-    </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d سنیہا</item>
         <item quantity="other">%d سنیہے</item>
     </plurals>
-    <!-- Settings -->
-    <string name="keyword">Keyword</string>
-    <string name="blocked_keywords">Blocked keywords</string>
-    <string name="manage_blocked_keywords">Manage blocked keywords</string>
-    <string name="not_blocking_keywords">You are not blocking any keywords. You may add keywords here to block all messages containing them.</string>
-    <string name="add_a_blocked_keyword">Add a blocked keyword</string>
-    <string name="lock_screen_visibility">Lock screen notification visibility</string>
     <string name="sender_and_message">بھیجݨ والا تے سنیہا</string>
     <string name="sender_only">صرف بھیجݨ والا</string>
-    <string name="enable_delivery_reports">Enable delivery reports</string>
     <string name="use_simple_characters">سنیہے وچ سارے عراب ہٹاؤ</string>
-    <string name="send_on_enter">Send message on pressing Enter</string>
-    <string name="mms_file_size_limit">Resize sent MMS images</string>
     <string name="mms_file_size_limit_none">کوئی حد نہیں</string>
-    <string name="outgoing_messages">Outgoing messages</string>
-    <string name="group_message_mms">Send group messages as MMS</string>
-    <string name="send_long_message_mms">Send long messages as MMS</string>
-    <!-- Export / Import -->
     <string name="messages">سنیہے</string>
     <string name="export_messages">سنیہے ایکسپورٹ کرو</string>
     <string name="export_sms">سنیہے ایکسپورٹ کرو</string>
@@ -113,23 +55,5 @@
     <string name="import_sms">سنیہے ایمپورٹ کرو</string>
     <string name="import_mms">میڈیا دیاں سنیہے ایمپورٹ کرو</string>
     <string name="no_option_selected">کجھ چیز چݨیو</string>
-    <!-- Errors -->
-    <string name="empty_destination_address">Can\'t send message to an empty number</string>
-    <string name="unable_to_save_message">Unable to save message to the telephony database</string>
-    <string name="error_service_is_unavailable">Couldn\'t send message, service unavailable</string>
-    <string name="error_radio_turned_off">Couldn\'t send message, radio turned off</string>
-    <string name="carrier_send_error">Couldn\'t send message, carrier error</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
-    <string name="invalid_short_code">Can\'t reply to short codes like this</string>
-    <string name="invalid_short_code_desc">You can only reply to short codes with numbers like \"503501\" but not to codes containing letters and numbers like \"AB-CD0\".</string>
-    <string name="attachment_sized_exceeds_max_limit">Attachment size exceeds max MMS limit</string>
-    <string name="sim_card_not_available">SIM card not available</string>
-    <string name="couldnt_download_mms">Couldn\'t download MMS</string>
-    <!-- FAQ -->
-    <string name="faq_1_title">Why does the app require access to the internet\?</string>
-    <string name="faq_1_text">Sadly it is needed for sending MMS attachments. Not being able to send MMS would be a really huge disadvantage compared to other apps, so we decided to go this way. However, as usually, there are no ads, tracking or analytics whatsoever, the internet is used only for sending MMS.</string>
-    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it\?</string>
-    <string name="faq_2_text">MMS size is limited by carriers, you can try setting a smaller limit in the app settings.</string>
     <string name="faq_3_title">ایس اَیپ وچ سنیہاں دا تالکا کیہ اے؟</string>
-    <string name="faq_3_text">Yes, you can schedule messages to be sent in the future by long pressing the Send button and picking the desired date and time.</string>
-</resources>
+    </resources>

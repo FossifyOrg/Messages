@@ -1,3 +1,0 @@
- * Added some UI improvements at sending/receiving messages
- * Fixed an error message showing up at sending messages
- * Added some translation, UI and stability improvements

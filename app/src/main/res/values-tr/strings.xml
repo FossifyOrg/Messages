@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Basit SMS İletiler</string>
     <string name="app_launcher_name">SMS İletiler</string>
     <string name="type_a_message">Bir ileti yazın…</string>
     <string name="message_not_sent_short">İleti gönderilmedi</string>
@@ -20,24 +19,19 @@
     <string name="unpin_conversation">Sabitlemeyi kaldır</string>
     <string name="forward_message">İlet</string>
     <string name="compress_error">Resim seçilen boyuta sıkıştırılamıyor</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Yinelenen öge dahil edilmedi</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="one">ve %d diğeri</item>
         <item quantity="other">ve %d diğeri</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Yeni görüşme</string>
     <string name="add_contact_or_number">Kişi veya Numara Ekle…</string>
     <string name="suggestions">Öneriler</string>
-    <!-- Group conversation -->
     <string name="members">Üyeler</string>
     <string name="conversation_name">Görüşme adı</string>
     <string name="conversation_details">Görüşme ayrıntıları</string>
     <string name="rename_conversation">Görüşmeyi yeniden adlandır</string>
     <string name="rename_conversation_warning">Bu görüşme adını yalnızca siz görebilirsiniz</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Zamanlanan ileti</string>
     <string name="schedule_message">İletiyi zamanla</string>
     <string name="schedule_send">Göndermeyi zamanla</string>
@@ -46,19 +40,16 @@
     <string name="schedule_send_warning">Telefonu açık tutun ve arka planda uygulamayı sonlandıran hiçbir şey olmadığından emin olun.</string>
     <string name="update_message">İletiyi güncelle</string>
     <string name="send_now">Şimdi gönder</string>
-    <!-- Message details -->
-    <string name="message_details">Message details</string>
+    <string name="message_details">İleti ayrıntıları</string>
     <string name="message_details_sender">Gönderen</string>
     <string name="message_details_receiver">Alıcı</string>
     <string name="message_details_sent_at">Gönderildi</string>
     <string name="message_details_received_at">Alındı</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">SMS alındı</string>
     <string name="new_message">Yeni ileti</string>
     <string name="mark_as_read">Okundu olarak işaretle</string>
     <string name="mark_as_unread">Okunmadı olarak işaretle</string>
     <string name="me">Ben</string>
-    <!-- Archive -->
     <string name="unarchive">Arşivden çıkar</string>
     <string name="empty_archive">Arşivlenen tüm görüşmeleri sil</string>
     <string name="archived_conversations">Arşiv</string>
@@ -67,27 +58,22 @@
     <string name="no_archived_conversations">Arşivlenen görüşme bulunamadı</string>
     <string name="archive_emptied_successfully">Arşiv başarıyla boşaltıldı</string>
     <string name="empty_archive_confirmation">Arşivi boşaltmak istediğinizden emin misiniz\? Arşivlenen tüm görüşmeler kalıcı olarak kaybolacak.</string>
-    <!-- Recycle bin -->
     <string name="restore">Geri yükle</string>
     <string name="restore_all_messages">Tüm mesajları geri yükle</string>
     <string name="empty_recycle_bin_messages_confirmation">Geri dönüşüm kutusunu boşaltmak istediğinizden emin misiniz\? Mesajlar kalıcı olarak kaybolacaktır.</string>
     <string name="skip_the_recycle_bin_messages">Geri dönüşüm kutusunu atla, mesajları doğrudan sil</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Bu görüşmenin tüm mesajlarını silmek istediğinizden emin misiniz\?</string>
     <string name="archive_confirmation">%s arşivlemek istediğinizden emin misiniz\?</string>
     <string name="restore_whole_conversation_confirmation">Bu görüşmenin tüm mesajlarını geri yüklemek istediğinizden emin misiniz\?</string>
     <string name="restore_confirmation">%s\'i geri yüklemek istediğinizden emin misiniz\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="one">%d görüşme</item>
         <item quantity="other">%d görüşme</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="one">%d ileti</item>
         <item quantity="other">%d ileti</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Anahtar sözcük</string>
     <string name="blocked_keywords">Engellenen anahtar sözcükler</string>
     <string name="manage_blocked_keywords">Engellenen anahtar sözcükleri yönet</string>
@@ -104,7 +90,6 @@
     <string name="outgoing_messages">Giden iletiler</string>
     <string name="group_message_mms">Grup iletilerini MMS olarak gönder</string>
     <string name="send_long_message_mms">Uzun iletileri MMS olarak gönder</string>
-    <!-- Export / Import -->
     <string name="messages">İletiler</string>
     <string name="export_messages">İletileri dışa aktar</string>
     <string name="export_sms">SMS\'i dışa aktar</string>
@@ -113,7 +98,6 @@
     <string name="import_sms">SMS\'i içe aktar</string>
     <string name="import_mms">MMS\'i içe aktar</string>
     <string name="no_option_selected">En az bir öge seçmelisiniz</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Boş bir numaraya mesaj gönderilemez</string>
     <string name="unable_to_save_message">Mesaj telefon veri tabanına kaydedilemiyor</string>
     <string name="error_service_is_unavailable">Mesaj gönderilemedi, hizmet kullanılabilir değil</string>
@@ -125,15 +109,10 @@
     <string name="attachment_sized_exceeds_max_limit">Ek boyutu, azami MMS sınırını aşıyor</string>
     <string name="sim_card_not_available">SIM kart kullanılabilir değil</string>
     <string name="couldnt_download_mms">MMS indirilemedi</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Uygulama neden internete erişim gerektiriyor\?</string>
     <string name="faq_1_text">Ne yazık ki MMS eklerini göndermek için gerekli. MMS gönderememek, diğer uygulamalara kıyasla gerçekten çok büyük bir dezavantaj olacaktır, bu yüzden bu şekilde gitmeye karar verdik. Bununla birlikte, genellikle olduğu gibi, hiçbir reklam, izleme veya analiz yoktur, internet yalnızca MMS göndermek için kullanılır.</string>
     <string name="faq_2_title">Karşı taraf MMS\'imi almıyor, bu konuda yapabileceğim bir şey var mı\?</string>
     <string name="faq_2_text">MMS boyutu operatörler tarafından sınırlandırılır, uygulama ayarlarında daha küçük bir sınır belirlemeyi deneyebilirsiniz.</string>
     <string name="faq_3_title">Uygulama zamanlanan mesajları destekliyor mu\?</string>
     <string name="faq_3_text">Evet, gönder düğmesine uzun basarak ve istediğiniz tarih ve saati seçerek iletileri gelecekte gönderilmek üzere zamanlayabilirsiniz.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

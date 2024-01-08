@@ -1,1 +1,0 @@
-Aplikace pro posílání SMS a MMS zpráv, rychlé posílání zpráv, s hezkým rozhraním

@@ -1,2 +1,0 @@
- * Allow scheduling messages by long pressing the Send button
- * Added many translation, UX and stability improvements

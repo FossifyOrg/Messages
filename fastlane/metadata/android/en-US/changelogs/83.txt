@@ -1,3 +1,0 @@
- * Allow archiving conversations
- * Add an optional Recycle bin for messages
- * Added some stability and translation improvements

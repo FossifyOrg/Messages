@@ -1,6 +1,6 @@
 <resources>
-
     <string name="package_name">org.fossify.smsmessenger</string>
+    <string name="app_name">Fossify SMS Messenger</string>
 
     <string name="mms_file_size_limit_100kb">100KB</string>
     <string name="mms_file_size_limit_200kb">200KB</string>
@@ -11,5 +11,4 @@
     <string name="sms">SMS</string>
     <string name="mms">MMS</string>
     <string name="message_details_sim">SIM</string>
-
 </resources>

@@ -1,3 +1,0 @@
- * Fixed an invalid error message showing up from time to time
- * Added some notification reliability improvements
- * Added some translation, UI and stability improvements

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple SMS Messenger</string>
     <string name="app_launcher_name">Tin nhắn</string>
     <string name="type_a_message">Nhập tin nhắn…</string>
     <string name="message_not_sent_short">Tin nhắn chưa được gửi</string>
@@ -20,23 +19,18 @@
     <string name="unpin_conversation">Bỏ ghim</string>
     <string name="forward_message">Chuyển tiếp</string>
     <string name="compress_error">Không thể nén hình ảnh sang kích thước đã chọn</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">Các mục trùng lặp không được bao gồm</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="other">và %d người khác</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">Cuộc hội thoại mới</string>
     <string name="add_contact_or_number">Thêm Liên hệ hoặc Số điện thoại…</string>
     <string name="suggestions">Đề xuất</string>
-    <!-- Group conversation -->
     <string name="members">Thành viên</string>
     <string name="conversation_name">Tên cuộc hội thoại</string>
     <string name="conversation_details">Thông tin cuộc hội thoại</string>
     <string name="rename_conversation">Đổi tên cuộc hội thoại</string>
     <string name="rename_conversation_warning">Chỉ có bạn mới có thể nhìn thấy tên của cuộc hội thoại này</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">Tin nhắn đã lên lịch</string>
     <string name="schedule_message">Lên lịch tin nhắn</string>
     <string name="schedule_send">Lên lịch gửi</string>
@@ -45,19 +39,16 @@
     <string name="schedule_send_warning">Giữ cho điện thoại bật và đảm bảo không có gì làm cho ứng dụng bị dừng khi đang hoạt động trong nền.</string>
     <string name="update_message">Cập nhật tin nhắn</string>
     <string name="send_now">Gửi ngay</string>
-    <!-- Message details -->
     <string name="message_details">Thông tin tin nhắn</string>
     <string name="message_details_sender">Người gửi</string>
     <string name="message_details_receiver">Người nhận</string>
     <string name="message_details_sent_at">Gửi lúc</string>
     <string name="message_details_received_at">Nhận lúc</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">Tin nhắn SMS đã nhận</string>
     <string name="new_message">Tin nhắn mới</string>
     <string name="mark_as_read">Đánh dấu là đã đọc</string>
     <string name="mark_as_unread">Đánh dấu là chưa đọc</string>
     <string name="me">Tôi</string>
-    <!-- Archive -->
     <string name="unarchive">Hủy lưu trữ</string>
     <string name="empty_archive">Xóa tất cả các cuộc hội thoại đã lưu trữ</string>
     <string name="archived_conversations">Lưu trữ</string>
@@ -66,25 +57,20 @@
     <string name="no_archived_conversations">Không có cuộc hội thoại đã lưu trữ nào được tìm thấy</string>
     <string name="archive_emptied_successfully">Kho lưu trữ đã được dọn sạch thành công</string>
     <string name="empty_archive_confirmation">Bạn có chắc là muốn dọn sạch kho lưu trữ không\? Tất cả các cuộc hội thoại đã lưu trữ sẽ bị mất vĩnh viễn.</string>
-    <!-- Recycle bin -->
     <string name="restore">Khôi phục</string>
     <string name="restore_all_messages">Khôi phục tất cả tin nhắn</string>
     <string name="empty_recycle_bin_messages_confirmation">Bạn có chắc là muốn dọn sạch Thùng rác không\? Tất cả tin nhắn sẽ bị mất vĩnh viễn.</string>
     <string name="skip_the_recycle_bin_messages">Bỏ qua Thùng rác, xóa tin nhắn trực tiếp</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">Bạn có chắc là muốn xóa tất cả các tin nhắn của cuộc hội thoại này không\?</string>
     <string name="archive_confirmation">Bạn có chắc là muốn lưu trữ %s\?</string>
     <string name="restore_whole_conversation_confirmation">Bạn có chắc là muốn khôi phục tất cả tin nhắn của cuộc hội thoại này không\?</string>
     <string name="restore_confirmation">Bạn có chắc là muốn khôi phục %s\?</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="other">%d cuộc hội thoại</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="other">%d tin nhắn</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">Từ khóa</string>
     <string name="blocked_keywords">Từ khóa bị chặn</string>
     <string name="manage_blocked_keywords">Quản lý danh sách từ khóa bị chặn</string>
@@ -101,7 +87,6 @@
     <string name="outgoing_messages">Tin nhắn gửi đi</string>
     <string name="group_message_mms">Gửi tin nhắn nhóm dưới dạng MMS</string>
     <string name="send_long_message_mms">Gửi tin nhắn dài dưới dạng MMS</string>
-    <!-- Export / Import -->
     <string name="messages">Tin nhắn</string>
     <string name="export_messages">Xuất tin nhắn</string>
     <string name="export_sms">Xuất SMS</string>
@@ -110,7 +95,6 @@
     <string name="import_sms">Nhập SMS</string>
     <string name="import_mms">Nhập MMS</string>
     <string name="no_option_selected">Bạn cần phải chọn ít nhất một mục</string>
-    <!-- Errors -->
     <string name="empty_destination_address">Không thể gửi đến số điện thoại trống</string>
     <string name="unable_to_save_message">Không thể lưu tin nhắn để cơ sở dữ liệu điện thoại</string>
     <string name="error_service_is_unavailable">Không thể gửi tin nhắn, dịch vụ không khả dụng</string>
@@ -122,15 +106,10 @@
     <string name="attachment_sized_exceeds_max_limit">Kích thước tập tin đính kèm vượt qua giới hạn MMS</string>
     <string name="sim_card_not_available">Thẻ SIM không khả dụng</string>
     <string name="couldnt_download_mms">Không thể tải xuống MMS</string>
-    <!-- FAQ -->    
     <string name="faq_1_title">Tại sao ứng dụng cần quyền truy cập Internet\?</string>
     <string name="faq_1_text">Đáng buồn là nó lại cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các ứng dụng khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>
     <string name="faq_2_title">Đầu bên kia không nhận được MMS của tôi, tôi có thể làm gì được không\?</string>
     <string name="faq_2_text">Kích thước MMS bị giới hạn bởi nhà cung cấp dịch vụ, bạn có thể thử đặt giới hạn nhỏ hơn trong cài đặt ứng dụng.</string>
     <string name="faq_3_title">Ứng dụng có hỗ trợ gửi tin nhắn theo lịch trình không\?</string>
     <string name="faq_3_text">Có, bạn có thể lên lịch gửi tin nhắn trong tương lai bằng cách nhấn và giữ nút Gửi và chọn ngày giờ mong muốn.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

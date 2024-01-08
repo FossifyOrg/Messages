@@ -1,1 +1,1 @@
-Schlichter SMS-Messenger
+Fossify SMS-Messenger

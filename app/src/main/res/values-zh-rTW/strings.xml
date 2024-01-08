@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple SMS Messenger</string>
-    <string name="app_launcher_name">SMS Messenger</string>
     <string name="type_a_message">輸入訊息……</string>
     <string name="message_not_sent_short">訊息未送出</string>
     <string name="message_not_sent_touch_retry">未送出。點選以重試。</string>
@@ -20,23 +18,18 @@
     <string name="unpin_conversation">取消釘選</string>
     <string name="forward_message">轉寄</string>
     <string name="compress_error">無法將圖片壓縮至指定大小</string>
-    <!-- Attachments -->
     <string name="duplicate_item_warning">未包含重複項目</string>
-    <!-- vCard -->
     <plurals name="and_other_contacts">
         <item quantity="other">和其他 %d 位</item>
     </plurals>
-    <!-- New conversation -->
     <string name="new_conversation">新對話</string>
     <string name="add_contact_or_number">新增聯絡人或號碼……</string>
     <string name="suggestions">建議</string>
-    <!-- Group conversation -->
     <string name="members">成員</string>
     <string name="conversation_name">對話名稱</string>
     <string name="conversation_details">對話詳細資訊</string>
     <string name="rename_conversation">重新命名對話</string>
     <string name="rename_conversation_warning">只有您能看到此對話名稱</string>
-    <!-- Schedule send -->
     <string name="scheduled_message">已排程的訊息</string>
     <string name="schedule_message">排程訊息</string>
     <string name="schedule_send">排程送出</string>
@@ -45,19 +38,16 @@
     <string name="schedule_send_warning">請保持手機開機，並確保沒有任何東西在背景關閉應用程式。</string>
     <string name="update_message">更新訊息</string>
     <string name="send_now">立即送出</string>
-    <!-- Message details -->
     <string name="message_details">訊息詳細資訊</string>
     <string name="message_details_sender">寄件者</string>
     <string name="message_details_receiver">收件者</string>
     <string name="message_details_sent_at">送出時間</string>
     <string name="message_details_received_at">收到時間</string>
-    <!-- Notifications -->
     <string name="channel_received_sms">收到的簡訊</string>
     <string name="new_message">新訊息</string>
     <string name="mark_as_read">標為已讀</string>
     <string name="mark_as_unread">標為未讀</string>
     <string name="me">我</string>
-    <!-- Archive -->
     <string name="unarchive">取消封存</string>
     <string name="empty_archive">刪除所有已封存的對話</string>
     <string name="archived_conversations">封存</string>
@@ -66,25 +56,20 @@
     <string name="no_archived_conversations">未找到已封存的對話</string>
     <string name="archive_emptied_successfully">封存已成功清空</string>
     <string name="empty_archive_confirmation">您確定要清空封存嗎？所有已封存的對話將會永久遺失。</string>
-    <!-- Recycle bin -->
     <string name="restore">還原</string>
     <string name="restore_all_messages">還原所有訊息</string>
     <string name="empty_recycle_bin_messages_confirmation">您確定要清空回收筒嗎？訊息將會永久遺失。</string>
     <string name="skip_the_recycle_bin_messages">跳過回收筒，直接刪除訊息</string>
-    <!-- Confirmation dialog -->
     <string name="delete_whole_conversation_confirmation">您確定要刪除此對話中的所有訊息嗎？</string>
     <string name="archive_confirmation">您確定要封存 %s 嗎？</string>
     <string name="restore_whole_conversation_confirmation">您確定要還原此對話中的所有訊息嗎？</string>
     <string name="restore_confirmation">您確定要還原 %s 嗎？</string>
-    <!-- Are you sure you want to delete 5 conversations? -->
     <plurals name="delete_conversations">
         <item quantity="other">%d 個對話</item>
     </plurals>
-    <!-- Are you sure you want to delete 5 messages? -->
     <plurals name="delete_messages">
         <item quantity="other">%d 則訊息</item>
     </plurals>
-    <!-- Settings -->
     <string name="keyword">關鍵字</string>
     <string name="blocked_keywords">已封鎖的關鍵字</string>
     <string name="manage_blocked_keywords">管理已封鎖的關鍵字</string>
@@ -101,7 +86,6 @@
     <string name="outgoing_messages">送出的訊息</string>
     <string name="group_message_mms">以 MMS 送出群組訊息</string>
     <string name="send_long_message_mms">以 MMS 送出長訊息</string>
-    <!-- Export / Import -->
     <string name="messages">訊息</string>
     <string name="export_messages">匯出訊息</string>
     <string name="export_sms">匯出簡訊</string>
@@ -110,7 +94,6 @@
     <string name="import_sms">匯入簡訊</string>
     <string name="import_mms">匯入 MMS</string>
     <string name="no_option_selected">最少要選擇一個項目</string>
-    <!-- Errors -->
     <string name="empty_destination_address">無法向空號碼送出訊息</string>
     <string name="unable_to_save_message">無法將訊息儲存至電信資料庫</string>
     <string name="error_service_is_unavailable">無法送出訊息，服務無法使用</string>
@@ -122,15 +105,10 @@
     <string name="attachment_sized_exceeds_max_limit">附件大小超過最大 MMS 限制</string>
     <string name="sim_card_not_available">SIM 卡無法使用</string>
     <string name="couldnt_download_mms">無法下載 MMS</string>
-    <!-- FAQ -->
     <string name="faq_1_title">為什麼這個程式需要存取網路？</string>
     <string name="faq_1_text">傳送 MMS 附件需要這個功能。相較於其他應用程式，不能傳送 MMS 將是一大劣勢，所以我們才會選擇這樣做。不過我們依然不會有任何形式的廣告、追蹤或分析，網路連線僅用於傳送 MMS 。</string>
     <string name="faq_2_title">對方沒有收到我的 MMS，我能做些什麼嗎？</string>
     <string name="faq_2_text">MMS 的大小受到電信業者的限制，您可以嘗試在應用程式設定中設定較小的限制。</string>
     <string name="faq_3_title">應用程式是否支援排程訊息？</string>
     <string name="faq_3_text">是的，您可以長按「送出」按鈕並選擇所需的日期和時間，以排程將訊息送出。</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

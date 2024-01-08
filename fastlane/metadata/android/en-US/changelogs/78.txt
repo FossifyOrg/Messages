@@ -1,3 +1,0 @@
- * Improved image resizing at sending
- * Fixed an error with sending MMS
- * Added some stability and translation improvements
