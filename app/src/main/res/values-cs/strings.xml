@@ -114,4 +114,8 @@
     <string name="faq_2_text">Velikost MMS je omezena operátory. Můžete zkusit nastavit menší limit v nastavení aplikace.</string>
     <string name="faq_3_title">Podporuje aplikace naplánované zprávy\?</string>
     <string name="faq_3_text">Ano, odeslání zpráv můžete naplánovat na budoucí čas dlouhým stisknutím tlačítka Odeslat a výběrem požadovaného data a času.</string>
+    <string name="export_sms">Exportovat SMS</string>
+    <string name="couldnt_download_mms">Nepodařilo se stáhnout MMS</string>
+    <string name="update_message">Aktualizovat zprávu</string>
+    <string name="message_details">Detaily zprávy</string>
 </resources>
