@@ -18,10 +18,6 @@
     <string name="forward_message">മുന്നോട്ട്</string>
     <string name="compress_error">തിരഞ്ഞെടുത്ത വലുപ്പത്തിലേക്ക് ചിത്രം കംപ്രസ്സുചെയ്യാനായില്ല</string>
     <string name="duplicate_item_warning">ഡ്യൂപ്ലിക്കേറ്റ് ഇനം ഉൾപ്പെടുത്തിയിട്ടില്ല</string>
-    <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="other">and %d others</item>
-    </plurals>
     <string name="new_conversation">പുതിയ സംഭാഷണം</string>
     <string name="add_contact_or_number">കോൺടാക്റ്റ് അല്ലെങ്കിൽ നമ്പർ ചേർക്കുക…</string>
     <string name="suggestions">നിർദ്ദേശങ്ങൾ</string>
@@ -48,8 +44,6 @@
     <string name="sender_only">അയയ്ക്കുന്നയാൾ മാത്രം</string>
     <string name="enable_delivery_reports">ഡെലിവറി റിപ്പോർട്ടുകൾ പ്രവർത്തനക്ഷമമാക്കുക</string>
     <string name="use_simple_characters">സന്ദേശങ്ങൾ അയയ്‌ക്കുമ്പോൾ ഉച്ചാരണങ്ങളും ഡയക്രിറ്റിക്‌സും നീക്കംചെയ്യുക</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">എന്തുകൊണ്ടാണ് ആപ്പിന് ഇന്റർനെറ്റ് ആക്‌സസ് ആവശ്യമായി വരുന്നത്\?</string>
     <string name="faq_1_text">നിർഭാഗ്യവശാൽ, MMS അറ്റാച്ചുമെന്റുകൾ അയക്കുന്നതിനു ഇത് ആവശ്യമാണ്. മറ്റ് ആപ്ലിക്കേഷനുകളുമായി താരതമ്യപ്പെടുത്തുമ്പോൾ MMS അയയ്ക്കാൻ കഴിയുന്നില്ല എന്നത് ഒരു വലിയ പോരായ്മയാണ്, അതിനാൽ ഞങ്ങൾ ഈ റൂട്ടിൽ പോകാൻ തീരുമാനിച്ചു. എന്നിരുന്നാലും, സാധാരണപോലെ, പരസ്യങ്ങളോ ട്രാക്കിംഗ് അല്ലെങ്കിൽ അനലിറ്റിക്സുകളോ ഇല്ല. ഇന്റർനെറ്റ് MMS അയയ്ക്കുന്നതിന് മാത്രമാണ് ഉപയോഗിക്കുന്നത്.</string>
-    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it\?</string>
     </resources>

@@ -78,7 +78,6 @@
     <string name="import_sms">Uvozi SMS</string>
     <string name="import_mms">Uvozi MMS</string>
     <string name="no_option_selected">Izbrati morate vsaj en element</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">Zakaj aplikacija potrebuje dostop do interneta\?</string>
     <string name="faq_1_text">Žal je potreben za pošiljanje priponk MMS. Če ne bi mogli pošiljati MMS-ov, bi bila to res velika pomanjkljivost v primerjavi z drugimi aplikacijami, zato smo se odločili za to pot. Vendar kot običajno ni nobenih oglasov, sledenja ali kakršne koli analitike. Internet se uporablja samo za pošiljanje MMS-ov.</string>
     <string name="faq_2_title">Druga stran ne prejema mojih MMS-ov, ali lahko kaj storim v zvezi s tem\?</string>

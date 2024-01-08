@@ -64,7 +64,6 @@
     <string name="import_sms">Імпартаваць SMS</string>
     <string name="import_mms">Імпартаваць MMS</string>
     <string name="no_option_selected">Неабходна выбраць хаця б адзін элемент</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">Чаму прыкладанне патрабуе доступ у Інтэрнет\?</string>
     <string name="faq_1_text">На жаль, гэта неабходна для адпраўкі ўкладанняў MMS. Немагчымасць адпраўляць MMS было б вельмі вялікім недахопам нашага прыкладання ў параўнанні з іншымі, таму было вырашана пайсці гэтым шляхам. Аднак, як і ў іншых нашых прыкладаннях, гэта не ўтрымлівае ніякай рэкламы, адсочвання і аналітыкі. Інтэрнэт выкарыстоўваецца толькі для адпраўкі MMS.</string>
     <string name="faq_2_title">Іншы бок не атрымлівае мае MMS, ці можна штосьці з гэтым зрабіць\?</string>

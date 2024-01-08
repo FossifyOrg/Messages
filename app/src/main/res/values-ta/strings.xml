@@ -17,10 +17,6 @@
     <string name="pin_conversation">மேலே பொருத்தவும்</string>
     <string name="unpin_conversation">பின் நீக்கு</string>
     <string name="forward_message">முன்னோக்கி</string>
-    <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="other">and %d others</item>
-    </plurals>
     <string name="new_conversation">புதிய உரையாடல்</string>
     <string name="add_contact_or_number">தொடர்பு அல்லது எண்ணைச் சேர்க்கவும்…</string>
     <string name="suggestions">பரிந்துரைகள்</string>
@@ -53,8 +49,6 @@
     <string name="import_sms">SMS ஐ இறக்குமதி செய்யவும்</string>
     <string name="import_mms">MMS ஐ இறக்குமதி செய்யவும்</string>
     <string name="no_option_selected">நீங்கள் குறைந்தபட்சம் ஒரு உருப்படியைத் தேர்ந்தெடுக்க வேண்டும்</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">பயன்பாட்டிற்கு இணைய அணுகல் ஏன் தேவைப்படுகிறது\?</string>
     <string name="faq_1_text">MMS இணைப்புகளை அனுப்புவதற்கு இது தேவைப்படுகிறது. மற்ற பயன்பாடுகளுடன் ஒப்பிடும்போது MMS ஐ அனுப்ப முடியாமல் இருப்பது மிகவும் பெரிய குறையாக இருக்கும், எனவே நாங்கள் இந்த வழியில் செல்ல முடிவு செய்தோம். இருப்பினும், வழக்கமாக, விளம்பரங்கள், கண்காணிப்பு அல்லது பகுப்பாய்வு எதுவும் இல்லை, இணையம் MMS அனுப்ப மட்டுமே பயன்படுத்தப்படுகிறது.</string>
-    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it\?</string>
     </resources>

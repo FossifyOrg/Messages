@@ -64,7 +64,6 @@
     <string name="import_sms">ייבוא סמס</string>
     <string name="import_mms">ייבוא MMS</string>
     <string name="no_option_selected">עליך לבחור לפחות פריט אחד</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">מדוע האפליקציה דורשת גישה לאינטרנט\?</string>
     <string name="faq_1_text">למרבה הצער, זה נחוץ לשליחת קבצי MMS מצורפים. אי היכולת לשלוח MMS תהיה חיסרון עצום בהשוואה לאפליקציות אחרות, אז החלטנו ללכת בדרך זו. עם זאת, כמו בדרך כלל, אין מודעות, מעקב או ניתוח כלשהם, האינטרנט משמש רק לשליחת MMS.</string>
     <string name="faq_2_title">הקצה השני לא מקבל את ה-MMS שלי, האם יש משהו שאני יכול לעשות בנידון\?</string>

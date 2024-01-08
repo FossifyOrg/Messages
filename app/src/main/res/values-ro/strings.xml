@@ -61,7 +61,6 @@
     <string name="import_sms">Importă mesajele SMS</string>
     <string name="import_mms">Importă mesajele MMS</string>
     <string name="no_option_selected">Trebuie să selectaţi cel puţin un element</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">De ce necesită aplicația acces la internet\?</string>
     <string name="faq_1_text">Din păcate este nevoie pentru a primite anexe MMS. Ideea de a nu putea trimite MMS-uri ar prezenta un dezavantaj foarte mare în comparaţie cu alte aplicaţii, aşa că am decis să mergem pe această cale. Totuşi, ca de obicei, nu este prezentă nici un fel de reclamă, urmărire sau analiză, internetul este folosit doar pentru a trimite MMS-uri.</string>
     <string name="faq_2_title">Celălalt capăt nu-mi primește MMS-ul, pot face ceva în acest sens\?</string>

@@ -19,10 +19,6 @@
     <string name="unpin_conversation">Atjunkite</string>
     <string name="forward_message">Pirmyn</string>
     <string name="compress_error">Nepavyksta suspausti vaizdo iki pasirinkto dydžio</string>
-    <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="other">and %d others</item>
-    </plurals>
     <string name="new_conversation">Naujas pokalbis</string>
     <string name="add_contact_or_number">Pridėti kontaktą arba numerį…</string>
     <string name="suggestions">Pasiūlymai</string>
@@ -60,7 +56,6 @@
     <string name="import_sms">Importuoti SMS</string>
     <string name="import_mms">Importuoti MMS</string>
     <string name="no_option_selected">Turite pasirinkti bent vieną elementą</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">Kodėl programėlei reikalinga prieiga prie interneto\?</string>
     <string name="faq_1_text">Deja, jis reikalingas MMS priedams siųsti. Negalėjimas siųsti MMS būtų tikrai didelis trūkumas, palyginti su kitomis programomis, todėl nusprendėme eiti šiuo keliu. Tačiau, kaip įprasta, nėra jokių reklamų, stebėjimo ar analizės, internetas naudojamas tik MMS siuntimui.</string>
     <string name="faq_2_title">Kitas galas negauna mano MMS, ar galiu ką nors padaryti\?</string>

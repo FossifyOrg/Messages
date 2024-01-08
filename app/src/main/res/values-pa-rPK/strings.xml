@@ -39,10 +39,6 @@
     <string name="mark_as_unread">نا پڑھے وجوں چنھت کرو</string>
     <string name="me">میں</string>
     <string name="delete_whole_conversation_confirmation">تسیں پکے اے، سارے سنیہے مٹاؤ؟</string>
-    <plurals name="delete_conversations">
-        <item quantity="one">%d conversation</item>
-        <item quantity="other">%d conversations</item>
-    </plurals>
     <plurals name="delete_messages">
         <item quantity="one">%d سنیہا</item>
         <item quantity="other">%d سنیہے</item>
@@ -59,9 +55,5 @@
     <string name="import_sms">سنیہے ایمپورٹ کرو</string>
     <string name="import_mms">میڈیا دیاں سنیہے ایمپورٹ کرو</string>
     <string name="no_option_selected">کجھ چیز چݨیو</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
-    <string name="faq_1_title">Why does the app require access to the internet\?</string>
-    <string name="faq_1_text">Sadly it is needed for sending MMS attachments. Not being able to send MMS would be a really huge disadvantage compared to other apps, so we decided to go this way. However, as usually, there are no ads, tracking or analytics whatsoever, the internet is used only for sending MMS.</string>
-    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it\?</string>
     <string name="faq_3_title">ایس اَیپ وچ سنیہاں دا تالکا کیہ اے؟</string>
     </resources>

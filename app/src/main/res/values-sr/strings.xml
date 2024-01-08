@@ -96,7 +96,6 @@
     <string name="import_sms">Увезите СМС</string>
     <string name="import_mms">Увези ММС</string>
     <string name="no_option_selected">Морате да изаберете најмање једну ставку</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
     <string name="faq_1_title">Зашто је апликацији потребан приступ интернету\?</string>
     <string name="faq_1_text">Нажалост, то је потребно за слање ММС прилога. Немогућност слања ММС-а била би заиста велика мана у поређењу са другим апликацијама, па смо одлучили да идемо овим путем. Међутим, као и обично, нема реклама, праћења или аналитике, интернет се користи само за слање ММС-а.</string>
     <string name="faq_2_title">Други крај не прима мој ММС, да ли могу нешто да урадим поводом тога\?</string>

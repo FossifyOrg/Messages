@@ -5,15 +5,10 @@
     <string name="sending">Sendante…</string>
     <string name="pin_conversation">Alpingli supren</string>
     <string name="unpin_conversation">Depingli</string>
-    <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="other">and %d others</item>
-    </plurals>
     <string name="suggestions">Sugestoj</string>
     <string name="new_message">Nova mesaĝo</string>
     <string name="mark_as_read">Marki kiel legitan</string>
     <string name="mark_as_unread">Marki kiel nelegitan</string>
-    <string name="delete_whole_conversation_confirmation">Are you sure you want to delete all messages of this conversation\?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d konversacio</item>
         <item quantity="other">%d konversacioj</item>
@@ -25,8 +20,4 @@
     <string name="sender_and_message">Sendinto kaj mesaĝo</string>
     <string name="sender_only">Nur sendinto</string>
     <string name="messages">Mesaĝoj</string>
-    <string name="unknown_error_occurred_sending_message">Couldn\'t send message, error code: %1$d</string>
-    <string name="faq_1_title">Why does the app require access to the internet\?</string>
-    <string name="faq_1_text">Sadly it is needed for sending MMS attachments. Not being able to send MMS would be a really huge disadvantage compared to other apps, so we decided to go this way. However, as usually, there are no ads, tracking or analytics whatsoever, the internet is used only for sending MMS.</string>
-    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it\?</string>
     </resources>
