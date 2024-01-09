@@ -45,21 +45,13 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/custom_notifications_button_holder"
-            style="@style/SettingsHolderTextViewOneLinerStyle"
+        <org.fossify.commons.views.MyTextView
+            android:id="@+id/custom_notifications_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <org.fossify.commons.views.MyTextView
-                android:id="@+id/custom_notifications_button"
-                style="@style/SettingsTextLabelStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/customize_notifications" />
-
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/SettingsHolderTextViewOneLinerStyle"
+            android:text="@string/customize_notifications" />
 
         <include
             android:id="@+id/settings_conversation_notifications_divider"
@@ -72,27 +64,20 @@
             android:layout_height="wrap_content"
             android:text="@string/conversation_name" />
 
-        <RelativeLayout
-            android:id="@+id/settings_customize_notifications_holder"
-            style="@style/SettingsHolderTextViewOneLinerStyle"
+        <org.fossify.commons.views.MyTextView
+            android:id="@+id/conversation_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <org.fossify.commons.views.MyTextView
-                android:id="@+id/conversation_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_edit_vector"
-                android:drawablePadding="@dimen/bigger_margin"
-                android:ellipsize="end"
-                android:focusable="true"
-                android:maxLines="1"
-                android:textSize="@dimen/bigger_text_size"
-                tools:text="Conversation name" />
-
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_edit_vector"
+            android:drawablePadding="@dimen/bigger_margin"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:maxLines="1"
+            style="@style/SettingsHolderTextViewOneLinerStyle"
+            android:textSize="@dimen/bigger_text_size"
+            tools:text="Conversation name" />
 
         <include
             android:id="@+id/settings_conversation_name_divider"
@@ -109,6 +94,7 @@
             android:id="@+id/participants_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/medium_margin"
             android:clipToPadding="false"
             app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
             tools:itemCount="3"
