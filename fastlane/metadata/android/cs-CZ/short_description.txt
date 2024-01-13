@@ -1,0 +1,1 @@
+Aplikace pro zprávy SMS a MMS pro Android, rychlé odesílání zpráv, pěkné UI
