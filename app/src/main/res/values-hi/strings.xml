@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    </resources>
+    <string name="app_launcher_name">SMS मैसेंजर</string>
+    <string name="type_a_message">संदेश लिखें…</string>
+    <string name="message_not_sent_short">संदेश नहीं भेजा जा सका</string>
+    <string name="message_not_sent_touch_retry">नही भेजा जा सका।दोबारा कोशिश करने के लिए टच करे।</string>
+    <string name="add_person">व्यक्ति जोड़े</string>
+    <string name="attachment">अटैचमेंट</string>
+    <string name="no_conversations_found">कोई संग्रहित की गई बातचीत नहीं मिली</string>
+    <string name="show_character_counter">मैसेज लिखते समय अक्षरों की संख्या दिखाए</string>
+    <string name="loading_messages">मैसेज लोड हो रहे हैं…</string>
+    <string name="no_reply_support">प्रेषक जवाब प्राप्त नही कर सकता</string>
+    <string name="draft">ड्राफ्ट</string>
+    <string name="pin_conversation">शीर्ष पर पिन करें</string>
+    <string name="unpin_conversation">पिन हटाए</string>
+    <string name="forward_message">फॉरवर्ड करे</string>
+    <string name="compress_error">चुनी गई साइज़ में इमेज को कंप्रेस नही किया जा सका</string>
+    <string name="new_conversation">नयी बातचीत</string>
+    <string name="add_contact_or_number">संपर्क या नंबर जोड़े…</string>
+    <string name="suggestions">सुझाव</string>
+    <string name="conversation_name">बातचीत का नाम</string>
+    <string name="reply">जवाब दे</string>
+    <string name="sending">भेज रहा है…</string>
+    <string name="message_sending_error">आपका मैसेज %s को नहीं भेजा जा सका</string>
+    <string name="start_conversation">बातचीत शुरू करें</string>
+    <plurals name="and_other_contacts">
+        <item quantity="one">और %d अन्य</item>
+        <item quantity="other">और %d अन्य</item>
+    </plurals>
+</resources>
