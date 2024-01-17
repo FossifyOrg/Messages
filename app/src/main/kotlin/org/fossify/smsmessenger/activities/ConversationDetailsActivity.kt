@@ -2,7 +2,6 @@ package org.fossify.smsmessenger.activities
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.AudioManager
@@ -105,8 +104,6 @@ class ConversationDetailsActivity : SimpleActivity() {
         }
     }
 
-    private fun getNotificationManager() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
         val name = conversation?.title
@@ -121,13 +118,13 @@ class ConversationDetailsActivity : SimpleActivity() {
             enableLights(true)
             setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION), audioAttributes)
             enableVibration(true)
-            getNotificationManager().createNotificationChannel(this)
+            notificationManager.createNotificationChannel(this)
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun removeNotificationChannel() {
-        getNotificationManager().deleteNotificationChannel(threadId.hashCode().toString())
+        notificationManager.deleteNotificationChannel(threadId.hashCode().toString())
     }
 
     private fun setupTextViews() {
