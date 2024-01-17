@@ -97,7 +97,7 @@ class ConversationDetailsActivity : SimpleActivity() {
             customNotificationsButton.setOnClickListener {
                 Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
                     putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-                    putExtra(Settings.EXTRA_CHANNEL_ID, threadId.hashCode().toString())
+                    putExtra(Settings.EXTRA_CHANNEL_ID, threadId.toString())
                     startActivity(this)
                 }
             }
@@ -113,7 +113,7 @@ class ConversationDetailsActivity : SimpleActivity() {
             .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
             .build()
 
-        NotificationChannel(threadId.hashCode().toString(), name, NotificationManager.IMPORTANCE_HIGH).apply {
+        NotificationChannel(threadId.toString(), name, NotificationManager.IMPORTANCE_HIGH).apply {
             setBypassDnd(false)
             enableLights(true)
             setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION), audioAttributes)
@@ -124,7 +124,7 @@ class ConversationDetailsActivity : SimpleActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun removeNotificationChannel() {
-        notificationManager.deleteNotificationChannel(threadId.hashCode().toString())
+        notificationManager.deleteNotificationChannel(threadId.toString())
     }
 
     private fun setupTextViews() {
