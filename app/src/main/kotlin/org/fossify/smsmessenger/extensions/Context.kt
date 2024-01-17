@@ -2,6 +2,7 @@ package org.fossify.smsmessenger.extensions
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.app.NotificationManager
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
@@ -690,6 +691,11 @@ fun Context.deleteConversation(threadId: Long) {
 
     conversationsDB.deleteThreadId(threadId)
     messagesDB.deleteThreadMessages(threadId)
+
+    if (config.customNotifications.contains(threadId.toString()) && isOreoPlus()) {
+        config.removeCustomNotificationsByThreadId(threadId)
+        notificationManager.deleteNotificationChannel(threadId.toString())
+    }
 }
 
 fun Context.checkAndDeleteOldRecycleBinMessages(callback: (() -> Unit)? = null) {

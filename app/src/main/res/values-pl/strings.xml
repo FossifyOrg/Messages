@@ -52,6 +52,7 @@
     <string name="mark_as_read">Oznacz jako przeczytane</string>
     <string name="mark_as_unread">Oznacz jako nieprzeczytane</string>
     <string name="me">Ja</string>
+    <string name="enable_custom_notifications">Włącz niestandardowe powiadomienia</string>
     <string name="unarchive">Cofnij archiwizację</string>
     <string name="empty_archive">Usuń wszystkie zarchiwizowane rozmowy</string>
     <string name="archived_conversations">Archiwum</string>

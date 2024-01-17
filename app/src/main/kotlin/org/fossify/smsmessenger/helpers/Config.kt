@@ -115,4 +115,16 @@ class Config(context: Context) : BaseConfig(context) {
     var isArchiveAvailable: Boolean
         get() = prefs.getBoolean(IS_ARCHIVE_AVAILABLE, true)
         set(isArchiveAvailable) = prefs.edit().putBoolean(IS_ARCHIVE_AVAILABLE, isArchiveAvailable).apply()
+
+    var customNotifications: Set<String>
+        get() = prefs.getStringSet(CUSTOM_NOTIFICATIONS, HashSet<String>())!!
+        set(customNotifications) = prefs.edit().putStringSet(CUSTOM_NOTIFICATIONS, customNotifications).apply()
+
+    fun addCustomNotificationsByThreadId(threadId: Long) {
+        customNotifications = customNotifications.plus(threadId.toString())
+    }
+
+    fun removeCustomNotificationsByThreadId(threadId: Long) {
+        customNotifications = customNotifications.minus(threadId.toString())
+    }
 }

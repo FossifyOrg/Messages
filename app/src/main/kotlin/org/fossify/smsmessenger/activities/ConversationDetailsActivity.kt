@@ -1,10 +1,20 @@
 package org.fossify.smsmessenger.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Intent
+import android.media.AudioAttributes
+import android.media.AudioManager
+import android.media.RingtoneManager
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.NavigationIcon
 import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.commons.models.SimpleContact
 import org.fossify.smsmessenger.adapters.ContactsAdapter
 import org.fossify.smsmessenger.databinding.ActivityConversationDetailsBinding
@@ -46,6 +56,9 @@ class ConversationDetailsActivity : SimpleActivity() {
             runOnUiThread {
                 setupTextViews()
                 setupParticipants()
+                if (isOreoPlus()) {
+                    setupCustomNotifications()
+                }
             }
         }
     }
@@ -58,6 +71,60 @@ class ConversationDetailsActivity : SimpleActivity() {
         val primaryColor = getProperPrimaryColor()
         binding.conversationNameHeading.setTextColor(primaryColor)
         binding.membersHeading.setTextColor(primaryColor)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupCustomNotifications() {
+        binding.apply {
+            notificationsHeading.beVisible()
+            customNotificationsHolder.beVisible()
+            customNotifications.isChecked = config.customNotifications.contains(threadId.toString())
+            customNotificationsButton.beVisibleIf(customNotifications.isChecked)
+
+            customNotificationsHolder.setOnClickListener {
+                customNotifications.toggle()
+                if (customNotifications.isChecked) {
+                    customNotificationsButton.beVisible()
+                    config.addCustomNotificationsByThreadId(threadId)
+                    createNotificationChannel()
+                } else {
+                    customNotificationsButton.beGone()
+                    config.removeCustomNotificationsByThreadId(threadId)
+                    removeNotificationChannel()
+                }
+            }
+
+            customNotificationsButton.setOnClickListener {
+                Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
+                    putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                    putExtra(Settings.EXTRA_CHANNEL_ID, threadId.toString())
+                    startActivity(this)
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createNotificationChannel() {
+        val name = conversation?.title
+        val audioAttributes = AudioAttributes.Builder()
+            .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
+            .build()
+
+        NotificationChannel(threadId.toString(), name, NotificationManager.IMPORTANCE_HIGH).apply {
+            setBypassDnd(false)
+            enableLights(true)
+            setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION), audioAttributes)
+            enableVibration(true)
+            notificationManager.createNotificationChannel(this)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun removeNotificationChannel() {
+        notificationManager.deleteNotificationChannel(threadId.toString())
     }
 
     private fun setupTextViews() {
