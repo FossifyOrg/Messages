@@ -694,7 +694,6 @@ fun Context.deleteConversation(threadId: Long) {
 
     if (config.customNotifications.contains(threadId.toString()) && isOreoPlus()) {
         config.removeCustomNotificationsByThreadId(threadId)
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.deleteNotificationChannel(threadId.hashCode().toString())
     }
 }
