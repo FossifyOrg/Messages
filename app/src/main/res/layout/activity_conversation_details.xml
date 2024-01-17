@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            tools:visibility="visible"
             android:text="@string/notifications" />
 
         <RelativeLayout
@@ -34,6 +35,7 @@
             style="@style/SettingsHolderCheckboxStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            tools:visibility="visible"
             android:visibility="gone">
 
             <org.fossify.commons.views.MyAppCompatCheckbox
@@ -50,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            tools:visibility="visible"
             style="@style/SettingsHolderTextViewOneLinerStyle"
             android:text="@string/customize_notifications" />
 
