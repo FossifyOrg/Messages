@@ -1,23 +1,23 @@
 [versions]
 #jetbrains
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 kotlinxSerializationJson = "1.5.1"
 #KSP
-ksp = "1.9.0-1.0.12"
+ksp = "1.9.10-1.0.13"
 #AndroidX
 androidx-constraintlayout = "2.1.4"
 androidx-swiperefreshlayout = "1.1.0"
-androidx-lifecycleprocess = "2.6.1"
+androidx-lifecycleprocess = "2.7.0"
 #Eventbus
 eventbus = "3.3.1"
 #Room
-room = "2.6.0-alpha03"
+room = "2.6.1"
 #Fossify
 commons = "cbf79568d3"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "8.2.0"
+gradlePlugins-agp = "8.2.1"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
