@@ -13,7 +13,7 @@ eventbus = "3.3.1"
 #Room
 room = "2.6.1"
 #Fossify
-commons = "cbf79568d3"
+commons = "1437ab513f"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
@@ -28,7 +28,7 @@ app-build-kotlinJVMTarget = "17"
 ez-vcard = "0.11.3"
 shortcut-badger = "1.1.22"
 #versioning
-app-version-appId = "org.fossify.smsmessenger"
+app-version-appId = "org.fossify.messages"
 app-version-versionCode = "1"
 app-version-versionName = "1.0.0"
 [libraries]

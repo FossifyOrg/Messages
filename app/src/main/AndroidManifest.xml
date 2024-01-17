@@ -221,7 +221,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.fossify.smsmessenger.action.mark_as_read" />
+                <action android:name="org.fossify.messages.action.mark_as_read" />
             </intent-filter>
         </receiver>
 
@@ -230,7 +230,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.fossify.smsmessenger.action.reply" />
+                <action android:name="org.fossify.messages.action.reply" />
             </intent-filter>
         </receiver>
 
@@ -239,7 +239,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.fossify.smsmessenger.action.delete" />
+                <action android:name="org.fossify.messages.action.delete" />
             </intent-filter>
         </receiver>
 
