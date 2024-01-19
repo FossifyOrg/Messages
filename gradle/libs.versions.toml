@@ -42,8 +42,8 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 #Fossify
 fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
-indicator-fast-scroll = { module = "com.github.tibbi:IndicatorFastScroll", version.ref = "indicator-fast-scroll" }
-android-smsmms = { module = "com.github.tibbi:android-smsmms", version.ref = "android-smsmms" }
+indicator-fast-scroll = { module = "org.fossify:IndicatorFastScroll", version.ref = "indicator-fast-scroll" }
+android-smsmms = { module = "org.fossify:android-smsmms", version.ref = "android-smsmms" }
 #EventBus
 eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
 #Helpers
