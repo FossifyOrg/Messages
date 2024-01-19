@@ -22,9 +22,5 @@
         android:id="@+id/about"
         android:icon="@drawable/ic_info_vector"
         android:title="@string/about"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/more_apps_from_us"
-        android:title="@string/more_apps_from_us"
         app:showAsAction="never" />
 </menu>
