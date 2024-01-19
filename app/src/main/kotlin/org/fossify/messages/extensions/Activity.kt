@@ -52,8 +52,8 @@ fun Activity.launchViewIntent(uri: Uri, mimetype: String, filename: String) {
 }
 
 fun Activity.startContactDetailsIntent(contact: SimpleContact) {
-    val simpleContacts = "com.simplemobiletools.contacts.pro"
-    val simpleContactsDebug = "com.simplemobiletools.contacts.pro.debug"
+    val simpleContacts = "org.fossify.contacts"
+    val simpleContactsDebug = "org.fossify.contacts.debug"
     if (contact.rawId > 1000000 && contact.contactId > 1000000 && contact.rawId == contact.contactId &&
         (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))
     ) {

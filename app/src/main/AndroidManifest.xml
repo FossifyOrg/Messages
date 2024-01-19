@@ -25,8 +25,8 @@
         tools:node="remove" />
 
     <queries>
-        <package android:name="com.simplemobiletools.contacts.pro.debug" />
-        <package android:name="com.simplemobiletools.contacts.pro" />
+        <package android:name="org.fossify.contacts.debug" />
+        <package android:name="org.fossify.contacts" />
     </queries>
 
     <uses-feature android:name="android.hardware.telephony" />
