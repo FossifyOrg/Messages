@@ -113,4 +113,7 @@
     <string name="faq_2_text">Erinevatel mobiilsideteenuse pakkujatel on erinevad MMS-sõnumite mahupiirid. Proovi rakendusest määrata väiksema sõnumi suuruse piirangu.</string>
     <string name="faq_3_title">Kas see rakendus võimaldab ajastatud sõnumite saatmist\?</string>
     <string name="faq_3_text">Jah, sa saad saata sõnumeid tulevikus - selleks kasuta pikka vajutust nupul „Saada“ ning vali soovitud kuupäev ja kellaaeg.</string>
+    <string name="enable_custom_notifications">Luba kohandatud teavitused</string>
+    <string name="update_message">Uuenda sõnumit</string>
+    <string name="message_details">Sõnumi teave</string>
 </resources>
