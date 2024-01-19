@@ -46,7 +46,7 @@ class NotificationHelper(private val context: Context) {
         alertOnlyOnce: Boolean = false
     ) {
         val hasCustomNotifications = context.config.customNotifications.contains(threadId.toString())
-        val notificationChannelId = if (hasCustomNotifications) threadId.toString() else NOTIFICATION_CHANNEL
+        val notificationChannelId = if (hasCustomNotifications) threadId.toString() else NOTIFICATION_CHANNEL_ID
         if (!hasCustomNotifications) {
             maybeCreateChannel(notificationChannelId, context.getString(R.string.channel_received_sms))
         }
@@ -147,7 +147,7 @@ class NotificationHelper(private val context: Context) {
     @SuppressLint("NewApi")
     fun showSendingFailedNotification(recipientName: String, threadId: Long) {
         val hasCustomNotifications = context.config.customNotifications.contains(threadId.toString())
-        val notificationChannelId = if (hasCustomNotifications) threadId.toString() else NOTIFICATION_CHANNEL
+        val notificationChannelId = if (hasCustomNotifications) threadId.toString() else NOTIFICATION_CHANNEL_ID
         if (!hasCustomNotifications) {
             maybeCreateChannel(notificationChannelId, context.getString(R.string.message_not_sent_short))
         }
