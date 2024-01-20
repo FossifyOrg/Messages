@@ -106,7 +106,7 @@
     <string name="carrier_send_error">Erro da operadora. Não pode enviar a mensagem</string>
     <string name="unknown_error_occurred_sending_message">Não foi possível enviar a mensagem. Erro: %d</string>
     <string name="invalid_short_code">Não é possível responder a códigos deste tipo</string>
-    <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, e não a códigos que combinem letras e números com, por exemplo, \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, e não a códigos que combinem letras e números com, por exemplo, B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">O anexo excede o tamanho máximo permitido para MMS</string>
     <string name="sim_card_not_available">Cartão SIM não encontrado</string>
     <string name="couldnt_download_mms">Não foi possível descarregar a MMS</string>
