@@ -49,7 +49,7 @@
     <string name="mark_as_unread">Marcar como Não Lida</string>
     <string name="me">Eu</string>
     <string name="unarchive">Desarquivar</string>
-    <string name="empty_archive">Excluir todas as conversas arquivadas</string>
+    <string name="empty_archive">Apagar todas as conversas arquivadas</string>
     <string name="archived_conversations">Arquivar</string>
     <string name="show_archived_conversations">Mostrar conversas arquivadas</string>
     <string name="archive">Arquivar</string>
@@ -114,4 +114,7 @@
     <string name="faq_2_text">O tamanho dos MMS é limitado pelas operadoras, você pode tentar usar um limite menor nas configurações do app.</string>
     <string name="faq_3_title">O aplicativo suporta mensagens programadas\?</string>
     <string name="faq_3_text">Sim, você pode agendar mensagens para serem enviadas no futuro pressionando longamente o botão Enviar e escolhendo a data e a hora desejadas.</string>
+    <string name="enable_custom_notifications">Ativar notificações personalizadas</string>
+    <string name="update_message">Atualizar mensagem</string>
+    <string name="message_details">Detalhes da mensagem</string>
 </resources>
