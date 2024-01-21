@@ -115,4 +115,8 @@
     <string name="faq_3_title">L\'application prend-elle en charge les messages planifiés \?</string>
     <string name="faq_3_text">Oui, vous pouvez planifier l\'envoi de messages dans le futur en appuyant longuement sur le bouton Envoyer et en choisissant la date et l\'heure souhaitées.</string>
     <string name="archive">Archive</string>
+    <string name="messages">Messages</string>
+    <string name="enable_custom_notifications">Activer les notifications personnalisées</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="archived_conversations">Archive</string>
 </resources>
