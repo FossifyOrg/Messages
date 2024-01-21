@@ -114,4 +114,5 @@
     <string name="faq_2_text">Providers limiteren de grootte van MMS-berichten. Probeer in de instellingen de limiet voor de afbeeldingsgrootte te verlagen.</string>
     <string name="faq_3_title">Ondersteunt deze app het inplannen van berichten\?</string>
     <string name="faq_3_text">Ja, berichten kunnen vertraagd verzonden worden door lang te drukken op de verzendknop en vervolgens een tijdstip voor verzending op te geven.</string>
+    <string name="enable_custom_notifications">Aangepaste meldingen gebruiken</string>
 </resources>
