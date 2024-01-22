@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">שולח סמסים</string>
     <string name="type_a_message">הקלד הודעה…</string>
     <string name="message_not_sent_short">ההודעה לא נשלחה</string>
     <string name="message_not_sent_touch_retry">לא נשלח. גע כדי לנסות שוב.</string>

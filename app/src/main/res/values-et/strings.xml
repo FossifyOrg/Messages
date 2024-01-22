@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">SMS sõnumid</string>
     <string name="type_a_message">Kirjuta sõnum…</string>
     <string name="message_not_sent_short">Sõnum ei ole saadetud</string>
     <string name="message_not_sent_touch_retry">Saamata. Uuesti saatmiseks puuduta.</string>

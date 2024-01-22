@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">SMS मैसेंजर</string>
     <string name="type_a_message">संदेश लिखें…</string>
     <string name="message_not_sent_short">संदेश नहीं भेजा जा सका</string>
     <string name="message_not_sent_touch_retry">नही भेजा जा सका।दोबारा कोशिश करने के लिए टच करे।</string>

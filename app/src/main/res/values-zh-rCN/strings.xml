@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">短信</string>
     <string name="type_a_message">输入一则消息…</string>
     <string name="message_not_sent_short">消息未发送</string>
     <string name="message_not_sent_touch_retry">未发送。 轻触重试。</string>

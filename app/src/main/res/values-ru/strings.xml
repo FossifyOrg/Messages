@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Сообщения</string>
     <string name="type_a_message">Введите сообщение…</string>
     <string name="message_not_sent_short">Сообщение не отправлено</string>
     <string name="message_not_sent_touch_retry">Не отправлено. Нажмите, чтобы повторить попытку.</string>

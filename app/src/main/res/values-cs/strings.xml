@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">SMS zprávy</string>
     <string name="type_a_message">Napište zprávu…</string>
     <string name="message_not_sent_short">Zpráva nebyla odeslána</string>
     <string name="message_not_sent_touch_retry">Nebyla odeslána. Klepnutím to zkuste znovu.</string>

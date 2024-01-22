@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Mensajería SMS</string>
     <string name="type_a_message">Escribe un mensaje…</string>
     <string name="message_not_sent_short">El mensaje no fue enviado</string>
     <string name="message_not_sent_touch_retry">No enviado. Toca para volver a intentar.</string>
