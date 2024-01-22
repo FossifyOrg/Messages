@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Mensagens SMS</string>
+    <string name="app_launcher_name">Mensagens</string>
     <string name="type_a_message">Escrever uma mensagem…</string>
     <string name="message_not_sent_short">Mensagem não enviada</string>
     <string name="message_not_sent_touch_retry">Não enviada. Toque para tentar novamente.</string>
@@ -15,15 +15,15 @@
     <string name="no_reply_support">O remetente não aceita respostas</string>
     <string name="draft">Rascunho</string>
     <string name="sending">A enviar…</string>
-    <string name="pin_conversation">Fixar no topo</string>
+    <string name="pin_conversation">Fixar</string>
     <string name="unpin_conversation">Desafixar</string>
     <string name="forward_message">Encaminhar</string>
     <string name="compress_error">Não foi possível comprimir a imagem para o tamanho selecionado</string>
     <string name="duplicate_item_warning">O item duplicado não foi incluído</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">e %d outro</item>
-        <item quantity="many">e %d outros</item>
-        <item quantity="other">e %d outros</item>
+        <item quantity="one">e mais %d</item>
+        <item quantity="many">e mais %d</item>
+        <item quantity="other">e mais %d</item>
     </plurals>
     <string name="new_conversation">Nova conversa</string>
     <string name="add_contact_or_number">Adicionar contacto ou número…</string>
@@ -79,13 +79,13 @@
     <string name="keyword">Palavra-chave</string>
     <string name="blocked_keywords">Palavras-chave bloqueadas</string>
     <string name="manage_blocked_keywords">Gerir palavras-chave bloqueadas</string>
-    <string name="not_blocking_keywords">Não existem quaisquer palavras-chave bloqueadas. Pode adicionar as palavras-chave aqui para poder bloquear todas as mensagens que as contenham.</string>
-    <string name="add_a_blocked_keyword">Adicionar palavra-chave de bloqueio</string>
+    <string name="not_blocking_keywords">Não existem quaisquer palavras-chave bloqueadas. Pode adicionar palavras-chave para bloquear todas as mensagens que as contenham.</string>
+    <string name="add_a_blocked_keyword">Adicionar palavra-chave</string>
     <string name="lock_screen_visibility">Notificação no ecrã de bloqueio</string>
     <string name="sender_and_message">Remetente e mensagem</string>
     <string name="sender_only">Apenas remetente</string>
     <string name="enable_delivery_reports">Ativar relatórios de entrega</string>
-    <string name="use_simple_characters">Remover acentos e diacríticos das mensagens enviadas</string>
+    <string name="use_simple_characters">Remover acentos e diacríticos nas mensagens enviadas</string>
     <string name="send_on_enter">Enviar mensagem ao premir Enter</string>
     <string name="mms_file_size_limit">Redimensionar imagens MMS enviadas</string>
     <string name="mms_file_size_limit_none">Sem limite</string>
@@ -106,15 +106,17 @@
     <string name="error_radio_turned_off">Rádio desligado. Não pode enviar a mensagem</string>
     <string name="carrier_send_error">Erro da operadora. Não pode enviar a mensagem</string>
     <string name="unknown_error_occurred_sending_message">Não foi possível enviar a mensagem. Erro: %d</string>
-    <string name="invalid_short_code">Não é possível responder a códigos curtos deste tipo</string>
-    <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, You can only reply to short codes with numbers like \"503501\" e não a códigos que combinem letras e números com, por exemplo, \"AB-CD0\".</string>
+    <string name="invalid_short_code">Não é possível responder a códigos deste tipo</string>
+    <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, e não a códigos que combinem letras e números com, por exemplo, \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">O anexo excede o tamanho máximo permitido para MMS</string>
     <string name="sim_card_not_available">Cartão SIM não encontrado</string>
     <string name="couldnt_download_mms">Não foi possível descarregar a MMS</string>
     <string name="faq_1_title">Porque é que a aplicação requer acesso à Internet\?</string>
     <string name="faq_1_text">Infelizmente, é a única forma de poder enviar anexos MMS. Não ter a capacidade de enviar MMS representaria uma enorme desvantagem comparativamente a outras aplicações e foi por isso que tomámos esta decisão. Mas, como habitualmente, a aplicação não tem anúncios, não rastreia os utilizadores nem recolhe dados pessoais. Esta permissão apenas é necessária para enviar MMS.</string>
     <string name="faq_2_title">O destinatário não recebe as minhas MMS, o que posso fazer\?</string>
-    <string name="faq_2_text">O tamanho das MMS é limitado pelas operadoras, tente estabelecer um limite inferior nas Definições da aplicação.</string>
+    <string name="faq_2_text">O tamanho das MMS é limitado pelas operadoras. Tente definir um limite inferior nas definições da aplicação.</string>
     <string name="faq_3_title">Posso agendar mensagens com esta aplicação\?</string>
     <string name="faq_3_text">Sim, pode agendar mensagens e escolher a data e hora de envio com um toque longo no botão Enviar.</string>
+    <string name="enable_custom_notifications">Ativar notificações personalizadas</string>
+    <string name="message_details">Detalhes da mensagem</string>
 </resources>

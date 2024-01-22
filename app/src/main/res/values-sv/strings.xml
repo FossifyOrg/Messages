@@ -115,4 +115,5 @@
     <string name="faq_2_text">Storleken på mms begränsas av operatörer, du kan testa att ställa in en lägre gräns i appens inställningar.</string>
     <string name="faq_3_title">Stöder appen schemalagda meddelanden\?</string>
     <string name="faq_3_text">Ja, du kan schemalägga meddelanden så att de skickas i framtiden genom att trycka länge på knappen Skicka och välja önskat datum och tid.</string>
+    <string name="enable_custom_notifications">Aktivera anpassade aviseringar</string>
 </resources>
