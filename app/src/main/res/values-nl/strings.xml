@@ -115,4 +115,5 @@
     <string name="faq_3_title">Ondersteunt deze app het inplannen van berichten\?</string>
     <string name="faq_3_text">Ja, berichten kunnen vertraagd verzonden worden door lang te drukken op de verzendknop en vervolgens een tijdstip voor verzending op te geven.</string>
     <string name="enable_custom_notifications">Aangepaste meldingen gebruiken</string>
+    <string name="app_launcher_name">Berichten</string>
 </resources>
