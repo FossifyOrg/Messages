@@ -118,4 +118,5 @@
     <string name="faq_3_title">¿La aplicación admite mensajes programados\?</string>
     <string name="faq_3_text">Sí, puedes programar el envío de mensajes en el futuro pulsando prolongadamente el botón de envío y eligiendo la fecha y hora deseadas.</string>
     <string name="enable_custom_notifications">Activar las notificaciones personalizadas</string>
+    <string name="app_launcher_name">Messages</string>
 </resources>
