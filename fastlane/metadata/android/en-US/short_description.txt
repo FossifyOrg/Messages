@@ -1,1 +1,1 @@
-SMS messaging and MMS messaging app for Android, send messages fast, nice UI
+Open-source and Ad-free SMS/MMS messaging app

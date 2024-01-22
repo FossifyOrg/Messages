@@ -1,1 +1,1 @@
-Simple SMS Messenger
+Fossify SMS Messenger

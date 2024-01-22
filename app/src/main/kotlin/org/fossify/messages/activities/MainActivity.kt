@@ -24,7 +24,6 @@ import org.fossify.messages.adapters.SearchResultsAdapter
 import org.fossify.messages.databinding.ActivityMainBinding
 import org.fossify.messages.extensions.*
 import org.fossify.messages.helpers.SEARCHED_MESSAGE_ID
-import org.fossify.messages.helpers.ScreenshotHelper
 import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.helpers.THREAD_TITLE
 import org.fossify.messages.models.Conversation
