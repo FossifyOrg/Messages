@@ -1,0 +1,1 @@
+Otwartoźródłowa i wolna od reklam aplikacja do przesyłania wiadomości SMS/MMS.
