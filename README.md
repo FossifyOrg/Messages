@@ -1,6 +1,8 @@
 # Fossify Messages
 <img alt="Logo" src="graphics/icon.webp" width="120" />
 
+<a href="https://apt.izzysoft.de/fdroid/index/apk/org.fossify.messages"><img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height=80/></a>
+
 Fossify Messages is your trusted messaging companion, designed to enhance your messaging experience in various ways.
 
 **📱 STAY CONNECTED WITH EASE:**  
