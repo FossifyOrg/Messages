@@ -102,4 +102,24 @@
     <string name="archived_conversations">Arhiv</string>
     <string name="archive">Arhiviraj</string>
     <string name="restore">Obnovi</string>
+    <string name="blocked_keywords">Blokirane ključne besede</string>
+    <string name="add_a_blocked_keyword">Dodajanje blokirane ključne besede</string>
+    <string name="error_service_is_unavailable">Ni bilo mogoče poslati sporočila, storitev ni na voljo</string>
+    <string name="unable_to_save_message">Sporočila ni mogoče shraniti v podatkovno zbirko telefonije</string>
+    <string name="empty_destination_address">Ni mogoče poslati sporočila prazni telefonski številki</string>
+    <string name="couldnt_download_mms">Ni bilo mogoče prenesti MMS</string>
+    <string name="attachment_sized_exceeds_max_limit">Velikost priloge presega najvišjo mejo za MMS</string>
+    <string name="invalid_short_code_desc">Odgovorite lahko le na kratke kode s številkami, kot je \"503501\", ne pa tudi na kode, ki vsebujejo črke in številke, kot je \"AB-CD0\".</string>
+    <string name="error_radio_turned_off">Ni bilo mogoče poslati sporočila, radio je izključen</string>
+    <string name="restore_confirmation">Ste prepričani, da želite obnoviti %s?</string>
+    <string name="restore_whole_conversation_confirmation">Ste prepričani, da želite obnoviti vsa sporočila tega pogovora?</string>
+    <string name="archive_confirmation">Ste prepričani, da želite arhivirati %s?</string>
+    <string name="not_blocking_keywords">Ne blokirate nobene ključne besede. Tu lahko dodate ključne besede, da blokirate vsa sporočila, ki jih vsebujejo.</string>
+    <string name="manage_blocked_keywords">Upravljanje blokiranih ključnih besed</string>
+    <string name="unarchive">Vrni iz arhiva</string>
+    <string name="keyword">Ključna beseda</string>
+    <string name="sim_card_not_available">Kartica SIM ni na voljo</string>
+    <string name="invalid_short_code">Ni mogoče odgovoriti na kratke kode, kot je ta</string>
+    <string name="unknown_error_occurred_sending_message">Sporočila ni bilo mogoče poslati, koda napake: %d</string>
+    <string name="carrier_send_error">Sporočila ni bilo mogoče poslati, napaka operaterja</string>
 </resources>
