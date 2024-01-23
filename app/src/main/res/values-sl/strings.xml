@@ -83,4 +83,23 @@
     <string name="faq_2_text">Velikost sporočil MMS omejujejo operaterji, zato lahko poskusite nastaviti manjšo omejitev v nastavitvah aplikacije.</string>
     <string name="faq_3_title">Ali aplikacija podpira načrtovana sporočila\?</string>
     <string name="faq_3_text">Da, lahko načrtujete pošiljanje sporočil v prihodnosti, da dolgo pritisnete gumb Pošlji in izberete želeni datum in čas.</string>
+    <string name="enable_custom_notifications">Omogoči obvestila po meri</string>
+    <string name="no_archived_conversations">Ni bilo najdenih arhiviranih pogovorov</string>
+    <string name="archive_emptied_successfully">Arhiv je bil uspešno izpraznjen</string>
+    <string name="empty_archive_confirmation">Ste prepričani, da želite izprazniti arhiv? Vsi arhivirani pogovori bodo trajno izgubljeni.</string>
+    <string name="restore_all_messages">Obnovi vsa sporočila</string>
+    <string name="empty_recycle_bin_messages_confirmation">Ali ste prepričani, da želite izprazniti koš? Sporočila bodo trajno izgubljena.</string>
+    <string name="skip_the_recycle_bin_messages">Preskoči koš, neposredno izbriši sporočila</string>
+    <string name="app_launcher_name">Sporočila</string>
+    <string name="update_message">Posodobi sporočilo</string>
+    <string name="message_details">Podrobnosti sporočila</string>
+    <string name="message_details_sender">Pošiljatelj</string>
+    <string name="message_details_receiver">Prejemnik</string>
+    <string name="message_details_sent_at">Poslano ob</string>
+    <string name="message_details_received_at">Prejeto ob</string>
+    <string name="empty_archive">Izbriši vsa arhivirana sporočila</string>
+    <string name="show_archived_conversations">Prikaži arhivirana sporočila</string>
+    <string name="archived_conversations">Arhiv</string>
+    <string name="archive">Arhiviraj</string>
+    <string name="restore">Obnovi</string>
 </resources>
