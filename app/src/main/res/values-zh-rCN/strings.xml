@@ -112,4 +112,5 @@
     <string name="faq_3_title">本应用支持定时消息吗？</string>
     <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间安排将来要发送的消息。</string>
     <string name="enable_custom_notifications">启用自定义通知</string>
+    <string name="app_launcher_name">短信</string>
 </resources>
