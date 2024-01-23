@@ -121,4 +121,5 @@
     <string name="faq_3_title">Приложение поддерживает отложенную отправку сообщений\?</string>
     <string name="faq_3_text">Да, вы можете запланировать отправку сообщений в будущем, нажав и удерживая кнопку \"Отправить\" и выбрав нужную дату и время.</string>
     <string name="enable_custom_notifications">Использовать собственные уведомления</string>
+    <string name="app_launcher_name">Сообщения</string>
 </resources>
