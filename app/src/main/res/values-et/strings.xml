@@ -115,4 +115,5 @@
     <string name="enable_custom_notifications">Luba kohandatud teavitused</string>
     <string name="update_message">Uuenda sõnumit</string>
     <string name="message_details">Sõnumi teave</string>
+    <string name="app_launcher_name">Sõnumid</string>
 </resources>
