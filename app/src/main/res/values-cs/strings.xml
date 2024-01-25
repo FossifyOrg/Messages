@@ -118,4 +118,5 @@
     <string name="update_message">Aktualizovat zprávu</string>
     <string name="message_details">Detaily zprávy</string>
     <string name="enable_custom_notifications">Povolit vlastní oznámení</string>
+    <string name="app_launcher_name">Zprávy</string>
 </resources>
