@@ -118,4 +118,5 @@
     <string name="faq_3_title">L\'app supporta i messaggi programmati\?</string>
     <string name="faq_3_text">Sì, è possibile programmare l\'invio di messaggi in futuro premendo a lungo il pulsante Invia e scegliendo la data e l\'ora desiderate.</string>
     <string name="enable_custom_notifications">Abilitare le notifiche personalizzate</string>
+    <string name="app_launcher_name">Messaggi</string>
 </resources>
