@@ -115,4 +115,5 @@
     <string name="faq_3_title">Uygulama zamanlanan mesajları destekliyor mu\?</string>
     <string name="faq_3_text">Evet, gönder düğmesine uzun basarak ve istediğiniz tarih ve saati seçerek iletileri gelecekte gönderilmek üzere zamanlayabilirsiniz.</string>
     <string name="enable_custom_notifications">Özel bildirimleri etkinleştir</string>
+    <string name="app_launcher_name">İletiler</string>
 </resources>
