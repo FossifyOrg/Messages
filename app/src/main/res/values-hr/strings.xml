@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="type_a_message">Upiši poruku…</string>
+    <string name="type_a_message">Upiši poruku …</string>
     <string name="message_not_sent_short">Poruka nije poslana</string>
     <string name="message_not_sent_touch_retry">Nije poslana. Dodirni za ponovni pokušaj.</string>
     <string name="message_sending_error">Tvoja poruka za „%s” nije poslana</string>
@@ -50,22 +50,22 @@
     <string name="mark_as_read">Označi kao pročitano</string>
     <string name="mark_as_unread">Označi kao nepročitano</string>
     <string name="me">Ja</string>
-    <string name="unarchive">Vrati iz arhiva</string>
+    <string name="unarchive">Dearhiviraj</string>
     <string name="empty_archive">Izbriši sve arhivirane razgovore</string>
-    <string name="archived_conversations">Arhiv</string>
+    <string name="archived_conversations">Arhiva</string>
     <string name="show_archived_conversations">Prikaži arhivirane razgovore</string>
     <string name="archive">Arhiviraj</string>
     <string name="no_archived_conversations">Nema arhiviranih razgovora</string>
     <string name="archive_emptied_successfully">Arhiv je uspješno ispražnjen</string>
     <string name="empty_archive_confirmation">Jeste li ste sigurni da želite isprazniti arhiv? Svi arhivirani razgovori će biti obrisani.</string>
-    <string name="restore">Vrati</string>
-    <string name="restore_all_messages">Vrati sve poruke</string>
+    <string name="restore">Obnovi</string>
+    <string name="restore_all_messages">Obnovi sve poruke</string>
     <string name="empty_recycle_bin_messages_confirmation">Stvarno želiš isprazniti koš za smeće? Poruke će biti trajno izgubljene.</string>
     <string name="skip_the_recycle_bin_messages">Preskoči koš za smeće, izbriši poruke odmah</string>
     <string name="delete_whole_conversation_confirmation">Stvarno želiš izbrisati sve poruke ovog razgovora\?</string>
     <string name="archive_confirmation">Stvarno želiš arhivirati %s?</string>
-    <string name="restore_whole_conversation_confirmation">Stvarno želiš vratiti sve poruke iz ovog razgovora?</string>
-    <string name="restore_confirmation">Stvarno želiš vratiti %s?</string>
+    <string name="restore_whole_conversation_confirmation">Stvarno želiš obnoviti sve poruke ovog razgovora?</string>
+    <string name="restore_confirmation">Stvarno želiš obnoviti %s?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d razgovor</item>
         <item quantity="few">%d razgovora</item>
@@ -102,18 +102,21 @@
     <string name="no_option_selected">Moraš odabrati barem jednu stavku</string>
     <string name="empty_destination_address">Nije moguće poslati poruku na prazan broj</string>
     <string name="unable_to_save_message">Nije moguće spremiti poruku u bazu podataka telefoniranja</string>
-    <string name="error_service_is_unavailable">Nije moguće poslati poruku, usluga je nedostupna</string>
-    <string name="error_radio_turned_off">Nije moguće poslati poruku, radio je isključen</string>
-    <string name="carrier_send_error">Nije moguće poslati poruku, greška operatera</string>
-    <string name="unknown_error_occurred_sending_message">Nije moguće poslati poruku, šifra greške: %d</string>
-    <string name="invalid_short_code">Na takve kratke kodove nije moguće odgovoriti</string>
+    <string name="error_service_is_unavailable">Nije bilo moguće poslati poruku, usluga je nedostupna</string>
+    <string name="error_radio_turned_off">Nije bilo moguće poslati poruku, radio je isključen</string>
+    <string name="carrier_send_error">Nije bilo moguće poslati poruku, greška operatera</string>
+    <string name="unknown_error_occurred_sending_message">Nije bilo moguće poslati poruku, šifra greške: %d</string>
+    <string name="invalid_short_code">Nije moguće odgovoriti na takve kratke kodove</string>
     <string name="invalid_short_code_desc">Možeš odgovoriti samo na kratke kodove s brojevima poput „503501”, ali ne i na kodove koji sadrže slova i brojke poput „AB-CD0”.</string>
     <string name="attachment_sized_exceeds_max_limit">Veličina privitka premašuje maksimalno ograničenje MMS-a</string>
     <string name="sim_card_not_available">SIM kartica nije dostupna</string>
     <string name="faq_1_title">Zašto aplikacija zahtijeva pristup internetu\?</string>
-    <string name="faq_1_text">Nažalost, potreban je za slanje MMS privitaka. Nemogućnost slanja MMS-a bila bi zaista veliki nedostatak u usporedbi s drugim aplikacijama, pa smo odlučili krenuti ovim putem. No, kao i obično, nema reklama, praćenja ili analiziranja podataka, internet se koristi samo za slanje MMS-a.</string>
+    <string name="faq_1_text">Nažalost je pristup potreban za slanje MMS privitaka. Nemogućnost slanja MMS-a bila bi zaista veliki nedostatak u usporedbi s drugim aplikacijama, pa smo odlučili krenuti ovim putem. No, kao i obično, nema reklama, praćenja ili analiziranja podataka, internet se koristi samo za slanje MMS-a.</string>
     <string name="faq_2_title">Druga strana ne prima moj MMS. Mogu li išta učiniti po tom pitanju\?</string>
     <string name="faq_2_text">Veličinu MMS-a ograničavaju operateri. Možeš pokušati smanjiti ograničenje u postavkama aplikacije.</string>
     <string name="faq_3_title">Podržava li aplikacija zakazane poruke\?</string>
-    <string name="faq_3_text">Da, možete zakazati slanje poruka u budućnosti tako da dugo pritisnete gumb Pošalji i odaberete željeni datum i vrijeme.</string>
+    <string name="faq_3_text">Da, možeš zakazati slanje poruka u budućnosti dugim pritiskom gumba „Pošalji” i odabrati željeni datum i vrijeme.</string>
+    <string name="app_launcher_name">Poruke</string>
+    <string name="couldnt_download_mms">Nije bilo moguće preuzeti MMS</string>
+    <string name="enable_custom_notifications">Omogući prilagođene obavijesti</string>
 </resources>

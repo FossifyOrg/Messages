@@ -1,0 +1,32 @@
+Messaggi Fossify è il tuo fidato compagno di messaggistica, progettato per migliorare la tua esperienza di messaggistica in vari modi.
+
+📱 RIMANI IN CONTATTO CON FACILITÀ:
+Con Messaggi Fossify, puoi inviare senza problemi messaggi SMS e MMS per rimanere in contatto con i tuoi cari. Goditi la messaggistica di gruppo basata su SMS/MMS ed esprimiti con foto, emoji e saluti veloci.
+
+🚫 BLOCCA I MESSAGGI INDESIDERATI:
+Controlla la tua esperienza di messaggistica grazie a una solida funzione di blocco, che impedisce facilmente l'invio di messaggi indesiderati, anche da parte di contatti sconosciuti. È anche possibile esportare e importare i numeri bloccati per un backup senza problemi. Inoltre, puoi personalizzare la tua esperienza impedendo ai messaggi con parole o frasi specifiche di raggiungere la tua casella di posta.
+
+🔒 BACKUP DEGLI SMS SENZA SFORZO:
+Dì addio alla preoccupazione di perdere messaggi importanti. Messaggi Fossify offre una comoda funzionalità di backup degli SMS che consente di esportare e importare i messaggi. Questa funzione assicura che tu possa facilmente cambiare dispositivo senza perdere le tue preziose conversazioni.
+
+🚀 VELOCE E LEGGERO:
+Nonostante le sue potenti funzioni, Messaggi Fossify vanta un'app di dimensioni notevolmente ridotte, che la rende facile e veloce da scaricare e installare. Sperimenta la velocità e l'efficienza e goditi la tranquillità che deriva dal backup degli SMS.
+
+🔐 PRIVACY MIGLIORATA:
+Personalizza ciò che appare sulla schermata di blocco per una maggiore privacy. Scegli di visualizzare solo il mittente, il contenuto del messaggio o nulla. I tuoi messaggi sono sotto il tuo controllo.
+
+🔍 RICERCA EFFICIENTE DEI MESSAGGI:
+Dì addio allo scorrimento infinito delle conversazioni. Messaggi Fossify semplifica il recupero dei messaggi con una funzione di ricerca rapida ed efficiente. Trova quello che ti serve, quando ti serve.
+
+🌈 DESIGN MODERNO E INTERFACCIA USER-FRIENDLY:
+Goditi un design pulito e moderno con un'interfaccia facile da usare. L'app presenta un Material Design e un'opzione di tema scuro, per un'esperienza d'uso visivamente accattivante e confortevole.
+
+🌐 TRASPARENZA OPEN-SOURCE:
+La tua privacy è una priorità assoluta. Messaggi Fossify funziona senza richiedere una connessione a Internet, garantendo la sicurezza e la stabilità dei messaggi. La nostra app è completamente priva di pubblicità e non richiede permessi inutili. Inoltre, è completamente open-source e ti garantisce la massima tranquillità, in quanto hai accesso al codice sorgente per le verifiche di sicurezza e privacy.
+
+Passa a Messaggi Fossify e sperimenta la messaggistica come dovrebbe essere: privata, efficiente e facile da usare. Scarica subito e unisciti alla nostra comunità impegnata a salvaguardare la tua esperienza di messaggistica.
+
+Esplora altre applicazioni Fossify: https://www.fossify.org
+Codice open source: https://www.github.com/FossifyOrg
+Unisciti alla comunità su Reddit: https://www.reddit.com/r/Fossify
+Connettiti su Telegram: https://t.me/Fossify

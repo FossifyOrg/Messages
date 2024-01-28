@@ -121,4 +121,5 @@
     <string name="faq_2_text">Rozmiar MMS-ów jest ograniczany przez operatorów. Możesz spróbować ustawić mniejszy limit w ustawieniach aplikacji.</string>
     <string name="faq_3_title">Czy aplikacja obsługuje planowanie wiadomości?</string>
     <string name="faq_3_text">Tak. Możesz zaplanować wysłanie wiadomości w przyszłości, naciskając długo przycisk Wyślij i wybierając czas docelowy.</string>
+    <string name="app_launcher_name">Wiadomości</string>
 </resources>

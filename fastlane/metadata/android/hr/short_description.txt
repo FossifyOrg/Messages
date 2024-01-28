@@ -1,0 +1,1 @@
+Aplikacija otvorenog koda za razmjenu SMS/MMS poruka bez oglasa
