@@ -6,4 +6,12 @@
         android:icon="@drawable/ic_plus_vector"
         android:title="@string/add_a_blocked_keyword"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/import_blocked_keywords"
+        android:title="@string/import_blocked_keywords"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/export_blocked_keywords"
+        android:title="@string/export_blocked_keywords"
+        app:showAsAction="never" />
 </menu>
