@@ -21,7 +21,6 @@
         <item quantity="many">%d mensagens</item>
         <item quantity="other">%d mensagens</item>
     </plurals>
-    <string name="keyword"></string>
     <string name="mms_file_size_limit_none">Sem limite</string>
     <string name="group_message_mms">Enviar mensagens de grupo como MMS</string>
     <string name="send_long_message_mms">Enviar mensagens longas como MMS</string>
