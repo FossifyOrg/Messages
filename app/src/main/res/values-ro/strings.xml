@@ -64,4 +64,9 @@
     <string name="faq_1_text">Din păcate este nevoie pentru a primite anexe MMS. Ideea de a nu putea trimite MMS-uri ar prezenta un dezavantaj foarte mare în comparaţie cu alte aplicaţii, aşa că am decis să mergem pe această cale. Totuşi, ca de obicei, nu este prezentă nici un fel de reclamă, urmărire sau analiză, internetul este folosit doar pentru a trimite MMS-uri.</string>
     <string name="faq_2_title">Celălalt capăt nu-mi primește MMS-ul, pot face ceva în acest sens\?</string>
     <string name="faq_2_text">Dimensiunea MMS este limitată de operatorii de telefonie; puteți încerca să setați o limită mai mică în setările aplicației.</string>
-    </resources>
+    <string name="members">Membrii</string>
+    <string name="conversation_name">Numele conversației</string>
+    <string name="conversation_details">Detaliile conversației</string>
+    <string name="rename_conversation">Redenumire conversație</string>
+    <string name="app_launcher_name">Mesaje</string>
+</resources>
