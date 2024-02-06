@@ -109,7 +109,7 @@
     </plurals>
     <string name="keyword">कीवर्ड</string>
     <string name="enable_delivery_reports">डिलीवरी रिपोर्ट सक्षम करें</string>
-    <string name="invalid_short_code_desc">आप केवल \"503501\" जैसे नंबरों वाले छोटे कोड का उत्तर दे सकते हैं, लेकिन \"AB-CD0\" जैसे अक्षरों और संख्याओं वाले कोड का नहीं।</string>
+    <string name="invalid_short_code_desc">आप केवल 03501 जैसे नंबरों वाले छोटे कोड का उत्तर दे सकते हैं, लेकिन B-CD0 जैसे अक्षरों और संख्याओं वाले कोड का नहीं।</string>
     <string name="unknown_error_occurred_sending_message">संदेश नहीं भेजा जा सका, त्रुटि कोड: %d</string>
     <string name="invalid_short_code">इस तरह के छोटे कोड का उत्तर नहीं दे सकते</string>
     <string name="faq_3_text">हां, आप भेजें बटन को देर तक दबाकर और वांछित दिनांक और समय चुनकर भविष्य में भेजे जाने वाले संदेशों को शेड्यूल कर सकते हैं।</string>
