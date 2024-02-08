@@ -112,6 +112,7 @@
         android:hint="@string/type_a_message"
         android:inputType="textCapSentences|textMultiLine"
         android:minHeight="@dimen/normal_icon_size"
+        android:maxLines="8"
         app:layout_constraintBottom_toTopOf="@+id/attachment_picker_divider"
         app:layout_constraintEnd_toStartOf="@id/thread_select_sim_icon"
         app:layout_constraintStart_toEndOf="@+id/thread_add_attachment" />
