@@ -49,7 +49,7 @@
     <string name="use_simple_characters">संदेश भेजते समय उच्चारण और विशेषक चिह्न हटाएँ</string>
     <string name="attachment_sized_exceeds_max_limit">अनुलग्नक का आकार अधिकतम MMS सीमा से अधिक है</string>
     <string name="error_radio_turned_off">संदेश नहीं भेजा जा सका, रेडियो बंद हो गया</string>
-    <string name="mms_file_size_limit">भेजी गई MMS छवियों का आकार बदलें</string>
+    <string name="mms_file_size_limit">भेजी गई MMS इमेजेस का आकार बदलें</string>
     <string name="outgoing_messages">जावक संदेश</string>
     <string name="export_messages">संदेश निर्यात करें</string>
     <string name="export_sms">SMS निर्यात करें</string>
@@ -69,7 +69,7 @@
     <string name="send_long_message_mms">ग्रुप वर्चस्व को MMS के रूप में शेयर में रखा गया</string>
     <string name="import_sms">SMS आयात करें</string>
     <string name="sim_card_not_available">SIM कार्ड उपलब्ध नहीं है</string>
-    <string name="faq_1_text">अफसोस की बात है कि MMS अनुलग्नक भेजने के लिए इसकी आवश्यकता है। एमएमएस नहीं भेज पाना अन्य ऐप्स की तुलना में वास्तव में एक बड़ा नुकसान होगा, इसलिए हमने इस रास्ते पर जाने का फैसला किया। हालाँकि, जैसा कि आमतौर पर होता है, इसमें कोई विज्ञापन, ट्रैकिंग या विश्लेषण नहीं होता है, इंटरनेट का उपयोग केवल MMS भेजने के लिए किया जाता है।</string>
+    <string name="faq_1_text">अफसोस की बात है कि MMS अनुलग्नक भेजने के लिए इसकी आवश्यकता है। MMS नहीं भेज पाना अन्य ऐप्स की तुलना में वास्तव में एक बड़ा नुकसान होगा, इसलिए हमने इस रास्ते पर जाने का फैसला किया। हालाँकि, जैसा कि आमतौर पर होता है, इसमें कोई विज्ञापन, ट्रैकिंग या विश्लेषण नहीं होता है, इंटरनेट का उपयोग केवल MMS भेजने के लिए किया जाता है।</string>
     <string name="me">मैं</string>
     <string name="sender_only">केवल प्रेषक</string>
     <string name="unable_to_save_message">संदेश को टेलीफ़ोनी डेटाबेस में सहेजने में असमर्थ</string>
