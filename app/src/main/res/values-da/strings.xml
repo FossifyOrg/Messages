@@ -110,8 +110,6 @@
     <string name="faq_1_text">Desværre er det nødvendigt for at sende MMS-vedhæftede filer. Ikke at kunne være i stand til at sende MMS ville være en virkelig stor ulempe i forhold til andre apps, så vi besluttede at gå denne vej. Men som normalt er der ingen annoncer, sporing eller analyse overhovedet, internettet bruges kun til at sende MMS.</string>
     <string name="faq_2_title">Den anden ende modtager ikke min MMS, er der noget jeg kan gøre ved det\?</string>
     <string name="faq_2_text">MMS-størrelsen er begrænset af udbydere, du kan prøve at sætte en mindre grænse i appindstillingerne.</string>
-    <string name="package_name">org.fossify.messages</string>
-    <string name="app_name">Fossify Meddelelser</string>
     <string name="faq_3_title">Kan man planlægge afsendelse?</string>
     <string name="faq_3_text">Ja, du kan planlægge beskeder til at blive sendt i fremtiden ved at trykke længe på Send-knappen og vælge den ønskede dato og tid.</string>
     <string name="mms_file_size_limit_100kb">100KB</string>
