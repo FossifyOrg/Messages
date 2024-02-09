@@ -29,8 +29,8 @@ ez-vcard = "0.11.3"
 shortcut-badger = "1.1.22"
 #versioning
 app-version-appId = "org.fossify.messages"
-app-version-versionCode = "1"
-app-version-versionName = "1.0.0"
+app-version-versionCode = "2"
+app-version-versionName = "1.0.1"
 [libraries]
 #AndroidX
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
