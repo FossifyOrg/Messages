@@ -1,0 +1,2 @@
+* Minor bug fixes and improvements
+* Added some translations
