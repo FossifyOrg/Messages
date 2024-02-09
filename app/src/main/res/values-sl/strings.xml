@@ -38,7 +38,7 @@
     <string name="schedule_send">Pošiljanje načrta</string>
     <string name="cancel_schedule_send">Prekliči pošiljanje načrta</string>
     <string name="must_pick_time_in_the_future">Izberite čas v prihodnosti</string>
-    <string name="schedule_send_warning">Telefon vklopite in poskrbite, da bo aplikacija v ozadju delovala.</string>
+    <string name="schedule_send_warning">Telefon ohranite vključen in se prepričajte, da ni ničesar, kar bi onemogočalo delovanje aplikacije v ozadju.</string>
     <string name="send_now">Sedaj pošlji</string>
     <string name="channel_received_sms">Prejeto SMS sporočilo</string>
     <string name="new_message">Novo sporočilo</string>

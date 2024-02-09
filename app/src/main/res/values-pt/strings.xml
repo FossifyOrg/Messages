@@ -118,4 +118,5 @@
     <string name="faq_3_text">Sim, pode agendar mensagens e escolher a data e hora de envio com um toque longo no botão Enviar.</string>
     <string name="enable_custom_notifications">Ativar notificações personalizadas</string>
     <string name="message_details">Detalhes da mensagem</string>
+    <string name="app_launcher_name">Mensagens</string>
 </resources>

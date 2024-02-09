@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_launcher_name">Messages</string>
+    <string name="message_not_sent_short">Message non inviate</string>
+    <string name="message_not_sent_touch_retry">Non inviate. Tocca pro retentar.</string>
+</resources>

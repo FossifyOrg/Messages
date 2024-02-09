@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/small_margin"
-        android:paddingTop="@dimen/activity_margin"
+        android:paddingTop="@dimen/medium_margin"
         android:paddingEnd="@dimen/normal_margin"
-        android:paddingBottom="@dimen/activity_margin">
+        android:paddingBottom="@dimen/medium_margin">
 
         <ImageView
             android:id="@+id/conversation_image"

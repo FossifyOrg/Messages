@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_launcher_name">Mezuak</string>
+    <string name="type_a_message">Idatzi mezu bat…</string>
+    <string name="message_not_sent_short">Mezua ez da bidali</string>
+    <string name="message_not_sent_touch_retry">Ez da bidali. Ukitu berriro saiatzeko.</string>
+    <string name="message_sending_error">zure mezua \'%s\'-ri ez da bidali</string>
+    <string name="add_person">Gehitu pertsona</string>
+    <string name="attachment">Eranskina</string>
+    <string name="no_conversations_found">Ez da gordetako elkarrizketarik aurkitu</string>
+    <string name="start_conversation">Hasi elkarrizketa</string>
+</resources>
