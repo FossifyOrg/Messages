@@ -112,13 +112,4 @@
     <string name="faq_2_text">MMS-størrelsen er begrænset af udbydere, du kan prøve at sætte en mindre grænse i appindstillingerne.</string>
     <string name="faq_3_title">Kan man planlægge afsendelse?</string>
     <string name="faq_3_text">Ja, du kan planlægge beskeder til at blive sendt i fremtiden ved at trykke længe på Send-knappen og vælge den ønskede dato og tid.</string>
-    <string name="mms_file_size_limit_100kb">100KB</string>
-    <string name="mms_file_size_limit_200kb">200KB</string>
-    <string name="mms_file_size_limit_300kb">300KB</string>
-    <string name="mms_file_size_limit_600kb">600KB</string>
-    <string name="mms_file_size_limit_1mb">1MB</string>
-    <string name="mms_file_size_limit_2mb">2MB</string>
-    <string name="sms">SMS</string>
-    <string name="mms">MMS</string>
-    <string name="message_details_sim">SIM</string>
 </resources>
