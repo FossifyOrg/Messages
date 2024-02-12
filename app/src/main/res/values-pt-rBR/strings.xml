@@ -20,9 +20,9 @@
     <string name="compress_error">Não pôde comprimir imagem ao tamanho selecionado</string>
     <string name="duplicate_item_warning">O item duplicado não foi incluído</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="many">and %d others</item>
-        <item quantity="other">and %d others</item>
+        <item quantity="one">E %d outro</item>
+        <item quantity="many">E %d outros</item>
+        <item quantity="other">E %d outros</item>
     </plurals>
     <string name="new_conversation">Nova conversa</string>
     <string name="add_contact_or_number">Adicionar contato ou número…</string>
@@ -117,4 +117,6 @@
     <string name="enable_custom_notifications">Ativar notificações personalizadas</string>
     <string name="update_message">Atualizar mensagem</string>
     <string name="message_details">Detalhes da mensagem</string>
+    <string name="couldnt_download_mms">Não foi possível baixar o MMS</string>
+    <string name="app_launcher_name">Mensagens</string>
 </resources>
