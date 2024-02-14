@@ -82,7 +82,7 @@
     <string name="keyword">Ключове слово</string>
     <string name="blocked_keywords">Заблоковані ключові слова</string>
     <string name="manage_blocked_keywords">Керувати заблокованими ключовими словами</string>
-    <string name="not_blocking_keywords">У вас немає заблокованих ключових слів. Ви можете додати ключові слова тут, щоб блокувати всі повідомлення, що містить їх</string>
+    <string name="not_blocking_keywords">У вас немає заблокованих ключових слів. Ви можете додати ключові слова тут, щоб блокувати всі повідомлення, що містить їх.</string>
     <string name="add_a_blocked_keyword">Додати заблоковане ключове слово</string>
     <string name="lock_screen_visibility">Видимість сповіщень на екрані блокування</string>
     <string name="sender_and_message">Відправник і повідомлення</string>
@@ -120,4 +120,6 @@
     <string name="faq_2_text">Розмір MMS обмежений операторами, ви можете спробувати зменшити ліміт у налаштуваннях програми.</string>
     <string name="faq_3_title">Чи підтримує застосунок заплановані повідомлення\?</string>
     <string name="faq_3_text">Так, ви можете запланувати надсилання повідомлень у майбутньому, довго натискаючи кнопку «Надіслати» та вибираючи потрібну дату й час.</string>
+    <string name="app_launcher_name">Повідомлення</string>
+    <string name="enable_custom_notifications">Ввімкнути власні сповіщення</string>
 </resources>
