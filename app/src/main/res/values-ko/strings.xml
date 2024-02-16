@@ -51,7 +51,7 @@
     <string name="empty_destination_address">빈 번호로 메지지를 보낼 수 없습니다</string>
     <string name="unable_to_save_message">메시지를 Telephony 저장소에 저장할 수 없습니다</string>
     <string name="error_service_is_unavailable">통신 서비스를 사용할 수 없어 메시지가 전송되지 않았습니다</string>
-    <string name="invalid_short_code_desc">\"AB-CD0\"과 같은 단어를 포함한 단축 코드가 아닌 \"503501\"과 같은 숫자 단축 코드에만 답장할 수 있습니다.</string>
+    <string name="invalid_short_code_desc">B-CD0 같은 단어를 포함한 단축 코드가 아닌 03501 같은 숫자 단축 코드에만 답장할 수 있습니다.</string>
     <string name="faq_1_text">안타깝게도 MMS 첨부 파일을 전송하려면 인터넷 접근이 필요합니다. MMS를 전송하지 못한다면 다른 앱과 비교하여 큰 단점이 될 것입니다. 하지만 저희의 다른 앱과 마찬가지로 광고나 추적, 분석따위는 포함되어 있지 않고, 인터넷은 MMS 전송을 위해서만 사용됩니다.</string>
     <string name="message_not_sent_short">메시지 전송 안 됨</string>
     <string name="no_conversations_found">저장된 대화가 없습니다</string>
