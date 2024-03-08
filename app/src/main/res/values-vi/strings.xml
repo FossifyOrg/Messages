@@ -111,4 +111,6 @@
     <string name="faq_2_text">Kích thước MMS bị giới hạn bởi nhà cung cấp dịch vụ, bạn có thể thử đặt giới hạn nhỏ hơn trong cài đặt ứng dụng.</string>
     <string name="faq_3_title">Ứng dụng có hỗ trợ gửi tin nhắn theo lịch trình không\?</string>
     <string name="faq_3_text">Có, bạn có thể lên lịch gửi tin nhắn trong tương lai bằng cách nhấn và giữ nút Gửi và chọn ngày giờ mong muốn.</string>
+    <string name="enable_custom_notifications">Bật thông báo tùy chỉnh</string>
+    <string name="app_launcher_name">Tin nhắn</string>
 </resources>
