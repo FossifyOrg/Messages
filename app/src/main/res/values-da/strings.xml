@@ -99,7 +99,7 @@
     <string name="unable_to_save_message">Kan ikke gemme meddelelse i telefonens database</string>
     <string name="error_service_is_unavailable">Kunne ikke sende meddelelse, service ikke tilgængelig</string>
     <string name="error_radio_turned_off">Kunne ike sende meddelels, radio er slukket</string>
-    <string name="carrier_send_error">"Kunne ikke sende meddelelse; operatørfejl "</string>
+    <string name="carrier_send_error">Kunne ikke sende meddelelse; operatørfejl</string>
     <string name="unknown_error_occurred_sending_message">Kunne ikke sende meddelelse, fejlmeddelelse: %d</string>
     <string name="invalid_short_code">Kan ikke svare på korte koder som denne</string>
     <string name="invalid_short_code_desc">Du kan kun svare på korte koder med tal som \"503501\", men ikke på koder, der indeholder bogstaver og tal som \"AB-CD0\".</string>
