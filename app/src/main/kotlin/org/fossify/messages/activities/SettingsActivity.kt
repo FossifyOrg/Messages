@@ -27,7 +27,7 @@ class SettingsActivity : SimpleActivity() {
     private var blockedNumbersAtPause = -1
     private var recycleBinMessages = 0
     private val messagesFileType = "application/json"
-    private val messageImportFileTypes = listOf("application/json", "application/xml", "text/xml")
+    private val messageImportFileTypes = listOf("application/json", "application/xml", "text/xml", "application/octet-stream")
 
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
