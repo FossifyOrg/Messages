@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Xml
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.helpers.ensureBackgroundThread
@@ -37,13 +38,12 @@ class MessagesImporter(private val activity: SimpleActivity) {
         }
     }
 
+    @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
     private fun importJson(uri: Uri) {
         try {
-            val jsonString = activity.contentResolver.openInputStream(uri)!!.use { inputStream ->
-                inputStream.bufferedReader().readText()
+            val deserializedList = activity.contentResolver.openInputStream(uri)!!.buffered().use { inputStream ->
+                Json.decodeFromStream<List<MessagesBackup>>(inputStream)
             }
-
-            val deserializedList = Json.decodeFromString<List<MessagesBackup>>(jsonString)
             if (deserializedList.isEmpty()) {
                 activity.toast(org.fossify.commons.R.string.no_entries_for_importing)
                 return

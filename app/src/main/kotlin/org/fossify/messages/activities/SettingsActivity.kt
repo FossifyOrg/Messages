@@ -7,8 +7,8 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToStream
 import org.fossify.commons.activities.ManageBlockedNumbersActivity
 import org.fossify.commons.dialogs.*
 import org.fossify.commons.extensions.*
@@ -118,6 +118,7 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
     private fun exportMessages(uri: Uri) {
         ensureBackgroundThread {
             var success = false
@@ -128,11 +129,8 @@ class SettingsActivity : SimpleActivity() {
                         return@getMessagesToExport
                     }
                     val json = Json { encodeDefaults = true }
-                    val jsonString = json.encodeToString(messagesToExport)
-                    val outputStream = contentResolver.openOutputStream(uri)!!
-
-                    outputStream.use {
-                        it.write(jsonString.toByteArray())
+                    contentResolver.openOutputStream(uri)!!.buffered().use { outputStream ->
+                        json.encodeToStream(messagesToExport, outputStream)
                     }
                     success = true
                     toast(org.fossify.commons.R.string.exporting_successful)
