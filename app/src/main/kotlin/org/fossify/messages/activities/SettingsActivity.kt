@@ -134,8 +134,8 @@ class SettingsActivity : SimpleActivity() {
                     }
                     toast(org.fossify.commons.R.string.exporting_successful)
                 }
-            } catch (e: Exception) {
-                showErrorToast(e)
+            } catch (e: Throwable) { // also catch OutOfMemoryError etc.
+                showErrorToast(e.toString())
             }
         }
     }
