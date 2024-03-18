@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -119,6 +120,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun exportMessages(uri: Uri) {
         ensureBackgroundThread {
+            var success = false
             try {
                 MessagesReader(this).getMessagesToExport(config.exportSms, config.exportMms) { messagesToExport ->
                     if (messagesToExport.isEmpty()) {
@@ -132,10 +134,20 @@ class SettingsActivity : SimpleActivity() {
                     outputStream.use {
                         it.write(jsonString.toByteArray())
                     }
+                    success = true
                     toast(org.fossify.commons.R.string.exporting_successful)
                 }
             } catch (e: Throwable) { // also catch OutOfMemoryError etc.
                 showErrorToast(e.toString())
+            } finally {
+                if (!success) {
+                    // delete the file to avoid leaving behind an empty/corrupt file
+                    try {
+                        DocumentsContract.deleteDocument(contentResolver, uri)
+                    } catch (ignored: Exception) {
+                        // ignored because we don't want to overwhelm the user with two error messages
+                    }
+                }
             }
         }
     }
