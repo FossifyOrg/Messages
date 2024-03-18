@@ -32,8 +32,8 @@ class MessagesImporter(private val activity: SimpleActivity) {
             } else {
                 importJson(uri)
             }
-        } catch (e: Exception) {
-            activity.showErrorToast(e)
+        } catch (e: Throwable) { // also catch OutOfMemoryError etc.
+            activity.showErrorToast(e.toString())
         }
     }
 
