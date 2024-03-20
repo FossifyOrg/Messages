@@ -75,4 +75,24 @@
     <string name="faq_2_text">Ukuran MMS dibatasi oleh penyedia, Anda dapat menetapkan batas yang lebih kecil dalam pengaturan aplikasi.</string>
     <string name="faq_3_title">Apakah aplikasi mendukung penjadwalan pesan\?</string>
     <string name="faq_3_text">Ya, Anda bisa menjadwalkan pesan untuk dikirim di masa depan dengan menekan lama pada tombol Kirim dan memilih tanggal dan waktu yang diinginkan.</string>
+    <string name="enable_custom_notifications">Aktifkan notifikasi khusus</string>
+    <string name="message_details">Detail pesan</string>
+    <string name="message_details_receiver">Penerima</string>
+    <string name="message_details_sent_at">Dikirim pukul</string>
+    <string name="message_details_received_at">Diterima pukul</string>
+    <string name="archived_conversations">Arsip</string>
+    <string name="show_archived_conversations">Tampilkan percakapan yang diarsipkan</string>
+    <string name="archive">Arsip</string>
+    <string name="no_archived_conversations">Tidak ada arsip percakapan yang ditemukan</string>
+    <string name="archive_emptied_successfully">Arsip telah berhasil dikosongkan</string>
+    <string name="empty_archive_confirmation">Anda yakin ingin mengosongkan arsip? Semua percakapan yang diarsipkan akan hilang secara permanen.</string>
+    <string name="app_launcher_name">Pesan</string>
+    <string name="pin_conversation">Sematkan ke atas</string>
+    <string name="message_details_sender">Pengirim</string>
+    <string name="update_message">Perbarui pesan</string>
+    <string name="empty_archive">Hapus semua percakapan yang diarsipkan</string>
+    <string name="me">Saya</string>
+    <string name="unarchive">Tidak diarsipkan</string>
+    <string name="restore">Pulihkan</string>
+    <string name="restore_all_messages">Pulihkan semua pesan</string>
 </resources>
