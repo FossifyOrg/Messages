@@ -25,7 +25,7 @@ app-build-minimumSDK = "23"
 app-build-javaVersion = "VERSION_17"
 app-build-kotlinJVMTarget = "17"
 #Helpers
-ez-vcard = "0.11.3"
+ez-vcard = "0.12.1"
 shortcut-badger = "1.1.22"
 #versioning
 app-version-appId = "org.fossify.messages"
