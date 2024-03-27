@@ -50,13 +50,13 @@
     <string name="mark_as_unread">Merkitse lukemattomaksi</string>
     <string name="me">Minä</string>
     <string name="unarchive">Poista arkivointi</string>
-    <string name="empty_archive">Poista kaikki arkivoidut keskustelut</string>
+    <string name="empty_archive">Poista kaikki arkistoidut keskustelut</string>
     <string name="archived_conversations">Arkisto</string>
-    <string name="show_archived_conversations">Näytä arkivoidut keskustelut</string>
+    <string name="show_archived_conversations">Näytä arkistoidut keskustelut</string>
     <string name="archive">Arkivoi</string>
     <string name="no_archived_conversations">Arkivoituja keskusteluja ei löytynyt</string>
     <string name="archive_emptied_successfully">Arkisto tyhjennettiin onnistuneesti</string>
-    <string name="empty_archive_confirmation">Haluatko tyhjentää arkiston\? Kaikki arkivoidut keskustelut menetetään pysyvästi.</string>
+    <string name="empty_archive_confirmation">Haluatko tyhjentää arkiston? Kaikki arkistoidut keskustelut menetetään pysyvästi.</string>
     <string name="restore">Palauta</string>
     <string name="restore_all_messages">Palauta kaikki viestit</string>
     <string name="empty_recycle_bin_messages_confirmation">Haluatko tyhjentää Roskakorin\? Viestit menetetään pysyvästi.</string>
@@ -114,4 +114,6 @@
     <string name="faq_2_text">Operaattorit rajoittavat MMS-kokoa, voit yrittää asettaa pienemmän rajan sovelluksen asetuksissa.</string>
     <string name="faq_3_title">Tukeeko sovellus ajoitettua viestien lähetystä\?</string>
     <string name="faq_3_text">Kyllä tukee ja voit ajoittaa viestin lähetyksen painamalla lähetyspainiketta pitkään ja valitsemalla halutun päivän ja kellonajan.</string>
+    <string name="app_launcher_name">Viestit</string>
+    <string name="enable_custom_notifications">Käytä mukautettuja ilmoituksia</string>
 </resources>
