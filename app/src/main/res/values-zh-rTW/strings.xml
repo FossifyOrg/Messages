@@ -111,4 +111,6 @@
     <string name="faq_2_text">MMS 的大小受到電信業者的限制，您可以嘗試在應用程式設定中設定較小的限制。</string>
     <string name="faq_3_title">應用程式是否支援排程訊息？</string>
     <string name="faq_3_text">是的，您可以長按「送出」按鈕並選擇所需的日期和時間，以排程將訊息送出。</string>
+    <string name="enable_custom_notifications">啟用自訂通知</string>
+    <string name="app_launcher_name">簡訊</string>
 </resources>
