@@ -1,11 +1,11 @@
 package org.fossify.messages.activities
 
-import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.ExportBlockedNumbersDialog
 import org.fossify.commons.dialogs.FilePickerDialog
@@ -25,11 +25,6 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 
 class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewListener {
-
-    private companion object {
-        private const val PICK_IMPORT_SOURCE_INTENT = 11
-        private const val PICK_EXPORT_FILE_INTENT = 21
-    }
 
     override fun getAppIconIDs() = intent.getIntegerArrayListExtra(APP_ICON_IDS) ?: ArrayList()
 
@@ -90,17 +85,24 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultData)
-        when {
-            requestCode == PICK_IMPORT_SOURCE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null -> {
-                tryImportBlockedKeywordsFromFile(resultData.data!!)
-            }
-
-            requestCode == PICK_EXPORT_FILE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null -> {
-                val outputStream = contentResolver.openOutputStream(resultData.data!!)
+    private val exportActivityResultLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
+        try {
+            val outputStream = uri?.let { contentResolver.openOutputStream(it) }
+            if (outputStream != null) {
                 exportBlockedKeywordsTo(outputStream)
             }
+        } catch (e: Exception) {
+            showErrorToast(e)
+        }
+    }
+
+    private val importActivityResultLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        try {
+            if (uri != null) {
+                tryImportBlockedKeywordsFromFile(uri)
+            }
+        } catch (e: Exception) {
+            showErrorToast(e)
         }
     }
 
@@ -112,7 +114,7 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
                 type = "text/plain"
 
                 try {
-                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                    importActivityResultLauncher.launch(type)
                 } catch (e: ActivityNotFoundException) {
                     toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                 } catch (e: Exception) {
@@ -198,7 +200,7 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
                     addCategory(Intent.CATEGORY_OPENABLE)
 
                     try {
-                        startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
+                        exportActivityResultLauncher.launch(file.name)
                     } catch (e: ActivityNotFoundException) {
                         toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                     } catch (e: Exception) {
