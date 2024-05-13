@@ -21,7 +21,7 @@
     <string name="duplicate_item_warning">Yinelenen öge dahil edilmedi</string>
     <plurals name="and_other_contacts">
         <item quantity="one">ve %d diğeri</item>
-        <item quantity="other">ve %d diğeri</item>
+        <item quantity="other">ve %d diğerleri</item>
     </plurals>
     <string name="new_conversation">Yeni görüşme</string>
     <string name="add_contact_or_number">Kişi veya Numara Ekle…</string>
