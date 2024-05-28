@@ -15,8 +15,8 @@
 <string name="no_reply_support">Afsender understøtter ikke svar</string>
 <string name="draft">Udkast</string>
 <string name="sending">Sender…</string>
-<string name="pin_conversation">Sæt fast i toppen</string>
-<string name="unpin_conversation">Frigør</string>
+<string name="pin_conversation">Fastgør samtale til toppen</string>
+<string name="unpin_conversation">Frigør samtale</string>
 <string name="forward_message">Fremad</string>
 <string name="compress_error">Billedet kan ikke komprimeres til den valgte størrelse</string>
 <string name="duplicate_item_warning">Dublet blev ikke inkluderet</string>
@@ -31,16 +31,16 @@
 <string name="rename_conversation">Omdøb samtale</string>
 <string name="rename_conversation_warning">Kun du kan se dette samtalenavn</string>
 <!-- Schedule send -->
-<string name="scheduled_message">Planlagt meddelelse</string>
-<string name="schedule_message">Planlæg meddelelse</string>
+<string name="scheduled_message">Planlagt besked</string>
+<string name="schedule_message">Planlæg besked</string>
 <string name="schedule_send">Planlæg afsendelse</string>
 <string name="cancel_schedule_send">Annuler planlagt afsendelse</string>
 <string name="must_pick_time_in_the_future">Du skal vælge et senere tidspunkt</string>
 <string name="schedule_send_warning">Hold telefonen tændt, og sørg for, at der ikke er noget der afbryder appen, mens den er i baggrunden.</string>
-<string name="update_message">Opdater meddelelse</string>
+<string name="update_message">Opdater besked</string>
 <string name="send_now">Send nu</string>
 <!-- Message details -->
-<string name="message_details">Meddelelsesdetaljer</string>
+<string name="message_details">beskedsdetaljer</string>
 <string name="message_details_sender">Afsender</string>
 <string name="message_details_receiver">Modtager</string>
 <string name="message_details_sent_at">Sendt</string>
@@ -51,7 +51,7 @@
 <string name="mark_as_read">Marker som læst</string>
 <string name="mark_as_unread">Marker som ulæst</string>
 <string name="me">Mig</string>
-<string name="enable_custom_notifications">Aktiver tilpassede meddelelser</string>
+<string name="enable_custom_notifications">Aktiver tilpassede notifikationer</string>
 <!-- Archive -->
 <string name="unarchive">Fjern arkivering</string>
 <string name="empty_archive">Slet alle arkiverede samtaler</string>
@@ -63,13 +63,13 @@
 <string name="empty_archive_confirmation">Er du sikker på, at du vil tømme arkivet? Alle arkiverede samtaler vil blive permanent slettet.</string>
 <!-- Recycle bin -->
 <string name="restore">Gendan</string>
-<string name="restore_all_messages">Gendan alle meddelelser</string>
+<string name="restore_all_messages">Gendan alle beskeder</string>
 <string name="empty_recycle_bin_messages_confirmation">Er du sikker på, at du vil tømme papirkurven? Beskederne vil blive permanent tabt.</string>
-<string name="skip_the_recycle_bin_messages">Brug ikke papirkurven, slet meddelelse direkte</string>
+<string name="skip_the_recycle_bin_messages">Brug ikke papirkurven, slet besked direkte</string>
 <!-- Confirmation dialog -->
 <string name="delete_whole_conversation_confirmation">Er du sikker på, at du vil slette alle beskeder i denne samtale?</string>
 <string name="archive_confirmation">Er du sikker på du vil arkivere %s?</string>
-<string name="restore_whole_conversation_confirmation">Er du sikker på du vil gendanne alle meddelelser i denne samtale?</string>
+<string name="restore_whole_conversation_confirmation">Er du sikker på du vil gendanne alle beskeder i denne samtale?</string>
 <string name="restore_confirmation">Er du sikker på du vil gendanne %s?</string>
 <!-- Are you sure you want to delete 5 conversations? -->
 <plurals name="and_other_contacts">
@@ -90,21 +90,21 @@
 <string name="keyword">Nøgleord</string>
 <string name="blocked_keywords">Blokerede nøgleord</string>
 <string name="manage_blocked_keywords">Administrer blokerede nøgleord</string>
-<string name="not_blocking_keywords">Du blokerer ikke nogen søgeord. Du kan tilføje nøgleord her for at blokere alle meddelelser, der indeholder dem.</string>
+<string name="not_blocking_keywords">Du blokerer ikke nogen søgeord. Du kan tilføje nøgleord her for at blokere alle beskeder, der indeholder dem.</string>
 <string name="add_a_blocked_keyword">Tilføj et blokeret nøgleord</string>
-<string name="lock_screen_visibility">Synlighed af meddelelse på låseskærmen</string>
-<string name="sender_and_message">Afsender og meddelelse</string>
+<string name="lock_screen_visibility">Synlighed af besked på låseskærmen</string>
+<string name="sender_and_message">Afsender og beskedindhold</string>
 <string name="sender_only">Kun afsender</string>
 <string name="enable_delivery_reports">Aktiver leveringsrapporter</string>
-<string name="use_simple_characters">Fjern accenter og diakritiske tegn ved afsendelse af meddelelser</string>
-<string name="send_on_enter">Send meddelelse når der trykkes Enter</string>
+<string name="use_simple_characters">Fjern accenter og diakritiske tegn ved afsendelse af beskeder</string>
+<string name="send_on_enter">Send besked når der trykkes Enter</string>
 <string name="mms_file_size_limit">Ændr størrelse på MMS-billeder</string>
 <string name="mms_file_size_limit_none">Ingen grænse</string>
-<string name="outgoing_messages">Udgående meddelelser</string>
-<string name="group_message_mms">Send gruppemeddelelser som MMS</string>
+<string name="outgoing_messages">Udgående beskeder</string>
+<string name="group_message_mms">Send gruppebeskeder som MMS</string>
 <string name="send_long_message_mms">Send lange beskeder som MMS</string>
 <!-- Export / Import -->
-<string name="messages">Meddelelser</string>
+<string name="messages">beskeder</string>
 <string name="export_messages">Eksporter beskeder</string>
 <string name="export_sms">Eksporter SMS</string>
 <string name="export_mms">Eksportér MMS</string>
@@ -113,12 +113,12 @@
 <string name="import_mms">Importer MMS</string>
 <string name="no_option_selected">Du skal vælge mindst et element</string>
 <!-- Errors -->
-<string name="empty_destination_address">Kan ikke sende meddelelse til et tomt nummer</string>
-<string name="unable_to_save_message">Kan ikke gemme meddelelse i telefonens database</string>
-<string name="error_service_is_unavailable">Kunne ikke sende meddelelse, service ikke tilgængelig</string>
-<string name="error_radio_turned_off">Kunne ikke sende meddelelse, radio er slukket</string>
-<string name="carrier_send_error">Kunne ikke sende meddelelse; operatørfejl</string>
-<string name="unknown_error_occurred_sending_message">Kunne ikke sende meddelelse, fejlmeddelelse: %d</string>
+<string name="empty_destination_address">Kan ikke sende besked til et tomt nummer</string>
+<string name="unable_to_save_message">Kan ikke gemme besked i telefonens database</string>
+<string name="error_service_is_unavailable">Kunne ikke sende besked, service ikke tilgængelig</string>
+<string name="error_radio_turned_off">Kunne ikke sende besked, radio er slukket</string>
+<string name="carrier_send_error">Kunne ikke sende besked; operatørfejl</string>
+<string name="unknown_error_occurred_sending_message">Kunne ikke sende besked, fejlmeddelelse: %d</string>
 <string name="invalid_short_code">Kan ikke svare på korte koder som denne</string>
 <string name="invalid_short_code_desc">Du kan kun svare på korte koder med tal som "503501", men ikke på koder, der indeholder bogstaver og tal som "AB-CD0".</string>
 <string name="attachment_sized_exceeds_max_limit">Størrelse på vedhæftning overstiger maks</string>
@@ -130,6 +130,6 @@
 <string name="faq_2_title">Kan jeg bruge denne app sammen med min standard besked-app?</string>
 <string name="faq_2_text">Nej. For at håndtere beskeder skal appen være din standard besked-app. Hvis den ikke er det, kan den ikke sende eller modtage beskeder.</string>
 <string name="faq_3_title">Hvordan kan jeg købe jer en kop kaffe?</string>
-<string name="faq_3_text">Vi sætter pris på gestus. Gå til indstillingerne, og klik på køb. Vores team takker dig!</string>
+<string name="faq_3_text">Vi sætter pris på gestus. Gå til indstillingerne, og klik på køb. Vores hold af udviklere takker dig!</string>
 
 </resources>
