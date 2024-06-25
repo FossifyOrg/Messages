@@ -118,4 +118,5 @@
     <string name="enable_custom_notifications">Activer les notifications personnalisées</string>
     <string name="suggestions">Suggestions</string>
     <string name="archived_conversations">Archive</string>
+    <string name="app_launcher_name">Messages</string>
 </resources>

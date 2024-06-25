@@ -9,7 +9,7 @@ Mit Fossify Messenger kannst du mühelos SMS- und MMS-Nachrichten versenden, um 
 🔒 MÜHELOSE SMS-SICHERUNG:
 Verabschiede dich von der Sorge, wichtige Nachrichten zu verlieren. Fossify Messenger bietet eine praktische SMS-Sicherungsfunktion, mit der du deine Nachrichten exportieren und importieren kannst. Diese Funktion stellt sicher, dass du problemlos das Gerät wechseln kannst, ohne deine wertvollen Unterhaltungen zu verlieren.
 
-🚀 BLITZSCHNELL UND LEICHT:
+🚀 BLITZSCHNELL UND SCHLANK:
 Trotz seiner leistungsstarken Funktionen ist die App von Fossify Messenger bemerkenswert klein, so dass sie schnell und einfach heruntergeladen und installiert werden kann. Erlebe Schnelligkeit und Effizienz und genieße gleichzeitig die Sicherheit, die dir die SMS-Sicherung bietet.
 
 🔐 VERBESSERTE PRIVATSPHÄRE:
@@ -18,13 +18,13 @@ Passe an, was auf deinem Sperrbildschirm angezeigt wird, um deine Privatsphäre 
 🔍 EFFIZIENTE NACHRICHTENSUCHE:
 Verabschiede dich vom endlosen Scrollen durch Unterhaltungen. Fossify Messenger vereinfacht das Auffinden von Nachrichten mit einer schnellen und effizienten Suchfunktion. Finde, was du brauchst, wann du es brauchst.
 
-🌈 MODERNES DESIGN & BENUTZERFREUNDLICHE OBERFLÄCHE:
-Genieße ein sauberes, modernes Design mit einer benutzerfreundlichen Oberfläche. Die App verfügt über ein Material Design und ein dunkles Farbschema, die ein optisch ansprechendes und komfortables Nutzererlebnis bietet.
+🌈 MODERNES DESIGN & BEDIENFREUNDLICHE OBERFLÄCHE:
+Genieße ein sauberes, modernes Design mit einer bedienfreundlichen Oberfläche. Die App verfügt über ein Material Design und ein dunkles Farbschema, die ein optisch ansprechendes und komfortables Nutzungserlebnis bieten.
 
 🌐 OPEN-SOURCE-TRANSPARENZ:
 Deine Privatsphäre hat höchste Priorität. Der Fossify Messenger funktioniert ohne Internetverbindung und garantiert so die Sicherheit und Stabilität deiner Nachrichten. Unsere App ist völlig werbefrei und fordert keine unnötigen Berechtigungen an. Außerdem ist sie vollständig quelloffen, was dich beruhigt, da du Zugang zum Quellcode hast, um die Sicherheit und den Datenschutz zu überprüfen.
 
-Steig auf Fossify Messenger um und erlebe Messaging so, wie es sein sollte – privat, effizient und benutzerfreundlich. Lade jetzt herunter und schließe dich unserer Community an, die sich für die Sicherheit deines Messaging-Erlebnisses einsetzt.
+Steig auf Fossify Messenger um und erlebe Messaging so, wie es sein sollte – privat, effizient und bedienfreundlich. Lade jetzt herunter und schließe dich unserer Community an, die sich für die Sicherheit deines Messaging-Erlebnisses einsetzt.
 
 Entdecke weitere Apps von Fossify: https://www.fossify.org
 Open-Source-Code: https://www.github.com/FossifyOrg
