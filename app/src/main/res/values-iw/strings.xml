@@ -67,4 +67,18 @@
     <string name="faq_1_text">למרבה הצער, זה נחוץ לשליחת קבצי MMS מצורפים. אי היכולת לשלוח MMS תהיה חיסרון עצום בהשוואה לאפליקציות אחרות, אז החלטנו ללכת בדרך זו. עם זאת, כמו בדרך כלל, אין מודעות, מעקב או ניתוח כלשהם, האינטרנט משמש רק לשליחת MMS.</string>
     <string name="faq_2_title">הקצה השני לא מקבל את ה-MMS שלי, האם יש משהו שאני יכול לעשות בנידון\?</string>
     <string name="faq_2_text">גודל ה-MMS מוגבל על ידי הספקים, אתה יכול לנסות להגדיר מגבלה קטנה יותר בהגדרות האפליקציה.</string>
-    </resources>
+    <string name="app_launcher_name">הודעות</string>
+    <string name="members">חברים</string>
+    <string name="conversation_name">שם שיחה</string>
+    <string name="conversation_details">פרטי שיחה</string>
+    <string name="rename_conversation">שינוי שם שיחה</string>
+    <string name="rename_conversation_warning">רק אתה יכול לראות את שם השיחה הזה</string>
+    <string name="scheduled_message">הודעה מתוזמנת</string>
+    <string name="schedule_message">הודעת לוח זמנים</string>
+    <string name="schedule_send">תכנן משלוח</string>
+    <string name="cancel_schedule_send">בטל משלוח מתוכנן</string>
+    <string name="must_pick_time_in_the_future">יש לבחור נקודת זמן בעתיד</string>
+    <string name="update_message">עדכון הודעה</string>
+    <string name="faq_3_text">כן, אתה יכול לתזמן שליחת הודעות בעתיד על ידי לחיצה ארוכה על כפתור השליחה ובחירת התאריך והשעה הרצויים.</string>
+    <string name="duplicate_item_warning">פריט כפול לא נכלל</string>
+</resources>
