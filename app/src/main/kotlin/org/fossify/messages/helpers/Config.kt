@@ -2,6 +2,7 @@ package org.fossify.messages.helpers
 
 import android.content.Context
 import org.fossify.commons.helpers.BaseConfig
+import org.fossify.commons.helpers.LAST_BLOCKED_NUMBERS_EXPORT_PATH
 import org.fossify.messages.extensions.getDefaultKeyboardHeight
 import org.fossify.messages.models.Conversation
 
@@ -127,4 +128,8 @@ class Config(context: Context) : BaseConfig(context) {
     fun removeCustomNotificationsByThreadId(threadId: Long) {
         customNotifications = customNotifications.minus(threadId.toString())
     }
+
+    var lastBlockedKeywordExportPath: String
+        get() = prefs.getString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, "")!!
+        set(lastBlockedNumbersExportPath) = prefs.edit().putString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, lastBlockedNumbersExportPath).apply()
 }
