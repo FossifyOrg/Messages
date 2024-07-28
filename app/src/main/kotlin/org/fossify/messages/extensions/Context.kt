@@ -990,11 +990,13 @@ fun Context.deleteSmsDraft(threadId: Long) {
 }
 
 fun Context.updateLastConversationMessage(threadId: Long) {
+    // update the date and the snippet of the thread, by triggering the
+    // following Android code (which runs even if no messages are deleted):
+    // https://android.googlesource.com/platform/packages/providers/TelephonyProvider/+/android14-release/src/com/android/providers/telephony/MmsSmsProvider.java#1409
     val uri = Threads.CONTENT_URI
-    val selection = "${Threads._ID} = ?"
-    val selectionArgs = arrayOf(threadId.toString())
+    val selection = "1 = 0" // always-false condition, because we don't actually want to delete any messages
     try {
-        contentResolver.delete(uri, selection, selectionArgs)
+        contentResolver.delete(uri, selection, null)
         val newConversation = getConversations(threadId)[0]
         insertOrUpdateConversation(newConversation)
     } catch (e: Exception) {
