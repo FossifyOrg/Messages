@@ -14,6 +14,7 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.extensions.*
+import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
 
@@ -40,7 +41,6 @@ class SmsReceiver : BroadcastReceiver() {
                 date = System.currentTimeMillis()
                 threadId = context.getThreadId(address)
             }
-
             if (context.baseConfig.blockUnknownNumbers) {
                 val simpleContactsHelper = SimpleContactsHelper(context)
                 simpleContactsHelper.exists(address, privateCursor) { exists ->
@@ -121,15 +121,5 @@ class SmsReceiver : BroadcastReceiver() {
                 }
             }
         }
-    }
-
-    private fun isMessageFilteredOut(context: Context, body: String): Boolean {
-        for (blockedKeyword in context.config.blockedKeywords) {
-            if (body.contains(blockedKeyword, ignoreCase = true)) {
-                return true
-            }
-        }
-
-        return false
     }
 }
