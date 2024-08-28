@@ -106,7 +106,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupMessagesExport() {
         binding.settingsExportMessagesHolder.setOnClickListener {
             ExportMessagesDialog(this) { fileName ->
-                saveDocument.launch(fileName)
+                saveDocument.launch("$fileName.json")
             }
         }
     }
