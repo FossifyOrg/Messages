@@ -14,12 +14,12 @@
     <plurals name="delete_conversations">
         <item quantity="one">%d conversa</item>
         <item quantity="many">%d conversas</item>
-        <item quantity="other"/>
+        <item quantity="other"></item>
     </plurals>
     <plurals name="delete_messages">
         <item quantity="one">%d mensagem</item>
         <item quantity="many">%d mensagens</item>
-        <item quantity="other"/>
+        <item quantity="other"></item>
     </plurals>
     <string name="mms_file_size_limit_none">Sem limite</string>
     <string name="group_message_mms">Enviar mensagens de grupo como MMS</string>
@@ -49,7 +49,7 @@
     <plurals name="and_other_contacts">
         <item quantity="one">e mais %d</item>
         <item quantity="many">e mais %d</item>
-        <item quantity="other"/>
+        <item quantity="other"></item>
     </plurals>
     <string name="new_conversation">Nova conversa</string>
     <string name="add_contact_or_number">Adicionar contacto ou número…</string>
@@ -109,7 +109,7 @@
     <string name="invalid_short_code">Não é possível responder a códigos deste tipo</string>
     <string name="faq_2_text">O tamanho das MMS é limitado pelas operadoras. Tente definir um limite inferior nas definições da aplicação.</string>
     <string name="faq_3_text">Sim, pode agendar mensagens e escolher a data e hora de envio com um toque longo no botão Enviar.</string>
-    <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, e não a códigos que combinem letras e números com, por exemplo, \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, e não a códigos que combinem letras e números com, por exemplo, B-CD0</string>
     <string name="must_pick_time_in_the_future">Tem que escolher um momento futuro</string>
     <string name="mms_file_size_limit">Redimensionar imagens MMS enviadas</string>
     <string name="outgoing_messages">Mensagens a enviar</string>
