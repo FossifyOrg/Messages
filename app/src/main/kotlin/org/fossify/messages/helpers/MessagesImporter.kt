@@ -48,7 +48,14 @@ class MessagesImporter(private val activity: SimpleActivity) {
                 activity.toast(org.fossify.commons.R.string.no_entries_for_importing)
                 return
             }
-            ImportMessagesDialog(activity, deserializedList)
+            val messages = deserializedList.map { message ->
+                // workaround for messages not being imported on Android 14 when the device has a different subscriptionId (see #191)
+                when (message) {
+                    is SmsBackup -> message.copy(subscriptionId = -1)
+                    is MmsBackup -> message.copy(subscriptionId = -1)
+                }
+            }
+            ImportMessagesDialog(activity, messages)
         } catch (e: SerializationException) {
             activity.toast(org.fossify.commons.R.string.invalid_file_format)
         } catch (e: IllegalArgumentException) {
