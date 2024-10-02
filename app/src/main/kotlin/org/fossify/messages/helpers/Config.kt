@@ -127,4 +127,8 @@ class Config(context: Context) : BaseConfig(context) {
     fun removeCustomNotificationsByThreadId(threadId: Long) {
         customNotifications = customNotifications.minus(threadId.toString())
     }
+
+    var blockGroupChatMessages: Boolean
+        get() = prefs.getBoolean(BLOCK_GROUP_MESSAGE, false)
+        set(blockGroupChatMessages) = prefs.edit().putBoolean(BLOCK_GROUP_MESSAGE, blockGroupChatMessages).apply()
 }

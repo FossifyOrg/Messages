@@ -72,6 +72,7 @@ class SettingsActivity : SimpleActivity() {
         setupMessagesExport()
         setupMessagesImport()
         updateTextColors(binding.settingsNestedScrollview)
+        setupBlockGroupMessage()
 
         if (blockedNumbersAtPause != -1 && blockedNumbersAtPause != getBlockedNumbers().hashCode()) {
             refreshMessages()
@@ -415,4 +416,12 @@ class SettingsActivity : SimpleActivity() {
             else -> R.string.mms_file_size_limit_none
         }
     )
+
+    private fun setupBlockGroupMessage() = binding.apply {
+        settingsBlockMessagesGroupchat.isChecked = config.blockGroupChatMessages
+        settingsBlockMessagesGroupchatHolder.setOnClickListener {
+            settingsBlockMessagesGroupchat.toggle()
+            config.blockGroupChatMessages = settingsBlockMessagesGroupchat.isChecked
+        }
+    }
 }
