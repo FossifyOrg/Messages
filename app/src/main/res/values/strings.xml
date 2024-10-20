@@ -106,6 +106,7 @@
     <string name="send_long_message_mms">Send long messages as MMS</string>
     <!-- Export / Import -->
     <string name="messages">Messages</string>
+    <string name="keywords">Keywords</string>
     <string name="export_messages">Export messages</string>
     <string name="export_sms">Export SMS</string>
     <string name="export_mms">Export MMS</string>
@@ -113,6 +114,8 @@
     <string name="import_sms">Import SMS</string>
     <string name="import_mms">Import MMS</string>
     <string name="no_option_selected">You have to select at least one item</string>
+    <string name="export_blocked_keywords">Export blocked keywords</string>
+    <string name="import_blocked_keywords">Import blocked keywords</string>
     <!-- Errors -->
     <string name="empty_destination_address">Can\'t send message to an empty number</string>
     <string name="unable_to_save_message">Unable to save message to the telephony database</string>
