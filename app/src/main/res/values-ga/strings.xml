@@ -64,7 +64,7 @@
     <string name="carrier_send_error">Níorbh fhéidir an teachtaireacht a sheoladh, earráid iompróra</string>
     <string name="unknown_error_occurred_sending_message">Níorbh fhéidir an teachtaireacht a sheoladh, cód earráide: %d</string>
     <string name="invalid_short_code">Ní féidir freagra a thabhairt ar chóid ghearra mar seo</string>
-    <string name="invalid_short_code_desc">Ní féidir leat ach cóid ghearra a bhfuil uimhreacha mar \"503501\" orthu freagra a thabhairt ach ní féidir leat cóid a bhfuil litreacha agus uimhreacha mar \"AB-CD0\" orthu a fhreagairt.</string>
+    <string name="invalid_short_code_desc">Ní féidir leat ach cóid ghearra a bhfuil uimhreacha mar 03501 orthu freagra a thabhairt ach ní féidir leat cóid a bhfuil litreacha agus uimhreacha mar B-CD0 orthu a fhreagairt.</string>
     <string name="attachment_sized_exceeds_max_limit">Sáraíonn méid an cheangaltáin uasteorainn MMS</string>
     <string name="sim_card_not_available">Níl cárta SIM ar fáil</string>
     <string name="couldnt_download_mms">Níorbh fhéidir MMS a íoslódáil</string>
