@@ -137,4 +137,6 @@
         Haven't found some strings? There's more at
         https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
+<!--    Groupchat Settings-->
+    <string name="block_chats_unknown_numbers_group">Block chats from unknown numbers in groupchats</string>
 </resources>
