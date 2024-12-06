@@ -14,7 +14,7 @@
     <string name="no_reply_support">Изпращачът не поддържа отговори</string>
     <string name="draft">Чернова</string>
     <string name="sending">Изпращане…</string>
-    <string name="pin_conversation">Закачване отгоре</string>
+    <string name="pin_conversation">Закачане най-горе</string>
     <string name="unpin_conversation">Премахване от закачените</string>
     <string name="forward_message">Препращане</string>
     <string name="compress_error">Изображението не може да бъде свито до избрания размер</string>
