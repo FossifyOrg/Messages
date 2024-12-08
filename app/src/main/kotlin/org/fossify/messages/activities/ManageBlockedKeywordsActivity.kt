@@ -71,9 +71,9 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
 
     private fun updateBlockedKeywords() {
         ensureBackgroundThread {
-            val blockedKeywords = config.blockedKeywords
+            val blockedKeywords = config.blockedKeywords.sorted().toArrayList()
             runOnUiThread {
-                ManageBlockedKeywordsAdapter(this, blockedKeywords.toArrayList(), this, binding.manageBlockedKeywordsList) {
+                ManageBlockedKeywordsAdapter(this, blockedKeywords, this, binding.manageBlockedKeywordsList) {
                     addOrEditBlockedKeyword(it as String)
                 }.apply {
                     binding.manageBlockedKeywordsList.adapter = this
