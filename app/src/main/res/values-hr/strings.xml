@@ -62,7 +62,7 @@
     <string name="restore_all_messages">Obnovi sve poruke</string>
     <string name="empty_recycle_bin_messages_confirmation">Stvarno želiš isprazniti koš za smeće? Poruke će biti trajno izgubljene.</string>
     <string name="skip_the_recycle_bin_messages">Preskoči koš za smeće, izbriši poruke odmah</string>
-    <string name="delete_whole_conversation_confirmation">Stvarno želiš izbrisati sve poruke ovog razgovora\?</string>
+    <string name="delete_whole_conversation_confirmation">Stvarno želiš izbrisati sve poruke ovog razgovora?</string>
     <string name="archive_confirmation">Stvarno želiš arhivirati %s?</string>
     <string name="restore_whole_conversation_confirmation">Stvarno želiš obnoviti sve poruke ovog razgovora?</string>
     <string name="restore_confirmation">Stvarno želiš obnoviti %s?</string>
@@ -110,13 +110,16 @@
     <string name="invalid_short_code_desc">Možeš odgovoriti samo na kratke kodove s brojevima poput „503501”, ali ne i na kodove koji sadrže slova i brojke poput „AB-CD0”.</string>
     <string name="attachment_sized_exceeds_max_limit">Veličina privitka premašuje maksimalno ograničenje MMS-a</string>
     <string name="sim_card_not_available">SIM kartica nije dostupna</string>
-    <string name="faq_1_title">Zašto aplikacija zahtijeva pristup internetu\?</string>
+    <string name="faq_1_title">Zašto aplikacija zahtijeva pristup internetu?</string>
     <string name="faq_1_text">Nažalost je pristup potreban za slanje MMS privitaka. Nemogućnost slanja MMS-a bila bi zaista veliki nedostatak u usporedbi s drugim aplikacijama, pa smo odlučili krenuti ovim putem. No, kao i obično, nema reklama, praćenja ili analiziranja podataka, internet se koristi samo za slanje MMS-a.</string>
-    <string name="faq_2_title">Druga strana ne prima moj MMS. Mogu li išta učiniti po tom pitanju\?</string>
+    <string name="faq_2_title">Druga strana ne prima moj MMS. Mogu li išta učiniti po tom pitanju?</string>
     <string name="faq_2_text">Veličinu MMS-a ograničavaju operateri. Možeš pokušati smanjiti ograničenje u postavkama aplikacije.</string>
-    <string name="faq_3_title">Podržava li aplikacija zakazane poruke\?</string>
+    <string name="faq_3_title">Podržava li aplikacija zakazane poruke?</string>
     <string name="faq_3_text">Da, možeš zakazati slanje poruka u budućnosti dugim pritiskom gumba „Pošalji” i odabrati željeni datum i vrijeme.</string>
     <string name="app_launcher_name">Poruke</string>
     <string name="couldnt_download_mms">Nije bilo moguće preuzeti MMS</string>
     <string name="enable_custom_notifications">Omogući prilagođene obavijesti</string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="export_blocked_keywords"></string>
 </resources>
