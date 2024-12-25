@@ -59,7 +59,7 @@
     <string name="restore_all_messages">Gendan alle beskeder</string>
     <string name="empty_recycle_bin_messages_confirmation">Er du sikker på, at du vil tømme papirkurven? Beskederne vil være permanent tabt.</string>
     <string name="skip_the_recycle_bin_messages">Brug ikke papirkurven, slet beskeder med det samme</string>
-    <string name="delete_whole_conversation_confirmation">Er du sikker på, at du vil slette alle beskeder i denne samtale\?</string>
+    <string name="delete_whole_conversation_confirmation">Er du sikker på, at du vil slette alle beskeder i denne samtale?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d samtale</item>
         <item quantity="other">%d samtaler</item>
@@ -102,13 +102,13 @@
     <string name="carrier_send_error">Kunne ikke sende besked; operatørfejl</string>
     <string name="unknown_error_occurred_sending_message">Kunne ikke sende besked, fejlmeddelelse: %d</string>
     <string name="invalid_short_code">Kan ikke svare på korte koder som denne</string>
-    <string name="invalid_short_code_desc">Du kan kun svare på korte koder med tal som \"503501\", men ikke på koder, der indeholder bogstaver og tal som \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Du kan kun svare på korte koder med tal som 03501 men ikke på koder, der indeholder bogstaver og tal som B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">Størrelse på vedhæftning overstiger maks</string>
     <string name="sim_card_not_available">SIM-kort ikke tilgængeligt</string>
     <string name="couldnt_download_mms">Kunne ikke hente MMS</string>
-    <string name="faq_1_title">Hvorfor kræver appen adgang til internettet\?</string>
+    <string name="faq_1_title">Hvorfor kræver appen adgang til internettet?</string>
     <string name="faq_1_text">Desværre er det nødvendigt for at sende MMS-vedhæftede filer. Ikke at kunne være i stand til at sende MMS ville være en virkelig stor ulempe i forhold til andre apps, så vi besluttede at gå denne vej. Men som normalt er der ingen annoncer, sporing eller analyse overhovedet, internettet bruges kun til at sende MMS.</string>
-    <string name="faq_2_title">Den anden ende modtager ikke min MMS, er der noget jeg kan gøre ved det\?</string>
+    <string name="faq_2_title">Den anden ende modtager ikke min MMS, er der noget jeg kan gøre ved det?</string>
     <string name="faq_2_text">MMS-størrelsen er begrænset af udbydere, du kan prøve at sætte en mindre grænse i appindstillingerne.</string>
     <string name="faq_3_title">Kan man planlægge afsendelse?</string>
     <string name="faq_3_text">Ja, du kan planlægge beskeder til at blive sendt i fremtiden ved at trykke længe på Send-knappen og vælge den ønskede dato og tid.</string>
@@ -116,4 +116,7 @@
         <item quantity="one">og %d anden</item>
         <item quantity="other">og %d andre</item>
     </plurals>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="export_blocked_keywords"></string>
 </resources>
