@@ -113,7 +113,7 @@
     <string name="carrier_send_error">لا يمكن إرسال الرسالة، خطأ في الناقل</string>
     <string name="unknown_error_occurred_sending_message">تعذر إرسال الرسالة، رمز الخطأ: %d</string>
     <string name="invalid_short_code">لا يمكن الرد على أمثال هذه الرموز القصيرة</string>
-    <string name="invalid_short_code_desc">يمكنك فقط الرد على الرموز القصيرة بأرقام مثل \"503501\" ولكن ليس على الرموز التي تحتوي على أحرف وأرقام مثل \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">يمكنك فقط الرد على الرموز القصيرة بأرقام مثل 03501 ولكن ليس على الرموز التي تحتوي على أحرف وأرقام مثل B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">يتجاوز حجم المرفق الحد الأقصى لرسائل الوسائط المتعددة</string>
     <string name="sim_card_not_available">بطاقة SIM غير متوفرة</string>
     <string name="couldnt_download_mms">لا يمكن تحميل MMS</string>
@@ -122,5 +122,13 @@
     <string name="faq_2_title">الطرف الآخر لا يستقبل رسائل الوسائط المتعددة الخاصة بي ، فهل هناك أي شيء يمكنني القيام به حيال ذلك؟</string>
     <string name="faq_2_text">حجم MMS محدود بواسطة شركات الاتصالات ، يمكنك محاولة تعيين حد أصغر في إعدادات التطبيق.</string>
     <string name="faq_3_title">هل يدعم التطبيق الرسائل المجدولة؟</string>
-    <string name="faq_3_text">نعم ، يمكنك جدولة الرسائل ليتم إرسالها في المستقبل عن طريق الضغط مع الاستمرار على الزر \"إرسال\" واختيار التاريخ والوقت المطلوبين.</string>
+    <string name="faq_3_text">نعم ، يمكنك جدولة الرسائل ليتم إرسالها في المستقبل عن طريق الضغط مع الاستمرار على الزر رسال واختيار التاريخ والوقت المطلوبين.</string>
+    <string name="enable_custom_notifications"></string>
+    <string name="app_launcher_name"></string>
+    <string name="message_details"></string>
+    <string name="me"></string>
+    <string name="export_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="update_message"></string>
 </resources>
