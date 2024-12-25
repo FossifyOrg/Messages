@@ -125,4 +125,7 @@
     <string name="faq_1_text">Faraor tá sé ag teastáil chun ceangaltáin MMS a sheoladh. Bheadh míbhuntáiste mór gan a bheith in ann MMS a sheoladh i gcomparáid le haipeanna eile, agus mar sin shocraigh muid dul ar an mbealach seo. Mar sin féin, mar is gnách, níl aon fhógraí, rianú nó anailísíocht ar bith ann, ní úsáidtear an t-idirlíon ach amháin chun MMS a sheoladh.</string>
     <string name="faq_2_title">Níl mo MMS á fháil ag an taobh eile, an bhfuil aon rud is féidir liom a dhéanamh faoi?</string>
     <string name="faq_2_text">Tá méid MMS teoranta ag iompróirí, is féidir leat triail teorainn níos lú a shocrú i socruithe an app.</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
 </resources>
