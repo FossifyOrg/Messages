@@ -116,7 +116,4 @@
     <string name="faq_3_text">Ja, du kan schemalägga meddelanden så att de skickas i framtiden genom att trycka länge på knappen Skicka och välja önskat datum och tid.</string>
     <string name="enable_custom_notifications">Aktivera anpassade aviseringar</string>
     <string name="app_launcher_name">Meddelanden</string>
-    <string name="keywords"></string>
-    <string name="import_blocked_keywords"></string>
-    <string name="export_blocked_keywords"></string>
 </resources>

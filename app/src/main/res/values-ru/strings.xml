@@ -122,7 +122,4 @@
     <string name="faq_3_text">Да, вы можете запланировать отправку сообщений в будущем, нажав и удерживая кнопку тправить и выбрав нужную дату и время.</string>
     <string name="enable_custom_notifications">Использовать собственные уведомления</string>
     <string name="app_launcher_name">Сообщения</string>
-    <string name="import_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="export_blocked_keywords"></string>
 </resources>

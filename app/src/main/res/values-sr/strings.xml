@@ -101,25 +101,4 @@
     <string name="faq_2_text">Величина ММС-а је ограничена оператерима, можете покушати да подесите мање ограничење у подешавањима апликације.</string>
     <string name="faq_3_title">Да ли апликација подржава заказане поруке?</string>
     <string name="faq_3_text">Да, можете заказати слање порука у будућности дугим притиском на дугме Пошаљи и одабиром жељеног датума и времена.</string>
-    <string name="invalid_short_code"></string>
-    <string name="couldnt_download_mms"></string>
-    <string name="error_service_is_unavailable"></string>
-    <string name="empty_destination_address"></string>
-    <string name="attachment_sized_exceeds_max_limit"></string>
-    <string name="app_launcher_name"></string>
-    <string name="rename_conversation_warning"></string>
-    <string name="import_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="conversation_name"></string>
-    <string name="conversation_details"></string>
-    <string name="export_blocked_keywords"></string>
-    <string name="error_radio_turned_off"></string>
-    <string name="unknown_error_occurred_sending_message"></string>
-    <string name="carrier_send_error"></string>
-    <string name="members"></string>
-    <string name="invalid_short_code_desc"></string>
-    <string name="unable_to_save_message"></string>
-    <string name="sim_card_not_available"></string>
-    <string name="rename_conversation"></string>
-    <string name="enable_custom_notifications"></string>
 </resources>

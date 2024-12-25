@@ -122,7 +122,4 @@
     <string name="invalid_short_code">Ni mogoče odgovoriti na kratke kode, kot je ta</string>
     <string name="unknown_error_occurred_sending_message">Sporočila ni bilo mogoče poslati, koda napake: %d</string>
     <string name="carrier_send_error">Sporočila ni bilo mogoče poslati, napaka operaterja</string>
-    <string name="import_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="export_blocked_keywords"></string>
 </resources>

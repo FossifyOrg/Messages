@@ -116,7 +116,4 @@
     <string name="update_message">Uuenda sõnumit</string>
     <string name="message_details">Sõnumi teave</string>
     <string name="app_launcher_name">Sõnumid</string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="import_blocked_keywords"></string>
 </resources>

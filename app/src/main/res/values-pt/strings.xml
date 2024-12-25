@@ -119,7 +119,4 @@
     <string name="enable_custom_notifications">Ativar notificações personalizadas</string>
     <string name="message_details">Detalhes da mensagem</string>
     <string name="app_launcher_name">Mensagens</string>
-    <string name="import_blocked_keywords"></string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
 </resources>

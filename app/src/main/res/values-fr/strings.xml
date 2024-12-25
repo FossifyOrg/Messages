@@ -119,7 +119,4 @@
     <string name="suggestions">Suggestions</string>
     <string name="archived_conversations">Archive</string>
     <string name="app_launcher_name">Messages</string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="import_blocked_keywords"></string>
 </resources>

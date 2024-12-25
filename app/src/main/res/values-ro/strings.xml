@@ -119,7 +119,4 @@
     <string name="empty_archive_confirmation">Sigur dorești să golești arhiva? Toate conversațiile arhivate se vor pierde definitiv.</string>
     <string name="cancel_schedule_send">Anulează trimiterea programată</string>
     <string name="empty_destination_address">Nu se poate trimite mesaj la un număr gol</string>
-    <string name="import_blocked_keywords"></string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
 </resources>

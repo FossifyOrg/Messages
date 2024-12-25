@@ -119,7 +119,4 @@
     <string name="message_details">Detaily zprávy</string>
     <string name="enable_custom_notifications">Povolit vlastní oznámení</string>
     <string name="app_launcher_name">Zprávy</string>
-    <string name="import_blocked_keywords"></string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
 </resources>

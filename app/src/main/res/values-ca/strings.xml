@@ -119,7 +119,4 @@
     <string name="update_message">Actualitza el missatge</string>
     <string name="message_details">Detalls del missatge</string>
     <string name="me">Jo</string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="import_blocked_keywords"></string>
 </resources>

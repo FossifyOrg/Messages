@@ -119,7 +119,4 @@
     <string name="faq_3_text">Sí, puedes programar el envío de mensajes en el futuro pulsando prolongadamente el botón de envío y eligiendo la fecha y hora deseadas.</string>
     <string name="enable_custom_notifications">Activar las notificaciones personalizadas</string>
     <string name="app_launcher_name">Mensajes</string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="import_blocked_keywords"></string>
 </resources>

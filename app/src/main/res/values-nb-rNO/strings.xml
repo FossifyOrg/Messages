@@ -116,7 +116,4 @@
     <string name="carrier_send_error">Kunne ikke sende melding, operatørfeil</string>
     <string name="invalid_short_code">Kan ikke svare til kortnummer som dette</string>
     <string name="error_radio_turned_off">Kunne ikke sende melding, radio er avslått</string>
-    <string name="export_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="import_blocked_keywords"></string>
 </resources>

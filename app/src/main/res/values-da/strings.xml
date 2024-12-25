@@ -116,7 +116,4 @@
         <item quantity="one">og %d anden</item>
         <item quantity="other">og %d andre</item>
     </plurals>
-    <string name="import_blocked_keywords"></string>
-    <string name="keywords"></string>
-    <string name="export_blocked_keywords"></string>
 </resources>

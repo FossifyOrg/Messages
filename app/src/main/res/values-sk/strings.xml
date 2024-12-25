@@ -117,9 +117,4 @@
     <string name="faq_2_text">Veľkosť MMS je obmedzená operátormi, skúste zvoliť menší limit v nastaveniach apky.</string>
     <string name="faq_3_title">Podporuje apka naplánované správy?</string>
     <string name="faq_3_text">Áno, správu môžete naplánovať dlhým podržaním tlačidla Odoslať a zvolením žiadaného dátumu a času.</string>
-    <string name="enable_custom_notifications"></string>
-    <string name="app_launcher_name"></string>
-    <string name="keywords"></string>
-    <string name="export_blocked_keywords"></string>
-    <string name="import_blocked_keywords"></string>
 </resources>
