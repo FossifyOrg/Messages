@@ -55,15 +55,15 @@
     <string name="archive">Lưu trữ</string>
     <string name="no_archived_conversations">Không có cuộc hội thoại đã lưu trữ nào được tìm thấy</string>
     <string name="archive_emptied_successfully">Kho lưu trữ đã được dọn sạch thành công</string>
-    <string name="empty_archive_confirmation">Bạn có chắc là muốn dọn sạch kho lưu trữ không\? Tất cả các cuộc hội thoại đã lưu trữ sẽ bị mất vĩnh viễn.</string>
+    <string name="empty_archive_confirmation">Bạn có chắc là muốn dọn sạch kho lưu trữ không? Tất cả các cuộc hội thoại đã lưu trữ sẽ bị mất vĩnh viễn.</string>
     <string name="restore">Khôi phục</string>
     <string name="restore_all_messages">Khôi phục tất cả tin nhắn</string>
-    <string name="empty_recycle_bin_messages_confirmation">Bạn có chắc là muốn dọn sạch Thùng rác không\? Tất cả tin nhắn sẽ bị mất vĩnh viễn.</string>
+    <string name="empty_recycle_bin_messages_confirmation">Bạn có chắc là muốn dọn sạch Thùng rác không? Tất cả tin nhắn sẽ bị mất vĩnh viễn.</string>
     <string name="skip_the_recycle_bin_messages">Bỏ qua Thùng rác, xóa tin nhắn trực tiếp</string>
-    <string name="delete_whole_conversation_confirmation">Bạn có chắc là muốn xóa tất cả các tin nhắn của cuộc hội thoại này không\?</string>
-    <string name="archive_confirmation">Bạn có chắc là muốn lưu trữ %s\?</string>
-    <string name="restore_whole_conversation_confirmation">Bạn có chắc là muốn khôi phục tất cả tin nhắn của cuộc hội thoại này không\?</string>
-    <string name="restore_confirmation">Bạn có chắc là muốn khôi phục %s\?</string>
+    <string name="delete_whole_conversation_confirmation">Bạn có chắc là muốn xóa tất cả các tin nhắn của cuộc hội thoại này không?</string>
+    <string name="archive_confirmation">Bạn có chắc là muốn lưu trữ %s?</string>
+    <string name="restore_whole_conversation_confirmation">Bạn có chắc là muốn khôi phục tất cả tin nhắn của cuộc hội thoại này không?</string>
+    <string name="restore_confirmation">Bạn có chắc là muốn khôi phục %s?</string>
     <plurals name="delete_conversations">
         <item quantity="other">%d cuộc hội thoại</item>
     </plurals>
@@ -101,16 +101,19 @@
     <string name="carrier_send_error">Không thể gửi tin nhắn, lỗi nhà mạng</string>
     <string name="unknown_error_occurred_sending_message">Không thể gửi tin nhắn, mã lỗi: %d</string>
     <string name="invalid_short_code">Không thể trả lời các mã ngắn như thế này</string>
-    <string name="invalid_short_code_desc">Bạn chỉ có thể trả lời các mã ngắn có số như \"503501\" chứ không thể trả lời các mã bao gồm cả ký tự và số như \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Bạn chỉ có thể trả lời các mã ngắn có số như 03501 chứ không thể trả lời các mã bao gồm cả ký tự và số như B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">Kích thước tập tin đính kèm vượt qua giới hạn MMS</string>
     <string name="sim_card_not_available">Thẻ SIM không khả dụng</string>
     <string name="couldnt_download_mms">Không thể tải xuống MMS</string>
-    <string name="faq_1_title">Tại sao ứng dụng cần quyền truy cập Internet\?</string>
+    <string name="faq_1_title">Tại sao ứng dụng cần quyền truy cập Internet?</string>
     <string name="faq_1_text">Đáng buồn là nó lại cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các ứng dụng khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>
-    <string name="faq_2_title">Đầu bên kia không nhận được MMS của tôi, tôi có thể làm gì được không\?</string>
+    <string name="faq_2_title">Đầu bên kia không nhận được MMS của tôi, tôi có thể làm gì được không?</string>
     <string name="faq_2_text">Kích thước MMS bị giới hạn bởi nhà cung cấp dịch vụ, bạn có thể thử đặt giới hạn nhỏ hơn trong cài đặt ứng dụng.</string>
-    <string name="faq_3_title">Ứng dụng có hỗ trợ gửi tin nhắn theo lịch trình không\?</string>
+    <string name="faq_3_title">Ứng dụng có hỗ trợ gửi tin nhắn theo lịch trình không?</string>
     <string name="faq_3_text">Có, bạn có thể lên lịch gửi tin nhắn trong tương lai bằng cách nhấn và giữ nút Gửi và chọn ngày giờ mong muốn.</string>
     <string name="enable_custom_notifications">Bật thông báo tùy chỉnh</string>
     <string name="app_launcher_name">Tin nhắn</string>
+    <string name="keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="export_blocked_keywords"></string>
 </resources>
