@@ -62,7 +62,7 @@
     <string name="restore_all_messages">Obnoviť všetky správy</string>
     <string name="empty_recycle_bin_messages_confirmation">Ste si istý, že chcete vysypať odpadkový kôš? Správy budú navždy stratené.</string>
     <string name="skip_the_recycle_bin_messages">Vynechať odpadkový kôš, priamo vymazať správy</string>
-    <string name="delete_whole_conversation_confirmation">Ste si istý, že chcete odstrániť všetky správy tejto konverzácie\?</string>
+    <string name="delete_whole_conversation_confirmation">Ste si istý, že chcete odstrániť všetky správy tejto konverzácie?</string>
     <string name="archive_confirmation">Ste si istý, že chcete archivovať %s?</string>
     <string name="restore_whole_conversation_confirmation">Ste si istý, že chcete obnoviť všetky správy tejto konverzácie?</string>
     <string name="restore_confirmation">Ste si istý, že chcete obnoviť %s?</string>
@@ -107,14 +107,19 @@
     <string name="carrier_send_error">Nepodarilo sa odoslať správu, chyba operátora</string>
     <string name="unknown_error_occurred_sending_message">Nepodarilo sa odoslať správu, chyba: %d</string>
     <string name="invalid_short_code">Nie je možné odpovedať takýmto krátkym kódom</string>
-    <string name="invalid_short_code_desc">Odpovedať je možné iba krátkym kódom obsahujúcim čísla ako \"503501\", ale nie kódom obsahujúcim písmená a čísla ako \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Odpovedať je možné iba krátkym kódom obsahujúcim čísla ako 03501 ale nie kódom obsahujúcim písmená a čísla ako B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">Veľkosť prílohy presahuje maximálny limit MMS</string>
     <string name="sim_card_not_available">SIM karta nie je k dispozícií</string>
     <string name="couldnt_download_mms">Nepodarilo sa stiahnuť MMS</string>
-    <string name="faq_1_title">Prečo vyžaduje apka prístup na internet\?</string>
+    <string name="faq_1_title">Prečo vyžaduje apka prístup na internet?</string>
     <string name="faq_1_text">Je to žiaľ nevyhnutné pre odosielanie MMS príloh. Ak by sa ich nedalo odosielať, bola by to obrovská nevýhoda v porovnaní s konkurenciou, preto sme sa rozhodli takto. Ako ale stále, ani v tejto apke nie sú reklamy, sledovanie, ani vôbec žiadne analytiky. Internet sa používa jedine pri odosielaní MMS.</string>
-    <string name="faq_2_title">Druhá strana nedostáva moje MMS, viem s tým niečo spraviť\?</string>
+    <string name="faq_2_title">Druhá strana nedostáva moje MMS, viem s tým niečo spraviť?</string>
     <string name="faq_2_text">Veľkosť MMS je obmedzená operátormi, skúste zvoliť menší limit v nastaveniach apky.</string>
     <string name="faq_3_title">Podporuje apka naplánované správy?</string>
     <string name="faq_3_text">Áno, správu môžete naplánovať dlhým podržaním tlačidla Odoslať a zvolením žiadaného dátumu a času.</string>
+    <string name="enable_custom_notifications"></string>
+    <string name="app_launcher_name"></string>
+    <string name="keywords"></string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
 </resources>
