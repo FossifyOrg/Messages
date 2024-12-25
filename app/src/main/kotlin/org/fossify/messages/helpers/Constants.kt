@@ -26,6 +26,7 @@ const val SEND_GROUP_MESSAGE_MMS = "send_group_message_mms"
 const val MMS_FILE_SIZE_LIMIT = "mms_file_size_limit"
 const val PINNED_CONVERSATIONS = "pinned_conversations"
 const val BLOCKED_KEYWORDS = "blocked_keywords"
+const val LAST_BLOCKED_KEYWORD_EXPORT_PATH = "last_blocked_keyword_export_path"
 const val EXPORT_SMS = "export_sms"
 const val EXPORT_MMS = "export_mms"
 const val JSON_FILE_EXTENSION = ".json"
@@ -88,6 +89,9 @@ const val CAPTURE_VIDEO_INTENT = 45
 const val CAPTURE_AUDIO_INTENT = 46
 const val PICK_DOCUMENT_INTENT = 47
 const val PICK_CONTACT_INTENT = 48
+
+const val BLOCKED_KEYWORDS_EXPORT_DELIMITER = ","
+const val BLOCKED_KEYWORDS_EXPORT_EXTENSION = ".txt"
 
 fun refreshMessages() {
     EventBus.getDefault().post(Events.RefreshMessages())

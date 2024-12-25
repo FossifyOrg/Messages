@@ -18,11 +18,13 @@ class Config(context: Context) : BaseConfig(context) {
 
     var showCharacterCounter: Boolean
         get() = prefs.getBoolean(SHOW_CHARACTER_COUNTER, false)
-        set(showCharacterCounter) = prefs.edit().putBoolean(SHOW_CHARACTER_COUNTER, showCharacterCounter).apply()
+        set(showCharacterCounter) = prefs.edit()
+            .putBoolean(SHOW_CHARACTER_COUNTER, showCharacterCounter).apply()
 
     var useSimpleCharacters: Boolean
         get() = prefs.getBoolean(USE_SIMPLE_CHARACTERS, false)
-        set(useSimpleCharacters) = prefs.edit().putBoolean(USE_SIMPLE_CHARACTERS, useSimpleCharacters).apply()
+        set(useSimpleCharacters) = prefs.edit()
+            .putBoolean(USE_SIMPLE_CHARACTERS, useSimpleCharacters).apply()
 
     var sendOnEnter: Boolean
         get() = prefs.getBoolean(SEND_ON_ENTER, false)
@@ -30,19 +32,23 @@ class Config(context: Context) : BaseConfig(context) {
 
     var enableDeliveryReports: Boolean
         get() = prefs.getBoolean(ENABLE_DELIVERY_REPORTS, false)
-        set(enableDeliveryReports) = prefs.edit().putBoolean(ENABLE_DELIVERY_REPORTS, enableDeliveryReports).apply()
+        set(enableDeliveryReports) = prefs.edit()
+            .putBoolean(ENABLE_DELIVERY_REPORTS, enableDeliveryReports).apply()
 
     var sendLongMessageMMS: Boolean
         get() = prefs.getBoolean(SEND_LONG_MESSAGE_MMS, false)
-        set(sendLongMessageMMS) = prefs.edit().putBoolean(SEND_LONG_MESSAGE_MMS, sendLongMessageMMS).apply()
+        set(sendLongMessageMMS) = prefs.edit().putBoolean(SEND_LONG_MESSAGE_MMS, sendLongMessageMMS)
+            .apply()
 
     var sendGroupMessageMMS: Boolean
         get() = prefs.getBoolean(SEND_GROUP_MESSAGE_MMS, false)
-        set(sendGroupMessageMMS) = prefs.edit().putBoolean(SEND_GROUP_MESSAGE_MMS, sendGroupMessageMMS).apply()
+        set(sendGroupMessageMMS) = prefs.edit()
+            .putBoolean(SEND_GROUP_MESSAGE_MMS, sendGroupMessageMMS).apply()
 
     var lockScreenVisibilitySetting: Int
         get() = prefs.getInt(LOCK_SCREEN_VISIBILITY, LOCK_SCREEN_SENDER_MESSAGE)
-        set(lockScreenVisibilitySetting) = prefs.edit().putInt(LOCK_SCREEN_VISIBILITY, lockScreenVisibilitySetting).apply()
+        set(lockScreenVisibilitySetting) = prefs.edit()
+            .putInt(LOCK_SCREEN_VISIBILITY, lockScreenVisibilitySetting).apply()
 
     var mmsFileSizeLimit: Long
         get() = prefs.getLong(MMS_FILE_SIZE_LIMIT, FILE_SIZE_600_KB)
@@ -50,7 +56,8 @@ class Config(context: Context) : BaseConfig(context) {
 
     var pinnedConversations: Set<String>
         get() = prefs.getStringSet(PINNED_CONVERSATIONS, HashSet<String>())!!
-        set(pinnedConversations) = prefs.edit().putStringSet(PINNED_CONVERSATIONS, pinnedConversations).apply()
+        set(pinnedConversations) = prefs.edit()
+            .putStringSet(PINNED_CONVERSATIONS, pinnedConversations).apply()
 
     fun addPinnedConversationByThreadId(threadId: Long) {
         pinnedConversations = pinnedConversations.plus(threadId.toString())
@@ -65,7 +72,8 @@ class Config(context: Context) : BaseConfig(context) {
     }
 
     fun removePinnedConversations(conversations: List<Conversation>) {
-        pinnedConversations = pinnedConversations.minus(conversations.map { it.threadId.toString() })
+        pinnedConversations =
+            pinnedConversations.minus(conversations.map { it.threadId.toString() })
     }
 
     var blockedKeywords: Set<String>
@@ -110,15 +118,18 @@ class Config(context: Context) : BaseConfig(context) {
 
     var lastRecycleBinCheck: Long
         get() = prefs.getLong(LAST_RECYCLE_BIN_CHECK, 0L)
-        set(lastRecycleBinCheck) = prefs.edit().putLong(LAST_RECYCLE_BIN_CHECK, lastRecycleBinCheck).apply()
+        set(lastRecycleBinCheck) = prefs.edit().putLong(LAST_RECYCLE_BIN_CHECK, lastRecycleBinCheck)
+            .apply()
 
     var isArchiveAvailable: Boolean
         get() = prefs.getBoolean(IS_ARCHIVE_AVAILABLE, true)
-        set(isArchiveAvailable) = prefs.edit().putBoolean(IS_ARCHIVE_AVAILABLE, isArchiveAvailable).apply()
+        set(isArchiveAvailable) = prefs.edit().putBoolean(IS_ARCHIVE_AVAILABLE, isArchiveAvailable)
+            .apply()
 
     var customNotifications: Set<String>
         get() = prefs.getStringSet(CUSTOM_NOTIFICATIONS, HashSet<String>())!!
-        set(customNotifications) = prefs.edit().putStringSet(CUSTOM_NOTIFICATIONS, customNotifications).apply()
+        set(customNotifications) = prefs.edit()
+            .putStringSet(CUSTOM_NOTIFICATIONS, customNotifications).apply()
 
     fun addCustomNotificationsByThreadId(threadId: Long) {
         customNotifications = customNotifications.plus(threadId.toString())
@@ -127,4 +138,9 @@ class Config(context: Context) : BaseConfig(context) {
     fun removeCustomNotificationsByThreadId(threadId: Long) {
         customNotifications = customNotifications.minus(threadId.toString())
     }
+
+    var lastBlockedKeywordExportPath: String
+        get() = prefs.getString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, "")!!
+        set(lastBlockedNumbersExportPath) = prefs.edit()
+            .putString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, lastBlockedNumbersExportPath).apply()
 }
