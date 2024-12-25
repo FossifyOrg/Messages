@@ -104,7 +104,7 @@
     <string name="carrier_send_error">Αδυναμία αποστολής μηνύματος, σφάλμα φορέα</string>
     <string name="unknown_error_occurred_sending_message">Αδυναμία αποστολής μηνύματος, κωδικός σφάλματος: %1$d</string>
     <string name="invalid_short_code">Αδυναμία απάντησης σε σύντομους κωδικούς όπως αυτός</string>
-    <string name="invalid_short_code_desc">Μπορείτε να απαντήσετε μόνο σε σύντομους κωδικούς με αριθμούς όπως \"503501\" αλλά όχι σε κωδικούς που περιέχουν γράμματα και αριθμούς όπως \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Μπορείτε να απαντήσετε μόνο σε σύντομους κωδικούς με αριθμούς όπως 03501 αλλά όχι σε κωδικούς που περιέχουν γράμματα και αριθμούς όπως B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">Το μέγεθος συνημμένου υπερβαίνει το μέγιστο όριο MMS</string>
     <string name="sim_card_not_available">Δεν διατίθεται κάρτα SIM</string>
     <string name="couldnt_download_mms">Δεν ήταν δυνατή η λήψη MMS</string>
@@ -113,5 +113,10 @@
     <string name="faq_2_title">Το άλλο άκρο δεν λαμβάνει τα MMS μου, μπορώ να κάνω κάτι γι\' αυτό;</string>
     <string name="faq_2_text">Το μέγεθος των MMS περιορίζεται από τους παρόχους, μπορείτε να δοκιμάσετε να ορίσετε ένα μικρότερο όριο στις ρυθμίσεις της εφαρμογής.</string>
     <string name="faq_3_title">Υποστηρίζει η εφαρμογή προγραμματισμένα μηνύματα;</string>
-    <string name="faq_3_text">Ναι, μπορείτε να προγραμματίσετε την αποστολή μηνυμάτων στο μέλλον πατώντας παρατεταμένα το κουμπί \"Αποστολή\" και επιλέγοντας την επιθυμητή ημερομηνία και ώρα.</string>
+    <string name="faq_3_text">Ναι, μπορείτε να προγραμματίσετε την αποστολή μηνυμάτων στο μέλλον πατώντας παρατεταμένα το κουμπί ποστολή και επιλέγοντας την επιθυμητή ημερομηνία και ώρα.</string>
+    <string name="import_blocked_keywords"></string>
+    <string name="export_blocked_keywords"></string>
+    <string name="app_launcher_name"></string>
+    <string name="keywords"></string>
+    <string name="enable_custom_notifications"></string>
 </resources>
