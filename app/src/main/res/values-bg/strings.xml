@@ -101,13 +101,13 @@
     <string name="carrier_send_error">Неуспешно изпращане на съобщението, грешка на оператора</string>
     <string name="unknown_error_occurred_sending_message">Неуспешно изпращане на съобщението, код на грешката: %d</string>
     <string name="invalid_short_code">Невъзможен отговор на кратки кодове като този</string>
-    <string name="invalid_short_code_desc">Можете да отговаряте само на кратки кодове с цифри като \"503501\", но не и на кодове, съдържащи букви и цифри като \"AB-CD0\".</string>
+    <string name="invalid_short_code_desc">Можете да отговаряте само на кратки кодове с цифри като 03501 но не и на кодове, съдържащи букви и цифри като B-CD0</string>
     <string name="attachment_sized_exceeds_max_limit">Размерът на прикачения файл надвишава ограничението за MMS</string>
     <string name="sim_card_not_available">SIM картата е недостъпна</string>
     <string name="couldnt_download_mms">Неуспешно изтегляне на MMS</string>
-    <string name="faq_1_title">Защо приложението изисква достъп до интернет\?</string>
+    <string name="faq_1_title">Защо приложението изисква достъп до интернет?</string>
     <string name="faq_1_text">За съжаление това е нужно за изпращане на прикачени MMS. Да не може да се праща MMS би било наистина голям недостатък в сравнение с други приложения, така че решихме да тръгнем по този път. Въпреки това, както обикновено, няма реклами, следене или каквито и да е други анализаторски програми, интернетът се ползва само за изпращане на MMS.</string>
-    <string name="faq_2_title">От другата страна не получават моя MMS, мога ли да направя нещо\?</string>
+    <string name="faq_2_title">От другата страна не получават моя MMS, мога ли да направя нещо?</string>
     <string name="faq_2_text">Размерът на MMS е ограничен от оператора, може да се опитате да зададете по-малко ограничение в настройките на приложението.</string>
     <string name="faq_3_title">Има ли отложено изпращане на съобщения?</string>
     <string name="faq_3_text">Да, можете да планирате изпращане на съобщения в бъдеще, като натиснете продължително бутона „Изпращане“ и изберете желаната дата и час.</string>
@@ -116,4 +116,7 @@
     <string name="enable_custom_notifications">Известия по избор</string>
     <string name="update_message">Промяна на съобщението</string>
     <string name="message_details">Подробности за съобщението</string>
+    <string name="keywords"></string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
 </resources>
