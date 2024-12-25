@@ -119,4 +119,7 @@
     <string name="compress_error">Não foi possível comprimir a imagem para o tamanho selecionado</string>
     <string name="message_details_receiver">Destinatário</string>
     <string name="message_details_sent_at">Enviada a</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
 </resources>
