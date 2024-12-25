@@ -60,7 +60,7 @@
     <string name="restore_all_messages">恢复所有消息</string>
     <string name="empty_recycle_bin_messages_confirmation">你确定想清空回收站吗？你将永久失去已删除的消息。</string>
     <string name="skip_the_recycle_bin_messages">跳过回收站，直接删除消息</string>
-    <string name="delete_whole_conversation_confirmation">您确定要删除此对话的所有消息吗\?</string>
+    <string name="delete_whole_conversation_confirmation">您确定要删除此对话的所有消息吗?</string>
     <string name="archive_confirmation">你确定要归档 %s 吗？</string>
     <string name="restore_whole_conversation_confirmation">你确定想要恢复此对话的所有消息吗？</string>
     <string name="restore_confirmation">你确定想恢复 %s？</string>
@@ -101,16 +101,19 @@
     <string name="carrier_send_error">无法发送消息，运营商错误</string>
     <string name="unknown_error_occurred_sending_message">无法发送消息，错误代码：%d</string>
     <string name="invalid_short_code">无法回复类似这样的短码</string>
-    <string name="invalid_short_code_desc">你只能回复类似 \"503501\" 这样的短码，不能回复 \"AB-CD0\" 这样既包含字母又包含数字的短码。</string>
+    <string name="invalid_short_code_desc">你只能回复类似 03501 这样的短码，不能回复 B-CD0 这样既包含字母又包含数字的短码。</string>
     <string name="attachment_sized_exceeds_max_limit">附件大小超出了彩信上限</string>
     <string name="sim_card_not_available">SIM 卡不可用</string>
     <string name="couldnt_download_mms">无法下载彩信</string>
     <string name="faq_1_title">为什么该应用需要访问互联网？</string>
     <string name="faq_1_text">很遗憾这对于发送彩信附件是必须的。如果不能发送彩信的话这相比其他应用会是一个巨大的劣势，所以我们决定这么采取现在的方式。 但是和其他应用一样，不包含广告、追踪或者任意的分析工具， 互联网访问仅用于发送彩信。</string>
-    <string name="faq_2_title">对方没有收到我的彩信，我能做些什么吗\?</string>
+    <string name="faq_2_title">对方没有收到我的彩信，我能做些什么吗?</string>
     <string name="faq_2_text">彩信大小受运营商限制，你可以尝试在程序设置中设定一个较小的限制。</string>
     <string name="faq_3_title">本应用支持定时消息吗？</string>
     <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间安排将来要发送的消息。</string>
     <string name="enable_custom_notifications">启用自定义通知</string>
     <string name="app_launcher_name">短信</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="import_blocked_keywords"></string>
 </resources>
