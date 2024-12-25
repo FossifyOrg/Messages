@@ -8,10 +8,15 @@ import kotlinx.serialization.json.decodeFromStream
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isUpsideDownCakePlus
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.dialogs.ImportMessagesDialog
 import org.fossify.messages.extensions.config
-import org.fossify.messages.models.*
+import org.fossify.messages.models.BackupType
+import org.fossify.messages.models.ImportResult
+import org.fossify.messages.models.MessagesBackup
+import org.fossify.messages.models.MmsBackup
+import org.fossify.messages.models.SmsBackup
 import org.xmlpull.v1.XmlPullParser
 import java.io.InputStream
 
@@ -26,7 +31,8 @@ class MessagesImporter(private val activity: SimpleActivity) {
     fun importMessages(uri: Uri) {
         try {
             val fileType = activity.contentResolver.getType(uri).orEmpty()
-            val isXml = isXmlMimeType(fileType) || (uri.path?.endsWith("txt") == true && isFileXml(uri))
+            val isXml =
+                isXmlMimeType(fileType) || (uri.path?.endsWith("txt") == true && isFileXml(uri))
             if (isXml) {
                 activity.toast(org.fossify.commons.R.string.importing)
                 getInputStreamFromUri(uri)!!.importXml()
@@ -41,20 +47,28 @@ class MessagesImporter(private val activity: SimpleActivity) {
     @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
     private fun importJson(uri: Uri) {
         try {
-            val deserializedList = activity.contentResolver.openInputStream(uri)!!.buffered().use { inputStream ->
-                Json.decodeFromStream<List<MessagesBackup>>(inputStream)
-            }
+            val deserializedList =
+                activity.contentResolver.openInputStream(uri)!!.buffered().use { inputStream ->
+                    Json.decodeFromStream<List<MessagesBackup>>(inputStream)
+                }
+
             if (deserializedList.isEmpty()) {
                 activity.toast(org.fossify.commons.R.string.no_entries_for_importing)
                 return
             }
-            val messages = deserializedList.map { message ->
-                // workaround for messages not being imported on Android 14 when the device has a different subscriptionId (see #191)
-                when (message) {
-                    is SmsBackup -> message.copy(subscriptionId = -1)
-                    is MmsBackup -> message.copy(subscriptionId = -1)
+
+            val messages = if (isUpsideDownCakePlus()) {
+                deserializedList.map { message ->
+                    // workaround for messages not being imported on Android 14 when the device has a different subscriptionId (see #191)
+                    when (message) {
+                        is SmsBackup -> message.copy(subscriptionId = -1)
+                        is MmsBackup -> message.copy(subscriptionId = -1)
+                    }
                 }
+            } else {
+                deserializedList
             }
+
             ImportMessagesDialog(activity, messages)
         } catch (e: SerializationException) {
             activity.toast(org.fossify.commons.R.string.invalid_file_format)
@@ -195,7 +209,10 @@ class MessagesImporter(private val activity: SimpleActivity) {
     }
 
     private fun isXmlMimeType(mimeType: String): Boolean {
-        return mimeType.equals("application/xml", ignoreCase = true) || mimeType.equals("text/xml", ignoreCase = true)
+        return mimeType.equals("application/xml", ignoreCase = true) || mimeType.equals(
+            "text/xml",
+            ignoreCase = true
+        )
     }
 
     private fun isJsonMimeType(mimeType: String): Boolean {
