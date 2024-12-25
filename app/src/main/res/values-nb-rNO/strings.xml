@@ -43,7 +43,7 @@
     <string name="new_message">Ny melding</string>
     <string name="mark_as_read">Marker som lest</string>
     <string name="mark_as_unread">Marker som ulest</string>
-    <string name="delete_whole_conversation_confirmation">Er du sikker på at du vil slette alle meldinger fra denne konversasjonen\?</string>
+    <string name="delete_whole_conversation_confirmation">Er du sikker på at du vil slette alle meldinger fra denne konversasjonen?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d konversasjon</item>
         <item quantity="other">%d konversasjoner</item>
@@ -73,11 +73,11 @@
     <string name="no_option_selected">Du må velge minst ett element</string>
     <string name="unknown_error_occurred_sending_message">Kunne ikke sende melding, feilkode: %d</string>
     <string name="attachment_sized_exceeds_max_limit">Vedleggstørrelse overskrider maksgrense for MMS</string>
-    <string name="faq_1_title">Hvorfor krever appen tilgang til internett\?</string>
+    <string name="faq_1_title">Hvorfor krever appen tilgang til internett?</string>
     <string name="faq_1_text">Dessverre er det nødvendig for å sende MMS-vedlegg. Å ikke kunne sende MMS ville være en veldig stor ulempe sammenlignet med andre apper, så vi bestemte oss for å gå denne veien. Som vanlig er det imidlertid ingen annonser, sporing eller analyse overhodet, internett brukes bare til å sende MMS.</string>
-    <string name="faq_2_title">Den andre enden mottar ikke MMS-en min, er det noe jeg kan gjøre med det\?</string>
+    <string name="faq_2_title">Den andre enden mottar ikke MMS-en min, er det noe jeg kan gjøre med det?</string>
     <string name="faq_2_text">MMS-størrelsen er begrenset av operatører, du kan prøve å sette en mindre grense i appinnstillingene.</string>
-    <string name="faq_3_title">Støtter appen planlagte meldinger\?</string>
+    <string name="faq_3_title">Støtter appen planlagte meldinger?</string>
     <string name="faq_3_text">Ja, du kan planlegge at meldinger sendes i framtiden ved å lang-trykke knappen Send og velge ønsket dato og klokkeslett.</string>
     <string name="empty_archive">Slett alle arkiverte samtaler</string>
     <string name="no_archived_conversations">Ingen arkiverte samtaler funnet</string>
@@ -116,4 +116,7 @@
     <string name="carrier_send_error">Kunne ikke sende melding, operatørfeil</string>
     <string name="invalid_short_code">Kan ikke svare til kortnummer som dette</string>
     <string name="error_radio_turned_off">Kunne ikke sende melding, radio er avslått</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="import_blocked_keywords"></string>
 </resources>
