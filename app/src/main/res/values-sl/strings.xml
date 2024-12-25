@@ -45,7 +45,7 @@
     <string name="mark_as_read">Označi kot prebrano</string>
     <string name="mark_as_unread">Označi kot neprebrano</string>
     <string name="me">Jaz</string>
-    <string name="delete_whole_conversation_confirmation">Ste prepričani, da želite izbrisati vsa sporočila tega pogovora\?</string>
+    <string name="delete_whole_conversation_confirmation">Ste prepričani, da želite izbrisati vsa sporočila tega pogovora?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d pogovor</item>
         <item quantity="two">%d pogovora</item>
@@ -77,11 +77,11 @@
     <string name="import_sms">Uvozi SMS</string>
     <string name="import_mms">Uvozi MMS</string>
     <string name="no_option_selected">Izbrati morate vsaj en element</string>
-    <string name="faq_1_title">Zakaj aplikacija potrebuje dostop do interneta\?</string>
+    <string name="faq_1_title">Zakaj aplikacija potrebuje dostop do interneta?</string>
     <string name="faq_1_text">Žal je potreben za pošiljanje priponk MMS. Če ne bi mogli pošiljati MMS-ov, bi bila to res velika pomanjkljivost v primerjavi z drugimi aplikacijami, zato smo se odločili za to pot. Vendar kot običajno ni nobenih oglasov, sledenja ali kakršne koli analitike. Internet se uporablja samo za pošiljanje MMS-ov.</string>
-    <string name="faq_2_title">Druga stran ne prejema mojih MMS-ov, ali lahko kaj storim v zvezi s tem\?</string>
+    <string name="faq_2_title">Druga stran ne prejema mojih MMS-ov, ali lahko kaj storim v zvezi s tem?</string>
     <string name="faq_2_text">Velikost sporočil MMS omejujejo operaterji, zato lahko poskusite nastaviti manjšo omejitev v nastavitvah aplikacije.</string>
-    <string name="faq_3_title">Ali aplikacija podpira načrtovana sporočila\?</string>
+    <string name="faq_3_title">Ali aplikacija podpira načrtovana sporočila?</string>
     <string name="faq_3_text">Da, lahko načrtujete pošiljanje sporočil v prihodnosti, da dolgo pritisnete gumb Pošlji in izberete želeni datum in čas.</string>
     <string name="enable_custom_notifications">Omogoči obvestila po meri</string>
     <string name="no_archived_conversations">Ni bilo najdenih arhiviranih pogovorov</string>
@@ -122,4 +122,7 @@
     <string name="invalid_short_code">Ni mogoče odgovoriti na kratke kode, kot je ta</string>
     <string name="unknown_error_occurred_sending_message">Sporočila ni bilo mogoče poslati, koda napake: %d</string>
     <string name="carrier_send_error">Sporočila ni bilo mogoče poslati, napaka operaterja</string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="export_blocked_keywords"></string>
 </resources>
