@@ -1,0 +1,32 @@
+Zprávy Fossify jsou vaším důvěryhodným společníkem pro zasílání zpráv. Jsou navrženy tak, aby různými způsoby vylepšovaly váš zážitek ze zasílání zpráv.
+
+📱 ZŮSTAŇTE SNADNO VE SPOJENÍ:
+S aplikací Zprávy Fossify můžete snadno posílat zprávy SMS a MMS a zůstat tak ve spojení se svými blízkými. Posílejte si skupinové zprávy založené na SMS/MMS a vyjadřujte se pomocí fotografií, emotikonů a rychlých pozdravů.
+
+🚫 BLOKOVÁNÍ NEŽÁDOUCÍCH ZPRÁV:
+Převezměte kontrolu nad zasíláním zpráv díky robustní funkci blokování, která snadno zabrání zasílání nechtěných zpráv, a to i od neznámých kontaktů. Zablokovaná čísla můžete také exportovat a importovat pro bezproblémové zálohování. Navíc si můžete přizpůsobit své prostředí tím, že zabráníte zprávám s určitými slovy nebo frázemi, aby se dostaly do vaší schránky.
+
+🔒 BEZPROBLÉMOVÉ ZÁLOHOVÁNÍ SMS:
+Rozlučte se s obavami ze ztráty důležitých zpráv. Zprávy Fossify nabízí pohodlnou funkci zálohování SMS – umožňují export a import zpráv. Tato funkce zajišťuje, že můžete snadno změnit zařízení, aniž byste přišli o své cenné konverzace.
+
+🚀 BLESKURYCHLÉ A LEHKÉ:
+I přes své výkonné funkce se Zprávy Fossify mohou pochlubit pozoruhodně malou velikostí aplikace, díky které se rychle a snadno stahují a instalují. Zažijte rychlost a efektivitu a zároveň si užívejte klid, který přináší zálohování SMS.
+
+🔐 VYLEPŠENÁ OCHRANA SOUKROMÍ:
+Přizpůsobte si, co se zobrazuje na zamykací obrazovce, a zajistěte si tak větší soukromí. Zvolte si, zda chcete zobrazit pouze odesílatele, obsah zprávy nebo vůbec nic. Své zprávy máte pod kontrolou.
+
+🔍 EFEKTIVNÍ VYHLEDÁVÁNÍ ZPRÁV:
+Rozlučte se s nekonečným procházením konverzací. Zprávy Fossify zjednodušují vyhledávání zpráv pomocí funkce rychlého a efektivního vyhledávání. Najděte, co potřebujete, kdykoli a kdekoli.
+
+🌈 MODERNÍ DESIGN A PŘÍVĚTIVÉ ROZHRANÍ:
+Vychutnejte si čistý, moderní design s uživatelsky přívětivým rozhraním. Aplikace využívá Material Design a možnost tmavého motivu, což poskytuje vizuálně přitažlivé a pohodlné uživatelské prostředí.
+
+🌐 TRANSPARENTNOST OTEVŘENÉHO ZDROJE:
+Vaše soukromí je nejvyšší prioritou. Zprávy Fossify fungují bez nutnosti připojení k internetu, což zaručuje stabilitu a bezpečnost zpráv. Naše aplikace je zcela bez reklam a nevyžaduje zbytečná oprávnění. Navíc je plně open-source, což vám poskytuje klid, protože máte přístup ke zdrojovému kódu pro bezpečnostní audity a audity soukromí.
+
+Přejděte na aplikaci Zprávy Fossify a vyzkoušejte si zasílání zpráv tak, jak má být – soukromé, efektivní a uživatelsky přívětivé. Stáhněte si aplikaci nyní a připojte se k naší komunitě, která je odhodlána chránit vaše zprávy.
+
+Prozkoumejte další aplikace Fossify: https://www.fossify.org.
+Otevřený zdrojový kód: https://www.github.com/FossifyOrg
+Přidejte se ke komunitě na Redditu: https://www.reddit.com/r/Fossify
+Připojte se na Telegram: https://t.me/Fossify
