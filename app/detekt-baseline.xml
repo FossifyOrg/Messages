@@ -1,0 +1,428 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexCondition:Activity.kt$contact.rawId &gt; 1000000 &amp;&amp; contact.contactId &gt; 1000000 &amp;&amp; contact.rawId == contact.contactId &amp;&amp; (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))</ID>
+    <ID>ComplexCondition:NewConversationActivity.kt$NewConversationActivity$(intent.action == Intent.ACTION_SENDTO || intent.action == Intent.ACTION_SEND || intent.action == Intent.ACTION_VIEW) &amp;&amp; intent.dataString != null</ID>
+    <ID>ComplexCondition:NewConversationActivity.kt$NewConversationActivity$contact.phoneNumbers.any { it.normalizedNumber.contains(searchString, true) } || contact.name.contains(searchString, true) || contact.name.contains(searchString.normalizeString(), true) || contact.name.normalizeString().contains(searchString, true)</ID>
+    <ID>CyclomaticComplexMethod:MainActivity.kt$MainActivity$private fun getNewConversations(cachedConversations: ArrayList&lt;Conversation&gt;)</ID>
+    <ID>CyclomaticComplexMethod:MessagesImporter.kt$MessagesImporter$private fun InputStream.importXml()</ID>
+    <ID>CyclomaticComplexMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
+    <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$@SuppressLint("MissingPermission") private fun getThreadItems(): ArrayList&lt;ThreadItem&gt;</ID>
+    <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun refreshMenuItems()</ID>
+    <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
+    <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupThread()</ID>
+    <ID>EmptyCatchBlock:Context.kt${ }</ID>
+    <ID>EmptyCatchBlock:MessagesWriter.kt$MessagesWriter${ }</ID>
+    <ID>EmptyFunctionBlock:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:BaseConversationsAdapter.kt$BaseConversationsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:ContactsAdapter.kt$ContactsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:ManageBlockedKeywordsAdapter.kt$ManageBlockedKeywordsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:RecycleBinConversationsAdapter.kt$RecycleBinConversationsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:SearchResultsAdapter.kt$SearchResultsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:ThreadActivity.kt$ThreadActivity.&lt;no name provided&gt;${}</ID>
+    <ID>EmptyFunctionBlock:ThreadAdapter.kt$ThreadAdapter${}</ID>
+    <ID>ForbiddenComment:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$// TODO: Need to check whether SC still trying to deliver the SMS to destination and will send the report again?</ID>
+    <ID>FunctionParameterNaming:Config.kt$Config$SIMId: Int</ID>
+    <ID>LargeClass:ThreadActivity.kt$ThreadActivity : SimpleActivity</ID>
+    <ID>LongMethod:Context.kt$fun Context.getConversations(threadId: Long? = null, privateContacts: ArrayList&lt;SimpleContact&gt; = ArrayList()): ArrayList&lt;Conversation&gt;</ID>
+    <ID>LongMethod:Context.kt$fun Context.getMMS(threadId: Long? = null, getImageResolutions: Boolean = false, sortOrder: String? = null, dateFrom: Int = -1): ArrayList&lt;Message&gt;</ID>
+    <ID>LongMethod:Context.kt$fun Context.getMessages( threadId: Long, getImageResolutions: Boolean, dateFrom: Int = -1, includeScheduledMessages: Boolean = true, limit: Int = MESSAGES_LIMIT ): ArrayList&lt;Message&gt;</ID>
+    <ID>LongMethod:MessagesReader.kt$MessagesReader$private fun getMmsMessages(threadIds: List&lt;Long&gt;, includeTextOnlyAttachment: Boolean = false): List&lt;MmsBackup&gt;</ID>
+    <ID>LongMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
+    <ID>LongMethod:ThreadActivity.kt$ThreadActivity$private fun setupAttachmentPickerView()</ID>
+    <ID>LongMethod:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
+    <ID>LongMethod:ThreadActivity.kt$ThreadActivity$private fun setupThread()</ID>
+    <ID>LongParameterList:AttachmentPreviews.kt$( activity: Activity, uri: Uri, attachment: Boolean = false, onClick: (() -&gt; Unit)? = null, onLongClick: (() -&gt; Unit)? = null, onVCardLoaded: (() -&gt; Unit)? = null, )</ID>
+    <ID>LongParameterList:AttachmentPreviews.kt$( uri: Uri, title: String, mimeType: String, onClick: (() -&gt; Unit)? = null, onLongClick: (() -&gt; Unit)? = null, onRemoveButtonClicked: (() -&gt; Unit)? = null )</ID>
+    <ID>LongParameterList:Context.kt$( address: String, subject: String, body: String, date: Long, read: Int, threadId: Long, type: Int, subscriptionId: Int )</ID>
+    <ID>LongParameterList:Context.kt$( uri: Uri, projection: Array&lt;String&gt;, selection: String? = null, selectionArgs: Array&lt;String&gt;? = null, sortOrder: String? = null, callback: (cursor: Cursor) -&gt; Unit )</ID>
+    <ID>LongParameterList:MessagingUtils.kt$MessagingUtils$( subId: Int, dest: String, text: String, timestamp: Long, threadId: Long, status: Int = Sms.STATUS_NONE, type: Int = Sms.MESSAGE_TYPE_OUTBOX, messageId: Long? = null )</ID>
+    <ID>LongParameterList:NotificationHelper.kt$NotificationHelper$( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
+    <ID>LongParameterList:SmsReceiver.kt$SmsReceiver$( context: Context, address: String, subject: String, body: String, date: Long, read: Int, threadId: Long, type: Int, subscriptionId: Int, status: Int )</ID>
+    <ID>LongParameterList:SmsSender.kt$SmsSender$( subId: Int, dest: String, messages: ArrayList&lt;String&gt;, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
+    <ID>LongParameterList:SmsSender.kt$SmsSender$( subId: Int, destination: String, body: String, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
+    <ID>MagicNumber:Activity.kt$1000000</ID>
+    <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.7f</ID>
+    <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.8f</ID>
+    <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.9f</ID>
+    <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$1.2f</ID>
+    <ID>MagicNumber:ContactsAdapter.kt$ContactsAdapter$1.2f</ID>
+    <ID>MagicNumber:Context.kt$10</ID>
+    <ID>MagicNumber:Context.kt$1000</ID>
+    <ID>MagicNumber:Context.kt$1000L</ID>
+    <ID>MagicNumber:Context.kt$500L</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$0.6f</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$100</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$180f</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$270f</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$3</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$30</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$56</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$6</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$8</ID>
+    <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$90f</ID>
+    <ID>MagicNumber:MainActivity.kt$MainActivity$30</ID>
+    <ID>MagicNumber:Message.kt$Message$1000L</ID>
+    <ID>MagicNumber:Message.kt$Message.Companion$31</ID>
+    <ID>MagicNumber:MessageDetailsDialog.kt$MessageDetailsDialog$1000L</ID>
+    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$3</ID>
+    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$4</ID>
+    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$5</ID>
+    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$6</ID>
+    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$7</ID>
+    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$8</ID>
+    <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$23</ID>
+    <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$5</ID>
+    <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$59</ID>
+    <ID>MagicNumber:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$3000</ID>
+    <ID>MagicNumber:SearchResultsAdapter.kt$SearchResultsAdapter$0.8f</ID>
+    <ID>MagicNumber:SearchResultsAdapter.kt$SearchResultsAdapter$0.9f</ID>
+    <ID>MagicNumber:SearchResultsAdapter.kt$SearchResultsAdapter$1.2f</ID>
+    <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$3</ID>
+    <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$4</ID>
+    <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$5</ID>
+    <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$6</ID>
+    <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$7</ID>
+    <ID>MagicNumber:SmsReceiver.kt$SmsReceiver$1000</ID>
+    <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$0x03</ID>
+    <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$0x3f</ID>
+    <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$16</ID>
+    <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$24</ID>
+    <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$3</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$0.4f</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$0.9f</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$1000</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$1000L</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$14</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$15</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$150</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$16</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$2</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$20</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$30</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$300</ID>
+    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$500L</ID>
+    <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$0.8f</ID>
+    <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$4</ID>
+    <ID>MagicNumber:VCardViewerAdapter.kt$VCardViewerAdapter.VCardContactViewHolder$1.1f</ID>
+    <ID>MagicNumber:VCardViewerAdapter.kt$VCardViewerAdapter.VCardPropertyViewHolder$1.1f</ID>
+    <ID>MatchingDeclarationName:ThreadItems.kt$ThreadItem</ID>
+    <ID>MaxLineLength:AddBlockedKeywordDialog.kt$AddBlockedKeywordDialog$class</ID>
+    <ID>MaxLineLength:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter$val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
+    <ID>MaxLineLength:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter$val conversationsToUnarchive = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
+    <ID>MaxLineLength:AttachmentPreviews.kt$vcardAttachmentHolder</ID>
+    <ID>MaxLineLength:AttachmentPreviews.kt$vcardSubtitle.text = context.resources.getQuantityString(R.plurals.and_other_contacts, quantity, quantity)</ID>
+    <ID>MaxLineLength:AttachmentsAdapter.kt$AttachmentsAdapter$onClick = { activity.launchViewIntent(attachment.uri, attachment.mimetype, attachment.filename) }</ID>
+    <ID>MaxLineLength:AttachmentsAdapter.kt$AttachmentsAdapter.&lt;no name provided&gt;$override</ID>
+    <ID>MaxLineLength:AutoCompleteTextViewAdapter.kt$AutoCompleteTextViewAdapter$class</ID>
+    <ID>MaxLineLength:BaseConversationsAdapter.kt$BaseConversationsAdapter$SimpleContactsHelper(activity).loadContactImage(conversation.photoUri, conversationImage, conversation.title, placeholder)</ID>
+    <ID>MaxLineLength:BaseConversationsAdapter.kt$BaseConversationsAdapter$protected fun getSelectedItems()</ID>
+    <ID>MaxLineLength:BaseConversationsAdapter.kt$BaseConversationsAdapter.&lt;no name provided&gt;$override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int)</ID>
+    <ID>MaxLineLength:Config.kt$Config$set(lockScreenVisibilitySetting) = prefs.edit().putInt(LOCK_SCREEN_VISIBILITY, lockScreenVisibilitySetting).apply()</ID>
+    <ID>MaxLineLength:Constants.kt$/** Not to be used with real messages persisted in the telephony db. This is for internal use only (e.g. scheduled messages, notification ids etc). */</ID>
+    <ID>MaxLineLength:ContactsAdapter.kt$ContactsAdapter$activity: SimpleActivity</ID>
+    <ID>MaxLineLength:Context.kt$for</ID>
+    <ID>MaxLineLength:Context.kt$fun</ID>
+    <ID>MaxLineLength:Context.kt$if</ID>
+    <ID>MaxLineLength:Context.kt$selection = "${Sms.DATE} &lt; ${dateFrom.toLong()}"</ID>
+    <ID>MaxLineLength:Context.kt$val attachment = Attachment(partId, id, Uri.withAppendedPath(uri, partId.toString()).toString(), mimetype, 0, 0, attachmentName)</ID>
+    <ID>MaxLineLength:Context.kt$val contact = SimpleContact(addressId, addressId, name, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())</ID>
+    <ID>MaxLineLength:Context.kt$val conversation = Conversation(id, snippet, date.toInt(), read, title, photoUri, isGroupConversation, phoneNumbers.first(), isArchived = archived)</ID>
+    <ID>MaxLineLength:Context.kt$val photoUri = if (phoneNumbers.size == 1) simpleContactHelper.getPhotoUriFromPhoneNumber(phoneNumbers.first()) else ""</ID>
+    <ID>MaxLineLength:Context.kt$val privateContact = privateContacts.firstOrNull { it.phoneNumbers.first().normalizedNumber == senderNumber }</ID>
+    <ID>MaxLineLength:ConversationDetailsActivity.kt$ConversationDetailsActivity$setupMaterialScrollListener(scrollingView = binding.participantsRecyclerview, toolbar = binding.conversationDetailsToolbar)</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$findItem(R.id.cab_dial_number).isVisible = isSingleSelection &amp;&amp; !isGroupConversation &amp;&amp; !isShortCodeWithLetters(selectedConversation.phoneNumber)</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$menu.findItem(R.id.cab_pin_conversation).isVisible = selectedConversations.any { !pinnedConversations.contains(it.threadId.toString()) }</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$menu.findItem(R.id.cab_unpin_conversation).isVisible = selectedConversations.any { pinnedConversations.contains(it.threadId.toString()) }</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$val conversationsMarkedAsRead = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$val conversationsMarkedAsUnread = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
+    <ID>MaxLineLength:ConversationsAdapter.kt$ConversationsAdapter$val question = String.format(resources.getString(org.fossify.commons.R.string.block_confirmation), numbersString)</ID>
+    <ID>MaxLineLength:ConversationsDao.kt$ConversationsDao$@Query("SELECT (SELECT body FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND messages.thread_id = conversations.thread_id ORDER BY messages.date DESC LIMIT 1) as new_snippet, * FROM conversations WHERE (SELECT COUNT(*) FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND messages.thread_id = conversations.thread_id) &gt; 0")</ID>
+    <ID>MaxLineLength:ConversationsDao.kt$ConversationsDao$@Query("SELECT (SELECT body FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND messages.thread_id = conversations.thread_id ORDER BY messages.date DESC LIMIT 1) as new_snippet, * FROM conversations WHERE archived = 0")</ID>
+    <ID>MaxLineLength:ConversationsDao.kt$ConversationsDao$@Query("SELECT (SELECT body FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND messages.thread_id = conversations.thread_id ORDER BY messages.date DESC LIMIT 1) as new_snippet, * FROM conversations WHERE archived = 1")</ID>
+    <ID>MaxLineLength:DirectReplyReceiver.kt$DirectReplyReceiver$context.notificationHelper.showMessageNotification(messageId, address, body, threadId, bitmap, sender = null, alertOnlyOnce = true)</ID>
+    <ID>MaxLineLength:DirectReplyReceiver.kt$DirectReplyReceiver$val message = context.getMessages(threadId, getImageResolutions = false, includeScheduledMessages = false, limit = 1).lastOrNull()</ID>
+    <ID>MaxLineLength:Gson.kt$private val gsonBuilder = GsonBuilder().registerTypeAdapter(object : TypeToken&lt;Map&lt;String, Any&gt;&gt;() {}.type, MapDeserializerDoubleAsIntFix())</ID>
+    <ID>MaxLineLength:HeadlessSmsSendService.kt$HeadlessSmsSendService$val number = Uri.decode(intent.dataString!!.removePrefix("sms:").removePrefix("smsto:").removePrefix("mms").removePrefix("mmsto:").trim())</ID>
+    <ID>MaxLineLength:ImageCompressor.kt$ImageCompressor$fun</ID>
+    <ID>MaxLineLength:ImageCompressor.kt$ImageCompressor$private</ID>
+    <ID>MaxLineLength:ImageCompressor.kt$ImageCompressor$var imageFile = File(outputDirectory, System.currentTimeMillis().toString().plus(mimeType.getExtensionFromMimeType()))</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$(drawable as LayerDrawable).findDrawableByLayerId(org.fossify.commons.R.id.shortcut_plus_background).applyColorFilter(appIconColor)</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$// there are no cached conversations on the first run so we show the loading placeholder and progress until we are done loading from telephony</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$// while SEND_SMS and READ_SMS permissions are mandatory, READ_CONTACTS is optional. If we don't have it, we just won't be able to show the contact name in some cases</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$faqItems.add(FAQItem(org.fossify.commons.R.string.faq_2_title_commons, org.fossify.commons.R.string.faq_2_text_commons))</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$faqItems.add(FAQItem(org.fossify.commons.R.string.faq_6_title_commons, org.fossify.commons.R.string.faq_6_text_commons))</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$val searchResult = SearchResult(-1, conversation.title, conversation.phoneNumber, date, conversation.threadId, conversation.photoUri)</ID>
+    <ID>MaxLineLength:MainActivity.kt$MainActivity$val searchResult = SearchResult(message.id, recipient, message.body, date, message.threadId, message.senderPhotoUri)</ID>
+    <ID>MaxLineLength:ManageBlockedKeywordsActivity.kt$ManageBlockedKeywordsActivity$ManageBlockedKeywordsAdapter</ID>
+    <ID>MaxLineLength:ManageBlockedKeywordsActivity.kt$ManageBlockedKeywordsActivity$setupMaterialScrollListener(scrollingView = binding.manageBlockedKeywordsList, toolbar = binding.blockKeywordsToolbar)</ID>
+    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND recycle_bin_messages.deleted_ts &lt; :timestamp")</ID>
+    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND thread_id = :threadId")</ID>
+    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL")</ID>
+    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND thread_id = :threadId AND is_scheduled = 1")</ID>
+    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND thread_id = :threadId")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase$@Database(entities = [Conversation::class, Attachment::class, MessageAttachment::class, Message::class, RecycleBinMessage::class], version = 8)</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion$db</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$"INSERT OR IGNORE INTO conversations_new (thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number) "</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$"SELECT thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number FROM conversations"</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE TABLE IF NOT EXISTS `attachments` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `message_id` INTEGER NOT NULL, `uri_string` TEXT NOT NULL, `mimetype` TEXT NOT NULL, `width` INTEGER NOT NULL, `height` INTEGER NOT NULL, `filename` TEXT NOT NULL)")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE TABLE IF NOT EXISTS `message_attachments` (`id` INTEGER PRIMARY KEY NOT NULL, `text` TEXT NOT NULL, `attachments` TEXT NOT NULL)")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE TABLE IF NOT EXISTS `messages` (`id` INTEGER PRIMARY KEY NOT NULL, `body` TEXT NOT NULL, `type` INTEGER NOT NULL, `participants` TEXT NOT NULL, `date` INTEGER NOT NULL, `read` INTEGER NOT NULL, `thread_id` INTEGER NOT NULL, `is_mms` INTEGER NOT NULL, `attachment` TEXT, `sender_name` TEXT NOT NULL, `sender_photo_uri` TEXT NOT NULL, `subscription_id` INTEGER NOT NULL)")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE TABLE IF NOT EXISTS `recycle_bin_messages` (`id` INTEGER NOT NULL PRIMARY KEY, `deleted_ts` INTEGER NOT NULL)")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE TABLE conversations_new (`thread_id` INTEGER NOT NULL PRIMARY KEY, `snippet` TEXT NOT NULL, `date` INTEGER NOT NULL, `read` INTEGER NOT NULL, `title` TEXT NOT NULL, `photo_uri` TEXT NOT NULL, `is_group_conversation` INTEGER NOT NULL, `phone_number` TEXT NOT NULL)")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_conversations_id` ON `conversations` (`thread_id`)")</ID>
+    <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_recycle_bin_messages_id` ON `recycle_bin_messages` (`id`)")</ID>
+    <ID>MaxLineLength:MessagesImporter.kt$MessagesImporter$messagesFailed &gt; 0 &amp;&amp; messagesImported &gt; 0 -&gt; activity.toast(org.fossify.commons.R.string.importing_some_entries_failed)</ID>
+    <ID>MaxLineLength:MessagesReader.kt$MessagesReader$parts.add(MmsPart(contentDisposition, charset, contentId, contentLocation, contentType, ctStart, ctType, filename, name, sequenceOrder, text, data))</ID>
+    <ID>MaxLineLength:MessagesReader.kt$MessagesReader$smsList.add(SmsBackup(subscriptionId, address, body, date, dateSent, locked, protocol, read, status, type, serviceCenter))</ID>
+    <ID>MaxLineLength:MessagesReader.kt$MessagesReader$val partUri = if (isQPlus()) Mms.Part.CONTENT_URI.buildUpon().appendPath(partId.toString()).build() else Uri.parse("content://mms/part/$partId")</ID>
+    <ID>MaxLineLength:MessagesReader.kt$MessagesReader$val uri = if (isRPlus()) Mms.Addr.getAddrUriForMessage(messageId.toString()) else Uri.parse("content://mms/$messageId/addr")</ID>
+    <ID>MaxLineLength:MessagesWriter.kt$MessagesWriter$// 2. write parts - parts depend on the msg id, check if part exist before writing, write data if it is a non-text part</ID>
+    <ID>MaxLineLength:MessagesWriter.kt$MessagesWriter$val addressUri = if (isRPlus()) Mms.Addr.getAddrUriForMessage(messageId.toString()) else Uri.parse("content://mms/$messageId/addr")</ID>
+    <ID>MaxLineLength:MessagesWriter.kt$MessagesWriter$val selection = "${Mms.Part.CONTENT_LOCATION} = ? AND ${Mms.Part.CONTENT_TYPE} = ? AND ${Mms.Part.MSG_ID} = ? AND ${Mms.Part.CONTENT_ID} = ?"</ID>
+    <ID>MaxLineLength:MessagesWriter.kt$MessagesWriter$val selectionArgs = arrayOf(mmsBackup.date.toString(), mmsBackup.dateSent.toString(), threadId.toString(), mmsBackup.messageBox.toString())</ID>
+    <ID>MaxLineLength:MessagesWriter.kt$MessagesWriter$val selectionArgs = arrayOf(mmsPart.contentLocation.toString(), mmsPart.contentType, messageId.toString(), mmsPart.contentId.toString())</ID>
+    <ID>MaxLineLength:Messaging.kt$*</ID>
+    <ID>MaxLineLength:Messaging.kt$fun</ID>
+    <ID>MaxLineLength:Messaging.kt$messagingUtils.sendSmsMessage(text, addresses.toSet(), settings.subscriptionId, settings.deliveryReports, messageId)</ID>
+    <ID>MaxLineLength:MessagingUtils.kt$MessagingUtils$context.showErrorToast(e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred))</ID>
+    <ID>MaxLineLength:MessagingUtils.kt$MessagingUtils$fun</ID>
+    <ID>MaxLineLength:MmsPart.kt$MmsPart$return !(text != null || contentType.lowercase().startsWith("text") || contentType.lowercase() == "application/smil")</ID>
+    <ID>MaxLineLength:MmsReceiver.kt$MmsReceiver$override fun onError(context: Context, error: String)</ID>
+    <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$// READ_CONTACTS permission is not mandatory, but without it we won't be able to show any suggestions during typing</ID>
+    <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$SimpleContactsHelper(this@NewConversationActivity).loadContactImage(contact.photoUri, suggestedContactImage, contact.name)</ID>
+    <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$if</ID>
+    <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$items.add(RadioItem(index, "${phoneNumber.normalizedNumber} ($type)", phoneNumber.normalizedNumber))</ID>
+    <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$val number = intent.dataString!!.removePrefix("sms:").removePrefix("smsto:").removePrefix("mms").removePrefix("mmsto:").replace("+", "%2b").trim()</ID>
+    <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$}</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$PendingIntent.getActivity(context, notificationId, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$PendingIntent.getBroadcast(context, notificationId, deleteSmsIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$PendingIntent.getBroadcast(context, notificationId, markAsReadIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$builder.addAction(org.fossify.commons.R.drawable.ic_check_vector, context.getString(R.string.mark_as_read), markAsReadPendingIntent)</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$private</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$val activeStyle = NotificationCompat.MessagingStyle.extractMessagingStyleFromNotification(currentNotification.notification)</ID>
+    <ID>MaxLineLength:NotificationHelper.kt$NotificationHelper$val contentPendingIntent = PendingIntent.getActivity(context, notificationId, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)</ID>
+    <ID>MaxLineLength:RecycleBinConversationsAdapter.kt$RecycleBinConversationsAdapter$val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
+    <ID>MaxLineLength:ScheduleMessageDialog.kt$ScheduleMessageDialog$activity</ID>
+    <ID>MaxLineLength:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$context.showErrorToast(e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred))</ID>
+    <ID>MaxLineLength:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "simple.messenger:scheduled.message.receiver")</ID>
+    <ID>MaxLineLength:SearchResult.kt$SearchResult</ID>
+    <ID>MaxLineLength:SearchResultsAdapter.kt$SearchResultsAdapter$SimpleContactsHelper(activity).loadContactImage(searchResult.photoUri, searchResultImage, searchResult.title)</ID>
+    <ID>MaxLineLength:SearchResultsAdapter.kt$SearchResultsAdapter$activity: SimpleActivity</ID>
+    <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$ConfirmationDialog(this@SettingsActivity, "", confirmationTextId, org.fossify.commons.R.string.ok, 0) { }</ID>
+    <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$private</ID>
+    <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$settingsUseEnglishHolder.beVisibleIf((config.wasUseEnglishToggled || Locale.getDefault().language != "en") &amp;&amp; !isTiramisuPlus())</ID>
+    <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$handleMessage(context, address, subject, body, date, read, threadId, type, subscriptionId, status)</ID>
+    <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$val newMessageId = context.insertNewSMS(address, subject, body, date, read, threadId, type, subscriptionId)</ID>
+    <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$val participant = SimpleContact(0, 0, senderName, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())</ID>
+    <ID>MaxLineLength:SmsSender.kt$SmsSender$val intent = Intent(SendStatusReceiver.SMS_DELIVERED_ACTION, requestUri, app, SmsStatusDeliveredReceiver::class.java)</ID>
+    <ID>MaxLineLength:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$// TODO: Need to check whether SC still trying to deliver the SMS to destination and will send the report again?</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$(selectedContactBg as LayerDrawable).findDrawableByLayerId(R.id.selected_contact_bg).applyColorFilter(properPrimaryColor)</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$// do not show the date/time above every message, only if the difference between the 2 messages is at least MIN_DATE_TIME_DIFF_SECS,</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$CAPTURE_VIDEO_INTENT, PICK_DOCUMENT_INTENT, CAPTURE_AUDIO_INTENT, PICK_PHOTO_INTENT, PICK_VIDEO_INTENT -&gt; addAttachment(data)</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$binding.messageHolder.scheduledMessageButton.text</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$binding.messageHolder.threadSelectSimNumber.text = (availableSIMCards[currentSIMCardIndex].id).toString()</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$deleteMessages = { messages, toRecycleBin, fromRecycleBin -&gt; deleteMessages(messages, toRecycleBin, fromRecycleBin) }</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$findItem(R.id.add_number_to_contact).isVisible</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$findItem(R.id.archive).isVisible = threadItems.isNotEmpty() &amp;&amp; conversation?.isArchived == false &amp;&amp; !isRecycleBin &amp;&amp; archiveAvailable</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$findItem(R.id.rename_conversation).isVisible = participants.size &gt; 1 &amp;&amp; conversation != null &amp;&amp; !isRecycleBin</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$findItem(R.id.unarchive).isVisible = threadItems.isNotEmpty() &amp;&amp; conversation?.isArchived == true &amp;&amp; !isRecycleBin &amp;&amp; archiveAvailable</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$if</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$it.height = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)!!.toInt()</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$it.width = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)!!.toInt()</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$launchActivityForResult(this, PICK_SAVE_FILE_INTENT, error = org.fossify.commons.R.string.system_service_disabled)</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$messages = messages.filter { !recycledMessages.contains(it.id) }.toMutableList() as ArrayList&lt;Message&gt;</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$private</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$privateContacts.firstOrNull { it.doesHavePhoneNumber(participant.phoneNumbers.first().normalizedNumber) }</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$updateMaterialActivityViews(binding.threadCoordinator, null, useTransparentNavigation = false, useTopSearchMenu = false)</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$val contact = SimpleContact(number.hashCode(), number.hashCode(), number, "", arrayListOf(phoneNumber), ArrayList(), ArrayList())</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$val firstRowWidth = parentWidth - resources.getDimension(org.fossify.commons.R.dimen.normal_icon_size).toInt() + sideMargin / 2</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$val isSentFromDifferentKnownSIM = prevSIMId != -1 &amp;&amp; message.subscriptionId != -1 &amp;&amp; prevSIMId != message.subscriptionId</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$val question = String.format(resources.getString(org.fossify.commons.R.string.block_confirmation), numbersString)</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$val shouldScrollToBottom = currentList.lastOrNull() != threadItems.lastOrNull() &amp;&amp; lastPosition - lastVisiblePosition == 1</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$val subscriptionId = availableSIMCards.getOrNull(currentSIMCardIndex)?.subscriptionId ?: SmsManager.getDefaultSmsSubscriptionId()</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity.&lt;no name provided&gt;$override fun onProgress(insets: WindowInsetsCompat, runningAnimations: MutableList&lt;WindowInsetsAnimationCompat&gt;)</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity.&lt;no name provided&gt;$val isCloseToBottom = lastVisibleItemPosition &gt;= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$// not sure how we can get UnknownFormatConversionException here, so show the error and hope that someone reports it</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$mimetype.isImageMimeType() || mimetype.isVideoMimeType() -&gt; setupImageView(holder, binding = this, message, attachment)</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$mimetype.isVCardMimeType() -&gt; setupVCardView(holder, threadMessageAttachmentsHolder, message, attachment)</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$private</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$private fun getSelectedItems()</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$text = dateTime.date.formatDateOrTime(context, hideTimeAtOtherDays = false, showYearEvenIfCurrent = false)</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$threadSuccess.setImageResource(if (isDelivered) R.drawable.ic_check_double_vector else org.fossify.commons.R.drawable.ic_check_vector)</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$val</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter.&lt;no name provided&gt;$override</ID>
+    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter.&lt;no name provided&gt;$override fun onResourceReady(dr: Drawable, a: Any, t: Target&lt;Drawable&gt;, d: DataSource, i: Boolean)</ID>
+    <ID>MaxLineLength:VCard.kt$Telephone::class.java</ID>
+    <ID>MaxLineLength:VCard.kt$VCardPropertyWrapper.Companion$is Note -&gt; VCardPropertyWrapper(value, context.getString(org.fossify.commons.R.string.notes), property)</ID>
+    <ID>MaxLineLength:VCard.kt$VCardPropertyWrapper.Companion$is Telephone -&gt; VCardPropertyWrapper(text.normalizePhoneNumber(), getPropertyTypeString(context), property)</ID>
+    <ID>MaxLineLength:VCard.kt$VCardWrapper$data</ID>
+    <ID>MaxLineLength:VCardViewerActivity.kt$VCardViewerActivity$updateMaterialActivityViews(binding.vcardViewerCoordinator, binding.contactsList, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
+    <ID>MaxLineLength:VCardViewerAdapter.kt$VCardViewerAdapter.VCardPropertyViewHolder$inner</ID>
+    <ID>NestedBlockDepth:AttachmentUtils.kt$AttachmentUtils$private fun readBody(parser: XmlPullParser): List&lt;String&gt;</ID>
+    <ID>NestedBlockDepth:Context.kt$fun Context.getAllDrafts(): HashMap&lt;Long, String?&gt;</ID>
+    <ID>NestedBlockDepth:Context.kt$fun Context.getThreadParticipants(threadId: Long, contactsMap: HashMap&lt;Int, SimpleContact&gt;?): ArrayList&lt;SimpleContact&gt;</ID>
+    <ID>NestedBlockDepth:MessagesImporter.kt$MessagesImporter$private fun InputStream.importXml()</ID>
+    <ID>NestedBlockDepth:MessagesWriter.kt$MessagesWriter$@SuppressLint("NewApi") private fun writeMmsPart(mmsPart: MmsPart, messageId: Long)</ID>
+    <ID>NestedBlockDepth:Messaging.kt$fun Context.sendMessageCompat(text: String, addresses: List&lt;String&gt;, subId: Int?, attachments: List&lt;Attachment&gt;, messageId: Long? = null)</ID>
+    <ID>NestedBlockDepth:MessagingUtils.kt$MessagingUtils$@Deprecated("TODO: Move/rewrite MMS code into the app.") fun sendMmsMessage(text: String, addresses: List&lt;String&gt;, attachment: Attachment?, settings: Settings, messageId: Long? = null)</ID>
+    <ID>NestedBlockDepth:MessagingUtils.kt$MessagingUtils$fun updateSmsMessageSendingStatus(messageUri: Uri?, type: Int)</ID>
+    <ID>NestedBlockDepth:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$override fun updateAndroidDatabase(context: Context, intent: Intent, receiverResultCode: Int)</ID>
+    <ID>NestedBlockDepth:ThreadActivity.kt$ThreadActivity$private fun fetchNextMessages()</ID>
+    <ID>NestedBlockDepth:ThreadActivity.kt$ThreadActivity$private fun setupAttachmentSizes()</ID>
+    <ID>NestedBlockDepth:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
+    <ID>NestedBlockDepth:ThreadAdapter.kt$ThreadAdapter$private fun setupSentMessageView(messageBinding: ItemMessageBinding, message: Message)</ID>
+    <ID>NestedBlockDepth:ThreadAdapter.kt$ThreadAdapter$private fun setupView(holder: ViewHolder, view: View, message: Message)</ID>
+    <ID>PrintStackTrace:Context.kt$e</ID>
+    <ID>PrintStackTrace:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$e</ID>
+    <ID>PrintStackTrace:SmsManager.kt$e</ID>
+    <ID>ReturnCount:Context.kt$fun Context.getFileSizeFromUri(uri: Uri): Long</ID>
+    <ID>ReturnCount:Context.kt$fun Context.getNameAndPhotoFromPhoneNumber(number: String): NamePhoto</ID>
+    <ID>ReturnCount:MapDeserializerDoubleAsIntFix.kt$MapDeserializerDoubleAsIntFix$fun read(element: JsonElement): Any?</ID>
+    <ID>ReturnCount:MessagesReader.kt$MessagesReader$@SuppressLint("NewApi") private fun usePart(partId: Long, block: (InputStream) -&gt; String): String</ID>
+    <ID>ReturnCount:ThreadActivity.kt$ThreadActivity$private fun addAttachment(uri: Uri)</ID>
+    <ID>ReturnCount:VCardParser.kt$fun VCard?.parseNameFromVCard(): String?</ID>
+    <ID>SpreadOperator:Context.kt$(*scheduledMessages)</ID>
+    <ID>SpreadOperator:MainActivity.kt$MainActivity$(*currentMessages.toTypedArray())</ID>
+    <ID>SpreadOperator:ThreadActivity.kt$ThreadActivity$(*currentMessages.toTypedArray())</ID>
+    <ID>SwallowedException:Activity.kt$e: ActivityNotFoundException</ID>
+    <ID>SwallowedException:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$e: Exception</ID>
+    <ID>SwallowedException:AttachmentPreviews.kt$e: Exception</ID>
+    <ID>SwallowedException:Context.kt$e: Exception</ID>
+    <ID>SwallowedException:Context.kt$e: FileNotFoundException</ID>
+    <ID>SwallowedException:ImageCompressor.kt$ImageCompressor$e: Exception</ID>
+    <ID>SwallowedException:JsonElement.kt$e: Exception</ID>
+    <ID>SwallowedException:MainActivity.kt$MainActivity$e: Exception</ID>
+    <ID>SwallowedException:MessagesImporter.kt$MessagesImporter$e: Exception</ID>
+    <ID>SwallowedException:MessagesImporter.kt$MessagesImporter$e: IllegalArgumentException</ID>
+    <ID>SwallowedException:MessagesImporter.kt$MessagesImporter$e: SerializationException</ID>
+    <ID>SwallowedException:MessagesReader.kt$MessagesReader$e: IOException</ID>
+    <ID>SwallowedException:MessagesWriter.kt$MessagesWriter$e: Exception</ID>
+    <ID>SwallowedException:MmsReceiver.kt$MmsReceiver$e: Exception</ID>
+    <ID>SwallowedException:NewConversationActivity.kt$NewConversationActivity$e: Exception</ID>
+    <ID>SwallowedException:RecycleBinConversationsActivity.kt$RecycleBinConversationsActivity$e: Exception</ID>
+    <ID>SwallowedException:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$e: NullPointerException</ID>
+    <ID>SwallowedException:ThreadActivity.kt$ThreadActivity$e: ActivityNotFoundException</ID>
+    <ID>SwallowedException:ThreadActivity.kt$ThreadActivity$e: Exception</ID>
+    <ID>SwallowedException:VCardParser.kt$e: Exception</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:AttachmentUtils.kt$AttachmentUtils$IllegalStateException()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:MessagesImporter.kt$MessagesImporter$IllegalStateException()</ID>
+    <ID>ThrowsCount:SmsSender.kt$SmsSender$fun sendMessage( subId: Int, destination: String, body: String, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
+    <ID>TooGenericExceptionCaught:Activity.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AttachmentPreviews.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:Context.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DirectReplyReceiver.kt$DirectReplyReceiver$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ImageCompressor.kt$ImageCompressor$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:JsonElement.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MainActivity.kt$MainActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MessagesImporter.kt$MessagesImporter$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MessagesWriter.kt$MessagesWriter$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:Messaging.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MessagingUtils.kt$MessagingUtils$e: Error</ID>
+    <ID>TooGenericExceptionCaught:MessagingUtils.kt$MessagingUtils$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MmsReceiver.kt$MmsReceiver$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:NewConversationActivity.kt$NewConversationActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:RecycleBinConversationsActivity.kt$RecycleBinConversationsActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$e: Error</ID>
+    <ID>TooGenericExceptionCaught:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:SettingsActivity.kt$SettingsActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:SmsManager.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:SmsSender.kt$SmsSender$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$e: NullPointerException</ID>
+    <ID>TooGenericExceptionCaught:ThreadActivity.kt$ThreadActivity$e: Error</ID>
+    <ID>TooGenericExceptionCaught:ThreadActivity.kt$ThreadActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ThreadAdapter.kt$ThreadAdapter$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:VCardParser.kt$e: Exception</ID>
+    <ID>TooManyFunctions:ArchivedConversationsActivity.kt$ArchivedConversationsActivity : SimpleActivity</ID>
+    <ID>TooManyFunctions:BaseConversationsAdapter.kt$BaseConversationsAdapter : MyRecyclerViewListAdapterOnPopupTextUpdate</ID>
+    <ID>TooManyFunctions:ContactsAdapter.kt$ContactsAdapter : MyRecyclerViewAdapter</ID>
+    <ID>TooManyFunctions:Context.kt$org.fossify.messages.extensions.Context.kt</ID>
+    <ID>TooManyFunctions:ConversationsAdapter.kt$ConversationsAdapter : BaseConversationsAdapter</ID>
+    <ID>TooManyFunctions:ConversationsDao.kt$ConversationsDao</ID>
+    <ID>TooManyFunctions:JsonObject.kt$org.fossify.messages.extensions.gson.JsonObject.kt</ID>
+    <ID>TooManyFunctions:MainActivity.kt$MainActivity : SimpleActivity</ID>
+    <ID>TooManyFunctions:ManageBlockedKeywordsAdapter.kt$ManageBlockedKeywordsAdapter : MyRecyclerViewAdapter</ID>
+    <ID>TooManyFunctions:MessagesDao.kt$MessagesDao</ID>
+    <ID>TooManyFunctions:RecycleBinConversationsActivity.kt$RecycleBinConversationsActivity : SimpleActivity</ID>
+    <ID>TooManyFunctions:SearchResultsAdapter.kt$SearchResultsAdapter : MyRecyclerViewAdapter</ID>
+    <ID>TooManyFunctions:SettingsActivity.kt$SettingsActivity : SimpleActivity</ID>
+    <ID>TooManyFunctions:ThreadActivity.kt$ThreadActivity : SimpleActivity</ID>
+    <ID>TooManyFunctions:ThreadAdapter.kt$ThreadAdapter : MyRecyclerViewListAdapter</ID>
+    <ID>UnusedParameter:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$event: Events.RefreshMessages</ID>
+    <ID>UnusedParameter:MainActivity.kt$MainActivity$event: Events.RefreshMessages</ID>
+    <ID>UnusedParameter:RecycleBinConversationsActivity.kt$RecycleBinConversationsActivity$event: Events.RefreshMessages</ID>
+    <ID>UnusedParameter:ThreadActivity.kt$ThreadActivity$event: Events.RefreshMessages</ID>
+    <ID>UnusedPrivateMember:MessagesImporter.kt$MessagesImporter$private fun isJsonMimeType(mimeType: String): Boolean</ID>
+    <ID>UseCheckOrError:AttachmentUtils.kt$AttachmentUtils$throw IllegalStateException()</ID>
+    <ID>UseCheckOrError:MessagesImporter.kt$MessagesImporter$throw IllegalStateException()</ID>
+    <ID>UseRequire:SmsSender.kt$SmsSender$throw IllegalArgumentException("SmsSender: empty text message")</ID>
+    <ID>VariableNaming:MainActivity.kt$MainActivity$private val MAKE_DEFAULT_APP_REQUEST = 1</ID>
+    <ID>VariableNaming:MessagesWriter.kt$MessagesWriter$private val INVALID_ID = -1L</ID>
+    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val MIN_DATE_TIME_DIFF_SECS = 300</ID>
+    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val SCROLL_TO_BOTTOM_FAB_LIMIT = 20</ID>
+    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val TYPE_DELETE = 16</ID>
+    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val TYPE_EDIT = 14</ID>
+    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val TYPE_SEND = 15</ID>
+    <ID>WildcardImport:Activity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ArchivedConversationsActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:AttachmentPreviews.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:AttachmentPreviews.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.messages.helpers.*</ID>
+    <ID>WildcardImport:BaseConversationsAdapter.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:Context.kt$import android.provider.Telephony.*</ID>
+    <ID>WildcardImport:Context.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:Context.kt$import org.fossify.commons.helpers.*</ID>
+    <ID>WildcardImport:Context.kt$import org.fossify.messages.helpers.*</ID>
+    <ID>WildcardImport:Context.kt$import org.fossify.messages.models.*</ID>
+    <ID>WildcardImport:ConversationDetailsActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ConversationDetailsActivity.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:ConversationsAdapter.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ConversationsAdapter.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:DirectReplyReceiver.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:ExportMessagesDialog.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:JsonElement.kt$import com.google.gson.*</ID>
+    <ID>WildcardImport:MainActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:MainActivity.kt$import org.fossify.commons.helpers.*</ID>
+    <ID>WildcardImport:MainActivity.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:ManageBlockedKeywordsActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ManageBlockedKeywordsAdapter.kt$import android.view.*</ID>
+    <ID>WildcardImport:MessagesDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:MessagesDatabase.kt$import org.fossify.messages.models.*</ID>
+    <ID>WildcardImport:MessagesImporter.kt$import org.fossify.messages.models.*</ID>
+    <ID>WildcardImport:MessagesReader.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:MessagesReader.kt$import org.fossify.messages.models.*</ID>
+    <ID>WildcardImport:MmsReceiver.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:NewConversationActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:NewConversationActivity.kt$import org.fossify.commons.helpers.*</ID>
+    <ID>WildcardImport:NewConversationActivity.kt$import org.fossify.messages.helpers.*</ID>
+    <ID>WildcardImport:RecycleBinConversationsActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ScheduleMessageDialog.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:SettingsActivity.kt$import org.fossify.commons.dialogs.*</ID>
+    <ID>WildcardImport:SettingsActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:SettingsActivity.kt$import org.fossify.commons.helpers.*</ID>
+    <ID>WildcardImport:SettingsActivity.kt$import org.fossify.messages.helpers.*</ID>
+    <ID>WildcardImport:SmsReceiver.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:SmsStatusSentReceiver.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import androidx.core.view.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.commons.helpers.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.messages.helpers.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.messages.messaging.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.messages.models.*</ID>
+    <ID>WildcardImport:ThreadActivity.kt$import org.fossify.messages.models.ThreadItem.*</ID>
+    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.commons.extensions.*</ID>
+    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.databinding.*</ID>
+    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.extensions.*</ID>
+    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.helpers.*</ID>
+    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.models.ThreadItem.*</ID>
+    <ID>WildcardImport:VCard.kt$import ezvcard.property.*</ID>
+    <ID>WildcardImport:VCardViewerAdapter.kt$import org.fossify.commons.extensions.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

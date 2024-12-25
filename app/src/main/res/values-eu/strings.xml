@@ -9,4 +9,14 @@
     <string name="attachment">Eranskina</string>
     <string name="no_conversations_found">Ez da gordetako elkarrizketarik aurkitu</string>
     <string name="start_conversation">Hasi elkarrizketa</string>
+    <string name="draft">Zirriborroa</string>
+    <string name="reply">Erantzun</string>
+    <string name="loading_messages">Mezuak kargatzen…</string>
+    <string name="no_reply_support">Bidaltzaileak ez ditu erantzunik onartzen</string>
+    <string name="sending">Bidaltzen…</string>
+    <string name="pin_conversation">Finkatu goian</string>
+    <string name="unpin_conversation">Askatu aingura</string>
+    <string name="show_character_counter">Erakutsi karaktere-kontagailua mezuak idaztean</string>
+    <string name="forward_message">Birbidali</string>
+    <string name="compress_error">Ezin da irudia konprimitu hautatutako tamainara</string>
 </resources>

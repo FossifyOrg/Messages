@@ -5,13 +5,41 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToStream
 import org.fossify.commons.activities.ManageBlockedNumbersActivity
-import org.fossify.commons.dialogs.*
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.dialogs.ChangeDateTimeFormatDialog
+import org.fossify.commons.dialogs.ConfirmationDialog
+import org.fossify.commons.dialogs.FeatureLockedDialog
+import org.fossify.commons.dialogs.RadioGroupDialog
+import org.fossify.commons.dialogs.SecurityDialog
+import org.fossify.commons.extensions.addLockedLabelIfNeeded
+import org.fossify.commons.extensions.beGoneIf
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getBlockedNumbers
+import org.fossify.commons.extensions.getCustomizeColorsString
+import org.fossify.commons.extensions.getFontSizeText
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.isOrWasThankYouInstalled
+import org.fossify.commons.extensions.launchPurchaseThankYouIntent
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.viewBinding
+import org.fossify.commons.helpers.FONT_SIZE_EXTRA_LARGE
+import org.fossify.commons.helpers.FONT_SIZE_LARGE
+import org.fossify.commons.helpers.FONT_SIZE_MEDIUM
+import org.fossify.commons.helpers.FONT_SIZE_SMALL
+import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.PROTECTION_FINGERPRINT
+import org.fossify.commons.helpers.SHOW_ALL_TABS
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isNougatPlus
+import org.fossify.commons.helpers.isOreoPlus
+import org.fossify.commons.helpers.isPiePlus
+import org.fossify.commons.helpers.isTiramisuPlus
 import org.fossify.commons.models.RadioItem
 import org.fossify.messages.R
 import org.fossify.messages.databinding.ActivitySettingsBinding
@@ -19,7 +47,19 @@ import org.fossify.messages.dialogs.ExportMessagesDialog
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.emptyMessagesRecycleBin
 import org.fossify.messages.extensions.messagesDB
-import org.fossify.messages.helpers.*
+import org.fossify.messages.helpers.FILE_SIZE_100_KB
+import org.fossify.messages.helpers.FILE_SIZE_1_MB
+import org.fossify.messages.helpers.FILE_SIZE_200_KB
+import org.fossify.messages.helpers.FILE_SIZE_2_MB
+import org.fossify.messages.helpers.FILE_SIZE_300_KB
+import org.fossify.messages.helpers.FILE_SIZE_600_KB
+import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.LOCK_SCREEN_NOTHING
+import org.fossify.messages.helpers.LOCK_SCREEN_SENDER
+import org.fossify.messages.helpers.LOCK_SCREEN_SENDER_MESSAGE
+import org.fossify.messages.helpers.MessagesImporter
+import org.fossify.messages.helpers.MessagesReader
+import org.fossify.messages.helpers.refreshMessages
 import java.util.Locale
 import kotlin.system.exitProcess
 
@@ -27,7 +67,14 @@ class SettingsActivity : SimpleActivity() {
     private var blockedNumbersAtPause = -1
     private var recycleBinMessages = 0
     private val messagesFileType = "application/json"
-    private val messageImportFileTypes = listOf("application/json", "application/xml", "text/xml")
+    private val messageImportFileTypes = buildList {
+        add("application/json")
+        add("application/xml")
+        add("text/xml")
+        if (!isPiePlus()) {
+            add("application/octet-stream")
+        }
+    }
 
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
@@ -42,7 +89,10 @@ class SettingsActivity : SimpleActivity() {
             useTransparentNavigation = true,
             useTopSearchMenu = false
         )
-        setupMaterialScrollListener(scrollingView = binding.settingsNestedScrollview, toolbar = binding.settingsToolbar)
+        setupMaterialScrollListener(
+            scrollingView = binding.settingsNestedScrollview,
+            toolbar = binding.settingsToolbar
+        )
     }
 
     override fun onResume() {
@@ -73,7 +123,9 @@ class SettingsActivity : SimpleActivity() {
         setupMessagesImport()
         updateTextColors(binding.settingsNestedScrollview)
 
-        if (blockedNumbersAtPause != -1 && blockedNumbersAtPause != getBlockedNumbers().hashCode()) {
+        if (
+            blockedNumbersAtPause != -1 && blockedNumbersAtPause != getBlockedNumbers().hashCode()
+        ) {
             refreshMessages()
         }
 
@@ -90,23 +142,25 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
-    private val getContent = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) {
-            MessagesImporter(this).importMessages(uri)
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+            if (uri != null) {
+                MessagesImporter(this).importMessages(uri)
+            }
         }
-    }
 
-    private val saveDocument = registerForActivityResult(ActivityResultContracts.CreateDocument(messagesFileType)) { uri ->
-        if (uri != null) {
-            toast(org.fossify.commons.R.string.exporting)
-            exportMessages(uri)
+    private val saveDocument =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(messagesFileType)) { uri ->
+            if (uri != null) {
+                toast(org.fossify.commons.R.string.exporting)
+                exportMessages(uri)
+            }
         }
-    }
 
     private fun setupMessagesExport() {
         binding.settingsExportMessagesHolder.setOnClickListener {
             ExportMessagesDialog(this) { fileName ->
-                saveDocument.launch(fileName)
+                saveDocument.launch("$fileName.json")
             }
         }
     }
@@ -117,25 +171,37 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
     private fun exportMessages(uri: Uri) {
         ensureBackgroundThread {
+            var success = false
             try {
-                MessagesReader(this).getMessagesToExport(config.exportSms, config.exportMms) { messagesToExport ->
+                MessagesReader(this).getMessagesToExport(
+                    config.exportSms,
+                    config.exportMms
+                ) { messagesToExport ->
                     if (messagesToExport.isEmpty()) {
                         toast(org.fossify.commons.R.string.no_entries_for_exporting)
                         return@getMessagesToExport
                     }
                     val json = Json { encodeDefaults = true }
-                    val jsonString = json.encodeToString(messagesToExport)
-                    val outputStream = contentResolver.openOutputStream(uri)!!
-
-                    outputStream.use {
-                        it.write(jsonString.toByteArray())
+                    contentResolver.openOutputStream(uri)!!.buffered().use { outputStream ->
+                        json.encodeToStream(messagesToExport, outputStream)
                     }
+                    success = true
                     toast(org.fossify.commons.R.string.exporting_successful)
                 }
-            } catch (e: Exception) {
-                showErrorToast(e)
+            } catch (e: Throwable) { // also catch OutOfMemoryError etc.
+                showErrorToast(e.toString())
+            } finally {
+                if (!success) {
+                    // delete the file to avoid leaving behind an empty/corrupt file
+                    try {
+                        DocumentsContract.deleteDocument(contentResolver, uri)
+                    } catch (ignored: Exception) {
+                        // ignored because we don't want to overwhelm the user with two error messages
+                    }
+                }
             }
         }
     }
@@ -167,7 +233,10 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupUseEnglish() = binding.apply {
-        settingsUseEnglishHolder.beVisibleIf((config.wasUseEnglishToggled || Locale.getDefault().language != "en") && !isTiramisuPlus())
+        settingsUseEnglishHolder.beVisibleIf(
+            (config.wasUseEnglishToggled || Locale.getDefault().language != "en")
+                    && !isTiramisuPlus()
+        )
         settingsUseEnglish.isChecked = config.useEnglish
         settingsUseEnglishHolder.setOnClickListener {
             settingsUseEnglish.toggle()
@@ -187,7 +256,8 @@ class SettingsActivity : SimpleActivity() {
     // support for device-wise blocking came on Android 7, rely only on that
     @TargetApi(Build.VERSION_CODES.N)
     private fun setupManageBlockedNumbers() = binding.apply {
-        settingsManageBlockedNumbers.text = addLockedLabelIfNeeded(org.fossify.commons.R.string.manage_blocked_numbers)
+        settingsManageBlockedNumbers.text =
+            addLockedLabelIfNeeded(org.fossify.commons.R.string.manage_blocked_numbers)
         settingsManageBlockedNumbersHolder.beVisibleIf(isNougatPlus())
 
         settingsManageBlockedNumbersHolder.setOnClickListener {
@@ -202,7 +272,8 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupManageBlockedKeywords() = binding.apply {
-        settingsManageBlockedKeywords.text = addLockedLabelIfNeeded(R.string.manage_blocked_keywords)
+        settingsManageBlockedKeywords.text =
+            addLockedLabelIfNeeded(R.string.manage_blocked_keywords)
 
         settingsManageBlockedKeywordsHolder.setOnClickListener {
             if (isOrWasThankYouInstalled()) {
@@ -230,7 +301,10 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(FONT_SIZE_SMALL, getString(org.fossify.commons.R.string.small)),
                 RadioItem(FONT_SIZE_MEDIUM, getString(org.fossify.commons.R.string.medium)),
                 RadioItem(FONT_SIZE_LARGE, getString(org.fossify.commons.R.string.large)),
-                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(org.fossify.commons.R.string.extra_large))
+                RadioItem(
+                    FONT_SIZE_EXTRA_LARGE,
+                    getString(org.fossify.commons.R.string.extra_large)
+                )
             )
 
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
@@ -352,7 +426,11 @@ class SettingsActivity : SimpleActivity() {
             recycleBinMessages = messagesDB.getArchivedCount()
             runOnUiThread {
                 settingsEmptyRecycleBinSize.text =
-                    resources.getQuantityString(R.plurals.delete_messages, recycleBinMessages, recycleBinMessages)
+                    resources.getQuantityString(
+                        R.plurals.delete_messages,
+                        recycleBinMessages,
+                        recycleBinMessages
+                    )
             }
         }
 
@@ -372,7 +450,11 @@ class SettingsActivity : SimpleActivity() {
                     }
                     recycleBinMessages = 0
                     settingsEmptyRecycleBinSize.text =
-                        resources.getQuantityString(R.plurals.delete_messages, recycleBinMessages, recycleBinMessages)
+                        resources.getQuantityString(
+                            R.plurals.delete_messages,
+                            recycleBinMessages,
+                            recycleBinMessages
+                        )
                 }
             }
         }
@@ -381,8 +463,17 @@ class SettingsActivity : SimpleActivity() {
     private fun setupAppPasswordProtection() = binding.apply {
         settingsAppPasswordProtection.isChecked = config.isAppPasswordProtectionOn
         settingsAppPasswordProtectionHolder.setOnClickListener {
-            val tabToShow = if (config.isAppPasswordProtectionOn) config.appProtectionType else SHOW_ALL_TABS
-            SecurityDialog(this@SettingsActivity, config.appPasswordHash, tabToShow) { hash, type, success ->
+            val tabToShow = if (config.isAppPasswordProtectionOn) {
+                config.appProtectionType
+            } else {
+                SHOW_ALL_TABS
+            }
+
+            SecurityDialog(
+                activity = this@SettingsActivity,
+                requiredHash = config.appPasswordHash,
+                showTabIndex = tabToShow
+            ) { hash, type, success ->
                 if (success) {
                     val hasPasswordProtection = config.isAppPasswordProtectionOn
                     settingsAppPasswordProtection.isChecked = !hasPasswordProtection
@@ -391,13 +482,20 @@ class SettingsActivity : SimpleActivity() {
                     config.appProtectionType = type
 
                     if (config.isAppPasswordProtectionOn) {
-                        val confirmationTextId = if (config.appProtectionType == PROTECTION_FINGERPRINT) {
-                            org.fossify.commons.R.string.fingerprint_setup_successfully
-                        } else {
-                            org.fossify.commons.R.string.protection_setup_successfully
-                        }
+                        val confirmationTextId =
+                            if (config.appProtectionType == PROTECTION_FINGERPRINT) {
+                                org.fossify.commons.R.string.fingerprint_setup_successfully
+                            } else {
+                                org.fossify.commons.R.string.protection_setup_successfully
+                            }
 
-                        ConfirmationDialog(this@SettingsActivity, "", confirmationTextId, org.fossify.commons.R.string.ok, 0) { }
+                        ConfirmationDialog(
+                            activity = this@SettingsActivity,
+                            message = "",
+                            messageId = confirmationTextId,
+                            positive = org.fossify.commons.R.string.ok,
+                            negative = 0
+                        ) { }
                     }
                 }
             }
