@@ -9,8 +9,24 @@ import androidx.activity.result.contract.ActivityResultContracts
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.ExportBlockedNumbersDialog
 import org.fossify.commons.dialogs.FilePickerDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getFileOutputStream
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getTempFile
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.toFileDirItem
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.underlineText
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.viewBinding
+import org.fossify.commons.helpers.APP_ICON_IDS
+import org.fossify.commons.helpers.APP_LAUNCHER_NAME
+import org.fossify.commons.helpers.ExportResult
+import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.PERMISSION_READ_STORAGE
+import org.fossify.commons.helpers.PERMISSION_WRITE_STORAGE
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.interfaces.RefreshRecyclerViewListener
 import org.fossify.messages.R
 import org.fossify.messages.databinding.ActivityManageBlockedKeywordsBinding
@@ -45,7 +61,10 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
             useTransparentNavigation = true,
             useTopSearchMenu = false
         )
-        setupMaterialScrollListener(scrollingView = binding.manageBlockedKeywordsList, toolbar = binding.blockKeywordsToolbar)
+        setupMaterialScrollListener(
+            scrollingView = binding.manageBlockedKeywordsList,
+            toolbar = binding.blockKeywordsToolbar
+        )
         updateTextColors(binding.manageBlockedKeywordsWrapper)
 
         binding.manageBlockedKeywordsPlaceholder2.apply {
@@ -85,27 +104,28 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
         }
     }
 
-    private val exportActivityResultLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
-        try {
-            val outputStream = uri?.let { contentResolver.openOutputStream(it) }
-            if (outputStream != null) {
-                exportBlockedKeywordsTo(outputStream)
+    private val exportActivityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
+            try {
+                val outputStream = uri?.let { contentResolver.openOutputStream(it) }
+                if (outputStream != null) {
+                    exportBlockedKeywordsTo(outputStream)
+                }
+            } catch (e: Exception) {
+                showErrorToast(e)
             }
-        } catch (e: Exception) {
-            showErrorToast(e)
         }
-    }
 
-    private val importActivityResultLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        try {
-            if (uri != null) {
-                tryImportBlockedKeywordsFromFile(uri)
+    private val importActivityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            try {
+                if (uri != null) {
+                    tryImportBlockedKeywordsFromFile(uri)
+                }
+            } catch (e: Exception) {
+                showErrorToast(e)
             }
-        } catch (e: Exception) {
-            showErrorToast(e)
         }
-    }
-
 
     private fun tryImportBlockedKeywords() {
         if (isQPlus()) {
@@ -202,7 +222,10 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
                     try {
                         exportActivityResultLauncher.launch(file.name)
                     } catch (e: ActivityNotFoundException) {
-                        toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        toast(
+                            org.fossify.commons.R.string.system_service_disabled,
+                            Toast.LENGTH_LONG
+                        )
                     } catch (e: Exception) {
                         showErrorToast(e)
                     }
@@ -211,7 +234,11 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
         } else {
             handlePermission(PERMISSION_WRITE_STORAGE) { isAllowed ->
                 if (isAllowed) {
-                    ExportBlockedNumbersDialog(this, config.lastBlockedKeywordExportPath, false) { file ->
+                    ExportBlockedNumbersDialog(
+                        this,
+                        config.lastBlockedKeywordExportPath,
+                        false
+                    ) { file ->
                         getFileOutputStream(file.toFileDirItem(this), true) { out ->
                             exportBlockedKeywordsTo(out)
                         }
@@ -229,7 +256,12 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
         ensureBackgroundThread {
             val blockedKeywords = config.blockedKeywords.sorted().toArrayList()
             runOnUiThread {
-                ManageBlockedKeywordsAdapter(this, blockedKeywords, this, binding.manageBlockedKeywordsList) {
+                ManageBlockedKeywordsAdapter(
+                    activity = this,
+                    blockedKeywords = blockedKeywords,
+                    listener = this,
+                    recyclerView = binding.manageBlockedKeywordsList
+                ) {
                     addOrEditBlockedKeyword(it as String)
                 }.apply {
                     binding.manageBlockedKeywordsList.adapter = this
@@ -241,7 +273,7 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
         }
     }
 
-    fun addOrEditBlockedKeyword(keyword: String? = null) {
+    private fun addOrEditBlockedKeyword(keyword: String? = null) {
         AddBlockedKeywordDialog(this, keyword) {
             updateBlockedKeywords()
         }
