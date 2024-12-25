@@ -5,9 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToStream
 import org.fossify.commons.activities.ManageBlockedNumbersActivity
 import org.fossify.commons.dialogs.ChangeDateTimeFormatDialog
 import org.fossify.commons.dialogs.ConfirmationDialog
@@ -170,8 +171,10 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
     private fun exportMessages(uri: Uri) {
         ensureBackgroundThread {
+            var success = false
             try {
                 MessagesReader(this).getMessagesToExport(
                     config.exportSms,
@@ -182,16 +185,23 @@ class SettingsActivity : SimpleActivity() {
                         return@getMessagesToExport
                     }
                     val json = Json { encodeDefaults = true }
-                    val jsonString = json.encodeToString(messagesToExport)
-                    val outputStream = contentResolver.openOutputStream(uri)!!
-
-                    outputStream.use {
-                        it.write(jsonString.toByteArray())
+                    contentResolver.openOutputStream(uri)!!.buffered().use { outputStream ->
+                        json.encodeToStream(messagesToExport, outputStream)
                     }
+                    success = true
                     toast(org.fossify.commons.R.string.exporting_successful)
                 }
-            } catch (e: Exception) {
-                showErrorToast(e)
+            } catch (e: Throwable) { // also catch OutOfMemoryError etc.
+                showErrorToast(e.toString())
+            } finally {
+                if (!success) {
+                    // delete the file to avoid leaving behind an empty/corrupt file
+                    try {
+                        DocumentsContract.deleteDocument(contentResolver, uri)
+                    } catch (ignored: Exception) {
+                        // ignored because we don't want to overwhelm the user with two error messages
+                    }
+                }
             }
         }
     }
