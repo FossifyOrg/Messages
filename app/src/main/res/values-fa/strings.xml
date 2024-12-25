@@ -116,4 +116,7 @@
     <string name="me">من</string>
     <string name="sender_only">فقط فرستنده</string>
     <string name="send_on_enter">ارسال پیام با کلید اینتر</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="keywords"></string>
+    <string name="import_blocked_keywords"></string>
 </resources>
