@@ -40,7 +40,7 @@
     <string name="new_message">Pesan baru</string>
     <string name="mark_as_read">Tandai sebagai Dibaca</string>
     <string name="mark_as_unread">Tandai sebagai Belum dibaca</string>
-    <string name="delete_whole_conversation_confirmation">Apakah Anda yakin ingin menghapus semua pesan dari percakapan ini\?</string>
+    <string name="delete_whole_conversation_confirmation">Apakah Anda yakin ingin menghapus semua pesan dari percakapan ini?</string>
     <plurals name="delete_conversations">
         <item quantity="other">%d percakapan</item>
     </plurals>
@@ -68,12 +68,12 @@
     <string name="carrier_send_error">Tidak dapat mengirim pesan, kesalahan penyedia jaringan</string>
     <string name="unknown_error_occurred_sending_message">Tidak dapat mengirim pesan, kode kesalahan: %d</string>
     <string name="invalid_short_code">Tidak dapat membalas ke kode pendek seperti ini</string>
-    <string name="invalid_short_code_desc">Anda hanya dapat membalas ke kode pendek dengan nomor seperti \"503501\" tetapi tidak ke kode berisi huruf dan angka seperti \"AB-CD0\".</string>
-    <string name="faq_1_title">Mengapa aplikasi ini membutuhkan akses ke internet\?</string>
+    <string name="invalid_short_code_desc">Anda hanya dapat membalas ke kode pendek dengan nomor seperti 03501 tetapi tidak ke kode berisi huruf dan angka seperti B-CD0</string>
+    <string name="faq_1_title">Mengapa aplikasi ini membutuhkan akses ke internet?</string>
     <string name="faq_1_text">Sayangnya itu diperlukan untuk mengirim lampiran MMS. Tidak dapat mengirim MMS akan menjadi kerugian yang sangat besar dibandingkan dengan aplikasi lain, jadi kami memutuskan untuk menggunakan cara ini. Namun, seperti biasanya, tidak ada iklan, pelacakan atau analitik apa pun, internet hanya digunakan untuk mengirim MMS.</string>
-    <string name="faq_2_title">Pihak lain tidak menerima MMS saya, adakah sesuatu yang saya bisa lakukan\?</string>
+    <string name="faq_2_title">Pihak lain tidak menerima MMS saya, adakah sesuatu yang saya bisa lakukan?</string>
     <string name="faq_2_text">Ukuran MMS dibatasi oleh penyedia, Anda dapat menetapkan batas yang lebih kecil dalam pengaturan aplikasi.</string>
-    <string name="faq_3_title">Apakah aplikasi mendukung penjadwalan pesan\?</string>
+    <string name="faq_3_title">Apakah aplikasi mendukung penjadwalan pesan?</string>
     <string name="faq_3_text">Ya, Anda bisa menjadwalkan pesan untuk dikirim di masa depan dengan menekan lama pada tombol Kirim dan memilih tanggal dan waktu yang diinginkan.</string>
     <string name="enable_custom_notifications">Aktifkan notifikasi khusus</string>
     <string name="message_details">Detail pesan</string>
@@ -113,4 +113,7 @@
     <string name="archive_confirmation">Anda yakin ingin mengarsipkan %s?</string>
     <string name="restore_whole_conversation_confirmation">Anda yakin ingin memulihkan semua pesan dari percakapan ini?</string>
     <string name="add_a_blocked_keyword">Tambahkan kata kunci yang diblokir</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
 </resources>
