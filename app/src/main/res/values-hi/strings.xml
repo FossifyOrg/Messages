@@ -116,4 +116,7 @@
     <string name="empty_archive">सभी संग्रहीत वार्तालाप हटाएँ</string>
     <string name="archive">संग्रहालय</string>
     <string name="no_archived_conversations">कोई संग्रहीत वार्तालाप नहीं मिला है</string>
+    <string name="keywords"></string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
 </resources>
