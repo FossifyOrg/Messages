@@ -113,4 +113,7 @@
     <string name="mark_as_unread">읽지 않음으로 표시</string>
     <string name="me">나</string>
     <string name="archive">보관</string>
+    <string name="keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="export_blocked_keywords"></string>
 </resources>
