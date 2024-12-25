@@ -1,6 +1,3 @@
-# This workflow has write permissions on the repo
-# It MUST NOT check out a PR and run untrusted code
- 
 name: Image Minimizer
 
 on:
@@ -11,20 +8,16 @@ on:
   pull_request_target:
     types: [opened, edited]
 
-permissions:
-  issues: write
-  pull-requests: write
-
 jobs:
   try-minimize:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.FOSSIFYBOT_TOKEN }}
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 16
 
@@ -32,9 +25,10 @@ jobs:
         run: npm i probe-image-size@7.2.3 --ignore-scripts
 
       - name: Minimize simple images
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         timeout-minutes: 3
         with:
+          github-token: ${{ secrets.FOSSIFYBOT_TOKEN }}
           script: |
             const script = require('.github/workflows/image-minimizer.js');
             await script({github, context});

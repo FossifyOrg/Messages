@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Xml
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.helpers.ensureBackgroundThread
@@ -32,23 +33,29 @@ class MessagesImporter(private val activity: SimpleActivity) {
             } else {
                 importJson(uri)
             }
-        } catch (e: Exception) {
-            activity.showErrorToast(e)
+        } catch (e: Throwable) { // also catch OutOfMemoryError etc.
+            activity.showErrorToast(e.toString())
         }
     }
 
+    @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
     private fun importJson(uri: Uri) {
         try {
-            val jsonString = activity.contentResolver.openInputStream(uri)!!.use { inputStream ->
-                inputStream.bufferedReader().readText()
+            val deserializedList = activity.contentResolver.openInputStream(uri)!!.buffered().use { inputStream ->
+                Json.decodeFromStream<List<MessagesBackup>>(inputStream)
             }
-
-            val deserializedList = Json.decodeFromString<List<MessagesBackup>>(jsonString)
             if (deserializedList.isEmpty()) {
                 activity.toast(org.fossify.commons.R.string.no_entries_for_importing)
                 return
             }
-            ImportMessagesDialog(activity, deserializedList)
+            val messages = deserializedList.map { message ->
+                // workaround for messages not being imported on Android 14 when the device has a different subscriptionId (see #191)
+                when (message) {
+                    is SmsBackup -> message.copy(subscriptionId = -1)
+                    is MmsBackup -> message.copy(subscriptionId = -1)
+                }
+            }
+            ImportMessagesDialog(activity, messages)
         } catch (e: SerializationException) {
             activity.toast(org.fossify.commons.R.string.invalid_file_format)
         } catch (e: IllegalArgumentException) {

@@ -278,11 +278,11 @@ fun Context.getConversations(threadId: Long? = null, privateContacts: ArrayList<
         projection += Threads.ARCHIVED
     }
 
-    var selection = "${Threads.MESSAGE_COUNT} > ?"
-    var selectionArgs = arrayOf("0")
+    var selection = "${Threads.MESSAGE_COUNT} > 0"
+    var selectionArgs = arrayOf<String>()
     if (threadId != null) {
         selection += " AND ${Threads._ID} = ?"
-        selectionArgs = arrayOf("0", threadId.toString())
+        selectionArgs += threadId.toString()
     }
 
     val sortOrder = "${Threads.DATE} DESC"
@@ -355,11 +355,10 @@ private fun Context.queryCursorUnsafe(
 fun Context.getConversationIds(): List<Long> {
     val uri = Uri.parse("${Threads.CONTENT_URI}?simple=true")
     val projection = arrayOf(Threads._ID)
-    val selection = "${Threads.MESSAGE_COUNT} > ?"
-    val selectionArgs = arrayOf("0")
+    val selection = "${Threads.MESSAGE_COUNT} > 0"
     val sortOrder = "${Threads.DATE} ASC"
     val conversationIds = mutableListOf<Long>()
-    queryCursor(uri, projection, selection, selectionArgs, sortOrder, true) { cursor ->
+    queryCursor(uri, projection, selection, null, sortOrder, true) { cursor ->
         val id = cursor.getLongValue(Threads._ID)
         conversationIds.add(id)
     }
@@ -990,11 +989,13 @@ fun Context.deleteSmsDraft(threadId: Long) {
 }
 
 fun Context.updateLastConversationMessage(threadId: Long) {
+    // update the date and the snippet of the thread, by triggering the
+    // following Android code (which runs even if no messages are deleted):
+    // https://android.googlesource.com/platform/packages/providers/TelephonyProvider/+/android14-release/src/com/android/providers/telephony/MmsSmsProvider.java#1409
     val uri = Threads.CONTENT_URI
-    val selection = "${Threads._ID} = ?"
-    val selectionArgs = arrayOf(threadId.toString())
+    val selection = "1 = 0" // always-false condition, because we don't actually want to delete any messages
     try {
-        contentResolver.delete(uri, selection, selectionArgs)
+        contentResolver.delete(uri, selection, null)
         val newConversation = getConversations(threadId)[0]
         insertOrUpdateConversation(newConversation)
     } catch (e: Exception) {
@@ -1058,16 +1059,9 @@ fun Context.insertOrUpdateConversation(
     conversation: Conversation,
     cachedConv: Conversation? = conversationsDB.getConversationWithThreadId(conversation.threadId)
 ) {
-    val updatedConv = if (cachedConv != null) {
-        val usesCustomTitle = cachedConv.usesCustomTitle
-        val title = if (usesCustomTitle) {
-            cachedConv.title
-        } else {
-            conversation.title
-        }
-        conversation.copy(title = title, usesCustomTitle = usesCustomTitle)
-    } else {
-        conversation
+    var updatedConv = conversation
+    if (cachedConv != null && cachedConv.usesCustomTitle) {
+        updatedConv = updatedConv.copy(title = cachedConv.title, usesCustomTitle = cachedConv.usesCustomTitle)
     }
     conversationsDB.insertOrUpdate(updatedConv)
 }

@@ -2,7 +2,7 @@
 <resources>
     <string name="type_a_message">Escriviu un missatge…</string>
     <string name="message_not_sent_short">Missatge no enviat</string>
-    <string name="message_not_sent_touch_retry">No s\'ha enviat. Toqueu per tornar-ho a provar.</string>
+    <string name="message_not_sent_touch_retry">No s\'ha enviat. Toqueu per a tornar-ho a provar.</string>
     <string name="message_sending_error">El vostre missatge a «%s» no s\'ha enviat</string>
     <string name="add_person">Afegeix una persona</string>
     <string name="attachment">Adjunt</string>
@@ -21,6 +21,7 @@
     <string name="duplicate_item_warning">No s\'ha inclòs l\'element duplicat</string>
     <plurals name="and_other_contacts">
         <item quantity="one">i %d altra</item>
+        <item quantity="many">i %d altres</item>
         <item quantity="other">i %d altres</item>
     </plurals>
     <string name="new_conversation">Conversa nova</string>
@@ -64,10 +65,12 @@
     <string name="restore_confirmation">Segur que voleu restaurar %s\?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d conversa</item>
+        <item quantity="many">%d converses</item>
         <item quantity="other">%d converses</item>
     </plurals>
     <plurals name="delete_messages">
         <item quantity="one">%d missatge</item>
+        <item quantity="many">%d missatges</item>
         <item quantity="other">%d missatges</item>
     </plurals>
     <string name="keyword">Paraula clau</string>
@@ -106,9 +109,14 @@
     <string name="sim_card_not_available">La targeta SIM no està disponible</string>
     <string name="couldnt_download_mms">No es poden baixar MMS</string>
     <string name="faq_1_title">Per què l\'aplicació requereix accés a Internet\?</string>
-    <string name="faq_1_text">Malauradament, és necessari per enviar adjunts MMS. No poder enviar MMS seria un gran desavantatge en comparació amb altres aplicacions, així que vam decidir anar per aquest camí. Tanmateix, com sol ser, no hi ha cap anunci, seguiment o anàlisi de cap mena, Internet només s\'utilitza per enviar MMS.</string>
+    <string name="faq_1_text">Malauradament, és necessari per a enviar adjunts MMS. No poder enviar MMS seria un gran desavantatge en comparació amb altres aplicacions, així que vam decidir anar per aquest camí. Tanmateix, com sol ser, no hi ha cap anunci, seguiment o anàlisi de cap mena, Internet només s\'utilitza per a enviar MMS.</string>
     <string name="faq_2_text">La mida dels MMS està limitada pels operadors, podeu provar d\'establir un límit més petit a la configuració de l\'aplicació.</string>
     <string name="faq_3_title">L\'aplicació admet missatges programats\?</string>
-    <string name="faq_3_text">Sí, podeu programar missatges per enviar-los en el futur prement prolongadament el botó Envia i escollint la data i l\'hora desitjades.</string>
+    <string name="faq_3_text">Sí, podeu programar missatges per a enviar-los en el futur prement prolongadament el botó Envia i escollint la data i l\'hora desitjades.</string>
     <string name="faq_2_title">L\'altre extrem no ha rebut el meu MMS, hi puc fer alguna cosa\?</string>
+    <string name="enable_custom_notifications">Activa les notificacions personalitzades</string>
+    <string name="app_launcher_name">Missatges</string>
+    <string name="update_message">Actualitza el missatge</string>
+    <string name="message_details">Detalls del missatge</string>
+    <string name="me">Jo</string>
 </resources>

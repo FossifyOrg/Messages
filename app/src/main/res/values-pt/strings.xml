@@ -14,7 +14,7 @@
     <string name="no_reply_support">O remetente não aceita respostas</string>
     <string name="draft">Rascunho</string>
     <string name="sending">A enviar…</string>
-    <string name="pin_conversation">Fixar</string>
+    <string name="pin_conversation">Afixar no topo</string>
     <string name="unpin_conversation">Desafixar</string>
     <string name="forward_message">Encaminhar</string>
     <string name="compress_error">Não foi possível comprimir a imagem para o tamanho selecionado</string>
@@ -61,7 +61,7 @@
     <string name="restore_all_messages">Restaurar todas as mensagens</string>
     <string name="empty_recycle_bin_messages_confirmation">Tem a certeza de que pretende esvaziar a reciclagem\? As mensagens não poderão ser recuperadas.</string>
     <string name="skip_the_recycle_bin_messages">Eliminar mensagens sem as colocar na reciclagem</string>
-    <string name="delete_whole_conversation_confirmation">Tem a certeza de que pretende apagar todas as mensagens desta conversa\?</string>
+    <string name="delete_whole_conversation_confirmation">Tem a certeza de que pretende eliminar todas as mensagens desta conversa?</string>
     <string name="archive_confirmation">Tem a certeza de que pretende arquivar %s\?</string>
     <string name="restore_whole_conversation_confirmation">Tem a certeza de que pretende restaurar todas as mensagens desta conversa\?</string>
     <string name="restore_confirmation">Tem a certeza de que pretende restaurar %s\?</string>
@@ -118,4 +118,5 @@
     <string name="faq_3_text">Sim, pode agendar mensagens e escolher a data e hora de envio com um toque longo no botão Enviar.</string>
     <string name="enable_custom_notifications">Ativar notificações personalizadas</string>
     <string name="message_details">Detalhes da mensagem</string>
+    <string name="app_launcher_name">Mensagens</string>
 </resources>
