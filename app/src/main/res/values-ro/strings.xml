@@ -60,9 +60,9 @@
     <string name="import_sms">Importă mesajele SMS</string>
     <string name="import_mms">Importă mesajele MMS</string>
     <string name="no_option_selected">Trebuie să selectezi cel puțin un element</string>
-    <string name="faq_1_title">De ce necesită aplicația acces la internet\?</string>
+    <string name="faq_1_title">De ce necesită aplicația acces la internet?</string>
     <string name="faq_1_text">Din păcate este nevoie pentru a primite anexe MMS. Ideea de a nu putea trimite MMS-uri ar prezenta un dezavantaj foarte mare în comparație cu alte aplicații, așa că am decis să mergem pe această cale. Totuși, ca de obicei, nu este prezentă niciun fel de reclamă, urmărire sau analiză, internetul este folosit doar pentru a trimite MMS-uri.</string>
-    <string name="faq_2_title">Celălalt capăt nu-mi primește MMS-ul, pot face ceva în acest sens\?</string>
+    <string name="faq_2_title">Celălalt capăt nu-mi primește MMS-ul, pot face ceva în acest sens?</string>
     <string name="faq_2_text">Dimensiunea MMS este limitată de operatorii de telefonie; poți încerca să setezi o limită mai mică în setările aplicației.</string>
     <string name="members">Membri</string>
     <string name="conversation_name">Numele conversației</string>
@@ -119,4 +119,7 @@
     <string name="empty_archive_confirmation">Sigur dorești să golești arhiva? Toate conversațiile arhivate se vor pierde definitiv.</string>
     <string name="cancel_schedule_send">Anulează trimiterea programată</string>
     <string name="empty_destination_address">Nu se poate trimite mesaj la un număr gol</string>
+    <string name="import_blocked_keywords"></string>
+    <string name="export_blocked_keywords"></string>
+    <string name="keywords"></string>
 </resources>
