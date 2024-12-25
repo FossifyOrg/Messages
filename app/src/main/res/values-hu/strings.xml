@@ -44,7 +44,7 @@
     <string name="mark_as_read">Megjelölés olvasottként</string>
     <string name="mark_as_unread">Megjelölés olvasatlanként</string>
     <string name="me">Nekem</string>
-    <string name="delete_whole_conversation_confirmation">Biztos, hogy törli az összes üzenetet ebből a beszélgetésből\?</string>
+    <string name="delete_whole_conversation_confirmation">Biztos, hogy törli az összes üzenetet ebből a beszélgetésből?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d beszélgetést</item>
         <item quantity="other">%d beszélgetéseket</item>
@@ -80,11 +80,11 @@
     <string name="unknown_error_occurred_sending_message">Nem sikerült az üzenet elküldése, hibakód: %d</string>
     <string name="invalid_short_code">Nem válaszolhat így a rövid kódokra</string>
     <string name="invalid_short_code_desc">Csak a számokat tartalmazó rövid kódokra válaszolhat, például a „503501”-re, de a számokat és betűket tartalmazókra, például a „AB-CD0”-ra, nem.</string>
-    <string name="faq_1_title">Miért kér az alkalmazás hozzáférést az internethez\?</string>
+    <string name="faq_1_title">Miért kér az alkalmazás hozzáférést az internethez?</string>
     <string name="faq_1_text">Sajnos szükséges az MMS-mellékletek küldéséhez. Az MMS-küldés hiánya olyan nagy hátrány más alkalmazásokhoz képest, hogy inkább mellette döntöttünk. Viszont, mint általában, nincsenek reklámok, követés, vagy analitika és az internetet csak az MMS küldéséhez használjuk.</string>
-    <string name="faq_2_title">A másik fél nem kapja meg az MMS-emet, tehetek valamit ez ellen\?</string>
+    <string name="faq_2_title">A másik fél nem kapja meg az MMS-emet, tehetek valamit ez ellen?</string>
     <string name="faq_2_text">Az MMS méretét korlátozzák a szolgáltatók, próbáljon kisebb korlátot beállítani az alkalmazásbeállításokban.</string>
-    <string name="faq_3_title">Az alkalmazás támogatja az ütemezett üzeneteket\?</string>
+    <string name="faq_3_title">Az alkalmazás támogatja az ütemezett üzeneteket?</string>
     <string name="faq_3_text">Igen, a Küldés gomb hosszú megnyomásával, és a kívánt dátum és idő kiválasztásával beütemezheti a jövőben elküldendő üzeneteket.</string>
     <string name="enable_custom_notifications">Egyéni értesítések engedélyezése</string>
     <string name="archived_conversations">Archívum</string>
@@ -116,4 +116,7 @@
     <string name="not_blocking_keywords">Ön nem tiltott le egyetlen kulcsszót sem. Itt adhat hozzá kulcsszavakat az ezeket tartalmazó üzenetek blokkolásához.</string>
     <string name="add_a_blocked_keyword">Adjon hozzá egy letiltott kulcsszót</string>
     <string name="unarchive">Archiválás visszavonása</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
 </resources>
