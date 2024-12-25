@@ -63,7 +63,7 @@
     <string name="restore_all_messages">Віновити всі повідомлення</string>
     <string name="empty_recycle_bin_messages_confirmation">Ви дійсно хочете спустошити кошик? Всі архівовані розмови будуть остаточно видалено.</string>
     <string name="skip_the_recycle_bin_messages">Пропустити кошик, видалити повідомлення безпосередньо</string>
-    <string name="delete_whole_conversation_confirmation">Справді видалити всі повідомлення у цьому листуванні\?</string>
+    <string name="delete_whole_conversation_confirmation">Справді видалити всі повідомлення у цьому листуванні?</string>
     <string name="archive_confirmation">Ви впевнені, ви хочете архівувати %s?</string>
     <string name="restore_whole_conversation_confirmation">Ви впевнені, ви хочете відновити всі повідомлення цієї розмови?</string>
     <string name="restore_confirmation">Ви впевнені, ви хочете відновити %s?</string>
@@ -116,10 +116,13 @@
     <string name="couldnt_download_mms">Не вдалося завантажити MMS</string>
     <string name="faq_1_title">Чому застосунок вимагає доступ до Інтернету?</string>
     <string name="faq_1_text">Нажаль, це необхідно для відправки вкладень MMS. Неспроможність надсилати MMS-повідомлення була б великим недоліком нашого застосунку порівняно з іншими, тому ми так зробили. Тим не менше, як і в інших наших застосунках, цей не містить реклами, відстеження та аналітики. Інтернет використовується лише для відправки MMS.</string>
-    <string name="faq_2_title">Інша сторона не отримує мого MMS, чи можу я щось з цим зробити\?</string>
+    <string name="faq_2_title">Інша сторона не отримує мого MMS, чи можу я щось з цим зробити?</string>
     <string name="faq_2_text">Розмір MMS обмежений операторами, ви можете спробувати зменшити ліміт у налаштуваннях програми.</string>
-    <string name="faq_3_title">Чи підтримує застосунок заплановані повідомлення\?</string>
+    <string name="faq_3_title">Чи підтримує застосунок заплановані повідомлення?</string>
     <string name="faq_3_text">Так, ви можете запланувати надсилання повідомлень у майбутньому, довго натискаючи кнопку «Надіслати» та вибираючи потрібну дату й час.</string>
     <string name="app_launcher_name">Повідомлення</string>
     <string name="enable_custom_notifications">Ввімкнути власні сповіщення</string>
+    <string name="export_blocked_keywords"></string>
+    <string name="import_blocked_keywords"></string>
+    <string name="keywords"></string>
 </resources>
