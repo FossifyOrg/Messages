@@ -1,0 +1,1 @@
+Mainosvapaa avoimen lähdekoodin SMS/MMS viestien lähettämisen sovellus

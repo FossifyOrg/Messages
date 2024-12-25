@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Meddelelser</string>
+    <string name="app_launcher_name">Beskeder</string>
     <string name="type_a_message">Skriv en besked…</string>
     <string name="message_not_sent_short">Beskeden blev ikke sendt</string>
     <string name="message_not_sent_touch_retry">Blev ikke sendt, tryk for at gensende.</string>
@@ -10,7 +10,7 @@
     <string name="no_conversations_found">Ingen gemte samtaler er fundet</string>
     <string name="start_conversation">Start en samtale</string>
     <string name="reply">Svar</string>
-    <string name="show_character_counter">Vis en karaktertæller ved skrivning af beskeder</string>
+    <string name="show_character_counter">Vis en tegntæller ved skrivning af beskeder</string>
     <string name="loading_messages">Henter beskeder…</string>
     <string name="no_reply_support">Afsender understøtter ikke svar</string>
     <string name="draft">Udkast</string>
@@ -28,25 +28,25 @@
     <string name="conversation_details">Samtaledetaljer</string>
     <string name="rename_conversation">Omdøb samtale</string>
     <string name="rename_conversation_warning">Kun du kan se dette samtalenavn</string>
-    <string name="scheduled_message">Planlagt meddelelse</string>
-    <string name="schedule_message">Planlæg meddelelse</string>
+    <string name="scheduled_message">Planlagt besked</string>
+    <string name="schedule_message">Planlæg besked</string>
     <string name="schedule_send">Planlæg afsendelse</string>
     <string name="cancel_schedule_send">Annuler planlagt afsendelse</string>
     <string name="must_pick_time_in_the_future">Du skal vælge et tidspunkt i fremtiden</string>
     <string name="schedule_send_warning">Hold telefonen tændt, og sørg for, at der ikke er noget der afbryder appen, mens den er i baggrunden.</string>
-    <string name="update_message">Opdater meddelelse</string>
+    <string name="update_message">Opdater besked</string>
     <string name="send_now">Send nu</string>
-    <string name="message_details">Meddelelsesdetaljer</string>
+    <string name="message_details">Beskeddetaljer</string>
     <string name="message_details_sender">Afsender</string>
     <string name="message_details_receiver">Modtager</string>
     <string name="message_details_sent_at">Sendt</string>
     <string name="message_details_received_at">Modtaget</string>
     <string name="channel_received_sms">Modtag SMS</string>
-    <string name="new_message">Ny Besked</string>
+    <string name="new_message">Ny besked</string>
     <string name="mark_as_read">Marker som læst</string>
     <string name="mark_as_unread">Marker som ulæst</string>
     <string name="me">Mig</string>
-    <string name="enable_custom_notifications">Aktiver tilpassede meddelelser</string>
+    <string name="enable_custom_notifications">Aktiver tilpassede beskeder</string>
     <string name="unarchive">Fjerne arkivering</string>
     <string name="empty_archive">Slet alle arkiverede samtaler</string>
     <string name="archived_conversations">Arkiv</string>
@@ -56,9 +56,9 @@
     <string name="archive_emptied_successfully">Arkivet er successfuldt blevet tømt</string>
     <string name="empty_archive_confirmation">Er du sikker på, at du vil tømme arkivet? Alle arkiverede samtaler vil gå permanent tabt.</string>
     <string name="restore">Gendan</string>
-    <string name="restore_all_messages">Gendan alle meddelelser</string>
-    <string name="empty_recycle_bin_messages_confirmation">Er du sikker på, at du vil tømme papirkurven? Beskederne vil blive permanent tabt.</string>
-    <string name="skip_the_recycle_bin_messages">Brug ikke Papirkurven, slet meddelelse direkte</string>
+    <string name="restore_all_messages">Gendan alle beskeder</string>
+    <string name="empty_recycle_bin_messages_confirmation">Er du sikker på, at du vil tømme papirkurven? Beskederne vil være permanent tabt.</string>
+    <string name="skip_the_recycle_bin_messages">Brug ikke papirkurven, slet beskeder med det samme</string>
     <string name="delete_whole_conversation_confirmation">Er du sikker på, at du vil slette alle beskeder i denne samtale\?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d samtale</item>
@@ -69,25 +69,25 @@
         <item quantity="other">%d beskeder</item>
     </plurals>
     <string name="archive_confirmation">Er du sikker på du vil arkivere %s?</string>
-    <string name="restore_whole_conversation_confirmation">Er du sikker på du vil gendanne alle meddelelser i denne samtale?</string>
+    <string name="restore_whole_conversation_confirmation">Er du sikker på, at du vil gendanne alle beskeder i denne samtale?</string>
     <string name="restore_confirmation">Er du sikker på du vil gendanne %s?</string>
     <string name="keyword">Nøgleord</string>
     <string name="blocked_keywords">Blokerede nøgleord</string>
     <string name="manage_blocked_keywords">Administrer blokerede nøgleord</string>
-    <string name="not_blocking_keywords">Du blokerer ikke nogen søgeord. Du kan tilføje nøgleord her for at blokere alle meddelelser, der indeholder dem.</string>
+    <string name="not_blocking_keywords">Du blokerer ikke nogen søgeord. Du kan tilføje nøgleord her for at blokere alle beskeder, der indeholder dem.</string>
     <string name="add_a_blocked_keyword">Tilføj et blokeret nøgleord</string>
-    <string name="lock_screen_visibility">Synlighed af meddelelse på låseskærmen</string>
-    <string name="sender_and_message">Afsender og meddelelse</string>
+    <string name="lock_screen_visibility">Synlighed af notifikation på låseskærmen</string>
+    <string name="sender_and_message">Afsender og besked</string>
     <string name="sender_only">Kun afsender</string>
     <string name="enable_delivery_reports">Aktiver leveringsrapporter</string>
-    <string name="use_simple_characters">Fjerne accenter og diakritiske tegn ved afsendelse af meddelelser</string>
-    <string name="send_on_enter">Send meddelelse når der trykkes Enter</string>
+    <string name="use_simple_characters">Fjerne accenter og diakritiske tegn ved afsendelse af beskeder</string>
+    <string name="send_on_enter">Send besked, når der trykkes Enter</string>
     <string name="mms_file_size_limit">Ændr størrelse på MMS-billeder</string>
     <string name="mms_file_size_limit_none">Ingen grænse</string>
-    <string name="outgoing_messages">Udgående meddelelser</string>
-    <string name="group_message_mms">Send gruppemeddelelser som MMS</string>
+    <string name="outgoing_messages">Udgående beskeder</string>
+    <string name="group_message_mms">Send gruppebeskeder som MMS</string>
     <string name="send_long_message_mms">Send lange beskeder som MMS</string>
-    <string name="messages">Meddelelser</string>
+    <string name="messages">Beskeder</string>
     <string name="export_messages">Eksporter beskeder</string>
     <string name="export_sms">Eksporter SMS</string>
     <string name="export_mms">Eksportér MMS</string>
@@ -95,12 +95,12 @@
     <string name="import_sms">Importer SMS</string>
     <string name="import_mms">Importér MMS</string>
     <string name="no_option_selected">Du skal vælge mindst ét element</string>
-    <string name="empty_destination_address">Kan ikke sende meddelelse til et tomt nummer</string>
-    <string name="unable_to_save_message">Kan ikke gemme meddelelse i telefonens database</string>
-    <string name="error_service_is_unavailable">Kunne ikke sende meddelelse, service ikke tilgængelig</string>
+    <string name="empty_destination_address">Kan ikke sende besked til et tomt nummer</string>
+    <string name="unable_to_save_message">Kan ikke gemme besked i telefonens database</string>
+    <string name="error_service_is_unavailable">Kunne ikke sende besked, service ikke tilgængelig</string>
     <string name="error_radio_turned_off">Kunne ike sende meddelels, radio er slukket</string>
-    <string name="carrier_send_error">"Kunne ikke sende meddelelse; operatørfejl "</string>
-    <string name="unknown_error_occurred_sending_message">Kunne ikke sende meddelelse, fejlmeddelelse: %d</string>
+    <string name="carrier_send_error">Kunne ikke sende besked; operatørfejl</string>
+    <string name="unknown_error_occurred_sending_message">Kunne ikke sende besked, fejlmeddelelse: %d</string>
     <string name="invalid_short_code">Kan ikke svare på korte koder som denne</string>
     <string name="invalid_short_code_desc">Du kan kun svare på korte koder med tal som \"503501\", men ikke på koder, der indeholder bogstaver og tal som \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Størrelse på vedhæftning overstiger maks</string>
@@ -112,4 +112,8 @@
     <string name="faq_2_text">MMS-størrelsen er begrænset af udbydere, du kan prøve at sætte en mindre grænse i appindstillingerne.</string>
     <string name="faq_3_title">Kan man planlægge afsendelse?</string>
     <string name="faq_3_text">Ja, du kan planlægge beskeder til at blive sendt i fremtiden ved at trykke længe på Send-knappen og vælge den ønskede dato og tid.</string>
+    <plurals name="and_other_contacts">
+        <item quantity="one">og %d anden</item>
+        <item quantity="other">og %d andre</item>
+    </plurals>
 </resources>
