@@ -14,21 +14,49 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.ContactsContract.PhoneLookup
 import android.provider.OpenableColumns
-import android.provider.Telephony.*
+import android.provider.Telephony.Mms
+import android.provider.Telephony.MmsSms
+import android.provider.Telephony.Sms
+import android.provider.Telephony.Threads
+import android.provider.Telephony.ThreadsColumns
 import android.telephony.SubscriptionManager
 import android.text.TextUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import me.leolin.shortcutbadger.ShortcutBadger
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.areDigitsOnly
+import org.fossify.commons.extensions.getBlockedNumbers
+import org.fossify.commons.extensions.getIntValue
+import org.fossify.commons.extensions.getLongValue
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getStringValue
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.extensions.isNumberBlocked
+import org.fossify.commons.extensions.normalizeString
+import org.fossify.commons.extensions.notificationManager
+import org.fossify.commons.extensions.queryCursor
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.toInt
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.trimToComparableNumber
+import org.fossify.commons.helpers.DAY_SECONDS
+import org.fossify.commons.helpers.MONTH_SECONDS
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.R
 import org.fossify.messages.databases.MessagesDatabase
-import org.fossify.messages.helpers.*
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
+import org.fossify.messages.helpers.Config
+import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.MESSAGES_LIMIT
+import org.fossify.messages.helpers.NotificationHelper
+import org.fossify.messages.helpers.generateRandomId
 import org.fossify.messages.interfaces.AttachmentsDao
 import org.fossify.messages.interfaces.ConversationsDao
 import org.fossify.messages.interfaces.MessageAttachmentsDao
@@ -36,7 +64,12 @@ import org.fossify.messages.interfaces.MessagesDao
 import org.fossify.messages.messaging.MessagingUtils
 import org.fossify.messages.messaging.MessagingUtils.Companion.ADDRESS_SEPARATOR
 import org.fossify.messages.messaging.SmsSender
-import org.fossify.messages.models.*
+import org.fossify.messages.models.Attachment
+import org.fossify.messages.models.Conversation
+import org.fossify.messages.models.Message
+import org.fossify.messages.models.MessageAttachment
+import org.fossify.messages.models.NamePhoto
+import org.fossify.messages.models.RecycleBinMessage
 import java.io.FileNotFoundException
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -114,7 +147,15 @@ fun Context.getMessages(
         val participants = senderNumber.split(ADDRESS_SEPARATOR).map { number ->
             val phoneNumber = PhoneNumber(number, 0, "", number)
             val participantPhoto = getNameAndPhotoFromPhoneNumber(number)
-            SimpleContact(0, 0, participantPhoto.name, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())
+            SimpleContact(
+                0,
+                0,
+                participantPhoto.name,
+                photoUri,
+                arrayListOf(phoneNumber),
+                ArrayList(),
+                ArrayList()
+            )
         }
         val isMMS = false
         val message =
@@ -159,7 +200,12 @@ fun Context.getMessages(
 }
 
 // as soon as a message contains multiple recipients it counts as an MMS instead of SMS
-fun Context.getMMS(threadId: Long? = null, getImageResolutions: Boolean = false, sortOrder: String? = null, dateFrom: Int = -1): ArrayList<Message> {
+fun Context.getMMS(
+    threadId: Long? = null,
+    getImageResolutions: Boolean = false,
+    sortOrder: String? = null,
+    dateFrom: Int = -1
+): ArrayList<Message> {
     val uri = Mms.CONTENT_URI
     val projection = arrayOf(
         Mms._ID,
@@ -175,7 +221,8 @@ fun Context.getMMS(threadId: Long? = null, getImageResolutions: Boolean = false,
     var selectionArgs: Array<String>? = null
 
     if (threadId == null && dateFrom != -1) {
-        selection = "${Sms.DATE} < ${dateFrom.toLong()}" //Should not multiply 1000 here, because date in mms's database is different from sms's.
+        selection =
+            "${Sms.DATE} < ${dateFrom.toLong()}" //Should not multiply 1000 here, because date in mms's database is different from sms's.
     } else if (threadId != null && dateFrom == -1) {
         selection = "${Sms.THREAD_ID} = ?"
         selectionArgs = arrayOf(threadId.toString())
@@ -262,7 +309,10 @@ fun Context.getMMSSender(msgId: Long): String {
     return ""
 }
 
-fun Context.getConversations(threadId: Long? = null, privateContacts: ArrayList<SimpleContact> = ArrayList()): ArrayList<Conversation> {
+fun Context.getConversations(
+    threadId: Long? = null,
+    privateContacts: ArrayList<SimpleContact> = ArrayList()
+): ArrayList<Conversation> {
     val archiveAvailable = config.isArchiveAvailable
 
     val uri = Uri.parse("${Threads.CONTENT_URI}?simple=true")
@@ -291,7 +341,13 @@ fun Context.getConversations(threadId: Long? = null, privateContacts: ArrayList<
     val simpleContactHelper = SimpleContactsHelper(this)
     val blockedNumbers = getBlockedNumbers()
     try {
-        queryCursorUnsafe(uri, projection.toTypedArray(), selection, selectionArgs, sortOrder) { cursor ->
+        queryCursorUnsafe(
+            uri,
+            projection.toTypedArray(),
+            selection,
+            selectionArgs,
+            sortOrder
+        ) { cursor ->
             val id = cursor.getLongValue(Threads._ID)
             var snippet = cursor.getStringValue(Threads.SNIPPET) ?: ""
             if (snippet.isEmpty()) {
@@ -304,19 +360,39 @@ fun Context.getConversations(threadId: Long? = null, privateContacts: ArrayList<
             }
 
             val rawIds = cursor.getStringValue(Threads.RECIPIENT_IDS)
-            val recipientIds = rawIds.split(" ").filter { it.areDigitsOnly() }.map { it.toInt() }.toMutableList()
+            val recipientIds =
+                rawIds.split(" ").filter { it.areDigitsOnly() }.map { it.toInt() }.toMutableList()
             val phoneNumbers = getThreadPhoneNumbers(recipientIds)
-            if (phoneNumbers.isEmpty() || phoneNumbers.any { isNumberBlocked(it, blockedNumbers) }) {
+            if (phoneNumbers.isEmpty() || phoneNumbers.any {
+                    isNumberBlocked(
+                        it,
+                        blockedNumbers
+                    )
+                }) {
                 return@queryCursorUnsafe
             }
 
             val names = getThreadContactNames(phoneNumbers, privateContacts)
             val title = TextUtils.join(", ", names.toTypedArray())
-            val photoUri = if (phoneNumbers.size == 1) simpleContactHelper.getPhotoUriFromPhoneNumber(phoneNumbers.first()) else ""
+            val photoUri =
+                if (phoneNumbers.size == 1) simpleContactHelper.getPhotoUriFromPhoneNumber(
+                    phoneNumbers.first()
+                ) else ""
             val isGroupConversation = phoneNumbers.size > 1
             val read = cursor.getIntValue(Threads.READ) == 1
-            val archived = if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else false
-            val conversation = Conversation(id, snippet, date.toInt(), read, title, photoUri, isGroupConversation, phoneNumbers.first(), isArchived = archived)
+            val archived =
+                if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else false
+            val conversation = Conversation(
+                id,
+                snippet,
+                date.toInt(),
+                read,
+                title,
+                photoUri,
+                isGroupConversation,
+                phoneNumbers.first(),
+                isArchived = archived
+            )
             conversations.add(conversation)
         }
     } catch (sqliteException: SQLiteException) {
@@ -399,7 +475,11 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
                 try {
                     val options = BitmapFactory.Options()
                     options.inJustDecodeBounds = true
-                    BitmapFactory.decodeStream(contentResolver.openInputStream(fileUri), null, options)
+                    BitmapFactory.decodeStream(
+                        contentResolver.openInputStream(fileUri),
+                        null,
+                        options
+                    )
                     width = options.outWidth
                     height = options.outHeight
                 } catch (e: Exception) {
@@ -410,7 +490,15 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
             messageAttachment.attachments.add(attachment)
         } else if (mimetype != "application/smil") {
             val attachmentName = attachmentNames?.getOrNull(attachmentCount) ?: ""
-            val attachment = Attachment(partId, id, Uri.withAppendedPath(uri, partId.toString()).toString(), mimetype, 0, 0, attachmentName)
+            val attachment = Attachment(
+                partId,
+                id,
+                Uri.withAppendedPath(uri, partId.toString()).toString(),
+                mimetype,
+                0,
+                0,
+                attachmentName
+            )
             messageAttachment.attachments.add(attachment)
             attachmentCount++
         } else {
@@ -476,7 +564,10 @@ fun Context.getMessageRecipientAddress(messageId: Long): String {
     return ""
 }
 
-fun Context.getThreadParticipants(threadId: Long, contactsMap: HashMap<Int, SimpleContact>?): ArrayList<SimpleContact> {
+fun Context.getThreadParticipants(
+    threadId: Long,
+    contactsMap: HashMap<Int, SimpleContact>?
+): ArrayList<SimpleContact> {
     val uri = Uri.parse("${MmsSms.CONTENT_CONVERSATIONS_URI}?simple=true")
     val projection = arrayOf(
         ThreadsColumns.RECIPIENT_IDS
@@ -501,7 +592,15 @@ fun Context.getThreadParticipants(threadId: Long, contactsMap: HashMap<Int, Simp
                     val name = namePhoto.name
                     val photoUri = namePhoto.photoUri ?: ""
                     val phoneNumber = PhoneNumber(number, 0, "", number)
-                    val contact = SimpleContact(addressId, addressId, name, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())
+                    val contact = SimpleContact(
+                        addressId,
+                        addressId,
+                        name,
+                        photoUri,
+                        arrayListOf(phoneNumber),
+                        ArrayList(),
+                        ArrayList()
+                    )
                     participants.add(contact)
                 }
             }
@@ -520,7 +619,10 @@ fun Context.getThreadPhoneNumbers(recipientIds: List<Int>): ArrayList<String> {
     return numbers
 }
 
-fun Context.getThreadContactNames(phoneNumbers: List<String>, privateContacts: ArrayList<SimpleContact>): ArrayList<String> {
+fun Context.getThreadContactNames(
+    phoneNumbers: List<String>,
+    privateContacts: ArrayList<SimpleContact>
+): ArrayList<String> {
     val names = ArrayList<String>()
     phoneNumbers.forEach { number ->
         val name = SimpleContactsHelper(this).getNameFromPhoneNumber(number)
@@ -578,7 +680,8 @@ fun Context.getSuggestedContacts(privateContacts: ArrayList<SimpleContact>): Arr
             return@queryCursor
         } else if (namePhoto.name == senderNumber) {
             if (privateContacts.isNotEmpty()) {
-                val privateContact = privateContacts.firstOrNull { it.phoneNumbers.first().normalizedNumber == senderNumber }
+                val privateContact =
+                    privateContacts.firstOrNull { it.phoneNumbers.first().normalizedNumber == senderNumber }
                 if (privateContact != null) {
                     senderName = privateContact.name
                     photoUri = privateContact.photoUri
@@ -591,8 +694,17 @@ fun Context.getSuggestedContacts(privateContacts: ArrayList<SimpleContact>): Arr
         }
 
         val phoneNumber = PhoneNumber(senderNumber, 0, "", senderNumber)
-        val contact = SimpleContact(0, 0, senderName, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())
-        if (!contacts.map { it.phoneNumbers.first().normalizedNumber.trimToComparableNumber() }.contains(senderNumber.trimToComparableNumber())) {
+        val contact = SimpleContact(
+            0,
+            0,
+            senderName,
+            photoUri,
+            arrayListOf(phoneNumber),
+            ArrayList(),
+            ArrayList()
+        )
+        if (!contacts.map { it.phoneNumbers.first().normalizedNumber.trimToComparableNumber() }
+                .contains(senderNumber.trimToComparableNumber())) {
             contacts.add(contact)
         }
     }
@@ -690,7 +802,7 @@ fun Context.deleteConversation(threadId: Long) {
     conversationsDB.deleteThreadId(threadId)
     messagesDB.deleteThreadMessages(threadId)
 
-    if (config.customNotifications.contains(threadId.toString()) && isOreoPlus()) {
+    if (config.customNotifications.contains(threadId.toString())) {
         config.removeCustomNotificationsByThreadId(threadId)
         notificationManager.deleteNotificationChannel(threadId.toString())
     }
@@ -853,13 +965,26 @@ fun Context.getThreadId(addresses: Set<String>): Long {
     }
 }
 
-fun Context.showReceivedMessageNotification(messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?) {
+fun Context.showReceivedMessageNotification(
+    messageId: Long,
+    address: String,
+    body: String,
+    threadId: Long,
+    bitmap: Bitmap?
+) {
     val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
     ensureBackgroundThread {
         val senderName = getNameFromAddress(address, privateCursor)
 
         Handler(Looper.getMainLooper()).post {
-            notificationHelper.showMessageNotification(messageId, address, body, threadId, bitmap, senderName)
+            notificationHelper.showMessageNotification(
+                messageId,
+                address,
+                body,
+                threadId,
+                bitmap,
+                senderName
+            )
         }
     }
 }
@@ -993,7 +1118,8 @@ fun Context.updateLastConversationMessage(threadId: Long) {
     // following Android code (which runs even if no messages are deleted):
     // https://android.googlesource.com/platform/packages/providers/TelephonyProvider/+/android14-release/src/com/android/providers/telephony/MmsSmsProvider.java#1409
     val uri = Threads.CONTENT_URI
-    val selection = "1 = 0" // always-false condition, because we don't actually want to delete any messages
+    val selection =
+        "1 = 0" // always-false condition, because we don't actually want to delete any messages
     try {
         contentResolver.delete(uri, selection, null)
         val newConversation = getConversations(threadId)[0]
@@ -1017,20 +1143,21 @@ fun Context.getFileSizeFromUri(uri: Uri): Long {
 
     // if "content://" uri scheme, try contentResolver table
     if (uri.scheme.equals(ContentResolver.SCHEME_CONTENT)) {
-        return contentResolver.query(uri, arrayOf(OpenableColumns.SIZE), null, null, null)?.use { cursor ->
-            // maybe shouldn't trust ContentResolver for size:
-            // https://stackoverflow.com/questions/48302972/content-resolver-returns-wrong-size
-            val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
-            if (sizeIndex == -1) {
-                return@use FILE_SIZE_NONE
-            }
-            cursor.moveToFirst()
-            return try {
-                cursor.getLong(sizeIndex)
-            } catch (_: Throwable) {
-                FILE_SIZE_NONE
-            }
-        } ?: FILE_SIZE_NONE
+        return contentResolver.query(uri, arrayOf(OpenableColumns.SIZE), null, null, null)
+            ?.use { cursor ->
+                // maybe shouldn't trust ContentResolver for size:
+                // https://stackoverflow.com/questions/48302972/content-resolver-returns-wrong-size
+                val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
+                if (sizeIndex == -1) {
+                    return@use FILE_SIZE_NONE
+                }
+                cursor.moveToFirst()
+                return try {
+                    cursor.getLong(sizeIndex)
+                } catch (_: Throwable) {
+                    FILE_SIZE_NONE
+                }
+            } ?: FILE_SIZE_NONE
     } else {
         return FILE_SIZE_NONE
     }
@@ -1061,7 +1188,8 @@ fun Context.insertOrUpdateConversation(
 ) {
     var updatedConv = conversation
     if (cachedConv != null && cachedConv.usesCustomTitle) {
-        updatedConv = updatedConv.copy(title = cachedConv.title, usesCustomTitle = cachedConv.usesCustomTitle)
+        updatedConv =
+            updatedConv.copy(title = cachedConv.title, usesCustomTitle = cachedConv.usesCustomTitle)
     }
     conversationsDB.insertOrUpdate(updatedConv)
 }
@@ -1076,10 +1204,15 @@ fun Context.renameConversation(conversation: Conversation, newTitle: String): Co
     return updatedConv
 }
 
-fun Context.createTemporaryThread(message: Message, threadId: Long = generateRandomId(), cachedConv: Conversation?) {
+fun Context.createTemporaryThread(
+    message: Message,
+    threadId: Long = generateRandomId(),
+    cachedConv: Conversation?
+) {
     val simpleContactHelper = SimpleContactsHelper(this)
     val addresses = message.participants.getAddresses()
-    val photoUri = if (addresses.size == 1) simpleContactHelper.getPhotoUriFromPhoneNumber(addresses.first()) else ""
+    val photoUri =
+        if (addresses.size == 1) simpleContactHelper.getPhotoUriFromPhoneNumber(addresses.first()) else ""
     val title = if (cachedConv != null && cachedConv.usesCustomTitle) {
         cachedConv.title
     } else {
@@ -1132,4 +1265,5 @@ fun Context.clearExpiredScheduledMessages(threadId: Long, messagesToDelete: List
     }
 }
 
-fun Context.getDefaultKeyboardHeight() = resources.getDimensionPixelSize(R.dimen.default_keyboard_height)
+fun Context.getDefaultKeyboardHeight() =
+    resources.getDimensionPixelSize(R.dimen.default_keyboard_height)

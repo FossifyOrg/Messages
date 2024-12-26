@@ -5,21 +5,34 @@ import android.text.TextUtils
 import android.view.Menu
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.addBlockedNumber
+import org.fossify.commons.extensions.addLockedLabelIfNeeded
+import org.fossify.commons.extensions.copyToClipboard
+import org.fossify.commons.extensions.isOrWasThankYouInstalled
+import org.fossify.commons.extensions.launchActivityIntent
+import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.helpers.KEY_PHONE
 import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isNougatPlus
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.messages.R
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.dialogs.RenameConversationDialog
-import org.fossify.messages.extensions.*
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.deleteConversation
+import org.fossify.messages.extensions.dialNumber
+import org.fossify.messages.extensions.markThreadMessagesRead
+import org.fossify.messages.extensions.markThreadMessagesUnread
+import org.fossify.messages.extensions.renameConversation
+import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.isShortCodeWithLetters
 import org.fossify.messages.models.Conversation
 
 class ConversationsAdapter(
-    activity: SimpleActivity, recyclerView: MyRecyclerView, onRefresh: () -> Unit, itemClick: (Any) -> Unit
+    activity: SimpleActivity,
+    recyclerView: MyRecyclerView,
+    onRefresh: () -> Unit,
+    itemClick: (Any) -> Unit
 ) : BaseConversationsAdapter(activity, recyclerView, onRefresh, itemClick) {
     override fun getActionMenuId() = R.menu.cab_conversations
 
@@ -31,12 +44,16 @@ class ConversationsAdapter(
         val archiveAvailable = activity.config.isArchiveAvailable
 
         menu.apply {
-            findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)
-            findItem(R.id.cab_block_number).isVisible = isNougatPlus()
-            findItem(R.id.cab_add_number_to_contact).isVisible = isSingleSelection && !isGroupConversation
-            findItem(R.id.cab_dial_number).isVisible = isSingleSelection && !isGroupConversation && !isShortCodeWithLetters(selectedConversation.phoneNumber)
+            findItem(R.id.cab_block_number).title =
+                activity.addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)
+            findItem(R.id.cab_add_number_to_contact).isVisible =
+                isSingleSelection && !isGroupConversation
+            findItem(R.id.cab_dial_number).isVisible =
+                isSingleSelection && !isGroupConversation &&
+                        !isShortCodeWithLetters(selectedConversation.phoneNumber)
             findItem(R.id.cab_copy_number).isVisible = isSingleSelection && !isGroupConversation
-            findItem(R.id.cab_rename_conversation).isVisible = isSingleSelection && isGroupConversation
+            findItem(R.id.cab_rename_conversation).isVisible =
+                isSingleSelection && isGroupConversation
             findItem(R.id.cab_mark_as_read).isVisible = selectedItems.any { !it.read }
             findItem(R.id.cab_mark_as_unread).isVisible = selectedItems.any { it.read }
             findItem(R.id.cab_archive).isVisible = archiveAvailable
@@ -76,7 +93,10 @@ class ConversationsAdapter(
     private fun askConfirmBlock() {
         val numbers = getSelectedItems().distinctBy { it.phoneNumber }.map { it.phoneNumber }
         val numbersString = TextUtils.join(", ", numbers)
-        val question = String.format(resources.getString(org.fossify.commons.R.string.block_confirmation), numbersString)
+        val question = String.format(
+            resources.getString(org.fossify.commons.R.string.block_confirmation),
+            numbersString
+        )
 
         ConfirmationDialog(activity, question) {
             blockNumbers()
@@ -149,7 +169,8 @@ class ConversationsAdapter(
             return
         }
 
-        val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        val conversationsToRemove =
+            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
         conversationsToRemove.forEach {
             activity.updateConversationArchivedStatus(it.threadId, true)
             activity.notificationManager.cancel(it.threadId.hashCode())
@@ -179,7 +200,8 @@ class ConversationsAdapter(
             return
         }
 
-        val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        val conversationsToRemove =
+            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
         conversationsToRemove.forEach {
             activity.deleteConversation(it.threadId)
             activity.notificationManager.cancel(it.threadId.hashCode())
@@ -224,7 +246,8 @@ class ConversationsAdapter(
             return
         }
 
-        val conversationsMarkedAsRead = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        val conversationsMarkedAsRead =
+            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
         ensureBackgroundThread {
             conversationsMarkedAsRead.filter { conversation -> !conversation.read }.forEach {
                 activity.markThreadMessagesRead(it.threadId)
@@ -239,7 +262,8 @@ class ConversationsAdapter(
             return
         }
 
-        val conversationsMarkedAsUnread = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        val conversationsMarkedAsUnread =
+            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
         ensureBackgroundThread {
             conversationsMarkedAsUnread.filter { conversation -> conversation.read }.forEach {
                 activity.markThreadMessagesUnread(it.threadId)
@@ -280,8 +304,10 @@ class ConversationsAdapter(
     private fun checkPinBtnVisibility(menu: Menu) {
         val pinnedConversations = activity.config.pinnedConversations
         val selectedConversations = getSelectedItems()
-        menu.findItem(R.id.cab_pin_conversation).isVisible = selectedConversations.any { !pinnedConversations.contains(it.threadId.toString()) }
-        menu.findItem(R.id.cab_unpin_conversation).isVisible = selectedConversations.any { pinnedConversations.contains(it.threadId.toString()) }
+        menu.findItem(R.id.cab_pin_conversation).isVisible =
+            selectedConversations.any { !pinnedConversations.contains(it.threadId.toString()) }
+        menu.findItem(R.id.cab_unpin_conversation).isVisible =
+            selectedConversations.any { pinnedConversations.contains(it.threadId.toString()) }
     }
 
     private fun refreshConversations() {

@@ -95,8 +95,6 @@ import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.VcfExporter
 import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isNougatPlus
-import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.commons.helpers.isSPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.RadioItem
@@ -349,7 +347,7 @@ class ThreadActivity : SimpleActivity() {
             findItem(R.id.conversation_details).isVisible = conversation != null && !isRecycleBin
             findItem(R.id.block_number).title =
                 addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)
-            findItem(R.id.block_number).isVisible = isNougatPlus() && !isRecycleBin
+            findItem(R.id.block_number).isVisible = !isRecycleBin
             findItem(R.id.dial_number).isVisible =
                 participants.size == 1 && !isSpecialNumber() && !isRecycleBin
             findItem(R.id.manage_people).isVisible = !isSpecialNumber() && !isRecycleBin
@@ -983,9 +981,7 @@ class ThreadActivity : SimpleActivity() {
                         text = getString(R.string.invalid_short_code_desc)
                     )
                 }
-                if (isOreoPlus()) {
-                    tooltipText = getString(org.fossify.commons.R.string.more_info)
-                }
+                tooltipText = getString(org.fossify.commons.R.string.more_info)
             }
         }
     }

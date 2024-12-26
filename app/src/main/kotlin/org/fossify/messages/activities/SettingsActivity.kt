@@ -1,9 +1,7 @@
 package org.fossify.messages.activities
 
-import android.annotation.TargetApi
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,7 +14,9 @@ import org.fossify.commons.dialogs.FeatureLockedDialog
 import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.dialogs.SecurityDialog
 import org.fossify.commons.extensions.addLockedLabelIfNeeded
+import org.fossify.commons.extensions.beGone
 import org.fossify.commons.extensions.beGoneIf
+import org.fossify.commons.extensions.beVisible
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.getBlockedNumbers
 import org.fossify.commons.extensions.getCustomizeColorsString
@@ -36,8 +36,6 @@ import org.fossify.commons.helpers.NavigationIcon
 import org.fossify.commons.helpers.PROTECTION_FINGERPRINT
 import org.fossify.commons.helpers.SHOW_ALL_TABS
 import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isNougatPlus
-import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.commons.helpers.isPiePlus
 import org.fossify.commons.helpers.isTiramisuPlus
 import org.fossify.commons.models.RadioItem
@@ -226,7 +224,6 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupCustomizeNotifications() = binding.apply {
-        settingsCustomizeNotificationsHolder.beVisibleIf(isOreoPlus())
         settingsCustomizeNotificationsHolder.setOnClickListener {
             launchCustomizeNotificationsIntent()
         }
@@ -247,19 +244,20 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupLanguage() = binding.apply {
         settingsLanguage.text = Locale.getDefault().displayLanguage
-        settingsLanguageHolder.beVisibleIf(isTiramisuPlus())
-        settingsLanguageHolder.setOnClickListener {
-            launchChangeAppLanguageIntent()
+        if (isTiramisuPlus()) {
+            settingsLanguageHolder.beVisible()
+            settingsLanguageHolder.setOnClickListener {
+                launchChangeAppLanguageIntent()
+            }
+        } else {
+            settingsLanguageHolder.beGone()
         }
     }
 
-    // support for device-wise blocking came on Android 7, rely only on that
-    @TargetApi(Build.VERSION_CODES.N)
     private fun setupManageBlockedNumbers() = binding.apply {
         settingsManageBlockedNumbers.text =
             addLockedLabelIfNeeded(org.fossify.commons.R.string.manage_blocked_numbers)
-        settingsManageBlockedNumbersHolder.beVisibleIf(isNougatPlus())
-
+        settingsManageBlockedNumbersHolder.beVisible()
         settingsManageBlockedNumbersHolder.setOnClickListener {
             if (isOrWasThankYouInstalled()) {
                 Intent(this@SettingsActivity, ManageBlockedNumbersActivity::class.java).apply {

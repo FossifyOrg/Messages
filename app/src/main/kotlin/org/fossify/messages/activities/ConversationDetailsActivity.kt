@@ -6,20 +6,31 @@ import android.content.Intent
 import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.RingtoneManager
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.notificationManager
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.viewBinding
 import org.fossify.commons.helpers.NavigationIcon
 import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.adapters.ContactsAdapter
 import org.fossify.messages.databinding.ActivityConversationDetailsBinding
 import org.fossify.messages.dialogs.RenameConversationDialog
-import org.fossify.messages.extensions.*
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.conversationsDB
+import org.fossify.messages.extensions.getContactFromAddress
+import org.fossify.messages.extensions.getThreadParticipants
+import org.fossify.messages.extensions.messagesDB
+import org.fossify.messages.extensions.renameConversation
+import org.fossify.messages.extensions.startContactDetailsIntent
 import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.models.Conversation
 
@@ -42,7 +53,10 @@ class ConversationDetailsActivity : SimpleActivity() {
             useTransparentNavigation = true,
             useTopSearchMenu = false
         )
-        setupMaterialScrollListener(scrollingView = binding.participantsRecyclerview, toolbar = binding.conversationDetailsToolbar)
+        setupMaterialScrollListener(
+            scrollingView = binding.participantsRecyclerview,
+            toolbar = binding.conversationDetailsToolbar
+        )
 
         threadId = intent.getLongExtra(THREAD_ID, 0L)
         ensureBackgroundThread {
@@ -56,9 +70,7 @@ class ConversationDetailsActivity : SimpleActivity() {
             runOnUiThread {
                 setupTextViews()
                 setupParticipants()
-                if (isOreoPlus()) {
-                    setupCustomNotifications()
-                }
+                setupCustomNotifications()
             }
         }
     }
@@ -73,7 +85,6 @@ class ConversationDetailsActivity : SimpleActivity() {
         binding.membersHeading.setTextColor(primaryColor)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupCustomNotifications() {
         binding.apply {
             notificationsHeading.beVisible()
@@ -104,7 +115,6 @@ class ConversationDetailsActivity : SimpleActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
         val name = conversation?.title
         val audioAttributes = AudioAttributes.Builder()
@@ -116,27 +126,36 @@ class ConversationDetailsActivity : SimpleActivity() {
         NotificationChannel(threadId.toString(), name, NotificationManager.IMPORTANCE_HIGH).apply {
             setBypassDnd(false)
             enableLights(true)
-            setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION), audioAttributes)
+            setSound(
+                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION),
+                audioAttributes
+            )
             enableVibration(true)
             notificationManager.createNotificationChannel(this)
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun removeNotificationChannel() {
         notificationManager.deleteNotificationChannel(threadId.toString())
     }
 
     private fun setupTextViews() {
         binding.conversationName.apply {
-            ResourcesCompat.getDrawable(resources, org.fossify.commons.R.drawable.ic_edit_vector, theme)?.apply {
+            ResourcesCompat.getDrawable(
+                resources,
+                org.fossify.commons.R.drawable.ic_edit_vector,
+                theme
+            )?.apply {
                 applyColorFilter(getProperTextColor())
                 setCompoundDrawablesWithIntrinsicBounds(null, null, this, null)
             }
 
             text = conversation?.title
             setOnClickListener {
-                RenameConversationDialog(this@ConversationDetailsActivity, conversation!!) { title ->
+                RenameConversationDialog(
+                    this@ConversationDetailsActivity,
+                    conversation!!
+                ) { title ->
                     text = title
                     ensureBackgroundThread {
                         conversation = renameConversation(conversation!!, newTitle = title)
