@@ -15,7 +15,7 @@ eventbus = "3.3.1"
 #Room
 room = "2.6.1"
 #Fossify
-commons = "8685963657"
+commons = "8038e3277e"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle

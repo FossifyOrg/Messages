@@ -6,7 +6,6 @@ import android.os.Bundle
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.NavigationIcon
-import org.fossify.commons.helpers.WAS_PROTECTION_HANDLED
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.adapters.ArchivedConversationsAdapter
@@ -165,7 +164,6 @@ class ArchivedConversationsActivity : SimpleActivity() {
             val conversation = any as Conversation
             putExtra(THREAD_ID, conversation.threadId)
             putExtra(THREAD_TITLE, conversation.title)
-            putExtra(WAS_PROTECTION_HANDLED, true)
             startActivity(this)
         }
     }

@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import org.fossify.commons.dialogs.ConfirmationDialog
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.areSystemAnimationsEnabled
+import org.fossify.commons.extensions.beGoneIf
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getProperBackgroundColor
+import org.fossify.commons.extensions.hideKeyboard
+import org.fossify.commons.extensions.viewBinding
 import org.fossify.commons.helpers.NavigationIcon
-import org.fossify.commons.helpers.WAS_PROTECTION_HANDLED
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.adapters.RecycleBinConversationsAdapter
@@ -40,7 +44,10 @@ class RecycleBinConversationsActivity : SimpleActivity() {
             useTransparentNavigation = true,
             useTopSearchMenu = false
         )
-        setupMaterialScrollListener(scrollingView = binding.conversationsList, toolbar = binding.recycleBinToolbar)
+        setupMaterialScrollListener(
+            scrollingView = binding.conversationsList,
+            toolbar = binding.recycleBinToolbar
+        )
 
         loadRecycleBinConversations()
     }
@@ -82,7 +89,8 @@ class RecycleBinConversationsActivity : SimpleActivity() {
     private fun loadRecycleBinConversations() {
         ensureBackgroundThread {
             val conversations = try {
-                conversationsDB.getAllWithMessagesInRecycleBin().toMutableList() as ArrayList<Conversation>
+                conversationsDB.getAllWithMessagesInRecycleBin()
+                    .toMutableList() as ArrayList<Conversation>
             } catch (e: Exception) {
                 ArrayList()
             }
@@ -166,7 +174,6 @@ class RecycleBinConversationsActivity : SimpleActivity() {
             val conversation = any as Conversation
             putExtra(THREAD_ID, conversation.threadId)
             putExtra(THREAD_TITLE, conversation.title)
-            putExtra(WAS_PROTECTION_HANDLED, true)
             putExtra(IS_RECYCLE_BIN, true)
             startActivity(this)
         }

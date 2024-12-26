@@ -9,7 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import org.fossify.commons.activities.BaseSimpleActivity
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.getAlertDialogBuilder
+import org.fossify.commons.extensions.getDatePickerDialogTheme
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.getTimeFormat
+import org.fossify.commons.extensions.isDynamicTheme
+import org.fossify.commons.extensions.setupDialogStuff
+import org.fossify.commons.extensions.toast
 import org.fossify.messages.R
 import org.fossify.messages.databinding.ScheduleMessageDialogBinding
 import org.fossify.messages.extensions.config
@@ -94,7 +101,12 @@ class ScheduleMessageDialog(
 
         val dateSetListener = OnDateSetListener { _, y, m, d -> dateSet(y, m, d) }
         DatePickerDialog(
-            activity, activity.getDatePickerDialogTheme(), dateSetListener, year, monthOfYear, dayOfMonth
+            activity,
+            activity.getDatePickerDialogTheme(),
+            dateSetListener,
+            year,
+            monthOfYear,
+            dayOfMonth
         ).apply {
             datePicker.minDate = System.currentTimeMillis()
             show()
@@ -111,7 +123,7 @@ class ScheduleMessageDialog(
         val hourOfDay = dateTime?.hourOfDay ?: getNextHour()
         val minute = dateTime?.minuteOfHour ?: getNextMinute()
 
-        if (activity.config.isUsingSystemTheme) {
+        if (activity.isDynamicTheme()) {
             val timeFormat = if (DateFormat.is24HourFormat(activity)) {
                 TimeFormat.CLOCK_24H
             } else {
@@ -132,7 +144,12 @@ class ScheduleMessageDialog(
         } else {
             val timeSetListener = OnTimeSetListener { _, hours, minutes -> timeSet(hours, minutes) }
             TimePickerDialog(
-                activity, activity.getDatePickerDialogTheme(), timeSetListener, hourOfDay, minute, DateFormat.is24HourFormat(activity)
+                activity,
+                activity.getDatePickerDialogTheme(),
+                timeSetListener,
+                hourOfDay,
+                minute,
+                DateFormat.is24HourFormat(activity)
             ).apply {
                 show()
                 getButton(AlertDialog.BUTTON_NEGATIVE).apply {
@@ -187,7 +204,14 @@ class ScheduleMessageDialog(
         }
     }
 
-    private fun getNextHour() = (calendar.get(Calendar.HOUR_OF_DAY) + 1).coerceIn(0, 23)
+    private fun getNextHour(): Int {
+        return (calendar.get(Calendar.HOUR_OF_DAY) + 1)
+            .coerceIn(0, 23)
+    }
 
-    private fun getNextMinute() = (calendar.get(Calendar.MINUTE) + 5).roundToClosestMultipleOf(5).coerceIn(0, 59)
+    private fun getNextMinute(): Int {
+        return (calendar.get(Calendar.MINUTE) + 5)
+            .roundToClosestMultipleOf(5)
+            .coerceIn(0, 59)
+    }
 }

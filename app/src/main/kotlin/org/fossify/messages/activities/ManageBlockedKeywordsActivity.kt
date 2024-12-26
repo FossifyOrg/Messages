@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.ExportBlockedNumbersDialog
 import org.fossify.commons.dialogs.FilePickerDialog
 import org.fossify.commons.extensions.beVisibleIf
@@ -19,8 +18,6 @@ import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.underlineText
 import org.fossify.commons.extensions.updateTextColors
 import org.fossify.commons.extensions.viewBinding
-import org.fossify.commons.helpers.APP_ICON_IDS
-import org.fossify.commons.helpers.APP_LAUNCHER_NAME
 import org.fossify.commons.helpers.ExportResult
 import org.fossify.commons.helpers.NavigationIcon
 import org.fossify.commons.helpers.PERMISSION_READ_STORAGE
@@ -40,11 +37,7 @@ import org.fossify.messages.helpers.BlockedKeywordsImporter
 import java.io.FileOutputStream
 import java.io.OutputStream
 
-class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewListener {
-
-    override fun getAppIconIDs() = intent.getIntegerArrayListExtra(APP_ICON_IDS) ?: ArrayList()
-
-    override fun getAppLauncherName() = intent.getStringExtra(APP_LAUNCHER_NAME) ?: ""
+class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListener {
 
     private val binding by viewBinding(ActivityManageBlockedKeywordsBinding::inflate)
 
@@ -131,10 +124,11 @@ class ManageBlockedKeywordsActivity : BaseSimpleActivity(), RefreshRecyclerViewL
         if (isQPlus()) {
             Intent(Intent.ACTION_GET_CONTENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
-                type = "text/plain"
+                val mimeType = "text/plain"
+                type = mimeType
 
                 try {
-                    importActivityResultLauncher.launch(type)
+                    importActivityResultLauncher.launch(mimeType)
                 } catch (e: ActivityNotFoundException) {
                     toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                 } catch (e: Exception) {

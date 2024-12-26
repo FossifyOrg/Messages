@@ -11,10 +11,46 @@ import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import org.fossify.commons.dialogs.PermissionRequiredDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.adjustAlpha
+import org.fossify.commons.extensions.appLaunched
+import org.fossify.commons.extensions.appLockManager
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.areSystemAnimationsEnabled
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beGoneIf
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.checkAppSideloading
+import org.fossify.commons.extensions.checkWhatsNew
+import org.fossify.commons.extensions.convertToBitmap
+import org.fossify.commons.extensions.fadeIn
+import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getProperBackgroundColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.hideKeyboard
+import org.fossify.commons.extensions.navigationBarHeight
+import org.fossify.commons.extensions.openNotificationSettings
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.underlineText
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.viewBinding
+import org.fossify.commons.helpers.LICENSE_EVENT_BUS
+import org.fossify.commons.helpers.LICENSE_INDICATOR_FAST_SCROLL
+import org.fossify.commons.helpers.LICENSE_SMS_MMS
+import org.fossify.commons.helpers.LOWER_ALPHA
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.PERMISSION_READ_SMS
+import org.fossify.commons.helpers.PERMISSION_SEND_SMS
+import org.fossify.commons.helpers.SHORT_ANIMATION_DURATION
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isNougatMR1Plus
+import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.models.FAQItem
 import org.fossify.commons.models.Release
 import org.fossify.messages.BuildConfig
@@ -22,7 +58,16 @@ import org.fossify.messages.R
 import org.fossify.messages.adapters.ConversationsAdapter
 import org.fossify.messages.adapters.SearchResultsAdapter
 import org.fossify.messages.databinding.ActivityMainBinding
-import org.fossify.messages.extensions.*
+import org.fossify.messages.extensions.checkAndDeleteOldRecycleBinMessages
+import org.fossify.messages.extensions.clearAllMessagesIfNeeded
+import org.fossify.messages.extensions.clearExpiredScheduledMessages
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.conversationsDB
+import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.getMessages
+import org.fossify.messages.extensions.insertOrUpdateConversation
+import org.fossify.messages.extensions.messagesDB
+import org.fossify.messages.extensions.updateUnreadCountBadge
 import org.fossify.messages.helpers.SEARCHED_MESSAGE_ID
 import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.helpers.THREAD_TITLE
@@ -41,7 +86,6 @@ class MainActivity : SimpleActivity() {
     private var storedFontSize = 0
     private var lastSearchedText = ""
     private var bus: EventBus? = null
-    private var wasProtectionHandled = false
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
 
@@ -63,15 +107,8 @@ class MainActivity : SimpleActivity() {
 
         if (savedInstanceState == null) {
             checkAndDeleteOldRecycleBinMessages()
-            handleAppPasswordProtection {
-                wasProtectionHandled = it
-                if (it) {
-                    clearAllMessagesIfNeeded {
-                        loadMessages()
-                    }
-                } else {
-                    finish()
-                }
+            clearAllMessagesIfNeeded {
+                loadMessages()
             }
         }
 
@@ -108,7 +145,8 @@ class MainActivity : SimpleActivity() {
         binding.conversationsProgressBar.trackColor = properPrimaryColor.adjustAlpha(LOWER_ALPHA)
         checkShortcut()
         (binding.conversationsFab.layoutParams as? CoordinatorLayout.LayoutParams)?.bottomMargin =
-            navigationBarHeight + resources.getDimension(org.fossify.commons.R.dimen.activity_margin).toInt()
+            navigationBarHeight + resources.getDimension(org.fossify.commons.R.dimen.activity_margin)
+                .toInt()
     }
 
     override fun onPause() {
@@ -125,30 +163,8 @@ class MainActivity : SimpleActivity() {
         if (binding.mainMenu.isSearchOpen) {
             binding.mainMenu.closeSearch()
         } else {
+            appLockManager.lock()
             super.onBackPressed()
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean(WAS_PROTECTION_HANDLED, wasProtectionHandled)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        wasProtectionHandled = savedInstanceState.getBoolean(WAS_PROTECTION_HANDLED, false)
-
-        if (!wasProtectionHandled) {
-            handleAppPasswordProtection {
-                wasProtectionHandled = it
-                if (it) {
-                    loadMessages()
-                } else {
-                    finish()
-                }
-            }
-        } else {
-            loadMessages()
         }
     }
 
@@ -332,7 +348,8 @@ class MainActivity : SimpleActivity() {
                     conversationsDB.deleteThreadId(threadId)
                 }
 
-                val newConversation = conversations.find { it.phoneNumber == cachedConversation.phoneNumber }
+                val newConversation =
+                    conversations.find { it.phoneNumber == cachedConversation.phoneNumber }
                 if (isTemporaryThread && newConversation != null) {
                     // delete the original temporary thread and move any scheduled messages to the new thread
                     conversationsDB.deleteThreadId(threadId)
@@ -346,7 +363,9 @@ class MainActivity : SimpleActivity() {
 
             cachedConversations.forEach { cachedConv ->
                 val conv = conversations.find {
-                    it.threadId == cachedConv.threadId && !Conversation.areContentsTheSame(cachedConv, it)
+                    it.threadId == cachedConv.threadId && !Conversation.areContentsTheSame(
+                        old = cachedConv, new = it
+                    )
                 }
                 if (conv != null) {
                     val lastModified = maxOf(cachedConv.date, conv.date)
@@ -362,7 +381,11 @@ class MainActivity : SimpleActivity() {
 
             if (config.appRunCount == 1) {
                 conversations.map { it.threadId }.forEach { threadId ->
-                    val messages = getMessages(threadId, getImageResolutions = false, includeScheduledMessages = false)
+                    val messages = getMessages(
+                        threadId = threadId,
+                        getImageResolutions = false,
+                        includeScheduledMessages = false
+                    )
                     messages.chunked(30).forEach { currentMessages ->
                         messagesDB.insertMessages(*currentMessages.toTypedArray())
                     }
@@ -390,7 +413,10 @@ class MainActivity : SimpleActivity() {
         return currAdapter as ConversationsAdapter
     }
 
-    private fun setupConversations(conversations: ArrayList<Conversation>, cached: Boolean = false) {
+    private fun setupConversations(
+        conversations: ArrayList<Conversation>,
+        cached: Boolean = false
+    ) {
         val sortedConversations = conversations.sortedWith(
             compareByDescending<Conversation> { config.pinnedConversations.contains(it.threadId.toString()) }
                 .thenByDescending { it.date }
@@ -435,10 +461,13 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun fadeOutSearch() {
-        binding.searchHolder.animate().alpha(0f).setDuration(SHORT_ANIMATION_DURATION).withEndAction {
-            binding.searchHolder.beGone()
-            searchTextChanged("", true)
-        }.start()
+        binding.searchHolder.animate()
+            .alpha(0f)
+            .setDuration(SHORT_ANIMATION_DURATION)
+            .withEndAction {
+                binding.searchHolder.beGone()
+                searchTextChanged("", true)
+            }.start()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -451,7 +480,6 @@ class MainActivity : SimpleActivity() {
             val conversation = any as Conversation
             putExtra(THREAD_ID, conversation.threadId)
             putExtra(THREAD_TITLE, conversation.title)
-            putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
             startActivity(this)
         }
     }
@@ -481,8 +509,13 @@ class MainActivity : SimpleActivity() {
     @SuppressLint("NewApi")
     private fun getCreateNewContactShortcut(appIconColor: Int): ShortcutInfo {
         val newEvent = getString(R.string.new_conversation)
-        val drawable = resources.getDrawable(org.fossify.commons.R.drawable.shortcut_plus)
-        (drawable as LayerDrawable).findDrawableByLayerId(org.fossify.commons.R.id.shortcut_plus_background).applyColorFilter(appIconColor)
+        val drawable =
+            AppCompatResources.getDrawable(this, org.fossify.commons.R.drawable.shortcut_plus)
+
+        (drawable as LayerDrawable).findDrawableByLayerId(
+            org.fossify.commons.R.id.shortcut_plus_background
+        ).applyColorFilter(appIconColor)
+
         val bmp = drawable.convertToBitmap()
 
         val intent = Intent(this, NewConversationActivity::class.java)
@@ -517,11 +550,27 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    private fun showSearchResults(messages: List<Message>, conversations: List<Conversation>, searchedText: String) {
+    private fun showSearchResults(
+        messages: List<Message>,
+        conversations: List<Conversation>,
+        searchedText: String
+    ) {
         val searchResults = ArrayList<SearchResult>()
         conversations.forEach { conversation ->
-            val date = conversation.date.formatDateOrTime(this, true, true)
-            val searchResult = SearchResult(-1, conversation.title, conversation.phoneNumber, date, conversation.threadId, conversation.photoUri)
+            val date = (conversation.date * 1000L).formatDateOrTime(
+                context = this,
+                hideTimeOnOtherDays = true,
+                showCurrentYear = true
+            )
+
+            val searchResult = SearchResult(
+                messageId = -1,
+                title = conversation.title,
+                snippet = conversation.phoneNumber,
+                date = date,
+                threadId = conversation.threadId,
+                photoUri = conversation.photoUri
+            )
             searchResults.add(searchResult)
         }
 
@@ -532,8 +581,20 @@ class MainActivity : SimpleActivity() {
                 recipient = TextUtils.join(", ", participantNames)
             }
 
-            val date = message.date.formatDateOrTime(this, true, true)
-            val searchResult = SearchResult(message.id, recipient, message.body, date, message.threadId, message.senderPhotoUri)
+            val date = (message.date * 1000L).formatDateOrTime(
+                context = this,
+                hideTimeOnOtherDays = true,
+                showCurrentYear = true
+            )
+
+            val searchResult = SearchResult(
+                messageId = message.id,
+                title = recipient,
+                snippet = message.body,
+                date = date,
+                threadId = message.threadId,
+                photoUri = message.senderPhotoUri
+            )
             searchResults.add(searchResult)
         }
 
@@ -579,17 +640,36 @@ class MainActivity : SimpleActivity() {
         val licenses = LICENSE_EVENT_BUS or LICENSE_SMS_MMS or LICENSE_INDICATOR_FAST_SCROLL
 
         val faqItems = arrayListOf(
-            FAQItem(R.string.faq_2_title, R.string.faq_2_text),
-            FAQItem(R.string.faq_3_title, R.string.faq_3_text),
-            FAQItem(org.fossify.commons.R.string.faq_9_title_commons, org.fossify.commons.R.string.faq_9_text_commons)
+            FAQItem(title = R.string.faq_2_title, text = R.string.faq_2_text),
+            FAQItem(title = R.string.faq_3_title, text = R.string.faq_3_text),
+            FAQItem(
+                title = org.fossify.commons.R.string.faq_9_title_commons,
+                text = org.fossify.commons.R.string.faq_9_text_commons
+            )
         )
 
         if (!resources.getBoolean(org.fossify.commons.R.bool.hide_google_relations)) {
-            faqItems.add(FAQItem(org.fossify.commons.R.string.faq_2_title_commons, org.fossify.commons.R.string.faq_2_text_commons))
-            faqItems.add(FAQItem(org.fossify.commons.R.string.faq_6_title_commons, org.fossify.commons.R.string.faq_6_text_commons))
+            faqItems.add(
+                FAQItem(
+                    title = org.fossify.commons.R.string.faq_2_title_commons,
+                    text = org.fossify.commons.R.string.faq_2_text_commons
+                )
+            )
+            faqItems.add(
+                FAQItem(
+                    title = org.fossify.commons.R.string.faq_6_title_commons,
+                    text = org.fossify.commons.R.string.faq_6_text_commons
+                )
+            )
         }
 
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+        startAboutActivity(
+            appNameId = R.string.app_name,
+            licenseMask = licenses,
+            versionName = BuildConfig.VERSION_NAME,
+            faqItems = faqItems,
+            showFAQBeforeMail = true
+        )
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

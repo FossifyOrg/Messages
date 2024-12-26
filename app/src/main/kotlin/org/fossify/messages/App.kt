@@ -1,11 +1,7 @@
 package org.fossify.messages
 
-import android.app.Application
-import org.fossify.commons.extensions.checkUseEnglish
+import org.fossify.commons.FossifyApp
 
-class App : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        checkUseEnglish()
-    }
+class App : FossifyApp() {
+    override val isAppLockFeatureAvailable = true
 }

@@ -36,9 +36,14 @@ import android.widget.LinearLayout.LayoutParams
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsAnimationCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -47,8 +52,52 @@ import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
 import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.dialogs.RadioGroupDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.addBlockedNumber
+import org.fossify.commons.extensions.addLockedLabelIfNeeded
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.darkenColor
+import org.fossify.commons.extensions.formatDate
+import org.fossify.commons.extensions.getBottomNavigationBackgroundColor
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getFilenameFromUri
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getMyFileUri
+import org.fossify.commons.extensions.getProperBackgroundColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.getTextSize
+import org.fossify.commons.extensions.hideKeyboard
+import org.fossify.commons.extensions.isDynamicTheme
+import org.fossify.commons.extensions.isOrWasThankYouInstalled
+import org.fossify.commons.extensions.isVisible
+import org.fossify.commons.extensions.launchActivityIntent
+import org.fossify.commons.extensions.normalizeString
+import org.fossify.commons.extensions.notificationManager
+import org.fossify.commons.extensions.onTextChangeListener
+import org.fossify.commons.extensions.openRequestExactAlarmSettings
+import org.fossify.commons.extensions.realScreenSize
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.showKeyboard
+import org.fossify.commons.extensions.toInt
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.value
+import org.fossify.commons.extensions.viewBinding
+import org.fossify.commons.helpers.ContactsHelper
+import org.fossify.commons.helpers.ExportResult
+import org.fossify.commons.helpers.KEY_PHONE
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.VcfExporter
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isNougatPlus
+import org.fossify.commons.helpers.isOreoPlus
+import org.fossify.commons.helpers.isSPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.RadioItem
 import org.fossify.commons.models.SimpleContact
@@ -63,11 +112,80 @@ import org.fossify.messages.databinding.ItemSelectedContactBinding
 import org.fossify.messages.dialogs.InvalidNumberDialog
 import org.fossify.messages.dialogs.RenameConversationDialog
 import org.fossify.messages.dialogs.ScheduleMessageDialog
-import org.fossify.messages.extensions.*
-import org.fossify.messages.helpers.*
-import org.fossify.messages.messaging.*
-import org.fossify.messages.models.*
-import org.fossify.messages.models.ThreadItem.*
+import org.fossify.messages.extensions.clearExpiredScheduledMessages
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.conversationsDB
+import org.fossify.messages.extensions.createTemporaryThread
+import org.fossify.messages.extensions.deleteConversation
+import org.fossify.messages.extensions.deleteMessage
+import org.fossify.messages.extensions.deleteScheduledMessage
+import org.fossify.messages.extensions.deleteSmsDraft
+import org.fossify.messages.extensions.dialNumber
+import org.fossify.messages.extensions.emptyMessagesRecycleBinForConversation
+import org.fossify.messages.extensions.getAddresses
+import org.fossify.messages.extensions.getDefaultKeyboardHeight
+import org.fossify.messages.extensions.getFileSizeFromUri
+import org.fossify.messages.extensions.getMessages
+import org.fossify.messages.extensions.getSmsDraft
+import org.fossify.messages.extensions.getThreadId
+import org.fossify.messages.extensions.getThreadParticipants
+import org.fossify.messages.extensions.getThreadTitle
+import org.fossify.messages.extensions.indexOfFirstOrNull
+import org.fossify.messages.extensions.isGifMimeType
+import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.markMessageRead
+import org.fossify.messages.extensions.markThreadMessagesUnread
+import org.fossify.messages.extensions.messagesDB
+import org.fossify.messages.extensions.moveMessageToRecycleBin
+import org.fossify.messages.extensions.removeDiacriticsIfNeeded
+import org.fossify.messages.extensions.renameConversation
+import org.fossify.messages.extensions.restoreAllMessagesFromRecycleBinForConversation
+import org.fossify.messages.extensions.restoreMessageFromRecycleBin
+import org.fossify.messages.extensions.saveSmsDraft
+import org.fossify.messages.extensions.showWithAnimation
+import org.fossify.messages.extensions.subscriptionManagerCompat
+import org.fossify.messages.extensions.toArrayList
+import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.extensions.updateLastConversationMessage
+import org.fossify.messages.extensions.updateScheduledMessagesThreadId
+import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
+import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
+import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
+import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.IS_RECYCLE_BIN
+import org.fossify.messages.helpers.MESSAGES_LIMIT
+import org.fossify.messages.helpers.PICK_CONTACT_INTENT
+import org.fossify.messages.helpers.PICK_DOCUMENT_INTENT
+import org.fossify.messages.helpers.PICK_PHOTO_INTENT
+import org.fossify.messages.helpers.PICK_SAVE_FILE_INTENT
+import org.fossify.messages.helpers.PICK_VIDEO_INTENT
+import org.fossify.messages.helpers.SEARCHED_MESSAGE_ID
+import org.fossify.messages.helpers.THREAD_ATTACHMENT_URI
+import org.fossify.messages.helpers.THREAD_ATTACHMENT_URIS
+import org.fossify.messages.helpers.THREAD_ID
+import org.fossify.messages.helpers.THREAD_NUMBER
+import org.fossify.messages.helpers.THREAD_TEXT
+import org.fossify.messages.helpers.THREAD_TITLE
+import org.fossify.messages.helpers.generateRandomId
+import org.fossify.messages.helpers.refreshMessages
+import org.fossify.messages.messaging.cancelScheduleSendPendingIntent
+import org.fossify.messages.messaging.isLongMmsMessage
+import org.fossify.messages.messaging.isShortCodeWithLetters
+import org.fossify.messages.messaging.scheduleMessage
+import org.fossify.messages.messaging.sendMessageCompat
+import org.fossify.messages.models.Attachment
+import org.fossify.messages.models.AttachmentSelection
+import org.fossify.messages.models.Conversation
+import org.fossify.messages.models.Events
+import org.fossify.messages.models.Message
+import org.fossify.messages.models.MessageAttachment
+import org.fossify.messages.models.SIMCard
+import org.fossify.messages.models.ThreadItem
+import org.fossify.messages.models.ThreadItem.ThreadDateTime
+import org.fossify.messages.models.ThreadItem.ThreadError
+import org.fossify.messages.models.ThreadItem.ThreadLoading
+import org.fossify.messages.models.ThreadItem.ThreadSending
+import org.fossify.messages.models.ThreadItem.ThreadSent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -75,6 +193,7 @@ import org.joda.time.DateTime
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
+import kotlin.collections.set
 
 class ThreadActivity : SimpleActivity() {
     private val MIN_DATE_TIME_DIFF_SECS = 300
@@ -101,7 +220,6 @@ class ThreadActivity : SimpleActivity() {
     private var loadingOlderMessages = false
     private var allMessagesFetched = false
     private var oldestMessageDate = -1
-    private var wasProtectionHandled = false
     private var isRecycleBin = false
 
     private var isScheduledMessage: Boolean = false
@@ -113,7 +231,7 @@ class ThreadActivity : SimpleActivity() {
 
     private val binding by viewBinding(ActivityThreadBinding::inflate)
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         finish()
         startActivity(intent)
@@ -126,7 +244,12 @@ class ThreadActivity : SimpleActivity() {
         setupOptionsMenu()
         refreshMenuItems()
 
-        updateMaterialActivityViews(binding.threadCoordinator, null, useTransparentNavigation = false, useTopSearchMenu = false)
+        updateMaterialActivityViews(
+            mainCoordinatorLayout = binding.threadCoordinator,
+            nestedView = null,
+            useTransparentNavigation = false,
+            useTopSearchMenu = false
+        )
         setupMaterialScrollListener(null, binding.threadToolbar)
 
         val extras = intent.extras
@@ -141,28 +264,11 @@ class ThreadActivity : SimpleActivity() {
             binding.threadToolbar.title = it
         }
         isRecycleBin = intent.getBooleanExtra(IS_RECYCLE_BIN, false)
-        wasProtectionHandled = intent.getBooleanExtra(WAS_PROTECTION_HANDLED, false)
 
         bus = EventBus.getDefault()
         bus!!.register(this)
 
-        if (savedInstanceState == null) {
-            if (!wasProtectionHandled) {
-                handleAppPasswordProtection {
-                    wasProtectionHandled = it
-                    if (it) {
-                        clearAllMessagesIfNeeded {
-                            loadConversation()
-                        }
-                    } else {
-                        finish()
-                    }
-                }
-            } else {
-                loadConversation()
-            }
-        }
-
+        loadConversation()
         setupAttachmentPickerView()
         setupKeyboardListener()
         hideAttachmentPicker()
@@ -171,7 +277,11 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.threadToolbar, NavigationIcon.Arrow, statusBarColor = getProperBackgroundColor())
+        setupToolbar(
+            toolbar = binding.threadToolbar,
+            toolbarNavigationIcon = NavigationIcon.Arrow,
+            statusBarColor = getProperBackgroundColor()
+        )
 
         val smsDraft = getSmsDraft(threadId)
         if (smsDraft != null) {
@@ -224,49 +334,32 @@ class ThreadActivity : SimpleActivity() {
         bus?.unregister(this)
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean(WAS_PROTECTION_HANDLED, wasProtectionHandled)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        wasProtectionHandled = savedInstanceState.getBoolean(WAS_PROTECTION_HANDLED, false)
-
-        if (!wasProtectionHandled) {
-            handleAppPasswordProtection {
-                wasProtectionHandled = it
-                if (it) {
-                    loadConversation()
-                } else {
-                    finish()
-                }
-            }
-        } else {
-            loadConversation()
-        }
-    }
-
     private fun refreshMenuItems() {
         val firstPhoneNumber = participants.firstOrNull()?.phoneNumbers?.firstOrNull()?.value
         val archiveAvailable = config.isArchiveAvailable
         binding.threadToolbar.menu.apply {
             findItem(R.id.delete).isVisible = threadItems.isNotEmpty()
             findItem(R.id.restore).isVisible = threadItems.isNotEmpty() && isRecycleBin
-            findItem(R.id.archive).isVisible = threadItems.isNotEmpty() && conversation?.isArchived == false && !isRecycleBin && archiveAvailable
-            findItem(R.id.unarchive).isVisible = threadItems.isNotEmpty() && conversation?.isArchived == true && !isRecycleBin && archiveAvailable
-            findItem(R.id.rename_conversation).isVisible = participants.size > 1 && conversation != null && !isRecycleBin
+            findItem(R.id.archive).isVisible =
+                threadItems.isNotEmpty() && conversation?.isArchived == false && !isRecycleBin && archiveAvailable
+            findItem(R.id.unarchive).isVisible =
+                threadItems.isNotEmpty() && conversation?.isArchived == true && !isRecycleBin && archiveAvailable
+            findItem(R.id.rename_conversation).isVisible =
+                participants.size > 1 && conversation != null && !isRecycleBin
             findItem(R.id.conversation_details).isVisible = conversation != null && !isRecycleBin
-            findItem(R.id.block_number).title = addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)
+            findItem(R.id.block_number).title =
+                addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)
             findItem(R.id.block_number).isVisible = isNougatPlus() && !isRecycleBin
-            findItem(R.id.dial_number).isVisible = participants.size == 1 && !isSpecialNumber() && !isRecycleBin
+            findItem(R.id.dial_number).isVisible =
+                participants.size == 1 && !isSpecialNumber() && !isRecycleBin
             findItem(R.id.manage_people).isVisible = !isSpecialNumber() && !isRecycleBin
             findItem(R.id.mark_as_unread).isVisible = threadItems.isNotEmpty() && !isRecycleBin
 
-            // allow saving number in cases when we dont have it stored yet and it is a casual readable number
-            findItem(R.id.add_number_to_contact).isVisible = participants.size == 1 && participants.first().name == firstPhoneNumber && firstPhoneNumber.any {
-                it.isDigit()
-            } && !isRecycleBin
+            // allow saving number in cases when we don't have it stored yet and it is a casual readable number
+            findItem(R.id.add_number_to_contact).isVisible =
+                participants.size == 1 && participants.first().name == firstPhoneNumber && firstPhoneNumber.any {
+                    it.isDigit()
+                } && !isRecycleBin
         }
     }
 
@@ -304,7 +397,12 @@ class ThreadActivity : SimpleActivity() {
             addAttachment(capturedImageUri!!)
         } else if (data != null) {
             when (requestCode) {
-                CAPTURE_VIDEO_INTENT, PICK_DOCUMENT_INTENT, CAPTURE_AUDIO_INTENT, PICK_PHOTO_INTENT, PICK_VIDEO_INTENT -> addAttachment(data)
+                CAPTURE_VIDEO_INTENT,
+                PICK_DOCUMENT_INTENT,
+                CAPTURE_AUDIO_INTENT,
+                PICK_PHOTO_INTENT,
+                PICK_VIDEO_INTENT -> addAttachment(data)
+
                 PICK_CONTACT_INTENT -> addContactAttachment(data)
                 PICK_SAVE_FILE_INTENT -> saveAttachment(resultData)
             }
@@ -360,8 +458,10 @@ class ThreadActivity : SimpleActivity() {
             if (!isRecycleBin) {
                 messages = getMessages(threadId, true)
                 if (config.useRecycleBin) {
-                    val recycledMessages = messagesDB.getThreadMessagesFromRecycleBin(threadId).map { it.id }
-                    messages = messages.filter { !recycledMessages.contains(it.id) }.toMutableList() as ArrayList<Message>
+                    val recycledMessages =
+                        messagesDB.getThreadMessagesFromRecycleBin(threadId).map { it.id }
+                    messages = messages.filter { !recycledMessages.contains(it.id) }
+                        .toMutableList() as ArrayList<Message>
                 }
             }
 
@@ -383,11 +483,13 @@ class ThreadActivity : SimpleActivity() {
             if (privateContacts.isNotEmpty()) {
                 val senderNumbersToReplace = HashMap<String, String>()
                 participants.filter { it.doesHavePhoneNumber(it.name) }.forEach { participant ->
-                    privateContacts.firstOrNull { it.doesHavePhoneNumber(participant.phoneNumbers.first().normalizedNumber) }?.apply {
-                        senderNumbersToReplace[participant.phoneNumbers.first().normalizedNumber] = name
-                        participant.name = name
-                        participant.photoUri = photoUri
-                    }
+                    privateContacts.firstOrNull { it.doesHavePhoneNumber(participant.phoneNumbers.first().normalizedNumber) }
+                        ?.apply {
+                            senderNumbersToReplace[participant.phoneNumbers.first().normalizedNumber] =
+                                name
+                            participant.name = name
+                            participant.photoUri = photoUri
+                        }
                 }
 
                 messages.forEach { message ->
@@ -407,7 +509,15 @@ class ThreadActivity : SimpleActivity() {
                 }
 
                 val phoneNumber = PhoneNumber(number, 0, "", number)
-                val contact = SimpleContact(0, 0, name, "", arrayListOf(phoneNumber), ArrayList(), ArrayList())
+                val contact = SimpleContact(
+                    rawId = 0,
+                    contactId = 0,
+                    name = name,
+                    photoUri = "",
+                    phoneNumbers = arrayListOf(phoneNumber),
+                    birthdays = ArrayList(),
+                    anniversaries = ArrayList()
+                )
                 participants.add(contact)
             }
 
@@ -434,17 +544,24 @@ class ThreadActivity : SimpleActivity() {
                 recyclerView = binding.threadMessagesList,
                 itemClick = { handleItemClick(it) },
                 isRecycleBin = isRecycleBin,
-                deleteMessages = { messages, toRecycleBin, fromRecycleBin -> deleteMessages(messages, toRecycleBin, fromRecycleBin) }
+                deleteMessages = { messages, toRecycleBin, fromRecycleBin ->
+                    deleteMessages(
+                        messages,
+                        toRecycleBin,
+                        fromRecycleBin
+                    )
+                }
             )
 
             binding.threadMessagesList.adapter = currAdapter
-            binding.threadMessagesList.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
-                override fun updateBottom() {}
+            binding.threadMessagesList.endlessScrollListener =
+                object : MyRecyclerView.EndlessScrollListener {
+                    override fun updateBottom() {}
 
-                override fun updateTop() {
-                    fetchNextMessages()
+                    override fun updateTop() {
+                        fetchNextMessages()
+                    }
                 }
-            }
         }
         return currAdapter as ThreadAdapter
     }
@@ -458,7 +575,8 @@ class ThreadActivity : SimpleActivity() {
                 val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
                 val lastPosition = itemCount - 1
                 val lastVisiblePosition = layoutManager.findLastVisibleItemPosition()
-                val shouldScrollToBottom = currentList.lastOrNull() != threadItems.lastOrNull() && lastPosition - lastVisiblePosition == 1
+                val shouldScrollToBottom =
+                    currentList.lastOrNull() != threadItems.lastOrNull() && lastPosition - lastVisiblePosition == 1
                 updateMessages(threadItems, if (shouldScrollToBottom) lastPosition else -1)
             }
         }
@@ -470,7 +588,8 @@ class ThreadActivity : SimpleActivity() {
                 binding.addContactOrNumber.setAdapter(adapter)
                 binding.addContactOrNumber.imeOptions = EditorInfo.IME_ACTION_NEXT
                 binding.addContactOrNumber.setOnItemClickListener { _, _, position, _ ->
-                    val currContacts = (binding.addContactOrNumber.adapter as AutoCompleteTextViewAdapter).resultList
+                    val currContacts =
+                        (binding.addContactOrNumber.adapter as AutoCompleteTextViewAdapter).resultList
                     val selectedContact = currContacts[position]
                     addSelectedContact(selectedContact)
                 }
@@ -485,7 +604,15 @@ class ThreadActivity : SimpleActivity() {
             binding.confirmInsertedNumber.setOnClickListener {
                 val number = binding.addContactOrNumber.value
                 val phoneNumber = PhoneNumber(number, 0, "", number)
-                val contact = SimpleContact(number.hashCode(), number.hashCode(), number, "", arrayListOf(phoneNumber), ArrayList(), ArrayList())
+                val contact = SimpleContact(
+                    rawId = number.hashCode(),
+                    contactId = number.hashCode(),
+                    name = number,
+                    photoUri = "",
+                    phoneNumbers = arrayListOf(phoneNumber),
+                    birthdays = ArrayList(),
+                    anniversaries = ArrayList()
+                )
                 addSelectedContact(contact)
             }
         }
@@ -504,7 +631,8 @@ class ThreadActivity : SimpleActivity() {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
                 val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-                val isCloseToBottom = lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
+                val isCloseToBottom =
+                    lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
                 if (isCloseToBottom) {
                     binding.scrollToBottomFab.hide()
                 } else {
@@ -524,7 +652,11 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun deleteMessages(messagesToRemove: List<Message>, toRecycleBin: Boolean, fromRecycleBin: Boolean) {
+    private fun deleteMessages(
+        messagesToRemove: List<Message>,
+        toRecycleBin: Boolean,
+        fromRecycleBin: Boolean
+    ) {
         val deletePosition = threadItems.indexOf(messagesToRemove.first())
         messages.removeAll(messagesToRemove.toSet())
         threadItems = getThreadItems()
@@ -574,7 +706,10 @@ class ThreadActivity : SimpleActivity() {
                     val newList = currentList.toMutableList().apply {
                         removeAll { it is ThreadLoading }
                     }
-                    updateMessages(newMessages = newList as ArrayList<ThreadItem>, scrollPosition = 0)
+                    updateMessages(
+                        newMessages = newList as ArrayList<ThreadItem>,
+                        scrollPosition = 0
+                    )
                 }
             }
             return
@@ -615,7 +750,8 @@ class ThreadActivity : SimpleActivity() {
                     val searchedMessageId = intent.getLongExtra(SEARCHED_MESSAGE_ID, -1L)
                     intent.removeExtra(SEARCHED_MESSAGE_ID)
                     if (searchedMessageId != -1L) {
-                        val index = threadItems.indexOfFirst { (it as? Message)?.id == searchedMessageId }
+                        val index =
+                            threadItems.indexOfFirst { (it as? Message)?.id == searchedMessageId }
                         if (index != -1) {
                             binding.threadMessagesList.smoothScrollToPosition(index)
                         }
@@ -677,6 +813,7 @@ class ThreadActivity : SimpleActivity() {
                     it
                 }
                 val messageLength = SmsMessage.calculateLength(messageString, false)
+                @SuppressLint("SetTextI18n")
                 threadCharacterCounter.text = "${messageLength[2]}/${messageLength[0]}"
             }
 
@@ -726,11 +863,13 @@ class ThreadActivity : SimpleActivity() {
             threadAddAttachment.setOnClickListener {
                 if (attachmentPickerHolder.isVisible()) {
                     isAttachmentPickerVisible = false
-                    WindowCompat.getInsetsController(window, threadTypeMessage).show(WindowInsetsCompat.Type.ime())
+                    WindowCompat.getInsetsController(window, threadTypeMessage)
+                        .show(WindowInsetsCompat.Type.ime())
                 } else {
                     isAttachmentPickerVisible = true
                     showOrHideAttachmentPicker()
-                    WindowCompat.getInsetsController(window, threadTypeMessage).hide(WindowInsetsCompat.Type.ime())
+                    WindowCompat.getInsetsController(window, threadTypeMessage)
+                        .hide(WindowInsetsCompat.Type.ime())
                 }
                 window.decorView.requestApplyInsets()
             }
@@ -779,14 +918,22 @@ class ThreadActivity : SimpleActivity() {
                     if (it.mimetype.startsWith("image/")) {
                         val fileOptions = BitmapFactory.Options()
                         fileOptions.inJustDecodeBounds = true
-                        BitmapFactory.decodeStream(contentResolver.openInputStream(it.getUri()), null, fileOptions)
+                        BitmapFactory.decodeStream(
+                            contentResolver.openInputStream(it.getUri()),
+                            null,
+                            fileOptions
+                        )
                         it.width = fileOptions.outWidth
                         it.height = fileOptions.outHeight
                     } else if (it.mimetype.startsWith("video/")) {
                         val metaRetriever = MediaMetadataRetriever()
                         metaRetriever.setDataSource(this, it.getUri())
-                        it.width = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)!!.toInt()
-                        it.height = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)!!.toInt()
+                        it.width = metaRetriever.extractMetadata(
+                            MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH
+                        )!!.toInt()
+                        it.height = metaRetriever.extractMetadata(
+                            MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT
+                        )!!.toInt()
                     }
 
                     if (it.width < 0) {
@@ -885,6 +1032,7 @@ class ThreadActivity : SimpleActivity() {
                 binding.messageHolder.threadSelectSimIcon.setOnClickListener {
                     currentSIMCardIndex = (currentSIMCardIndex + 1) % availableSIMCards.size
                     val currentSIMCard = availableSIMCards[currentSIMCardIndex]
+                    @SuppressLint("SetTextI18n")
                     binding.messageHolder.threadSelectSimNumber.text = currentSIMCard.id.toString()
                     val currentSubscriptionId = currentSIMCard.subscriptionId
                     numbers.forEach {
@@ -894,9 +1042,13 @@ class ThreadActivity : SimpleActivity() {
                 }
             }
 
-            binding.messageHolder.threadSelectSimNumber.setTextColor(getProperTextColor().getContrastColor())
+            binding.messageHolder.threadSelectSimNumber.setTextColor(
+                getProperTextColor().getContrastColor()
+            )
             try {
-                binding.messageHolder.threadSelectSimNumber.text = (availableSIMCards[currentSIMCardIndex].id).toString()
+                @SuppressLint("SetTextI18n")
+                binding.messageHolder.threadSelectSimNumber.text =
+                    (availableSIMCards[currentSIMCardIndex].id).toString()
             } catch (e: Exception) {
                 showErrorToast(e)
             }
@@ -904,9 +1056,13 @@ class ThreadActivity : SimpleActivity() {
     }
 
     @SuppressLint("MissingPermission")
-    private fun getProperSimIndex(availableSIMs: MutableList<SubscriptionInfo>, numbers: List<String>): Int {
+    private fun getProperSimIndex(
+        availableSIMs: MutableList<SubscriptionInfo>,
+        numbers: List<String>
+    ): Int {
         val userPreferredSimId = config.getUseSIMIdAtNumber(numbers.first())
-        val userPreferredSimIdx = availableSIMs.indexOfFirstOrNull { it.subscriptionId == userPreferredSimId }
+        val userPreferredSimIdx =
+            availableSIMs.indexOfFirstOrNull { it.subscriptionId == userPreferredSimId }
 
         val lastMessage = messages.lastOrNull()
         val senderPreferredSimIdx = if (lastMessage?.isReceivedMessage() == true) {
@@ -936,7 +1092,10 @@ class ThreadActivity : SimpleActivity() {
     private fun blockNumber() {
         val numbers = participants.getAddresses()
         val numbersString = TextUtils.join(", ", numbers)
-        val question = String.format(resources.getString(org.fossify.commons.R.string.block_confirmation), numbersString)
+        val question = String.format(
+            resources.getString(org.fossify.commons.R.string.block_confirmation),
+            numbersString
+        )
 
         ConfirmationDialog(this, question) {
             ensureBackgroundThread {
@@ -1021,8 +1180,13 @@ class ThreadActivity : SimpleActivity() {
         val views = ArrayList<View>()
         participants.forEach { contact ->
             ItemSelectedContactBinding.inflate(layoutInflater).apply {
-                val selectedContactBg = resources.getDrawable(R.drawable.item_selected_contact_background)
-                (selectedContactBg as LayerDrawable).findDrawableByLayerId(R.id.selected_contact_bg).applyColorFilter(properPrimaryColor)
+                val selectedContactBg =
+                    AppCompatResources.getDrawable(
+                        this@ThreadActivity,
+                        R.drawable.item_selected_contact_background
+                    )
+                (selectedContactBg as LayerDrawable).findDrawableByLayerId(R.id.selected_contact_bg)
+                    .applyColorFilter(properPrimaryColor)
                 selectedContactHolder.background = selectedContactBg
 
                 selectedContactName.text = contact.name
@@ -1063,7 +1227,8 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun addNumberToContact() {
-        val phoneNumber = participants.firstOrNull()?.phoneNumbers?.firstOrNull()?.normalizedNumber ?: return
+        val phoneNumber =
+            participants.firstOrNull()?.phoneNumbers?.firstOrNull()?.normalizedNumber ?: return
         Intent().apply {
             action = Intent.ACTION_INSERT_OR_EDIT
             type = "vnd.android.cursor.item/contact"
@@ -1113,7 +1278,8 @@ class ThreadActivity : SimpleActivity() {
             val message = messages.getOrNull(i) ?: continue
             // do not show the date/time above every message, only if the difference between the 2 messages is at least MIN_DATE_TIME_DIFF_SECS,
             // or if the message is sent from a different SIM
-            val isSentFromDifferentKnownSIM = prevSIMId != -1 && message.subscriptionId != -1 && prevSIMId != message.subscriptionId
+            val isSentFromDifferentKnownSIM =
+                prevSIMId != -1 && message.subscriptionId != -1 && prevSIMId != message.subscriptionId
             if (message.date - prevDateTime > MIN_DATE_TIME_DIFF_SECS || isSentFromDifferentKnownSIM) {
                 val simCardID = subscriptionIdToSimId[message.subscriptionId] ?: "?"
                 items.add(ThreadDateTime(message.date, simCardID))
@@ -1136,7 +1302,12 @@ class ThreadActivity : SimpleActivity() {
             }
 
             if (i == cnt - 1 && (message.type == Telephony.Sms.MESSAGE_TYPE_SENT)) {
-                items.add(ThreadSent(message.id, delivered = message.status == Telephony.Sms.STATUS_COMPLETE))
+                items.add(
+                    ThreadSent(
+                        messageId = message.id,
+                        delivered = message.status == Telephony.Sms.STATUS_COMPLETE
+                    )
+                )
             }
             prevSIMId = message.subscriptionId
         }
@@ -1153,7 +1324,11 @@ class ThreadActivity : SimpleActivity() {
         return items
     }
 
-    private fun launchActivityForResult(intent: Intent, requestCode: Int, @StringRes error: Int = org.fossify.commons.R.string.no_app_found) {
+    private fun launchActivityForResult(
+        intent: Intent,
+        requestCode: Int,
+        @StringRes error: Int = org.fossify.commons.R.string.no_app_found
+    ) {
         hideKeyboard()
         try {
             startActivityForResult(intent, requestCode)
@@ -1293,13 +1468,18 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun saveAttachment(resultData: Intent) {
-        val takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-        applicationContext.contentResolver.takePersistableUriPermission(resultData.data!!, takeFlags)
+        val takeFlags =
+            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        applicationContext.contentResolver.takePersistableUriPermission(
+            resultData.data!!,
+            takeFlags
+        )
         var inputStream: InputStream? = null
         var outputStream: OutputStream? = null
         try {
             inputStream = contentResolver.openInputStream(Uri.parse(lastAttachmentUri))
-            outputStream = contentResolver.openOutputStream(Uri.parse(resultData.dataString!!), "rwt")
+            outputStream =
+                contentResolver.openOutputStream(Uri.parse(resultData.dataString!!), "rwt")
             inputStream!!.copyTo(outputStream!!)
             outputStream.flush()
             toast(org.fossify.commons.R.string.file_saved)
@@ -1338,7 +1518,8 @@ class ThreadActivity : SimpleActivity() {
 
         text = removeDiacriticsIfNeeded(text)
 
-        val subscriptionId = availableSIMCards.getOrNull(currentSIMCardIndex)?.subscriptionId ?: SmsManager.getDefaultSmsSubscriptionId()
+        val subscriptionId = availableSIMCards.getOrNull(currentSIMCardIndex)?.subscriptionId
+            ?: SmsManager.getDefaultSmsSubscriptionId()
 
         if (isScheduledMessage) {
             sendScheduledMessage(text, subscriptionId)
@@ -1367,7 +1548,12 @@ class ThreadActivity : SimpleActivity() {
                 val conversation = conversationsDB.getConversationWithThreadId(threadId)
                 if (conversation != null) {
                     val nowSeconds = (System.currentTimeMillis() / 1000).toInt()
-                    conversationsDB.insertOrUpdate(conversation.copy(date = nowSeconds, snippet = message.body))
+                    conversationsDB.insertOrUpdate(
+                        conversation.copy(
+                            date = nowSeconds,
+                            snippet = message.body
+                        )
+                    )
                 }
                 scheduleMessage(message)
                 insertOrUpdateMessage(message)
@@ -1379,7 +1565,9 @@ class ThreadActivity : SimpleActivity() {
                 }
             }
         } catch (e: Exception) {
-            showErrorToast(e.localizedMessage ?: getString(org.fossify.commons.R.string.unknown_error_occurred))
+            showErrorToast(
+                e.localizedMessage ?: getString(org.fossify.commons.R.string.unknown_error_occurred)
+            )
         }
     }
 
@@ -1392,7 +1580,11 @@ class ThreadActivity : SimpleActivity() {
             sendMessageCompat(text, addresses, subscriptionId, attachments, messageToResend)
             ensureBackgroundThread {
                 val messageIds = messages.map { it.id }
-                val messages = getMessages(threadId, getImageResolutions = true, limit = maxOf(1, attachments.size))
+                val messages = getMessages(
+                    threadId = threadId,
+                    getImageResolutions = true,
+                    limit = maxOf(1, attachments.size)
+                )
                     .filter { it.id !in messageIds }
                 for (message in messages) {
                     insertOrUpdateMessage(message)
@@ -1403,7 +1595,9 @@ class ThreadActivity : SimpleActivity() {
         } catch (e: Exception) {
             showErrorToast(e)
         } catch (e: Error) {
-            showErrorToast(e.localizedMessage ?: getString(org.fossify.commons.R.string.unknown_error_occurred))
+            showErrorToast(
+                e.localizedMessage ?: getString(org.fossify.commons.R.string.unknown_error_occurred)
+            )
         }
     }
 
@@ -1437,13 +1631,17 @@ class ThreadActivity : SimpleActivity() {
     private fun showSelectedContact(views: ArrayList<View>) {
         binding.selectedContacts.removeAllViews()
         var newLinearLayout = LinearLayout(this)
-        newLinearLayout.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+        newLinearLayout.layoutParams =
+            LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         newLinearLayout.orientation = LinearLayout.HORIZONTAL
 
-        val sideMargin = (binding.selectedContacts.layoutParams as RelativeLayout.LayoutParams).leftMargin
+        val sideMargin =
+            (binding.selectedContacts.layoutParams as RelativeLayout.LayoutParams).leftMargin
         val mediumMargin = resources.getDimension(org.fossify.commons.R.dimen.medium_margin).toInt()
         val parentWidth = realScreenSize.x - sideMargin * 2
-        val firstRowWidth = parentWidth - resources.getDimension(org.fossify.commons.R.dimen.normal_icon_size).toInt() + sideMargin / 2
+        val firstRowWidth =
+            parentWidth - resources.getDimension(org.fossify.commons.R.dimen.normal_icon_size)
+                .toInt() + sideMargin / 2
         var widthSoFar = 0
         var isFirstRow = true
 
@@ -1465,7 +1663,8 @@ class ThreadActivity : SimpleActivity() {
                 isFirstRow = false
                 binding.selectedContacts.addView(newLinearLayout)
                 newLinearLayout = LinearLayout(this)
-                newLinearLayout.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+                newLinearLayout.layoutParams =
+                    LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
                 newLinearLayout.orientation = LinearLayout.HORIZONTAL
                 params = LayoutParams(layout.measuredWidth, layout.measuredHeight)
                 params.topMargin = mediumMargin
@@ -1482,7 +1681,8 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun removeSelectedContact(id: Int) {
-        participants = participants.filter { it.rawId != id }.toMutableList() as ArrayList<SimpleContact>
+        participants =
+            participants.filter { it.rawId != id }.toMutableList() as ArrayList<SimpleContact>
         showSelectedContacts()
         updateMessageType()
     }
@@ -1502,7 +1702,10 @@ class ThreadActivity : SimpleActivity() {
         return numbers
     }
 
-    private fun fixParticipantNumbers(participants: ArrayList<SimpleContact>, properNumbers: ArrayList<String>): ArrayList<SimpleContact> {
+    private fun fixParticipantNumbers(
+        participants: ArrayList<SimpleContact>,
+        properNumbers: ArrayList<String>
+    ): ArrayList<SimpleContact> {
         for (number in properNumbers) {
             for (participant in participants) {
                 participant.phoneNumbers = participant.phoneNumbers.map {
@@ -1529,7 +1732,11 @@ class ThreadActivity : SimpleActivity() {
             type = mimeType
             addCategory(Intent.CATEGORY_OPENABLE)
             putExtra(Intent.EXTRA_TITLE, path.split("/").last())
-            launchActivityForResult(this, PICK_SAVE_FILE_INTENT, error = org.fossify.commons.R.string.system_service_disabled)
+            launchActivityForResult(
+                intent = this,
+                requestCode = PICK_SAVE_FILE_INTENT,
+                error = org.fossify.commons.R.string.system_service_disabled
+            )
         }
     }
 
@@ -1549,12 +1756,16 @@ class ThreadActivity : SimpleActivity() {
 
         val lastMaxId = messages.filterNot { it.isScheduled }.maxByOrNull { it.id }?.id ?: 0L
         val newThreadId = getThreadId(participants.getAddresses().toSet())
-        val newMessages = getMessages(newThreadId, getImageResolutions = true, includeScheduledMessages = false)
+        val newMessages =
+            getMessages(newThreadId, getImageResolutions = true, includeScheduledMessages = false)
 
         if (messages.isNotEmpty() && messages.all { it.isScheduled } && newMessages.isNotEmpty()) {
             // update scheduled messages with real thread id
             threadId = newThreadId
-            updateScheduledMessagesThreadId(messages = messages.filter { it.threadId != threadId }, threadId)
+            updateScheduledMessagesThreadId(
+                messages = messages.filter { it.threadId != threadId },
+                newThreadId = threadId
+            )
         }
 
         messages = newMessages.apply {
@@ -1567,9 +1778,10 @@ class ThreadActivity : SimpleActivity() {
             }
         }
 
-        messages.filter { !it.isScheduled && !it.isReceivedMessage() && it.id > lastMaxId }.forEach { latestMessage ->
-            messagesDB.insertOrIgnore(latestMessage)
-        }
+        messages.filter { !it.isScheduled && !it.isReceivedMessage() && it.id > lastMaxId }
+            .forEach { latestMessage ->
+                messagesDB.insertOrIgnore(latestMessage)
+            }
 
         setupAdapter()
         runOnUiThread {
@@ -1599,7 +1811,11 @@ class ThreadActivity : SimpleActivity() {
             RadioItem(TYPE_SEND, getString(R.string.send_now)),
             RadioItem(TYPE_DELETE, getString(org.fossify.commons.R.string.delete))
         )
-        RadioGroupDialog(activity = this, items = items, titleId = R.string.scheduled_message) { any ->
+        RadioGroupDialog(
+            activity = this,
+            items = items,
+            titleId = R.string.scheduled_message
+        ) { any ->
             when (any as Int) {
                 TYPE_DELETE -> cancelScheduledMessageAndRefresh(message.id)
                 TYPE_EDIT -> editScheduledMessage(message)
@@ -1680,12 +1896,13 @@ class ThreadActivity : SimpleActivity() {
 
         val dateTime = scheduledDateTime
         val millis = dateTime.millis
-        binding.messageHolder.scheduledMessageButton.text = if (dateTime.yearOfCentury().get() > DateTime.now().yearOfCentury().get()) {
-            millis.formatDate(this)
-        } else {
-            val flags = FORMAT_SHOW_TIME or FORMAT_SHOW_DATE or FORMAT_NO_YEAR
-            DateUtils.formatDateTime(this, millis, flags)
-        }
+        binding.messageHolder.scheduledMessageButton.text =
+            if (dateTime.yearOfCentury().get() > DateTime.now().yearOfCentury().get()) {
+                millis.formatDate(this)
+            } else {
+                val flags = FORMAT_SHOW_TIME or FORMAT_SHOW_DATE or FORMAT_NO_YEAR
+                DateUtils.formatDateTime(this, millis, flags)
+            }
     }
 
     private fun hideScheduleSendUi() {
@@ -1702,7 +1919,9 @@ class ThreadActivity : SimpleActivity() {
         }
         ResourcesCompat.getDrawable(resources, drawableResId, theme)?.apply {
             applyColorFilter(getProperTextColor())
-            binding.messageHolder.threadSendMessage.setCompoundDrawablesWithIntrinsicBounds(null, this, null, null)
+            binding.messageHolder.threadSendMessage.setCompoundDrawablesWithIntrinsicBounds(
+                null, this, null, null
+            )
         }
     }
 
@@ -1836,14 +2055,18 @@ class ThreadActivity : SimpleActivity() {
             view.onApplyWindowInsets(insets)
         }
 
-        val callback = object : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE) {
-            override fun onPrepare(animation: WindowInsetsAnimationCompat) {
-                super.onPrepare(animation)
-                showOrHideAttachmentPicker()
-            }
+        val callback =
+            object : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE) {
+                override fun onPrepare(animation: WindowInsetsAnimationCompat) {
+                    super.onPrepare(animation)
+                    showOrHideAttachmentPicker()
+                }
 
-            override fun onProgress(insets: WindowInsetsCompat, runningAnimations: MutableList<WindowInsetsAnimationCompat>) = insets
-        }
+                override fun onProgress(
+                    insets: WindowInsetsCompat,
+                    runningAnimations: MutableList<WindowInsetsAnimationCompat>
+                ) = insets
+            }
         ViewCompat.setWindowInsetsAnimationCallback(window.decorView, callback)
     }
 
@@ -1868,7 +2091,7 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun getBottomBarColor() = if (baseConfig.isUsingSystemTheme) {
+    private fun getBottomBarColor() = if (isDynamicTheme()) {
         resources.getColor(org.fossify.commons.R.color.you_bottom_bar_color)
     } else {
         getBottomNavigationBackgroundColor()
