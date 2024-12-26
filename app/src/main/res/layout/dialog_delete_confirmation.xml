@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/small_margin"
+        android:paddingEnd="0dp"
         android:paddingBottom="@dimen/activity_margin"
         android:text="@string/delete_whole_conversation_confirmation"
         android:textSize="@dimen/bigger_text_size" />

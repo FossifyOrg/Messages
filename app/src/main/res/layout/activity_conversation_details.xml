@@ -26,21 +26,21 @@
             style="@style/SettingsSectionLabelStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/notifications"
             android:visibility="gone"
-            tools:visibility="visible"
-            android:text="@string/notifications" />
+            tools:visibility="visible" />
 
         <RelativeLayout
             android:id="@+id/custom_notifications_holder"
-            style="@style/SettingsHolderCheckboxStyle"
+            style="@style/SettingsHolderSwitchStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:visibility="visible"
-            android:visibility="gone">
+            android:visibility="gone"
+            tools:visibility="visible">
 
-            <org.fossify.commons.views.MyAppCompatCheckbox
+            <org.fossify.commons.views.MyMaterialSwitch
                 android:id="@+id/custom_notifications"
-                style="@style/SettingsCheckboxStyle"
+                style="@style/SettingsSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/enable_custom_notifications" />
@@ -49,12 +49,12 @@
 
         <org.fossify.commons.views.MyTextView
             android:id="@+id/custom_notifications_button"
+            style="@style/SettingsHolderTextViewOneLinerStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/customize_notifications"
             android:visibility="gone"
-            tools:visibility="visible"
-            style="@style/SettingsHolderTextViewOneLinerStyle"
-            android:text="@string/customize_notifications" />
+            tools:visibility="visible" />
 
         <include
             android:id="@+id/settings_conversation_notifications_divider"
@@ -69,6 +69,7 @@
 
         <org.fossify.commons.views.MyTextView
             android:id="@+id/conversation_name"
+            style="@style/SettingsHolderTextViewOneLinerStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
@@ -78,7 +79,6 @@
             android:ellipsize="end"
             android:focusable="true"
             android:maxLines="1"
-            style="@style/SettingsHolderTextViewOneLinerStyle"
             android:textSize="@dimen/bigger_text_size"
             tools:text="Conversation name" />
 
