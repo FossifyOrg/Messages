@@ -2,6 +2,5 @@
 <resources>
     <bool name="show_donate_in_about">false</bool>
     <bool name="hide_google_relations">false</bool>
-    <bool name="hide_all_external_links">false</bool>
     <bool name="pretend_thank_you_installed">true</bool>
 </resources>
