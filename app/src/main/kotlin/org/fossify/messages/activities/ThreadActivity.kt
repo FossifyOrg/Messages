@@ -307,9 +307,9 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onPause() {
         super.onPause()
-
-        if (binding.messageHolder.threadTypeMessage.value != "" && getAttachmentSelections().isEmpty()) {
-            saveSmsDraft(binding.messageHolder.threadTypeMessage.value, threadId)
+        val draftMessage = binding.messageHolder.threadTypeMessage.value
+        if (draftMessage.isNotEmpty() && getAttachmentSelections().isEmpty()) {
+            saveSmsDraft(draftMessage, threadId)
         } else {
             deleteSmsDraft(threadId)
         }
