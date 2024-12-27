@@ -1081,6 +1081,8 @@ fun Context.getAllDrafts(): HashMap<Long, String?> {
 }
 
 fun Context.saveSmsDraft(body: String, threadId: Long) {
+    deleteSmsDraft(threadId)
+
     val uri = Sms.Draft.CONTENT_URI
     val contentValues = ContentValues().apply {
         put(Sms.BODY, body)
@@ -1092,6 +1094,7 @@ fun Context.saveSmsDraft(body: String, threadId: Long) {
     try {
         contentResolver.insert(uri, contentValues)
     } catch (e: Exception) {
+        showErrorToast(e)
     }
 }
 
@@ -1100,16 +1103,16 @@ fun Context.deleteSmsDraft(threadId: Long) {
     val projection = arrayOf(Sms._ID)
     val selection = "${Sms.THREAD_ID} = ?"
     val selectionArgs = arrayOf(threadId.toString())
-    try {
-        val cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
-        cursor.use {
-            if (cursor?.moveToFirst() == true) {
-                val draftId = cursor.getLong(0)
-                val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
-                contentResolver.delete(draftUri, null, null)
-            }
-        }
-    } catch (e: Exception) {
+    queryCursor(
+        uri = uri,
+        projection = projection,
+        selection = selection,
+        selectionArgs = selectionArgs,
+        showErrors = true
+    ) { cursor ->
+        val draftId = cursor.getLongValue(Sms._ID)
+        val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
+        contentResolver.delete(draftUri, null, null)
     }
 }
 

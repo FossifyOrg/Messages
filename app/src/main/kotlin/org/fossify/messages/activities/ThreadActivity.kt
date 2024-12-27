@@ -307,9 +307,9 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onPause() {
         super.onPause()
-
-        if (binding.messageHolder.threadTypeMessage.value != "" && getAttachmentSelections().isEmpty()) {
-            saveSmsDraft(binding.messageHolder.threadTypeMessage.value, threadId)
+        val draftMessage = binding.messageHolder.threadTypeMessage.value
+        if (draftMessage.isNotEmpty() && getAttachmentSelections().isEmpty()) {
+            saveSmsDraft(draftMessage, threadId)
         } else {
             deleteSmsDraft(threadId)
         }
@@ -969,6 +969,7 @@ class ThreadActivity : SimpleActivity() {
 
     private fun maybeDisableShortCodeReply() {
         if (isSpecialNumber() && !isRecycleBin) {
+            binding.messageHolder.threadTypeMessage.text?.clear()
             binding.messageHolder.root.beGone()
             binding.shortCodeHolder.root.beVisible()
             val textColor = getProperTextColor()
