@@ -22,6 +22,10 @@
         android:fillViewport="true"
         android:scrollbars="none">
 
+        <include
+            layout="@layout/divider"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <RelativeLayout
             android:id="@+id/thread_add_contacts"
             android:layout_width="match_parent"
