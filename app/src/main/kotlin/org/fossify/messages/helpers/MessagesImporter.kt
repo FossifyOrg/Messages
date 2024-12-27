@@ -96,6 +96,7 @@ class MessagesImporter(private val activity: SimpleActivity) {
                         messagesFailed++
                     }
                 }
+                messageWriter.fixCoversationDates()
                 refreshMessages()
             } catch (e: Exception) {
                 activity.showErrorToast(e)

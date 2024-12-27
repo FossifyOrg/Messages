@@ -11,6 +11,7 @@ import com.klinker.android.send_message.Utils
 import org.fossify.commons.extensions.getLongValue
 import org.fossify.commons.extensions.queryCursor
 import org.fossify.commons.helpers.isRPlus
+import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.models.MmsAddress
 import org.fossify.messages.models.MmsBackup
 import org.fossify.messages.models.MmsPart
@@ -19,12 +20,14 @@ import org.fossify.messages.models.SmsBackup
 class MessagesWriter(private val context: Context) {
     private val INVALID_ID = -1L
     private val contentResolver = context.contentResolver
+    private val modifiedThreadIds = mutableSetOf<Long>()
 
     fun writeSmsMessage(smsBackup: SmsBackup) {
         val contentValues = smsBackup.toContentValues()
         val threadId = Utils.getOrCreateThreadId(context, smsBackup.address)
         contentValues.put(Sms.THREAD_ID, threadId)
         if (!smsExist(smsBackup)) {
+            modifiedThreadIds.add(threadId)
             contentResolver.insert(Sms.CONTENT_URI, contentValues)
         }
     }
@@ -50,6 +53,7 @@ class MessagesWriter(private val context: Context) {
         if (threadId != INVALID_ID) {
             contentValues.put(Mms.THREAD_ID, threadId)
             if (!mmsExist(mmsBackup)) {
+                modifiedThreadIds.add(threadId)
                 contentResolver.insert(Mms.CONTENT_URI, contentValues)
             }
             val messageId = getMmsId(mmsBackup)
@@ -151,5 +155,17 @@ class MessagesWriter(private val context: Context) {
             exists = it.count > 0
         }
         return exists
+    }
+
+    /** Fixes the timestamps of all conversations modified by previous writes. */
+    fun fixCoversationDates() {
+        // This method should be called after messages are written, to set the correct conversation
+        // timestamps.
+        //
+        // It is necessary because when we insert a message, Android's Telephony provider sets the
+        // conversation date to the current time rather than the time of the message that was
+        // inserted. Source code reference:
+        // https://android.googlesource.com/platform/packages/providers/TelephonyProvider/+/android14-release/src/com/android/providers/telephony/MmsSmsDatabaseHelper.java#134
+        context.updateLastConversationMessage(modifiedThreadIds)
     }
 }
