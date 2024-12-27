@@ -1103,17 +1103,16 @@ fun Context.deleteSmsDraft(threadId: Long) {
     val projection = arrayOf(Sms._ID)
     val selection = "${Sms.THREAD_ID} = ?"
     val selectionArgs = arrayOf(threadId.toString())
-    try {
-        val cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
-        cursor?.use {
-            while (cursor.moveToNext()) {
-                val draftId = cursor.getLong(0)
-                val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
-                contentResolver.delete(draftUri, null, null)
-            }
-        }
-    } catch (e: Exception) {
-        showErrorToast(e)
+    queryCursor(
+        uri = uri,
+        projection = projection,
+        selection = selection,
+        selectionArgs = selectionArgs,
+        showErrors = true
+    ) { cursor ->
+        val draftId = cursor.getLongValue(Sms._ID)
+        val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
+        contentResolver.delete(draftUri, null, null)
     }
 }
 
