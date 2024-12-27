@@ -969,6 +969,7 @@ class ThreadActivity : SimpleActivity() {
 
     private fun maybeDisableShortCodeReply() {
         if (isSpecialNumber() && !isRecycleBin) {
+            binding.messageHolder.threadTypeMessage.text?.clear()
             binding.messageHolder.root.beGone()
             binding.shortCodeHolder.root.beVisible()
             val textColor = getProperTextColor()
