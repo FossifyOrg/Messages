@@ -104,11 +104,9 @@ class MainActivity : SimpleActivity() {
             useTopSearchMenu = true
         )
 
-        if (savedInstanceState == null) {
-            checkAndDeleteOldRecycleBinMessages()
-            clearAllMessagesIfNeeded {
-                loadMessages()
-            }
+        checkAndDeleteOldRecycleBinMessages()
+        clearAllMessagesIfNeeded {
+            loadMessages()
         }
 
         if (checkAppSideloading()) {
