@@ -104,7 +104,7 @@
     <string name="carrier_send_error">Zprávu nelze odeslat, chyba operátora</string>
     <string name="unknown_error_occurred_sending_message">Zprávu nelze odeslat, kód chyby: %d</string>
     <string name="invalid_short_code">Nelze odpovídat na krátké kódy, jako tento</string>
-    <string name="invalid_short_code_desc">Lze odpovídat pouze na krátké kódy s čísly, jako „503501“, ale ne na kódy obsahující čísla a písmena, jako „AB-CD0“.</string>
+    <string name="invalid_short_code_desc">Lze odpovídat pouze na krátké kódy s čísly, jako „503501“, ale ne na kódy obsahující čísla a písmena, jako „AB-CD0“.</string>
     <string name="attachment_sized_exceeds_max_limit">Velikost přílohy přesahuje maximální limit MMS</string>
     <string name="sim_card_not_available">SIM karta není dostupná</string>
     <string name="faq_1_title">Proč aplikace vyžaduje přístup k internetu\?</string>
@@ -119,4 +119,7 @@
     <string name="message_details">Detaily zprávy</string>
     <string name="enable_custom_notifications">Povolit vlastní oznámení</string>
     <string name="app_launcher_name">Zprávy</string>
+    <string name="keywords">Klíčová slova</string>
+    <string name="export_blocked_keywords">Exportovat zablokovaná klíčová slova</string>
+    <string name="import_blocked_keywords">Importovat zablokovaná klíčová slova</string>
 </resources>
