@@ -1,12 +1,8 @@
 package org.fossify.messages.activities
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.encodeToStream
 import org.fossify.commons.activities.ManageBlockedNumbersActivity
 import org.fossify.commons.dialogs.ChangeDateTimeFormatDialog
 import org.fossify.commons.dialogs.ConfirmationDialog
@@ -24,7 +20,6 @@ import org.fossify.commons.extensions.getFontSizeText
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.isOrWasThankYouInstalled
 import org.fossify.commons.extensions.launchPurchaseThankYouIntent
-import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.updateTextColors
 import org.fossify.commons.extensions.viewBinding
@@ -56,7 +51,6 @@ import org.fossify.messages.helpers.LOCK_SCREEN_NOTHING
 import org.fossify.messages.helpers.LOCK_SCREEN_SENDER
 import org.fossify.messages.helpers.LOCK_SCREEN_SENDER_MESSAGE
 import org.fossify.messages.helpers.MessagesImporter
-import org.fossify.messages.helpers.MessagesReader
 import org.fossify.messages.helpers.refreshMessages
 import java.util.Locale
 import kotlin.system.exitProcess
@@ -81,11 +75,13 @@ class SettingsActivity : SimpleActivity() {
             }
         }
 
+    private var exportMessagesDialog: ExportMessagesDialog? = null
+
     private val saveDocument =
         registerForActivityResult(ActivityResultContracts.CreateDocument(messagesFileType)) { uri ->
             if (uri != null) {
                 toast(org.fossify.commons.R.string.exporting)
-                exportMessages(uri)
+                exportMessagesDialog?.exportMessages(uri)
             }
         }
 
@@ -157,7 +153,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupMessagesExport() {
         binding.settingsExportMessagesHolder.setOnClickListener {
-            ExportMessagesDialog(this) { fileName ->
+            exportMessagesDialog = ExportMessagesDialog(this) { fileName ->
                 saveDocument.launch("$fileName.json")
             }
         }
@@ -166,41 +162,6 @@ class SettingsActivity : SimpleActivity() {
     private fun setupMessagesImport() {
         binding.settingsImportMessagesHolder.setOnClickListener {
             getContent.launch(messageImportFileTypes.toTypedArray())
-        }
-    }
-
-    @OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
-    private fun exportMessages(uri: Uri) {
-        ensureBackgroundThread {
-            var success = false
-            try {
-                MessagesReader(this).getMessagesToExport(
-                    config.exportSms,
-                    config.exportMms
-                ) { messagesToExport ->
-                    if (messagesToExport.isEmpty()) {
-                        toast(org.fossify.commons.R.string.no_entries_for_exporting)
-                        return@getMessagesToExport
-                    }
-                    val json = Json { encodeDefaults = true }
-                    contentResolver.openOutputStream(uri)!!.buffered().use { outputStream ->
-                        json.encodeToStream(messagesToExport, outputStream)
-                    }
-                    success = true
-                    toast(org.fossify.commons.R.string.exporting_successful)
-                }
-            } catch (e: Throwable) { // also catch OutOfMemoryError etc.
-                showErrorToast(e.toString())
-            } finally {
-                if (!success) {
-                    // delete the file to avoid leaving behind an empty/corrupt file
-                    try {
-                        DocumentsContract.deleteDocument(contentResolver, uri)
-                    } catch (ignored: Exception) {
-                        // ignored because we don't want to overwhelm the user with two error messages
-                    }
-                }
-            }
         }
     }
 
