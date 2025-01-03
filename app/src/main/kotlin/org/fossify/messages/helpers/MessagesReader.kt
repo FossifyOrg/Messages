@@ -6,11 +6,19 @@ import android.net.Uri
 import android.provider.Telephony.Mms
 import android.provider.Telephony.Sms
 import android.util.Base64
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.getIntValue
+import org.fossify.commons.extensions.getLongValue
+import org.fossify.commons.extensions.getStringValue
+import org.fossify.commons.extensions.getStringValueOrNull
+import org.fossify.commons.extensions.queryCursor
 import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.helpers.isRPlus
 import org.fossify.messages.extensions.getConversationIds
-import org.fossify.messages.models.*
+import org.fossify.messages.models.MessagesBackup
+import org.fossify.messages.models.MmsAddress
+import org.fossify.messages.models.MmsBackup
+import org.fossify.messages.models.MmsPart
+import org.fossify.messages.models.SmsBackup
 import java.io.IOException
 import java.io.InputStream
 
@@ -51,7 +59,12 @@ class MessagesReader(private val context: Context) {
         val smsList = mutableListOf<SmsBackup>()
 
         threadIds.map { it.toString() }.forEach { threadId ->
-            context.queryCursor(Sms.CONTENT_URI, projection, selection, arrayOf(threadId)) { cursor ->
+            context.queryCursor(
+                uri = Sms.CONTENT_URI,
+                projection = projection,
+                selection = selection,
+                selectionArgs = arrayOf(threadId)
+            ) { cursor ->
                 val subscriptionId = cursor.getLongValue(Sms.SUBSCRIPTION_ID)
                 val address = cursor.getStringValue(Sms.ADDRESS)
                 val body = cursor.getStringValueOrNull(Sms.BODY)
@@ -63,13 +76,30 @@ class MessagesReader(private val context: Context) {
                 val status = cursor.getIntValue(Sms.STATUS)
                 val type = cursor.getIntValue(Sms.TYPE)
                 val serviceCenter = cursor.getStringValueOrNull(Sms.SERVICE_CENTER)
-                smsList.add(SmsBackup(subscriptionId, address, body, date, dateSent, locked, protocol, read, status, type, serviceCenter))
+                smsList.add(
+                    SmsBackup(
+                        subscriptionId = subscriptionId,
+                        address = address,
+                        body = body,
+                        date = date,
+                        dateSent = dateSent,
+                        locked = locked,
+                        protocol = protocol,
+                        read = read,
+                        status = status,
+                        type = type,
+                        serviceCenter = serviceCenter
+                    )
+                )
             }
         }
         return smsList
     }
 
-    private fun getMmsMessages(threadIds: List<Long>, includeTextOnlyAttachment: Boolean = false): List<MmsBackup> {
+    private fun getMmsMessages(
+        threadIds: List<Long>,
+        includeTextOnlyAttachment: Boolean = false
+    ): List<MmsBackup> {
         val projection = arrayOf(
             Mms._ID,
             Mms.CREATOR,
@@ -126,25 +156,25 @@ class MessagesReader(private val context: Context) {
                 val addresses = getMmsAddresses(mmsId)
                 mmsList.add(
                     MmsBackup(
-                        creator,
-                        contentType,
-                        deliveryReport,
-                        date,
-                        dateSent,
-                        locked,
-                        messageType,
-                        messageBox,
-                        read,
-                        readReport,
-                        seen,
-                        textOnly,
-                        status,
-                        subject,
-                        subjectCharSet,
-                        subscriptionId,
-                        transactionId,
-                        addresses,
-                        parts
+                        creator = creator,
+                        contentType = contentType,
+                        deliveryReport = deliveryReport,
+                        date = date,
+                        dateSent = dateSent,
+                        locked = locked,
+                        messageType = messageType,
+                        messageBox = messageBox,
+                        read = read,
+                        readReport = readReport,
+                        seen = seen,
+                        textOnly = textOnly,
+                        status = status,
+                        subject = subject,
+                        subjectCharSet = subjectCharSet,
+                        subscriptionId = subscriptionId,
+                        transactionId = transactionId,
+                        addresses = addresses,
+                        parts = parts
                     )
                 )
             }
@@ -199,14 +229,34 @@ class MessagesReader(private val context: Context) {
                     }
                 }
             }
-            parts.add(MmsPart(contentDisposition, charset, contentId, contentLocation, contentType, ctStart, ctType, filename, name, sequenceOrder, text, data))
+            parts.add(
+                MmsPart(
+                    contentDisposition = contentDisposition,
+                    charset = charset,
+                    contentId = contentId,
+                    contentLocation = contentLocation,
+                    contentType = contentType,
+                    ctStart = ctStart,
+                    ctType = ctType,
+                    filename = filename,
+                    name = name,
+                    sequenceOrder = sequenceOrder,
+                    text = text,
+                    data = data
+                )
+            )
         }
         return parts
     }
 
     @SuppressLint("NewApi")
     private fun usePart(partId: Long, block: (InputStream) -> String): String {
-        val partUri = if (isQPlus()) Mms.Part.CONTENT_URI.buildUpon().appendPath(partId.toString()).build() else Uri.parse("content://mms/part/$partId")
+        val partUri = if (isQPlus()) {
+            Mms.Part.CONTENT_URI.buildUpon().appendPath(partId.toString()).build()
+        } else {
+            Uri.parse("content://mms/part/$partId")
+        }
+
         try {
             val stream = context.contentResolver.openInputStream(partUri) ?: return ""
             stream.use {
@@ -220,7 +270,12 @@ class MessagesReader(private val context: Context) {
     @SuppressLint("NewApi")
     private fun getMmsAddresses(messageId: Long): List<MmsAddress> {
         val addresses = mutableListOf<MmsAddress>()
-        val uri = if (isRPlus()) Mms.Addr.getAddrUriForMessage(messageId.toString()) else Uri.parse("content://mms/$messageId/addr")
+        val uri = if (isRPlus()) {
+            Mms.Addr.getAddrUriForMessage(messageId.toString())
+        } else {
+            Uri.parse("content://mms/$messageId/addr")
+        }
+
         val projection = arrayOf(Mms.Addr.ADDRESS, Mms.Addr.TYPE, Mms.Addr.CHARSET)
         val selection = "${Mms.Addr.MSG_ID}= ?"
         val selectionArgs = arrayOf(messageId.toString())
@@ -231,26 +286,5 @@ class MessagesReader(private val context: Context) {
             addresses.add(MmsAddress(address, type, charset))
         }
         return addresses
-    }
-
-    fun getMessagesCount(): Int {
-        return getSmsCount() + getMmsCount()
-    }
-
-    fun getMmsCount(): Int {
-        return countRows(Mms.CONTENT_URI)
-    }
-
-    fun getSmsCount(): Int {
-        return countRows(Sms.CONTENT_URI)
-    }
-
-    private fun countRows(uri: Uri): Int {
-        val cursor = context.contentResolver.query(
-            uri, null, null, null, null
-        ) ?: return 0
-        cursor.use {
-            return cursor.count
-        }
     }
 }
