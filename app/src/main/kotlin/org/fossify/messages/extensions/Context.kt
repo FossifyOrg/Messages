@@ -148,32 +148,32 @@ fun Context.getMessages(
             val phoneNumber = PhoneNumber(number, 0, "", number)
             val participantPhoto = getNameAndPhotoFromPhoneNumber(number)
             SimpleContact(
-                0,
-                0,
-                participantPhoto.name,
-                photoUri,
-                arrayListOf(phoneNumber),
-                ArrayList(),
-                ArrayList()
+                rawId = 0,
+                contactId = 0,
+                name = participantPhoto.name,
+                photoUri = photoUri,
+                phoneNumbers = arrayListOf(phoneNumber),
+                birthdays = ArrayList(),
+                anniversaries = ArrayList()
             )
         }
         val isMMS = false
         val message =
             Message(
-                id,
-                body,
-                type,
-                status,
-                ArrayList(participants),
-                date,
-                read,
-                thread,
-                isMMS,
-                null,
-                senderNumber,
-                senderName,
-                photoUri,
-                subscriptionId
+                id = id,
+                body = body,
+                type = type,
+                status = status,
+                participants = ArrayList(participants),
+                date = date,
+                read = read,
+                threadId = thread,
+                isMMS = isMMS,
+                attachment = null,
+                senderPhoneNumber = senderNumber,
+                senderName = senderName,
+                senderPhotoUri = photoUri,
+                subscriptionId = subscriptionId
             )
         messages.add(message)
     }
@@ -266,20 +266,20 @@ fun Context.getMMS(
 
         val message =
             Message(
-                mmsId,
-                body,
-                type,
-                status,
-                participants,
-                date,
-                read,
-                threadId,
-                isMMS,
-                attachment,
-                senderNumber,
-                senderName,
-                senderPhotoUri,
-                subscriptionId
+                id = mmsId,
+                body = body,
+                type = type,
+                status = status,
+                participants = participants,
+                date = date,
+                read = read,
+                threadId = threadId,
+                isMMS = isMMS,
+                attachment = attachment,
+                senderPhoneNumber = senderNumber,
+                senderName = senderName,
+                senderPhotoUri = senderPhotoUri,
+                subscriptionId = subscriptionId
             )
         messages.add(message)
 
@@ -383,14 +383,14 @@ fun Context.getConversations(
             val archived =
                 if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else false
             val conversation = Conversation(
-                id,
-                snippet,
-                date.toInt(),
-                read,
-                title,
-                photoUri,
-                isGroupConversation,
-                phoneNumbers.first(),
+                threadId = id,
+                snippet = snippet,
+                date = date.toInt(),
+                read = read,
+                title = title,
+                photoUri = photoUri,
+                isGroupConversation = isGroupConversation,
+                phoneNumber = phoneNumbers.first(),
                 isArchived = archived
             )
             conversations.add(conversation)
@@ -491,13 +491,13 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
         } else if (mimetype != "application/smil") {
             val attachmentName = attachmentNames?.getOrNull(attachmentCount) ?: ""
             val attachment = Attachment(
-                partId,
-                id,
-                Uri.withAppendedPath(uri, partId.toString()).toString(),
-                mimetype,
-                0,
-                0,
-                attachmentName
+                id = partId,
+                messageId = id,
+                uriString = Uri.withAppendedPath(uri, partId.toString()).toString(),
+                mimetype = mimetype,
+                width = 0,
+                height = 0,
+                filename = attachmentName
             )
             messageAttachment.attachments.add(attachment)
             attachmentCount++
@@ -593,13 +593,13 @@ fun Context.getThreadParticipants(
                     val photoUri = namePhoto.photoUri ?: ""
                     val phoneNumber = PhoneNumber(number, 0, "", number)
                     val contact = SimpleContact(
-                        addressId,
-                        addressId,
-                        name,
-                        photoUri,
-                        arrayListOf(phoneNumber),
-                        ArrayList(),
-                        ArrayList()
+                        rawId = addressId,
+                        contactId = addressId,
+                        name = name,
+                        photoUri = photoUri,
+                        phoneNumbers = arrayListOf(phoneNumber),
+                        birthdays = ArrayList(),
+                        anniversaries = ArrayList()
                     )
                     participants.add(contact)
                 }
@@ -695,13 +695,13 @@ fun Context.getSuggestedContacts(privateContacts: ArrayList<SimpleContact>): Arr
 
         val phoneNumber = PhoneNumber(senderNumber, 0, "", senderNumber)
         val contact = SimpleContact(
-            0,
-            0,
-            senderName,
-            photoUri,
-            arrayListOf(phoneNumber),
-            ArrayList(),
-            ArrayList()
+            rawId = 0,
+            contactId = 0,
+            name = senderName,
+            photoUri = photoUri,
+            phoneNumbers = arrayListOf(phoneNumber),
+            birthdays = ArrayList(),
+            anniversaries = ArrayList()
         )
         if (!contacts.map { it.phoneNumbers.first().normalizedNumber.trimToComparableNumber() }
                 .contains(senderNumber.trimToComparableNumber())) {
@@ -978,12 +978,12 @@ fun Context.showReceivedMessageNotification(
 
         Handler(Looper.getMainLooper()).post {
             notificationHelper.showMessageNotification(
-                messageId,
-                address,
-                body,
-                threadId,
-                bitmap,
-                senderName
+                messageId = messageId,
+                address = address,
+                body = body,
+                threadId = threadId,
+                bitmap = bitmap,
+                sender = senderName
             )
         }
     }
