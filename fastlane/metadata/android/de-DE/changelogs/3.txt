@@ -1,0 +1,8 @@
+* Checkboxen durch Schalter ersetzt
+* Die Unterstützung für Android 7 und ältere Versionen entfernt
+* Verschiedene Probleme im Zusammenhang mit dem Import/Export von Nachrichten behoben
+* Schlüsselwortsperre für MMS-Nachrichten behoben
+* Problem mit dem Löschen von Nachrichtenentwürfen behoben
+* Verbesserte Logik und Schnittstelle der App-Sperre
+* Weitere kleinere Fehlerbehebungen und Verbesserungen
+* Weitere Übersetzungen hinzugefügt

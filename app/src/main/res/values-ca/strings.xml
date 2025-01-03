@@ -119,4 +119,7 @@
     <string name="update_message">Actualitza el missatge</string>
     <string name="message_details">Detalls del missatge</string>
     <string name="me">Jo</string>
+    <string name="import_blocked_keywords">Importa paraules clau bloquejades</string>
+    <string name="keywords">Paraules clau</string>
+    <string name="export_blocked_keywords">Exporta paraules clau bloquejades</string>
 </resources>

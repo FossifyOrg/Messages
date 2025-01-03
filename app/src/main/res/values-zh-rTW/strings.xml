@@ -113,4 +113,7 @@
     <string name="faq_3_text">是的，您可以長按「送出」按鈕並選擇所需的日期和時間，以排程將訊息送出。</string>
     <string name="enable_custom_notifications">啟用自訂通知</string>
     <string name="app_launcher_name">簡訊</string>
+    <string name="keywords">關鍵字</string>
+    <string name="export_blocked_keywords">匯出被封鎖的關鍵字</string>
+    <string name="import_blocked_keywords">匯入被封鎖的關鍵字</string>
 </resources>

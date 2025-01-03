@@ -113,4 +113,7 @@
     <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间安排将来要发送的消息。</string>
     <string name="enable_custom_notifications">启用自定义通知</string>
     <string name="app_launcher_name">短信</string>
+    <string name="import_blocked_keywords">导入拦截关键词</string>
+    <string name="keywords">关键词</string>
+    <string name="export_blocked_keywords">导出拦截关键词</string>
 </resources>

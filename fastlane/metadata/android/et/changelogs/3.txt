@@ -1,0 +1,8 @@
+* Asendasime märkeruudud liugurlülititega
+* Eemaldasime Androidi versiooni 7 ja vanemate toe
+* Parandasime sõnumite eksportimise ja importimise erinevaid vigu
+* Parandasime MMS-sõnumite blokeerimise märksõnade alusel
+* Parandasime sõnumite kavandi kustutamise vea
+* Täiendasime rakenduse luku loogikat ja liidest 
+* Muud väiksemad parandused ja täiendused
+* Lisasime veel tõlkeid

@@ -122,4 +122,7 @@
     <string name="faq_3_text">Так, ви можете запланувати надсилання повідомлень у майбутньому, довго натискаючи кнопку «Надіслати» та вибираючи потрібну дату й час.</string>
     <string name="app_launcher_name">Повідомлення</string>
     <string name="enable_custom_notifications">Ввімкнути власні сповіщення</string>
+    <string name="keywords">Ключові слова</string>
+    <string name="export_blocked_keywords">Експорт заблокованих ключових слів</string>
+    <string name="import_blocked_keywords">Імпорт заблокованих ключових слів</string>
 </resources>
