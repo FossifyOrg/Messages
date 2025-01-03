@@ -215,8 +215,4 @@ class MessagesImporter(private val activity: SimpleActivity) {
             ignoreCase = true
         )
     }
-
-    private fun isJsonMimeType(mimeType: String): Boolean {
-        return mimeType.equals("application/json", ignoreCase = true)
-    }
 }
