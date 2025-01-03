@@ -1064,8 +1064,8 @@ fun Context.getSmsDraft(threadId: Long): String? {
     return null
 }
 
-fun Context.getAllDrafts(): HashMap<Long, String?> {
-    val drafts = HashMap<Long, String?>()
+fun Context.getAllDrafts(): HashMap<Long, String> {
+    val drafts = HashMap<Long, String>()
     val uri = Sms.Draft.CONTENT_URI
     val projection = arrayOf(Sms.BODY, Sms.THREAD_ID)
 
@@ -1075,20 +1075,19 @@ fun Context.getAllDrafts(): HashMap<Long, String?> {
             while (it.moveToNext()) {
                 val threadId = it.getLongValue(Sms.THREAD_ID)
                 val draft = it.getStringValue(Sms.BODY)
-                if (draft != null) {
+                if (!draft.isNullOrEmpty()) {
                     drafts[threadId] = draft
                 }
             }
         }
     } catch (e: Exception) {
+        e.printStackTrace()
     }
 
     return drafts
 }
 
 fun Context.saveSmsDraft(body: String, threadId: Long) {
-    deleteSmsDraft(threadId)
-
     val uri = Sms.Draft.CONTENT_URI
     val contentValues = ContentValues().apply {
         put(Sms.BODY, body)
@@ -1101,24 +1100,6 @@ fun Context.saveSmsDraft(body: String, threadId: Long) {
         contentResolver.insert(uri, contentValues)
     } catch (e: Exception) {
         showErrorToast(e)
-    }
-}
-
-fun Context.deleteSmsDraft(threadId: Long) {
-    val uri = Sms.Draft.CONTENT_URI
-    val projection = arrayOf(Sms._ID)
-    val selection = "${Sms.THREAD_ID} = ?"
-    val selectionArgs = arrayOf(threadId.toString())
-    queryCursor(
-        uri = uri,
-        projection = projection,
-        selection = selection,
-        selectionArgs = selectionArgs,
-        showErrors = true
-    ) { cursor ->
-        val draftId = cursor.getLongValue(Sms._ID)
-        val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
-        contentResolver.delete(draftUri, null, null)
     }
 }
 

@@ -117,7 +117,6 @@ import org.fossify.messages.extensions.createTemporaryThread
 import org.fossify.messages.extensions.deleteConversation
 import org.fossify.messages.extensions.deleteMessage
 import org.fossify.messages.extensions.deleteScheduledMessage
-import org.fossify.messages.extensions.deleteSmsDraft
 import org.fossify.messages.extensions.dialNumber
 import org.fossify.messages.extensions.emptyMessagesRecycleBinForConversation
 import org.fossify.messages.extensions.getAddresses
@@ -282,7 +281,7 @@ class ThreadActivity : SimpleActivity() {
         )
 
         val smsDraft = getSmsDraft(threadId)
-        if (smsDraft != null) {
+        if (!smsDraft.isNullOrEmpty()) {
             binding.messageHolder.threadTypeMessage.setText(smsDraft)
         }
         isActivityVisible = true
@@ -307,15 +306,14 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onPause() {
         super.onPause()
-        val draftMessage = binding.messageHolder.threadTypeMessage.value
-        if (draftMessage.isNotEmpty() && getAttachmentSelections().isEmpty()) {
-            saveSmsDraft(draftMessage, threadId)
-        } else {
-            deleteSmsDraft(threadId)
-        }
-
+        saveDraftMessage()
         bus?.post(Events.RefreshMessages())
         isActivityVisible = false
+    }
+
+    override fun onStop() {
+        super.onStop()
+        saveDraftMessage()
     }
 
     override fun onBackPressed() {
@@ -330,6 +328,15 @@ class ThreadActivity : SimpleActivity() {
     override fun onDestroy() {
         super.onDestroy()
         bus?.unregister(this)
+    }
+
+    private fun saveDraftMessage() {
+        val draftMessage = binding.messageHolder.threadTypeMessage.value
+        if (getAttachmentSelections().isEmpty()) {
+            saveSmsDraft(draftMessage, threadId)
+        } else {
+            saveSmsDraft("", threadId)
+        }
     }
 
     private fun refreshMenuItems() {
