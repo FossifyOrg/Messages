@@ -70,6 +70,7 @@ import org.fossify.messages.models.Message
 import org.fossify.messages.models.MessageAttachment
 import org.fossify.messages.models.NamePhoto
 import org.fossify.messages.models.RecycleBinMessage
+import org.xmlpull.v1.XmlPullParserException
 import java.io.FileNotFoundException
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -503,7 +504,12 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
             attachmentCount++
         } else {
             val text = cursor.getStringValue(Mms.Part.TEXT)
-            attachmentNames = parseAttachmentNames(text)
+            attachmentNames = try {
+                parseAttachmentNames(text)
+            } catch (e: XmlPullParserException) {
+                e.printStackTrace()
+                null
+            }
         }
     }
 
