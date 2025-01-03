@@ -74,6 +74,21 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+            if (uri != null) {
+                MessagesImporter(this).importMessages(uri)
+            }
+        }
+
+    private val saveDocument =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(messagesFileType)) { uri ->
+            if (uri != null) {
+                toast(org.fossify.commons.R.string.exporting)
+                exportMessages(uri)
+            }
+        }
+
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,21 +154,6 @@ class SettingsActivity : SimpleActivity() {
             it.setTextColor(getProperPrimaryColor())
         }
     }
-
-    private val getContent =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-            if (uri != null) {
-                MessagesImporter(this).importMessages(uri)
-            }
-        }
-
-    private val saveDocument =
-        registerForActivityResult(ActivityResultContracts.CreateDocument(messagesFileType)) { uri ->
-            if (uri != null) {
-                toast(org.fossify.commons.R.string.exporting)
-                exportMessages(uri)
-            }
-        }
 
     private fun setupMessagesExport() {
         binding.settingsExportMessagesHolder.setOnClickListener {
