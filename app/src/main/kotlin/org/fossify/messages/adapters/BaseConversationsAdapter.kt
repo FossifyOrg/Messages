@@ -32,11 +32,11 @@ abstract class BaseConversationsAdapter(
     onRefresh: () -> Unit,
     itemClick: (Any) -> Unit
 ) : MyRecyclerViewListAdapter<Conversation>(
-    activity,
-    recyclerView,
-    ConversationDiffCallback(),
-    itemClick,
-    onRefresh
+    activity = activity,
+    recyclerView = recyclerView,
+    diffUtil = ConversationDiffCallback(),
+    itemClick = itemClick,
+    onRefresh = onRefresh
 ),
     RecyclerViewFastScroller.OnPopupTextUpdate {
     private var fontSize = activity.getTextSize()
@@ -161,7 +161,12 @@ abstract class BaseConversationsAdapter(
             }
 
             conversationDate.apply {
-                text = conversation.date.formatDateOrTime(context, true, false)
+                text = (conversation.date * 1000L).formatDateOrTime(
+                    context = context,
+                    hideTimeOnOtherDays = true,
+                    showCurrentYear = false
+                )
+
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.8f)
             }
 
@@ -188,10 +193,10 @@ abstract class BaseConversationsAdapter(
             }
 
             SimpleContactsHelper(activity).loadContactImage(
-                conversation.photoUri,
-                conversationImage,
-                conversation.title,
-                placeholder
+                path = conversation.photoUri,
+                imageView = conversationImage,
+                placeholderName = conversation.title,
+                placeholderImage = placeholder
             )
         }
     }
