@@ -181,7 +181,7 @@ class MessagesWriter(private val context: Context) {
     }
 
     /** Fixes the timestamps of all conversations modified by previous writes. */
-    fun fixCoversationDates() {
+    fun fixConversationDates() {
         // This method should be called after messages are written, to set the correct conversation
         // timestamps.
         //
