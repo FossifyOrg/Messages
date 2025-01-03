@@ -8,8 +8,31 @@ import android.widget.Toast
 import com.google.gson.Gson
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.dialogs.RadioGroupDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.areSystemAnimationsEnabled
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getColorStateList
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getPhoneNumberTypeText
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.extensions.hideKeyboard
+import org.fossify.commons.extensions.normalizeString
+import org.fossify.commons.extensions.onTextChangeListener
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.underlineText
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.value
+import org.fossify.commons.extensions.viewBinding
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.RadioItem
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.R
@@ -18,7 +41,13 @@ import org.fossify.messages.databinding.ActivityNewConversationBinding
 import org.fossify.messages.databinding.ItemSuggestedContactBinding
 import org.fossify.messages.extensions.getSuggestedContacts
 import org.fossify.messages.extensions.getThreadId
-import org.fossify.messages.helpers.*
+import org.fossify.messages.helpers.SmsIntentParser
+import org.fossify.messages.helpers.THREAD_ATTACHMENT_URI
+import org.fossify.messages.helpers.THREAD_ATTACHMENT_URIS
+import org.fossify.messages.helpers.THREAD_ID
+import org.fossify.messages.helpers.THREAD_NUMBER
+import org.fossify.messages.helpers.THREAD_TEXT
+import org.fossify.messages.helpers.THREAD_TITLE
 import org.fossify.messages.messaging.isShortCodeWithLetters
 import java.net.URLDecoder
 import java.util.Locale
@@ -42,7 +71,10 @@ class NewConversationActivity : SimpleActivity() {
             useTransparentNavigation = true,
             useTopSearchMenu = false
         )
-        setupMaterialScrollListener(scrollingView = binding.contactsList, toolbar = binding.newConversationToolbar)
+        setupMaterialScrollListener(
+            scrollingView = binding.contactsList,
+            toolbar = binding.newConversationToolbar
+        )
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         binding.newConversationAddress.requestFocus()
@@ -112,9 +144,14 @@ class NewConversationActivity : SimpleActivity() {
     }
 
     private fun isThirdPartyIntent(): Boolean {
-        if ((intent.action == Intent.ACTION_SENDTO || intent.action == Intent.ACTION_SEND || intent.action == Intent.ACTION_VIEW) && intent.dataString != null) {
-            val number = intent.dataString!!.removePrefix("sms:").removePrefix("smsto:").removePrefix("mms").removePrefix("mmsto:").replace("+", "%2b").trim()
-            launchThreadActivity(URLDecoder.decode(number), "")
+        val result = SmsIntentParser.parse(intent)
+        if (result != null) {
+            val (body, recipients) = result
+            launchThreadActivity(
+                phoneNumber = URLDecoder.decode(recipients),
+                name = "",
+                body = body
+            )
             finish()
             return true
         }
@@ -142,7 +179,11 @@ class NewConversationActivity : SimpleActivity() {
         val hasContacts = contacts.isNotEmpty()
         binding.contactsList.beVisibleIf(hasContacts)
         binding.noContactsPlaceholder.beVisibleIf(!hasContacts)
-        binding.noContactsPlaceholder2.beVisibleIf(!hasContacts && !hasPermission(PERMISSION_READ_CONTACTS))
+        binding.noContactsPlaceholder2.beVisibleIf(
+            !hasContacts && !hasPermission(
+                PERMISSION_READ_CONTACTS
+            )
+        )
 
         if (!hasContacts) {
             val placeholderText = if (hasPermission(PERMISSION_READ_CONTACTS)) {
@@ -168,7 +209,13 @@ class NewConversationActivity : SimpleActivity() {
                         val items = ArrayList<RadioItem>()
                         phoneNumbers.forEachIndexed { index, phoneNumber ->
                             val type = getPhoneNumberTypeText(phoneNumber.type, phoneNumber.label)
-                            items.add(RadioItem(index, "${phoneNumber.normalizedNumber} ($type)", phoneNumber.normalizedNumber))
+                            items.add(
+                                RadioItem(
+                                    index,
+                                    "${phoneNumber.normalizedNumber} ($type)",
+                                    phoneNumber.normalizedNumber
+                                )
+                            )
                         }
 
                         RadioGroupDialog(this, items) {
@@ -212,10 +259,17 @@ class NewConversationActivity : SimpleActivity() {
                             suggestedContactName.setTextColor(getProperTextColor())
 
                             if (!isDestroyed) {
-                                SimpleContactsHelper(this@NewConversationActivity).loadContactImage(contact.photoUri, suggestedContactImage, contact.name)
+                                SimpleContactsHelper(this@NewConversationActivity).loadContactImage(
+                                    contact.photoUri,
+                                    suggestedContactImage,
+                                    contact.name
+                                )
                                 binding.suggestionsHolder.addView(root)
                                 root.setOnClickListener {
-                                    launchThreadActivity(contact.phoneNumbers.first().normalizedNumber, contact.name)
+                                    launchThreadActivity(
+                                        contact.phoneNumbers.first().normalizedNumber,
+                                        contact.name
+                                    )
                                 }
                             }
                         }
@@ -231,28 +285,32 @@ class NewConversationActivity : SimpleActivity() {
             try {
                 val name = contacts[position].name
                 val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()).normalizeString())
+                FastScrollItemIndicator.Text(
+                    character.uppercase(Locale.getDefault()).normalizeString()
+                )
             } catch (e: Exception) {
                 FastScrollItemIndicator.Text("")
             }
         })
     }
 
-    private fun launchThreadActivity(phoneNumber: String, name: String) {
+    private fun launchThreadActivity(phoneNumber: String, name: String, body: String = "") {
         hideKeyboard()
-        val text = intent.getStringExtra(Intent.EXTRA_TEXT) ?: intent.getStringExtra("sms_body") ?: ""
         val numbers = phoneNumber.split(";").toSet()
         val number = if (numbers.size == 1) phoneNumber else Gson().toJson(numbers)
         Intent(this, ThreadActivity::class.java).apply {
             putExtra(THREAD_ID, getThreadId(numbers))
             putExtra(THREAD_TITLE, name)
-            putExtra(THREAD_TEXT, text)
+            putExtra(THREAD_TEXT, body)
             putExtra(THREAD_NUMBER, number)
 
             if (intent.action == Intent.ACTION_SEND && intent.extras?.containsKey(Intent.EXTRA_STREAM) == true) {
                 val uri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
                 putExtra(THREAD_ATTACHMENT_URI, uri?.toString())
-            } else if (intent.action == Intent.ACTION_SEND_MULTIPLE && intent.extras?.containsKey(Intent.EXTRA_STREAM) == true) {
+            } else if (intent.action == Intent.ACTION_SEND_MULTIPLE && intent.extras?.containsKey(
+                    Intent.EXTRA_STREAM
+                ) == true
+            ) {
                 val uris = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
                 putExtra(THREAD_ATTACHMENT_URIS, uris)
             }

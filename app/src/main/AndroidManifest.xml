@@ -80,7 +80,6 @@
             android:parentActivityName=".activities.MainActivity">
 
             <intent-filter>
-                <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SENDTO" />
                 <action android:name="android.intent.action.VIEW" />
 
