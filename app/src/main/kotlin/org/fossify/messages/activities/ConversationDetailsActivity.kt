@@ -81,8 +81,13 @@ class ConversationDetailsActivity : SimpleActivity() {
         updateTextColors(binding.conversationDetailsHolder)
 
         val primaryColor = getProperPrimaryColor()
-        binding.conversationNameHeading.setTextColor(primaryColor)
-        binding.membersHeading.setTextColor(primaryColor)
+        arrayOf(
+            binding.notificationsHeading,
+            binding.conversationNameHeading,
+            binding.membersHeading
+        ).forEach {
+            it.setTextColor(primaryColor)
+        }
     }
 
     private fun setupCustomNotifications() {
