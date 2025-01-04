@@ -102,11 +102,10 @@ fun Context.sendMessageCompat(
  * contains outdated information regarding max number of digits. The exact parameters for short codes can vary by country and by carrier.
  */
 fun isShortCodeWithLetters(address: String): Boolean {
-    val hasLetters = address.any { it.isLetter() }
-    return if (hasLetters) {
+    if (Patterns.EMAIL_ADDRESS.matcher(address).matches()) {
         // emails are not short codes: https://github.com/FossifyOrg/Messages/issues/115
-        !Patterns.EMAIL_ADDRESS.matcher(address).matches()
-    } else {
-        true
+        return false
     }
+
+    return address.any { it.isLetter() }
 }
