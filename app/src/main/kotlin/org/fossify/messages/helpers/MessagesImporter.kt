@@ -155,7 +155,10 @@ class MessagesImporter(private val activity: SimpleActivity) {
                 refreshMessages()
             }
             when {
-                messagesFailed > 0 && messagesImported > 0 -> activity.toast(org.fossify.commons.R.string.importing_some_entries_failed)
+                messagesFailed > 0 && messagesImported > 0 -> {
+                    activity.toast(org.fossify.commons.R.string.importing_some_entries_failed)
+                }
+
                 messagesFailed > 0 -> activity.toast(org.fossify.commons.R.string.importing_failed)
                 else -> activity.toast(org.fossify.commons.R.string.importing_successful)
             }
@@ -212,7 +215,7 @@ class MessagesImporter(private val activity: SimpleActivity) {
 
     private fun isXmlMimeType(mimeType: String): Boolean {
         return mimeType.equals("application/xml", ignoreCase = true) || mimeType.equals(
-            "text/xml",
+            other = "text/xml",
             ignoreCase = true
         )
     }

@@ -6,11 +6,20 @@ import android.os.Handler
 import android.os.Looper
 import com.bumptech.glide.Glide
 import com.klinker.android.send_message.MmsReceivedReceiver
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.baseConfig
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.isNumberBlocked
+import org.fossify.commons.extensions.normalizePhoneNumber
+import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
-import org.fossify.messages.extensions.*
+import org.fossify.messages.extensions.conversationsDB
+import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.getLatestMMS
+import org.fossify.messages.extensions.insertOrUpdateConversation
+import org.fossify.messages.extensions.showReceivedMessageNotification
+import org.fossify.messages.extensions.updateUnreadCountBadge
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
@@ -43,7 +52,9 @@ class MmsReceiver : MmsReceivedReceiver() {
         }
     }
 
-    override fun onError(context: Context, error: String) = context.showErrorToast(context.getString(R.string.couldnt_download_mms))
+    override fun onError(context: Context, error: String) {
+        context.showErrorToast(context.getString(R.string.couldnt_download_mms))
+    }
 
     private fun handleMmsMessage(
         context: Context,
@@ -67,7 +78,13 @@ class MmsReceiver : MmsReceivedReceiver() {
         }
 
         Handler(Looper.getMainLooper()).post {
-            context.showReceivedMessageNotification(mms.id, address, mms.body, mms.threadId, glideBitmap)
+            context.showReceivedMessageNotification(
+                messageId = mms.id,
+                address = address,
+                body = mms.body,
+                threadId = mms.threadId,
+                bitmap = glideBitmap
+            )
             val conversation = context.getConversations(mms.threadId).firstOrNull() ?: return@post
             ensureBackgroundThread {
                 context.insertOrUpdateConversation(conversation)
