@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.1.3 *(2025-01-05)*
+----------------------------
+
+* Fixed issues with conversation date update (https://github.com/FossifyOrg/Messages/issues/225, https://github.com/FossifyOrg/Messages/issues/274)
+* Added more translations
+
 Version 1.1.2 *(2025-01-05)*
 ----------------------------
 
