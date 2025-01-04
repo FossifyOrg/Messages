@@ -30,8 +30,14 @@ class MessagingUtils(val context: Context) {
      * Insert an SMS to the given URI with thread_id specified.
      */
     private fun insertSmsMessage(
-        subId: Int, dest: String, text: String, timestamp: Long, threadId: Long,
-        status: Int = Sms.STATUS_NONE, type: Int = Sms.MESSAGE_TYPE_OUTBOX, messageId: Long? = null
+        subId: Int,
+        dest: String,
+        text: String,
+        timestamp: Long,
+        threadId: Long,
+        status: Int = Sms.STATUS_NONE,
+        type: Int = Sms.MESSAGE_TYPE_OUTBOX,
+        messageId: Long? = null
     ): Uri {
         val response: Uri?
         val values = ContentValues().apply {
@@ -61,11 +67,13 @@ class MessagingUtils(val context: Context) {
             if (messageId != null) {
                 val selection = "${Sms._ID} = ?"
                 val selectionArgs = arrayOf(messageId.toString())
-                val count = context.contentResolver.update(Sms.CONTENT_URI, values, selection, selectionArgs)
-                if (count > 0) {
-                    response = Uri.parse("${Sms.CONTENT_URI}/${messageId}")
+                val count = context.contentResolver.update(
+                    Sms.CONTENT_URI, values, selection, selectionArgs
+                )
+                response = if (count > 0) {
+                    Uri.parse("${Sms.CONTENT_URI}/${messageId}")
                 } else {
-                    response = null
+                    null
                 }
             } else {
                 response = context.contentResolver.insert(Sms.CONTENT_URI, values)
@@ -78,7 +86,11 @@ class MessagingUtils(val context: Context) {
 
     /** Send an SMS message given [text] and [addresses]. A [SmsException] is thrown in case any errors occur. */
     fun sendSmsMessage(
-        text: String, addresses: Set<String>, subId: Int, requireDeliveryReport: Boolean, messageId: Long? = null
+        text: String,
+        addresses: Set<String>,
+        subId: Int,
+        requireDeliveryReport: Boolean,
+        messageId: Long? = null
     ) {
         if (addresses.size > 1) {
             // insert a dummy message for this thread if it is a group message
@@ -146,7 +158,13 @@ class MessagingUtils(val context: Context) {
     }
 
     @Deprecated("TODO: Move/rewrite MMS code into the app.")
-    fun sendMmsMessage(text: String, addresses: List<String>, attachment: Attachment?, settings: Settings, messageId: Long? = null) {
+    fun sendMmsMessage(
+        text: String,
+        addresses: List<String>,
+        attachment: Attachment?,
+        settings: Settings,
+        messageId: Long? = null
+    ) {
         val transaction = Transaction(context, settings)
         val message = Message(text, addresses.toTypedArray())
 
