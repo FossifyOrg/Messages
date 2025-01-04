@@ -365,7 +365,7 @@ class MainActivity : SimpleActivity() {
                     )
                 }
                 if (conv != null) {
-                    // FIXME: Scheduled message date is being reset here.
+                    // FIXME: Scheduled message date is being reset here. Conversations with scheduled messages will have their original date.
                     insertOrUpdateConversation(conv)
                 }
             }
