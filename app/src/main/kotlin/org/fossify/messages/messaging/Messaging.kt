@@ -2,6 +2,7 @@ package org.fossify.messages.messaging
 
 import android.content.Context
 import android.telephony.SmsMessage
+import android.util.Patterns
 import android.widget.Toast.LENGTH_LONG
 import com.klinker.android.send_message.Settings
 import org.fossify.commons.extensions.showErrorToast
@@ -99,9 +100,13 @@ fun Context.sendMessageCompat(
  * Check if a given "address" is a short code.
  * There's not much info available on these special numbers, even the wikipedia page (https://en.wikipedia.org/wiki/Short_code)
  * contains outdated information regarding max number of digits. The exact parameters for short codes can vary by country and by carrier.
- *
- * This function simply returns true if the [address] contains at least one letter.
  */
 fun isShortCodeWithLetters(address: String): Boolean {
-    return address.any { it.isLetter() }
+    val hasLetters = address.any { it.isLetter() }
+    return if (hasLetters) {
+        // emails are not short codes: https://github.com/FossifyOrg/Messages/issues/115
+        !Patterns.EMAIL_ADDRESS.matcher(address).matches()
+    } else {
+        true
+    }
 }
