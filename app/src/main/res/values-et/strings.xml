@@ -116,4 +116,7 @@
     <string name="update_message">Uuenda sõnumit</string>
     <string name="message_details">Sõnumi teave</string>
     <string name="app_launcher_name">Sõnumid</string>
+    <string name="keywords">Märksõnad</string>
+    <string name="import_blocked_keywords">Impordi blokeeritud märksõnad</string>
+    <string name="export_blocked_keywords">Ekspordi blokeeritud märksõnad</string>
 </resources>

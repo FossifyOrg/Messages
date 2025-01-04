@@ -113,7 +113,10 @@
     <string name="archive_confirmation">Biztosan archiválni szeretné a következőt: %s?</string>
     <string name="restore_whole_conversation_confirmation">Biztosan vissza szeretné állítani a beszélgetés összes üzenetét?</string>
     <string name="restore_confirmation">Biztosan vissza szeretné állítani %s-t?</string>
-    <string name="not_blocking_keywords">Ön nem tiltott le egyetlen kulcsszót sem. Itt adhat hozzá kulcsszavakat az ezeket tartalmazó üzenetek blokkolásához.</string>
+    <string name="not_blocking_keywords">Ön nem tiltott le egyetlen kulcsszót sem. Itt adhat hozzá kulcsszavakat az ezeket tartalmazó üzenetek letiltásához.</string>
     <string name="add_a_blocked_keyword">Adjon hozzá egy letiltott kulcsszót</string>
     <string name="unarchive">Archiválás visszavonása</string>
+    <string name="import_blocked_keywords">Letiltott kulcsszavak importálása</string>
+    <string name="export_blocked_keywords">Letiltott kulcsszavak exportálása</string>
+    <string name="keywords">Kulcsszavak</string>
 </resources>
