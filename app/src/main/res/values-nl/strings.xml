@@ -116,4 +116,7 @@
     <string name="faq_3_text">Ja, berichten kunnen vertraagd verzonden worden door lang te drukken op de verzendknop en vervolgens een tijdstip voor verzending op te geven.</string>
     <string name="enable_custom_notifications">Aangepaste meldingen gebruiken</string>
     <string name="app_launcher_name">Berichten</string>
+    <string name="export_blocked_keywords">Geblokkeerde trefwoorden exporteren</string>
+    <string name="keywords">Trefwoorden</string>
+    <string name="import_blocked_keywords">Geblokkeerde trefwoorden importeren</string>
 </resources>
