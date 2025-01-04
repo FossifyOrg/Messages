@@ -1102,6 +1102,23 @@ fun Context.deleteSmsDraft(threadId: Long) {
     }
 }
 
+// Revert changes done by version 1.1.1 (https://github.com/FossifyOrg/Messages/issues/274)
+fun Context.clearSystemDrafts() {
+    ensureBackgroundThread {
+        val uri = Sms.Draft.CONTENT_URI
+        val projection = arrayOf(Sms._ID, Sms.BODY)
+        queryCursor(uri = uri, projection = projection) { cursor ->
+            val draftId = cursor.getLongValue(Sms._ID)
+            val body = cursor.getStringValue(Sms.BODY) ?: return@queryCursor
+            if (body.isEmpty() || body.isBlank()) {
+                val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
+                contentResolver.delete(draftUri, null, null)
+                return@queryCursor
+            }
+        }
+    }
+}
+
 fun Context.updateLastConversationMessage(threadId: Long) {
     updateLastConversationMessage(setOf(threadId))
 }
