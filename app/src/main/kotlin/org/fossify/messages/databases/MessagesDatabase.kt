@@ -10,11 +10,27 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import org.fossify.messages.helpers.Converters
 import org.fossify.messages.interfaces.AttachmentsDao
 import org.fossify.messages.interfaces.ConversationsDao
+import org.fossify.messages.interfaces.DraftsDao
 import org.fossify.messages.interfaces.MessageAttachmentsDao
 import org.fossify.messages.interfaces.MessagesDao
-import org.fossify.messages.models.*
+import org.fossify.messages.models.Attachment
+import org.fossify.messages.models.Conversation
+import org.fossify.messages.models.Draft
+import org.fossify.messages.models.Message
+import org.fossify.messages.models.MessageAttachment
+import org.fossify.messages.models.RecycleBinMessage
 
-@Database(entities = [Conversation::class, Attachment::class, MessageAttachment::class, Message::class, RecycleBinMessage::class], version = 8)
+@Database(
+    entities = [
+        Conversation::class,
+        Attachment::class,
+        MessageAttachment::class,
+        Message::class,
+        RecycleBinMessage::class,
+        Draft::class
+    ],
+    version = 9
+)
 @TypeConverters(Converters::class)
 abstract class MessagesDatabase : RoomDatabase() {
 
@@ -26,6 +42,8 @@ abstract class MessagesDatabase : RoomDatabase() {
 
     abstract fun MessagesDao(): MessagesDao
 
+    abstract fun DraftsDao(): DraftsDao
+
     companion object {
         private var db: MessagesDatabase? = null
 
@@ -33,7 +51,11 @@ abstract class MessagesDatabase : RoomDatabase() {
             if (db == null) {
                 synchronized(MessagesDatabase::class) {
                     if (db == null) {
-                        db = Room.databaseBuilder(context.applicationContext, MessagesDatabase::class.java, "conversations.db")
+                        db = Room.databaseBuilder(
+                            context = context.applicationContext,
+                            klass = MessagesDatabase::class.java,
+                            name = "conversations.db"
+                        )
                             .fallbackToDestructiveMigration()
                             .addMigrations(MIGRATION_1_2)
                             .addMigrations(MIGRATION_2_3)
@@ -42,6 +64,7 @@ abstract class MessagesDatabase : RoomDatabase() {
                             .addMigrations(MIGRATION_5_6)
                             .addMigrations(MIGRATION_6_7)
                             .addMigrations(MIGRATION_7_8)
+                            .addMigrations(MIGRATION_8_9)
                             .build()
                     }
                 }
@@ -69,7 +92,7 @@ abstract class MessagesDatabase : RoomDatabase() {
 
                     execSQL(
                         "INSERT OR IGNORE INTO conversations_new (thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number) " +
-                            "SELECT thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number FROM conversations"
+                                "SELECT thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number FROM conversations"
                     )
 
                     execSQL("DROP TABLE conversations")
@@ -120,6 +143,14 @@ abstract class MessagesDatabase : RoomDatabase() {
                     execSQL("ALTER TABLE conversations ADD COLUMN archived INTEGER NOT NULL DEFAULT 0")
                     execSQL("CREATE TABLE IF NOT EXISTS `recycle_bin_messages` (`id` INTEGER NOT NULL PRIMARY KEY, `deleted_ts` INTEGER NOT NULL)")
                     execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_recycle_bin_messages_id` ON `recycle_bin_messages` (`id`)")
+                }
+            }
+        }
+
+        private val MIGRATION_8_9 = object : Migration(8, 9) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.apply {
+                    execSQL("CREATE TABLE IF NOT EXISTS `drafts` (`thread_id` INTEGER NOT NULL PRIMARY KEY, `body` TEXT NOT NULL, `date` INTEGER NOT NULL)")
                 }
             }
         }

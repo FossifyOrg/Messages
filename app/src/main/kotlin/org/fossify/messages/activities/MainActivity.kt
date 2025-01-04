@@ -365,9 +365,8 @@ class MainActivity : SimpleActivity() {
                     )
                 }
                 if (conv != null) {
-                    val lastModified = maxOf(cachedConv.date, conv.date)
-                    val conversation = conv.copy(date = lastModified)
-                    insertOrUpdateConversation(conversation)
+                    // FIXME: Scheduled message date is being reset here.
+                    insertOrUpdateConversation(conv)
                 }
             }
 

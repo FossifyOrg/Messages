@@ -117,6 +117,7 @@ import org.fossify.messages.extensions.createTemporaryThread
 import org.fossify.messages.extensions.deleteConversation
 import org.fossify.messages.extensions.deleteMessage
 import org.fossify.messages.extensions.deleteScheduledMessage
+import org.fossify.messages.extensions.deleteSmsDraft
 import org.fossify.messages.extensions.dialNumber
 import org.fossify.messages.extensions.emptyMessagesRecycleBinForConversation
 import org.fossify.messages.extensions.getAddresses
@@ -280,10 +281,6 @@ class ThreadActivity : SimpleActivity() {
             statusBarColor = getProperBackgroundColor()
         )
 
-        val smsDraft = getSmsDraft(threadId)
-        if (!smsDraft.isNullOrEmpty()) {
-            binding.messageHolder.threadTypeMessage.setText(smsDraft)
-        }
         isActivityVisible = true
 
         notificationManager.cancel(threadId.hashCode())
@@ -294,6 +291,13 @@ class ThreadActivity : SimpleActivity() {
                 conversation = newConv
                 runOnUiThread {
                     setupThreadTitle()
+                }
+            }
+
+            val smsDraft = getSmsDraft(threadId)
+            if (smsDraft.isNotEmpty()) {
+                runOnUiThread {
+                    binding.messageHolder.threadTypeMessage.setText(smsDraft)
                 }
             }
         }
@@ -332,10 +336,12 @@ class ThreadActivity : SimpleActivity() {
 
     private fun saveDraftMessage() {
         val draftMessage = binding.messageHolder.threadTypeMessage.value
-        if (getAttachmentSelections().isEmpty()) {
-            saveSmsDraft(draftMessage, threadId)
-        } else {
-            saveSmsDraft("", threadId)
+        ensureBackgroundThread {
+            if (draftMessage.isNotEmpty() && getAttachmentSelections().isEmpty()) {
+                saveSmsDraft(draftMessage, threadId)
+            } else {
+                deleteSmsDraft(threadId)
+            }
         }
     }
 

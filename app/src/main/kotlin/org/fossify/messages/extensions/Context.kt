@@ -59,6 +59,7 @@ import org.fossify.messages.helpers.NotificationHelper
 import org.fossify.messages.helpers.generateRandomId
 import org.fossify.messages.interfaces.AttachmentsDao
 import org.fossify.messages.interfaces.ConversationsDao
+import org.fossify.messages.interfaces.DraftsDao
 import org.fossify.messages.interfaces.MessageAttachmentsDao
 import org.fossify.messages.interfaces.MessagesDao
 import org.fossify.messages.messaging.MessagingUtils
@@ -66,6 +67,7 @@ import org.fossify.messages.messaging.MessagingUtils.Companion.ADDRESS_SEPARATOR
 import org.fossify.messages.messaging.SmsSender
 import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Conversation
+import org.fossify.messages.models.Draft
 import org.fossify.messages.models.Message
 import org.fossify.messages.models.MessageAttachment
 import org.fossify.messages.models.NamePhoto
@@ -84,6 +86,8 @@ val Context.attachmentsDB: AttachmentsDao get() = getMessagesDB().AttachmentsDao
 val Context.messageAttachmentsDB: MessageAttachmentsDao get() = getMessagesDB().MessageAttachmentsDao()
 
 val Context.messagesDB: MessagesDao get() = getMessagesDB().MessagesDao()
+
+val Context.draftsDB: DraftsDao get() = getMessagesDB().DraftsDao()
 
 val Context.notificationHelper get() = NotificationHelper(this)
 
@@ -358,6 +362,12 @@ fun Context.getConversations(
             var date = cursor.getLongValue(Threads.DATE)
             if (date.toString().length > 10) {
                 date /= 1000
+            }
+
+            // drafts are stored locally they take priority over the original date
+            val draft = draftsDB.getDraftById(id)
+            if (draft != null) {
+                date = draft.date / 1000
             }
 
             val rawIds = cursor.getStringValue(Threads.RECIPIENT_IDS)
@@ -1045,40 +1055,21 @@ fun Context.removeDiacriticsIfNeeded(text: String): String {
     return if (config.useSimpleCharacters) text.normalizeString() else text
 }
 
-fun Context.getSmsDraft(threadId: Long): String? {
-    val uri = Sms.Draft.CONTENT_URI
-    val projection = arrayOf(Sms.BODY)
-    val selection = "${Sms.THREAD_ID} = ?"
-    val selectionArgs = arrayOf(threadId.toString())
-
-    try {
-        val cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
-        cursor.use {
-            if (cursor?.moveToFirst() == true) {
-                return cursor.getString(0)
-            }
-        }
+fun Context.getSmsDraft(threadId: Long): String {
+    val draft = try {
+        draftsDB.getDraftById(threadId)
     } catch (e: Exception) {
+        null
     }
 
-    return null
+    return draft?.body.orEmpty()
 }
 
 fun Context.getAllDrafts(): HashMap<Long, String> {
     val drafts = HashMap<Long, String>()
-    val uri = Sms.Draft.CONTENT_URI
-    val projection = arrayOf(Sms.BODY, Sms.THREAD_ID)
-
     try {
-        val cursor = contentResolver.query(uri, projection, null, null, null)
-        cursor?.use {
-            while (it.moveToNext()) {
-                val threadId = it.getLongValue(Sms.THREAD_ID)
-                val draft = it.getStringValue(Sms.BODY)
-                if (!draft.isNullOrEmpty()) {
-                    drafts[threadId] = draft
-                }
-            }
+        draftsDB.getAll().forEach {
+            drafts[it.threadId] = it.body
         }
     } catch (e: Exception) {
         e.printStackTrace()
@@ -1088,17 +1079,25 @@ fun Context.getAllDrafts(): HashMap<Long, String> {
 }
 
 fun Context.saveSmsDraft(body: String, threadId: Long) {
-    val uri = Sms.Draft.CONTENT_URI
-    val contentValues = ContentValues().apply {
-        put(Sms.BODY, body)
-        put(Sms.DATE, System.currentTimeMillis().toString())
-        put(Sms.TYPE, Sms.MESSAGE_TYPE_DRAFT)
-        put(Sms.THREAD_ID, threadId)
-    }
+    val draft = Draft(
+        threadId = threadId,
+        body = body,
+        date = System.currentTimeMillis()
+    )
 
     try {
-        contentResolver.insert(uri, contentValues)
+        draftsDB.insertOrUpdate(draft)
     } catch (e: Exception) {
+        e.printStackTrace()
+        showErrorToast(e)
+    }
+}
+
+fun Context.deleteSmsDraft(threadId: Long) {
+    try {
+        draftsDB.delete(threadId)
+    } catch (e: Exception) {
+        e.printStackTrace()
         showErrorToast(e)
     }
 }
