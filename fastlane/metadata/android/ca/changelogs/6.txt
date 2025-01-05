@@ -1,0 +1,7 @@
+* S'ha millorat l'anàlisi d'intencions dels SMS/MMS de tercers
+* S'ha modificat la comprovació de codi curt per excloure a correus
+* S'ha corregit un problema amb la supressió d'esborranys de missatges (de nou)
+* S'han corregit diversos errors de notificacions dels missatges MMS
+* S'han corregit alguns problemes de disposició en els fils de missatges
+* Altres correccions i millores menors
+* S'han afegit més traduccions
