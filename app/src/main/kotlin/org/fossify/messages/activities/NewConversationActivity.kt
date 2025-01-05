@@ -301,7 +301,7 @@ class NewConversationActivity : SimpleActivity() {
         Intent(this, ThreadActivity::class.java).apply {
             putExtra(THREAD_ID, getThreadId(numbers))
             putExtra(THREAD_TITLE, name)
-            putExtra(THREAD_TEXT, body)
+            putExtra(THREAD_TEXT, body.ifEmpty { intent.getStringExtra(Intent.EXTRA_TEXT) })
             putExtra(THREAD_NUMBER, number)
 
             if (intent.action == Intent.ACTION_SEND && intent.extras?.containsKey(Intent.EXTRA_STREAM) == true) {
