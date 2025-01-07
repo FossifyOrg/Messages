@@ -1,0 +1,7 @@
+* Verbesserte Analyse der SMS/MMS-Intents von Drittanbietern
+* Modifizierte Short-Code-Prüfung zum Ausschluss von E-Mails
+* Problem mit dem Löschen von Nachrichtenentwürfen (erneut) behoben
+* Behebung mehrerer Toast-Fehler bei MMS-Nachrichten
+* Einige Layout-Probleme im Nachrichten-Thread behoben
+* Weitere kleinere Fehlerbehebungen und Verbesserungen
+* Weitere Übersetzungen hinzugefügt
