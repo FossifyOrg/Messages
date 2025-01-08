@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/import_messages_scrollview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -9,14 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingTop="@dimen/activity_margin"
-        android:paddingEnd="@dimen/activity_margin">
+        android:paddingTop="@dimen/activity_margin">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/import_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showAnimationBehavior="inward"
+            tools:visibility="visible" />
 
         <org.fossify.commons.views.MyAppCompatCheckbox
             android:id="@+id/import_sms_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_margin"
             android:paddingTop="@dimen/small_margin"
             android:paddingBottom="@dimen/small_margin"
             android:text="@string/import_sms" />
@@ -25,6 +39,7 @@
             android:id="@+id/import_mms_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_margin"
             android:paddingTop="@dimen/small_margin"
             android:paddingBottom="@dimen/small_margin"
             android:text="@string/import_mms" />

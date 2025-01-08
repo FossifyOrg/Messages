@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/export_messages_scrollview"
     android:layout_width="match_parent"
@@ -10,14 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="@dimen/activity_margin"
-        android:paddingTop="@dimen/activity_margin"
-        android:paddingEnd="@dimen/activity_margin">
+        android:paddingTop="@dimen/activity_margin">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/export_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showAnimationBehavior="inward" />
 
         <org.fossify.commons.views.MyTextInputLayout
             android:id="@+id/export_messages_filename_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_margin"
             android:hint="@string/filename_without_json">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -36,12 +48,14 @@
             android:id="@+id/export_sms_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_margin"
             android:text="@string/export_sms" />
 
         <org.fossify.commons.views.MyAppCompatCheckbox
             android:id="@+id/export_mms_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_margin"
             android:text="@string/export_mms" />
 
     </LinearLayout>

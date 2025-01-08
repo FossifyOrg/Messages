@@ -506,7 +506,11 @@ class ThreadAdapter(
     private fun setupDateTime(view: View, dateTime: ThreadDateTime) {
         ItemThreadDateTimeBinding.bind(view).apply {
             threadDateTime.apply {
-                text = dateTime.date.formatDateOrTime(context, hideTimeAtOtherDays = false, showYearEvenIfCurrent = false)
+                text = (dateTime.date * 1000L).formatDateOrTime(
+                    context = context,
+                    hideTimeOnOtherDays = false,
+                    showCurrentYear = false
+                )
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
             }
             threadDateTime.setTextColor(textColor)

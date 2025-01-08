@@ -2,6 +2,7 @@ package org.fossify.messages.messaging
 
 import android.content.Context
 import android.telephony.SmsMessage
+import android.util.Patterns
 import android.widget.Toast.LENGTH_LONG
 import com.klinker.android.send_message.Settings
 import org.fossify.commons.extensions.showErrorToast
@@ -34,14 +35,21 @@ fun Context.isLongMmsMessage(text: String, settings: Settings = getSendMessageSe
 }
 
 /** Sends the message using the in-app SmsManager API wrappers if it's an SMS or using android-smsmms for MMS. */
-fun Context.sendMessageCompat(text: String, addresses: List<String>, subId: Int?, attachments: List<Attachment>, messageId: Long? = null) {
+fun Context.sendMessageCompat(
+    text: String,
+    addresses: List<String>,
+    subId: Int?,
+    attachments: List<Attachment>,
+    messageId: Long? = null
+) {
     val settings = getSendMessageSettings()
     if (subId != null) {
         settings.subscriptionId = subId
     }
 
     val messagingUtils = messagingUtils
-    val isMms = attachments.isNotEmpty() || isLongMmsMessage(text, settings) || addresses.size > 1 && settings.group
+    val isMms = attachments.isNotEmpty() || isLongMmsMessage(text, settings)
+            || addresses.size > 1 && settings.group
     if (isMms) {
         // we send all MMS attachments separately to reduces the chances of hitting provider MMS limit.
         if (attachments.isNotEmpty()) {
@@ -60,11 +68,25 @@ fun Context.sendMessageCompat(text: String, addresses: List<String>, subId: Int?
         }
     } else {
         try {
-            messagingUtils.sendSmsMessage(text, addresses.toSet(), settings.subscriptionId, settings.deliveryReports, messageId)
+            messagingUtils.sendSmsMessage(
+                text = text,
+                addresses = addresses.toSet(),
+                subId = settings.subscriptionId,
+                requireDeliveryReport = settings.deliveryReports,
+                messageId = messageId
+            )
         } catch (e: SmsException) {
             when (e.errorCode) {
-                EMPTY_DESTINATION_ADDRESS -> toast(id = R.string.empty_destination_address, length = LENGTH_LONG)
-                ERROR_PERSISTING_MESSAGE -> toast(id = R.string.unable_to_save_message, length = LENGTH_LONG)
+                EMPTY_DESTINATION_ADDRESS -> toast(
+                    id = R.string.empty_destination_address,
+                    length = LENGTH_LONG
+                )
+
+                ERROR_PERSISTING_MESSAGE -> toast(
+                    id = R.string.unable_to_save_message,
+                    length = LENGTH_LONG
+                )
+
                 ERROR_SENDING_MESSAGE -> toast(
                     msg = getString(R.string.unknown_error_occurred_sending_message, e.errorCode),
                     length = LENGTH_LONG
@@ -83,9 +105,12 @@ fun Context.sendMessageCompat(text: String, addresses: List<String>, subId: Int?
  * Check if a given "address" is a short code.
  * There's not much info available on these special numbers, even the wikipedia page (https://en.wikipedia.org/wiki/Short_code)
  * contains outdated information regarding max number of digits. The exact parameters for short codes can vary by country and by carrier.
- *
- * This function simply returns true if the [address] contains at least one letter.
  */
 fun isShortCodeWithLetters(address: String): Boolean {
+    if (Patterns.EMAIL_ADDRESS.matcher(address).matches()) {
+        // emails are not short codes: https://github.com/FossifyOrg/Messages/issues/115
+        return false
+    }
+
     return address.any { it.isLetter() }
 }

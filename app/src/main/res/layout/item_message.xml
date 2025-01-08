@@ -27,12 +27,14 @@
             android:layout_marginEnd="@dimen/medium_margin"
             android:src="@drawable/ic_person_vector"
             android:visibility="gone"
+            tools:ignore="ContentDescription"
             tools:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/thread_message_attachments_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/thread_message_sender_photo"
             android:divider="@drawable/linear_layout_vertical_divider"
             android:orientation="vertical"
             android:showDividers="middle" />
@@ -46,7 +48,8 @@
             android:layout_marginEnd="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/activity_margin"
             android:src="@drawable/ic_play_outline_vector"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/thread_message_body"

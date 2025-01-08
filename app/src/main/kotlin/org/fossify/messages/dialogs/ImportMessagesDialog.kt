@@ -2,6 +2,7 @@ package org.fossify.messages.dialogs
 
 import androidx.appcompat.app.AlertDialog
 import org.fossify.commons.extensions.getAlertDialogBuilder
+import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.setupDialogStuff
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.helpers.ensureBackgroundThread
@@ -27,12 +28,20 @@ class ImportMessagesDialog(
             importMmsCheckbox.isChecked = config.importMms
         }
 
+        binding.importProgress.setIndicatorColor(activity.getProperPrimaryColor())
+
         activity.getAlertDialogBuilder()
             .setPositiveButton(org.fossify.commons.R.string.ok, null)
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(binding.root, this, R.string.import_messages) { alertDialog ->
-                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                activity.setupDialogStuff(
+                    view = binding.root,
+                    dialog = this,
+                    titleId = R.string.import_messages
+                ) { alertDialog ->
+                    val positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                    val negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                    positiveButton.setOnClickListener {
                         if (ignoreClicks) {
                             return@setOnClickListener
                         }
@@ -46,6 +55,19 @@ class ImportMessagesDialog(
                         activity.toast(org.fossify.commons.R.string.importing)
                         config.importSms = binding.importSmsCheckbox.isChecked
                         config.importMms = binding.importMmsCheckbox.isChecked
+
+                        alertDialog.setCanceledOnTouchOutside(false)
+                        binding.importProgress.show()
+                        arrayOf(
+                            binding.importMmsCheckbox,
+                            binding.importSmsCheckbox,
+                            positiveButton,
+                            negativeButton
+                        ).forEach {
+                            it.isEnabled = false
+                            it.alpha = 0.6f
+                        }
+
                         ensureBackgroundThread {
                             MessagesImporter(activity).restoreMessages(messages) {
                                 handleParseResult(it)

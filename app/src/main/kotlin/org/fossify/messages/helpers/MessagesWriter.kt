@@ -36,7 +36,10 @@ class MessagesWriter(private val context: Context) {
         val uri = Sms.CONTENT_URI
         val projection = arrayOf(Sms._ID)
         val selection = "${Sms.DATE} = ? AND ${Sms.ADDRESS} = ? AND ${Sms.TYPE} = ?"
-        val selectionArgs = arrayOf(smsBackup.date.toString(), smsBackup.address, smsBackup.type.toString())
+        val selectionArgs = arrayOf(
+            smsBackup.date.toString(), smsBackup.address, smsBackup.type.toString()
+        )
+
         var exists = false
         context.queryCursor(uri, projection, selection, selectionArgs) {
             exists = it.count > 0
@@ -81,7 +84,12 @@ class MessagesWriter(private val context: Context) {
         val uri = Mms.CONTENT_URI
         val projection = arrayOf(Mms._ID)
         val selection = "${Mms.DATE} = ? AND ${Mms.DATE_SENT} = ? AND ${Mms.THREAD_ID} = ? AND ${Mms.MESSAGE_BOX} = ?"
-        val selectionArgs = arrayOf(mmsBackup.date.toString(), mmsBackup.dateSent.toString(), threadId.toString(), mmsBackup.messageBox.toString())
+        val selectionArgs = arrayOf(
+            mmsBackup.date.toString(),
+            mmsBackup.dateSent.toString(),
+            threadId.toString(),
+            mmsBackup.messageBox.toString()
+        )
         var id = INVALID_ID
         context.queryCursor(uri, projection, selection, selectionArgs) {
             id = it.getLongValue(Mms._ID)
@@ -96,10 +104,19 @@ class MessagesWriter(private val context: Context) {
 
     @SuppressLint("NewApi")
     private fun mmsAddressExist(mmsAddress: MmsAddress, messageId: Long): Boolean {
-        val addressUri = if (isRPlus()) Mms.Addr.getAddrUriForMessage(messageId.toString()) else Uri.parse("content://mms/$messageId/addr")
+        val addressUri = if (isRPlus()) {
+            Mms.Addr.getAddrUriForMessage(messageId.toString())
+        } else {
+            Uri.parse("content://mms/$messageId/addr")
+        }
+
         val projection = arrayOf(Mms.Addr._ID)
         val selection = "${Mms.Addr.TYPE} = ? AND ${Mms.Addr.ADDRESS} = ? AND ${Mms.Addr.MSG_ID} = ?"
-        val selectionArgs = arrayOf(mmsAddress.type.toString(), mmsAddress.address.toString(), messageId.toString())
+        val selectionArgs = arrayOf(
+            mmsAddress.type.toString(),
+            mmsAddress.address,
+            messageId.toString()
+        )
         var exists = false
         context.queryCursor(addressUri, projection, selection, selectionArgs) {
             exists = it.count > 0
@@ -149,7 +166,13 @@ class MessagesWriter(private val context: Context) {
         val uri = Uri.parse("content://mms/${messageId}/part")
         val projection = arrayOf(Mms.Part._ID)
         val selection = "${Mms.Part.CONTENT_LOCATION} = ? AND ${Mms.Part.CONTENT_TYPE} = ? AND ${Mms.Part.MSG_ID} = ? AND ${Mms.Part.CONTENT_ID} = ?"
-        val selectionArgs = arrayOf(mmsPart.contentLocation.toString(), mmsPart.contentType, messageId.toString(), mmsPart.contentId.toString())
+        val selectionArgs = arrayOf(
+            mmsPart.contentLocation.toString(),
+            mmsPart.contentType,
+            messageId.toString(),
+            mmsPart.contentId.toString()
+        )
+
         var exists = false
         context.queryCursor(uri, projection, selection, selectionArgs) {
             exists = it.count > 0
@@ -158,7 +181,7 @@ class MessagesWriter(private val context: Context) {
     }
 
     /** Fixes the timestamps of all conversations modified by previous writes. */
-    fun fixCoversationDates() {
+    fun fixConversationDates() {
         // This method should be called after messages are written, to set the correct conversation
         // timestamps.
         //

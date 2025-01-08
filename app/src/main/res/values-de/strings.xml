@@ -116,4 +116,7 @@
     <string name="faq_3_text">Ja, du kannst den Versand von Nachrichten für die Zukunft planen, indem du lange auf die Senden-Schaltfläche drückst und das gewünschte Datum und die Uhrzeit auswählst.</string>
     <string name="enable_custom_notifications">Benutzerdefinierte Benachrichtigungen aktivieren</string>
     <string name="app_launcher_name">Mitteilungen</string>
+    <string name="import_blocked_keywords">Blockierte Schlüsselwörter importieren</string>
+    <string name="export_blocked_keywords">Blockierte Schlüsselwörter exportieren</string>
+    <string name="keywords">Schlüsselwörter</string>
 </resources>

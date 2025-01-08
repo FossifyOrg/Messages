@@ -4,6 +4,15 @@ import android.util.Xml
 import org.xmlpull.v1.XmlPullParser
 
 object AttachmentUtils {
+    private const val ELEMENT_TAG_IMAGE: String = "img"
+    private const val ELEMENT_TAG_AUDIO: String = "audio"
+    private const val ELEMENT_TAG_VIDEO: String = "video"
+    private const val ELEMENT_TAG_VCARD: String = "vcard"
+    private const val ELEMENT_TAG_REF: String = "ref"
+
+    private val ELEMENT_TAGS = arrayOf(
+        ELEMENT_TAG_IMAGE, ELEMENT_TAG_VIDEO, ELEMENT_TAG_AUDIO, ELEMENT_TAG_VCARD, ELEMENT_TAG_REF
+    )
 
     fun parseAttachmentNames(text: String): List<String> {
         val parser = Xml.newPullParser()
@@ -45,10 +54,11 @@ object AttachmentUtils {
                         continue
                     }
 
-                    if (parser.name == "ref") {
-                        val value = parser.getAttributeValue(null, "src")
-                        names.add(value)
-                        parser.nextTag()
+                    if (parser.name in ELEMENT_TAGS) {
+                        names.add(parser.getAttributeValue(null, "src"))
+                        skip(parser)
+                    } else {
+                        skip(parser)
                     }
                 }
             } else {

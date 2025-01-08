@@ -1,5 +1,6 @@
 package org.fossify.messages.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.os.Parcelable
 import android.util.TypedValue
@@ -10,7 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.getTextSize
+import org.fossify.commons.extensions.setupViewBackground
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.views.MyRecyclerView
@@ -22,11 +27,20 @@ import org.fossify.messages.models.Conversation
 
 @Suppress("LeakingThis")
 abstract class BaseConversationsAdapter(
-    activity: SimpleActivity, recyclerView: MyRecyclerView, onRefresh: () -> Unit, itemClick: (Any) -> Unit
-) : MyRecyclerViewListAdapter<Conversation>(activity, recyclerView, ConversationDiffCallback(), itemClick, onRefresh),
+    activity: SimpleActivity,
+    recyclerView: MyRecyclerView,
+    onRefresh: () -> Unit,
+    itemClick: (Any) -> Unit
+) : MyRecyclerViewListAdapter<Conversation>(
+    activity = activity,
+    recyclerView = recyclerView,
+    diffUtil = ConversationDiffCallback(),
+    itemClick = itemClick,
+    onRefresh = onRefresh
+),
     RecyclerViewFastScroller.OnPopupTextUpdate {
     private var fontSize = activity.getTextSize()
-    private var drafts = HashMap<Long, String?>()
+    private var drafts = HashMap<Long, String>()
 
     private var recyclerViewState: Parcelable? = null
 
@@ -39,24 +53,32 @@ abstract class BaseConversationsAdapter(
 
         registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() = restoreRecyclerViewState()
-            override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) = restoreRecyclerViewState()
-            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) = restoreRecyclerViewState()
+            override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) =
+                restoreRecyclerViewState()
+
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) =
+                restoreRecyclerViewState()
         })
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateFontSize() {
         fontSize = activity.getTextSize()
         notifyDataSetChanged()
     }
 
-    fun updateConversations(newConversations: ArrayList<Conversation>, commitCallback: (() -> Unit)? = null) {
+    fun updateConversations(
+        newConversations: ArrayList<Conversation>,
+        commitCallback: (() -> Unit)? = null
+    ) {
         saveRecyclerViewState()
         submitList(newConversations.toList(), commitCallback)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateDrafts() {
         ensureBackgroundThread {
-            val newDrafts = HashMap<Long, String?>()
+            val newDrafts = HashMap<Long, String>()
             fetchDrafts(newDrafts)
             if (drafts.hashCode() != newDrafts.hashCode()) {
                 drafts = newDrafts
@@ -69,7 +91,8 @@ abstract class BaseConversationsAdapter(
 
     override fun getSelectableItemCount() = itemCount
 
-    protected fun getSelectedItems() = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+    protected fun getSelectedItems() =
+        currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
 
     override fun getIsItemSelectable(position: Int) = true
 
@@ -88,7 +111,11 @@ abstract class BaseConversationsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val conversation = getItem(position)
-        holder.bindView(conversation, allowSingleClick = true, allowLongClick = true) { itemView, _ ->
+        holder.bindView(
+            conversation,
+            allowSingleClick = true,
+            allowLongClick = true
+        ) { itemView, _ ->
             setupView(itemView, conversation)
         }
         bindViewHolder(holder)
@@ -104,7 +131,7 @@ abstract class BaseConversationsAdapter(
         }
     }
 
-    private fun fetchDrafts(drafts: HashMap<Long, String?>) {
+    private fun fetchDrafts(drafts: HashMap<Long, String>) {
         drafts.clear()
         for ((threadId, draft) in activity.getAllDrafts()) {
             drafts[threadId] = draft
@@ -115,7 +142,7 @@ abstract class BaseConversationsAdapter(
         ItemConversationBinding.bind(view).apply {
             root.setupViewBackground(activity)
             val smsDraft = drafts[conversation.threadId]
-            draftIndicator.beVisibleIf(smsDraft != null)
+            draftIndicator.beVisibleIf(!smsDraft.isNullOrEmpty())
             draftIndicator.setTextColor(properPrimaryColor)
 
             pinIndicator.beVisibleIf(activity.config.pinnedConversations.contains(conversation.threadId.toString()))
@@ -134,7 +161,12 @@ abstract class BaseConversationsAdapter(
             }
 
             conversationDate.apply {
-                text = conversation.date.formatDateOrTime(context, true, false)
+                text = (conversation.date * 1000L).formatDateOrTime(
+                    context = context,
+                    hideTimeOnOtherDays = true,
+                    showCurrentYear = false
+                )
+
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.8f)
             }
 
@@ -160,7 +192,12 @@ abstract class BaseConversationsAdapter(
                 null
             }
 
-            SimpleContactsHelper(activity).loadContactImage(conversation.photoUri, conversationImage, conversation.title, placeholder)
+            SimpleContactsHelper(activity).loadContactImage(
+                path = conversation.photoUri,
+                imageView = conversationImage,
+                placeholderName = conversation.title,
+                placeholderImage = placeholder
+            )
         }
     }
 

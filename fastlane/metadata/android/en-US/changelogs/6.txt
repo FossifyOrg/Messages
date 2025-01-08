@@ -1,0 +1,7 @@
+* Improved third party SMS/MMS intent parsing
+* Modified short code check to exclude emails
+* Fixed issue with messages draft deletion (again)
+* Fixed multiple toast errors for MMS messages
+* Fixed some layout issues in message thread
+* Other minor bug fixes and improvements
+* Added more translations

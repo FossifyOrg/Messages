@@ -60,6 +60,7 @@ import org.fossify.messages.databinding.ActivityMainBinding
 import org.fossify.messages.extensions.checkAndDeleteOldRecycleBinMessages
 import org.fossify.messages.extensions.clearAllMessagesIfNeeded
 import org.fossify.messages.extensions.clearExpiredScheduledMessages
+import org.fossify.messages.extensions.clearSystemDrafts
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.conversationsDB
 import org.fossify.messages.extensions.getConversations
@@ -287,7 +288,7 @@ class MainActivity : SimpleActivity() {
         checkWhatsNewDialog()
         storeStateVariables()
         getCachedConversations()
-
+        clearSystemDrafts()
         binding.noConversationsPlaceholder2.setOnClickListener {
             launchNewConversation()
         }
@@ -365,9 +366,8 @@ class MainActivity : SimpleActivity() {
                     )
                 }
                 if (conv != null) {
-                    val lastModified = maxOf(cachedConv.date, conv.date)
-                    val conversation = conv.copy(date = lastModified)
-                    insertOrUpdateConversation(conversation)
+                    // FIXME: Scheduled message date is being reset here. Conversations with scheduled messages will have their original date.
+                    insertOrUpdateConversation(conv)
                 }
             }
 

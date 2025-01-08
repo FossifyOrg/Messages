@@ -14,29 +14,65 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.ContactsContract.PhoneLookup
 import android.provider.OpenableColumns
-import android.provider.Telephony.*
+import android.provider.Telephony.Mms
+import android.provider.Telephony.MmsSms
+import android.provider.Telephony.Sms
+import android.provider.Telephony.Threads
+import android.provider.Telephony.ThreadsColumns
 import android.telephony.SubscriptionManager
 import android.text.TextUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import me.leolin.shortcutbadger.ShortcutBadger
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.areDigitsOnly
+import org.fossify.commons.extensions.getBlockedNumbers
+import org.fossify.commons.extensions.getIntValue
+import org.fossify.commons.extensions.getLongValue
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getStringValue
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.extensions.isNumberBlocked
+import org.fossify.commons.extensions.normalizeString
+import org.fossify.commons.extensions.notificationManager
+import org.fossify.commons.extensions.queryCursor
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.toInt
+import org.fossify.commons.extensions.toast
+import org.fossify.commons.extensions.trimToComparableNumber
+import org.fossify.commons.helpers.DAY_SECONDS
+import org.fossify.commons.helpers.MONTH_SECONDS
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.R
 import org.fossify.messages.databases.MessagesDatabase
-import org.fossify.messages.helpers.*
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
+import org.fossify.messages.helpers.Config
+import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.MESSAGES_LIMIT
+import org.fossify.messages.helpers.NotificationHelper
+import org.fossify.messages.helpers.generateRandomId
 import org.fossify.messages.interfaces.AttachmentsDao
 import org.fossify.messages.interfaces.ConversationsDao
+import org.fossify.messages.interfaces.DraftsDao
 import org.fossify.messages.interfaces.MessageAttachmentsDao
 import org.fossify.messages.interfaces.MessagesDao
 import org.fossify.messages.messaging.MessagingUtils
 import org.fossify.messages.messaging.MessagingUtils.Companion.ADDRESS_SEPARATOR
 import org.fossify.messages.messaging.SmsSender
-import org.fossify.messages.models.*
+import org.fossify.messages.models.Attachment
+import org.fossify.messages.models.Conversation
+import org.fossify.messages.models.Draft
+import org.fossify.messages.models.Message
+import org.fossify.messages.models.MessageAttachment
+import org.fossify.messages.models.NamePhoto
+import org.fossify.messages.models.RecycleBinMessage
+import org.xmlpull.v1.XmlPullParserException
 import java.io.FileNotFoundException
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
@@ -51,13 +87,13 @@ val Context.messageAttachmentsDB: MessageAttachmentsDao get() = getMessagesDB().
 
 val Context.messagesDB: MessagesDao get() = getMessagesDB().MessagesDao()
 
+val Context.draftsDB: DraftsDao get() = getMessagesDB().DraftsDao()
+
 val Context.notificationHelper get() = NotificationHelper(this)
 
 val Context.messagingUtils get() = MessagingUtils(this)
 
 val Context.smsSender get() = SmsSender.getInstance(applicationContext as Application)
-
-val Context.shortcutHelper get() = ShortcutHelper(this)
 
 fun Context.getMessages(
     threadId: Long,
@@ -117,32 +153,32 @@ fun Context.getMessages(
             val phoneNumber = PhoneNumber(number, 0, "", number)
             val participantPhoto = getNameAndPhotoFromPhoneNumber(number)
             SimpleContact(
-                0,
-                0,
-                participantPhoto.name,
-                photoUri,
-                arrayListOf(phoneNumber),
-                ArrayList(),
-                ArrayList()
+                rawId = 0,
+                contactId = 0,
+                name = participantPhoto.name,
+                photoUri = photoUri,
+                phoneNumbers = arrayListOf(phoneNumber),
+                birthdays = ArrayList(),
+                anniversaries = ArrayList()
             )
         }
         val isMMS = false
         val message =
             Message(
-                id,
-                body,
-                type,
-                status,
-                ArrayList(participants),
-                date,
-                read,
-                thread,
-                isMMS,
-                null,
-                senderNumber,
-                senderName,
-                photoUri,
-                subscriptionId
+                id = id,
+                body = body,
+                type = type,
+                status = status,
+                participants = ArrayList(participants),
+                date = date,
+                read = read,
+                threadId = thread,
+                isMMS = isMMS,
+                attachment = null,
+                senderPhoneNumber = senderNumber,
+                senderName = senderName,
+                senderPhotoUri = photoUri,
+                subscriptionId = subscriptionId
             )
         messages.add(message)
     }
@@ -235,20 +271,20 @@ fun Context.getMMS(
 
         val message =
             Message(
-                mmsId,
-                body,
-                type,
-                status,
-                participants,
-                date,
-                read,
-                threadId,
-                isMMS,
-                attachment,
-                senderNumber,
-                senderName,
-                senderPhotoUri,
-                subscriptionId
+                id = mmsId,
+                body = body,
+                type = type,
+                status = status,
+                participants = participants,
+                date = date,
+                read = read,
+                threadId = threadId,
+                isMMS = isMMS,
+                attachment = attachment,
+                senderPhoneNumber = senderNumber,
+                senderName = senderName,
+                senderPhotoUri = senderPhotoUri,
+                subscriptionId = subscriptionId
             )
         messages.add(message)
 
@@ -328,6 +364,12 @@ fun Context.getConversations(
                 date /= 1000
             }
 
+            // drafts are stored locally they take priority over the original date
+            val draft = draftsDB.getDraftById(id)
+            if (draft != null) {
+                date = draft.date / 1000
+            }
+
             val rawIds = cursor.getStringValue(Threads.RECIPIENT_IDS)
             val recipientIds =
                 rawIds.split(" ").filter { it.areDigitsOnly() }.map { it.toInt() }.toMutableList()
@@ -352,14 +394,14 @@ fun Context.getConversations(
             val archived =
                 if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else false
             val conversation = Conversation(
-                id,
-                snippet,
-                date.toInt(),
-                read,
-                title,
-                photoUri,
-                isGroupConversation,
-                phoneNumbers.first(),
+                threadId = id,
+                snippet = snippet,
+                date = date.toInt(),
+                read = read,
+                title = title,
+                photoUri = photoUri,
+                isGroupConversation = isGroupConversation,
+                phoneNumber = phoneNumbers.first(),
                 isArchived = archived
             )
             conversations.add(conversation)
@@ -460,19 +502,24 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
         } else if (mimetype != "application/smil") {
             val attachmentName = attachmentNames?.getOrNull(attachmentCount) ?: ""
             val attachment = Attachment(
-                partId,
-                id,
-                Uri.withAppendedPath(uri, partId.toString()).toString(),
-                mimetype,
-                0,
-                0,
-                attachmentName
+                id = partId,
+                messageId = id,
+                uriString = Uri.withAppendedPath(uri, partId.toString()).toString(),
+                mimetype = mimetype,
+                width = 0,
+                height = 0,
+                filename = attachmentName
             )
             messageAttachment.attachments.add(attachment)
             attachmentCount++
         } else {
             val text = cursor.getStringValue(Mms.Part.TEXT)
-            attachmentNames = parseAttachmentNames(text)
+            attachmentNames = try {
+                parseAttachmentNames(text)
+            } catch (e: XmlPullParserException) {
+                e.printStackTrace()
+                null
+            }
         }
     }
 
@@ -562,13 +609,13 @@ fun Context.getThreadParticipants(
                     val photoUri = namePhoto.photoUri ?: ""
                     val phoneNumber = PhoneNumber(number, 0, "", number)
                     val contact = SimpleContact(
-                        addressId,
-                        addressId,
-                        name,
-                        photoUri,
-                        arrayListOf(phoneNumber),
-                        ArrayList(),
-                        ArrayList()
+                        rawId = addressId,
+                        contactId = addressId,
+                        name = name,
+                        photoUri = photoUri,
+                        phoneNumbers = arrayListOf(phoneNumber),
+                        birthdays = ArrayList(),
+                        anniversaries = ArrayList()
                     )
                     participants.add(contact)
                 }
@@ -664,13 +711,13 @@ fun Context.getSuggestedContacts(privateContacts: ArrayList<SimpleContact>): Arr
 
         val phoneNumber = PhoneNumber(senderNumber, 0, "", senderNumber)
         val contact = SimpleContact(
-            0,
-            0,
-            senderName,
-            photoUri,
-            arrayListOf(phoneNumber),
-            ArrayList(),
-            ArrayList()
+            rawId = 0,
+            contactId = 0,
+            name = senderName,
+            photoUri = photoUri,
+            phoneNumbers = arrayListOf(phoneNumber),
+            birthdays = ArrayList(),
+            anniversaries = ArrayList()
         )
         if (!contacts.map { it.phoneNumbers.first().normalizedNumber.trimToComparableNumber() }
                 .contains(senderNumber.trimToComparableNumber())) {
@@ -947,12 +994,12 @@ fun Context.showReceivedMessageNotification(
 
         Handler(Looper.getMainLooper()).post {
             notificationHelper.showMessageNotification(
-                messageId,
-                address,
-                body,
-                threadId,
-                bitmap,
-                senderName
+                messageId = messageId,
+                address = address,
+                body = body,
+                threadId = threadId,
+                bitmap = bitmap,
+                sender = senderName
             )
         }
     }
@@ -1008,80 +1055,67 @@ fun Context.removeDiacriticsIfNeeded(text: String): String {
     return if (config.useSimpleCharacters) text.normalizeString() else text
 }
 
-fun Context.getSmsDraft(threadId: Long): String? {
-    val uri = Sms.Draft.CONTENT_URI
-    val projection = arrayOf(Sms.BODY)
-    val selection = "${Sms.THREAD_ID} = ?"
-    val selectionArgs = arrayOf(threadId.toString())
-
-    try {
-        val cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
-        cursor.use {
-            if (cursor?.moveToFirst() == true) {
-                return cursor.getString(0)
-            }
-        }
+fun Context.getSmsDraft(threadId: Long): String {
+    val draft = try {
+        draftsDB.getDraftById(threadId)
     } catch (e: Exception) {
+        null
     }
 
-    return null
+    return draft?.body.orEmpty()
 }
 
-fun Context.getAllDrafts(): HashMap<Long, String?> {
-    val drafts = HashMap<Long, String?>()
-    val uri = Sms.Draft.CONTENT_URI
-    val projection = arrayOf(Sms.BODY, Sms.THREAD_ID)
-
+fun Context.getAllDrafts(): HashMap<Long, String> {
+    val drafts = HashMap<Long, String>()
     try {
-        val cursor = contentResolver.query(uri, projection, null, null, null)
-        cursor?.use {
-            while (it.moveToNext()) {
-                val threadId = it.getLongValue(Sms.THREAD_ID)
-                val draft = it.getStringValue(Sms.BODY)
-                if (draft != null) {
-                    drafts[threadId] = draft
-                }
-            }
+        draftsDB.getAll().forEach {
+            drafts[it.threadId] = it.body
         }
     } catch (e: Exception) {
+        e.printStackTrace()
     }
 
     return drafts
 }
 
 fun Context.saveSmsDraft(body: String, threadId: Long) {
-    deleteSmsDraft(threadId)
-
-    val uri = Sms.Draft.CONTENT_URI
-    val contentValues = ContentValues().apply {
-        put(Sms.BODY, body)
-        put(Sms.DATE, System.currentTimeMillis().toString())
-        put(Sms.TYPE, Sms.MESSAGE_TYPE_DRAFT)
-        put(Sms.THREAD_ID, threadId)
-    }
+    val draft = Draft(
+        threadId = threadId,
+        body = body,
+        date = System.currentTimeMillis()
+    )
 
     try {
-        contentResolver.insert(uri, contentValues)
+        draftsDB.insertOrUpdate(draft)
     } catch (e: Exception) {
+        e.printStackTrace()
         showErrorToast(e)
     }
 }
 
 fun Context.deleteSmsDraft(threadId: Long) {
-    val uri = Sms.Draft.CONTENT_URI
-    val projection = arrayOf(Sms._ID)
-    val selection = "${Sms.THREAD_ID} = ?"
-    val selectionArgs = arrayOf(threadId.toString())
-    queryCursor(
-        uri = uri,
-        projection = projection,
-        selection = selection,
-        selectionArgs = selectionArgs,
-        showErrors = true
-    ) { cursor ->
-        val draftId = cursor.getLongValue(Sms._ID)
-        val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
-        contentResolver.delete(draftUri, null, null)
+    try {
+        draftsDB.delete(threadId)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        showErrorToast(e)
+    }
+}
+
+// Revert changes done by version 1.1.1 (https://github.com/FossifyOrg/Messages/issues/274)
+fun Context.clearSystemDrafts() {
+    ensureBackgroundThread {
+        val uri = Sms.Draft.CONTENT_URI
+        val projection = arrayOf(Sms._ID, Sms.BODY)
+        queryCursor(uri = uri, projection = projection) { cursor ->
+            val draftId = cursor.getLongValue(Sms._ID)
+            val body = cursor.getStringValue(Sms.BODY) ?: return@queryCursor
+            if (body.isEmpty() || body.isBlank()) {
+                val draftUri = Uri.withAppendedPath(Sms.CONTENT_URI, "/${draftId}")
+                contentResolver.delete(draftUri, null, null)
+                return@queryCursor
+            }
+        }
     }
 }
 

@@ -180,10 +180,6 @@ class ThreadActivity : SimpleActivity() {
             statusBarColor = getProperBackgroundColor()
         )
 
-        val smsDraft = getSmsDraft(threadId)
-        if (smsDraft != null) {
-            binding.messageHolder.threadTypeMessage.setText(smsDraft)
-        }
         isActivityVisible = true
 
         notificationManager.cancel(threadId.hashCode())
@@ -196,6 +192,13 @@ class ThreadActivity : SimpleActivity() {
                     setupThreadTitle()
                 }
             }
+
+            val smsDraft = getSmsDraft(threadId)
+            if (smsDraft.isNotEmpty()) {
+                runOnUiThread {
+                    binding.messageHolder.threadTypeMessage.setText(smsDraft)
+                }
+            }
         }
 
         val bottomBarColor = getBottomBarColor()
@@ -206,15 +209,14 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onPause() {
         super.onPause()
-        val draftMessage = binding.messageHolder.threadTypeMessage.value
-        if (draftMessage.isNotEmpty() && getAttachmentSelections().isEmpty()) {
-            saveSmsDraft(draftMessage, threadId)
-        } else {
-            deleteSmsDraft(threadId)
-        }
-
+        saveDraftMessage()
         bus?.post(Events.RefreshMessages())
         isActivityVisible = false
+    }
+
+    override fun onStop() {
+        super.onStop()
+        saveDraftMessage()
     }
 
     override fun onBackPressed() {
@@ -229,6 +231,17 @@ class ThreadActivity : SimpleActivity() {
     override fun onDestroy() {
         super.onDestroy()
         bus?.unregister(this)
+    }
+
+    private fun saveDraftMessage() {
+        val draftMessage = binding.messageHolder.threadTypeMessage.value
+        ensureBackgroundThread {
+            if (draftMessage.isNotEmpty() && getAttachmentSelections().isEmpty()) {
+                saveSmsDraft(draftMessage, threadId)
+            } else {
+                deleteSmsDraft(threadId)
+            }
+        }
     }
 
     private fun refreshMenuItems() {
