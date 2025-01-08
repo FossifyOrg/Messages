@@ -140,7 +140,7 @@ class NotificationHelper(private val context: Context) {
             }
 
             val associatedShortcut = context.shortcutHelper.createOrUpdateShortcut(threadId)
-            if(associatedShortcut != null) {
+            if (associatedShortcut != null) {
                 setShortcutInfo(associatedShortcut)
             }
 

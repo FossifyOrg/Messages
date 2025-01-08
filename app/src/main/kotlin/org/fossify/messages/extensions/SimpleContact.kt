@@ -16,10 +16,9 @@ fun ArrayList<SimpleContact>.getAddresses() = flatMap { it.phoneNumbers }.map { 
 
 fun SimpleContact.toPerson(context: Context? = null): Person {
     val uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, contactId.toString())
-    val iconCompat = if(context != null) {
+    val iconCompat = if (context != null) {
         loadIcon(context)
-    }
-    else {
+    } else {
         IconCompat.createWithContentUri(photoUri)
     }
 
@@ -31,7 +30,7 @@ fun SimpleContact.toPerson(context: Context? = null): Person {
         .build()
 }
 
-fun Person.getPhotoUri(context: Context) : String {
+fun Person.getPhotoUri(context: Context): String {
     val contactUri = Uri.parse(uri)
     val projection = arrayOf(ContactsContract.Contacts.PHOTO_URI)
     context.contentResolver.query(contactUri, projection, null, null, null).use { cursor ->

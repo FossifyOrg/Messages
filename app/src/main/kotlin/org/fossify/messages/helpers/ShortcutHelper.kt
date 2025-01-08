@@ -1,16 +1,18 @@
 package org.fossify.messages.helpers
 
-import androidx.core.app.Person
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.core.app.Person
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
-import org.fossify.messages.extensions.*
-import org.fossify.messages.models.Conversation
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.graphics.drawable.toBitmap
 import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.getThreadParticipants
+import org.fossify.messages.extensions.toPerson
+import org.fossify.messages.models.Conversation
 
 
 class ShortcutHelper(private val context: Context) {
@@ -36,16 +38,15 @@ class ShortcutHelper(private val context: Context) {
         }
 
         val shortcut = ShortcutInfoCompat.Builder(context, conv.threadId.toString()).apply {
-            setShortLabel(conv.title.substring(0, if(conv.title.length > 11) 11 else conv.title.length - 1))
+            setShortLabel(conv.title.substring(0, if (conv.title.length > 11) 11 else conv.title.length - 1))
             setLongLabel(conv.title)
             setIsConversation()
             setLongLived(true)
             setPersons(persons)
             setIntent(intent)
-            if(!conv.isGroupConversation) {
+            if (!conv.isGroupConversation) {
                 setIcon(persons[0].icon)
-            }
-            else {
+            } else {
                 val icon = IconCompat.createWithBitmap(contactsHelper.getColoredGroupIcon(conv.title).toBitmap())
                 setIcon(icon)
             }
@@ -71,7 +72,7 @@ class ShortcutHelper(private val context: Context) {
      */
     fun reportThreadUsage(threadId: Long) {
         val shortcut = getShortcut(threadId)
-        if(shortcut == null) {
+        if (shortcut == null) {
             createOrUpdateShortcut(threadId)
             return
         }
@@ -85,7 +86,7 @@ class ShortcutHelper(private val context: Context) {
 
     fun removeAllShortcuts() {
         val scs = getShortcuts()
-        if(scs.isEmpty())
+        if (scs.isEmpty())
             return
         ShortcutManagerCompat.removeLongLivedShortcuts(context, scs.map { it.id })
         ShortcutManagerCompat.removeAllDynamicShortcuts(context)
