@@ -20,6 +20,7 @@ import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.messages.R
 import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.shortcutHelper
 import org.fossify.messages.messaging.isShortCodeWithLetters
 import org.fossify.messages.receivers.DeleteSmsReceiver
 import org.fossify.messages.receivers.DirectReplyReceiver
@@ -136,6 +137,11 @@ class NotificationHelper(private val context: Context) {
                         NotificationCompat.BigTextStyle().setSummaryText(summaryText).bigText(body)
                     )
                 }
+            }
+
+            val associatedShortcut = context.shortcutHelper.createOrUpdateShortcut(threadId)
+            if(associatedShortcut != null) {
+                setShortcutInfo(associatedShortcut)
             }
 
             color = context.getProperPrimaryColor()

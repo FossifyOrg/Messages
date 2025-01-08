@@ -38,6 +38,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.IntentSanitizer
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -110,42 +111,7 @@ import org.fossify.messages.databinding.ItemSelectedContactBinding
 import org.fossify.messages.dialogs.InvalidNumberDialog
 import org.fossify.messages.dialogs.RenameConversationDialog
 import org.fossify.messages.dialogs.ScheduleMessageDialog
-import org.fossify.messages.extensions.clearExpiredScheduledMessages
-import org.fossify.messages.extensions.config
-import org.fossify.messages.extensions.conversationsDB
-import org.fossify.messages.extensions.createTemporaryThread
-import org.fossify.messages.extensions.deleteConversation
-import org.fossify.messages.extensions.deleteMessage
-import org.fossify.messages.extensions.deleteScheduledMessage
-import org.fossify.messages.extensions.deleteSmsDraft
-import org.fossify.messages.extensions.dialNumber
-import org.fossify.messages.extensions.emptyMessagesRecycleBinForConversation
-import org.fossify.messages.extensions.getAddresses
-import org.fossify.messages.extensions.getDefaultKeyboardHeight
-import org.fossify.messages.extensions.getFileSizeFromUri
-import org.fossify.messages.extensions.getMessages
-import org.fossify.messages.extensions.getSmsDraft
-import org.fossify.messages.extensions.getThreadId
-import org.fossify.messages.extensions.getThreadParticipants
-import org.fossify.messages.extensions.getThreadTitle
-import org.fossify.messages.extensions.indexOfFirstOrNull
-import org.fossify.messages.extensions.isGifMimeType
-import org.fossify.messages.extensions.isImageMimeType
-import org.fossify.messages.extensions.markMessageRead
-import org.fossify.messages.extensions.markThreadMessagesUnread
-import org.fossify.messages.extensions.messagesDB
-import org.fossify.messages.extensions.moveMessageToRecycleBin
-import org.fossify.messages.extensions.removeDiacriticsIfNeeded
-import org.fossify.messages.extensions.renameConversation
-import org.fossify.messages.extensions.restoreAllMessagesFromRecycleBinForConversation
-import org.fossify.messages.extensions.restoreMessageFromRecycleBin
-import org.fossify.messages.extensions.saveSmsDraft
-import org.fossify.messages.extensions.showWithAnimation
-import org.fossify.messages.extensions.subscriptionManagerCompat
-import org.fossify.messages.extensions.toArrayList
-import org.fossify.messages.extensions.updateConversationArchivedStatus
-import org.fossify.messages.extensions.updateLastConversationMessage
-import org.fossify.messages.extensions.updateScheduledMessagesThreadId
+import org.fossify.messages.extensions.*
 import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
@@ -229,7 +195,19 @@ class ThreadActivity : SimpleActivity() {
 
     private val binding by viewBinding(ActivityThreadBinding::inflate)
 
-    override fun onNewIntent(intent: Intent) {
+    override fun onNewIntent(@SuppressLint("UnsafeIntentLaunch") intent: Intent) {
+        // avoid unsafe launch
+        val sanitizer = IntentSanitizer.Builder()
+            .allowPackage(BuildConfig.APPLICATION_ID)
+            .build()
+        try {
+            sanitizer.sanitizeByThrowing(intent)
+        } catch (e: Exception) {
+            toast(e.message ?: getString(org.fossify.commons.R.string.unknown_error_occurred))
+            finish()
+            return
+        }
+
         super.onNewIntent(intent)
         finish()
         startActivity(intent)
@@ -271,6 +249,7 @@ class ThreadActivity : SimpleActivity() {
         setupKeyboardListener()
         hideAttachmentPicker()
         maybeSetupRecycleBinView()
+        shortcutHelper.createOrUpdateShortcut(threadId)
     }
 
     override fun onResume() {

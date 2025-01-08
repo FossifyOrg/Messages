@@ -8,7 +8,9 @@ import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.messages.R
 import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.getThreadId
 import org.fossify.messages.extensions.messagingUtils
+import org.fossify.messages.extensions.shortcutHelper
 import org.fossify.messages.messaging.SmsException.Companion.EMPTY_DESTINATION_ADDRESS
 import org.fossify.messages.messaging.SmsException.Companion.ERROR_PERSISTING_MESSAGE
 import org.fossify.messages.messaging.SmsException.Companion.ERROR_SENDING_MESSAGE
@@ -72,6 +74,9 @@ fun Context.sendMessageCompat(text: String, addresses: List<String>, subId: Int?
             showErrorToast(e)
         }
     }
+
+    val threadId = getThreadId(addresses.toSet())
+    shortcutHelper.reportThreadUsage(threadId)
 }
 
 /**
