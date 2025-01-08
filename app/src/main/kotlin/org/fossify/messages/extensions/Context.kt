@@ -51,12 +51,8 @@ import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.R
 import org.fossify.messages.databases.MessagesDatabase
+import org.fossify.messages.helpers.*
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
-import org.fossify.messages.helpers.Config
-import org.fossify.messages.helpers.FILE_SIZE_NONE
-import org.fossify.messages.helpers.MESSAGES_LIMIT
-import org.fossify.messages.helpers.NotificationHelper
-import org.fossify.messages.helpers.generateRandomId
 import org.fossify.messages.interfaces.AttachmentsDao
 import org.fossify.messages.interfaces.ConversationsDao
 import org.fossify.messages.interfaces.MessageAttachmentsDao
@@ -89,6 +85,8 @@ val Context.notificationHelper get() = NotificationHelper(this)
 val Context.messagingUtils get() = MessagingUtils(this)
 
 val Context.smsSender get() = SmsSender.getInstance(applicationContext as Application)
+
+val Context.shortcutHelper get() = ShortcutHelper(this)
 
 fun Context.getMessages(
     threadId: Long,
