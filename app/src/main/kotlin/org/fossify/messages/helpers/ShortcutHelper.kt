@@ -8,7 +8,9 @@ import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.text.isDigitsOnly
 import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.isOnMainThread
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getThreadParticipants
 import org.fossify.messages.extensions.toPerson
@@ -26,7 +28,7 @@ class ShortcutHelper(private val context: Context) {
         return getShortcuts().find { it.id == threadId.toString() }
     }
 
-    fun createOrUpdateShortcut(conv: Conversation): ShortcutInfoCompat {
+    fun buildShortcut(conv: Conversation, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
         val participants = context.getThreadParticipants(conv.threadId, null)
         val persons: Array<Person> = participants.map { it.toPerson(context) }.toTypedArray()
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms://messages/thread/${conv.threadId}")).apply {
@@ -44,38 +46,83 @@ class ShortcutHelper(private val context: Context) {
             setLongLived(true)
             setPersons(persons)
             setIntent(intent)
+            setRank(1)
             if (!conv.isGroupConversation) {
                 setIcon(persons[0].icon)
             } else {
                 val icon = IconCompat.createWithBitmap(contactsHelper.getColoredGroupIcon(conv.title).toBitmap())
                 setIcon(icon)
             }
-            addCapabilityBinding("actions.intent.SEND_MESSAGE")
+            capabilities.forEach { c ->
+                addCapabilityBinding(c)
+            }
+            if (!shouldPresentShortcut(conv)) {
+                setRank(99)
+            }
         }.build()
 
-        ShortcutManagerCompat.pushDynamicShortcut(context, shortcut)
         return shortcut
     }
 
-    fun createOrUpdateShortcut(threadId: Long): ShortcutInfoCompat? {
-        val convs = context.getConversations(threadId)
-        if (convs.isEmpty()) {
-            return null
+    fun buildShortcut(threadId: Long, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
+        val convs = if(!isOnMainThread()) {
+            context.getConversations(threadId)
+        }
+        else {
+            null
+        }
+
+        if (convs.isNullOrEmpty()) {
+            val conv = Conversation(
+                threadId = threadId,
+                snippet = "",
+                date = 0,
+                read = false,
+                title = threadId.toString(),
+                photoUri = "",
+                isGroupConversation = false,
+                phoneNumber = "",
+                isScheduled = false,
+                usesCustomTitle = false,
+                isArchived = false,
+            )
+            return buildShortcut(conv, capabilities)
         }
 
         val conv = convs[0]
-        return createOrUpdateShortcut(conv)
+        return buildShortcut(conv, capabilities)
+    }
+
+    fun createOrUpdateShortcut(conv: Conversation): ShortcutInfoCompat {
+        val shortcut = buildShortcut(conv)
+        createOrUpdateShortcut(shortcut)
+        return shortcut
+    }
+
+    fun createOrUpdateShortcut(threadId: Long): ShortcutInfoCompat {
+        val shortcut = buildShortcut(threadId)
+        createOrUpdateShortcut(shortcut)
+        return shortcut
+    }
+
+    private fun createOrUpdateShortcut(shortcut: ShortcutInfoCompat) {
+        if(getShortcut(shortcut.id.toLong()) != null) {
+            ShortcutManagerCompat.updateShortcuts(context, listOf(shortcut))
+            return
+        }
+        ShortcutManagerCompat.pushDynamicShortcut(context, shortcut)
     }
 
     /**
      * Report the usage of a thread. create shortcut if it doesn't exist
      */
-    fun reportThreadUsage(threadId: Long) {
-        val shortcut = getShortcut(threadId)
-        if (shortcut == null) {
-            createOrUpdateShortcut(threadId)
-            return
-        }
+    fun reportSendMessageUsage(threadId: Long) {
+        val shortcut = buildShortcut(threadId, listOf("actions.intent.SEND_MESSAGE"))
+        ShortcutManagerCompat.pushDynamicShortcut(context, shortcut)
+    }
+
+    fun reportReceiveMessageUsage(threadId: Long) {
+        val shortcut = buildShortcut(threadId, listOf("actions.intent.RECEIVE_MESSAGE"))
         ShortcutManagerCompat.pushDynamicShortcut(context, shortcut)
     }
 
@@ -90,6 +137,16 @@ class ShortcutHelper(private val context: Context) {
             return
         ShortcutManagerCompat.removeLongLivedShortcuts(context, scs.map { it.id })
         ShortcutManagerCompat.removeAllDynamicShortcuts(context)
+    }
+
+    fun shouldPresentShortcut(conv: Conversation): Boolean  {
+        if(conv.isGroupConversation) {
+            return true
+        }
+        if(conv.isArchived || !conv.phoneNumber.isDigitsOnly()) {
+            return false
+        }
+        return true
     }
 }
 
