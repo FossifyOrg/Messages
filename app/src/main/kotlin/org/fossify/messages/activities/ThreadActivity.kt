@@ -169,7 +169,6 @@ class ThreadActivity : SimpleActivity() {
         setupKeyboardListener()
         hideAttachmentPicker()
         maybeSetupRecycleBinView()
-        shortcutHelper.createOrUpdateShortcut(threadId)
     }
 
     override fun onResume() {
