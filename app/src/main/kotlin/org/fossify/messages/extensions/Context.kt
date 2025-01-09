@@ -824,6 +824,9 @@ fun Context.deleteConversation(threadId: Long) {
         config.removeCustomNotificationsByThreadId(threadId)
         notificationManager.deleteNotificationChannel(threadId.toString())
     }
+    if(shortcutHelper.getShortcut(threadId) != null) {
+        shortcutHelper.removeShortcutForThread(threadId)
+    }
 }
 
 fun Context.checkAndDeleteOldRecycleBinMessages(callback: (() -> Unit)? = null) {
