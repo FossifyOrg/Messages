@@ -474,6 +474,16 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun setupThread() {
+            if(conversation == null) {
+            if (isTaskRoot) {
+                Intent(this, MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(this)
+                }
+            }
+            finish()
+            return
+        }
         val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ensureBackgroundThread {
             privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
