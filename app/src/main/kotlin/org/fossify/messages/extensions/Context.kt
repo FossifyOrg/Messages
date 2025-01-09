@@ -329,15 +329,7 @@ fun Context.getConversations(
             }
 
             // drafts are stored locally they take priority over the original date
-            val draft = try {
-                draftsDB.getDraftById(id)
-            } catch (e: Exception) {
-                if (e.message == "Cannot access database on the main thread since it may potentially lock the UI for a long period of time.") {
-                    null
-                } else {
-                    throw e
-                }
-            }
+            val draft = draftsDB.getDraftById(id)
             if (draft != null) {
                 date = draft.date / 1000
             }
