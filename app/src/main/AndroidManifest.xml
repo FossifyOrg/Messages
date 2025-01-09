@@ -68,19 +68,10 @@
         <activity
             android:name=".activities.ThreadActivity"
             android:configChanges="orientation"
-            android:exported="true"
+            android:exported="false"
             android:launchMode="singleTop"
             android:parentActivityName=".activities.MainActivity"
             android:windowSoftInputMode="adjustResize" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="sms" android:host="messages"/>
-            </intent-filter>
         </activity>
 
         <activity
@@ -91,7 +82,7 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.SENDTO" />
-                <!--action android:name="android.intent.action.VIEW" /-->
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
