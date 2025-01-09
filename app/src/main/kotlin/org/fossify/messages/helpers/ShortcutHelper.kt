@@ -11,6 +11,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.text.isDigitsOnly
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.isOnMainThread
+import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getThreadParticipants
 import org.fossify.messages.extensions.toPerson
@@ -31,7 +32,8 @@ class ShortcutHelper(private val context: Context) {
     fun buildShortcut(conv: Conversation, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
         val participants = context.getThreadParticipants(conv.threadId, null)
         val persons: Array<Person> = participants.map { it.toPerson(context) }.toTypedArray()
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms://messages/thread/${conv.threadId}")).apply {
+        val intent = Intent(context, ThreadActivity::class.java).apply {
+            action = Intent.ACTION_VIEW
             putExtra(THREAD_ID, conv.threadId)
             putExtra(THREAD_TITLE, conv.title)
             putExtra(IS_RECYCLE_BIN, false) // TODO: verify that thread isn't in recycle bin
