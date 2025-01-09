@@ -17,6 +17,7 @@ import androidx.core.app.RemoteInput
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.extensions.config
@@ -139,11 +140,6 @@ class NotificationHelper(private val context: Context) {
                 }
             }
 
-            val associatedShortcut = context.shortcutHelper.createOrUpdateShortcut(threadId)
-            if (associatedShortcut != null) {
-                setShortcutInfo(associatedShortcut)
-            }
-
             color = context.getProperPrimaryColor()
             setSmallIcon(R.drawable.ic_messenger)
             setContentIntent(contentPendingIntent)
@@ -172,7 +168,23 @@ class NotificationHelper(private val context: Context) {
                 deleteSmsPendingIntent
             ).setChannelId(notificationChannelId)
         }
-        notificationManager.notify(notificationId, builder.build())
+
+        var sc = context.shortcutHelper.getShortcut(threadId)
+        if (sc == null) {
+            ensureBackgroundThread {
+                sc = context.shortcutHelper.createOrUpdateShortcut(threadId)
+                builder.setShortcutInfo(sc)
+                notificationManager.notify(notificationId, builder.build())
+                context.shortcutHelper.reportReceiveMessageUsage(threadId)
+            }
+        }
+        else {
+            builder.setShortcutInfo(sc)
+            notificationManager.notify(notificationId, builder.build())
+            ensureBackgroundThread {
+                context.shortcutHelper.reportReceiveMessageUsage(threadId)
+            }
+        }
     }
 
     @SuppressLint("NewApi")

@@ -7,6 +7,7 @@ import android.widget.Toast.LENGTH_LONG
 import com.klinker.android.send_message.Settings
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.getThreadId
@@ -96,9 +97,10 @@ fun Context.sendMessageCompat(
             showErrorToast(e)
         }
     }
-
-    val threadId = getThreadId(addresses.toSet())
-    shortcutHelper.reportThreadUsage(threadId)
+    ensureBackgroundThread {
+        val threadId = getThreadId(addresses.toSet())
+        shortcutHelper.reportSendMessageUsage(threadId)
+    }
 }
 
 /**
