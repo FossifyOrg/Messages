@@ -2,15 +2,18 @@ package org.fossify.messages.helpers
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.core.app.Person
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.text.isDigitsOnly
+import java.util.HashMap
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.isOnMainThread
+import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getThreadParticipants
@@ -30,7 +33,15 @@ class ShortcutHelper(private val context: Context) {
     }
 
     fun buildShortcut(conv: Conversation, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
-        val participants = context.getThreadParticipants(conv.threadId, null)
+        val contactsMap: HashMap<Int, SimpleContact>? = if (!isOnMainThread()) {
+            val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+            val contacts = MyContactsContentProvider.getSimpleContacts(context, privateCursor)
+            HashMap(contacts.associateBy { it.rawId })
+        } else {
+            null
+        }
+
+        val participants = context.getThreadParticipants(conv.threadId, contactsMap)
         val persons: Array<Person> = participants.map { it.toPerson(context) }.toTypedArray()
         val intent = Intent(context, ThreadActivity::class.java).apply {
             action = Intent.ACTION_VIEW
@@ -69,10 +80,9 @@ class ShortcutHelper(private val context: Context) {
     }
 
     fun buildShortcut(threadId: Long, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
-        val convs = if(!isOnMainThread()) {
+        val convs = if (!isOnMainThread()) {
             context.getConversations(threadId)
-        }
-        else {
+        } else {
             null
         }
 
@@ -110,7 +120,7 @@ class ShortcutHelper(private val context: Context) {
     }
 
     private fun createOrUpdateShortcut(shortcut: ShortcutInfoCompat) {
-        if(getShortcut(shortcut.id.toLong()) != null) {
+        if (getShortcut(shortcut.id.toLong()) != null) {
             ShortcutManagerCompat.updateShortcuts(context, listOf(shortcut))
             return
         }
@@ -143,11 +153,11 @@ class ShortcutHelper(private val context: Context) {
         ShortcutManagerCompat.removeAllDynamicShortcuts(context)
     }
 
-    fun shouldPresentShortcut(conv: Conversation): Boolean  {
-        if(conv.isGroupConversation) {
+    fun shouldPresentShortcut(conv: Conversation): Boolean {
+        if (conv.isGroupConversation) {
             return true
         }
-        if(conv.isArchived || !conv.phoneNumber.isDigitsOnly()) {
+        if (conv.isArchived || !conv.phoneNumber.isDigitsOnly()) {
             return false
         }
         return true
