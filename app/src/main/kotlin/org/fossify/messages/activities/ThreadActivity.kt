@@ -38,7 +38,6 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.IntentSanitizer
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -233,17 +232,6 @@ class ThreadActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityThreadBinding::inflate)
 
     override fun onNewIntent(@SuppressLint("UnsafeIntentLaunch") intent: Intent) {
-        // avoid unsafe launch
-        val sanitizer = IntentSanitizer.Builder()
-            .allowPackage(BuildConfig.APPLICATION_ID)
-            .build()
-        try {
-            sanitizer.sanitizeByThrowing(intent)
-        } catch (e: Exception) {
-            showErrorToast(e)
-            finish()
-            return
-        }
 
         super.onNewIntent(intent)
         finish()
