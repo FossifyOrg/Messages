@@ -15,7 +15,7 @@ import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.isOnMainThread
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.activities.ThreadActivity
-import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.conversationsDB
 import org.fossify.messages.extensions.getThreadParticipants
 import org.fossify.messages.extensions.toPerson
 import org.fossify.messages.models.Conversation
@@ -55,17 +55,22 @@ class ShortcutHelper(private val context: Context) {
         }
 
         val shortcut = ShortcutInfoCompat.Builder(context, conv.threadId.toString()).apply {
-            setShortLabel(conv.title.substring(0, if (conv.title.length > 11) 11 else conv.title.length - 1))
+            setShortLabel(conv.title)
             setLongLabel(conv.title)
             setIsConversation()
             setLongLived(true)
             setPersons(persons)
             setIntent(intent)
             setRank(1)
-            if (!conv.isGroupConversation) {
+            if (!conv.isGroupConversation && !conv.usesCustomTitle) {
                 setIcon(persons[0].icon)
             } else {
-                val icon = IconCompat.createWithBitmap(contactsHelper.getColoredGroupIcon(conv.title).toBitmap())
+                val icon = if(conv.isGroupConversation) {
+                    IconCompat.createWithAdaptiveBitmap(contactsHelper.getColoredGroupIcon(conv.title).toBitmap())
+                }
+                else {
+                    IconCompat.createWithAdaptiveBitmap(contactsHelper.getContactLetterIcon(conv.title))
+                }
                 setIcon(icon)
             }
             capabilities.forEach { c ->
@@ -80,13 +85,13 @@ class ShortcutHelper(private val context: Context) {
     }
 
     fun buildShortcut(threadId: Long, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
-        val convs = if (!isOnMainThread()) {
-            context.getConversations(threadId)
+        val conv = if (!isOnMainThread()) {
+            context.conversationsDB.getConversationWithThreadId(threadId)
         } else {
             null
         }
 
-        if (convs.isNullOrEmpty()) {
+        if (conv == null) {
             val conv = Conversation(
                 threadId = threadId,
                 snippet = "",
@@ -103,7 +108,6 @@ class ShortcutHelper(private val context: Context) {
             return buildShortcut(conv, capabilities)
         }
 
-        val conv = convs[0]
         return buildShortcut(conv, capabilities)
     }
 

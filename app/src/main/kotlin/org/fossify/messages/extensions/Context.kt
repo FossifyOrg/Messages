@@ -1215,6 +1215,9 @@ fun Context.renameConversation(conversation: Conversation, newTitle: String): Co
     val updatedConv = conversation.copy(title = newTitle, usesCustomTitle = true)
     try {
         conversationsDB.insertOrUpdate(updatedConv)
+        ensureBackgroundThread {
+            shortcutHelper.createOrUpdateShortcut(updatedConv)
+        }
     } catch (e: Exception) {
         e.printStackTrace()
     }
