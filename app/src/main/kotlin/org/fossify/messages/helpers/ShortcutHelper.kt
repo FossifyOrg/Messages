@@ -37,6 +37,8 @@ class ShortcutHelper(private val context: Context) {
             putExtra(THREAD_ID, conv.threadId)
             putExtra(THREAD_TITLE, conv.title)
             putExtra(IS_RECYCLE_BIN, false) // TODO: verify that thread isn't in recycle bin
+            putExtra(IS_LAUNCHED_FROM_SHORTCUT, true)
+            putExtra(THREAD_NUMBER, conv.phoneNumber.ifEmpty { "unknown_phone_number" })
             addCategory(Intent.CATEGORY_DEFAULT)
             addCategory(Intent.CATEGORY_BROWSABLE)
         }
