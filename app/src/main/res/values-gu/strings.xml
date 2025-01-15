@@ -12,4 +12,9 @@
     <string name="start_conversation">નવી વાત ચાલુ કરો</string>
     <string name="pin_conversation">એકદમ ઉપર પિન કરો</string>
     <string name="sending">મોકલાય છે…</string>
+    <string name="send_now">હમણાં મોકલો</string>
+    <string name="new_message">નવો સંદેશ</string>
+    <string name="new_conversation">નવી વાત</string>
+    <string name="message_details_sender">મોકલનાર</string>
+    <string name="me">હું</string>
 </resources>
