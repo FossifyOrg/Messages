@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="message_not_sent_short">સંદેશ ના મોકલાયું</string>
+    <string name="message_sending_error">\'%s\' ને તમારું સંદેશ નથી મોકલાયું</string>
+    <string name="add_person">માણસ જોળો</string>
+    <string name="reply">જવાબ આપો</string>
+    <string name="loading_messages">સંદેશો લોડ થઈ રહ્યા છે…</string>
+    <string name="unpin_conversation">પિન માંથી કાઢો</string>
+    <string name="forward_message">આ બિજાને મોકલો</string>
+    <string name="type_a_message">સંદેશ લખો…</string>
+    <string name="message_not_sent_touch_retry">ના મોકલાયું. પાછું પ્રયાસ કરવા માટે અહીં દબાવો.</string>
+    <string name="start_conversation">નવી વાત ચાલુ કરો</string>
+    <string name="pin_conversation">એકદમ ઉપર પિન કરો</string>
+    <string name="sending">મોકલાય છે…</string>
+    <string name="send_now">હમણાં મોકલો</string>
+    <string name="new_message">નવો સંદેશ</string>
+    <string name="new_conversation">નવી વાત</string>
+    <string name="message_details_sender">મોકલનાર</string>
+    <string name="me">હું</string>
+</resources>

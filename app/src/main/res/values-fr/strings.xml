@@ -103,7 +103,7 @@
     <string name="carrier_send_error">Impossible d\'envoyer le message, erreur de l\'opérateur</string>
     <string name="unknown_error_occurred_sending_message">Impossible d\'envoyer le message, code d\'erreur : %d</string>
     <string name="invalid_short_code">Impossible de répondre à des codes courts comme celui-ci</string>
-    <string name="invalid_short_code_desc">Vous pouvez répondre uniquement à des codes courts composés de chiffres tels que « 503501 », mais pas à des codes contenant des lettres et des chiffres tels que « AB-CD0 ».</string>
+    <string name="invalid_short_code_desc">Vous pouvez répondre uniquement à des codes courts composés de chiffres tels que \"503501\", mais pas à des codes contenant des lettres et des chiffres tels que \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">La taille de la pièce jointe dépasse la limite maximale d\'un MMS</string>
     <string name="sim_card_not_available">Carte SIM indisponible</string>
     <string name="couldnt_download_mms">Impossible de télécharger le MMS</string>
@@ -119,4 +119,7 @@
     <string name="suggestions">Suggestions</string>
     <string name="archived_conversations">Archive</string>
     <string name="app_launcher_name">Messages</string>
+    <string name="export_blocked_keywords">Exporter les mots-clés bloqués</string>
+    <string name="import_blocked_keywords">Importer des mots clés bloqués</string>
+    <string name="keywords">Mots-clés</string>
 </resources>

@@ -1,0 +1,7 @@
+* Parandasime SMS/MMS töötlust kolmandate osapoolte kontekstis
+* Muutsime e-kirjade välistamiseks lühikoodide kontrolli
+* Parandasime sõnumikavandite kustutamise vea (uuesti)
+* Parandasime MMS-sõnumite teadete vigu
+* Parandasime sõnumite jutulõnga paigutusvigu
+* Muud väiksemad parandused ja täiendused
+* Lisasime veel tõlkeid

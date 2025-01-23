@@ -1,0 +1,7 @@
+* Vylepšené zpracování intentů SMS/MMS třetích stran
+* Upravena kontrola krátkých kódů tak, aby vylučovala e-maily
+* Opraven problém s odstraňováním návrhů zpráv (opět)
+* Opraveno několik chyb vyskakovacích zpráv u MMS zpráv
+* Opraveny některé problémy s rozvržením ve vlákně zpráv
+* Další drobné opravy chyb a vylepšení
+* Přidány další překlady
