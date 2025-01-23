@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 1.1.4 *(2025-01-23)*
+----------------------------
+
+* Fixed issue with forwarding messages (https://github.com/FossifyOrg/Messages/issues/288)
+* Added more translations
+
 Version 1.1.3 *(2025-01-05)*
 ----------------------------
 
