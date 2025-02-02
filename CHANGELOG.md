@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 1.1.5 *(2025-02-02)*
+----------------------------
+
+* Fixed issue with third party intents (#294)
+* Fixed toast error when receiving MMS messages (#287)
+* Fixed RTL layout issue in threads (#279)
+* Added more translations
+
 Version 1.1.4 *(2025-01-23)*
 ----------------------------
 
