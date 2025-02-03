@@ -1,7 +1,6 @@
 package org.fossify.messages.activities
 
 import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -122,18 +121,13 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
 
     private fun tryImportBlockedKeywords() {
         if (isQPlus()) {
-            Intent(Intent.ACTION_GET_CONTENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                val mimeType = "text/plain"
-                type = mimeType
-
-                try {
-                    importActivityResultLauncher.launch(mimeType)
-                } catch (e: ActivityNotFoundException) {
-                    toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
-                } catch (e: Exception) {
-                    showErrorToast(e)
-                }
+            val mimeType = "text/plain"
+            try {
+                importActivityResultLauncher.launch(mimeType)
+            } catch (e: ActivityNotFoundException) {
+                toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+            } catch (e: Exception) {
+                showErrorToast(e)
             }
         } else {
             handlePermission(PERMISSION_READ_STORAGE) { isAllowed ->
@@ -208,21 +202,15 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
     private fun tryExportBlockedNumbers() {
         if (isQPlus()) {
             ExportBlockedKeywordsDialog(this, config.lastBlockedKeywordExportPath, true) { file ->
-                Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                    type = "text/plain"
-                    putExtra(Intent.EXTRA_TITLE, file.name)
-                    addCategory(Intent.CATEGORY_OPENABLE)
-
-                    try {
-                        exportActivityResultLauncher.launch(file.name)
-                    } catch (e: ActivityNotFoundException) {
-                        toast(
-                            org.fossify.commons.R.string.system_service_disabled,
-                            Toast.LENGTH_LONG
-                        )
-                    } catch (e: Exception) {
-                        showErrorToast(e)
-                    }
+                try {
+                    exportActivityResultLauncher.launch(file.name)
+                } catch (e: ActivityNotFoundException) {
+                    toast(
+                        org.fossify.commons.R.string.system_service_disabled,
+                        Toast.LENGTH_LONG
+                    )
+                } catch (e: Exception) {
+                    showErrorToast(e)
                 }
             }
         } else {
