@@ -29,6 +29,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
+import org.fossify.commons.compose.extensions.linkColor
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.SimpleContactsHelper
@@ -49,6 +50,9 @@ import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Message
 import org.fossify.messages.models.ThreadItem
 import org.fossify.messages.models.ThreadItem.*
+import kotlin.text.map
+import kotlin.text.matches
+import kotlin.text.toList
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -254,7 +258,6 @@ class ThreadAdapter(
             if (attachment != null) {
                 putExtra(Intent.EXTRA_STREAM, attachment.getUri())
             }
-
             activity.startActivity(this)
         }
     }
@@ -272,6 +275,11 @@ class ThreadAdapter(
         }
     }
 
+    private fun findLinks(text : String): List<String> {
+        val regex = Regex("(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})")
+        val links = regex.findAll(text)
+        return links.map { it.value }.toList()
+    }
     private fun setupView(holder: ViewHolder, view: View, message: Message) {
         ItemMessageBinding.bind(view).apply {
             threadMessageHolder.isSelected = selectedKeys.contains(message.hashCode())
@@ -281,6 +289,7 @@ class ThreadAdapter(
                 beVisibleIf(message.body.isNotEmpty())
                 setOnLongClickListener {
                     holder.viewLongClicked()
+                    findLinks(text.toString()).map{ link -> activity.copyToClipboard(link)}
                     true
                 }
 
