@@ -1,0 +1,4 @@
+* Üçüncü taraf istek ayrıştırması ile ilgili sorun düzeltildi
+* Gelen MMS iletileri hatası düzeltildi
+* Thread'lerdeki RTL düzeni sorunu düzeltildi
+* Daha fazla çeviri eklendi
