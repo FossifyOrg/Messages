@@ -314,6 +314,7 @@ class ThreadAdapter(
             if (attachment != null) {
                 putExtra(Intent.EXTRA_STREAM, attachment.getUri())
             }
+
             activity.startActivity(this)
         }
     }
