@@ -1,19 +1,25 @@
 package org.fossify.messages.adapters
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.text.Spannable
+import android.text.method.LinkMovementMethod
+import android.text.style.URLSpan
 import android.util.Size
 import android.util.TypedValue
 import android.view.Menu
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.updateLayoutParams
@@ -49,6 +55,60 @@ import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Message
 import org.fossify.messages.models.ThreadItem
 import org.fossify.messages.models.ThreadItem.*
+
+class CustomLinkMovementMethod(private val activity: Activity, private val holder: MyRecyclerViewListAdapter<ThreadItem>.ViewHolder) : LinkMovementMethod() {
+
+    private var isLongPressDetected = false
+    private var startClickTime: Long = 0
+    private val longPressTime = 180L
+
+    override fun onTouchEvent(widget: TextView, buffer: Spannable, event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                startClickTime = System.currentTimeMillis()
+                isLongPressDetected = false
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+                if (!isLongPressDetected) {
+                    val elapsedTime = System.currentTimeMillis() - startClickTime
+                    if (elapsedTime >= longPressTime) {
+                        isLongPressDetected = true
+                        holder.viewLongClicked()
+                        val x = event.x.toInt()
+                        val y = event.y.toInt()
+                        val link = getLinkAt(widget, buffer, x, y)
+
+                        link?.let {
+                            activity.copyToClipboard(it)
+                            return true
+                        }
+                    }
+                }
+            }
+
+            MotionEvent.ACTION_UP -> {
+                if (isLongPressDetected) {
+                    return true
+                }
+            }
+
+            MotionEvent.ACTION_CANCEL -> {
+                isLongPressDetected = false
+            }
+        }
+
+        return super.onTouchEvent(widget, buffer, event)
+    }
+
+    private fun getLinkAt(widget: TextView, buffer: Spannable, x: Int, y: Int): String? {
+        val layout = widget.layout
+        val line = layout.getLineForVertical(y)
+        val offset = layout.getOffsetForHorizontal(line, x.toFloat())
+        val urlSpan = buffer.getSpans(offset, offset, URLSpan::class.java).firstOrNull()
+        return urlSpan?.url
+    }
+}
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -271,16 +331,6 @@ class ThreadAdapter(
         }
     }
 
-    private fun findLinks(text: String): List<String> {
-        val regex =
-            Regex(
-                "(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]" +
-                    "+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})"
-            )
-        val links = regex.findAll(text)
-        return links.map { it.value }.toList()
-    }
-
     private fun setupView(holder: ViewHolder, view: View, message: Message) {
         ItemMessageBinding.bind(view).apply {
             threadMessageHolder.isSelected = selectedKeys.contains(message.hashCode())
@@ -288,11 +338,7 @@ class ThreadAdapter(
                 text = message.body
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
                 beVisibleIf(message.body.isNotEmpty())
-                setOnLongClickListener {
-                    holder.viewLongClicked()
-                    findLinks(text.toString()).map { link -> activity.copyToClipboard(link) }
-                    true
-                }
+                threadMessageBody.movementMethod = CustomLinkMovementMethod(activity, holder)
 
                 setOnClickListener {
                     holder.viewClicked(message)
