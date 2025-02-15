@@ -15,7 +15,6 @@ import org.fossify.messages.messaging.SmsException.Companion.ERROR_PERSISTING_ME
 import org.fossify.messages.messaging.SmsException.Companion.ERROR_SENDING_MESSAGE
 import org.fossify.messages.models.Attachment
 
-@Deprecated("TODO: Move/rewrite messaging config code into the app.")
 fun Context.getSendMessageSettings(): Settings {
     val settings = Settings()
     settings.useSystemSending = true
@@ -30,6 +29,23 @@ fun Context.isLongMmsMessage(text: String, settings: Settings = getSendMessageSe
     val data = SmsMessage.calculateLength(text, false)
     val numPages = data.first()
     return numPages > settings.sendLongAsMmsAfter && settings.sendLongAsMms
+}
+
+fun Context.sendMmsMessagesSeparately(
+    text: String,
+    addresses: List<String>,
+    attachments: List<Attachment>,
+    settings: Settings,
+    messageId: Long?
+) {
+    val messagingUtils = messagingUtils
+    val lastIndex = attachments.lastIndex
+    if (attachments.size > 1) {
+        for (i in 0 until lastIndex) {
+            messagingUtils.sendMmsMessage("", addresses, attachments[i], settings, messageId)
+        }
+    }
+    messagingUtils.sendMmsMessage(text, addresses, attachments[lastIndex], settings, messageId)
 }
 
 /** Sends the message using the in-app SmsManager API wrappers if it's an SMS or using android-smsmms for MMS. */
@@ -49,18 +65,8 @@ fun Context.sendMessageCompat(
     val isMms = attachments.isNotEmpty() || isLongMmsMessage(text, settings)
             || addresses.size > 1 && settings.group
     if (isMms) {
-        // we send all MMS attachments separately to reduces the chances of hitting provider MMS limit.
         if (attachments.isNotEmpty()) {
-            val lastIndex = attachments.lastIndex
-            if (attachments.size > 1) {
-                for (i in 0 until lastIndex) {
-                    val attachment = attachments[i]
-                    messagingUtils.sendMmsMessage("", addresses, attachment, settings, messageId)
-                }
-            }
-
-            val lastAttachment = attachments[lastIndex]
-            messagingUtils.sendMmsMessage(text, addresses, lastAttachment, settings, messageId)
+            sendMmsMessagesSeparately(text, addresses, attachments, settings, messageId)
         } else {
             messagingUtils.sendMmsMessage(text, addresses, null, settings, messageId)
         }
@@ -79,12 +85,10 @@ fun Context.sendMessageCompat(
                     id = R.string.empty_destination_address,
                     length = LENGTH_LONG
                 )
-
                 ERROR_PERSISTING_MESSAGE -> toast(
                     id = R.string.unable_to_save_message,
                     length = LENGTH_LONG
                 )
-
                 ERROR_SENDING_MESSAGE -> toast(
                     msg = getString(R.string.unknown_error_occurred_sending_message, e.errorCode),
                     length = LENGTH_LONG
