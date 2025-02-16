@@ -116,4 +116,7 @@
     <string name="faq_3_text">Kyllä tukee ja voit ajoittaa viestin lähetyksen painamalla lähetyspainiketta pitkään ja valitsemalla halutun päivän ja kellonajan.</string>
     <string name="app_launcher_name">Viestit</string>
     <string name="enable_custom_notifications">Käytä mukautettuja ilmoituksia</string>
+    <string name="keywords">Avainsanat</string>
+    <string name="export_blocked_keywords">Vie estetyt avainsanat</string>
+    <string name="import_blocked_keywords">Tuo estetyt avainsanat</string>
 </resources>
