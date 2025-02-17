@@ -113,4 +113,7 @@
     <string name="archive_confirmation">Anda yakin ingin mengarsipkan %s?</string>
     <string name="restore_whole_conversation_confirmation">Anda yakin ingin memulihkan semua pesan dari percakapan ini?</string>
     <string name="add_a_blocked_keyword">Tambahkan kata kunci yang diblokir</string>
+    <string name="export_blocked_keywords">Ekspor kata kunci yang diblokir</string>
+    <string name="import_blocked_keywords">Impor kata kunci yang diblokir</string>
+    <string name="keywords">Kata kunci</string>
 </resources>
