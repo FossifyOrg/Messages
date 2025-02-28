@@ -78,10 +78,10 @@
     <string name="outgoing_messages">Eliraj mesaĝoj</string>
     <string name="group_message_mms">Sendi grupajn mesaĝojn kiel MMS</string>
     <string name="export_messages">Eksporti mesaĝojn</string>
-    <string name="export_sms">Eksporti SMS</string>
+    <string name="export_sms">Eksporti SMS-mesaĝojn</string>
     <string name="import_messages">Importi mesaĝojn</string>
-    <string name="import_sms">Importi SMS</string>
-    <string name="import_mms">Importi MMS</string>
+    <string name="import_sms">Importi SMS-mesaĝojn</string>
+    <string name="import_mms">Importi MMS-mesaĝojn</string>
     <string name="no_option_selected">Vi devas elekti almenaŭ unu elementon</string>
     <string name="empty_destination_address">Ne eblas sendi mesaĝon al malplena telefonnumero</string>
     <string name="error_radio_turned_off">Ne povis sendi mesaĝon (radioaparato estas malŝaltita)</string>
@@ -107,7 +107,7 @@
     </plurals>
     <string name="faq_1_title">Kial la aplikaĵo bezonas retkonekton?</string>
     <string name="no_reply_support">La sendinto ne subtenas respondojn</string>
-    <string name="export_mms">Eksporti MMS</string>
+    <string name="export_mms">Eksporti MMS-mesaĝojn</string>
     <string name="manage_blocked_keywords">Administri blokitajn ŝlosilvortojn</string>
     <string name="keywords">Ŝlosilvortoj</string>
     <string name="duplicate_item_warning">Duobligita elemento ne estis inkluzivita</string>
