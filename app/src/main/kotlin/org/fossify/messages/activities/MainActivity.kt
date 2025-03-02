@@ -550,7 +550,7 @@ class MainActivity : SimpleActivity() {
     private fun showSearchResults(
         messages: List<Message>,
         conversations: List<Conversation>,
-        searchedText: String
+        searchedText: String,
     ) {
         val searchResults = ArrayList<SearchResult>()
         conversations.forEach { conversation ->
@@ -637,8 +637,14 @@ class MainActivity : SimpleActivity() {
         val licenses = LICENSE_EVENT_BUS or LICENSE_SMS_MMS or LICENSE_INDICATOR_FAST_SCROLL
 
         val faqItems = arrayListOf(
-            FAQItem(title = R.string.faq_2_title, text = R.string.faq_2_text),
-            FAQItem(title = R.string.faq_3_title, text = R.string.faq_3_text),
+            FAQItem(
+                title = R.string.faq_2_title,
+                text = R.string.faq_2_text
+            ),
+            FAQItem(
+                title = R.string.faq_3_title,
+                text = R.string.faq_3_text
+            ),
             FAQItem(
                 title = org.fossify.commons.R.string.faq_9_title_commons,
                 text = org.fossify.commons.R.string.faq_9_text_commons
