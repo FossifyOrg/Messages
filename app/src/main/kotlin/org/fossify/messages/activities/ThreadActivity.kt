@@ -131,6 +131,7 @@ import org.fossify.messages.extensions.getThreadTitle
 import org.fossify.messages.extensions.indexOfFirstOrNull
 import org.fossify.messages.extensions.isGifMimeType
 import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.launchConversationDetails
 import org.fossify.messages.extensions.markMessageRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.messagesDB
@@ -387,7 +388,7 @@ class ThreadActivity : SimpleActivity() {
                 R.id.archive -> archiveConversation()
                 R.id.unarchive -> unarchiveConversation()
                 R.id.rename_conversation -> renameConversation()
-                R.id.conversation_details -> showConversationDetails()
+                R.id.conversation_details -> launchConversationDetails(threadId)
                 R.id.add_number_to_contact -> addNumberToContact()
                 R.id.dial_number -> dialNumber()
                 R.id.manage_people -> managePeople()
@@ -1255,13 +1256,6 @@ class ThreadActivity : SimpleActivity() {
                     setupThreadTitle()
                 }
             }
-        }
-    }
-
-    private fun showConversationDetails() {
-        Intent(this, ConversationDetailsActivity::class.java).apply {
-            putExtra(THREAD_ID, threadId)
-            startActivity(this)
         }
     }
 
