@@ -44,9 +44,9 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/cab_conversation_details"
-        android:icon="@drawable/ic_info_vector"
+        android:showAsAction="never"
         android:title="@string/conversation_details"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/cab_mark_as_read"
         android:showAsAction="never"
