@@ -15,6 +15,7 @@ import org.fossify.commons.helpers.KEY_PHONE
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.messages.R
+import org.fossify.messages.activities.ConversationDetailsActivity
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.dialogs.RenameConversationDialog
 import org.fossify.messages.extensions.config
@@ -24,6 +25,7 @@ import org.fossify.messages.extensions.markThreadMessagesRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.renameConversation
 import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.isShortCodeWithLetters
 import org.fossify.messages.models.Conversation
@@ -54,6 +56,7 @@ class ConversationsAdapter(
             findItem(R.id.cab_copy_number).isVisible = isSingleSelection && !isGroupConversation
             findItem(R.id.cab_rename_conversation).isVisible =
                 isSingleSelection && isGroupConversation
+            findItem(R.id.cab_conversation_details).isVisible = isSingleSelection
             findItem(R.id.cab_mark_as_read).isVisible = selectedItems.any { !it.read }
             findItem(R.id.cab_mark_as_unread).isVisible = selectedItems.any { it.read }
             findItem(R.id.cab_archive).isVisible = archiveAvailable
@@ -74,6 +77,7 @@ class ConversationsAdapter(
             R.id.cab_delete -> askConfirmDelete()
             R.id.cab_archive -> askConfirmArchive()
             R.id.cab_rename_conversation -> renameConversation(getSelectedItems().first())
+            R.id.cab_conversation_details -> showConversationDetails()
             R.id.cab_mark_as_read -> markAsRead()
             R.id.cab_mark_as_unread -> markAsUnread()
             R.id.cab_pin_conversation -> pinConversation(true)
@@ -238,6 +242,14 @@ class ConversationsAdapter(
                     }
                 }
             }
+        }
+    }
+
+    private fun showConversationDetails() {
+        val conversation = getSelectedItems().firstOrNull() ?: return
+        Intent(activity, ConversationDetailsActivity::class.java).apply {
+            putExtra(THREAD_ID, conversation.threadId)
+            activity.startActivity(this)
         }
     }
 
