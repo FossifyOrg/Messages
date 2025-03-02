@@ -151,6 +151,7 @@ import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
 import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.IS_LAUNCHED_FROM_SHORTCUT
 import org.fossify.messages.helpers.IS_RECYCLE_BIN
 import org.fossify.messages.helpers.MESSAGES_LIMIT
 import org.fossify.messages.helpers.PICK_CONTACT_INTENT
@@ -220,6 +221,7 @@ class ThreadActivity : SimpleActivity() {
     private var allMessagesFetched = false
     private var oldestMessageDate = -1
     private var isRecycleBin = false
+    private var isLaunchedFromShortcut = false
 
     private var isScheduledMessage: Boolean = false
     private var messageToResend: Long? = null
@@ -230,7 +232,8 @@ class ThreadActivity : SimpleActivity() {
 
     private val binding by viewBinding(ActivityThreadBinding::inflate)
 
-    override fun onNewIntent(intent: Intent) {
+    override fun onNewIntent(@SuppressLint("UnsafeIntentLaunch") intent: Intent) {
+
         super.onNewIntent(intent)
         finish()
         startActivity(intent)
@@ -263,6 +266,7 @@ class ThreadActivity : SimpleActivity() {
             binding.threadToolbar.title = it
         }
         isRecycleBin = intent.getBooleanExtra(IS_RECYCLE_BIN, false)
+        isLaunchedFromShortcut = intent.getBooleanExtra(IS_LAUNCHED_FROM_SHORTCUT, false)
 
         bus = EventBus.getDefault()
         bus!!.register(this)
@@ -462,6 +466,16 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun setupThread() {
+        if(conversation == null && isLaunchedFromShortcut) {
+            if (isTaskRoot) {
+                Intent(this, MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(this)
+                }
+            }
+            finish()
+            return
+        }
         val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ensureBackgroundThread {
             privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
