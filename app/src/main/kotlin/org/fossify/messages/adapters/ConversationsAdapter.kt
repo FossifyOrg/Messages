@@ -20,6 +20,7 @@ import org.fossify.messages.dialogs.RenameConversationDialog
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.deleteConversation
 import org.fossify.messages.extensions.dialNumber
+import org.fossify.messages.extensions.launchConversationDetails
 import org.fossify.messages.extensions.markThreadMessagesRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.renameConversation
@@ -54,6 +55,7 @@ class ConversationsAdapter(
             findItem(R.id.cab_copy_number).isVisible = isSingleSelection && !isGroupConversation
             findItem(R.id.cab_rename_conversation).isVisible =
                 isSingleSelection && isGroupConversation
+            findItem(R.id.cab_conversation_details).isVisible = isSingleSelection
             findItem(R.id.cab_mark_as_read).isVisible = selectedItems.any { !it.read }
             findItem(R.id.cab_mark_as_unread).isVisible = selectedItems.any { it.read }
             findItem(R.id.cab_archive).isVisible = archiveAvailable
@@ -74,6 +76,9 @@ class ConversationsAdapter(
             R.id.cab_delete -> askConfirmDelete()
             R.id.cab_archive -> askConfirmArchive()
             R.id.cab_rename_conversation -> renameConversation(getSelectedItems().first())
+            R.id.cab_conversation_details ->
+                activity.launchConversationDetails(getSelectedItems().first().threadId)
+
             R.id.cab_mark_as_read -> markAsRead()
             R.id.cab_mark_as_unread -> markAsUnread()
             R.id.cab_pin_conversation -> pinConversation(true)

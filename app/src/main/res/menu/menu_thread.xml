@@ -35,9 +35,9 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/conversation_details"
-        android:icon="@drawable/ic_info_vector"
+        android:showAsAction="never"
         android:title="@string/conversation_details"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/add_number_to_contact"
         android:title="@string/add_number_to_contact"
