@@ -2,6 +2,9 @@ package org.fossify.messages.adapters
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -9,14 +12,13 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.text.Spannable
+import android.text.SpannableString
 import android.text.method.LinkMovementMethod
+import android.text.style.BackgroundColorSpan
 import android.text.style.URLSpan
 import android.util.Size
 import android.util.TypedValue
-import android.view.Menu
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -56,59 +58,94 @@ import org.fossify.messages.models.Message
 import org.fossify.messages.models.ThreadItem
 import org.fossify.messages.models.ThreadItem.*
 
-class CustomLinkMovementMethod(private val activity: Activity, private val holder: MyRecyclerViewListAdapter<ThreadItem>.ViewHolder) : LinkMovementMethod() {
-
+class CustomLinkMovementMethod(private val activity: Activity) : LinkMovementMethod() {
     private var isLongPressDetected = false
-    private var startClickTime: Long = 0
-    private val longPressTime = 180L
+    private var currentLink: URLSpan? = null
+    private var originalText: CharSequence? = null
+    private var longPressRunnable: Runnable? = null
 
     override fun onTouchEvent(widget: TextView, buffer: Spannable, event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                startClickTime = System.currentTimeMillis()
-                isLongPressDetected = false
-            }
-
-            MotionEvent.ACTION_MOVE -> {
-                if (!isLongPressDetected) {
-                    val elapsedTime = System.currentTimeMillis() - startClickTime
-                    if (elapsedTime >= longPressTime) {
-                        isLongPressDetected = true
-                        holder.viewLongClicked()
-                        val x = event.x.toInt()
-                        val y = event.y.toInt()
-                        val link = getLinkAt(widget, buffer, x, y)
-
-                        link?.let {
-                            activity.copyToClipboard(it)
-                            return true
-                        }
+                val x = event.x.toInt()
+                val y = event.y.toInt()
+                val urlSpan = getURLSpanAt(widget, buffer, x, y)
+                if (urlSpan != null) {
+                    currentLink = urlSpan
+                    if (originalText == null) {
+                        originalText = widget.text
                     }
-                }
-            }
+                    highlightText(widget, buffer, urlSpan)
+                    isLongPressDetected = false
+                    longPressRunnable = Runnable {
+                        isLongPressDetected = true
+                        originalText?.let { widget.text = it.toString() }
+                        activity.copyToClipboard(urlSpan.url)
 
+                    }
+                    widget.postDelayed(longPressRunnable, ViewConfiguration.getLongPressTimeout().toLong())
+                    return true
+                }
+                return super.onTouchEvent(widget, buffer, event)
+            }
+            MotionEvent.ACTION_MOVE -> {
+                return super.onTouchEvent(widget, buffer, event)
+            }
             MotionEvent.ACTION_UP -> {
+                widget.removeCallbacks(longPressRunnable)
                 if (isLongPressDetected) {
+                    originalText?.let { widget.text = it.toString() }
+                    clearState()
+                    return true
+                } else {
+                    currentLink?.onClick(widget)
+                    clearState()
                     return true
                 }
             }
-
             MotionEvent.ACTION_CANCEL -> {
-                isLongPressDetected = false
+                widget.removeCallbacks(longPressRunnable)
+                clearState()
+                return true
             }
+            else -> return super.onTouchEvent(widget, buffer, event)
         }
-
-        return super.onTouchEvent(widget, buffer, event)
     }
 
-    private fun getLinkAt(widget: TextView, buffer: Spannable, x: Int, y: Int): String? {
-        val layout = widget.layout
+    private fun getURLSpanAt(widget: TextView, buffer: Spannable, x: Int, y: Int): URLSpan? {
+        val layout = widget.layout ?: return null
         val line = layout.getLineForVertical(y)
         val offset = layout.getOffsetForHorizontal(line, x.toFloat())
-        val urlSpan = buffer.getSpans(offset, offset, URLSpan::class.java).firstOrNull()
-        return urlSpan?.url
+        val spans = buffer.getSpans(offset, offset, URLSpan::class.java)
+        return spans.firstOrNull()
+    }
+
+    private fun highlightText(textView: TextView, buffer: Spannable, urlSpan: URLSpan) {
+        val start = buffer.getSpanStart(urlSpan)
+        val end = buffer.getSpanEnd(urlSpan)
+        if (start >= 0 && end > start && originalText != null) {
+            val spannable = SpannableString(originalText)
+            spannable.setSpan(
+                BackgroundColorSpan(Color.YELLOW),
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            textView.text = spannable
+        }
+    }
+
+    private fun clearState() {
+        currentLink = null
+        originalText = null
+        isLongPressDetected = false
+        longPressRunnable = null
     }
 }
+
+
+
+
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -339,7 +376,7 @@ class ThreadAdapter(
                 text = message.body
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
                 beVisibleIf(message.body.isNotEmpty())
-                threadMessageBody.movementMethod = CustomLinkMovementMethod(activity, holder)
+                threadMessageBody.movementMethod = CustomLinkMovementMethod(activity)
 
                 setOnClickListener {
                     holder.viewClicked(message)
