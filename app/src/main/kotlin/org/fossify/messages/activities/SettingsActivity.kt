@@ -31,7 +31,7 @@ import org.fossify.commons.helpers.NavigationIcon
 import org.fossify.commons.helpers.PROTECTION_FINGERPRINT
 import org.fossify.commons.helpers.SHOW_ALL_TABS
 import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isPiePlus
+import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.helpers.isTiramisuPlus
 import org.fossify.commons.models.RadioItem
 import org.fossify.messages.R
@@ -63,7 +63,7 @@ class SettingsActivity : SimpleActivity() {
         add("application/json")
         add("application/xml")
         add("text/xml")
-        if (!isPiePlus()) {
+        if (!isQPlus()) {
             add("application/octet-stream")
         }
     }
