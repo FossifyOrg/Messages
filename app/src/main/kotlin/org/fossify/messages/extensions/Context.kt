@@ -21,9 +21,11 @@ import android.provider.Telephony.Threads
 import android.provider.Telephony.ThreadsColumns
 import android.telephony.SubscriptionManager
 import android.text.TextUtils
+import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.mms.pdu_alt.PduHeaders
 import me.leolin.shortcutbadger.ShortcutBadger
 import org.fossify.commons.extensions.areDigitsOnly
 import org.fossify.commons.extensions.getBlockedNumbers
@@ -297,16 +299,19 @@ fun Context.getMMS(
 }
 
 fun Context.getMMSSender(msgId: Long): String {
-    val uri = Uri.parse("${Mms.CONTENT_URI}/$msgId/addr")
+    val uri = "${Mms.CONTENT_URI}/$msgId/addr".toUri()
     val projection = arrayOf(
         Mms.Addr.ADDRESS
     )
 
+    val selection = "${Mms.Addr.TYPE} = ?"
+    val selectionArgs = arrayOf(PduHeaders.FROM.toString())
+
     try {
-        val cursor = contentResolver.query(uri, projection, null, null, null)
+        val cursor = contentResolver.query(uri, projection, selection, selectionArgs, null)
         cursor?.use {
-            if (cursor.moveToFirst()) {
-                return cursor.getStringValue(Mms.Addr.ADDRESS)
+            if (it.moveToFirst()) {
+                return it.getStringValue(Mms.Addr.ADDRESS)
             }
         }
     } catch (ignored: Exception) {
