@@ -54,6 +54,7 @@ import org.fossify.messages.databases.MessagesDatabase
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
 import org.fossify.messages.helpers.Config
 import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.MAX_MESSAGE_LENGTH
 import org.fossify.messages.helpers.MESSAGES_LIMIT
 import org.fossify.messages.helpers.NotificationHelper
 import org.fossify.messages.helpers.generateRandomId
@@ -476,7 +477,10 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
         val partId = cursor.getLongValue(Mms._ID)
         val mimetype = cursor.getStringValue(Mms.Part.CONTENT_TYPE)
         if (mimetype == "text/plain") {
-            messageAttachment.text = cursor.getStringValue(Mms.Part.TEXT) ?: ""
+            messageAttachment.text = cursor
+                .getStringValue(Mms.Part.TEXT)
+                ?.take(MAX_MESSAGE_LENGTH)
+                .orEmpty()
         } else if (mimetype.startsWith("image/") || mimetype.startsWith("video/")) {
             val fileUri = Uri.withAppendedPath(uri, partId.toString())
             var width = 0
