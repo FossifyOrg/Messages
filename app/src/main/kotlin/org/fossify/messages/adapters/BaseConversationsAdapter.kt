@@ -30,7 +30,7 @@ abstract class BaseConversationsAdapter(
     activity: SimpleActivity,
     recyclerView: MyRecyclerView,
     onRefresh: () -> Unit,
-    itemClick: (Any) -> Unit
+    itemClick: (Any) -> Unit,
 ) : MyRecyclerViewListAdapter<Conversation>(
     activity = activity,
     recyclerView = recyclerView,
@@ -46,10 +46,8 @@ abstract class BaseConversationsAdapter(
 
     init {
         setupDragListener(true)
-        ensureBackgroundThread {
-            fetchDrafts(drafts)
-        }
         setHasStableIds(true)
+        updateDrafts()
 
         registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() = restoreRecyclerViewState()
@@ -69,7 +67,7 @@ abstract class BaseConversationsAdapter(
 
     fun updateConversations(
         newConversations: ArrayList<Conversation>,
-        commitCallback: (() -> Unit)? = null
+        commitCallback: (() -> Unit)? = null,
     ) {
         saveRecyclerViewState()
         submitList(newConversations.toList(), commitCallback)
@@ -80,9 +78,9 @@ abstract class BaseConversationsAdapter(
         ensureBackgroundThread {
             val newDrafts = HashMap<Long, String>()
             fetchDrafts(newDrafts)
-            if (drafts.hashCode() != newDrafts.hashCode()) {
-                drafts = newDrafts
-                activity.runOnUiThread {
+            activity.runOnUiThread {
+                if (drafts.hashCode() != newDrafts.hashCode()) {
+                    drafts = newDrafts
                     notifyDataSetChanged()
                 }
             }
