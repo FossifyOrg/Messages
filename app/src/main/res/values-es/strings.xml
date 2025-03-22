@@ -76,9 +76,9 @@
         <item quantity="many">%d mensajes</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
-    <string name="keyword">Teclado</string>
-    <string name="blocked_keywords">Teclado bloqueado</string>
-    <string name="manage_blocked_keywords">Gestionar los teclados bloqueados</string>
+    <string name="keyword">Palabra clave</string>
+    <string name="blocked_keywords">Palabras clave bloqueadas</string>
+    <string name="manage_blocked_keywords">Gestionar las palabras clave bloqueadas</string>
     <string name="not_blocking_keywords">No estás bloqueando ninguna palabra clave. Puede añadir palabras clave aquí para bloquear todos los mensajes que las contengan.</string>
     <string name="add_a_blocked_keyword">Añadir una palabra clave para bloquearla</string>
     <string name="lock_screen_visibility">Visibilidad de las notificaciones en la pantalla de bloqueo</string>
