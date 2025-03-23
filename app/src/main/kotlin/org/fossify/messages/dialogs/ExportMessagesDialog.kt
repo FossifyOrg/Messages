@@ -14,6 +14,7 @@ import org.fossify.commons.extensions.setupDialogStuff
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.value
+import org.fossify.commons.helpers.MEDIUM_ALPHA
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.activities.SimpleActivity
@@ -72,7 +73,7 @@ class ExportMessagesDialog(
                 getButton(AlertDialog.BUTTON_NEGATIVE)
             ).forEach {
                 it.isEnabled = false
-                it.alpha = 0.6f
+                it.alpha = MEDIUM_ALPHA
             }
 
             binding.exportProgress.setIndicatorColor(activity.getProperPrimaryColor())
@@ -112,7 +113,7 @@ class ExportMessagesDialog(
                     // delete the file to avoid leaving behind an empty/corrupt file
                     try {
                         DocumentsContract.deleteDocument(activity.contentResolver, uri)
-                    } catch (ignored: Exception) {
+                    } catch (_: Exception) {
                         // ignored because we don't want to show two error messages
                     }
                 }

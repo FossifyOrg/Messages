@@ -89,8 +89,9 @@ abstract class BaseConversationsAdapter(
 
     override fun getSelectableItemCount() = itemCount
 
-    protected fun getSelectedItems() =
-        currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+    protected fun getSelectedItems() = currentList.filter {
+        selectedKeys.contains(it.hashCode())
+    } as ArrayList<Conversation>
 
     override fun getIsItemSelectable(position: Int) = true
 
@@ -143,7 +144,9 @@ abstract class BaseConversationsAdapter(
             draftIndicator.beVisibleIf(!smsDraft.isNullOrEmpty())
             draftIndicator.setTextColor(properPrimaryColor)
 
-            pinIndicator.beVisibleIf(activity.config.pinnedConversations.contains(conversation.threadId.toString()))
+            pinIndicator.beVisibleIf(
+                activity.config.pinnedConversations.contains(conversation.threadId.toString())
+            )
             pinIndicator.applyColorFilter(textColor)
 
             conversationFrame.isSelected = selectedKeys.contains(conversation.hashCode())

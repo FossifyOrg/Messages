@@ -59,7 +59,8 @@ class MessagesImporter(private val activity: SimpleActivity) {
 
             val messages = if (isUpsideDownCakePlus()) {
                 deserializedList.map { message ->
-                    // workaround for messages not being imported on Android 14 when the device has a different subscriptionId (see #191)
+                    // workaround for messages not being imported on Android 14 when the device
+                    // has a different subscriptionId (see #191)
                     when (message) {
                         is SmsBackup -> message.copy(subscriptionId = -1)
                         is MmsBackup -> message.copy(subscriptionId = -1)
@@ -70,9 +71,9 @@ class MessagesImporter(private val activity: SimpleActivity) {
             }
 
             ImportMessagesDialog(activity, messages)
-        } catch (e: SerializationException) {
+        } catch (_: SerializationException) {
             activity.toast(org.fossify.commons.R.string.invalid_file_format)
-        } catch (e: IllegalArgumentException) {
+        } catch (_: IllegalArgumentException) {
             activity.toast(org.fossify.commons.R.string.invalid_file_format)
         } catch (e: Exception) {
             activity.showErrorToast(e)
@@ -201,7 +202,7 @@ class MessagesImporter(private val activity: SimpleActivity) {
     private fun getInputStreamFromUri(uri: Uri): InputStream? {
         return try {
             activity.contentResolver.openInputStream(uri)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             null
         }
     }
@@ -209,14 +210,12 @@ class MessagesImporter(private val activity: SimpleActivity) {
     private fun isFileXml(uri: Uri): Boolean {
         val inputStream = getInputStreamFromUri(uri)
         return inputStream?.bufferedReader()?.use { reader ->
-            reader.readLine()?.startsWith("<?xml") ?: false
-        } ?: false
+            reader.readLine()?.startsWith("<?xml") == true
+        } == true
     }
 
     private fun isXmlMimeType(mimeType: String): Boolean {
-        return mimeType.equals("application/xml", ignoreCase = true) || mimeType.equals(
-            other = "text/xml",
-            ignoreCase = true
-        )
+        return mimeType.equals("application/xml", ignoreCase = true)
+                || mimeType.equals(other = "text/xml", ignoreCase = true)
     }
 }
