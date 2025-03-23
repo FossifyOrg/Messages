@@ -1,0 +1,7 @@
+* Gelişmiş üçüncü taraf SMS/MMS isteği ayrıştırması
+* E-postaları hariç tutmak için değiştirilmiş kısa kod kontrolü
+* İletilerin taslağının silinmesi ile ilgili sorun (tekrar) düzeltildi
+* MMS iletileri için çoklu hatalar düzeltildi
+* ileti dizisindeki bazı düzen sorunları düzeltildi
+* Diğer küçük hata düzeltmeleri ve iyileştirmeleri
+* Daha fazla çeviri eklendi

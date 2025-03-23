@@ -1,0 +1,8 @@
+* Onay kutuları düğmelerle değiştirdi
+* Android 7 ve daha eski sürümler için destek kaldırıldı
+* İletileri içe aktarma/dışa aktarma ile ilgili çeşitli sorunları düzeltti
+* MMS iletileri için anahtar sözcük engelleme sorunu düzeltildi
+* İletilerin taslağının silinmesi ile ilgili sorun düzeltildi
+* Geliştirilmiş uygulama kilit mantığı ve arayüzü eklendi
+* Diğer küçük hata düzeltmeleri ve iyileştirmeleri
+* Daha fazla çeviri eklendi
