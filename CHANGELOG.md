@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 1.1.6 *(2025-03-24)*
+----------------------------
+
+* Fixed crash when viewing messages
+* Fixes incorrect author name in group messages (#180)
+* Removed storage permission requirement (#309)
+* Other minor fixes and improvements
+* Added more translations
+
 Version 1.1.5 *(2025-02-02)*
 ----------------------------
 
