@@ -89,7 +89,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
         }
     }
 
-    private val exportActivityResultLauncher =
+    private val createDocument =
         registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
             try {
                 val outputStream = uri?.let { contentResolver.openOutputStream(it) }
@@ -101,7 +101,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
             }
         }
 
-    private val importActivityResultLauncher =
+    private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             try {
                 if (uri != null) {
@@ -115,8 +115,8 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
     private fun tryImportBlockedKeywords() {
         val mimeType = "text/plain"
         try {
-            importActivityResultLauncher.launch(mimeType)
-        } catch (e: ActivityNotFoundException) {
+            getContent.launch(mimeType)
+        } catch (_: ActivityNotFoundException) {
             toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
         } catch (e: Exception) {
             showErrorToast(e)
@@ -179,10 +179,14 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
     }
 
     private fun tryExportBlockedNumbers() {
-        ExportBlockedKeywordsDialog(this, config.lastBlockedKeywordExportPath, true) { file ->
+        ExportBlockedKeywordsDialog(
+            activity = this,
+            path = config.lastBlockedKeywordExportPath,
+            hidePath = true
+        ) { file ->
             try {
-                exportActivityResultLauncher.launch(file.name)
-            } catch (e: ActivityNotFoundException) {
+                createDocument.launch(file.name)
+            } catch (_: ActivityNotFoundException) {
                 toast(
                     org.fossify.commons.R.string.system_service_disabled,
                     Toast.LENGTH_LONG
