@@ -29,7 +29,7 @@ fun Activity.dialNumber(phoneNumber: String, callback: (() -> Unit)? = null) {
         try {
             startActivity(this)
             callback?.invoke()
-        } catch (e: ActivityNotFoundException) {
+        } catch (_: ActivityNotFoundException) {
             toast(org.fossify.commons.R.string.no_app_found)
         } catch (e: Exception) {
             showErrorToast(e)
@@ -46,7 +46,7 @@ fun Activity.launchViewIntent(uri: Uri, mimetype: String, filename: String) {
         try {
             hideKeyboard()
             startActivity(this)
-        } catch (e: ActivityNotFoundException) {
+        } catch (_: ActivityNotFoundException) {
             val newMimetype = filename.getMimeType()
             if (newMimetype.isNotEmpty() && mimetype != newMimetype) {
                 launchViewIntent(uri, newMimetype, filename)

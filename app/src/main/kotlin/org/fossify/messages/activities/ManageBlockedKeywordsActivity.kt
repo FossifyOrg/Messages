@@ -5,24 +5,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import org.fossify.commons.dialogs.ExportBlockedNumbersDialog
-import org.fossify.commons.dialogs.FilePickerDialog
 import org.fossify.commons.extensions.beVisibleIf
-import org.fossify.commons.extensions.getFileOutputStream
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.getTempFile
 import org.fossify.commons.extensions.showErrorToast
-import org.fossify.commons.extensions.toFileDirItem
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.underlineText
 import org.fossify.commons.extensions.updateTextColors
 import org.fossify.commons.extensions.viewBinding
 import org.fossify.commons.helpers.ExportResult
 import org.fossify.commons.helpers.NavigationIcon
-import org.fossify.commons.helpers.PERMISSION_READ_STORAGE
-import org.fossify.commons.helpers.PERMISSION_WRITE_STORAGE
 import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.interfaces.RefreshRecyclerViewListener
 import org.fossify.messages.R
 import org.fossify.messages.databinding.ActivityManageBlockedKeywordsBinding
@@ -96,7 +89,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
         }
     }
 
-    private val exportActivityResultLauncher =
+    private val createDocument =
         registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
             try {
                 val outputStream = uri?.let { contentResolver.openOutputStream(it) }
@@ -108,7 +101,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
             }
         }
 
-    private val importActivityResultLauncher =
+    private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             try {
                 if (uri != null) {
@@ -120,27 +113,13 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
         }
 
     private fun tryImportBlockedKeywords() {
-        if (isQPlus()) {
-            val mimeType = "text/plain"
-            try {
-                importActivityResultLauncher.launch(mimeType)
-            } catch (e: ActivityNotFoundException) {
-                toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
-            } catch (e: Exception) {
-                showErrorToast(e)
-            }
-        } else {
-            handlePermission(PERMISSION_READ_STORAGE) { isAllowed ->
-                if (isAllowed) {
-                    pickFileToImportBlockedKeywords()
-                }
-            }
-        }
-    }
-
-    private fun pickFileToImportBlockedKeywords() {
-        FilePickerDialog(this) {
-            importBlockedKeywords(it)
+        val mimeType = "text/plain"
+        try {
+            getContent.launch(mimeType)
+        } catch (_: ActivityNotFoundException) {
+            toast(org.fossify.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+        } catch (e: Exception) {
+            showErrorToast(e)
         }
     }
 
@@ -200,32 +179,20 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
     }
 
     private fun tryExportBlockedNumbers() {
-        if (isQPlus()) {
-            ExportBlockedKeywordsDialog(this, config.lastBlockedKeywordExportPath, true) { file ->
-                try {
-                    exportActivityResultLauncher.launch(file.name)
-                } catch (e: ActivityNotFoundException) {
-                    toast(
-                        org.fossify.commons.R.string.system_service_disabled,
-                        Toast.LENGTH_LONG
-                    )
-                } catch (e: Exception) {
-                    showErrorToast(e)
-                }
-            }
-        } else {
-            handlePermission(PERMISSION_WRITE_STORAGE) { isAllowed ->
-                if (isAllowed) {
-                    ExportBlockedNumbersDialog(
-                        this,
-                        config.lastBlockedKeywordExportPath,
-                        false
-                    ) { file ->
-                        getFileOutputStream(file.toFileDirItem(this), true) { out ->
-                            exportBlockedKeywordsTo(out)
-                        }
-                    }
-                }
+        ExportBlockedKeywordsDialog(
+            activity = this,
+            path = config.lastBlockedKeywordExportPath,
+            hidePath = true
+        ) { file ->
+            try {
+                createDocument.launch(file.name)
+            } catch (_: ActivityNotFoundException) {
+                toast(
+                    org.fossify.commons.R.string.system_service_disabled,
+                    Toast.LENGTH_LONG
+                )
+            } catch (e: Exception) {
+                showErrorToast(e)
             }
         }
     }
