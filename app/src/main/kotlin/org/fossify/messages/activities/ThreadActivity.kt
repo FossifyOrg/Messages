@@ -299,6 +299,7 @@ class ThreadActivity : SimpleActivity() {
             if (smsDraft.isNotEmpty()) {
                 runOnUiThread {
                     binding.messageHolder.threadTypeMessage.setText(smsDraft)
+                    binding.messageHolder.threadTypeMessage.setSelection(smsDraft.length)
                 }
             }
         }
