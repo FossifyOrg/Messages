@@ -1,8 +1,0 @@
-* Nahrazení zaškrtávacích políček přepínači
-* Odstraněna podpora systému Android 7 a starších verzí
-* Opraveny různé problémy související s importem/exportem zpráv
-* Opraveno blokování klíčových slov u zpráv MMS
-* Opraven problém s odstraňováním konceptů zpráv
-* Vylepšena logika a rozhraní zámku aplikace
-* Další drobné opravy chyb a vylepšení
-* Přidány další překlady

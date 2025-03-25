@@ -1,5 +1,0 @@
-* Parandasime piltide vaatamisel tekkinud kokkujooksmise
-* Parandasime rühmasõnumites kuvatud vale sõnumi koostaja nime
-* Eemaldasime andmeruumi õiguste nõude
-* Muud pisiparandused ja täiendused
-* Täiendasime tõlkeid

@@ -1,2 +1,0 @@
-* 修复了转发消息的问题 (https://github.com/FossifyOrg/Messages/issues/288)
-* 添加了更多翻译

@@ -1,5 +1,0 @@
-* Corregit un error en veure missatges
-* Corregeix el nom d'autor incorrecte en els missatges de grup
-* Eliminat el requisit de permís d'emmagatzematge
-* Altres correccions i millores menors
-* S'han afegit més traduccions

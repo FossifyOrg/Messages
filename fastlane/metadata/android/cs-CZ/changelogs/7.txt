@@ -1,2 +1,0 @@
-* Opraveny problémy s přesměrováním zpráv (https://github.com/FossifyOrg/Messages/issues/288)
-* Přidány další překlady

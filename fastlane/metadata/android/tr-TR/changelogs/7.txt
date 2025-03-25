@@ -1,2 +1,0 @@
-* Gönderilen iletiler ile ilgili sorunlar düzeltildi (https://github.com/FossifyOrg/Messages/issues/288)
-* Daha fazla çeviri eklendi

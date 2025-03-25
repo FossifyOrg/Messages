@@ -1,8 +1,0 @@
-* Caselles de selecció substituïdes per interruptors
-* Eliminat el suport per a l'Android 7 i versions anteriors
-* Corregits diversos problemes relacionats amb la importació/exportació de missatges
-* Corregit el bloqueig de paraules clau per als missatges MMS
-* Corregit un problema amb la supressió d'esborrany de missatges
-* Millorada de la lògica de bloqueig d'aplicacions i la interfície
-* Altres correccions i millores menors
-* S'han afegit més traduccions

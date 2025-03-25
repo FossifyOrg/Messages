@@ -1,5 +1,0 @@
-* Opraven pád během zobrazování zpráv
-* Oprava nesprávného jména autora ve skupinových zprávách
-* Odstraněn požadavek na oprávnění k úložišti
-* Další menší opravy a vylepšení
-* Přidány další překlady
