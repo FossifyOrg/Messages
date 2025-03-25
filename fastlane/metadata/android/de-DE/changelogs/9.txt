@@ -1,0 +1,5 @@
+* Absturz beim Anzeigen von Nachrichten behoben
+* Falsche Autorennamen in Gruppennachrichten behoben
+* Erfordernis der Speicherberechtigung entfernt
+* Weitere kleinere Fehlerbehebungen und Verbesserungen
+* Weitere Übersetzungen hinzugefügt
