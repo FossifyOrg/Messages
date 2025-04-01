@@ -15,11 +15,11 @@ eventbus = "3.3.1"
 #Room
 room = "2.6.1"
 #Fossify
-commons = "79b1077e39"
+commons = "b3897c7e30"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "8.9.0"
+gradlePlugins-agp = "8.9.1"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
@@ -31,8 +31,8 @@ ez-vcard = "0.11.3"
 shortcut-badger = "1.1.22"
 #versioning
 app-version-appId = "org.fossify.messages"
-app-version-versionCode = "9"
-app-version-versionName = "1.1.6"
+app-version-versionCode = "10"
+app-version-versionName = "1.1.7"
 [libraries]
 #AndroidX
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
