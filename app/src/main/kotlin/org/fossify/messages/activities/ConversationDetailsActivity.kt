@@ -54,7 +54,7 @@ class ConversationDetailsActivity : SimpleActivity() {
             useTopSearchMenu = false
         )
         setupMaterialScrollListener(
-            scrollingView = binding.participantsRecyclerview,
+            scrollingView = binding.conversationDetailsNestedScrollview,
             toolbar = binding.conversationDetailsToolbar
         )
 

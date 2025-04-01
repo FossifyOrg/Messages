@@ -14,94 +14,103 @@
         app:title="@string/conversation_details"
         app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
 
-    <LinearLayout
-        android:id="@+id/conversation_details_holder"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/conversation_details_nested_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:orientation="vertical">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/notifications_heading"
-            style="@style/SettingsSectionLabelStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/notifications"
-            android:visibility="gone"
-            tools:visibility="visible" />
-
-        <RelativeLayout
-            android:id="@+id/custom_notifications_holder"
-            style="@style/SettingsHolderSwitchStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <org.fossify.commons.views.MyMaterialSwitch
-                android:id="@+id/custom_notifications"
-                style="@style/SettingsSwitchStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/enable_custom_notifications" />
-
-        </RelativeLayout>
-
-        <org.fossify.commons.views.MyTextView
-            android:id="@+id/custom_notifications_button"
-            style="@style/SettingsHolderTextViewOneLinerStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/customize_notifications"
-            android:visibility="gone"
-            tools:visibility="visible" />
-
-        <include
-            android:id="@+id/settings_conversation_notifications_divider"
-            layout="@layout/divider" />
-
-        <TextView
-            android:id="@+id/conversation_name_heading"
-            style="@style/SettingsSectionLabelStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/conversation_name" />
-
-        <org.fossify.commons.views.MyTextView
-            android:id="@+id/conversation_name"
-            style="@style/SettingsHolderTextViewOneLinerStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:drawableEnd="@drawable/ic_edit_vector"
-            android:drawablePadding="@dimen/bigger_margin"
-            android:ellipsize="end"
-            android:focusable="true"
-            android:maxLines="1"
-            android:textSize="@dimen/bigger_text_size"
-            tools:text="Conversation name" />
-
-        <include
-            android:id="@+id/settings_conversation_name_divider"
-            layout="@layout/divider" />
-
-        <TextView
-            android:id="@+id/members_heading"
-            style="@style/SettingsSectionLabelStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/members" />
-
-        <org.fossify.commons.views.MyRecyclerView
-            android:id="@+id/participants_recyclerview"
+        <LinearLayout
+            android:id="@+id/conversation_details_holder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:clipToPadding="false"
-            app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_contact_with_number" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/notifications_heading"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/notifications"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/custom_notifications_holder"
+                style="@style/SettingsHolderSwitchStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <org.fossify.commons.views.MyMaterialSwitch
+                    android:id="@+id/custom_notifications"
+                    style="@style/SettingsSwitchStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_custom_notifications" />
+
+            </RelativeLayout>
+
+            <org.fossify.commons.views.MyTextView
+                android:id="@+id/custom_notifications_button"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/customize_notifications"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <include
+                android:id="@+id/settings_conversation_notifications_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/conversation_name_heading"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/conversation_name" />
+
+            <org.fossify.commons.views.MyTextView
+                android:id="@+id/conversation_name"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_edit_vector"
+                android:drawablePadding="@dimen/bigger_margin"
+                android:ellipsize="end"
+                android:focusable="true"
+                android:maxLines="1"
+                android:textSize="@dimen/bigger_text_size"
+                tools:text="Conversation name" />
+
+            <include
+                android:id="@+id/settings_conversation_name_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/members_heading"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/members" />
+
+            <org.fossify.commons.views.MyRecyclerView
+                android:id="@+id/participants_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:clipToPadding="false"
+                app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_contact_with_number" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
