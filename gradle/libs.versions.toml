@@ -19,7 +19,7 @@ commons = "b3897c7e30"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "8.9.1"
+gradlePlugins-agp = "8.9.2"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
