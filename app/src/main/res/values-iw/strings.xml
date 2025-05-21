@@ -2,32 +2,31 @@
 <resources>
     <string name="type_a_message">הקלד הודעה…</string>
     <string name="message_not_sent_short">ההודעה לא נשלחה</string>
-    <string name="message_not_sent_touch_retry">לא נשלח. גע כדי לנסות שוב.</string>
+    <string name="message_not_sent_touch_retry">לא נשלח. הקש כדי לנסות שוב.</string>
     <string name="message_sending_error">ההודעה שלך אל \'%s\' לא נשלחה</string>
     <string name="add_person">הוסף אדם</string>
-    <string name="attachment">התקשרות</string>
+    <string name="attachment">קובץ מצורף</string>
     <string name="no_conversations_found">לא נמצאו שיחות מאוחסנות</string>
     <string name="start_conversation">התחל שיחה</string>
-    <string name="reply">תשובה</string>
+    <string name="reply">הגב</string>
     <string name="show_character_counter">הצג מונה תווים בכתיבת הודעות</string>
     <string name="loading_messages">טוען הודעות…</string>
     <string name="no_reply_support">לא ניתן להשיב לשולח זה</string>
     <string name="draft">טיוטה</string>
     <string name="sending">שולח…</string>
     <string name="pin_conversation">הצמד למעלה</string>
-    <string name="unpin_conversation">בטל הצמדה</string>
+    <string name="unpin_conversation">ביטול הצמדה</string>
     <string name="forward_message">התקדם</string>
     <string name="compress_error">לא ניתן לדחוס תמונה לגודל שנבחר</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="two">and %d others</item>
-        <item quantity="many">and %d others</item>
-        <item quantity="other">and %d others</item>
+        <item quantity="one">ו-%d אחר</item>
+        <item quantity="two">ו-%d אחרים</item>
+        <item quantity="other">ו-%d אחרים</item>
     </plurals>
     <string name="new_conversation">שיחה חדשה</string>
     <string name="add_contact_or_number">הוסף איש קשר או מספר…</string>
     <string name="suggestions">הצעות</string>
-    <string name="channel_received_sms">קבלת סמס</string>
+    <string name="channel_received_sms">הודעות נכנסות</string>
     <string name="new_message">הודעה חדשה</string>
     <string name="mark_as_read">סמן כנקרא</string>
     <string name="mark_as_unread">סמן כלא נקרא</string>
@@ -35,8 +34,7 @@
     <string name="delete_whole_conversation_confirmation">האם אתה בטוח שברצונך למחוק את כל ההודעות של השיחה הזו\?</string>
     <plurals name="delete_conversations">
         <item quantity="one">שיחה %d</item>
-        <item quantity="two">שיחות %d</item>
-        <item quantity="many">%d שיחה</item>
+        <item quantity="two">%d שיחות</item>
         <item quantity="other">%d שיחות</item>
     </plurals>
     <plurals name="delete_messages">
@@ -49,7 +47,7 @@
     <string name="sender_and_message">שולח והודעה</string>
     <string name="sender_only">השולח בלבד</string>
     <string name="enable_delivery_reports">אפשר דוחות מסירה</string>
-    <string name="use_simple_characters">הסר מבטאים ודיאקריטים בעת שליחת הודעות</string>
+    <string name="use_simple_characters">הסר מבטאים וסימנים דיאקריטיים בעת שליחת הודעות</string>
     <string name="mms_file_size_limit">שנה את הגודל של תמונות MMS שנשלחו</string>
     <string name="mms_file_size_limit_none">ללא גבול</string>
     <string name="outgoing_messages">הודעות יוצאות</string>
@@ -65,7 +63,7 @@
     <string name="no_option_selected">עליך לבחור לפחות פריט אחד</string>
     <string name="faq_1_title">מדוע האפליקציה דורשת גישה לאינטרנט\?</string>
     <string name="faq_1_text">למרבה הצער, זה נחוץ לשליחת קבצי MMS מצורפים. אי היכולת לשלוח MMS תהיה חיסרון עצום בהשוואה לאפליקציות אחרות, אז החלטנו ללכת בדרך זו. עם זאת, כמו בדרך כלל, אין מודעות, מעקב או ניתוח כלשהם, האינטרנט משמש רק לשליחת MMS.</string>
-    <string name="faq_2_title">הקצה השני לא מקבל את ה-MMS שלי, האם יש משהו שאני יכול לעשות בנידון\?</string>
+    <string name="faq_2_title">הצד השני לא מקבל את ה-MMS שלי, האם יש משהו שאני יכול לעשות בנידון?</string>
     <string name="faq_2_text">גודל ה-MMS מוגבל על ידי הספקים, אתה יכול לנסות להגדיר מגבלה קטנה יותר בהגדרות האפליקציה.</string>
     <string name="app_launcher_name">הודעות</string>
     <string name="members">חברים</string>
@@ -76,7 +74,7 @@
     <string name="scheduled_message">הודעה מתוזמנת</string>
     <string name="schedule_message">הודעת לוח זמנים</string>
     <string name="schedule_send">תכנן משלוח</string>
-    <string name="cancel_schedule_send">בטל משלוח מתוכנן</string>
+    <string name="cancel_schedule_send">ביטול שליחה מתוכנן</string>
     <string name="must_pick_time_in_the_future">יש לבחור נקודת זמן בעתיד</string>
     <string name="update_message">עדכון הודעה</string>
     <string name="faq_3_text">כן, אתה יכול לתזמן שליחת הודעות בעתיד על ידי לחיצה ארוכה על כפתור השליחה ובחירת התאריך והשעה הרצויים.</string>
@@ -99,7 +97,7 @@
     <string name="archived_conversations">העבר שיחה לארכיון</string>
     <string name="archive">ארכיון</string>
     <string name="empty_archive_confirmation">האם אתה בטוח שברצונך לרוקן את הארכיון? כל השיחות בארכיון יאבדו לצמיתות.</string>
-    <string name="restore">שחזר</string>
+    <string name="restore">שחזור</string>
     <string name="restore_all_messages">שחזר את כל ההודעות</string>
     <string name="skip_the_recycle_bin_messages">דלג על סל המיחזור, מחק הודעות לצמיתות</string>
     <string name="schedule_send_warning">השאר את הטלפון דולק וודא שאין דבר שעוצר ‌את האפליקציה ברקע.</string>
