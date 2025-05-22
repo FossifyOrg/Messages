@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="type_a_message">Введіть повідомлення…</string>
+    <string name="type_a_message">Напишіть повідомлення…</string>
     <string name="message_not_sent_short">Повідомлення не надіслано</string>
-    <string name="message_not_sent_touch_retry">Не надіслано. Торкніться, щоб повторити спробу.</string>
-    <string name="message_sending_error">Ваше повідомлення до \'%s\' не було надіслано</string>
-    <string name="add_person">Додати учасник а</string>
+    <string name="message_not_sent_touch_retry">Не надіслано. Натисніть, щоби повторити спробу.</string>
+    <string name="message_sending_error">Ваше повідомлення до «%s» не було надіслано</string>
+    <string name="add_person">Додати учасника</string>
     <string name="attachment">Вкладення</string>
     <string name="no_conversations_found">Немає збережених листувань</string>
     <string name="start_conversation">Почати листування</string>
@@ -26,16 +26,16 @@
         <item quantity="other">та інші %d</item>
     </plurals>
     <string name="new_conversation">Нове листування</string>
-    <string name="add_contact_or_number">Додати контакт аба номер…</string>
-    <string name="suggestions">Пропозиція</string>
+    <string name="add_contact_or_number">Додати контакт або номер…</string>
+    <string name="suggestions">Пропозиції</string>
     <string name="members">Учасники</string>
-    <string name="conversation_name">Назва розмови</string>
-    <string name="conversation_details">Деталі розмови</string>
-    <string name="rename_conversation">Перейменувати розмову</string>
-    <string name="rename_conversation_warning">Тільки ви можете бачити цю назву розмови</string>
+    <string name="conversation_name">Назва листування</string>
+    <string name="conversation_details">Деталі листування</string>
+    <string name="rename_conversation">Перейменувати листування</string>
+    <string name="rename_conversation_warning">Тільки ви можете бачити цю назву</string>
     <string name="scheduled_message">Заплановане повідомлення</string>
     <string name="schedule_message">Розклад повідомлення</string>
-    <string name="schedule_send">Розклад відправки</string>
+    <string name="schedule_send">Розклад надсилання</string>
     <string name="cancel_schedule_send">Скасувати розклад надсилання</string>
     <string name="must_pick_time_in_the_future">Ви повинні вибрати час у майбутньому</string>
     <string name="schedule_send_warning">Тримайте телефон увімкненим і переконайтеся, що ніщо не завершує застосунок у фоновому режимі.</string>
