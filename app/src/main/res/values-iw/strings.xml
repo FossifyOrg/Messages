@@ -4,7 +4,7 @@
     <string name="message_not_sent_short">ההודעה לא נשלחה</string>
     <string name="message_not_sent_touch_retry">לא נשלח. הקש כדי לנסות שוב.</string>
     <string name="message_sending_error">ההודעה שלך אל \'%s\' לא נשלחה</string>
-    <string name="add_person">הוסף אדם</string>
+    <string name="add_person">הוסף איש קשר</string>
     <string name="attachment">קובץ מצורף</string>
     <string name="no_conversations_found">לא נמצאו שיחות מאוחסנות</string>
     <string name="start_conversation">התחל שיחה</string>
@@ -47,7 +47,7 @@
     <string name="sender_and_message">שולח והודעה</string>
     <string name="sender_only">השולח בלבד</string>
     <string name="enable_delivery_reports">אפשר דוחות מסירה</string>
-    <string name="use_simple_characters">הסר מבטאים וסימנים דיאקריטיים בעת שליחת הודעות</string>
+    <string name="use_simple_characters">הסר ניקוד וסימני הדגשה בעת שליחת הודעות</string>
     <string name="mms_file_size_limit">שנה את הגודל של תמונות MMS שנשלחו</string>
     <string name="mms_file_size_limit_none">ללא גבול</string>
     <string name="outgoing_messages">הודעות יוצאות</string>
@@ -106,7 +106,7 @@
     <string name="blocked_keywords">מילות מפתח חסומות</string>
     <string name="manage_blocked_keywords">נהל מילות מפתח חסומות</string>
     <string name="not_blocking_keywords">לא חסמת מילות מפתח. אתה יכול להוסיף כאן מילות מפתח כדי לחסום ההודעות המכילות אותן.</string>
-    <string name="send_on_enter">שלח הודעה בלחיצה על Enter</string>
+    <string name="send_on_enter">‌שלח הודעה בלחיצה על Enter</string>
     <string name="unknown_error_occurred_sending_message">לא ניתן לשלוח הודעה, קוד שגיאה: %d</string>
     <string name="empty_destination_address">לא ניתן לשלוח הודעה למספר ריק</string>
     <string name="error_radio_turned_off">לא ניתן לשלוח הודעה, הרדיו כבוי</string>
