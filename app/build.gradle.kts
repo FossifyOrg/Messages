@@ -27,11 +27,11 @@ android {
     compileSdk = project.libs.versions.app.build.compileSDKVersion.get().toInt()
 
     defaultConfig {
-        applicationId = libs.versions.app.version.appId.get()
+        applicationId = project.property("APP_ID").toString()
         minSdk = project.libs.versions.app.build.minimumSDK.get().toInt()
         targetSdk = project.libs.versions.app.build.targetSDK.get().toInt()
-        versionName = project.libs.versions.app.version.versionName.get()
-        versionCode = project.libs.versions.app.version.versionCode.get().toInt()
+        versionName = project.property("VERSION_NAME").toString()
+        versionCode = project.property("VERSION_CODE").toString().toInt()
         setProperty("archivesBaseName", "messages-$versionCode")
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
@@ -105,7 +105,7 @@ android {
         kotlinOptions.jvmTarget = project.libs.versions.app.build.kotlinJVMTarget.get()
     }
 
-    namespace = libs.versions.app.version.appId.get()
+    namespace = project.property("APP_ID").toString()
 
     lint {
         checkReleaseBuilds = false
