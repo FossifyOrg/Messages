@@ -16,7 +16,7 @@ eventbus = "3.3.1"
 room = "2.7.1"
 #Fossify
 commons = "b3897c7e30"
-android-smsmms = "c3e678befd"
+android-smsmms = "5.2.5"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
 gradlePlugins-agp = "8.9.2"
