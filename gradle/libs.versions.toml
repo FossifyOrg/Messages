@@ -3,7 +3,7 @@
 kotlin = "2.1.21"
 kotlinxSerializationJson = "1.8.1"
 #KSP
-ksp = "1.9.25-1.0.20"
+ksp = "2.1.21-2.0.1"
 #Detekt
 detekt = "1.23.8"
 #AndroidX
