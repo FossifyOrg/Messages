@@ -111,9 +111,12 @@
     <string name="faq_2_title">Den anden ende modtager ikke min MMS, er der noget jeg kan gøre ved det\?</string>
     <string name="faq_2_text">MMS-størrelsen er begrænset af udbydere, du kan prøve at sætte en mindre grænse i appindstillingerne.</string>
     <string name="faq_3_title">Kan man planlægge afsendelse?</string>
-    <string name="faq_3_text">Ja, du kan planlægge beskeder til at blive sendt i fremtiden ved at trykke længe på Send-knappen og vælge den ønskede dato og tid.</string>
+    <string name="faq_3_text">Ja, du kan planlægge beskeder til at blive sendt i fremtiden ved at holde nede på Send-knappen og vælge den ønskede dato og tid.</string>
     <plurals name="and_other_contacts">
         <item quantity="one">og %d anden</item>
         <item quantity="other">og %d andre</item>
     </plurals>
+    <string name="export_blocked_keywords">Eksportér blokerede nøgleord</string>
+    <string name="import_blocked_keywords">Importér blokerede nøgleord</string>
+    <string name="keywords">Nøgleord</string>
 </resources>

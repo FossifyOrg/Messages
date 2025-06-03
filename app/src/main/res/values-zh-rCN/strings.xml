@@ -110,7 +110,7 @@
     <string name="faq_2_title">对方没有收到我的彩信，我能做些什么吗\?</string>
     <string name="faq_2_text">彩信大小受运营商限制，你可以尝试在程序设置中设定一个较小的限制。</string>
     <string name="faq_3_title">本应用支持定时消息吗？</string>
-    <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间安排将来要发送的消息。</string>
+    <string name="faq_3_text">是的，你可以长按“发送”按钮并选择所需的日期和时间来安排将来要发送的消息。</string>
     <string name="enable_custom_notifications">启用自定义通知</string>
     <string name="app_launcher_name">短信</string>
     <string name="import_blocked_keywords">导入拦截关键词</string>

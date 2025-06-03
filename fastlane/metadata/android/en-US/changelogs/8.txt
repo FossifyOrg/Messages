@@ -1,0 +1,4 @@
+* Fixed issue with third party intents
+* Fixed toast error when receiving MMS messages
+* Fixed RTL layout issue in threads
+* Added more translations

@@ -1,7 +1,6 @@
 package org.fossify.messages.activities
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.role.RoleManager
 import android.content.Intent
 import android.content.pm.ShortcutInfo
@@ -208,7 +207,7 @@ class MainActivity : SimpleActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)
         if (requestCode == MAKE_DEFAULT_APP_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 askPermissions()
             } else {
                 finish()
@@ -251,7 +250,8 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    // while SEND_SMS and READ_SMS permissions are mandatory, READ_CONTACTS is optional. If we don't have it, we just won't be able to show the contact name in some cases
+    // while SEND_SMS and READ_SMS permissions are mandatory, READ_CONTACTS is optional.
+    // If we don't have it, we just won't be able to show the contact name in some cases
     private fun askPermissions() {
         handlePermission(PERMISSION_READ_SMS) {
             if (it) {
@@ -271,7 +271,7 @@ class MainActivity : SimpleActivity() {
                             bus = EventBus.getDefault()
                             try {
                                 bus!!.register(this)
-                            } catch (ignored: Exception) {
+                            } catch (_: Exception) {
                             }
                         }
                     } else {
@@ -302,20 +302,22 @@ class MainActivity : SimpleActivity() {
         ensureBackgroundThread {
             val conversations = try {
                 conversationsDB.getNonArchived().toMutableList() as ArrayList<Conversation>
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 ArrayList()
             }
 
             val archived = try {
                 conversationsDB.getAllArchived()
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 listOf()
             }
 
             updateUnreadCountBadge(conversations)
             runOnUiThread {
                 setupConversations(conversations, cached = true)
-                getNewConversations((conversations + archived).toMutableList() as ArrayList<Conversation>)
+                getNewConversations(
+                    (conversations + archived).toMutableList() as ArrayList<Conversation>
+                )
             }
             conversations.forEach {
                 clearExpiredScheduledMessages(it.threadId)
@@ -349,11 +351,14 @@ class MainActivity : SimpleActivity() {
                 val newConversation =
                     conversations.find { it.phoneNumber == cachedConversation.phoneNumber }
                 if (isTemporaryThread && newConversation != null) {
-                    // delete the original temporary thread and move any scheduled messages to the new thread
+                    // delete the original temporary thread and move any scheduled messages
+                    // to the new thread
                     conversationsDB.deleteThreadId(threadId)
                     messagesDB.getScheduledThreadMessages(threadId)
                         .forEach { message ->
-                            messagesDB.insertOrUpdate(message.copy(threadId = newConversation.threadId))
+                            messagesDB.insertOrUpdate(
+                                message.copy(threadId = newConversation.threadId)
+                            )
                         }
                     insertOrUpdateConversation(newConversation, cachedConversation)
                 }
@@ -366,7 +371,8 @@ class MainActivity : SimpleActivity() {
                     )
                 }
                 if (conv != null) {
-                    // FIXME: Scheduled message date is being reset here. Conversations with scheduled messages will have their original date.
+                    // FIXME: Scheduled message date is being reset here. Conversations with
+                    //  scheduled messages will have their original date.
                     insertOrUpdateConversation(conv)
                 }
             }
@@ -412,15 +418,18 @@ class MainActivity : SimpleActivity() {
 
     private fun setupConversations(
         conversations: ArrayList<Conversation>,
-        cached: Boolean = false
+        cached: Boolean = false,
     ) {
-        val sortedConversations = conversations.sortedWith(
-            compareByDescending<Conversation> { config.pinnedConversations.contains(it.threadId.toString()) }
-                .thenByDescending { it.date }
-        ).toMutableList() as ArrayList<Conversation>
+        val sortedConversations = conversations
+            .sortedWith(
+                compareByDescending<Conversation> {
+                    config.pinnedConversations.contains(it.threadId.toString())
+                }.thenByDescending { it.date }
+            ).toMutableList() as ArrayList<Conversation>
 
         if (cached && config.appRunCount == 1) {
-            // there are no cached conversations on the first run so we show the loading placeholder and progress until we are done loading from telephony
+            // there are no cached conversations on the first run so we show the
+            // loading placeholder and progress until we are done loading from telephony
             showOrHideProgress(conversations.isEmpty())
         } else {
             showOrHideProgress(false)
@@ -435,7 +444,7 @@ class MainActivity : SimpleActivity() {
                     }
                 }
             }
-        } catch (ignored: Exception) {
+        } catch (_: Exception) {
         }
     }
 
@@ -498,7 +507,7 @@ class MainActivity : SimpleActivity() {
             try {
                 manager.dynamicShortcuts = listOf(newConversation)
                 config.lastHandledShortcutColor = appIconColor
-            } catch (ignored: Exception) {
+            } catch (_: Exception) {
             }
         }
     }
@@ -551,7 +560,7 @@ class MainActivity : SimpleActivity() {
     private fun showSearchResults(
         messages: List<Message>,
         conversations: List<Conversation>,
-        searchedText: String
+        searchedText: String,
     ) {
         val searchResults = ArrayList<SearchResult>()
         conversations.forEach { conversation ->
@@ -638,8 +647,14 @@ class MainActivity : SimpleActivity() {
         val licenses = LICENSE_EVENT_BUS or LICENSE_SMS_MMS or LICENSE_INDICATOR_FAST_SCROLL
 
         val faqItems = arrayListOf(
-            FAQItem(title = R.string.faq_2_title, text = R.string.faq_2_text),
-            FAQItem(title = R.string.faq_3_title, text = R.string.faq_3_text),
+            FAQItem(
+                title = R.string.faq_2_title,
+                text = R.string.faq_2_text
+            ),
+            FAQItem(
+                title = R.string.faq_3_title,
+                text = R.string.faq_3_text
+            ),
             FAQItem(
                 title = org.fossify.commons.R.string.faq_9_title_commons,
                 text = org.fossify.commons.R.string.faq_9_text_commons

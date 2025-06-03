@@ -59,4 +59,39 @@
     <string name="faq_1_text">Deja, jis reikalingas MMS priedams siųsti. Negalėjimas siųsti MMS būtų tikrai didelis trūkumas, palyginti su kitomis programomis, todėl nusprendėme eiti šiuo keliu. Tačiau, kaip įprasta, nėra jokių reklamų, stebėjimo ar analizės, internetas naudojamas tik MMS siuntimui.</string>
     <string name="faq_2_title">Kitas galas negauna mano MMS, ar galiu ką nors padaryti\?</string>
     <string name="faq_2_text">MMS dydį riboja operatoriai, todėl programėlės nustatymuose galite pabandyti nustatyti mažesnę ribą.</string>
-    </resources>
+    <string name="enable_custom_notifications">Įjungti pasirinktinius pranešimus</string>
+    <string name="empty_archive_confirmation">Ar tikrai norite ištuštinti archyvą? Visi archyvuoti pokalbiai bus visam laikui prarasti.</string>
+    <string name="message_details_sent_at">Išsiųsta</string>
+    <string name="archive">Archyvas</string>
+    <string name="show_archived_conversations">Rodyti archyvuotus pokalbius</string>
+    <string name="archive_emptied_successfully">Archyvas sėkmingai ištuštintas</string>
+    <string name="update_message">Atnaujinti žinutė</string>
+    <string name="unarchive">Išarchyvuoti</string>
+    <string name="empty_archive">Ištrinti visus archyvuotus pokalbius</string>
+    <string name="archived_conversations">Archyvuoti</string>
+    <string name="app_launcher_name">Žinutės</string>
+    <string name="duplicate_item_warning">Pasikartojantis elementas nebuvo įtrauktas</string>
+    <string name="members">Nariai</string>
+    <string name="conversation_name">Pokalbio pavadinimas</string>
+    <string name="rename_conversation_warning">Tik jūs galite matyti šio pokalbio pavadinimą</string>
+    <string name="scheduled_message">Suplanuota žinutė</string>
+    <string name="schedule_message">Suplanuoti žinutę</string>
+    <string name="cancel_schedule_send">Atšaukti suplanuota siuntimą</string>
+    <string name="must_pick_time_in_the_future">Turite pasirinkti laiką ateityje</string>
+    <string name="schedule_send_warning">Laikykite telefoną įjungtą ir įsitikinkite, kad niekas nestabdo fone veikiančios programos.</string>
+    <string name="schedule_send">Suplanuoti siuntimą</string>
+    <string name="send_now">Siųsti dabar</string>
+    <string name="message_details">Išsami informacija apie žinutę</string>
+    <string name="message_details_sender">Siuntėjas</string>
+    <string name="restore">Atkurti</string>
+    <string name="restore_all_messages">Atkurti visas žinutes</string>
+    <string name="message_details_received_at">Gauta</string>
+    <string name="message_details_receiver">Gavėjas</string>
+    <string name="no_archived_conversations">Nerasta jokių archyvuotų pokalbių</string>
+    <string name="rename_conversation">Pervardyti pokalbį</string>
+    <plurals name="and_other_contacts">
+        <item quantity="one">ir %d kitas</item>
+        <item quantity="few">ir %d kiti</item>
+        <item quantity="other">ir %d kiti</item>
+    </plurals>
+</resources>

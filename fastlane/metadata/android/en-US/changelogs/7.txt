@@ -1,0 +1,2 @@
+* Fixed issues with forwarding messages (https://github.com/FossifyOrg/Messages/issues/288)
+* Added more translations

@@ -131,6 +131,7 @@ import org.fossify.messages.extensions.getThreadTitle
 import org.fossify.messages.extensions.indexOfFirstOrNull
 import org.fossify.messages.extensions.isGifMimeType
 import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.launchConversationDetails
 import org.fossify.messages.extensions.markMessageRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.messagesDB
@@ -302,6 +303,7 @@ class ThreadActivity : SimpleActivity() {
             if (smsDraft.isNotEmpty()) {
                 runOnUiThread {
                     binding.messageHolder.threadTypeMessage.setText(smsDraft)
+                    binding.messageHolder.threadTypeMessage.setSelection(smsDraft.length)
                 }
             }
         }
@@ -391,7 +393,7 @@ class ThreadActivity : SimpleActivity() {
                 R.id.archive -> archiveConversation()
                 R.id.unarchive -> unarchiveConversation()
                 R.id.rename_conversation -> renameConversation()
-                R.id.conversation_details -> showConversationDetails()
+                R.id.conversation_details -> launchConversationDetails(threadId)
                 R.id.add_number_to_contact -> addNumberToContact()
                 R.id.dial_number -> dialNumber()
                 R.id.manage_people -> managePeople()
@@ -680,7 +682,7 @@ class ThreadActivity : SimpleActivity() {
     private fun deleteMessages(
         messagesToRemove: List<Message>,
         toRecycleBin: Boolean,
-        fromRecycleBin: Boolean
+        fromRecycleBin: Boolean,
     ) {
         val deletePosition = threadItems.indexOf(messagesToRemove.first())
         messages.removeAll(messagesToRemove.toSet())
@@ -1082,7 +1084,7 @@ class ThreadActivity : SimpleActivity() {
     @SuppressLint("MissingPermission")
     private fun getProperSimIndex(
         availableSIMs: MutableList<SubscriptionInfo>,
-        numbers: List<String>
+        numbers: List<String>,
     ): Int {
         val userPreferredSimId = config.getUseSIMIdAtNumber(numbers.first())
         val userPreferredSimIdx =
@@ -1272,13 +1274,6 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun showConversationDetails() {
-        Intent(this, ConversationDetailsActivity::class.java).apply {
-            putExtra(THREAD_ID, threadId)
-            startActivity(this)
-        }
-    }
-
     @SuppressLint("MissingPermission")
     private fun getThreadItems(): ArrayList<ThreadItem> {
         val items = ArrayList<ThreadItem>()
@@ -1351,7 +1346,7 @@ class ThreadActivity : SimpleActivity() {
     private fun launchActivityForResult(
         intent: Intent,
         requestCode: Int,
-        @StringRes error: Int = org.fossify.commons.R.string.no_app_found
+        @StringRes error: Int = org.fossify.commons.R.string.no_app_found,
     ) {
         hideKeyboard()
         try {
@@ -1728,7 +1723,7 @@ class ThreadActivity : SimpleActivity() {
 
     private fun fixParticipantNumbers(
         participants: ArrayList<SimpleContact>,
-        properNumbers: ArrayList<String>
+        properNumbers: ArrayList<String>,
     ): ArrayList<SimpleContact> {
         for (number in properNumbers) {
             for (participant in participants) {
@@ -2088,7 +2083,7 @@ class ThreadActivity : SimpleActivity() {
 
                 override fun onProgress(
                     insets: WindowInsetsCompat,
-                    runningAnimations: MutableList<WindowInsetsAnimationCompat>
+                    runningAnimations: MutableList<WindowInsetsAnimationCompat>,
                 ) = insets
             }
         ViewCompat.setWindowInsetsAnimationCallback(window.decorView, callback)

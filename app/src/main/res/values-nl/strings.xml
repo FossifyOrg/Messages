@@ -103,7 +103,7 @@
     <string name="error_radio_turned_off">Kon het bericht niet verzenden: vliegtuigmodus</string>
     <string name="carrier_send_error">Kon het bericht niet verzenden: netwerkfout</string>
     <string name="unknown_error_occurred_sending_message">Kon het bericht niet verzenden: foutcode %d</string>
-    <string name="invalid_short_code">Er kan niet worden gereageerd op dit bericht</string>
+    <string name="invalid_short_code">Op dit bericht kan niet worden gereageerd</string>
     <string name="invalid_short_code_desc">Er kan alleen worden gereageerd op korte codes met cijfers, zoals \"503501\", maar niet op codes met letters en cijfers, zoals \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">De bestandsgrootte van de bijlage overschrijdt de limiet voor MMS</string>
     <string name="sim_card_not_available">Simkaart niet beschikbaar</string>
@@ -116,4 +116,7 @@
     <string name="faq_3_text">Ja, berichten kunnen vertraagd verzonden worden door lang te drukken op de verzendknop en vervolgens een tijdstip voor verzending op te geven.</string>
     <string name="enable_custom_notifications">Aangepaste meldingen gebruiken</string>
     <string name="app_launcher_name">Berichten</string>
+    <string name="export_blocked_keywords">Geblokkeerde trefwoorden exporteren</string>
+    <string name="keywords">Trefwoorden</string>
+    <string name="import_blocked_keywords">Geblokkeerde trefwoorden importeren</string>
 </resources>

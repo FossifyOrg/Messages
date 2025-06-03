@@ -1,25 +1,25 @@
 [versions]
 #jetbrains
-kotlin = "1.9.25"
-kotlinxSerializationJson = "1.6.0"
+kotlin = "2.1.21"
+kotlinxSerializationJson = "1.8.1"
 #KSP
-ksp = "1.9.25-1.0.20"
+ksp = "2.1.21-2.0.1"
 #Detekt
-detekt = "1.23.3"
+detekt = "1.23.8"
 #AndroidX
-androidx-constraintlayout = "2.2.0"
+androidx-constraintlayout = "2.2.1"
 androidx-swiperefreshlayout = "1.1.0"
 androidx-lifecycleprocess = "2.8.7"
 #Eventbus
 eventbus = "3.3.1"
 #Room
-room = "2.6.1"
+room = "2.7.1"
 #Fossify
-commons = "4013116a24"
+commons = "3.0.1"
 android-smsmms = "c3e678befd"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "8.7.3"
+gradlePlugins-agp = "8.10.1"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
@@ -29,10 +29,6 @@ app-build-kotlinJVMTarget = "17"
 #Helpers
 ez-vcard = "0.11.3"
 shortcut-badger = "1.1.22"
-#versioning
-app-version-appId = "org.fossify.messages"
-app-version-versionCode = "6"
-app-version-versionName = "1.1.3"
 [libraries]
 #AndroidX
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }

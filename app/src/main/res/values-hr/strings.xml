@@ -119,4 +119,7 @@
     <string name="app_launcher_name">Poruke</string>
     <string name="couldnt_download_mms">Nije bilo moguće preuzeti MMS</string>
     <string name="enable_custom_notifications">Omogući prilagođene obavijesti</string>
+    <string name="keywords">Ključne riječi</string>
+    <string name="export_blocked_keywords">Izvezi blokirane ključne riječi</string>
+    <string name="import_blocked_keywords">Uvezi blokirane ključne riječi</string>
 </resources>
