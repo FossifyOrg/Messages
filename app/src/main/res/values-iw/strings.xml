@@ -99,7 +99,7 @@
     <string name="empty_archive_confirmation">האם אתה בטוח שברצונך לרוקן את הארכיון? כל השיחות בארכיון יאבדו לצמיתות.</string>
     <string name="restore">שחזור</string>
     <string name="restore_all_messages">שחזר את כל ההודעות</string>
-    <string name="skip_the_recycle_bin_messages">דלג על סל המיחזור, מחק הודעות לצמיתות</string>
+    <string name="skip_the_recycle_bin_messages">דלג על האשפה, מחק הודעות לצמיתות</string>
     <string name="schedule_send_warning">השאר את הטלפון דולק וודא שאין דבר שעוצר ‌את האפליקציה ברקע.</string>
     <string name="restore_confirmation">האם אתה בטוח שברצונך לשחזר את %s?</string>
     <string name="keyword">מילת מפתח</string>
@@ -119,7 +119,7 @@
     <string name="import_blocked_keywords">ייבא מילות מפתח חסומות</string>
     <string name="add_a_blocked_keyword">הוסף מילת מפתח חסומה</string>
     <string name="no_archived_conversations">לא נמצאו שיחות בארכיון</string>
-    <string name="empty_recycle_bin_messages_confirmation">האם אתה בטוח שברצונך לרוקן את סל המיחזור? ההודעות יאבדו לצמיתות.</string>
+    <string name="empty_recycle_bin_messages_confirmation">האם אתה בטוח שברצונך לרוקן את האשפה? ההודעות יאבדו לצמיתות.</string>
     <string name="message_details_sent_at">נשלח ב</string>
     <string name="restore_whole_conversation_confirmation">האם אתה בטוח שברצונך לשחזר את כל ההודעות של השיחה הזו?</string>
     <string name="invalid_short_code_desc">אתה יכול להשיב רק לקודים קצרים עם מספרים כמו \"503501\" אך לא לקודים המכילים אותיות ומספרים כמו \"AB-CD0\".</string>
