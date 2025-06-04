@@ -9,13 +9,19 @@ import androidx.core.app.Person
 import androidx.core.graphics.drawable.IconCompat
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.models.SimpleContact
+import androidx.core.net.toUri
 
-fun ArrayList<SimpleContact>.getThreadTitle(): String = TextUtils.join(", ", map { it.name }.toTypedArray()).orEmpty()
+fun ArrayList<SimpleContact>.getThreadTitle(): String {
+    return TextUtils.join(", ", map { it.name }.toTypedArray()).orEmpty()
+}
 
-fun ArrayList<SimpleContact>.getAddresses() = flatMap { it.phoneNumbers }.map { it.normalizedNumber }
+fun ArrayList<SimpleContact>.getAddresses(): List<String> {
+    return flatMap { it.phoneNumbers }.map { it.normalizedNumber }
+}
 
 fun SimpleContact.toPerson(context: Context? = null): Person {
-    val uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, contactId.toString())
+    val uri =
+        Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, contactId.toString())
     val iconCompat = if (context != null) {
         loadIcon(context)
     } else {
@@ -30,27 +36,17 @@ fun SimpleContact.toPerson(context: Context? = null): Person {
         .build()
 }
 
-fun Person.getPhotoUri(context: Context): String {
-    val contactUri = Uri.parse(uri)
-    val projection = arrayOf(ContactsContract.Contacts.PHOTO_URI)
-    context.contentResolver.query(contactUri, projection, null, null, null).use { cursor ->
-        if (cursor != null && cursor.moveToFirst()) {
-            val photoUriString = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_URI))
-            return photoUriString
-        }
-    }
-    return ""
-}
-
 fun SimpleContact.loadIcon(context: Context): IconCompat {
     try {
-        val stream = context.contentResolver.openInputStream(Uri.parse(photoUri))
+        val stream = context.contentResolver.openInputStream(photoUri.toUri())
         val bitmap = BitmapFactory.decodeStream(stream)
         stream?.close()
         val iconCompat = IconCompat.createWithAdaptiveBitmap(bitmap)
         return iconCompat
     } catch (e: Exception) {
-        return IconCompat.createWithAdaptiveBitmap(SimpleContactsHelper(context).getContactLetterIcon(name))
+        return IconCompat.createWithAdaptiveBitmap(
+            SimpleContactsHelper(context).getContactLetterIcon(name)
+        )
     }
 }
 

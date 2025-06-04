@@ -193,7 +193,6 @@ import org.joda.time.DateTime
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
-import kotlin.collections.set
 
 class ThreadActivity : SimpleActivity() {
     private val MIN_DATE_TIME_DIFF_SECS = 300
@@ -232,8 +231,7 @@ class ThreadActivity : SimpleActivity() {
 
     private val binding by viewBinding(ActivityThreadBinding::inflate)
 
-    override fun onNewIntent(@SuppressLint("UnsafeIntentLaunch") intent: Intent) {
-
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         finish()
         startActivity(intent)
@@ -467,7 +465,7 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun setupThread() {
-        if(conversation == null && isLaunchedFromShortcut) {
+        if (conversation == null && isLaunchedFromShortcut) {
             if (isTaskRoot) {
                 Intent(this, MainActivity::class.java).apply {
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

@@ -8,7 +8,6 @@ import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.text.isDigitsOnly
-import java.util.HashMap
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.SimpleContactsHelper
@@ -32,9 +31,13 @@ class ShortcutHelper(private val context: Context) {
         return getShortcuts().find { it.id == threadId.toString() }
     }
 
-    fun buildShortcut(conv: Conversation, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
+    fun buildShortcut(
+        conv: Conversation,
+        capabilities: List<String> = emptyList(),
+    ): ShortcutInfoCompat {
         val contactsMap: HashMap<Int, SimpleContact>? = if (!isOnMainThread()) {
-            val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+            val privateCursor =
+                context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
             val contacts = MyContactsContentProvider.getSimpleContacts(context, privateCursor)
             HashMap(contacts.associateBy { it.rawId })
         } else {
@@ -65,11 +68,14 @@ class ShortcutHelper(private val context: Context) {
             if (!conv.isGroupConversation && !conv.usesCustomTitle) {
                 setIcon(persons[0].icon)
             } else {
-                val icon = if(conv.isGroupConversation) {
-                    IconCompat.createWithAdaptiveBitmap(contactsHelper.getColoredGroupIcon(conv.title).toBitmap())
-                }
-                else {
-                    IconCompat.createWithAdaptiveBitmap(contactsHelper.getContactLetterIcon(conv.title))
+                val icon = if (conv.isGroupConversation) {
+                    IconCompat.createWithAdaptiveBitmap(
+                        contactsHelper.getColoredGroupIcon(conv.title).toBitmap()
+                    )
+                } else {
+                    IconCompat.createWithAdaptiveBitmap(
+                        contactsHelper.getContactLetterIcon(conv.title)
+                    )
                 }
                 setIcon(icon)
             }
@@ -84,7 +90,10 @@ class ShortcutHelper(private val context: Context) {
         return shortcut
     }
 
-    fun buildShortcut(threadId: Long, capabilities: List<String> = emptyList()): ShortcutInfoCompat {
+    fun buildShortcut(
+        threadId: Long,
+        capabilities: List<String> = emptyList(),
+    ): ShortcutInfoCompat {
         val conv = if (!isOnMainThread()) {
             context.conversationsDB.getConversationWithThreadId(threadId)
         } else {
@@ -149,14 +158,6 @@ class ShortcutHelper(private val context: Context) {
         ShortcutManagerCompat.removeDynamicShortcuts(context, mutableListOf(shortcut.id))
     }
 
-    fun removeAllShortcuts() {
-        val scs = getShortcuts()
-        if (scs.isEmpty())
-            return
-        ShortcutManagerCompat.removeLongLivedShortcuts(context, scs.map { it.id })
-        ShortcutManagerCompat.removeAllDynamicShortcuts(context)
-    }
-
     fun shouldPresentShortcut(conv: Conversation): Boolean {
         if (conv.isGroupConversation) {
             return true
@@ -166,11 +167,4 @@ class ShortcutHelper(private val context: Context) {
         }
         return true
     }
-}
-
-fun ShortcutInfoCompat.toFormattedString(): String {
-    return "$this \n\t" +
-        "id : $id\n\t" +
-        "$shortLabel : $longLabel\n\t" +
-        "intent : $intent"
 }
