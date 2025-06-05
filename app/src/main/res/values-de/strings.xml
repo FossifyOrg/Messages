@@ -60,7 +60,7 @@
     <string name="restore">Wiederherstellen</string>
     <string name="restore_all_messages">Alle Nachrichten wiederherstellen</string>
     <string name="empty_recycle_bin_messages_confirmation">Den Papierkorb wirklich leeren\? Die Nachrichten sind dann unwiederbringlich gelöscht.</string>
-    <string name="skip_the_recycle_bin_messages">Den Papierkorb auslassen, Nachrichten sofort löschen</string>
+    <string name="skip_the_recycle_bin_messages">Den Papierkorb überspringen, Nachrichten sofort löschen</string>
     <string name="delete_whole_conversation_confirmation">Sollen wirklich alle Nachrichten dieser Unterhaltung gelöscht werden\?</string>
     <string name="archive_confirmation">%s wirklich archivieren\?</string>
     <string name="restore_whole_conversation_confirmation">Sollen wirklich alle Nachrichten dieser Unterhaltung wiederhergestellt werden\?</string>
@@ -106,7 +106,7 @@
     <string name="invalid_short_code">Auf solche Short Codes kann nicht geantwortet werden</string>
     <string name="invalid_short_code_desc">Du kannst nur auf Short Codes mit Nummern wie „503501“ antworten, nicht aber auf Codes mit Buchstaben und Zahlen wie „AB-CD0“.</string>
     <string name="attachment_sized_exceeds_max_limit">Die Größe des Anhangs überschreitet das MMS-Limit</string>
-    <string name="sim_card_not_available">SIM-Karte nicht vorhanden</string>
+    <string name="sim_card_not_available">SIM-Karte nicht verfügbar</string>
     <string name="couldnt_download_mms">MMS konnte nicht heruntergeladen werden</string>
     <string name="faq_1_title">Warum benötigt die App einen Internetzugang?</string>
     <string name="faq_1_text">Leider ist dies nötig, um MMS-Anhänge zu versenden. Es wäre ein großer Nachteil gegenüber anderen Apps, wenn keine MMS versendet werden könnten, also haben wir uns für diesen Weg entschieden. Jedoch gibt es wie immer keine Werbung, Tracking oder Analytics, der Internetzugriff wird also nur für das Versenden von MMS verwendet.</string>
@@ -115,7 +115,7 @@
     <string name="faq_3_title">Unterstützt die App geplante Nachrichten?</string>
     <string name="faq_3_text">Ja, du kannst den Versand von Nachrichten für die Zukunft planen, indem du lange auf die Senden-Schaltfläche drückst und das gewünschte Datum und die Uhrzeit auswählst.</string>
     <string name="enable_custom_notifications">Benutzerdefinierte Benachrichtigungen aktivieren</string>
-    <string name="app_launcher_name">Mitteilungen</string>
+    <string name="app_launcher_name">Nachrichten</string>
     <string name="import_blocked_keywords">Blockierte Schlüsselwörter importieren</string>
     <string name="export_blocked_keywords">Blockierte Schlüsselwörter exportieren</string>
     <string name="keywords">Schlüsselwörter</string>
