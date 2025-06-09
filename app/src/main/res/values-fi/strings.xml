@@ -64,7 +64,7 @@
     <string name="delete_whole_conversation_confirmation">Haluatko varmasti poistaa kaikki tämän keskustelun viestit\?</string>
     <string name="archive_confirmation">Haluatko arkivoida %s\?</string>
     <string name="restore_whole_conversation_confirmation">Haluatko palauttaa tämän keskustelun kaikki viestit\?</string>
-    <string name="restore_confirmation">Haluatko palauttaa %s\?</string>
+    <string name="restore_confirmation">Haluatko varmasti palauttaa %s?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d keskustelu</item>
         <item quantity="other">%d keskustelut</item>
