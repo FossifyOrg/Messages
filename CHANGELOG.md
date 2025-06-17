@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2025-06-17
+
 ### Changed
 
 - Updated translations
@@ -137,7 +139,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.2.1...HEAD
+[1.2.1]: https://github.com/FossifyOrg/Messages/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/FossifyOrg/Messages/compare/1.1.7...1.2.0
 [1.1.7]: https://github.com/FossifyOrg/Messages/compare/1.1.6...1.1.7
 [1.1.6]: https://github.com/FossifyOrg/Messages/compare/1.1.5...1.1.6
