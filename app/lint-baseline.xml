@@ -18,8 +18,8 @@
         errorLine1="app-build-targetSDK = &quot;34&quot;"
         errorLine2="                      ~~~~">
         <location
-            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
-            line="25"
+            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            line="26"
             column="23"/>
     </issue>
 
@@ -40,7 +40,7 @@
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-8.11.1-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/work/Messages/Messages/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
     </issue>
@@ -51,8 +51,8 @@
         errorLine1="gradlePlugins-agp = &quot;8.10.1&quot;"
         errorLine2="                    ~~~~~~~~">
         <location
-            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
-            line="22"
+            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            line="23"
             column="21"/>
     </issue>
 
@@ -62,8 +62,8 @@
         errorLine1="androidx-lifecycleprocess = &quot;2.8.7&quot;"
         errorLine2="                            ~~~~~~~">
         <location
-            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
-            line="12"
+            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            line="13"
             column="29"/>
     </issue>
 
@@ -73,8 +73,8 @@
         errorLine1="app-build-compileSDKVersion = &quot;34&quot;"
         errorLine2="                              ~~~~">
         <location
-            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
-            line="24"
+            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            line="25"
             column="31"/>
     </issue>
 
