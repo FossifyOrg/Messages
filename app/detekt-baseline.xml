@@ -27,36 +27,15 @@
     <ID>ForbiddenComment:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$// TODO: Need to check whether SC still trying to deliver the SMS to destination and will send the report again?</ID>
     <ID>FunctionParameterNaming:Config.kt$Config$SIMId: Int</ID>
     <ID>LargeClass:ThreadActivity.kt$ThreadActivity : SimpleActivity</ID>
-    <ID>LongMethod:Context.kt$@SuppressLint("NewApi") fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAttachment</ID>
-    <ID>LongMethod:Context.kt$fun Context.getConversations( threadId: Long? = null, privateContacts: ArrayList&lt;SimpleContact&gt; = ArrayList(), ): ArrayList&lt;Conversation&gt;</ID>
-    <ID>LongMethod:Context.kt$fun Context.getMMS( threadId: Long? = null, getImageResolutions: Boolean = false, sortOrder: String? = null, dateFrom: Int = -1, ): ArrayList&lt;Message&gt;</ID>
-    <ID>LongMethod:Context.kt$fun Context.getMessages( threadId: Long, getImageResolutions: Boolean, dateFrom: Int = -1, includeScheduledMessages: Boolean = true, limit: Int = MESSAGES_LIMIT, ): ArrayList&lt;Message&gt;</ID>
-    <ID>LongMethod:MainActivity.kt$MainActivity$private fun getNewConversations(cachedConversations: ArrayList&lt;Conversation&gt;)</ID>
-    <ID>LongMethod:MainActivity.kt$MainActivity$private fun showSearchResults( messages: List&lt;Message&gt;, conversations: List&lt;Conversation&gt;, searchedText: String, )</ID>
-    <ID>LongMethod:MessagesReader.kt$MessagesReader$@SuppressLint("NewApi") private fun getParts(mmsId: Long): List&lt;MmsPart&gt;</ID>
-    <ID>LongMethod:MessagesReader.kt$MessagesReader$private fun getMmsMessages( threadIds: List&lt;Long&gt;, includeTextOnlyAttachment: Boolean = false ): List&lt;MmsBackup&gt;</ID>
     <ID>LongMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
-    <ID>LongMethod:ThreadActivity.kt$ThreadActivity$private fun setupAttachmentPickerView()</ID>
-    <ID>LongMethod:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
-    <ID>LongMethod:ThreadActivity.kt$ThreadActivity$private fun setupThread()</ID>
-    <ID>LongParameterList:AttachmentPreviews.kt$( activity: Activity, uri: Uri, attachment: Boolean = false, onClick: (() -&gt; Unit)? = null, onLongClick: (() -&gt; Unit)? = null, onVCardLoaded: (() -&gt; Unit)? = null, )</ID>
-    <ID>LongParameterList:AttachmentPreviews.kt$( uri: Uri, title: String, mimeType: String, onClick: (() -&gt; Unit)? = null, onLongClick: (() -&gt; Unit)? = null, onRemoveButtonClicked: (() -&gt; Unit)? = null )</ID>
-    <ID>LongParameterList:Context.kt$( address: String, subject: String, body: String, date: Long, read: Int, threadId: Long, type: Int, subscriptionId: Int, )</ID>
-    <ID>LongParameterList:Context.kt$( uri: Uri, projection: Array&lt;String&gt;, selection: String? = null, selectionArgs: Array&lt;String&gt;? = null, sortOrder: String? = null, callback: (cursor: Cursor) -&gt; Unit, )</ID>
-    <ID>LongParameterList:MessagingUtils.kt$MessagingUtils$( subId: Int, dest: String, text: String, timestamp: Long, threadId: Long, status: Int = Sms.STATUS_NONE, type: Int = Sms.MESSAGE_TYPE_OUTBOX, messageId: Long? = null )</ID>
-    <ID>LongParameterList:NotificationHelper.kt$NotificationHelper$( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
     <ID>LongParameterList:SmsReceiver.kt$SmsReceiver$( context: Context, address: String, subject: String, body: String, date: Long, read: Int, threadId: Long, type: Int, subscriptionId: Int, status: Int )</ID>
-    <ID>LongParameterList:SmsSender.kt$SmsSender$( subId: Int, dest: String, messages: ArrayList&lt;String&gt;, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
-    <ID>LongParameterList:SmsSender.kt$SmsSender$( subId: Int, destination: String, body: String, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
     <ID>MagicNumber:Activity.kt$1000000</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.7f</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.8f</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.9f</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$1.2f</ID>
-    <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$1000L</ID>
     <ID>MagicNumber:ContactsAdapter.kt$ContactsAdapter$1.2f</ID>
     <ID>MagicNumber:Context.kt$10</ID>
-    <ID>MagicNumber:Context.kt$1000</ID>
     <ID>MagicNumber:Context.kt$500L</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$0.6f</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$100</ID>
@@ -68,11 +47,8 @@
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$6</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$8</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$90f</ID>
-    <ID>MagicNumber:MainActivity.kt$MainActivity$1000L</ID>
     <ID>MagicNumber:MainActivity.kt$MainActivity$30</ID>
-    <ID>MagicNumber:Message.kt$Message$1000L</ID>
     <ID>MagicNumber:Message.kt$Message.Companion$31</ID>
-    <ID>MagicNumber:MessageDetailsDialog.kt$MessageDetailsDialog$1000L</ID>
     <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$3</ID>
     <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$4</ID>
     <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$5</ID>
@@ -93,7 +69,6 @@
     <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$6</ID>
     <ID>MagicNumber:SettingsActivity.kt$SettingsActivity$7</ID>
     <ID>MagicNumber:ShortcutHelper.kt$ShortcutHelper$99</ID>
-    <ID>MagicNumber:SmsReceiver.kt$SmsReceiver$1000</ID>
     <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$0x03</ID>
     <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$0x3f</ID>
     <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$16</ID>
@@ -101,8 +76,6 @@
     <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$3</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$0.4f</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$0.9f</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$1000</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$1000L</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$14</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$15</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$150</ID>
@@ -113,7 +86,6 @@
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$300</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$500L</ID>
     <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$0.8f</ID>
-    <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$1000L</ID>
     <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$4</ID>
     <ID>MagicNumber:VCardViewerAdapter.kt$VCardViewerAdapter.VCardContactViewHolder$1.1f</ID>
     <ID>MagicNumber:VCardViewerAdapter.kt$VCardViewerAdapter.VCardPropertyViewHolder$1.1f</ID>
