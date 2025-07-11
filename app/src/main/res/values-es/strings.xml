@@ -3,7 +3,7 @@
     <string name="type_a_message">Escribe un mensaje…</string>
     <string name="message_not_sent_short">El mensaje no fue enviado</string>
     <string name="message_not_sent_touch_retry">No enviado. Toca para volver a intentar.</string>
-    <string name="message_sending_error">Tu mensaje a \'%s\' no ha sido envido</string>
+    <string name="message_sending_error">Su mensaje a «%s» no se ha enviado</string>
     <string name="add_person">Añadir persona</string>
     <string name="attachment">Archivo adjunto</string>
     <string name="no_conversations_found">No se han encontrado conversaciones</string>
