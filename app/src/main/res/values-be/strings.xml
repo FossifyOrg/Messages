@@ -19,10 +19,10 @@
     <string name="forward_message">Пераслаць</string>
     <string name="compress_error">Немагчыма сціснуць выяву да выбранага памеру</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">and %d other</item>
-        <item quantity="few">and %d others</item>
-        <item quantity="many">and %d others</item>
-        <item quantity="other">and %d others</item>
+        <item quantity="one">і %d іншы</item>
+        <item quantity="few">і %d іншых</item>
+        <item quantity="many">і %d іншых</item>
+        <item quantity="other">і %d іншых</item>
     </plurals>
     <string name="new_conversation">Новая размова</string>
     <string name="add_contact_or_number">Дадаць кантакт альбо нумар…</string>
@@ -67,4 +67,6 @@
     <string name="faq_1_text">На жаль, гэта неабходна для адпраўкі ўкладанняў MMS. Немагчымасць адпраўляць MMS было б вельмі вялікім недахопам нашага прыкладання ў параўнанні з іншымі, таму было вырашана пайсці гэтым шляхам. Аднак, як і ў іншых нашых прыкладаннях, гэта не ўтрымлівае ніякай рэкламы, адсочвання і аналітыкі. Інтэрнэт выкарыстоўваецца толькі для адпраўкі MMS.</string>
     <string name="faq_2_title">Іншы бок не атрымлівае мае MMS, ці можна штосьці з гэтым зрабіць\?</string>
     <string name="faq_2_text">Памер MMS абмежаваны аператарамі сувязі, магчыма паспрабаваць зменьшыць ліміт у наладах прыкладання.</string>
-    </resources>
+    <string name="restore_confirmation">Вы ўпэўнены, што хаціце аднавіць %s?</string>
+    <string name="app_launcher_name">Паведамленні</string>
+</resources>
