@@ -20,10 +20,10 @@
     <string name="compress_error">Невозможно сжать изображение до выбранного размера</string>
     <string name="duplicate_item_warning">Дубликат не включён</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">и другой %d</item>
-        <item quantity="few">и другие %d</item>
-        <item quantity="many">и других %d</item>
-        <item quantity="other">и других %d</item>
+        <item quantity="one">и ещё %d</item>
+        <item quantity="few">и ещё %d</item>
+        <item quantity="many">и ещё %d</item>
+        <item quantity="other">и ещё %d</item>
     </plurals>
     <string name="new_conversation">Новая переписка</string>
     <string name="add_contact_or_number">Добавить контакт или номер…</string>
@@ -54,7 +54,7 @@
     <string name="unarchive">Разархивировать</string>
     <string name="empty_archive">Удалить все архивные переписки</string>
     <string name="archived_conversations">Архивная</string>
-    <string name="show_archived_conversations">Показывать архивные переписки</string>
+    <string name="show_archived_conversations">Показать архив переписки</string>
     <string name="archive">Архивировать</string>
     <string name="no_archived_conversations">Нет архивных переписок</string>
     <string name="archive_emptied_successfully">Архив успешно очищен</string>
