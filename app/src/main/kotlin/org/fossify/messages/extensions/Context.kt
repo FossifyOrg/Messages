@@ -161,7 +161,14 @@ fun Context.getMessages(
         val date = (cursor.getLongValue(Sms.DATE) / 1000).toInt()
         val read = cursor.getIntValue(Sms.READ) == 1
         val thread = cursor.getLongValue(Sms.THREAD_ID)
-        val subscriptionId = cursor.getIntValue(Sms.SUBSCRIPTION_ID)
+
+        val subIdColumnIndex = cursor.getColumnIndex(Sms.SUBSCRIPTION_ID)
+        val subscriptionId = if (subIdColumnIndex != -1) {
+            cursor.getInt(subIdColumnIndex)
+        } else {
+            SubscriptionManager.INVALID_SUBSCRIPTION_ID
+        }
+
         val status = cursor.getIntValue(Sms.STATUS)
         val participants = senderNumber.split(ADDRESS_SEPARATOR).map { number ->
             val phoneNumber = PhoneNumber(number, 0, "", number)
