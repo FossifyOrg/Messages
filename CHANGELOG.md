@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed inability to view messages when there is no SIM card ([#461])
+
 ## [1.2.1] - 2025-06-17
 
 ### Changed
@@ -171,3 +175,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#279]: https://github.com/FossifyOrg/Messages/issues/279
 [#287]: https://github.com/FossifyOrg/Messages/issues/287
 [#294]: https://github.com/FossifyOrg/Messages/issues/294
+[#461]: https://github.com/FossifyOrg/Messages/issues/461
