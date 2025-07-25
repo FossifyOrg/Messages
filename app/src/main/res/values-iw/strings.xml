@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="type_a_message">הקלד הודעה…</string>
+    <string name="type_a_message">נא להקליד הודעה…</string>
     <string name="message_not_sent_short">ההודעה לא נשלחה</string>
     <string name="message_not_sent_touch_retry">לא נשלח. הקש כדי לנסות שוב.</string>
     <string name="message_sending_error">ההודעה שלך אל \'%s\' לא נשלחה</string>

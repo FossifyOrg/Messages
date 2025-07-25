@@ -79,4 +79,5 @@
     <string name="faq_2_text">O tamaño dos MMS está limitado polos operadores; podes tentar establecer un límite máis pequeno na configuración da aplicación.</string>
     <string name="faq_3_title">A aplicación admite mensaxes programadas\?</string>
     <string name="faq_3_text">Si, pode programalo envío de mensaxes no futuro premendo no botón Enviar e escollendo a data e a hora desexadas.</string>
+    <string name="app_launcher_name">Mensaxes</string>
 </resources>
