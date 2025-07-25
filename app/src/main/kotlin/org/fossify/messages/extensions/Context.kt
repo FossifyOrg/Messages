@@ -30,6 +30,7 @@ import me.leolin.shortcutbadger.ShortcutBadger
 import org.fossify.commons.extensions.areDigitsOnly
 import org.fossify.commons.extensions.getBlockedNumbers
 import org.fossify.commons.extensions.getIntValue
+import org.fossify.commons.extensions.getIntValueOr
 import org.fossify.commons.extensions.getLongValue
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.getStringValue
@@ -161,13 +162,10 @@ fun Context.getMessages(
         val date = (cursor.getLongValue(Sms.DATE) / 1000).toInt()
         val read = cursor.getIntValue(Sms.READ) == 1
         val thread = cursor.getLongValue(Sms.THREAD_ID)
-
-        val subIdColumnIndex = cursor.getColumnIndex(Sms.SUBSCRIPTION_ID)
-        val subscriptionId = if (subIdColumnIndex != -1) {
-            cursor.getInt(subIdColumnIndex)
-        } else {
-            SubscriptionManager.INVALID_SUBSCRIPTION_ID
-        }
+        val subscriptionId = cursor.getIntValueOr(
+            key = Sms.SUBSCRIPTION_ID,
+            defaultValue = SubscriptionManager.INVALID_SUBSCRIPTION_ID
+        )
 
         val status = cursor.getIntValue(Sms.STATUS)
         val participants = senderNumber.split(ADDRESS_SEPARATOR).map { number ->
