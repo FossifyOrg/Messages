@@ -119,4 +119,7 @@
     <string name="faq_3_text">Áno, správu môžete naplánovať dlhým podržaním tlačidla Odoslať a zvolením žiadaného dátumu a času.</string>
     <string name="app_launcher_name">Správy</string>
     <string name="enable_custom_notifications">Povoliť vlastné oznámenia</string>
+    <string name="keywords">Kľúčové slová</string>
+    <string name="export_blocked_keywords">Exportovať zablokované kľúčové slová</string>
+    <string name="import_blocked_keywords">Importovať zablokované kľúčové slová</string>
 </resources>
