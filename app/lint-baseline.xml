@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.10.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.10.1)" variant="all" version="8.10.1">
+<issues format="6" by="lint 8.11.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.11.1)" variant="all" version="8.11.1">
 
     <issue
         id="ExifInterface"
@@ -13,12 +13,23 @@
     </issue>
 
     <issue
+        id="ExifInterface"
+        message="Avoid using `android.media.ExifInterface`; use `androidx.exifinterface.media.ExifInterface` instead"
+        errorLine1="        val exif = ExifInterface(imageFile.absolutePath)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/messages/helpers/ImageCompressor.kt"
+            line="125"
+            column="20"/>
+    </issue>
+
+    <issue
         id="OldTargetApi"
         message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
         errorLine1="app-build-targetSDK = &quot;34&quot;"
         errorLine2="                      ~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
             line="26"
             column="23"/>
     </issue>
@@ -36,44 +47,44 @@
 
     <issue
         id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 8.11.1 is available: 8.14.2"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-8.11.1-bin.zip"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        message="A newer version of Gradle than 8.13 is available: 8.14.3"
+        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/work/Messages/Messages/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
     </issue>
 
     <issue
         id="AndroidGradlePluginVersion"
-        message="A newer version of com.android.application than 8.10.1 is available: 8.11.0"
-        errorLine1="gradlePlugins-agp = &quot;8.10.1&quot;"
+        message="A newer version of com.android.application than 8.11.1 is available: 8.12.0"
+        errorLine1="gradlePlugins-agp = &quot;8.11.1&quot;"
         errorLine2="                    ~~~~~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
             line="23"
             column="21"/>
     </issue>
 
     <issue
         id="GradleDependency"
-        message="A newer version of androidx.lifecycle:lifecycle-process than 2.8.7 is available: 2.9.1"
+        message="A newer version of androidx.lifecycle:lifecycle-process than 2.8.7 is available: 2.9.2"
         errorLine1="androidx-lifecycleprocess = &quot;2.8.7&quot;"
         errorLine2="                            ~~~~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
             line="13"
             column="29"/>
     </issue>
 
     <issue
         id="GradleDependency"
-        message="A newer version of `compileSdkVersion` than 34 is available: 35"
+        message="A newer version of `compileSdkVersion` than 34 is available: 36"
         errorLine1="app-build-compileSDKVersion = &quot;34&quot;"
         errorLine2="                              ~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Messages/gradle/libs.versions.toml"
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
             line="25"
             column="31"/>
     </issue>
@@ -1557,17 +1568,6 @@
         message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
         <location
             file="src/main/res/mipmap-anydpi-v26"/>
-    </issue>
-
-    <issue
-        id="VectorPath"
-        message="Very long vector path (1112 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
-        errorLine1="    &lt;path android:fillColor=&quot;@android:color/white&quot; android:pathData=&quot;M597.3 384H832L597.3 149.3V384M298.7 85.3H640l256 256v512a85.3 85.3 0 0 1-85.3 85.3h-512a85.3 85.3 0 0 1-85.3-85.3V170.7a85.3 85.3 0 0 1 85.3-85.3M509 530.8c17.5 38.4 39.7 70 65.3 91.7l17.5 13.7c-37.1 6.8-88.3 18.8-142.5 39.7l-4.7 1.7 21.3-44.4c19.2-37.1 33.3-70.8 43.1-102.4m276.5 162.6c7.7-7.7 11.5-17.5 11.9-28.2 1.3-8.5-0.9-16.6-5.1-23.5-12.4-20.1-44.4-29.4-97.3-29.4l-55 3-37.1-24.7c-26.9-22.2-51.2-61-68.3-109.2l1.7-6c14.1-56.7 27.3-125.4-0.9-153.6a36.4 36.4 0 0 0-26-10.2h-10.2c-15.8 0-29.9 16.6-33.7 32.9-15.8 56.7-6.4 87.9 9.4 139.5v0.4c-10.7 37.5-24.3 81.1-46.1 125l-41 76.8-38 20.9c-51.2 32-75.5 67.8-80.2 90.5-1.7 8.1-0.9 15.4 2.1 23l1.3 2.1 20.5 13.2 18.8 4.7c34.6 0 73.8-40.5 126.7-131l7.7-3c43.9-14.1 98.6-23.9 171.9-32 43.9 21.8 95.6 31.6 128 31.6 18.8 0 31.6-4.7 38.8-12.8m-17.5-30.3l3.8 4.7c-0.4 4.3-1.7 4.7-3.8 5.5h-1.7l-8.1 0.9c-19.6 0-49.9-8.1-81.1-21.8 3.8-4.3 5.5-4.3 9.8-4.3 59.7 0 76.8 10.7 81.1 14.9m-391.2 62.3c-27.7 50.8-52.9 78.9-72.1 85.3 2.1-16.2 21.3-44.4 51.6-72.1l20.5-13.2m128.9-294.8c-9.8-38.4-10.2-69.5-3-87.5l3-5.1 6.4 2.1c7.3 10.2 8.1 23.9 3.8 46.9l-1.3 6.8-6.8 35-2.1 1.7z&quot;/>"
-        errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/res/drawable/ic_vector_pdf.xml"
-            line="2"
-            column="70"/>
     </issue>
 
     <issue
