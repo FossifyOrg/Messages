@@ -142,7 +142,6 @@ dependencies {
     implementation(libs.eventbus)
     implementation(libs.indicator.fast.scroll)
     implementation(libs.android.smsmms)
-    implementation(libs.shortcut.badger)
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.process)

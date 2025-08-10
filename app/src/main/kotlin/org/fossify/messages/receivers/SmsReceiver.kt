@@ -84,11 +84,6 @@ class SmsReceiver : BroadcastReceiver() {
                     } catch (ignored: Exception) {
                     }
 
-                    try {
-                        context.updateUnreadCountBadge(context.conversationsDB.getUnreadConversations())
-                    } catch (ignored: Exception) {
-                    }
-
                     val senderName = context.getNameFromAddress(address, privateCursor)
                     val phoneNumber = PhoneNumber(address, 0, "", address)
                     val participant = SimpleContact(0, 0, senderName, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())

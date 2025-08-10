@@ -26,7 +26,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.mms.pdu_alt.PduHeaders
-import me.leolin.shortcutbadger.ShortcutBadger
 import org.fossify.commons.extensions.areDigitsOnly
 import org.fossify.commons.extensions.getBlockedNumbers
 import org.fossify.commons.extensions.getIntValue
@@ -1002,15 +1001,6 @@ fun Context.markThreadMessagesUnread(threadId: Long) {
         val selection = "${Sms.THREAD_ID} = ?"
         val selectionArgs = arrayOf(threadId.toString())
         contentResolver.update(uri, contentValues, selection, selectionArgs)
-    }
-}
-
-fun Context.updateUnreadCountBadge(conversations: List<Conversation>) {
-    val unreadCount = conversations.count { !it.read }
-    if (unreadCount == 0) {
-        ShortcutBadger.removeCount(this)
-    } else {
-        ShortcutBadger.applyCount(this, unreadCount)
     }
 }
 
