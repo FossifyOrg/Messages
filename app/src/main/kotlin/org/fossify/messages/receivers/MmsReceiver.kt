@@ -14,12 +14,10 @@ import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
-import org.fossify.messages.extensions.conversationsDB
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getLatestMMS
 import org.fossify.messages.extensions.insertOrUpdateConversation
 import org.fossify.messages.extensions.showReceivedMessageNotification
-import org.fossify.messages.extensions.updateUnreadCountBadge
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
@@ -90,7 +88,6 @@ class MmsReceiver : MmsReceivedReceiver() {
                 val conversation = context.getConversations(mms.threadId).firstOrNull()
                     ?: return@ensureBackgroundThread
                 context.insertOrUpdateConversation(conversation)
-                context.updateUnreadCountBadge(context.conversationsDB.getUnreadConversations())
                 refreshMessages()
             }
         }
