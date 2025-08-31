@@ -67,6 +67,7 @@
     <string name="no_archived_conversations">No archived conversations have been found</string>
     <string name="archive_emptied_successfully">The archive has been emptied successfully</string>
     <string name="empty_archive_confirmation">Are you sure you want to empty the archive? All archived conversations will be permanently lost.</string>
+    <string name="keep_conversations_archived">Keep conversations archived</string>
     <!-- Recycle bin -->
     <string name="restore">Restore</string>
     <string name="restore_all_messages">Restore all messages</string>

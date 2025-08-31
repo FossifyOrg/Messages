@@ -120,6 +120,7 @@ class SettingsActivity : SimpleActivity() {
         setupEnableDeliveryReports()
         setupSendLongMessageAsMMS()
         setupGroupMessageAsMMS()
+        setupKeepConversationsArchived()
         setupLockScreenVisibility()
         setupMMSFileSizeLimit()
         setupUseRecycleBin()
@@ -307,6 +308,14 @@ class SettingsActivity : SimpleActivity() {
         settingsSendGroupMessageMmsHolder.setOnClickListener {
             settingsSendGroupMessageMms.toggle()
             config.sendGroupMessageMMS = settingsSendGroupMessageMms.isChecked
+        }
+    }
+
+    private fun setupKeepConversationsArchived() = binding.apply {
+        settingsKeepConversationsArchived.isChecked = config.keepConversationsArchived
+        settingsKeepConversationsArchivedHolder.setOnClickListener {
+            settingsKeepConversationsArchived.toggle()
+            config.keepConversationsArchived = settingsKeepConversationsArchived.isChecked
         }
     }
 

@@ -143,4 +143,9 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, "")!!
         set(lastBlockedNumbersExportPath) = prefs.edit()
             .putString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, lastBlockedNumbersExportPath).apply()
+
+    var keepConversationsArchived: Boolean
+        get() = prefs.getBoolean(KEEP_CONVERSATIONS_ARCHIVED, false)
+        set(keepConversationsArchived) = prefs.edit()
+            .putBoolean(KEEP_CONVERSATIONS_ARCHIVED, keepConversationsArchived).apply()
 }
