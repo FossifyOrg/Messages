@@ -141,6 +141,7 @@ import org.fossify.messages.extensions.renameConversation
 import org.fossify.messages.extensions.restoreAllMessagesFromRecycleBinForConversation
 import org.fossify.messages.extensions.restoreMessageFromRecycleBin
 import org.fossify.messages.extensions.saveSmsDraft
+import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showWithAnimation
 import org.fossify.messages.extensions.subscriptionManagerCompat
 import org.fossify.messages.extensions.toArrayList
@@ -1640,7 +1641,9 @@ class ThreadActivity : SimpleActivity() {
             }
         }
         messagesDB.insertOrUpdate(message)
-        updateConversationArchivedStatus(message.threadId, false)
+        if (shouldUnarchive()) {
+            updateConversationArchivedStatus(message.threadId, false)
+        }
     }
 
     // show selected contacts, properly split to new lines when appropriate

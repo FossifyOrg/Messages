@@ -17,7 +17,9 @@ import org.fossify.messages.R
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getLatestMMS
 import org.fossify.messages.extensions.insertOrUpdateConversation
+import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
+import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
@@ -88,6 +90,9 @@ class MmsReceiver : MmsReceivedReceiver() {
                 val conversation = context.getConversations(mms.threadId).firstOrNull()
                     ?: return@ensureBackgroundThread
                 context.insertOrUpdateConversation(conversation)
+                if (context.shouldUnarchive()) {
+                    context.updateConversationArchivedStatus(mms.threadId, false)
+                }
                 refreshMessages()
             }
         }
