@@ -42,7 +42,6 @@ class ConversationsAdapter(
         val isSingleSelection = isOneItemSelected()
         val selectedConversation = selectedItems.firstOrNull() ?: return
         val isGroupConversation = selectedConversation.isGroupConversation
-        val archiveAvailable = activity.config.isArchiveAvailable
 
         menu.apply {
             findItem(R.id.cab_block_number).title =
@@ -58,7 +57,6 @@ class ConversationsAdapter(
             findItem(R.id.cab_conversation_details).isVisible = isSingleSelection
             findItem(R.id.cab_mark_as_read).isVisible = selectedItems.any { !it.read }
             findItem(R.id.cab_mark_as_unread).isVisible = selectedItems.any { it.read }
-            findItem(R.id.cab_archive).isVisible = archiveAvailable
             checkPinBtnVisibility(this)
         }
     }

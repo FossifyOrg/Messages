@@ -412,8 +412,7 @@ fun Context.getConversations(
                 ) else ""
             val isGroupConversation = phoneNumbers.size > 1
             val read = cursor.getIntValue(Threads.READ) == 1
-            val archived =
-                if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else false
+            val archived = if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else conversationsDB.isArchived(id)
             val conversation = Conversation(
                 threadId = id,
                 snippet = snippet,
@@ -928,7 +927,10 @@ fun Context.updateConversationArchivedStatus(threadId: Long, archived: Boolean) 
     val selection = "${Threads._ID} = ?"
     val selectionArgs = arrayOf(threadId.toString())
     try {
-        contentResolver.update(uri, values, selection, selectionArgs)
+        val updates = contentResolver.update(uri, values, selection, selectionArgs)
+        if (updates == 0) { // no rows updates, something in archiving is broken
+            config.isArchiveAvailable = false
+        }
     } catch (sqliteException: SQLiteException) {
         if (
             sqliteException.message?.contains("no such column: archived") == true

@@ -108,9 +108,7 @@ class SmsReceiver : BroadcastReceiver() {
                             subscriptionId
                         )
                     context.messagesDB.insertOrUpdate(message)
-                    if (context.config.isArchiveAvailable) {
-                        context.updateConversationArchivedStatus(threadId, false)
-                    }
+                    context.updateConversationArchivedStatus(threadId, false)
                     refreshMessages()
                     context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
                 }
