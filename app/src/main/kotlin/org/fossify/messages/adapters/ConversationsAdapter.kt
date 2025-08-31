@@ -169,66 +169,37 @@ class ConversationsAdapter(
         }
     }
 
-    private fun archiveConversations() {
-        if (selectedKeys.isEmpty()) {
-            return
-        }
+    private fun removeSelectedConversations(action: (Conversation) -> Unit) {
+        if (selectedKeys.isEmpty()) return
 
-        val conversationsToRemove =
-            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
-        conversationsToRemove.forEach {
-            activity.updateConversationArchivedStatus(it.threadId, true)
-            activity.notificationManager.cancel(it.threadId.hashCode())
-        }
+        val conversations = currentList.filter { it.hashCode() in selectedKeys } // TODO: Using hashCode is here REALLY dangerous. See https://github.com/orgs/FossifyOrg/discussions/696
+        conversations.forEach(action)
 
         val newList = try {
-            currentList.toMutableList().apply { removeAll(conversationsToRemove) }
-        } catch (ignored: Exception) {
+            currentList.toMutableList()
+        } catch (_: ConcurrentModificationException) { // TODO: The list might have changed, this should be properly synchronized.
             currentList.toMutableList()
         }
 
+        val update = newList.removeAll(conversations)
+
         activity.runOnUiThread {
-            if (newList.none { selectedKeys.contains(it.hashCode()) }) {
-                refreshMessages()
-                finishActMode()
-            } else {
+            finishActMode()
+            if (update) {
                 submitList(newList)
-                if (newList.isEmpty()) {
-                    refreshMessages()
-                }
             }
+            refreshMessages()
         }
     }
 
-    private fun deleteConversations() {
-        if (selectedKeys.isEmpty()) {
-            return
-        }
+    private fun archiveConversations() = removeSelectedConversations {
+        activity.updateConversationArchivedStatus(it.threadId, true)
+        activity.notificationManager.cancel(it.threadId.hashCode())
+    }
 
-        val conversationsToRemove =
-            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
-        conversationsToRemove.forEach {
-            activity.deleteConversation(it.threadId)
-            activity.notificationManager.cancel(it.threadId.hashCode())
-        }
-
-        val newList = try {
-            currentList.toMutableList().apply { removeAll(conversationsToRemove) }
-        } catch (ignored: Exception) {
-            currentList.toMutableList()
-        }
-
-        activity.runOnUiThread {
-            if (newList.none { selectedKeys.contains(it.hashCode()) }) {
-                refreshMessages()
-                finishActMode()
-            } else {
-                submitList(newList)
-                if (newList.isEmpty()) {
-                    refreshMessages()
-                }
-            }
-        }
+    private fun deleteConversations() = removeSelectedConversations {
+        activity.deleteConversation(it.threadId)
+        activity.notificationManager.cancel(it.threadId.hashCode())
     }
 
     private fun renameConversation(conversation: Conversation) {
