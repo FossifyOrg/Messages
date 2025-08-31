@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Option to keep conversations archived ([#334])
 
 ## [1.2.3] - 2025-08-21
 ### Changed
@@ -134,6 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#288]: https://github.com/FossifyOrg/Messages/issues/288
 [#294]: https://github.com/FossifyOrg/Messages/issues/294
 [#309]: https://github.com/FossifyOrg/Messages/issues/309
+[#334]: https://github.com/FossifyOrg/Messages/issues/334
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
