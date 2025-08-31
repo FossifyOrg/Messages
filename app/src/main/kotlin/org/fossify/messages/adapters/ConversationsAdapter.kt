@@ -172,7 +172,7 @@ class ConversationsAdapter(
     private fun removeSelectedConversations(action: (Conversation) -> Unit) {
         if (selectedKeys.isEmpty()) return
 
-        val conversations = currentList.filter { it.hashCode() in selectedKeys } // TODO: Using hashCode is here REALLY dangerous. See https://github.com/orgs/FossifyOrg/discussions/696
+        val conversations = currentList.filter { it.threadId.toInt() in selectedKeys }
         conversations.forEach(action)
 
         val newList = try {
@@ -223,7 +223,7 @@ class ConversationsAdapter(
         }
 
         val conversationsMarkedAsRead =
-            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+            currentList.filter { it.threadId.toInt() in selectedKeys } as ArrayList<Conversation>
         ensureBackgroundThread {
             conversationsMarkedAsRead.filter { conversation -> !conversation.read }.forEach {
                 activity.markThreadMessagesRead(it.threadId)
@@ -239,7 +239,7 @@ class ConversationsAdapter(
         }
 
         val conversationsMarkedAsUnread =
-            currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+            currentList.filter { it.threadId.toInt() in selectedKeys } as ArrayList<Conversation>
         ensureBackgroundThread {
             conversationsMarkedAsUnread.filter { conversation -> conversation.read }.forEach {
                 activity.markThreadMessagesUnread(it.threadId)

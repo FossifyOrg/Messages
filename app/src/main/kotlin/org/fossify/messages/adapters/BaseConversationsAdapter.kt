@@ -78,8 +78,9 @@ abstract class BaseConversationsAdapter(
         ensureBackgroundThread {
             val newDrafts = HashMap<Long, String>()
             fetchDrafts(newDrafts)
+            val changes = drafts != newDrafts
             activity.runOnUiThread {
-                if (drafts.hashCode() != newDrafts.hashCode()) {
+                if (changes) {
                     drafts = newDrafts
                     notifyDataSetChanged()
                 }
@@ -89,15 +90,13 @@ abstract class BaseConversationsAdapter(
 
     override fun getSelectableItemCount() = itemCount
 
-    protected fun getSelectedItems() = currentList.filter {
-        selectedKeys.contains(it.hashCode())
-    } as ArrayList<Conversation>
+    protected fun getSelectedItems() = currentList.filter { it.threadId.toInt() in selectedKeys }
 
     override fun getIsItemSelectable(position: Int) = true
 
-    override fun getItemSelectionKey(position: Int) = currentList.getOrNull(position)?.hashCode()
+    override fun getItemSelectionKey(position: Int) = currentList.getOrNull(position)?.threadId?.toInt()
 
-    override fun getItemKeyPosition(key: Int) = currentList.indexOfFirst { it.hashCode() == key }
+    override fun getItemKeyPosition(key: Int) = currentList.indexOfFirst { it.threadId.toInt() == key }
 
     override fun onActionModeCreated() {}
 
@@ -149,7 +148,7 @@ abstract class BaseConversationsAdapter(
             )
             pinIndicator.applyColorFilter(textColor)
 
-            conversationFrame.isSelected = selectedKeys.contains(conversation.hashCode())
+            conversationFrame.isSelected = selectedKeys.contains(conversation.threadId.toInt())
 
             conversationAddress.apply {
                 text = conversation.title

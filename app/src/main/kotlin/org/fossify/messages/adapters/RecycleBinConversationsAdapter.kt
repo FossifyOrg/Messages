@@ -50,7 +50,7 @@ class RecycleBinConversationsAdapter(
             return
         }
 
-        val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        val conversationsToRemove = currentList.filter { it.threadId.toInt() in selectedKeys } as ArrayList<Conversation>
         conversationsToRemove.forEach {
             activity.deleteConversation(it.threadId)
             activity.notificationManager.cancel(it.threadId.hashCode())
@@ -78,7 +78,7 @@ class RecycleBinConversationsAdapter(
             return
         }
 
-        val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        val conversationsToRemove = currentList.filter { it.threadId.toInt() in selectedKeys } as ArrayList<Conversation>
         conversationsToRemove.forEach {
             activity.restoreAllMessagesFromRecycleBinForConversation(it.threadId)
         }
@@ -94,7 +94,7 @@ class RecycleBinConversationsAdapter(
         }
 
         activity.runOnUiThread {
-            if (newList.none { selectedKeys.contains(it.hashCode()) }) {
+            if (newList.none { it.threadId.toInt() in selectedKeys }) {
                 refreshMessages()
                 finishActMode()
             } else {
