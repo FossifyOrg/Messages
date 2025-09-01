@@ -116,4 +116,5 @@
     <string name="keywords">關鍵字</string>
     <string name="export_blocked_keywords">匯出被封鎖的關鍵字</string>
     <string name="import_blocked_keywords">匯入被封鎖的關鍵字</string>
+    <string name="keep_conversations_archived">保留對話封存</string>
 </resources>
