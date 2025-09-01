@@ -122,4 +122,5 @@
     <string name="skip_the_recycle_bin_messages">Izlaist atkritni, izdzēst ziņojumus uzreiz</string>
     <string name="unknown_error_occurred_sending_message">Nevarēja nosūtīt ziņojumu, kļūdas kods: %d</string>
     <string name="faq_1_text">Diemžēl tas ir nepieciešams MMS pielikumu nosūtīšanai. Nevarēšana nosūtīt MMS būtu ļoti liels trūkums salīdzinājumā ar citām lietotnēm, tādēļ mēs izlēmām rīkoties šādi. Tomēr, kā ierasts, šeit nav nekādu reklāmu, izsekošanas vai datu apkopošanas, internets tiek izmantots tikai MMS nosūtīšanai.</string>
+    <string name="keep_conversations_archived">Paturēt sarunas arhivētas</string>
 </resources>
