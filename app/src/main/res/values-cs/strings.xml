@@ -122,4 +122,5 @@
     <string name="keywords">Klíčová slova</string>
     <string name="export_blocked_keywords">Exportovat zablokovaná klíčová slova</string>
     <string name="import_blocked_keywords">Importovat zablokovaná klíčová slova</string>
+    <string name="keep_conversations_archived">Ponechat konverzace archivované</string>
 </resources>
