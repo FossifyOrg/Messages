@@ -119,4 +119,5 @@
     <string name="keyword">Ŝlosilvorto</string>
     <string name="faq_1_text">Bedaŭrinde, necesas por sendi MMS-ajn kunsendaĵojn. Ne povis sendi MMS estus grandega malavantaĝon komparita kun aliaj aplikaĵojn, do ni decidi preni tiun ĉi vojon. Tamen, kiel kutime, estas neniom da reklamoj, spurado nek analizoj. La interreto nur estas uzata por la sendado de MMS.</string>
     <string name="unknown_error_occurred_sending_message">Ne povis sendi mesaĝon (erarkodo: %d)</string>
+    <string name="keep_conversations_archived">Gardi arkivigitajn konversaciojn</string>
 </resources>
