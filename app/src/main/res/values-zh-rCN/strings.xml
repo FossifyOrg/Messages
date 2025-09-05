@@ -116,4 +116,5 @@
     <string name="import_blocked_keywords">导入拦截关键词</string>
     <string name="keywords">关键词</string>
     <string name="export_blocked_keywords">导出拦截关键词</string>
+    <string name="keep_conversations_archived">保持对话归档状态</string>
 </resources>

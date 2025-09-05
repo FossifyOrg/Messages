@@ -125,4 +125,5 @@
     <string name="import_blocked_keywords">Importuj zablokowane słowa kluczowe</string>
     <string name="keywords">Słowa kluczowe</string>
     <string name="export_blocked_keywords">Eksportuj zablokowane słowa kluczowe</string>
+    <string name="keep_conversations_archived">Pozostawiaj rozmowy zarchiwizowane</string>
 </resources>

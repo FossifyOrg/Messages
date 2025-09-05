@@ -119,4 +119,5 @@
     <string name="keywords">Märksõnad</string>
     <string name="import_blocked_keywords">Impordi blokeeritud märksõnad</string>
     <string name="export_blocked_keywords">Ekspordi blokeeritud märksõnad</string>
+    <string name="keep_conversations_archived">Hoia vestlused arhiveerituna</string>
 </resources>

@@ -122,4 +122,5 @@
     <string name="import_blocked_keywords">Importa paraules clau bloquejades</string>
     <string name="keywords">Paraules clau</string>
     <string name="export_blocked_keywords">Exporta paraules clau bloquejades</string>
+    <string name="keep_conversations_archived">Mantén les converses arxivades</string>
 </resources>

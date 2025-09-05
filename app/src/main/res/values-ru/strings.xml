@@ -125,4 +125,5 @@
     <string name="import_blocked_keywords">Импорт блокируемых ключевых слов</string>
     <string name="keywords">Ключевые слова</string>
     <string name="export_blocked_keywords">Экспорт блокируемых ключевых слов</string>
+    <string name="keep_conversations_archived">Оставить переписки архивными</string>
 </resources>

@@ -119,4 +119,5 @@
     <string name="export_blocked_keywords">Geblokkeerde trefwoorden exporteren</string>
     <string name="keywords">Trefwoorden</string>
     <string name="import_blocked_keywords">Geblokkeerde trefwoorden importeren</string>
+    <string name="keep_conversations_archived">Gesprekken gearchiveerd houden</string>
 </resources>

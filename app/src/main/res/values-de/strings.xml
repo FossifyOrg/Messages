@@ -119,4 +119,5 @@
     <string name="import_blocked_keywords">Blockierte Schlüsselwörter importieren</string>
     <string name="export_blocked_keywords">Blockierte Schlüsselwörter exportieren</string>
     <string name="keywords">Schlüsselwörter</string>
+    <string name="keep_conversations_archived">Unterhaltungen archiviert lassen</string>
 </resources>

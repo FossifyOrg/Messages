@@ -128,4 +128,5 @@
     <string name="export_blocked_keywords">Easpórtáil eochairfhocail blocáilte</string>
     <string name="import_blocked_keywords">Iompórtáil eochairfhocail blocáilte</string>
     <string name="keywords">Eochairfhocail</string>
+    <string name="keep_conversations_archived">Coinnigh comhráite cartlannaithe</string>
 </resources>
