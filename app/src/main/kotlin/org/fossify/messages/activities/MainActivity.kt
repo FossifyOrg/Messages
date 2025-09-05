@@ -59,7 +59,6 @@ import org.fossify.messages.databinding.ActivityMainBinding
 import org.fossify.messages.extensions.checkAndDeleteOldRecycleBinMessages
 import org.fossify.messages.extensions.clearAllMessagesIfNeeded
 import org.fossify.messages.extensions.clearExpiredScheduledMessages
-import org.fossify.messages.extensions.clearSystemDrafts
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.conversationsDB
 import org.fossify.messages.extensions.getConversations
@@ -287,7 +286,6 @@ class MainActivity : SimpleActivity() {
         checkWhatsNewDialog()
         storeStateVariables()
         getCachedConversations()
-        clearSystemDrafts()
         binding.noConversationsPlaceholder2.setOnClickListener {
             launchNewConversation()
         }
