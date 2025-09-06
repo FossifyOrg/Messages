@@ -1,0 +1,8 @@
+Added:
+
+• Option to keep conversations archived 
+
+Changed:
+
+• Updated translations
+
