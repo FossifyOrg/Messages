@@ -356,7 +356,7 @@
                 style="@style/SettingsSectionLabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/archive" />
+                android:text="@string/archived_conversations" />
 
             <RelativeLayout
                 android:id="@+id/settings_keep_conversations_archived_holder"
