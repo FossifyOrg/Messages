@@ -122,4 +122,5 @@
     <string name="export_blocked_keywords">Exportar palabras clave bloqueadas</string>
     <string name="keywords">Palabras clave</string>
     <string name="import_blocked_keywords">Importar palabras clave bloqueadas</string>
+    <string name="keep_conversations_archived">Mantener conversaciones archivadas</string>
 </resources>
