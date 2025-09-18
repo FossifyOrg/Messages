@@ -15,14 +15,14 @@
     <string name="draft">Нацрт</string>
     <string name="sending">Шаље се…</string>
     <string name="pin_conversation">Закачите на врх</string>
-    <string name="unpin_conversation">Oткопчати</string>
-    <string name="forward_message">Напред</string>
-    <string name="compress_error">Није могуће компримовати слику на изабрану величину</string>
+    <string name="unpin_conversation">Oткачи</string>
+    <string name="forward_message">Проследи</string>
+    <string name="compress_error">Није могуће сажети слику на изабрану величину</string>
     <string name="duplicate_item_warning">Дупликат ставке није укључен</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">и %d друго</item>
-        <item quantity="few">и %d других</item>
-        <item quantity="other">и %d други</item>
+        <item quantity="one">и %d друга</item>
+        <item quantity="few">и %d друге</item>
+        <item quantity="other">и %d других</item>
     </plurals>
     <string name="new_conversation">Нови разговор</string>
     <string name="add_contact_or_number">Додајте контакт или број…</string>
@@ -75,7 +75,7 @@
     <string name="blocked_keywords">Блокиране ријечи</string>
     <string name="manage_blocked_keywords">Управљање блокираним ријечима</string>
     <string name="not_blocking_keywords">Не блокирате ни једну ријеч. Овдје можете додати ријечи како бисте блокирали све поруке које их садрже.</string>
-    <string name="add_a_blocked_keyword">Додај блокирану ријеч.</string>
+    <string name="add_a_blocked_keyword">Додај блокирану реч</string>
     <string name="lock_screen_visibility">Видљивост обавештења на закључаном екрану</string>
     <string name="sender_and_message">Пошиљалац и порука</string>
     <string name="sender_only">Само пошиљалац</string>
@@ -101,4 +101,26 @@
     <string name="faq_2_text">Величина ММС-а је ограничена оператерима, можете покушати да подесите мање ограничење у подешавањима апликације.</string>
     <string name="faq_3_title">Да ли апликација подржава заказане поруке\?</string>
     <string name="faq_3_text">Да, можете заказати слање порука у будућности дугим притиском на дугме Пошаљи и одабиром жељеног датума и времена.</string>
+    <string name="app_launcher_name">Поруке</string>
+    <string name="members">Чланови</string>
+    <string name="conversation_name">Име разговора</string>
+    <string name="conversation_details">Детаљи разговора</string>
+    <string name="rename_conversation">Преимениј разговор</string>
+    <string name="rename_conversation_warning">Само ти можеш да видиш име овог разговора</string>
+    <string name="empty_destination_address">Не можеш да пошаљеш поруку празном броју</string>
+    <string name="unable_to_save_message">Није могуће сачувати поруку у базу података телефоније</string>
+    <string name="error_service_is_unavailable">Порука није послата, услуга је недоступна</string>
+    <string name="error_radio_turned_off">Порука није послата, радио је искључен</string>
+    <string name="carrier_send_error">Порука није послата, грешка оператера</string>
+    <string name="unknown_error_occurred_sending_message">Порука није послата, број грешке: %d</string>
+    <string name="invalid_short_code">Није могуће одговорити на ове кратке кодове</string>
+    <string name="invalid_short_code_desc">Можеш одговарати само на кратке кодове који садрже бројеве нпр. „503501“ али не и на кодове који садрже и слова и бројеве нпр. „AB-CD0.</string>
+    <string name="attachment_sized_exceeds_max_limit">Величина прилога превазилази ограничење ММС-а</string>
+    <string name="sim_card_not_available">СИМ картица није доступна</string>
+    <string name="couldnt_download_mms">Преузимање MMS-а није успело</string>
+    <string name="enable_custom_notifications">Укључи прилагођена обавештења</string>
+    <string name="keep_conversations_archived">Задржи разговоре архивиране</string>
+    <string name="keywords">Кључне речи</string>
+    <string name="export_blocked_keywords">Извези блокиране кључне речи</string>
+    <string name="import_blocked_keywords">Увези блокиране кључне речи</string>
 </resources>
