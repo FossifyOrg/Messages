@@ -119,4 +119,5 @@
     <string name="keywords">Avainsanat</string>
     <string name="export_blocked_keywords">Vie estetyt avainsanat</string>
     <string name="import_blocked_keywords">Tuo estetyt avainsanat</string>
+    <string name="keep_conversations_archived">Pidä keskustelut arkistoituna</string>
 </resources>
