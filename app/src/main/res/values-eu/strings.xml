@@ -27,4 +27,14 @@
     <string name="new_conversation">Elkarrizketa berria</string>
     <string name="add_contact_or_number">Gehitu kontaktua edo zenbakia…</string>
     <string name="suggestions">Iradokizunak</string>
+    <string name="members">Kideak</string>
+    <string name="conversation_name">Elkarrizketaren izena</string>
+    <string name="conversation_details">Elkarrizketaren xehetasunak</string>
+    <string name="rename_conversation">Berrizendatu elkarrizketa</string>
+    <string name="rename_conversation_warning">Zuk bakarrik ikus dezakezu elkarrizketa-izen hau</string>
+    <string name="scheduled_message">Programatutako mezua</string>
+    <string name="schedule_message">Programatu mezua</string>
+    <string name="schedule_send">Programatu bidalketa</string>
+    <string name="cancel_schedule_send">Utzi programatutako bidalketa</string>
+    <string name="must_pick_time_in_the_future">Etorkizuneko une bat aukeratu behar duzu</string>
 </resources>
