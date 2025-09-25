@@ -1317,3 +1317,11 @@ fun Context.getDefaultKeyboardHeight(): Int {
 fun Context.shouldUnarchive(): Boolean {
     return config.isArchiveAvailable && !config.keepConversationsArchived
 }
+
+fun Context.copyToUri(src: Uri, dst: Uri) {
+    contentResolver.openInputStream(src)?.use { input ->
+        contentResolver.openOutputStream(dst, "rwt")?.use { out ->
+            input.copyTo(out)
+        }
+    }
+}

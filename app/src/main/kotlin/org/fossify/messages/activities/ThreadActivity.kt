@@ -5,6 +5,8 @@ import android.app.Activity
 import android.app.AlarmManager
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.res.ColorStateList
 import android.graphics.BitmapFactory
 import android.graphics.drawable.LayerDrawable
@@ -12,6 +14,7 @@ import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.provider.Telephony
 import android.provider.Telephony.Sms.MESSAGE_TYPE_QUEUED
@@ -44,6 +47,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -62,6 +66,7 @@ import org.fossify.commons.extensions.darkenColor
 import org.fossify.commons.extensions.formatDate
 import org.fossify.commons.extensions.getBottomNavigationBackgroundColor
 import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getFilenameFromPath
 import org.fossify.commons.extensions.getFilenameFromUri
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.getMyFileUri
@@ -113,6 +118,7 @@ import org.fossify.messages.dialogs.ScheduleMessageDialog
 import org.fossify.messages.extensions.clearExpiredScheduledMessages
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.conversationsDB
+import org.fossify.messages.extensions.copyToUri
 import org.fossify.messages.extensions.createTemporaryThread
 import org.fossify.messages.extensions.deleteConversation
 import org.fossify.messages.extensions.deleteMessage
@@ -158,6 +164,7 @@ import org.fossify.messages.helpers.MESSAGES_LIMIT
 import org.fossify.messages.helpers.PICK_CONTACT_INTENT
 import org.fossify.messages.helpers.PICK_DOCUMENT_INTENT
 import org.fossify.messages.helpers.PICK_PHOTO_INTENT
+import org.fossify.messages.helpers.PICK_SAVE_DIR_INTENT
 import org.fossify.messages.helpers.PICK_SAVE_FILE_INTENT
 import org.fossify.messages.helpers.PICK_VIDEO_INTENT
 import org.fossify.messages.helpers.SEARCHED_MESSAGE_ID
@@ -192,8 +199,6 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.joda.time.DateTime
 import java.io.File
-import java.io.InputStream
-import java.io.OutputStream
 
 class ThreadActivity : SimpleActivity() {
     private val MIN_DATE_TIME_DIFF_SECS = 300
@@ -215,7 +220,7 @@ class ThreadActivity : SimpleActivity() {
     private var privateContacts = ArrayList<SimpleContact>()
     private var messages = ArrayList<Message>()
     private val availableSIMCards = ArrayList<SIMCard>()
-    private var lastAttachmentUri: String? = null
+    private var pendingAttachmentsToSave: List<Attachment>? = null
     private var capturedImageUri: Uri? = null
     private var loadingOlderMessages = false
     private var allMessagesFetched = false
@@ -420,7 +425,8 @@ class ThreadActivity : SimpleActivity() {
                 PICK_VIDEO_INTENT -> addAttachment(data)
 
                 PICK_CONTACT_INTENT -> addContactAttachment(data)
-                PICK_SAVE_FILE_INTENT -> saveAttachment(resultData)
+                PICK_SAVE_FILE_INTENT -> saveAttachments(resultData)
+                PICK_SAVE_DIR_INTENT -> saveAttachments(resultData)
             }
         }
     }
@@ -1485,29 +1491,32 @@ class ThreadActivity : SimpleActivity() {
         checkSendMessageAvailability()
     }
 
-    private fun saveAttachment(resultData: Intent) {
-        val takeFlags =
-            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+    private fun saveAttachments(resultData: Intent) {
         applicationContext.contentResolver.takePersistableUriPermission(
-            resultData.data!!,
-            takeFlags
+            resultData.data!!, FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
         )
-        var inputStream: InputStream? = null
-        var outputStream: OutputStream? = null
+        val destinationUri = resultData.data ?: return
         try {
-            inputStream = contentResolver.openInputStream(Uri.parse(lastAttachmentUri))
-            outputStream =
-                contentResolver.openOutputStream(Uri.parse(resultData.dataString!!), "rwt")
-            inputStream!!.copyTo(outputStream!!)
-            outputStream.flush()
+            if (DocumentsContract.isTreeUri(destinationUri)) {
+                val outputDir = DocumentFile.fromTreeUri(this, destinationUri) ?: return
+                pendingAttachmentsToSave?.forEach { attachment ->
+                    val documentFile = outputDir.createFile(
+                        attachment.mimetype,
+                        attachment.filename.takeIf { it.isNotBlank() }
+                            ?: attachment.uriString.getFilenameFromPath()
+                    ) ?: return@forEach
+                    copyToUri(src = attachment.getUri(), dst = documentFile.uri)
+                }
+            } else {
+                copyToUri(pendingAttachmentsToSave!!.first().getUri(), resultData.data!!)
+            }
+
             toast(org.fossify.commons.R.string.file_saved)
         } catch (e: Exception) {
             showErrorToast(e)
         } finally {
-            inputStream?.close()
-            outputStream?.close()
+            pendingAttachmentsToSave = null
         }
-        lastAttachmentUri = null
     }
 
     private fun checkSendMessageAvailability() {
@@ -1745,18 +1754,29 @@ class ThreadActivity : SimpleActivity() {
         return participants
     }
 
-    fun saveMMS(mimeType: String, path: String) {
-        hideKeyboard()
-        lastAttachmentUri = path
-        Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-            type = mimeType
-            addCategory(Intent.CATEGORY_OPENABLE)
-            putExtra(Intent.EXTRA_TITLE, path.split("/").last())
-            launchActivityForResult(
-                intent = this,
-                requestCode = PICK_SAVE_FILE_INTENT,
-                error = org.fossify.commons.R.string.system_service_disabled
-            )
+    fun saveMMS(attachments: List<Attachment>) {
+        pendingAttachmentsToSave = attachments
+        if (attachments.size == 1) {
+            val attachment = attachments.first()
+            Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                type = attachment.mimetype
+                addCategory(Intent.CATEGORY_OPENABLE)
+                putExtra(Intent.EXTRA_TITLE, attachment.uriString.split("/").last())
+                launchActivityForResult(
+                    intent = this,
+                    requestCode = PICK_SAVE_FILE_INTENT,
+                    error = org.fossify.commons.R.string.system_service_disabled
+                )
+            }
+        } else {
+            Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).apply {
+                addCategory(Intent.CATEGORY_DEFAULT)
+                launchActivityForResult(
+                    intent = this,
+                    requestCode = PICK_SAVE_DIR_INTENT,
+                    error = org.fossify.commons.R.string.system_service_disabled
+                )
+            }
         }
     }
 

@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.util.Size
 import android.util.TypedValue
@@ -49,6 +47,7 @@ import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Message
 import org.fossify.messages.models.ThreadItem
 import org.fossify.messages.models.ThreadItem.*
+import androidx.core.graphics.drawable.toDrawable
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -74,9 +73,10 @@ class ThreadAdapter(
         val isOneItemSelected = isOneItemSelected()
         val selectedItem = getSelectedItems().firstOrNull() as? Message
         val hasText = selectedItem?.body != null && selectedItem.body != ""
+        val attachmentCount = selectedItem?.attachment?.attachments?.size ?: 0
         menu.apply {
             findItem(R.id.cab_copy_to_clipboard).isVisible = isOneItemSelected && hasText
-            findItem(R.id.cab_save_as).isVisible = isOneItemSelected && selectedItem?.attachment?.attachments?.size == 1
+            findItem(R.id.cab_save_as).isVisible = isOneItemSelected && attachmentCount > 0
             findItem(R.id.cab_share).isVisible = isOneItemSelected && hasText
             findItem(R.id.cab_forward_message).isVisible = isOneItemSelected
             findItem(R.id.cab_select_text).isVisible = isOneItemSelected && hasText
@@ -170,8 +170,10 @@ class ThreadAdapter(
 
     private fun saveAs() {
         val firstItem = getSelectedItems().firstOrNull() as? Message ?: return
-        val attachment = firstItem.attachment?.attachments?.first() ?: return
-        (activity as ThreadActivity).saveMMS(attachment.mimetype, attachment.uriString)
+        val attachments = firstItem.attachment?.attachments.orEmpty()
+        if (attachments.isNotEmpty()) {
+            (activity as ThreadActivity).saveMMS(attachments)
+        }
     }
 
     private fun shareText() {
@@ -342,7 +344,7 @@ class ThreadAdapter(
 
             if (!activity.isFinishing && !activity.isDestroyed) {
                 val contactLetterIcon = SimpleContactsHelper(activity).getContactLetterIcon(message.senderName)
-                val placeholder = BitmapDrawable(activity.resources, contactLetterIcon)
+                val placeholder = contactLetterIcon.toDrawable(activity.resources)
 
                 val options = RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
@@ -406,7 +408,7 @@ class ThreadAdapter(
         val imageView = ItemAttachmentImageBinding.inflate(layoutInflater)
         threadMessageAttachmentsHolder.addView(imageView.root)
 
-        val placeholderDrawable = ColorDrawable(Color.TRANSPARENT)
+        val placeholderDrawable = Color.TRANSPARENT.toDrawable()
         val isTallImage = attachment.height > attachment.width
         val transformation = if (isTallImage) CenterCrop() else FitCenter()
         val options = RequestOptions()
@@ -442,7 +444,7 @@ class ThreadAdapter(
 
         try {
             builder.into(imageView.attachmentImage)
-        } catch (ignore: Exception) {
+        } catch (_: Exception) {
         }
 
         imageView.attachmentImage.setOnClickListener {
