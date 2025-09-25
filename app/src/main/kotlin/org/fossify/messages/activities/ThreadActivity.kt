@@ -1496,26 +1496,29 @@ class ThreadActivity : SimpleActivity() {
             resultData.data!!, FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION
         )
         val destinationUri = resultData.data ?: return
-        try {
-            if (DocumentsContract.isTreeUri(destinationUri)) {
-                val outputDir = DocumentFile.fromTreeUri(this, destinationUri) ?: return
-                pendingAttachmentsToSave?.forEach { attachment ->
-                    val documentFile = outputDir.createFile(
-                        attachment.mimetype,
-                        attachment.filename.takeIf { it.isNotBlank() }
-                            ?: attachment.uriString.getFilenameFromPath()
-                    ) ?: return@forEach
-                    copyToUri(src = attachment.getUri(), dst = documentFile.uri)
+        ensureBackgroundThread {
+            try {
+                if (DocumentsContract.isTreeUri(destinationUri)) {
+                    val outputDir = DocumentFile.fromTreeUri(this, destinationUri)
+                        ?: return@ensureBackgroundThread
+                    pendingAttachmentsToSave?.forEach { attachment ->
+                        val documentFile = outputDir.createFile(
+                            attachment.mimetype,
+                            attachment.filename.takeIf { it.isNotBlank() }
+                                ?: attachment.uriString.getFilenameFromPath()
+                        ) ?: return@forEach
+                        copyToUri(src = attachment.getUri(), dst = documentFile.uri)
+                    }
+                } else {
+                    copyToUri(pendingAttachmentsToSave!!.first().getUri(), resultData.data!!)
                 }
-            } else {
-                copyToUri(pendingAttachmentsToSave!!.first().getUri(), resultData.data!!)
-            }
 
-            toast(org.fossify.commons.R.string.file_saved)
-        } catch (e: Exception) {
-            showErrorToast(e)
-        } finally {
-            pendingAttachmentsToSave = null
+                toast(org.fossify.commons.R.string.file_saved)
+            } catch (e: Exception) {
+                showErrorToast(e)
+            } finally {
+                pendingAttachmentsToSave = null
+            }
         }
     }
 
