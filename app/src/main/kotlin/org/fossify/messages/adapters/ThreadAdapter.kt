@@ -73,10 +73,13 @@ class ThreadAdapter(
         val isOneItemSelected = isOneItemSelected()
         val selectedItem = getSelectedItems().firstOrNull() as? Message
         val hasText = selectedItem?.body != null && selectedItem.body != ""
-        val attachmentCount = selectedItem?.attachment?.attachments?.size ?: 0
+        val showSaveAs = getSelectedItems().all {
+            it is Message && (it.attachment?.attachments?.size ?: 0) > 0
+        } && getSelectedAttachments().isNotEmpty()
+
         menu.apply {
             findItem(R.id.cab_copy_to_clipboard).isVisible = isOneItemSelected && hasText
-            findItem(R.id.cab_save_as).isVisible = isOneItemSelected && attachmentCount > 0
+            findItem(R.id.cab_save_as).isVisible = showSaveAs
             findItem(R.id.cab_share).isVisible = isOneItemSelected && hasText
             findItem(R.id.cab_forward_message).isVisible = isOneItemSelected
             findItem(R.id.cab_select_text).isVisible = isOneItemSelected && hasText
@@ -168,9 +171,13 @@ class ThreadAdapter(
         activity.copyToClipboard(firstItem.body)
     }
 
+    private fun getSelectedAttachments(): List<Attachment> {
+        val selectedMessages = getSelectedItems().filterIsInstance<Message>()
+        return selectedMessages.flatMap { it.attachment?.attachments.orEmpty() }
+    }
+
     private fun saveAs() {
-        val firstItem = getSelectedItems().firstOrNull() as? Message ?: return
-        val attachments = firstItem.attachment?.attachments.orEmpty()
+        val attachments = getSelectedAttachments()
         if (attachments.isNotEmpty()) {
             (activity as ThreadActivity).saveMMS(attachments)
         }
