@@ -1,6 +1,6 @@
 package org.fossify.messages.models
 
-import android.net.Uri
+import androidx.core.net.toUri
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
@@ -17,5 +17,5 @@ data class Attachment(
     @ColumnInfo(name = "filename") var filename: String
 ) {
 
-    fun getUri() = Uri.parse(uriString)
+    fun getUri() = uriString.toUri()
 }
