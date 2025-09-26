@@ -2,59 +2,64 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="AppCompatResource">
-    <item
-        android:id="@+id/delete"
-        android:icon="@drawable/ic_delete_vector"
-        android:title="@string/delete"
-        app:showAsAction="always" />
+    tools:ignore="AppCompatResource,AlwaysShowAction">
     <item
         android:id="@+id/dial_number"
         android:icon="@drawable/ic_phone_vector"
+        android:showAsAction="always"
         android:title="@string/dial_number"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/manage_people"
-        android:icon="@drawable/ic_add_person_vector"
-        android:title="@string/add_person"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/rename_conversation"
-        android:icon="@drawable/ic_edit_vector"
-        android:title="@string/rename_conversation"
         app:showAsAction="always" />
     <item
         android:id="@+id/archive"
         android:icon="@drawable/ic_archive_vector"
+        android:showAsAction="always"
         android:title="@string/archive"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/unarchive"
         android:icon="@drawable/ic_unarchive_vector"
+        android:showAsAction="always"
         android:title="@string/unarchive"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/manage_people"
+        android:icon="@drawable/ic_add_person_vector"
+        android:showAsAction="ifRoom"
+        android:title="@string/add_person"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/add_number_to_contact"
+        android:title="@string/add_number_to_contact"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/rename_conversation"
+        android:showAsAction="never"
+        android:title="@string/rename_conversation"
+        app:showAsAction="never" />
     <item
         android:id="@+id/conversation_details"
         android:showAsAction="never"
         android:title="@string/conversation_details"
         app:showAsAction="never" />
     <item
-        android:id="@+id/add_number_to_contact"
-        android:title="@string/add_number_to_contact"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/mark_as_unread"
+        android:showAsAction="never"
+        android:title="@string/mark_as_unread"
+        app:showAsAction="never" />
     <item
         android:id="@+id/block_number"
         android:showAsAction="never"
         android:title="@string/block_number"
         app:showAsAction="never" />
     <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete_vector"
+        android:showAsAction="never"
+        android:title="@string/delete"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/restore"
         android:showAsAction="never"
         android:title="@string/restore_all_messages"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/mark_as_unread"
-        android:showAsAction="never"
-        android:title="@string/mark_as_unread"
         app:showAsAction="never" />
 </menu>
