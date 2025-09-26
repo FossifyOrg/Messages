@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="AppCompatResource,AlwaysShowAction">
     <item
-        android:id="@+id/cab_delete"
-        android:icon="@drawable/ic_delete_vector"
-        android:showAsAction="always"
-        android:title="@string/delete"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/cab_unarchive"
         android:icon="@drawable/ic_unarchive_vector"
         android:showAsAction="ifRoom"
         android:title="@string/unarchive"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cab_delete"
+        android:icon="@drawable/ic_delete_vector"
+        android:showAsAction="always"
+        android:title="@string/delete"
+        app:showAsAction="always" />
     <item
         android:id="@+id/cab_select_all"
         android:icon="@drawable/ic_select_all_vector"
