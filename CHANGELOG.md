@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Ability to save multiple attachments ([#75])
-- Ability to select non-favorite numbers when starting a new conversation ([#153])
+- Ability to select numbers that aren't starred when starting a new conversation ([#153])
 
 ### Changed
 - Reordered action buttons throughout the app
