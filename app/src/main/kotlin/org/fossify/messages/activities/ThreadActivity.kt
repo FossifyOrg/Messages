@@ -79,6 +79,7 @@ import org.fossify.commons.extensions.isDynamicTheme
 import org.fossify.commons.extensions.isOrWasThankYouInstalled
 import org.fossify.commons.extensions.isVisible
 import org.fossify.commons.extensions.launchActivityIntent
+import org.fossify.commons.extensions.maybeShowNumberPickerDialog
 import org.fossify.commons.extensions.normalizeString
 import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.extensions.onTextChangeListener
@@ -623,7 +624,12 @@ class ThreadActivity : SimpleActivity() {
                     val currContacts =
                         (binding.addContactOrNumber.adapter as AutoCompleteTextViewAdapter).resultList
                     val selectedContact = currContacts[position]
-                    addSelectedContact(selectedContact)
+                    maybeShowNumberPickerDialog(selectedContact.phoneNumbers) { phoneNumber ->
+                        val contactWithSelectedNumber = selectedContact.copy(
+                            phoneNumbers = arrayListOf(phoneNumber)
+                        )
+                        addSelectedContact(contactWithSelectedNumber)
+                    }
                 }
 
                 binding.addContactOrNumber.onTextChangeListener {
