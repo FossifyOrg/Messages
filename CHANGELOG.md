@@ -5,11 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Ability to save multiple attachments ([#75])
+- Ability to select non-favorite numbers when starting a new conversation ([#153])
+
 ### Changed
 - Reordered action buttons throughout the app
 
-### Added
-- Ability to save multiple attachments ([#75])
+### Fixed
+- Fixed contact number selection when adding members to a group ([#456])
 
 ## [1.3.0] - 2025-09-09
 ### Added
@@ -135,6 +139,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#75]: https://github.com/FossifyOrg/Messages/issues/75
 [#115]: https://github.com/FossifyOrg/Messages/issues/115
 [#135]: https://github.com/FossifyOrg/Messages/issues/135
+[#153]: https://github.com/FossifyOrg/Messages/issues/153
 [#180]: https://github.com/FossifyOrg/Messages/issues/180
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
@@ -150,6 +155,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#334]: https://github.com/FossifyOrg/Messages/issues/334
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
+[#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.3.0...HEAD
