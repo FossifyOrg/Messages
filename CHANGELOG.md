@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ability to select numbers that aren't starred when starting a new conversation ([#153])
 
 ### Changed
-- Reordered action buttons throughout the app
+- Reordered menu options throughout the app
 
 ### Fixed
 - Fixed contact number selection when adding members to a group ([#456])
