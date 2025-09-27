@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed contact number selection when adding members to a group ([#456])
+- Fixed a glitch in pattern lock after incorrect attempts
 
 ## [1.3.0] - 2025-09-09
 ### Added
