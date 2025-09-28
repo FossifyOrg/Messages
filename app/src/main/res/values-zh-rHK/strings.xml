@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">簡訊</string>
+    <string name="app_launcher_name">訊息</string>
     <string name="type_a_message">輸入訊息……</string>
     <string name="message_not_sent_short">訊息未送出</string>
     <string name="message_not_sent_touch_retry">未送出。點選以重試。</string>
