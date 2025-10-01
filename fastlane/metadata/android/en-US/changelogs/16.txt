@@ -1,0 +1,15 @@
+Added:
+
+• Ability to save multiple attachments 
+• Ability to select numbers that aren't starred when starting a new conversation 
+
+Changed:
+
+• Reordered menu options throughout the app
+• Updated translations
+
+Fixed:
+
+• Fixed contact number selection when adding members to a group 
+• Fixed a glitch in pattern lock after incorrect attempts
+
