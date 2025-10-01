@@ -24,12 +24,15 @@ import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
 
-// more info at https://github.com/klinker41/android-smsmms
 class MmsReceiver : MmsReceivedReceiver() {
 
     override fun isAddressBlocked(context: Context, address: String): Boolean {
         val normalizedAddress = address.normalizePhoneNumber()
         return context.isNumberBlocked(normalizedAddress)
+    }
+
+    override fun isContentBlocked(context: Context, content: String): Boolean {
+        return isMessageFilteredOut(context, content)
     }
 
     override fun onMessageReceived(context: Context, messageUri: Uri) {
@@ -62,10 +65,6 @@ class MmsReceiver : MmsReceivedReceiver() {
         size: Int,
         address: String
     ) {
-        if (isMessageFilteredOut(context, mms.body)) {
-            return
-        }
-
         val glideBitmap = try {
             Glide.with(context)
                 .asBitmap()

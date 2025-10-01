@@ -141,7 +141,7 @@ dependencies {
     implementation(libs.fossify.commons)
     implementation(libs.eventbus)
     implementation(libs.indicator.fast.scroll)
-    implementation(libs.android.smsmms)
+    implementation(libs.mmslib)
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.process)
