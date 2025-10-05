@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reordered menu options throughout the app
 
 ### Fixed
+- Fixed keyword blocking for MMS messages ([#99])
 - Fixed contact number selection when adding members to a group ([#456])
 - Fixed a glitch in pattern lock after incorrect attempts
 
@@ -138,6 +139,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#13]: https://github.com/FossifyOrg/Messages/issues/13
 [#70]: https://github.com/FossifyOrg/Messages/issues/70
 [#75]: https://github.com/FossifyOrg/Messages/issues/75
+[#99]: https://github.com/FossifyOrg/Messages/issues/99
 [#115]: https://github.com/FossifyOrg/Messages/issues/115
 [#135]: https://github.com/FossifyOrg/Messages/issues/135
 [#153]: https://github.com/FossifyOrg/Messages/issues/153
