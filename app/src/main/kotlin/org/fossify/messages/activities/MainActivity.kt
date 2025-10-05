@@ -652,6 +652,10 @@ class MainActivity : SimpleActivity() {
                 text = R.string.faq_3_text
             ),
             FAQItem(
+                title = R.string.faq_4_title,
+                text = R.string.faq_4_text
+            ),
+            FAQItem(
                 title = org.fossify.commons.R.string.faq_9_title_commons,
                 text = org.fossify.commons.R.string.faq_9_text_commons
             )
