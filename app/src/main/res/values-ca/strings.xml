@@ -123,4 +123,6 @@
     <string name="keywords">Paraules clau</string>
     <string name="export_blocked_keywords">Exporta paraules clau bloquejades</string>
     <string name="keep_conversations_archived">Mantén les converses arxivades</string>
+    <string name="faq_4_title">Per què les respostes dels missatges de grup apareixen com a textos individuals als destinataris?</string>
+    <string name="faq_4_text">Heu d\'activar «Envia missatges de grup com a MMS» a la configuració de l\'aplicació. Això assegurarà que els missatges de grup s\'envien com un MMS adient, permetent a tots els participants veure les respostes dels altres.</string>
 </resources>
