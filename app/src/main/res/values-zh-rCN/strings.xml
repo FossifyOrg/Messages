@@ -117,4 +117,6 @@
     <string name="keywords">关键词</string>
     <string name="export_blocked_keywords">导出拦截关键词</string>
     <string name="keep_conversations_archived">保持对话归档状态</string>
+    <string name="faq_4_title">为何我的群发消息以给每个收信人的单条消息形式出现？</string>
+    <string name="faq_4_text">你需要在应用设置中开启“以彩信形式发送群发消息”。这确保群发消息以正确的彩信发送，允许所有收信人看到彼此的回复。</string>
 </resources>
