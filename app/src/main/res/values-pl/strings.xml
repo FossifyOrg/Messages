@@ -126,4 +126,6 @@
     <string name="keywords">Słowa kluczowe</string>
     <string name="export_blocked_keywords">Eksportuj zablokowane słowa kluczowe</string>
     <string name="keep_conversations_archived">Pozostawiaj rozmowy zarchiwizowane</string>
+    <string name="faq_4_title">Dlaczego moje odpowiedzi na wiadomości grupowe pojawiają się jako wiadomości tekstowe dla indywidualnych odbiorców?</string>
+    <string name="faq_4_text">Musisz włączyć „Wysyłaj wiadomości grupowe jako MMS-y” w ustawieniach aplikacji. To zapewni, że wiadomości grupowe będą wysyłane jako MMS-y, pozwalając wszystkim uczestnikom widzieć odpowiedzi każdego z nich.</string>
 </resources>
