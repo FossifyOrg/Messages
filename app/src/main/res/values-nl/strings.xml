@@ -87,7 +87,7 @@
     <string name="mms_file_size_limit">Afbeelding verkleinen voor MMS</string>
     <string name="mms_file_size_limit_none">Geen limiet</string>
     <string name="outgoing_messages">Uitgaande berichten</string>
-    <string name="group_message_mms">Groepsberichten sturen als MMS</string>
+    <string name="group_message_mms">Groepsberichten als MMS verzenden</string>
     <string name="send_long_message_mms">Lange berichten als MMS versturen</string>
     <string name="messages">Berichten</string>
     <string name="export_messages">Berichten exporteren</string>
@@ -120,4 +120,6 @@
     <string name="keywords">Trefwoorden</string>
     <string name="import_blocked_keywords">Geblokkeerde trefwoorden importeren</string>
     <string name="keep_conversations_archived">Gesprekken gearchiveerd houden</string>
+    <string name="faq_4_title">Waarom worden mijn groepsberichten als individuele berichten aan de ontvangers getoond?</string>
+    <string name="faq_4_text">Ga naar de app-instellingen en schakel \"Groepsberichten als MMS verzenden\" in. Hierdoor worden groepsberichten als MMS-berichten verzonden, zodat alle deelnemers elkaars antwoorden kunnen zien.</string>
 </resources>
