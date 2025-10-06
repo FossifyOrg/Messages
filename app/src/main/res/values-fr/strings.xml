@@ -123,4 +123,6 @@
     <string name="import_blocked_keywords">Importer des mots clés bloqués</string>
     <string name="keywords">Mots-clés</string>
     <string name="keep_conversations_archived">Garder les conversations archivées</string>
+    <string name="faq_4_text">Vous devez sélectionner \"Envoyer les messages groupés en MMS\" dans les paramètres de l\'application. Cela garantie que les messages groupés soient envoyés comme MMS, ce qui permet à tous les participants de voir les réponses des autres.</string>
+    <string name="faq_4_title">Pourquoi mes réponses à des messages dans un groupe apparaissent comme messages individuels pour les destinataires ?</string>
 </resources>
