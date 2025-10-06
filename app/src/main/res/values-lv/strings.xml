@@ -123,4 +123,6 @@
     <string name="unknown_error_occurred_sending_message">Nevarēja nosūtīt ziņojumu, kļūdas kods: %d</string>
     <string name="faq_1_text">Diemžēl tas ir nepieciešams MMS pielikumu nosūtīšanai. Nevarēšana nosūtīt MMS būtu ļoti liels trūkums salīdzinājumā ar citām lietotnēm, tādēļ mēs izlēmām rīkoties šādi. Tomēr, kā ierasts, šeit nav nekādu reklāmu, izsekošanas vai datu apkopošanas, internets tiek izmantots tikai MMS nosūtīšanai.</string>
     <string name="keep_conversations_archived">Paturēt sarunas arhivētas</string>
+    <string name="faq_4_text">Lietotnes iestatījumos nepieciešams iespējot “Nosūtīt kopu ziņas kā MMS”. Tas nodrošinās, ka kopu ziņas tiek pareizi nosūtītas kā MMS, ļaujot visiem dalībniekiem redzēt citam cita atbildes.</string>
+    <string name="faq_4_title">Kādēļ manas kopu ziņu atbildes saņēmējiem parādās kā atsevišķas īsziņas?</string>
 </resources>
