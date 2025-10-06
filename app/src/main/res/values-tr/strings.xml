@@ -120,4 +120,6 @@
     <string name="import_blocked_keywords">Engellenen anahtar sözcükleri içeri aktar</string>
     <string name="export_blocked_keywords">Engellenen anahtar sözcükleri dışarı aktar</string>
     <string name="keep_conversations_archived">Görüşmeleri arşivde tut</string>
+    <string name="faq_4_text">Uygulama ayarlarında \"Grup mesajlarını MMS olarak gönder\" seçeneğini açmanız gerekiyor. Bu, mesajların düzgün bir şekilde MMS olarak gönderildiğinden emin olarak tüm katılımcıların diğerlerinin cevaplarını görmelerine olanak sağlar.</string>
+    <string name="faq_4_title">Grup mesajı yanıtlarım neden alıcılara ayrı ayrı metinler olarak görünüyor?</string>
 </resources>
