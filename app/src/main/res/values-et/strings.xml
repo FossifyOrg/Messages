@@ -120,4 +120,6 @@
     <string name="import_blocked_keywords">Impordi blokeeritud märksõnad</string>
     <string name="export_blocked_keywords">Ekspordi blokeeritud märksõnad</string>
     <string name="keep_conversations_archived">Hoia vestlused arhiveerituna</string>
+    <string name="faq_4_title">Miks minu grupivestluste vastused on saajatel nähtavad üksikute tekstidena?</string>
+    <string name="faq_4_text">Sa pead rakenduse seadistustest valima „Saada grupisõnumid MMS-idena“. See tagab korrektse MMS-vormingu kasutamise ja siis kõik osalejad näevad üksteise vastuseid.</string>
 </resources>
