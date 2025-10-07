@@ -41,24 +41,24 @@
     <string name="message_details_receiver">Modtager</string>
     <string name="message_details_sent_at">Sendt</string>
     <string name="message_details_received_at">Modtaget</string>
-    <string name="channel_received_sms">Modtag SMS</string>
+    <string name="channel_received_sms">Modtaget SMS</string>
     <string name="new_message">Ny besked</string>
-    <string name="mark_as_read">Marker som læst</string>
-    <string name="mark_as_unread">Marker som ulæst</string>
+    <string name="mark_as_read">Markér som læst</string>
+    <string name="mark_as_unread">Markér som ulæst</string>
     <string name="me">Mig</string>
-    <string name="enable_custom_notifications">Aktiver tilpassede beskeder</string>
-    <string name="unarchive">Fjerne arkivering</string>
+    <string name="enable_custom_notifications">Aktivér brugerdefinerede notifikationer</string>
+    <string name="unarchive">Fjern arkivering</string>
     <string name="empty_archive">Slet alle arkiverede samtaler</string>
     <string name="archived_conversations">Arkiv</string>
     <string name="show_archived_conversations">Vis arkiverede samtaler</string>
     <string name="archive">Arkiv</string>
     <string name="no_archived_conversations">Ingen arkiverede samtaler fundet</string>
-    <string name="archive_emptied_successfully">Arkivet er successfuldt blevet tømt</string>
-    <string name="empty_archive_confirmation">Er du sikker på, at du vil tømme arkivet? Alle arkiverede samtaler vil gå permanent tabt.</string>
+    <string name="archive_emptied_successfully">Arkivet blev tømt</string>
+    <string name="empty_archive_confirmation">Er du sikker på, at du vil tømme arkivet? Alle arkiverede samtaler slettes permanent.</string>
     <string name="restore">Gendan</string>
     <string name="restore_all_messages">Gendan alle beskeder</string>
-    <string name="empty_recycle_bin_messages_confirmation">Er du sikker på, at du vil tømme papirkurven? Beskederne vil være permanent tabt.</string>
-    <string name="skip_the_recycle_bin_messages">Brug ikke papirkurven, slet beskeder med det samme</string>
+    <string name="empty_recycle_bin_messages_confirmation">Er du sikker på, at du vil tømme papirkurven? Beskederne slettes permanent.</string>
+    <string name="skip_the_recycle_bin_messages">Spring papirkurven over; slet beskeder direkte</string>
     <string name="delete_whole_conversation_confirmation">Er du sikker på, at du vil slette alle beskeder i denne samtale\?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d samtale</item>
@@ -68,7 +68,7 @@
         <item quantity="one">%d besked</item>
         <item quantity="other">%d beskeder</item>
     </plurals>
-    <string name="archive_confirmation">Er du sikker på du vil arkivere %s?</string>
+    <string name="archive_confirmation">Er du sikker på, at du vil arkivere %s?</string>
     <string name="restore_whole_conversation_confirmation">Er du sikker på, at du vil gendanne alle beskeder i denne samtale?</string>
     <string name="restore_confirmation">Er du sikker på du vil gendanne %s?</string>
     <string name="keyword">Nøgleord</string>
@@ -119,4 +119,5 @@
     <string name="export_blocked_keywords">Eksportér blokerede nøgleord</string>
     <string name="import_blocked_keywords">Importér blokerede nøgleord</string>
     <string name="keywords">Nøgleord</string>
+    <string name="keep_conversations_archived">Hold samtaler arkiveret</string>
 </resources>
