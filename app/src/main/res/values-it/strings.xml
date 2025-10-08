@@ -123,4 +123,6 @@
     <string name="import_blocked_keywords">Importa parole chiave bloccate</string>
     <string name="keywords">Parole chiave</string>
     <string name="keep_conversations_archived">Mantieni le conversazioni archiviate</string>
+    <string name="faq_4_title">Perché le risposte ai miei messaggi di gruppo appaiono come messaggi individuali ai destinatari?</string>
+    <string name="faq_4_text">È necessario abilitare l\'opzione “Invia messaggi di gruppo come MMS” nelle impostazioni dell\'app. In questo modo i messaggi di gruppo verranno inviati come MMS, consentendo a tutti i partecipanti di vedere le risposte degli altri.</string>
 </resources>
