@@ -111,7 +111,7 @@
     <string name="faq_1_title">Varför kräver appen åtkomst till internet\?</string>
     <string name="faq_1_text">Tyvärr behövs den för att skicka mms-bilagor. Att inte kunna skicka mms är en enorm nackdel jämfört med andra appar, och vi har därför beslutat att göra så här. Som vanligt förekommer ingen reklam, spårning eller datainsamling, internet används bara för att skicka mms.</string>
     <string name="faq_2_title">Mina mms kommer inte fram, finns det något jag kan göra åt det\?</string>
-    <string name="faq_2_text">Storleken på mms begränsas av operatörer, du kan testa att ställa in en lägre gräns i appens inställningar.</string>
+    <string name="faq_2_text">Storleken på mms begränsas av operatörer, du kan testa att ställa in en lägre gräns i appinställningarna.</string>
     <string name="faq_3_title">Stöder appen schemalagda meddelanden\?</string>
     <string name="faq_3_text">Ja, du kan schemalägga meddelanden så att de skickas i framtiden genom att trycka länge på knappen Skicka och välja önskat datum och tid.</string>
     <string name="enable_custom_notifications">Aktivera anpassade aviseringar</string>
@@ -120,4 +120,6 @@
     <string name="export_blocked_keywords">Exportera blockerade nyckelord</string>
     <string name="import_blocked_keywords">Importera blockerade nyckelord</string>
     <string name="keep_conversations_archived">Håll konversationer arkiverade</string>
+    <string name="faq_4_title">Varför visas mina svar på gruppmeddelanden som enskilda sms för mottagarna?</string>
+    <string name="faq_4_text">Du måste aktivera \"Skicka gruppmeddelanden som mms\" i appinställningarna för att säkerställa att gruppmeddelanden skickas som riktiga mms, så att alla deltagare kan se varandras svar.</string>
 </resources>
