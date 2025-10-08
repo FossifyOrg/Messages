@@ -70,7 +70,7 @@
     </plurals>
     <string name="archive_confirmation">Er du sikker på, at du vil arkivere %s?</string>
     <string name="restore_whole_conversation_confirmation">Er du sikker på, at du vil gendanne alle beskeder i denne samtale?</string>
-    <string name="restore_confirmation">Er du sikker på du vil gendanne %s?</string>
+    <string name="restore_confirmation">Er du sikker på, at du vil gendanne %s?</string>
     <string name="keyword">Nøgleord</string>
     <string name="blocked_keywords">Blokerede nøgleord</string>
     <string name="manage_blocked_keywords">Administrer blokerede nøgleord</string>
@@ -79,20 +79,20 @@
     <string name="lock_screen_visibility">Synlighed af notifikation på låseskærmen</string>
     <string name="sender_and_message">Afsender og besked</string>
     <string name="sender_only">Kun afsender</string>
-    <string name="enable_delivery_reports">Aktiver leveringsrapporter</string>
-    <string name="use_simple_characters">Fjerne accenter og diakritiske tegn ved afsendelse af beskeder</string>
-    <string name="send_on_enter">Send besked, når der trykkes Enter</string>
+    <string name="enable_delivery_reports">Aktivér leveringsrapporter</string>
+    <string name="use_simple_characters">Fjern accenter og diakritiske tegn ved afsendelse af beskeder</string>
+    <string name="send_on_enter">Send besked ved tryk på Enter</string>
     <string name="mms_file_size_limit">Ændr størrelse på MMS-billeder</string>
     <string name="mms_file_size_limit_none">Ingen grænse</string>
     <string name="outgoing_messages">Udgående beskeder</string>
     <string name="group_message_mms">Send gruppebeskeder som MMS</string>
     <string name="send_long_message_mms">Send lange beskeder som MMS</string>
     <string name="messages">Beskeder</string>
-    <string name="export_messages">Eksporter beskeder</string>
-    <string name="export_sms">Eksporter SMS</string>
+    <string name="export_messages">Eksportér beskeder</string>
+    <string name="export_sms">Eksportér SMS</string>
     <string name="export_mms">Eksportér MMS</string>
-    <string name="import_messages">Importer beskeder</string>
-    <string name="import_sms">Importer SMS</string>
+    <string name="import_messages">Importér beskeder</string>
+    <string name="import_sms">Importér SMS</string>
     <string name="import_mms">Importér MMS</string>
     <string name="no_option_selected">Du skal vælge mindst ét element</string>
     <string name="empty_destination_address">Kan ikke sende besked til et tomt nummer</string>
