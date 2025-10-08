@@ -120,4 +120,6 @@
     <string name="export_blocked_keywords">Vie estetyt avainsanat</string>
     <string name="import_blocked_keywords">Tuo estetyt avainsanat</string>
     <string name="keep_conversations_archived">Pidä keskustelut arkistoituna</string>
+    <string name="faq_4_title">Miksi ryhmäviestien vastaukset näkyvät vastaanottajille yksittäisinä tekstiviesteinä?</string>
+    <string name="faq_4_text">Sinun on otettava käyttöön ”Lähetä ryhmäviestit MMS-viesteinä” -asetus sovelluksen asetuksissa. Tämä varmistaa, että ryhmäviestit lähetetään oikeina MMS-viesteinä, jolloin kaikki osallistujat voivat nähdä toistensa vastaukset.</string>
 </resources>
