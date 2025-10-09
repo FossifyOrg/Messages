@@ -10,7 +10,7 @@ detektCompose = "0.4.27"
 #AndroidX
 androidx-constraintlayout = "2.2.1"
 androidx-swiperefreshlayout = "1.1.0"
-androidx-lifecycleprocess = "2.8.7"
+androidx-lifecycleprocess = "2.9.4"
 #Eventbus
 eventbus = "3.3.1"
 #Room
