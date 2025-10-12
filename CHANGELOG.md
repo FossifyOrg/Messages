@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed keyword blocking for MMS messages ([#99])
 - Fixed contact number selection when adding members to a group ([#456])
 - Fixed a glitch in pattern lock after incorrect attempts
+- Fixed disabled send button when sending images without text ([#165])
 
 ## [1.3.0] - 2025-09-09
 ### Added
@@ -158,6 +159,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#334]: https://github.com/FossifyOrg/Messages/issues/334
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
+[#165]: https://github.com/FossifyOrg/Messages/issues/165
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 
