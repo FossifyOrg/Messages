@@ -14,7 +14,7 @@ androidx-lifecycleprocess = "2.8.7"
 #Eventbus
 eventbus = "3.3.1"
 #Room
-room = "2.8.1"
+room = "2.8.2"
 #Fossify
 commons = "5.3.0"
 mmslib = "1.0.0"
