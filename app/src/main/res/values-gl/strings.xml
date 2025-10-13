@@ -117,4 +117,9 @@
     <string name="import_messages">Importar mensaxes</string>
     <string name="import_sms">Importar SMS</string>
     <string name="export_blocked_keywords">Exportar palabras bloqueadas</string>
+    <string name="import_blocked_keywords">Importar palabras chave bloqueadas</string>
+    <string name="sim_card_not_available">Tarxeta SIM non dispoñible</string>
+    <string name="couldnt_download_mms">Non se pode descargar o MMS</string>
+    <string name="faq_4_title">¿Por qué as miñas respostas a mensaxes de grupo aparecen como textos individuais aos destinatarios?</string>
+    <string name="faq_4_text">Precisas habilitar \"Enviar mensaxes de grupo como MMS\" na configuración do app. Isto asegurará que tales mensaxes se envíen como MMS axeitados, permitindo a todos os participantes ver as respostas dos demáis.</string>
 </resources>
