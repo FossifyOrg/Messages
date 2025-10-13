@@ -57,6 +57,7 @@ import org.fossify.messages.helpers.Config
 import org.fossify.messages.helpers.FILE_SIZE_NONE
 import org.fossify.messages.helpers.MAX_MESSAGE_LENGTH
 import org.fossify.messages.helpers.MESSAGES_LIMIT
+import org.fossify.messages.helpers.MessagingCache
 import org.fossify.messages.helpers.NotificationHelper
 import org.fossify.messages.helpers.ShortcutHelper
 import org.fossify.messages.helpers.generateRandomId
@@ -139,15 +140,7 @@ fun Context.getMessages(
     var messages = ArrayList<Message>()
     queryCursor(uri, projection, selection, selectionArgs, sortOrder, showErrors = true) { cursor ->
         val senderNumber = cursor.getStringValue(Sms.ADDRESS) ?: return@queryCursor
-
-        val isNumberBlocked = if (blockStatus.containsKey(senderNumber)) {
-            blockStatus[senderNumber]!!
-        } else {
-            val isBlocked = isNumberBlocked(senderNumber, blockedNumbers)
-            blockStatus[senderNumber] = isBlocked
-            isBlocked
-        }
-
+        val isNumberBlocked = blockStatus.getOrPut(senderNumber) { isNumberBlocked(senderNumber, blockedNumbers) }
         if (isNumberBlocked) {
             return@queryCursor
         }
@@ -768,6 +761,7 @@ fun Context.getSuggestedContacts(
 }
 
 fun Context.getNameAndPhotoFromPhoneNumber(number: String): NamePhoto {
+    MessagingCache.namePhoto.get(number)?.let { return it }
     if (!hasPermission(PERMISSION_READ_CONTACTS)) {
         return NamePhoto(number, null)
     }
@@ -778,19 +772,23 @@ fun Context.getNameAndPhotoFromPhoneNumber(number: String): NamePhoto {
         PhoneLookup.PHOTO_URI
     )
 
-    try {
+    val result = try {
         val cursor = contentResolver.query(uri, projection, null, null, null)
         cursor.use {
             if (cursor?.moveToFirst() == true) {
                 val name = cursor.getStringValue(PhoneLookup.DISPLAY_NAME)
                 val photoUri = cursor.getStringValue(PhoneLookup.PHOTO_URI)
-                return NamePhoto(name, photoUri)
+                NamePhoto(name, photoUri)
+            } else {
+                NamePhoto(number, null)
             }
         }
     } catch (_: Exception) {
+        NamePhoto(number, null)
     }
 
-    return NamePhoto(number, null)
+    MessagingCache.namePhoto.put(number, result)
+    return result
 }
 
 fun Context.insertNewSMS(

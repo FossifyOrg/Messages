@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.util.Size
 import android.util.TypedValue
 import android.view.Menu
 import android.view.View
@@ -14,21 +13,33 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.dialogs.ConfirmationDialog
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.copyToClipboard
+import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getTextSize
+import org.fossify.commons.extensions.shareTextIntent
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.usableScreenSize
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.views.MyRecyclerView
@@ -37,17 +48,41 @@ import org.fossify.messages.activities.NewConversationActivity
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.activities.VCardViewerActivity
-import org.fossify.messages.databinding.*
+import org.fossify.messages.databinding.ItemAttachmentDocumentBinding
+import org.fossify.messages.databinding.ItemAttachmentImageBinding
+import org.fossify.messages.databinding.ItemAttachmentVcardBinding
+import org.fossify.messages.databinding.ItemMessageBinding
+import org.fossify.messages.databinding.ItemThreadDateTimeBinding
+import org.fossify.messages.databinding.ItemThreadErrorBinding
+import org.fossify.messages.databinding.ItemThreadSendingBinding
+import org.fossify.messages.databinding.ItemThreadSuccessBinding
 import org.fossify.messages.dialogs.DeleteConfirmationDialog
 import org.fossify.messages.dialogs.MessageDetailsDialog
 import org.fossify.messages.dialogs.SelectTextDialog
-import org.fossify.messages.extensions.*
-import org.fossify.messages.helpers.*
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.getContactFromAddress
+import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.isVCardMimeType
+import org.fossify.messages.extensions.isVideoMimeType
+import org.fossify.messages.extensions.launchViewIntent
+import org.fossify.messages.extensions.startContactDetailsIntent
+import org.fossify.messages.extensions.subscriptionManagerCompat
+import org.fossify.messages.helpers.EXTRA_VCARD_URI
+import org.fossify.messages.helpers.THREAD_DATE_TIME
+import org.fossify.messages.helpers.THREAD_RECEIVED_MESSAGE
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_ERROR
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENDING
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENT
+import org.fossify.messages.helpers.setupDocumentPreview
+import org.fossify.messages.helpers.setupVCardPreview
 import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Message
 import org.fossify.messages.models.ThreadItem
-import org.fossify.messages.models.ThreadItem.*
-import androidx.core.graphics.drawable.toDrawable
+import org.fossify.messages.models.ThreadItem.ThreadDateTime
+import org.fossify.messages.models.ThreadItem.ThreadError
+import org.fossify.messages.models.ThreadItem.ThreadSending
+import org.fossify.messages.models.ThreadItem.ThreadSent
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -65,6 +100,7 @@ class ThreadAdapter(
     init {
         setupDragListener(true)
         setHasStableIds(true)
+        (recyclerView.itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 
     override fun getActionMenuId() = R.menu.cab_thread
@@ -110,9 +146,13 @@ class ThreadAdapter(
 
     override fun getIsItemSelectable(position: Int) = !isThreadDateTime(position)
 
-    override fun getItemSelectionKey(position: Int) = (currentList.getOrNull(position) as? Message)?.hashCode()
+    override fun getItemSelectionKey(position: Int): Int? {
+        return (currentList.getOrNull(position) as? Message)?.getSelectionKey()
+    }
 
-    override fun getItemKeyPosition(key: Int) = currentList.indexOfFirst { (it as? Message)?.hashCode() == key }
+    override fun getItemKeyPosition(key: Int): Int {
+        return currentList.indexOfFirst { (it as? Message)?.getSelectionKey() == key }
+    }
 
     override fun onActionModeCreated() {}
 
@@ -146,10 +186,23 @@ class ThreadAdapter(
         bindViewHolder(holder)
     }
 
+    private fun getStableId(type: Int, key: Long): Long {
+        require(type in 0 until (1 shl TYPE_BITS))
+        return (type.toLong() shl TYPE_SHIFT) or (key and KEY_MASK)
+    }
+
     override fun getItemId(position: Int): Long {
         return when (val item = getItem(position)) {
-            is Message -> Message.getStableId(item)
-            else -> item.hashCode().toLong()
+            is Message -> {
+                val providerBit = if (item.isMMS) 1L else 0L
+                val key = (item.id shl 1) or providerBit
+                getStableId(THREAD_SENT_MESSAGE, key)
+            }
+
+            is ThreadDateTime -> getStableId(THREAD_DATE_TIME, item.date.toLong())
+            is ThreadError -> getStableId(THREAD_SENT_MESSAGE_ERROR, item.messageId)
+            is ThreadSending -> getStableId(THREAD_SENT_MESSAGE_SENDING, item.messageId)
+            is ThreadSent -> getStableId(THREAD_SENT_MESSAGE_SENT, item.messageId)
         }
     }
 
@@ -265,7 +318,11 @@ class ThreadAdapter(
         }
     }
 
-    private fun getSelectedItems() = currentList.filter { selectedKeys.contains((it as? Message)?.hashCode() ?: 0) } as ArrayList<ThreadItem>
+    private fun getSelectedItems(): ArrayList<ThreadItem> {
+        return currentList.filter {
+            selectedKeys.contains((it as? Message)?.getSelectionKey() ?: 0)
+        } as ArrayList<ThreadItem>
+    }
 
     private fun isThreadDateTime(position: Int) = currentList.getOrNull(position) is ThreadDateTime
 
@@ -280,7 +337,7 @@ class ThreadAdapter(
 
     private fun setupView(holder: ViewHolder, view: View, message: Message) {
         ItemMessageBinding.bind(view).apply {
-            threadMessageHolder.isSelected = selectedKeys.contains(message.hashCode())
+            threadMessageHolder.isSelected = selectedKeys.contains(message.getSelectionKey())
             threadMessageBody.apply {
                 text = message.body
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
@@ -413,16 +470,15 @@ class ThreadAdapter(
         threadMessageAttachmentsHolder.addView(imageView.root)
 
         val placeholderDrawable = Color.TRANSPARENT.toDrawable()
-        val isTallImage = attachment.height > attachment.width
-        val transformation = if (isTallImage) CenterCrop() else FitCenter()
         val options = RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .placeholder(placeholderDrawable)
-            .transform(transformation)
+            .transform(FitCenter())
 
-        var builder = Glide.with(root.context)
+        Glide.with(root.context)
             .load(uri)
             .apply(options)
+            .dontAnimate()
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>, isFirstResource: Boolean): Boolean {
                     threadMessagePlayOutline.beGone()
@@ -432,23 +488,11 @@ class ThreadAdapter(
 
                 override fun onResourceReady(dr: Drawable, a: Any, t: Target<Drawable>, d: DataSource, i: Boolean) = false
             })
+            .into(imageView.attachmentImage)
 
-        // limit attachment sizes to avoid causing OOM
-        var wantedAttachmentSize = Size(attachment.width, attachment.height)
-        if (wantedAttachmentSize.width > maxChatBubbleWidth) {
-            val newHeight = wantedAttachmentSize.height / (wantedAttachmentSize.width / maxChatBubbleWidth)
-            wantedAttachmentSize = Size(maxChatBubbleWidth.toInt(), newHeight.toInt())
-        }
-
-        builder = if (isTallImage) {
-            builder.override(wantedAttachmentSize.width, wantedAttachmentSize.width)
-        } else {
-            builder.override(wantedAttachmentSize.width, wantedAttachmentSize.height)
-        }
-
-        try {
-            builder.into(imageView.attachmentImage)
-        } catch (_: Exception) {
+        imageView.attachmentImage.updateLayoutParams<ViewGroup.LayoutParams> {
+            width = maxChatBubbleWidth.toInt()
+            height = ViewGroup.LayoutParams.WRAP_CONTENT
         }
 
         imageView.attachmentImage.setOnClickListener {
@@ -561,6 +605,13 @@ class ThreadAdapter(
     }
 
     inner class ThreadViewHolder(val binding: ViewBinding) : ViewHolder(binding.root)
+
+    companion object {
+        private const val TYPE_BITS = 3
+        private const val KEY_BITS = Long.SIZE_BITS - TYPE_BITS
+        private const val TYPE_SHIFT = KEY_BITS
+        private const val KEY_MASK = (1L shl KEY_BITS) - 1
+    }
 }
 
 private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {

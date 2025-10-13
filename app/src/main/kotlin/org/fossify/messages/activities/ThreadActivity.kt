@@ -8,9 +8,7 @@ import android.content.Intent
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.res.ColorStateList
-import android.graphics.BitmapFactory
 import android.graphics.drawable.LayerDrawable
-import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -86,7 +84,6 @@ import org.fossify.commons.extensions.openRequestExactAlarmSettings
 import org.fossify.commons.extensions.realScreenSize
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.showKeyboard
-import org.fossify.commons.extensions.toInt
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.updateTextColors
 import org.fossify.commons.extensions.value
@@ -199,6 +196,7 @@ import org.greenrobot.eventbus.ThreadMode
 import org.joda.time.DateTime
 import java.io.File
 import androidx.core.net.toUri
+import androidx.recyclerview.widget.RecyclerView
 
 class ThreadActivity : SimpleActivity() {
     private var threadId = 0L
@@ -480,7 +478,7 @@ class ThreadActivity : SimpleActivity() {
 
             val cachedMessagesCode = messages.clone().hashCode()
             if (!isRecycleBin) {
-                messages = getMessages(threadId, true)
+                messages = getMessages(threadId, false)
                 if (config.useRecycleBin) {
                     val recycledMessages =
                         messagesDB.getThreadMessagesFromRecycleBin(threadId).map { it.id }
@@ -551,7 +549,6 @@ class ThreadActivity : SimpleActivity() {
                 }
             }
 
-            setupAttachmentSizes()
             setupAdapter()
             runOnUiThread {
                 setupThreadTitle()
@@ -647,24 +644,23 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun setupScrollListener() {
-        binding.threadMessagesList.onScroll { _, dy ->
-            val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
+        binding.threadMessagesList.onScroll(
+            onScrolled = { dx, dy ->
+                val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
+                if (layoutManager.findFirstVisibleItemPosition() <= PREFETCH_THRESHOLD) {
+                    loadMoreMessages()
+                }
 
-            // prefetch older messages when scrolling up
-            val firstVisibleIndex = layoutManager.findFirstVisibleItemPosition()
-            if (dy < 0 && firstVisibleIndex <= PREFETCH_THRESHOLD) {
-                loadMoreMessages()
+                val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
+                val isCloseToBottom =
+                    lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
+                val fab = binding.scrollToBottomFab
+                if (isCloseToBottom) fab.hide() else fab.show()
+            },
+            onScrollStateChanged = { newState ->
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) loadMoreMessages()
             }
-
-            val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-            val isCloseToBottom =
-                lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
-            if (isCloseToBottom) {
-                binding.scrollToBottomFab.hide()
-            } else {
-                binding.scrollToBottomFab.show()
-            }
-        }
+        )
     }
 
     private fun handleItemClick(any: Any) {
@@ -921,44 +917,6 @@ class ThreadActivity : SimpleActivity() {
             }
         } else {
             callback()
-        }
-    }
-
-    private fun setupAttachmentSizes() {
-        messages.filter { it.attachment != null }.forEach { message ->
-            message.attachment!!.attachments.forEach {
-                try {
-                    if (it.mimetype.startsWith("image/")) {
-                        val fileOptions = BitmapFactory.Options()
-                        fileOptions.inJustDecodeBounds = true
-                        BitmapFactory.decodeStream(
-                            contentResolver.openInputStream(it.getUri()),
-                            null,
-                            fileOptions
-                        )
-                        it.width = fileOptions.outWidth
-                        it.height = fileOptions.outHeight
-                    } else if (it.mimetype.startsWith("video/")) {
-                        val metaRetriever = MediaMetadataRetriever()
-                        metaRetriever.setDataSource(this, it.getUri())
-                        it.width = metaRetriever.extractMetadata(
-                            MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH
-                        )!!.toInt()
-                        it.height = metaRetriever.extractMetadata(
-                            MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT
-                        )!!.toInt()
-                    }
-
-                    if (it.width < 0) {
-                        it.width = 0
-                    }
-
-                    if (it.height < 0) {
-                        it.height = 0
-                    }
-                } catch (ignored: Exception) {
-                }
-            }
         }
     }
 
@@ -2122,6 +2080,6 @@ class ThreadActivity : SimpleActivity() {
         private const val TYPE_DELETE = 16
         private const val MIN_DATE_TIME_DIFF_SECS = 300
         private const val SCROLL_TO_BOTTOM_FAB_LIMIT = 20
-        private const val PREFETCH_THRESHOLD = 30
+        private const val PREFETCH_THRESHOLD = 50
     }
 }

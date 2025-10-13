@@ -34,22 +34,11 @@ data class Message(
             ?: participants.firstOrNull { it.name == senderName }
             ?: participants.firstOrNull()
 
+    fun getSelectionKey(): Int {
+        return (id xor (id ushr Int.SIZE_BITS)).toInt()
+    }
+
     companion object {
-
-        fun getStableId(message: Message): Long {
-            var result = message.id.hashCode()
-            result = 31 * result + message.body.hashCode()
-            result = 31 * result + message.date.hashCode()
-            result = 31 * result + message.threadId.hashCode()
-            result = 31 * result + message.isMMS.hashCode()
-            result = 31 * result + (message.attachment?.hashCode() ?: 0)
-            result = 31 * result + message.senderPhoneNumber.hashCode()
-            result = 31 * result + message.senderName.hashCode()
-            result = 31 * result + message.senderPhotoUri.hashCode()
-            result = 31 * result + message.isScheduled.hashCode()
-            return result.toLong()
-        }
-
         fun areItemsTheSame(old: Message, new: Message): Boolean {
             return old.id == new.id
         }
