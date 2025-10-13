@@ -196,7 +196,8 @@ class ThreadAdapter(
             is Message -> {
                 val providerBit = if (item.isMMS) 1L else 0L
                 val key = (item.id shl 1) or providerBit
-                getStableId(THREAD_SENT_MESSAGE, key)
+                val type = if (item.isReceivedMessage()) THREAD_RECEIVED_MESSAGE else THREAD_SENT_MESSAGE
+                getStableId(type, key)
             }
 
             is ThreadDateTime -> getStableId(THREAD_DATE_TIME, item.date.toLong())
