@@ -646,11 +646,8 @@ class ThreadActivity : SimpleActivity() {
     private fun setupScrollListener() {
         binding.threadMessagesList.onScroll(
             onScrolled = { dx, dy ->
+                tryLoadMoreMessages()
                 val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
-                if (layoutManager.findFirstVisibleItemPosition() <= PREFETCH_THRESHOLD) {
-                    loadMoreMessages()
-                }
-
                 val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
                 val isCloseToBottom =
                     lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
@@ -658,7 +655,7 @@ class ThreadActivity : SimpleActivity() {
                 if (isCloseToBottom) fab.hide() else fab.show()
             },
             onScrollStateChanged = { newState ->
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) loadMoreMessages()
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) tryLoadMoreMessages()
             }
         )
     }
@@ -720,10 +717,15 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun loadMoreMessages() {
-        if (messages.isEmpty() || allMessagesFetched || loadingOlderMessages) {
-            return
+    private fun tryLoadMoreMessages() {
+        val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
+        if (layoutManager.findFirstVisibleItemPosition() <= PREFETCH_THRESHOLD) {
+            loadMoreMessages()
         }
+    }
+
+    private fun loadMoreMessages() {
+        if (messages.isEmpty() || allMessagesFetched || loadingOlderMessages) return
 
         val firstItem = messages.first()
         val dateOfFirstItem = firstItem.date
