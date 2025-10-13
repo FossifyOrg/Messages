@@ -120,7 +120,6 @@ class ThreadAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = when (viewType) {
-            THREAD_LOADING -> ItemThreadLoadingBinding.inflate(layoutInflater, parent, false)
             THREAD_DATE_TIME -> ItemThreadDateTimeBinding.inflate(layoutInflater, parent, false)
             THREAD_SENT_MESSAGE_ERROR -> ItemThreadErrorBinding.inflate(layoutInflater, parent, false)
             THREAD_SENT_MESSAGE_SENT -> ItemThreadSuccessBinding.inflate(layoutInflater, parent, false)
@@ -137,7 +136,6 @@ class ThreadAdapter(
         val isLongClickable = item is Message
         holder.bindView(item, isClickable, isLongClickable) { itemView, _ ->
             when (item) {
-                is ThreadLoading -> setupThreadLoading(itemView)
                 is ThreadDateTime -> setupDateTime(itemView, item)
                 is ThreadError -> setupThreadError(itemView)
                 is ThreadSent -> setupThreadSuccess(itemView, item.delivered)
@@ -157,7 +155,6 @@ class ThreadAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (val item = getItem(position)) {
-            is ThreadLoading -> THREAD_LOADING
             is ThreadDateTime -> THREAD_DATE_TIME
             is ThreadError -> THREAD_SENT_MESSAGE_ERROR
             is ThreadSent -> THREAD_SENT_MESSAGE_SENT
@@ -553,11 +550,6 @@ class ThreadAdapter(
         }
     }
 
-    private fun setupThreadLoading(view: View) {
-        val binding = ItemThreadLoadingBinding.bind(view)
-        binding.threadLoading.setIndicatorColor(properPrimaryColor)
-    }
-
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
         if (!activity.isDestroyed && !activity.isFinishing) {
@@ -576,7 +568,6 @@ private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {
     override fun areItemsTheSame(oldItem: ThreadItem, newItem: ThreadItem): Boolean {
         if (oldItem::class.java != newItem::class.java) return false
         return when (oldItem) {
-            is ThreadLoading -> oldItem.id == (newItem as ThreadLoading).id
             is ThreadDateTime -> oldItem.date == (newItem as ThreadDateTime).date
             is ThreadError -> oldItem.messageId == (newItem as ThreadError).messageId
             is ThreadSent -> oldItem.messageId == (newItem as ThreadSent).messageId
@@ -588,7 +579,7 @@ private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {
     override fun areContentsTheSame(oldItem: ThreadItem, newItem: ThreadItem): Boolean {
         if (oldItem::class.java != newItem::class.java) return false
         return when (oldItem) {
-            is ThreadLoading, is ThreadSending -> true
+            is ThreadSending -> true
             is ThreadDateTime -> oldItem.simID == (newItem as ThreadDateTime).simID
             is ThreadError -> oldItem.messageText == (newItem as ThreadError).messageText
             is ThreadSent -> oldItem.delivered == (newItem as ThreadSent).delivered

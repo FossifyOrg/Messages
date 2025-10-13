@@ -49,7 +49,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.fossify.commons.dialogs.ConfirmationDialog
@@ -105,7 +104,6 @@ import org.fossify.commons.helpers.isSPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.RadioItem
 import org.fossify.commons.models.SimpleContact
-import org.fossify.commons.views.MyRecyclerView
 import org.fossify.messages.BuildConfig
 import org.fossify.messages.R
 import org.fossify.messages.adapters.AttachmentsAdapter
@@ -143,6 +141,7 @@ import org.fossify.messages.extensions.markMessageRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.messagesDB
 import org.fossify.messages.extensions.moveMessageToRecycleBin
+import org.fossify.messages.extensions.onScroll
 import org.fossify.messages.extensions.removeDiacriticsIfNeeded
 import org.fossify.messages.extensions.renameConversation
 import org.fossify.messages.extensions.restoreAllMessagesFromRecycleBinForConversation
@@ -192,7 +191,6 @@ import org.fossify.messages.models.SIMCard
 import org.fossify.messages.models.ThreadItem
 import org.fossify.messages.models.ThreadItem.ThreadDateTime
 import org.fossify.messages.models.ThreadItem.ThreadError
-import org.fossify.messages.models.ThreadItem.ThreadLoading
 import org.fossify.messages.models.ThreadItem.ThreadSending
 import org.fossify.messages.models.ThreadItem.ThreadSent
 import org.greenrobot.eventbus.EventBus
@@ -200,16 +198,9 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.joda.time.DateTime
 import java.io.File
+import androidx.core.net.toUri
 
 class ThreadActivity : SimpleActivity() {
-    private val MIN_DATE_TIME_DIFF_SECS = 300
-
-    private val TYPE_EDIT = 14
-    private val TYPE_SEND = 15
-    private val TYPE_DELETE = 16
-
-    private val SCROLL_TO_BOTTOM_FAB_LIMIT = 20
-
     private var threadId = 0L
     private var currentSIMCardIndex = 0
     private var isActivityVisible = false
@@ -587,14 +578,6 @@ class ThreadActivity : SimpleActivity() {
             )
 
             binding.threadMessagesList.adapter = currAdapter
-            binding.threadMessagesList.endlessScrollListener =
-                object : MyRecyclerView.EndlessScrollListener {
-                    override fun updateBottom() {}
-
-                    override fun updateTop() {
-                        fetchNextMessages()
-                    }
-                }
         }
         return currAdapter as ThreadAdapter
     }
@@ -663,21 +646,25 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun setupScrollFab() {
-        binding.threadMessagesList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
-                val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-                val isCloseToBottom =
-                    lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
-                if (isCloseToBottom) {
-                    binding.scrollToBottomFab.hide()
-                } else {
-                    binding.scrollToBottomFab.show()
-                }
+    private fun setupScrollListener() {
+        binding.threadMessagesList.onScroll { _, dy ->
+            val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
+
+            // prefetch older messages when scrolling up
+            val firstVisibleIndex = layoutManager.findFirstVisibleItemPosition()
+            if (dy < 0 && firstVisibleIndex <= PREFETCH_THRESHOLD) {
+                loadMoreMessages()
             }
-        })
+
+            val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
+            val isCloseToBottom =
+                lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
+            if (isCloseToBottom) {
+                binding.scrollToBottomFab.hide()
+            } else {
+                binding.scrollToBottomFab.show()
+            }
+        }
     }
 
     private fun handleItemClick(any: Any) {
@@ -737,19 +724,8 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun fetchNextMessages() {
+    private fun loadMoreMessages() {
         if (messages.isEmpty() || allMessagesFetched || loadingOlderMessages) {
-            if (allMessagesFetched) {
-                getOrCreateThreadAdapter().apply {
-                    val newList = currentList.toMutableList().apply {
-                        removeAll { it is ThreadLoading }
-                    }
-                    updateMessages(
-                        newMessages = newList as ArrayList<ThreadItem>,
-                        scrollPosition = 0
-                    )
-                }
-            }
             return
         }
 
@@ -773,8 +749,7 @@ class ThreadActivity : SimpleActivity() {
 
             runOnUiThread {
                 loadingOlderMessages = false
-                val itemAtRefreshIndex = threadItems.indexOfFirst { it == firstItem }
-                getOrCreateThreadAdapter().updateMessages(threadItems, itemAtRefreshIndex)
+                getOrCreateThreadAdapter().updateMessages(threadItems)
             }
         }
     }
@@ -796,7 +771,7 @@ class ThreadActivity : SimpleActivity() {
                     }
 
                     setupThread()
-                    setupScrollFab()
+                    setupScrollListener()
                 }
             } else {
                 finish()
@@ -913,7 +888,7 @@ class ThreadActivity : SimpleActivity() {
             }
 
             if (intent.extras?.containsKey(THREAD_ATTACHMENT_URI) == true) {
-                val uri = Uri.parse(intent.getStringExtra(THREAD_ATTACHMENT_URI))
+                val uri = intent.getStringExtra(THREAD_ATTACHMENT_URI)!!.toUri()
                 addAttachment(uri)
             } else if (intent.extras?.containsKey(THREAD_ATTACHMENT_URIS) == true) {
                 (intent.getSerializableExtra(THREAD_ATTACHMENT_URIS) as? ArrayList<Uri>)?.forEach {
@@ -1344,11 +1319,6 @@ class ThreadActivity : SimpleActivity() {
 
         if (hadUnreadItems) {
             bus?.post(Events.RefreshMessages())
-        }
-
-        if (!allMessagesFetched && messages.size >= MESSAGES_LIMIT) {
-            val threadLoading = ThreadLoading(generateRandomId())
-            items.add(0, threadLoading)
         }
 
         return items
@@ -2144,5 +2114,14 @@ class ThreadActivity : SimpleActivity() {
         resources.getColor(org.fossify.commons.R.color.you_bottom_bar_color)
     } else {
         getBottomNavigationBackgroundColor()
+    }
+
+    companion object {
+        private const val TYPE_EDIT = 14
+        private const val TYPE_SEND = 15
+        private const val TYPE_DELETE = 16
+        private const val MIN_DATE_TIME_DIFF_SECS = 300
+        private const val SCROLL_TO_BOTTOM_FAB_LIMIT = 20
+        private const val PREFETCH_THRESHOLD = 30
     }
 }

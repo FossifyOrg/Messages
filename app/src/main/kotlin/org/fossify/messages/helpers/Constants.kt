@@ -60,7 +60,6 @@ const val THREAD_SENT_MESSAGE = 3
 const val THREAD_SENT_MESSAGE_ERROR = 4
 const val THREAD_SENT_MESSAGE_SENT = 5
 const val THREAD_SENT_MESSAGE_SENDING = 6
-const val THREAD_LOADING = 7
 
 // view types for attachment list
 const val ATTACHMENT_DOCUMENT = 7
