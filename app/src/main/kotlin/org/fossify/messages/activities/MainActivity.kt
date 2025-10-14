@@ -682,7 +682,7 @@ class MainActivity : SimpleActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun refreshMessages(event: Events.RefreshMessages) {
+    fun refreshConversations(@Suppress("unused") event: Events.RefreshConversations) {
         initMessenger()
     }
 

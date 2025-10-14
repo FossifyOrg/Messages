@@ -11,7 +11,6 @@ import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.dialogs.SecurityDialog
 import org.fossify.commons.extensions.addLockedLabelIfNeeded
 import org.fossify.commons.extensions.beGone
-import org.fossify.commons.extensions.beGoneIf
 import org.fossify.commons.extensions.beVisible
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.getBlockedNumbers
@@ -49,7 +48,7 @@ import org.fossify.messages.helpers.LOCK_SCREEN_NOTHING
 import org.fossify.messages.helpers.LOCK_SCREEN_SENDER
 import org.fossify.messages.helpers.LOCK_SCREEN_SENDER_MESSAGE
 import org.fossify.messages.helpers.MessagesImporter
-import org.fossify.messages.helpers.refreshMessages
+import org.fossify.messages.helpers.refreshConversations
 import java.util.Locale
 import kotlin.system.exitProcess
 
@@ -133,7 +132,7 @@ class SettingsActivity : SimpleActivity() {
         if (
             blockedNumbersAtPause != -1 && blockedNumbersAtPause != getBlockedNumbers().hashCode()
         ) {
-            refreshMessages()
+            refreshConversations()
         }
 
         arrayOf(
@@ -238,7 +237,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupChangeDateTimeFormat() = binding.apply {
         settingsChangeDateTimeFormatHolder.setOnClickListener {
             ChangeDateTimeFormatDialog(this@SettingsActivity) {
-                refreshMessages()
+                refreshConversations()
             }
         }
     }

@@ -12,6 +12,7 @@ import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.messages.R
 import org.fossify.messages.extensions.deleteMessage
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import java.io.File
 
@@ -52,6 +53,7 @@ class MmsSentReceiver : SendStatusReceiver() {
 
     override fun updateAppDatabase(context: Context, intent: Intent, receiverResultCode: Int) {
         refreshMessages()
+        refreshConversations()
     }
 
     companion object {

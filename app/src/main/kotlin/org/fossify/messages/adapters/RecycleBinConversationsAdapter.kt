@@ -9,7 +9,7 @@ import org.fossify.messages.R
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.extensions.deleteConversation
 import org.fossify.messages.extensions.restoreAllMessagesFromRecycleBinForConversation
-import org.fossify.messages.helpers.refreshMessages
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.models.Conversation
 
 class RecycleBinConversationsAdapter(
@@ -95,12 +95,12 @@ class RecycleBinConversationsAdapter(
 
         activity.runOnUiThread {
             if (newList.none { selectedKeys.contains(it.hashCode()) }) {
-                refreshMessages()
+                refreshConversations()
                 finishActMode()
             } else {
                 submitList(newList)
                 if (newList.isEmpty()) {
-                    refreshMessages()
+                    refreshConversations()
                 }
             }
         }
