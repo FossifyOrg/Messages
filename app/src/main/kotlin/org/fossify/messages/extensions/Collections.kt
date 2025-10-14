@@ -32,3 +32,20 @@ fun Map<String, Any>.toContentValues(): ContentValues {
 }
 
 fun <T> Collection<T>.toArrayList() = ArrayList(this)
+
+inline fun <T> Collection<T>.filterNotInByKey(
+    existing: List<T>,
+    crossinline key: (T) -> Long
+): ArrayList<T> {
+    if (isEmpty()) return arrayListOf()
+    if (existing.isEmpty()) {
+        return ArrayList(this)
+    }
+
+    val seen = HashSet<Long>(existing.size * 2)
+    for (item in existing) {
+        seen.add(key(item))
+    }
+
+    return filter { seen.add(key(it)) }.toArrayList()
+}

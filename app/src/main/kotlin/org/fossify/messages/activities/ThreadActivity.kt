@@ -197,6 +197,7 @@ import org.joda.time.DateTime
 import java.io.File
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import org.fossify.messages.extensions.filterNotInByKey
 
 class ThreadActivity : SimpleActivity() {
     private var threadId = 0L
@@ -480,10 +481,8 @@ class ThreadActivity : SimpleActivity() {
             if (!isRecycleBin) {
                 messages = getMessages(threadId, false)
                 if (config.useRecycleBin) {
-                    val recycledMessages =
-                        messagesDB.getThreadMessagesFromRecycleBin(threadId).map { it.id }
-                    messages = messages.filter { !recycledMessages.contains(it.id) }
-                        .toMutableList() as ArrayList<Message>
+                    val recycledMessages = messagesDB.getThreadMessagesFromRecycleBin(threadId)
+                    messages = messages.filterNotInByKey(recycledMessages) { it.getStableId() }
                 }
             }
 
@@ -739,7 +738,7 @@ class ThreadActivity : SimpleActivity() {
 
         ensureBackgroundThread {
             val olderMessages = getMessages(threadId, true, oldestMessageDate)
-                .filter { message -> !messages.contains(message) }
+                .filterNotInByKey(messages) { it.getStableId() }
 
             messages.addAll(0, olderMessages)
             allMessagesFetched = olderMessages.isEmpty()
@@ -1545,13 +1544,11 @@ class ThreadActivity : SimpleActivity() {
             refreshedSinceSent = false
             sendMessageCompat(text, addresses, subscriptionId, attachments, messageToResend)
             ensureBackgroundThread {
-                val messageIds = messages.map { it.id }
                 val messages = getMessages(
                     threadId = threadId,
                     getImageResolutions = true,
                     limit = maxOf(1, attachments.size)
-                )
-                    .filter { it.id !in messageIds }
+                ).filterNotInByKey(messages) { it.getStableId() }
                 for (message in messages) {
                     insertOrUpdateMessage(message)
                 }

@@ -74,6 +74,7 @@ import org.fossify.messages.helpers.THREAD_SENT_MESSAGE
 import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_ERROR
 import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENDING
 import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENT
+import org.fossify.messages.helpers.generateStableId
 import org.fossify.messages.helpers.setupDocumentPreview
 import org.fossify.messages.helpers.setupVCardPreview
 import org.fossify.messages.models.Attachment
@@ -186,24 +187,13 @@ class ThreadAdapter(
         bindViewHolder(holder)
     }
 
-    private fun getStableId(type: Int, key: Long): Long {
-        require(type in 0 until (1 shl TYPE_BITS))
-        return (type.toLong() shl TYPE_SHIFT) or (key and KEY_MASK)
-    }
-
     override fun getItemId(position: Int): Long {
         return when (val item = getItem(position)) {
-            is Message -> {
-                val providerBit = if (item.isMMS) 1L else 0L
-                val key = (item.id shl 1) or providerBit
-                val type = if (item.isReceivedMessage()) THREAD_RECEIVED_MESSAGE else THREAD_SENT_MESSAGE
-                getStableId(type, key)
-            }
-
-            is ThreadDateTime -> getStableId(THREAD_DATE_TIME, item.date.toLong())
-            is ThreadError -> getStableId(THREAD_SENT_MESSAGE_ERROR, item.messageId)
-            is ThreadSending -> getStableId(THREAD_SENT_MESSAGE_SENDING, item.messageId)
-            is ThreadSent -> getStableId(THREAD_SENT_MESSAGE_SENT, item.messageId)
+            is Message -> item.getStableId()
+            is ThreadDateTime -> generateStableId(THREAD_DATE_TIME, item.date.toLong())
+            is ThreadError -> generateStableId(THREAD_SENT_MESSAGE_ERROR, item.messageId)
+            is ThreadSending -> generateStableId(THREAD_SENT_MESSAGE_SENDING, item.messageId)
+            is ThreadSent -> generateStableId(THREAD_SENT_MESSAGE_SENT, item.messageId)
         }
     }
 
@@ -607,13 +597,6 @@ class ThreadAdapter(
     }
 
     inner class ThreadViewHolder(val binding: ViewBinding) : ViewHolder(binding.root)
-
-    companion object {
-        private const val TYPE_BITS = 3
-        private const val KEY_BITS = Long.SIZE_BITS - TYPE_BITS
-        private const val TYPE_SHIFT = KEY_BITS
-        private const val KEY_MASK = (1L shl KEY_BITS) - 1
-    }
 }
 
 private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {

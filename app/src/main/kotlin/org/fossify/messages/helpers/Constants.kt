@@ -60,6 +60,10 @@ const val THREAD_SENT_MESSAGE = 3
 const val THREAD_SENT_MESSAGE_ERROR = 4
 const val THREAD_SENT_MESSAGE_SENT = 5
 const val THREAD_SENT_MESSAGE_SENDING = 6
+const val THREAD_TYPE_BITS = 3
+const val THREAD_KEY_BITS = Long.SIZE_BITS - THREAD_TYPE_BITS
+const val THREAD_TYPE_SHIFT = THREAD_KEY_BITS
+const val THREAD_KEY_MASK = (1L shl THREAD_KEY_BITS) - 1
 
 // view types for attachment list
 const val ATTACHMENT_DOCUMENT = 7
@@ -105,4 +109,9 @@ fun generateRandomId(length: Int = 9): Long {
     val millis = DateTime.now(DateTimeZone.UTC).millis
     val random = abs(Random(millis).nextLong())
     return random.toString().takeLast(length).toLong()
+}
+
+fun generateStableId(type: Int, key: Long): Long {
+    require(type in 0 until (1 shl THREAD_TYPE_BITS))
+    return (type.toLong() shl THREAD_TYPE_SHIFT) or (key and THREAD_KEY_MASK)
 }
