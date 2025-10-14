@@ -25,7 +25,6 @@ import org.fossify.messages.extensions.markThreadMessagesRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.renameConversation
 import org.fossify.messages.extensions.updateConversationArchivedStatus
-import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.isShortCodeWithLetters
 import org.fossify.messages.models.Conversation
 
@@ -189,12 +188,12 @@ class ConversationsAdapter(
 
         activity.runOnUiThread {
             if (newList.none { selectedKeys.contains(it.hashCode()) }) {
-                refreshMessages()
+                refreshConversations()
                 finishActMode()
             } else {
                 submitList(newList)
                 if (newList.isEmpty()) {
-                    refreshMessages()
+                    refreshConversations()
                 }
             }
         }
@@ -220,12 +219,12 @@ class ConversationsAdapter(
 
         activity.runOnUiThread {
             if (newList.none { selectedKeys.contains(it.hashCode()) }) {
-                refreshMessages()
+                refreshConversations()
                 finishActMode()
             } else {
                 submitList(newList)
                 if (newList.isEmpty()) {
-                    refreshMessages()
+                    refreshConversations()
                 }
             }
         }
@@ -317,7 +316,7 @@ class ConversationsAdapter(
 
     private fun refreshConversations() {
         activity.runOnUiThread {
-            refreshMessages()
+            refreshConversations()
             finishActMode()
         }
     }

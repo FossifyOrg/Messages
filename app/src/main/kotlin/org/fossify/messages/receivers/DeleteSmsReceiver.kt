@@ -10,6 +10,7 @@ import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.helpers.IS_MMS
 import org.fossify.messages.helpers.MESSAGE_ID
 import org.fossify.messages.helpers.THREAD_ID
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 
 class DeleteSmsReceiver : BroadcastReceiver() {
@@ -23,6 +24,7 @@ class DeleteSmsReceiver : BroadcastReceiver() {
             context.deleteMessage(messageId, isMms)
             context.updateLastConversationMessage(threadId)
             refreshMessages()
+            refreshConversations()
         }
     }
 }

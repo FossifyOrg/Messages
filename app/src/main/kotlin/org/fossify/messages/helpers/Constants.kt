@@ -104,6 +104,10 @@ fun refreshMessages() {
     EventBus.getDefault().post(Events.RefreshMessages())
 }
 
+fun refreshConversations() {
+    EventBus.getDefault().post(Events.RefreshConversations())
+}
+
 /** Not to be used with real messages persisted in the telephony db. This is for internal use only (e.g. scheduled messages, notification ids etc). */
 fun generateRandomId(length: Int = 9): Long {
     val millis = DateTime.now(DateTimeZone.UTC).millis

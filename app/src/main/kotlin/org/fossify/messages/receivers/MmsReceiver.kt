@@ -21,6 +21,7 @@ import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
 
@@ -93,6 +94,7 @@ class MmsReceiver : MmsReceivedReceiver() {
                     context.updateConversationArchivedStatus(mms.threadId, false)
                 }
                 refreshMessages()
+                refreshConversations()
             }
         }
     }

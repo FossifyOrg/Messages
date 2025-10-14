@@ -9,7 +9,7 @@ import org.fossify.messages.R
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.extensions.deleteConversation
 import org.fossify.messages.extensions.updateConversationArchivedStatus
-import org.fossify.messages.helpers.refreshMessages
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.models.Conversation
 
 class ArchivedConversationsAdapter(
@@ -83,12 +83,12 @@ class ArchivedConversationsAdapter(
 
         activity.runOnUiThread {
             if (newList.none { selectedKeys.contains(it.hashCode()) }) {
-                refreshMessages()
+                refreshConversations()
                 finishActMode()
             } else {
                 submitList(newList)
                 if (newList.isEmpty()) {
-                    refreshMessages()
+                    refreshConversations()
                 }
             }
         }

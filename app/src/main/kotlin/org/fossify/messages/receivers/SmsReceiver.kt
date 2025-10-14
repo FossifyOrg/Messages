@@ -13,8 +13,18 @@ import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
-import org.fossify.messages.extensions.*
+import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.getNameFromAddress
+import org.fossify.messages.extensions.getNotificationBitmap
+import org.fossify.messages.extensions.getThreadId
+import org.fossify.messages.extensions.insertNewSMS
+import org.fossify.messages.extensions.insertOrUpdateConversation
+import org.fossify.messages.extensions.messagesDB
+import org.fossify.messages.extensions.shouldUnarchive
+import org.fossify.messages.extensions.showReceivedMessageNotification
+import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
 
@@ -112,6 +122,7 @@ class SmsReceiver : BroadcastReceiver() {
                         context.updateConversationArchivedStatus(threadId, false)
                     }
                     refreshMessages()
+                    refreshConversations()
                     context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
                 }
             }

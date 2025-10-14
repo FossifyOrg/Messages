@@ -682,7 +682,7 @@ class MainActivity : SimpleActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun refreshMessages(event: Events.RefreshMessages) {
+    fun refreshConversations(event: Events.RefreshConversations) {
         initMessenger()
     }
 

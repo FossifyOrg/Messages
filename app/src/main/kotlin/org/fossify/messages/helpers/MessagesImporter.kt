@@ -99,7 +99,7 @@ class MessagesImporter(private val activity: SimpleActivity) {
                 }
 
                 messageWriter.fixConversationDates()
-                refreshMessages()
+                refreshConversations()
             } catch (e: Exception) {
                 activity.showErrorToast(e)
             }
@@ -153,7 +153,7 @@ class MessagesImporter(private val activity: SimpleActivity) {
                         messagesFailed++
                     }
                 }
-                refreshMessages()
+                refreshConversations()
             }
             when {
                 messagesFailed > 0 && messagesImported > 0 -> {

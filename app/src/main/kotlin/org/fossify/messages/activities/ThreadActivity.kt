@@ -40,6 +40,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsAnimationCompat
@@ -47,6 +48,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.fossify.commons.dialogs.ConfirmationDialog
@@ -122,6 +124,7 @@ import org.fossify.messages.extensions.deleteScheduledMessage
 import org.fossify.messages.extensions.deleteSmsDraft
 import org.fossify.messages.extensions.dialNumber
 import org.fossify.messages.extensions.emptyMessagesRecycleBinForConversation
+import org.fossify.messages.extensions.filterNotInByKey
 import org.fossify.messages.extensions.getAddresses
 import org.fossify.messages.extensions.getDefaultKeyboardHeight
 import org.fossify.messages.extensions.getFileSizeFromUri
@@ -172,6 +175,7 @@ import org.fossify.messages.helpers.THREAD_NUMBER
 import org.fossify.messages.helpers.THREAD_TEXT
 import org.fossify.messages.helpers.THREAD_TITLE
 import org.fossify.messages.helpers.generateRandomId
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.cancelScheduleSendPendingIntent
 import org.fossify.messages.messaging.isLongMmsMessage
@@ -195,9 +199,6 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.joda.time.DateTime
 import java.io.File
-import androidx.core.net.toUri
-import androidx.recyclerview.widget.RecyclerView
-import org.fossify.messages.extensions.filterNotInByKey
 
 class ThreadActivity : SimpleActivity() {
     private var threadId = 0L
@@ -312,7 +313,7 @@ class ThreadActivity : SimpleActivity() {
     override fun onPause() {
         super.onPause()
         saveDraftMessage()
-        bus?.post(Events.RefreshMessages())
+        bus?.post(Events.RefreshConversations())
         isActivityVisible = false
     }
 
@@ -1069,7 +1070,7 @@ class ThreadActivity : SimpleActivity() {
                 numbers.forEach {
                     addBlockedNumber(it)
                 }
-                refreshMessages()
+                refreshConversations()
                 finish()
             }
         }
@@ -1085,7 +1086,7 @@ class ThreadActivity : SimpleActivity() {
                     deleteConversation(threadId)
                 }
                 runOnUiThread {
-                    refreshMessages()
+                    refreshConversations()
                     finish()
                 }
             }
@@ -1097,7 +1098,7 @@ class ThreadActivity : SimpleActivity() {
             ensureBackgroundThread {
                 restoreAllMessagesFromRecycleBinForConversation(threadId)
                 runOnUiThread {
-                    refreshMessages()
+                    refreshConversations()
                     finish()
                 }
             }
@@ -1108,7 +1109,7 @@ class ThreadActivity : SimpleActivity() {
         ensureBackgroundThread {
             updateConversationArchivedStatus(threadId, true)
             runOnUiThread {
-                refreshMessages()
+                refreshConversations()
                 finish()
             }
         }
@@ -1118,7 +1119,7 @@ class ThreadActivity : SimpleActivity() {
         ensureBackgroundThread {
             updateConversationArchivedStatus(threadId, false)
             runOnUiThread {
-                refreshMessages()
+                refreshConversations()
                 finish()
             }
         }
@@ -1188,7 +1189,7 @@ class ThreadActivity : SimpleActivity() {
             markThreadMessagesUnread(threadId)
             runOnUiThread {
                 finish()
-                bus?.post(Events.RefreshMessages())
+                bus?.post(Events.RefreshConversations())
             }
         }
     }
@@ -1273,7 +1274,7 @@ class ThreadActivity : SimpleActivity() {
         }
 
         if (hadUnreadItems) {
-            bus?.post(Events.RefreshMessages())
+            bus?.post(Events.RefreshConversations())
         }
 
         return items
@@ -1581,6 +1582,7 @@ class ThreadActivity : SimpleActivity() {
         messagesDB.insertOrUpdate(message)
         if (shouldUnarchive()) {
             updateConversationArchivedStatus(message.threadId, false)
+            refreshConversations()
         }
     }
 

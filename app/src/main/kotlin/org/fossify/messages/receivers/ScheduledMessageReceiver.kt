@@ -14,6 +14,7 @@ import org.fossify.messages.extensions.getAddresses
 import org.fossify.messages.extensions.messagesDB
 import org.fossify.messages.helpers.SCHEDULED_MESSAGE_ID
 import org.fossify.messages.helpers.THREAD_ID
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.sendMessageCompat
 
@@ -52,6 +53,7 @@ class ScheduledMessageReceiver : BroadcastReceiver() {
             context.deleteScheduledMessage(messageId)
             context.conversationsDB.deleteThreadId(messageId)
             refreshMessages()
+            refreshConversations()
         } catch (e: Exception) {
             context.showErrorToast(e)
         } catch (e: Error) {

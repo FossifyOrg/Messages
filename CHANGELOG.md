@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Optimized loading messages in conversations
 
+### Fixed
+- Fixed position reset when opening attachments in conversations ([#82])
+
 ## [1.4.0] - 2025-10-12
 ### Added
 - Ability to save multiple attachments ([#75])
@@ -165,6 +168,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#334]: https://github.com/FossifyOrg/Messages/issues/334
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
+[#82]: https://github.com/FossifyOrg/Messages/issues/82
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 
