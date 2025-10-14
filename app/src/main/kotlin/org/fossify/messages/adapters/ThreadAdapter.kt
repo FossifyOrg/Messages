@@ -328,11 +328,19 @@ class ThreadAdapter(
 
     private fun isThreadDateTime(position: Int) = currentList.getOrNull(position) is ThreadDateTime
 
-    fun updateMessages(newMessages: ArrayList<ThreadItem>, scrollPosition: Int = -1) {
+    fun updateMessages(
+        newMessages: ArrayList<ThreadItem>,
+        scrollPosition: Int = -1,
+        smoothScroll: Boolean = false
+    ) {
         val latestMessages = newMessages.toMutableList()
         submitList(latestMessages) {
             if (scrollPosition != -1) {
-                recyclerView.scrollToPosition(scrollPosition)
+                if (smoothScroll) {
+                    recyclerView.smoothScrollToPosition(scrollPosition)
+                } else {
+                    recyclerView.scrollToPosition(scrollPosition)
+                }
             }
         }
     }

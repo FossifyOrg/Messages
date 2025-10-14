@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
+- Fixed automatic scroll to searched message in conversations ([#350])
 
 ## [1.4.0] - 2025-10-12
 ### Added
@@ -148,6 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#13]: https://github.com/FossifyOrg/Messages/issues/13
 [#70]: https://github.com/FossifyOrg/Messages/issues/70
 [#75]: https://github.com/FossifyOrg/Messages/issues/75
+[#82]: https://github.com/FossifyOrg/Messages/issues/82
 [#99]: https://github.com/FossifyOrg/Messages/issues/99
 [#115]: https://github.com/FossifyOrg/Messages/issues/115
 [#135]: https://github.com/FossifyOrg/Messages/issues/135
@@ -167,8 +169,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#309]: https://github.com/FossifyOrg/Messages/issues/309
 [#334]: https://github.com/FossifyOrg/Messages/issues/334
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
+[#350]: https://github.com/FossifyOrg/Messages/issues/350
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
-[#82]: https://github.com/FossifyOrg/Messages/issues/82
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 
