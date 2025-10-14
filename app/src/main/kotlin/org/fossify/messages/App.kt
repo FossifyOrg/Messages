@@ -32,6 +32,7 @@ class App : FossifyApp() {
     private val contactsObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
         override fun onChange(selfChange: Boolean, uri: Uri?) {
             MessagingCache.namePhoto.evictAll()
+            MessagingCache.participantsCache.evictAll()
         }
     }
 }
