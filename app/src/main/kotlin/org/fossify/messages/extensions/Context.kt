@@ -585,7 +585,15 @@ fun Context.getThreadParticipants(
     threadId: Long,
     contactsMap: HashMap<Int, SimpleContact>?,
 ): ArrayList<SimpleContact> {
-    MessagingCache.participantsCache.get(threadId)?.let { return it }
+    MessagingCache.participantsCache.get(threadId)?.let {
+        return it.map { contact ->
+            contact.copy(
+                phoneNumbers = contact.phoneNumbers.toArrayList(),
+                birthdays = contact.birthdays.toArrayList(),
+                anniversaries = contact.anniversaries.toArrayList()
+            )
+        }.toArrayList()
+    }
 
     val uri = "${MmsSms.CONTENT_CONVERSATIONS_URI}?simple=true".toUri()
     val projection = arrayOf(
