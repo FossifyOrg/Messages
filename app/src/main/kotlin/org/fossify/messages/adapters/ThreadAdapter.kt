@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
@@ -96,7 +97,11 @@ class ThreadAdapter(
 
     @SuppressLint("MissingPermission")
     private val hasMultipleSIMCards = (activity.subscriptionManagerCompat().activeSubscriptionInfoList?.size ?: 0) > 1
-    private val maxChatBubbleWidth = activity.usableScreenSize.x * 0.8f
+    private val maxChatBubbleWidth = (activity.usableScreenSize.x * 0.8f).toInt()
+
+    companion object {
+        private const val MAX_MEDIA_HEIGHT_RATIO = 3
+    }
 
     init {
         setupDragListener(true)
@@ -470,7 +475,8 @@ class ThreadAdapter(
             .load(uri)
             .apply(options)
             .dontAnimate()
-            .override(maxChatBubbleWidth.toInt(), Target.SIZE_ORIGINAL)
+            .override(maxChatBubbleWidth, maxChatBubbleWidth * MAX_MEDIA_HEIGHT_RATIO)
+            .downsample(DownsampleStrategy.AT_MOST)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>, isFirstResource: Boolean): Boolean {
                     threadMessagePlayOutline.beGone()
@@ -483,7 +489,7 @@ class ThreadAdapter(
             .into(imageView.attachmentImage)
 
         imageView.attachmentImage.updateLayoutParams<ViewGroup.LayoutParams> {
-            width = maxChatBubbleWidth.toInt()
+            width = maxChatBubbleWidth
             height = ViewGroup.LayoutParams.WRAP_CONTENT
         }
 
