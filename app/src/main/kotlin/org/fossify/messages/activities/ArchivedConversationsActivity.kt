@@ -175,7 +175,7 @@ class ArchivedConversationsActivity : SimpleActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun refreshConversations(event: Events.RefreshConversations) {
+    fun refreshConversations(@Suppress("unused") event: Events.RefreshConversations) {
         loadArchivedConversations()
     }
 }
