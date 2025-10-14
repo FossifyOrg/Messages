@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.util.Size
 import android.util.TypedValue
 import android.view.Menu
 import android.view.View
@@ -14,21 +13,34 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.dialogs.ConfirmationDialog
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.copyToClipboard
+import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getTextSize
+import org.fossify.commons.extensions.shareTextIntent
+import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.extensions.usableScreenSize
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.views.MyRecyclerView
@@ -37,17 +49,42 @@ import org.fossify.messages.activities.NewConversationActivity
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.activities.VCardViewerActivity
-import org.fossify.messages.databinding.*
+import org.fossify.messages.databinding.ItemAttachmentDocumentBinding
+import org.fossify.messages.databinding.ItemAttachmentImageBinding
+import org.fossify.messages.databinding.ItemAttachmentVcardBinding
+import org.fossify.messages.databinding.ItemMessageBinding
+import org.fossify.messages.databinding.ItemThreadDateTimeBinding
+import org.fossify.messages.databinding.ItemThreadErrorBinding
+import org.fossify.messages.databinding.ItemThreadSendingBinding
+import org.fossify.messages.databinding.ItemThreadSuccessBinding
 import org.fossify.messages.dialogs.DeleteConfirmationDialog
 import org.fossify.messages.dialogs.MessageDetailsDialog
 import org.fossify.messages.dialogs.SelectTextDialog
-import org.fossify.messages.extensions.*
-import org.fossify.messages.helpers.*
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.getContactFromAddress
+import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.isVCardMimeType
+import org.fossify.messages.extensions.isVideoMimeType
+import org.fossify.messages.extensions.launchViewIntent
+import org.fossify.messages.extensions.startContactDetailsIntent
+import org.fossify.messages.extensions.subscriptionManagerCompat
+import org.fossify.messages.helpers.EXTRA_VCARD_URI
+import org.fossify.messages.helpers.THREAD_DATE_TIME
+import org.fossify.messages.helpers.THREAD_RECEIVED_MESSAGE
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_ERROR
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENDING
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENT
+import org.fossify.messages.helpers.generateStableId
+import org.fossify.messages.helpers.setupDocumentPreview
+import org.fossify.messages.helpers.setupVCardPreview
 import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Message
 import org.fossify.messages.models.ThreadItem
-import org.fossify.messages.models.ThreadItem.*
-import androidx.core.graphics.drawable.toDrawable
+import org.fossify.messages.models.ThreadItem.ThreadDateTime
+import org.fossify.messages.models.ThreadItem.ThreadError
+import org.fossify.messages.models.ThreadItem.ThreadSending
+import org.fossify.messages.models.ThreadItem.ThreadSent
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -60,11 +97,18 @@ class ThreadAdapter(
 
     @SuppressLint("MissingPermission")
     private val hasMultipleSIMCards = (activity.subscriptionManagerCompat().activeSubscriptionInfoList?.size ?: 0) > 1
-    private val maxChatBubbleWidth = activity.usableScreenSize.x * 0.8f
+    private val maxChatBubbleWidth = (activity.usableScreenSize.x * 0.8f).toInt()
+
+    companion object {
+        private const val MAX_MEDIA_HEIGHT_RATIO = 3
+        private const val SIM_BITS = 21
+        private const val SIM_MASK = (1L shl SIM_BITS) - 1
+    }
 
     init {
         setupDragListener(true)
         setHasStableIds(true)
+        (recyclerView.itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 
     override fun getActionMenuId() = R.menu.cab_thread
@@ -110,9 +154,13 @@ class ThreadAdapter(
 
     override fun getIsItemSelectable(position: Int) = !isThreadDateTime(position)
 
-    override fun getItemSelectionKey(position: Int) = (currentList.getOrNull(position) as? Message)?.hashCode()
+    override fun getItemSelectionKey(position: Int): Int? {
+        return (currentList.getOrNull(position) as? Message)?.getSelectionKey()
+    }
 
-    override fun getItemKeyPosition(key: Int) = currentList.indexOfFirst { (it as? Message)?.hashCode() == key }
+    override fun getItemKeyPosition(key: Int): Int {
+        return currentList.indexOfFirst { (it as? Message)?.getSelectionKey() == key }
+    }
 
     override fun onActionModeCreated() {}
 
@@ -120,7 +168,6 @@ class ThreadAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = when (viewType) {
-            THREAD_LOADING -> ItemThreadLoadingBinding.inflate(layoutInflater, parent, false)
             THREAD_DATE_TIME -> ItemThreadDateTimeBinding.inflate(layoutInflater, parent, false)
             THREAD_SENT_MESSAGE_ERROR -> ItemThreadErrorBinding.inflate(layoutInflater, parent, false)
             THREAD_SENT_MESSAGE_SENT -> ItemThreadSuccessBinding.inflate(layoutInflater, parent, false)
@@ -137,7 +184,6 @@ class ThreadAdapter(
         val isLongClickable = item is Message
         holder.bindView(item, isClickable, isLongClickable) { itemView, _ ->
             when (item) {
-                is ThreadLoading -> setupThreadLoading(itemView)
                 is ThreadDateTime -> setupDateTime(itemView, item)
                 is ThreadError -> setupThreadError(itemView)
                 is ThreadSent -> setupThreadSuccess(itemView, item.delivered)
@@ -150,14 +196,20 @@ class ThreadAdapter(
 
     override fun getItemId(position: Int): Long {
         return when (val item = getItem(position)) {
-            is Message -> Message.getStableId(item)
-            else -> item.hashCode().toLong()
+            is Message -> item.getStableId()
+            is ThreadDateTime -> {
+                val sim = (item.simID.hashCode().toLong() and SIM_MASK)
+                val key = (item.date.toLong() shl SIM_BITS) or sim
+                generateStableId(THREAD_DATE_TIME, key)
+            }
+            is ThreadError -> generateStableId(THREAD_SENT_MESSAGE_ERROR, item.messageId)
+            is ThreadSending -> generateStableId(THREAD_SENT_MESSAGE_SENDING, item.messageId)
+            is ThreadSent -> generateStableId(THREAD_SENT_MESSAGE_SENT, item.messageId)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (val item = getItem(position)) {
-            is ThreadLoading -> THREAD_LOADING
             is ThreadDateTime -> THREAD_DATE_TIME
             is ThreadError -> THREAD_SENT_MESSAGE_ERROR
             is ThreadSent -> THREAD_SENT_MESSAGE_SENT
@@ -268,7 +320,11 @@ class ThreadAdapter(
         }
     }
 
-    private fun getSelectedItems() = currentList.filter { selectedKeys.contains((it as? Message)?.hashCode() ?: 0) } as ArrayList<ThreadItem>
+    private fun getSelectedItems(): ArrayList<ThreadItem> {
+        return currentList.filter {
+            selectedKeys.contains((it as? Message)?.getSelectionKey() ?: 0)
+        } as ArrayList<ThreadItem>
+    }
 
     private fun isThreadDateTime(position: Int) = currentList.getOrNull(position) is ThreadDateTime
 
@@ -283,7 +339,7 @@ class ThreadAdapter(
 
     private fun setupView(holder: ViewHolder, view: View, message: Message) {
         ItemMessageBinding.bind(view).apply {
-            threadMessageHolder.isSelected = selectedKeys.contains(message.hashCode())
+            threadMessageHolder.isSelected = selectedKeys.contains(message.getSelectionKey())
             threadMessageBody.apply {
                 text = message.body
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
@@ -416,16 +472,17 @@ class ThreadAdapter(
         threadMessageAttachmentsHolder.addView(imageView.root)
 
         val placeholderDrawable = Color.TRANSPARENT.toDrawable()
-        val isTallImage = attachment.height > attachment.width
-        val transformation = if (isTallImage) CenterCrop() else FitCenter()
         val options = RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .placeholder(placeholderDrawable)
-            .transform(transformation)
+            .transform(FitCenter())
 
-        var builder = Glide.with(root.context)
+        Glide.with(root.context)
             .load(uri)
             .apply(options)
+            .dontAnimate()
+            .override(maxChatBubbleWidth, maxChatBubbleWidth * MAX_MEDIA_HEIGHT_RATIO)
+            .downsample(DownsampleStrategy.AT_MOST)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>, isFirstResource: Boolean): Boolean {
                     threadMessagePlayOutline.beGone()
@@ -435,23 +492,11 @@ class ThreadAdapter(
 
                 override fun onResourceReady(dr: Drawable, a: Any, t: Target<Drawable>, d: DataSource, i: Boolean) = false
             })
+            .into(imageView.attachmentImage)
 
-        // limit attachment sizes to avoid causing OOM
-        var wantedAttachmentSize = Size(attachment.width, attachment.height)
-        if (wantedAttachmentSize.width > maxChatBubbleWidth) {
-            val newHeight = wantedAttachmentSize.height / (wantedAttachmentSize.width / maxChatBubbleWidth)
-            wantedAttachmentSize = Size(maxChatBubbleWidth.toInt(), newHeight.toInt())
-        }
-
-        builder = if (isTallImage) {
-            builder.override(wantedAttachmentSize.width, wantedAttachmentSize.width)
-        } else {
-            builder.override(wantedAttachmentSize.width, wantedAttachmentSize.height)
-        }
-
-        try {
-            builder.into(imageView.attachmentImage)
-        } catch (_: Exception) {
+        imageView.attachmentImage.updateLayoutParams<ViewGroup.LayoutParams> {
+            width = maxChatBubbleWidth
+            height = ViewGroup.LayoutParams.WRAP_CONTENT
         }
 
         imageView.attachmentImage.setOnClickListener {
@@ -553,11 +598,6 @@ class ThreadAdapter(
         }
     }
 
-    private fun setupThreadLoading(view: View) {
-        val binding = ItemThreadLoadingBinding.bind(view)
-        binding.threadLoading.setIndicatorColor(properPrimaryColor)
-    }
-
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
         if (!activity.isDestroyed && !activity.isFinishing) {
@@ -576,19 +616,21 @@ private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {
     override fun areItemsTheSame(oldItem: ThreadItem, newItem: ThreadItem): Boolean {
         if (oldItem::class.java != newItem::class.java) return false
         return when (oldItem) {
-            is ThreadLoading -> oldItem.id == (newItem as ThreadLoading).id
-            is ThreadDateTime -> oldItem.date == (newItem as ThreadDateTime).date
             is ThreadError -> oldItem.messageId == (newItem as ThreadError).messageId
             is ThreadSent -> oldItem.messageId == (newItem as ThreadSent).messageId
             is ThreadSending -> oldItem.messageId == (newItem as ThreadSending).messageId
             is Message -> Message.areItemsTheSame(oldItem, newItem as Message)
+            is ThreadDateTime -> {
+                val new = newItem as ThreadDateTime
+                oldItem.date == new.date && oldItem.simID == new.simID
+            }
         }
     }
 
     override fun areContentsTheSame(oldItem: ThreadItem, newItem: ThreadItem): Boolean {
         if (oldItem::class.java != newItem::class.java) return false
         return when (oldItem) {
-            is ThreadLoading, is ThreadSending -> true
+            is ThreadSending -> true
             is ThreadDateTime -> oldItem.simID == (newItem as ThreadDateTime).simID
             is ThreadError -> oldItem.messageText == (newItem as ThreadError).messageText
             is ThreadSent -> oldItem.delivered == (newItem as ThreadSent).delivered

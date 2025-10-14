@@ -116,6 +116,7 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:overScrollMode="ifContentScrolls"
+                android:paddingTop="@dimen/big_margin"
                 android:paddingBottom="@dimen/medium_margin"
                 android:scrollbars="none"
                 app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"

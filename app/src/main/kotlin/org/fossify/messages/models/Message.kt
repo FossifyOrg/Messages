@@ -5,6 +5,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.fossify.commons.models.SimpleContact
+import org.fossify.messages.helpers.THREAD_RECEIVED_MESSAGE
+import org.fossify.messages.helpers.THREAD_SENT_MESSAGE
+import org.fossify.messages.helpers.generateStableId
 
 @Entity(tableName = "messages")
 data class Message(
@@ -34,22 +37,18 @@ data class Message(
             ?: participants.firstOrNull { it.name == senderName }
             ?: participants.firstOrNull()
 
+    fun getStableId(): Long {
+        val providerBit = if (isMMS) 1L else 0L
+        val key = (id shl 1) or providerBit
+        val type = if (isReceivedMessage()) THREAD_RECEIVED_MESSAGE else THREAD_SENT_MESSAGE
+        return generateStableId(type, key)
+    }
+
+    fun getSelectionKey(): Int {
+        return (id xor (id ushr Int.SIZE_BITS)).toInt()
+    }
+
     companion object {
-
-        fun getStableId(message: Message): Long {
-            var result = message.id.hashCode()
-            result = 31 * result + message.body.hashCode()
-            result = 31 * result + message.date.hashCode()
-            result = 31 * result + message.threadId.hashCode()
-            result = 31 * result + message.isMMS.hashCode()
-            result = 31 * result + (message.attachment?.hashCode() ?: 0)
-            result = 31 * result + message.senderPhoneNumber.hashCode()
-            result = 31 * result + message.senderName.hashCode()
-            result = 31 * result + message.senderPhotoUri.hashCode()
-            result = 31 * result + message.isScheduled.hashCode()
-            return result.toLong()
-        }
-
         fun areItemsTheSame(old: Message, new: Message): Boolean {
             return old.id == new.id
         }
