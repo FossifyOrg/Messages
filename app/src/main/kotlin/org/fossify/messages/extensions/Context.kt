@@ -112,7 +112,6 @@ val Context.shortcutHelper get() = ShortcutHelper(this)
 
 fun Context.getMessages(
     threadId: Long,
-    getImageResolutions: Boolean,
     dateFrom: Int = -1,
     includeScheduledMessages: Boolean = true,
     limit: Int = MESSAGES_LIMIT,
@@ -194,7 +193,7 @@ fun Context.getMessages(
         messages.add(message)
     }
 
-    messages.addAll(getMMS(threadId, getImageResolutions, sortOrder, dateFrom))
+    messages.addAll(getMMS(threadId, sortOrder, dateFrom))
 
     if (includeScheduledMessages) {
         try {
@@ -218,7 +217,6 @@ fun Context.getMessages(
 // as soon as a message contains multiple recipients it counts as an MMS instead of SMS
 fun Context.getMMS(
     threadId: Long? = null,
-    getImageResolutions: Boolean = false,
     sortOrder: String? = null,
     dateFrom: Int = -1,
 ): ArrayList<Message> {
@@ -267,7 +265,7 @@ fun Context.getMMS(
         }
 
         val isMMS = true
-        val attachment = getMmsAttachment(mmsId, getImageResolutions)
+        val attachment = getMmsAttachment(mmsId)
         val body = attachment.text
         var senderNumber = ""
         var senderName = ""
@@ -471,7 +469,7 @@ fun Context.getConversationIds(): List<Long> {
 
 // based on https://stackoverflow.com/a/6446831/1967672
 @SuppressLint("NewApi")
-fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAttachment {
+fun Context.getMmsAttachment(id: Long): MessageAttachment {
     val uri = if (isQPlus()) {
         Mms.Part.CONTENT_URI
     } else {
@@ -499,32 +497,14 @@ fun Context.getMmsAttachment(id: Long, getImageResolutions: Boolean): MessageAtt
                 .orEmpty()
         } else if (mimetype.startsWith("image/") || mimetype.startsWith("video/")) {
             val fileUri = Uri.withAppendedPath(uri, partId.toString())
-            var width = 0
-            var height = 0
-
-            if (getImageResolutions) {
-                try {
-                    val options = BitmapFactory.Options()
-                    options.inJustDecodeBounds = true
-                    BitmapFactory.decodeStream(
-                        contentResolver.openInputStream(fileUri),
-                        null,
-                        options
-                    )
-                    width = options.outWidth
-                    height = options.outHeight
-                } catch (_: Exception) {
-                }
-            }
-
             messageAttachment.attachments.add(
                 Attachment(
                     id = partId,
                     messageId = id,
                     uriString = fileUri.toString(),
                     mimetype = mimetype,
-                    width = width,
-                    height = height,
+                    width = 0,
+                    height = 0,
                     filename = ""
                 )
             )
@@ -562,7 +542,7 @@ fun Context.getLatestMMS(): Message? {
 
 fun Context.getThreadSnippet(threadId: Long): String {
     val sortOrder = "${Mms.DATE} DESC LIMIT 1"
-    val latestMms = getMMS(threadId, false, sortOrder).firstOrNull()
+    val latestMms = getMMS(threadId, sortOrder).firstOrNull()
     var snippet = latestMms?.body ?: ""
 
     val uri = Sms.CONTENT_URI

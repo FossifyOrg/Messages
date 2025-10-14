@@ -479,7 +479,7 @@ class ThreadActivity : SimpleActivity() {
 
             val cachedMessagesCode = messages.clone().hashCode()
             if (!isRecycleBin) {
-                messages = getMessages(threadId, false)
+                messages = getMessages(threadId)
                 if (config.useRecycleBin) {
                     val recycledMessages = messagesDB.getThreadMessagesFromRecycleBin(threadId)
                     messages = messages.filterNotInByKey(recycledMessages) { it.getStableId() }
@@ -737,7 +737,7 @@ class ThreadActivity : SimpleActivity() {
         loadingOlderMessages = true
 
         ensureBackgroundThread {
-            val olderMessages = getMessages(threadId, false, oldestMessageDate)
+            val olderMessages = getMessages(threadId, oldestMessageDate)
                 .filterNotInByKey(messages) { it.getStableId() }
 
             messages.addAll(0, olderMessages)
@@ -1544,11 +1544,8 @@ class ThreadActivity : SimpleActivity() {
             refreshedSinceSent = false
             sendMessageCompat(text, addresses, subscriptionId, attachments, messageToResend)
             ensureBackgroundThread {
-                val messages = getMessages(
-                    threadId = threadId,
-                    getImageResolutions = false,
-                    limit = maxOf(1, attachments.size)
-                ).filterNotInByKey(messages) { it.getStableId() }
+                val messages = getMessages(threadId, limit = maxOf(1, attachments.size))
+                    .filterNotInByKey(messages) { it.getStableId() }
                 for (message in messages) {
                     insertOrUpdateMessage(message)
                 }
@@ -1732,9 +1729,7 @@ class ThreadActivity : SimpleActivity() {
 
         val lastMaxId = messages.filterNot { it.isScheduled }.maxByOrNull { it.id }?.id ?: 0L
         val newThreadId = getThreadId(participants.getAddresses().toSet())
-        val newMessages =
-            getMessages(newThreadId, getImageResolutions = false, includeScheduledMessages = false)
-
+        val newMessages = getMessages(newThreadId, includeScheduledMessages = false)
         if (messages.isNotEmpty() && messages.all { it.isScheduled } && newMessages.isNotEmpty()) {
             // update scheduled messages with real thread id
             threadId = newThreadId

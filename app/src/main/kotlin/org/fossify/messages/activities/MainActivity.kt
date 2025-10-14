@@ -380,11 +380,7 @@ class MainActivity : SimpleActivity() {
 
             if (config.appRunCount == 1) {
                 conversations.map { it.threadId }.forEach { threadId ->
-                    val messages = getMessages(
-                        threadId = threadId,
-                        getImageResolutions = false,
-                        includeScheduledMessages = false
-                    )
+                    val messages = getMessages(threadId, includeScheduledMessages = false)
                     messages.chunked(30).forEach { currentMessages ->
                         messagesDB.insertMessages(*currentMessages.toTypedArray())
                     }
