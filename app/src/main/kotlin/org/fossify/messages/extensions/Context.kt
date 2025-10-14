@@ -247,7 +247,6 @@ fun Context.getMMS(
 
     val messages = ArrayList<Message>()
     val contactsMap = HashMap<Int, SimpleContact>()
-    val threadParticipants = HashMap<Long, ArrayList<SimpleContact>>()
     queryCursor(uri, projection, selection, selectionArgs, sortOrder, showErrors = true) { cursor ->
         val mmsId = cursor.getLongValue(Mms._ID)
         val type = cursor.getIntValue(Mms.MESSAGE_BOX)
@@ -256,13 +255,7 @@ fun Context.getMMS(
         val threadId = cursor.getLongValue(Mms.THREAD_ID)
         val subscriptionId = cursor.getIntValue(Mms.SUBSCRIPTION_ID)
         val status = cursor.getIntValue(Mms.STATUS)
-        val participants = if (threadParticipants.containsKey(threadId)) {
-            threadParticipants[threadId]!!
-        } else {
-            val parts = getThreadParticipants(threadId, contactsMap)
-            threadParticipants[threadId] = parts
-            parts
-        }
+        val participants = getThreadParticipants(threadId, contactsMap)
 
         val isMMS = true
         val attachment = getMmsAttachment(mmsId)
@@ -593,6 +586,8 @@ fun Context.getThreadParticipants(
     threadId: Long,
     contactsMap: HashMap<Int, SimpleContact>?,
 ): ArrayList<SimpleContact> {
+    MessagingCache.participantsCache.get(threadId)?.let { return it }
+
     val uri = "${MmsSms.CONTENT_CONVERSATIONS_URI}?simple=true".toUri()
     val projection = arrayOf(
         ThreadsColumns.RECIPIENT_IDS
@@ -633,6 +628,8 @@ fun Context.getThreadParticipants(
     } catch (e: Exception) {
         showErrorToast(e)
     }
+
+    MessagingCache.participantsCache.put(threadId, participants)
     return participants
 }
 
