@@ -737,7 +737,7 @@ class ThreadActivity : SimpleActivity() {
         loadingOlderMessages = true
 
         ensureBackgroundThread {
-            val olderMessages = getMessages(threadId, true, oldestMessageDate)
+            val olderMessages = getMessages(threadId, false, oldestMessageDate)
                 .filterNotInByKey(messages) { it.getStableId() }
 
             messages.addAll(0, olderMessages)
@@ -1546,7 +1546,7 @@ class ThreadActivity : SimpleActivity() {
             ensureBackgroundThread {
                 val messages = getMessages(
                     threadId = threadId,
-                    getImageResolutions = true,
+                    getImageResolutions = false,
                     limit = maxOf(1, attachments.size)
                 ).filterNotInByKey(messages) { it.getStableId() }
                 for (message in messages) {
@@ -1733,7 +1733,7 @@ class ThreadActivity : SimpleActivity() {
         val lastMaxId = messages.filterNot { it.isScheduled }.maxByOrNull { it.id }?.id ?: 0L
         val newThreadId = getThreadId(participants.getAddresses().toSet())
         val newMessages =
-            getMessages(newThreadId, getImageResolutions = true, includeScheduledMessages = false)
+            getMessages(newThreadId, getImageResolutions = false, includeScheduledMessages = false)
 
         if (messages.isNotEmpty() && messages.all { it.isScheduled } && newMessages.isNotEmpty()) {
             // update scheduled messages with real thread id
