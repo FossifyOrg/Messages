@@ -728,10 +728,6 @@ class ThreadActivity : SimpleActivity() {
 
         val firstItem = messages.first()
         val dateOfFirstItem = firstItem.date
-        if (oldestMessageDate == dateOfFirstItem) {
-            allMessagesFetched = true
-            return
-        }
 
         oldestMessageDate = dateOfFirstItem
         loadingOlderMessages = true
