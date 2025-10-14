@@ -12,7 +12,7 @@
     <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$@SuppressLint("MissingPermission") private fun getThreadItems(): ArrayList&lt;ThreadItem&gt;</ID>
     <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun refreshMenuItems()</ID>
     <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
-    <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupThread()</ID>
+    <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupThread(callback: () -&gt; Unit)</ID>
     <ID>EmptyCatchBlock:MessagesWriter.kt$MessagesWriter${ }</ID>
     <ID>EmptyFunctionBlock:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter${}</ID>
     <ID>EmptyFunctionBlock:BaseConversationsAdapter.kt$BaseConversationsAdapter${}</ID>
@@ -20,7 +20,6 @@
     <ID>EmptyFunctionBlock:ManageBlockedKeywordsAdapter.kt$ManageBlockedKeywordsAdapter${}</ID>
     <ID>EmptyFunctionBlock:RecycleBinConversationsAdapter.kt$RecycleBinConversationsAdapter${}</ID>
     <ID>EmptyFunctionBlock:SearchResultsAdapter.kt$SearchResultsAdapter${}</ID>
-    <ID>EmptyFunctionBlock:ThreadActivity.kt$ThreadActivity.&lt;no name provided&gt;${}</ID>
     <ID>EmptyFunctionBlock:ThreadAdapter.kt$ThreadAdapter${}</ID>
     <ID>ForbiddenComment:MainActivity.kt$MainActivity$// FIXME: Scheduled message date is being reset here. Conversations with</ID>
     <ID>ForbiddenComment:ShortcutHelper.kt$ShortcutHelper$// TODO: verify that thread isn't in recycle bin</ID>
@@ -48,7 +47,6 @@
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$8</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$90f</ID>
     <ID>MagicNumber:MainActivity.kt$MainActivity$30</ID>
-    <ID>MagicNumber:Message.kt$Message.Companion$31</ID>
     <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$3</ID>
     <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$4</ID>
     <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$5</ID>
@@ -76,14 +74,9 @@
     <ID>MagicNumber:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$3</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$0.4f</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$0.9f</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$14</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$15</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$150</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$16</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$2</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$20</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$30</ID>
-    <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$300</ID>
     <ID>MagicNumber:ThreadActivity.kt$ThreadActivity$500L</ID>
     <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$0.8f</ID>
     <ID>MagicNumber:ThreadAdapter.kt$ThreadAdapter$4</ID>
@@ -103,8 +96,6 @@
     <ID>MaxLineLength:ConversationsDao.kt$ConversationsDao$@Query("SELECT (SELECT body FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND messages.thread_id = conversations.thread_id ORDER BY messages.date DESC LIMIT 1) as new_snippet, * FROM conversations WHERE (SELECT COUNT(*) FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND messages.thread_id = conversations.thread_id) &gt; 0")</ID>
     <ID>MaxLineLength:ConversationsDao.kt$ConversationsDao$@Query("SELECT (SELECT body FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND messages.thread_id = conversations.thread_id ORDER BY messages.date DESC LIMIT 1) as new_snippet, * FROM conversations WHERE archived = 0")</ID>
     <ID>MaxLineLength:ConversationsDao.kt$ConversationsDao$@Query("SELECT (SELECT body FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND messages.thread_id = conversations.thread_id ORDER BY messages.date DESC LIMIT 1) as new_snippet, * FROM conversations WHERE archived = 1")</ID>
-    <ID>MaxLineLength:DirectReplyReceiver.kt$DirectReplyReceiver$context.notificationHelper.showMessageNotification(messageId, address, body, threadId, bitmap, sender = null, alertOnlyOnce = true)</ID>
-    <ID>MaxLineLength:DirectReplyReceiver.kt$DirectReplyReceiver$val message = context.getMessages(threadId, getImageResolutions = false, includeScheduledMessages = false, limit = 1).lastOrNull()</ID>
     <ID>MaxLineLength:ExportBlockedKeywordsDialog.kt$ExportBlockedKeywordsDialog$exportBlockedKeywordsFilename.setText("${activity.getString(R.string.blocked_keywords)}_${activity.getCurrentFormattedDateTime()}")</ID>
     <ID>MaxLineLength:Gson.kt$private val gsonBuilder = GsonBuilder().registerTypeAdapter(object : TypeToken&lt;Map&lt;String, Any&gt;&gt;() {}.type, MapDeserializerDoubleAsIntFix())</ID>
     <ID>MaxLineLength:HeadlessSmsSendService.kt$HeadlessSmsSendService$val number = Uri.decode(intent.dataString!!.removePrefix("sms:").removePrefix("smsto:").removePrefix("mms").removePrefix("mmsto:").trim())</ID>
@@ -150,7 +141,6 @@
     <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$mimetype.isImageMimeType() || mimetype.isVideoMimeType() -&gt; setupImageView(holder, binding = this, message, attachment)</ID>
     <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$mimetype.isVCardMimeType() -&gt; setupVCardView(holder, threadMessageAttachmentsHolder, message, attachment)</ID>
     <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$private</ID>
-    <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$private fun getSelectedItems()</ID>
     <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$threadSuccess.setImageResource(if (isDelivered) R.drawable.ic_check_double_vector else org.fossify.commons.R.drawable.ic_check_vector)</ID>
     <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter$val</ID>
     <ID>MaxLineLength:ThreadAdapter.kt$ThreadAdapter.&lt;no name provided&gt;$override</ID>
@@ -169,23 +159,13 @@
     <ID>NestedBlockDepth:MessagingUtils.kt$MessagingUtils$@Deprecated("TODO: Move/rewrite MMS code into the app.") fun sendMmsMessage( text: String, addresses: List&lt;String&gt;, attachment: Attachment?, settings: Settings, messageId: Long? = null )</ID>
     <ID>NestedBlockDepth:MessagingUtils.kt$MessagingUtils$fun updateSmsMessageSendingStatus(messageUri: Uri?, type: Int)</ID>
     <ID>NestedBlockDepth:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$override fun updateAndroidDatabase(context: Context, intent: Intent, receiverResultCode: Int)</ID>
-    <ID>NestedBlockDepth:ThreadActivity.kt$ThreadActivity$private fun fetchNextMessages()</ID>
-    <ID>NestedBlockDepth:ThreadActivity.kt$ThreadActivity$private fun setupAttachmentSizes()</ID>
     <ID>NestedBlockDepth:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
     <ID>NestedBlockDepth:ThreadAdapter.kt$ThreadAdapter$private fun setupSentMessageView(messageBinding: ItemMessageBinding, message: Message)</ID>
     <ID>NestedBlockDepth:ThreadAdapter.kt$ThreadAdapter$private fun setupView(holder: ViewHolder, view: View, message: Message)</ID>
     <ID>PrintStackTrace:Context.kt$e</ID>
     <ID>PrintStackTrace:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$e</ID>
     <ID>PrintStackTrace:SmsManager.kt$e</ID>
-    <ID>ReturnCount:Context.kt$fun Context.getFileSizeFromUri(uri: Uri): Long</ID>
-    <ID>ReturnCount:Context.kt$fun Context.getNameAndPhotoFromPhoneNumber(number: String): NamePhoto</ID>
     <ID>ReturnCount:MapDeserializerDoubleAsIntFix.kt$MapDeserializerDoubleAsIntFix$fun read(element: JsonElement): Any?</ID>
-    <ID>ReturnCount:MessagesReader.kt$MessagesReader$@SuppressLint("NewApi") private fun usePart(partId: Long, block: (InputStream) -&gt; String): String</ID>
-    <ID>ReturnCount:ShortcutHelper.kt$ShortcutHelper$fun shouldPresentShortcut(conv: Conversation): Boolean</ID>
-    <ID>ReturnCount:SmsIntentParser.kt$SmsIntentParser$private fun extractBodyFromUri(uri: Uri?): String?</ID>
-    <ID>ReturnCount:SmsIntentParser.kt$SmsIntentParser$private fun parseRecipientsFromUri(uri: Uri?): Array&lt;String&gt;?</ID>
-    <ID>ReturnCount:ThreadActivity.kt$ThreadActivity$private fun addAttachment(uri: Uri)</ID>
-    <ID>ReturnCount:VCardParser.kt$fun VCard?.parseNameFromVCard(): String?</ID>
     <ID>SpreadOperator:Context.kt$(*scheduledMessages)</ID>
     <ID>SpreadOperator:MainActivity.kt$MainActivity$(*currentMessages.toTypedArray())</ID>
     <ID>SpreadOperator:ThreadActivity.kt$ThreadActivity$(*currentMessages.toTypedArray())</ID>
@@ -256,21 +236,11 @@
     <ID>TooManyFunctions:ShortcutHelper.kt$ShortcutHelper</ID>
     <ID>TooManyFunctions:ThreadActivity.kt$ThreadActivity : SimpleActivity</ID>
     <ID>TooManyFunctions:ThreadAdapter.kt$ThreadAdapter : MyRecyclerViewListAdapter</ID>
-    <ID>UnusedParameter:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$event: Events.RefreshMessages</ID>
-    <ID>UnusedParameter:MainActivity.kt$MainActivity$event: Events.RefreshMessages</ID>
-    <ID>UnusedParameter:RecycleBinConversationsActivity.kt$RecycleBinConversationsActivity$event: Events.RefreshMessages</ID>
-    <ID>UnusedParameter:ThreadActivity.kt$ThreadActivity$event: Events.RefreshMessages</ID>
     <ID>UseCheckOrError:AttachmentUtils.kt$AttachmentUtils$throw IllegalStateException()</ID>
     <ID>UseCheckOrError:MessagesImporter.kt$MessagesImporter$throw IllegalStateException()</ID>
     <ID>UseRequire:SmsSender.kt$SmsSender$throw IllegalArgumentException("SmsSender: empty text message")</ID>
     <ID>VariableNaming:MainActivity.kt$MainActivity$private val MAKE_DEFAULT_APP_REQUEST = 1</ID>
     <ID>VariableNaming:MessagesWriter.kt$MessagesWriter$private val INVALID_ID = -1L</ID>
-    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val MIN_DATE_TIME_DIFF_SECS = 300</ID>
-    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val SCROLL_TO_BOTTOM_FAB_LIMIT = 20</ID>
-    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val TYPE_DELETE = 16</ID>
-    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val TYPE_EDIT = 14</ID>
-    <ID>VariableNaming:ThreadActivity.kt$ThreadActivity$private val TYPE_SEND = 15</ID>
-    <ID>WildcardImport:ArchivedConversationsActivity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:AttachmentPreviews.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:AttachmentPreviews.kt$import org.fossify.messages.extensions.*</ID>
     <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.commons.extensions.*</ID>
@@ -280,13 +250,6 @@
     <ID>WildcardImport:JsonElement.kt$import com.google.gson.*</ID>
     <ID>WildcardImport:ManageBlockedKeywordsAdapter.kt$import android.view.*</ID>
     <ID>WildcardImport:MessagesDao.kt$import androidx.room.*</ID>
-    <ID>WildcardImport:SmsReceiver.kt$import org.fossify.messages.extensions.*</ID>
-    <ID>WildcardImport:SmsStatusSentReceiver.kt$import org.fossify.messages.extensions.*</ID>
-    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.databinding.*</ID>
-    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.extensions.*</ID>
-    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.helpers.*</ID>
-    <ID>WildcardImport:ThreadAdapter.kt$import org.fossify.messages.models.ThreadItem.*</ID>
     <ID>WildcardImport:VCard.kt$import ezvcard.property.*</ID>
     <ID>WildcardImport:VCardViewerAdapter.kt$import org.fossify.commons.extensions.*</ID>
   </CurrentIssues>

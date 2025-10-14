@@ -216,7 +216,7 @@ class ThreadActivity : SimpleActivity() {
     private var capturedImageUri: Uri? = null
     private var loadingOlderMessages = false
     private var allMessagesFetched = false
-    private var oldestMessageDate = -1
+    private var isJumpingToMessage = false
     private var isRecycleBin = false
     private var isLaunchedFromShortcut = false
 
@@ -463,7 +463,7 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
-    private fun setupThread() {
+    private fun setupThread(callback: () -> Unit) {
         if (conversation == null && isLaunchedFromShortcut) {
             if (isTaskRoot) {
                 Intent(this, MainActivity::class.java).apply {
@@ -494,6 +494,7 @@ class ThreadActivity : SimpleActivity() {
             try {
                 if (participants.isNotEmpty() && messages.hashCode() == cachedMessagesCode && !hasParticipantWithoutName) {
                     setupAdapter()
+                    runOnUiThread { callback() }
                     return@ensureBackgroundThread
                 }
             } catch (ignored: Exception) {
@@ -553,6 +554,7 @@ class ThreadActivity : SimpleActivity() {
             runOnUiThread {
                 setupThreadTitle()
                 setupSIMSelector()
+                callback()
             }
         }
     }
@@ -717,7 +719,44 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
+    private fun jumpToMessage(messageId: Long) {
+        if (messages.any { it.id == messageId }) {
+            val index = threadItems.indexOfFirst { (it as? Message)?.id == messageId }
+            if (index != -1) binding.threadMessagesList.smoothScrollToPosition(index)
+            return
+        }
+
+        ensureBackgroundThread {
+            if (loadingOlderMessages) return@ensureBackgroundThread
+            loadingOlderMessages = true
+            isJumpingToMessage = true
+
+            var cutoff = messages.firstOrNull()?.date ?: Int.MAX_VALUE
+            var found = false
+            var loops = 0
+
+            // not the best solution, but this will do for now.
+            while (!found && !allMessagesFetched) {
+                if (fetchOlderMessages(cutoff).isEmpty() || loops >= 1000) break
+                cutoff = messages.first().date
+                found = messages.any { it.id == messageId }
+                loops++
+            }
+
+            threadItems = getThreadItems()
+            runOnUiThread {
+                loadingOlderMessages = false
+                val index = threadItems.indexOfFirst { (it as? Message)?.id == messageId }
+                getOrCreateThreadAdapter().updateMessages(
+                    newMessages = threadItems, scrollPosition = index, smoothScroll = true
+                )
+                isJumpingToMessage = false
+            }
+        }
+    }
+
     private fun tryLoadMoreMessages() {
+        if (isJumpingToMessage) return
         val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
         if (layoutManager.findFirstVisibleItemPosition() <= PREFETCH_THRESHOLD) {
             loadMoreMessages()
@@ -726,26 +765,29 @@ class ThreadActivity : SimpleActivity() {
 
     private fun loadMoreMessages() {
         if (messages.isEmpty() || allMessagesFetched || loadingOlderMessages) return
-
-        val firstItem = messages.first()
-        val dateOfFirstItem = firstItem.date
-
-        oldestMessageDate = dateOfFirstItem
         loadingOlderMessages = true
-
+        val cutoff = messages.first().date
         ensureBackgroundThread {
-            val olderMessages = getMessages(threadId, oldestMessageDate)
-                .filterNotInByKey(messages) { it.getStableId() }
-
-            messages.addAll(0, olderMessages)
-            allMessagesFetched = olderMessages.isEmpty()
+            fetchOlderMessages(cutoff)
             threadItems = getThreadItems()
-
             runOnUiThread {
                 loadingOlderMessages = false
                 getOrCreateThreadAdapter().updateMessages(threadItems)
             }
         }
+    }
+
+    private fun fetchOlderMessages(cutoff: Int): List<Message> {
+        val older = getMessages(threadId, cutoff)
+            .filterNotInByKey(messages) { it.getStableId() }
+
+        if (older.isEmpty()) {
+            allMessagesFetched = true
+            return older
+        }
+
+        messages.addAll(0, older)
+        return older
     }
 
     private fun loadConversation() {
@@ -754,17 +796,13 @@ class ThreadActivity : SimpleActivity() {
                 setupButtons()
                 setupConversation()
                 setupCachedMessages {
-                    val searchedMessageId = intent.getLongExtra(SEARCHED_MESSAGE_ID, -1L)
-                    intent.removeExtra(SEARCHED_MESSAGE_ID)
-                    if (searchedMessageId != -1L) {
-                        val index =
-                            threadItems.indexOfFirst { (it as? Message)?.id == searchedMessageId }
-                        if (index != -1) {
-                            binding.threadMessagesList.smoothScrollToPosition(index)
+                    setupThread {
+                        val searchedMessageId = intent.getLongExtra(SEARCHED_MESSAGE_ID, -1L)
+                        intent.removeExtra(SEARCHED_MESSAGE_ID)
+                        if (searchedMessageId != -1L) {
+                            jumpToMessage(searchedMessageId)
                         }
                     }
-
-                    setupThread()
                     setupScrollListener()
                 }
             } else {
@@ -1712,14 +1750,13 @@ class ThreadActivity : SimpleActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.ASYNC)
-    fun refreshMessages(event: Events.RefreshMessages) {
+    fun refreshMessages(@Suppress("unused") event: Events.RefreshMessages) {
         if (isRecycleBin) {
             return
         }
 
         refreshedSinceSent = true
         allMessagesFetched = false
-        oldestMessageDate = -1
 
         if (isActivityVisible) {
             notificationManager.cancel(threadId.hashCode())
