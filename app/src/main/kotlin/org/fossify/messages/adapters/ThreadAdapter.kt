@@ -101,6 +101,8 @@ class ThreadAdapter(
 
     companion object {
         private const val MAX_MEDIA_HEIGHT_RATIO = 3
+        private const val SIM_BITS = 21
+        private const val SIM_MASK = (1L shl SIM_BITS) - 1
     }
 
     init {
@@ -195,7 +197,11 @@ class ThreadAdapter(
     override fun getItemId(position: Int): Long {
         return when (val item = getItem(position)) {
             is Message -> item.getStableId()
-            is ThreadDateTime -> generateStableId(THREAD_DATE_TIME, item.date.toLong())
+            is ThreadDateTime -> {
+                val sim = (item.simID.hashCode().toLong() and SIM_MASK)
+                val key = (item.date.toLong() shl SIM_BITS) or sim
+                generateStableId(THREAD_DATE_TIME, key)
+            }
             is ThreadError -> generateStableId(THREAD_SENT_MESSAGE_ERROR, item.messageId)
             is ThreadSending -> generateStableId(THREAD_SENT_MESSAGE_SENDING, item.messageId)
             is ThreadSent -> generateStableId(THREAD_SENT_MESSAGE_SENT, item.messageId)
@@ -610,11 +616,14 @@ private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {
     override fun areItemsTheSame(oldItem: ThreadItem, newItem: ThreadItem): Boolean {
         if (oldItem::class.java != newItem::class.java) return false
         return when (oldItem) {
-            is ThreadDateTime -> oldItem.date == (newItem as ThreadDateTime).date
             is ThreadError -> oldItem.messageId == (newItem as ThreadError).messageId
             is ThreadSent -> oldItem.messageId == (newItem as ThreadSent).messageId
             is ThreadSending -> oldItem.messageId == (newItem as ThreadSending).messageId
             is Message -> Message.areItemsTheSame(oldItem, newItem as Message)
+            is ThreadDateTime -> {
+                val new = newItem as ThreadDateTime
+                oldItem.date == new.date && oldItem.simID == new.simID
+            }
         }
     }
 
