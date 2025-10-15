@@ -54,7 +54,6 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
         app:layout_constraintEnd_toStartOf="@id/conversation_body_short"
-        app:layout_constraintStart_toEndOf="@id/conversation_image"
         app:layout_constraintStart_toStartOf="@id/conversation_address"
         app:layout_constraintTop_toTopOf="@id/conversation_body_short" />
 
