@@ -1004,6 +1004,7 @@ fun Context.markThreadMessagesRead(threadId: Long) {
         contentResolver.update(uri, contentValues, selection, selectionArgs)
     }
     messagesDB.markThreadRead(threadId)
+    conversationsDB.markRead(threadId)
 }
 
 fun Context.markThreadMessagesUnread(threadId: Long) {
@@ -1016,7 +1017,8 @@ fun Context.markThreadMessagesUnread(threadId: Long) {
         val selectionArgs = arrayOf(threadId.toString())
         contentResolver.update(uri, contentValues, selection, selectionArgs)
     }
-}
+    conversationsDB.markUnread(threadId)
+} 
 
 @SuppressLint("NewApi")
 fun Context.getThreadId(address: String): Long {
