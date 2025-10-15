@@ -25,6 +25,7 @@ import org.fossify.messages.extensions.markThreadMessagesRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.renameConversation
 import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.messaging.isShortCodeWithLetters
 import org.fossify.messages.models.Conversation
 
@@ -257,7 +258,7 @@ class ConversationsAdapter(
                 activity.markThreadMessagesRead(it.threadId)
             }
 
-            refreshConversations()
+            refreshConversationsAndFinishActMode()
         }
     }
 
@@ -273,7 +274,7 @@ class ConversationsAdapter(
                 activity.markThreadMessagesUnread(it.threadId)
             }
 
-            refreshConversations()
+            refreshConversationsAndFinishActMode()
         }
     }
 
@@ -302,7 +303,7 @@ class ConversationsAdapter(
         getSelectedItemPositions().forEach {
             notifyItemChanged(it)
         }
-        refreshConversations()
+        refreshConversationsAndFinishActMode()
     }
 
     private fun checkPinBtnVisibility(menu: Menu) {
@@ -314,7 +315,7 @@ class ConversationsAdapter(
             selectedConversations.any { pinnedConversations.contains(it.threadId.toString()) }
     }
 
-    private fun refreshConversations() {
+    private fun refreshConversationsAndFinishActMode() {
         activity.runOnUiThread {
             refreshConversations()
             finishActMode()
