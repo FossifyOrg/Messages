@@ -6,6 +6,7 @@ import android.os.Parcelable
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -188,19 +189,7 @@ abstract class BaseConversationsAdapter(
                 it.setTextColor(textColor)
             }
 
-            unreadCountBadge.apply {
-                beVisibleIf(isUnread)
-                if (isUnread) {
-                    text = when {
-                        conversation.unreadCount > MAX_UNREAD_BADGE_COUNT -> "$MAX_UNREAD_BADGE_COUNT+"
-                        conversation.unreadCount == 0 -> ""
-                        else -> conversation.unreadCount.toString()
-                    }
-                    setTextColor(properPrimaryColor.getContrastColor())
-                    background?.applyColorFilter(properPrimaryColor)
-                }
-            }
-
+            setupBadgeCount(unreadCountBadge, isUnread, conversation.unreadCount)
             // at group conversations we use an icon as the placeholder, not any letter
             val placeholder = if (conversation.isGroupConversation) {
                 SimpleContactsHelper(activity).getColoredGroupIcon(conversation.title)
@@ -214,6 +203,21 @@ abstract class BaseConversationsAdapter(
                 placeholderName = conversation.title,
                 placeholderImage = placeholder
             )
+        }
+    }
+
+    private fun setupBadgeCount(view: TextView, isUnread: Boolean, count: Int) {
+        view.apply {
+            beVisibleIf(isUnread)
+            if (isUnread) {
+                text = when {
+                    count > MAX_UNREAD_BADGE_COUNT -> "$MAX_UNREAD_BADGE_COUNT+"
+                    count == 0 -> ""
+                    else -> count.toString()
+                }
+                setTextColor(properPrimaryColor.getContrastColor())
+                background?.applyColorFilter(properPrimaryColor)
+            }
         }
     }
 

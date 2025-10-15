@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package org.fossify.messages.databases
 
 import android.content.Context
