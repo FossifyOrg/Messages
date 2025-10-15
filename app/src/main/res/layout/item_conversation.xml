@@ -26,7 +26,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
-            tools:src="@mipmap/ic_sms_messenger" />
+            tools:src="@mipmap/ic_launcher" />
 
         <RelativeLayout
             android:id="@+id/pin_indicator_l"

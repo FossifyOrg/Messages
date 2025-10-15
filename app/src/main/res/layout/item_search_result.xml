@@ -14,7 +14,7 @@
         android:layout_width="@dimen/normal_icon_size"
         android:layout_height="@dimen/normal_icon_size"
         android:layout_marginEnd="@dimen/normal_margin"
-        tools:src="@mipmap/ic_sms_messenger" />
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/search_result_title"
