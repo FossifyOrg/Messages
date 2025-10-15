@@ -312,7 +312,7 @@ class ConversationsAdapter(
         menu.findItem(R.id.cab_pin_conversation).isVisible =
             selectedConversations.any { !pinnedConversations.contains(it.threadId.toString()) }
         menu.findItem(R.id.cab_unpin_conversation).isVisible =
-            selectedConversations.any { pinnedConversations.contains(it.threadId.toString()) }
+            selectedConversations.all { pinnedConversations.contains(it.threadId.toString()) }
     }
 
     private fun refreshConversationsAndFinishActMode() {

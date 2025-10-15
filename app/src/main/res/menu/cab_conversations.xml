@@ -4,6 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="AppCompatResource,AlwaysShowAction">
     <item
+        android:id="@+id/cab_pin_conversation"
+        android:icon="@drawable/ic_pin_vector"
+        android:showAsAction="always"
+        android:title="@string/pin_conversation"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/cab_unpin_conversation"
+        android:icon="@drawable/ic_unpin_vector"
+        android:showAsAction="always"
+        android:title="@string/unpin_conversation"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/cab_dial_number"
         android:icon="@drawable/ic_phone_vector"
         android:showAsAction="always"
@@ -61,17 +73,5 @@
         android:id="@+id/cab_block_number"
         android:showAsAction="never"
         android:title="@string/block_number"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/cab_pin_conversation"
-        android:icon="@drawable/ic_pin_filled_vector"
-        android:showAsAction="never"
-        android:title="@string/pin_conversation"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/cab_unpin_conversation"
-        android:icon="@drawable/ic_pin_filled_vector"
-        android:showAsAction="never"
-        android:title="@string/unpin_conversation"
         app:showAsAction="never" />
 </menu>
