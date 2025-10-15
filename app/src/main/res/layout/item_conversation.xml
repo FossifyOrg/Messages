@@ -1,110 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/conversation_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/tiny_margin"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:minHeight="@dimen/two_line_list_item_min_height"
+    android:paddingStart="@dimen/activity_margin"
+    android:paddingTop="@dimen/medium_margin"
+    android:paddingEnd="@dimen/activity_margin"
+    android:paddingBottom="@dimen/medium_margin">
 
-    <RelativeLayout
-        android:id="@+id/conversation_holder"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/conversation_image"
+        android:layout_width="@dimen/list_icon_size_medium"
+        android:layout_height="@dimen/list_icon_size_medium"
+        app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/conversation_address"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/conversation_address"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/small_margin"
-        android:paddingTop="@dimen/medium_margin"
-        android:paddingEnd="@dimen/normal_margin"
-        android:paddingBottom="@dimen/medium_margin">
+        android:layout_marginHorizontal="@dimen/activity_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:textSize="@dimen/list_primary_text_size"
+        app:layout_constraintBottom_toTopOf="@id/conversation_body_short"
+        app:layout_constraintEnd_toStartOf="@id/conversation_date"
+        app:layout_constraintStart_toEndOf="@id/conversation_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="John" />
 
-        <ImageView
-            android:id="@+id/conversation_image"
-            android:layout_width="@dimen/normal_icon_size"
-            android:layout_height="@dimen/normal_icon_size"
-            android:layout_alignTop="@+id/conversation_address"
-            android:layout_alignBottom="@+id/conversation_date"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginEnd="@dimen/normal_margin"
-            tools:src="@mipmap/ic_sms_messenger" />
+    <TextView
+        android:id="@+id/draft_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/draft"
+        android:textAlignment="viewStart"
+        android:textColor="@color/color_primary"
+        android:textDirection="locale"
+        android:textSize="@dimen/list_secondary_text_size"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
+        app:layout_constraintEnd_toStartOf="@id/conversation_body_short"
+        app:layout_constraintStart_toStartOf="@id/conversation_address"
+        app:layout_constraintTop_toTopOf="@id/conversation_body_short" />
 
-        <RelativeLayout
-            android:id="@+id/pin_indicator_l"
-            android:layout_width="@dimen/normal_icon_size"
-            android:layout_height="@dimen/normal_icon_size"
-            android:layout_alignTop="@+id/conversation_address"
-            android:layout_alignBottom="@+id/conversation_date"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginEnd="@dimen/normal_margin">
+    <TextView
+        android:id="@+id/conversation_body_short"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pin_indicator"
+        app:layout_constraintStart_toEndOf="@id/draft_indicator"
+        app:layout_constraintTop_toBottomOf="@id/conversation_address"
+        tools:text="Hey buddy!" />
 
-            <ImageView
-                android:id="@+id/pin_indicator"
-                android:layout_width="@dimen/pin_icon_size"
-                android:layout_height="@dimen/pin_icon_size"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_pin_filled_vector" />
+    <TextView
+        android:id="@+id/conversation_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:textSize="@dimen/list_tertiary_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/conversation_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/conversation_address"
+        tools:text="13:30" />
 
-        </RelativeLayout>
+    <ImageView
+        android:id="@+id/pin_indicator"
+        android:layout_width="@dimen/pin_icon_size"
+        android:layout_height="@dimen/pin_icon_size"
+        android:alpha="0.7"
+        android:src="@drawable/ic_pin_filled_vector"
+        app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/conversation_body_short" />
 
-        <TextView
-            android:id="@+id/conversation_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/conversation_image"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingStart="0dp"
-            android:paddingEnd="@dimen/activity_margin"
-            android:textAlignment="viewStart"
-            android:textDirection="locale"
-            android:textSize="@dimen/big_text_size"
-            tools:text="John" />
-
-        <TextView
-            android:id="@+id/draft_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/conversation_address"
-            android:layout_toEndOf="@+id/conversation_image"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingStart="0dp"
-            android:paddingEnd="@dimen/small_margin"
-            android:text="@string/draft"
-            android:textAlignment="viewStart"
-            android:textColor="@color/color_primary"
-            android:textDirection="locale"
-            android:textSize="@dimen/normal_text_size"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/conversation_body_short"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/conversation_address"
-            android:layout_toEndOf="@+id/draft_indicator"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingStart="0dp"
-            android:paddingEnd="@dimen/activity_margin"
-            android:textAlignment="viewStart"
-            android:textDirection="locale"
-            android:textSize="@dimen/normal_text_size"
-            tools:text="Hey buddy!" />
-
-        <TextView
-            android:id="@+id/conversation_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/conversation_body_short"
-            android:layout_marginTop="@dimen/tiny_margin"
-            android:layout_toEndOf="@+id/conversation_image"
-            android:alpha="0.4"
-            android:textAlignment="viewStart"
-            android:textDirection="locale"
-            android:textSize="@dimen/smaller_text_size"
-            tools:text="13:30" />
-
-    </RelativeLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

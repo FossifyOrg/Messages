@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/item_contact_image"
-            android:layout_width="@dimen/normal_icon_size"
-            android:layout_height="@dimen/normal_icon_size"
+            android:layout_width="@dimen/list_icon_size_medium"
+            android:layout_height="@dimen/list_icon_size_medium"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/small_margin"
             android:padding="@dimen/tiny_margin"
