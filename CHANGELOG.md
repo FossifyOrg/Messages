@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Unread badge count for conversations ([#177])
+
 ### Changed
 - Optimized loading messages in conversations
 - Updated conversation item design to be more compact ([#376])
@@ -13,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed position reset when opening attachments in conversations ([#82])
 - Fixed automatic scroll to searched message in conversations ([#350])
 - Fixed non-standard text and avatar sizes in list items
+- Fixed "Mark as read" not working in some cases ([#264])
 
 ## [1.4.0] - 2025-10-12
 ### Added
@@ -157,12 +161,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#135]: https://github.com/FossifyOrg/Messages/issues/135
 [#153]: https://github.com/FossifyOrg/Messages/issues/153
 [#165]: https://github.com/FossifyOrg/Messages/issues/165
+[#177]: https://github.com/FossifyOrg/Messages/issues/177
 [#180]: https://github.com/FossifyOrg/Messages/issues/180
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
 [#243]: https://github.com/FossifyOrg/Messages/issues/243
 [#262]: https://github.com/FossifyOrg/Messages/issues/262
+[#264]: https://github.com/FossifyOrg/Messages/issues/264
 [#274]: https://github.com/FossifyOrg/Messages/issues/274
 [#279]: https://github.com/FossifyOrg/Messages/issues/279
 [#287]: https://github.com/FossifyOrg/Messages/issues/287

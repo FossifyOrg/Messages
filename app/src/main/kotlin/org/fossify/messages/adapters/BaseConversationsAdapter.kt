@@ -6,6 +6,7 @@ import android.os.Parcelable
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,6 +15,7 @@ import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.setupViewBackground
 import org.fossify.commons.helpers.SimpleContactsHelper
@@ -171,21 +173,23 @@ abstract class BaseConversationsAdapter(
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.8f)
             }
 
-            val style = if (conversation.read) {
-                conversationBodyShort.alpha = 0.7f
-                if (conversation.isScheduled) Typeface.ITALIC else Typeface.NORMAL
-            } else {
+            val isUnread = !conversation.read
+            val style = if (isUnread) {
                 conversationBodyShort.alpha = 1f
                 if (conversation.isScheduled) Typeface.BOLD_ITALIC else Typeface.BOLD
-
+            } else {
+                conversationBodyShort.alpha = 0.7f
+                if (conversation.isScheduled) Typeface.ITALIC else Typeface.NORMAL
             }
             conversationAddress.setTypeface(null, style)
             conversationBodyShort.setTypeface(null, style)
+            conversationDate.setTypeface(null, style)
 
             arrayListOf(conversationAddress, conversationBodyShort, conversationDate).forEach {
                 it.setTextColor(textColor)
             }
 
+            setupBadgeCount(unreadCountBadge, isUnread, conversation.unreadCount)
             // at group conversations we use an icon as the placeholder, not any letter
             val placeholder = if (conversation.isGroupConversation) {
                 SimpleContactsHelper(activity).getColoredGroupIcon(conversation.title)
@@ -199,6 +203,21 @@ abstract class BaseConversationsAdapter(
                 placeholderName = conversation.title,
                 placeholderImage = placeholder
             )
+        }
+    }
+
+    private fun setupBadgeCount(view: TextView, isUnread: Boolean, count: Int) {
+        view.apply {
+            beVisibleIf(isUnread)
+            if (isUnread) {
+                text = when {
+                    count > MAX_UNREAD_BADGE_COUNT -> "$MAX_UNREAD_BADGE_COUNT+"
+                    count == 0 -> ""
+                    else -> count.toString()
+                }
+                setTextColor(properPrimaryColor.getContrastColor())
+                background?.applyColorFilter(properPrimaryColor)
+            }
         }
     }
 
@@ -220,5 +239,9 @@ abstract class BaseConversationsAdapter(
         override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean {
             return Conversation.areContentsTheSame(oldItem, newItem)
         }
+    }
+
+    companion object {
+        private const val MAX_UNREAD_BADGE_COUNT = 99
     }
 }
