@@ -138,6 +138,7 @@ import org.fossify.messages.extensions.isGifMimeType
 import org.fossify.messages.extensions.isImageMimeType
 import org.fossify.messages.extensions.launchConversationDetails
 import org.fossify.messages.extensions.markMessageRead
+import org.fossify.messages.extensions.markThreadMessagesRead
 import org.fossify.messages.extensions.markThreadMessagesUnread
 import org.fossify.messages.extensions.messagesDB
 import org.fossify.messages.extensions.moveMessageToRecycleBin
@@ -302,6 +303,8 @@ class ThreadActivity : SimpleActivity() {
                     binding.messageHolder.threadTypeMessage.setSelection(smsDraft.length)
                 }
             }
+
+            markThreadMessagesRead(threadId)
         }
 
         val bottomBarColor = getBottomBarColor()
