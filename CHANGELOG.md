@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Optimized loading messages in conversations
+- Updated conversation item design to be more compact ([#376])
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
 - Fixed automatic scroll to searched message in conversations ([#350])
+- Fixed non-standard text and avatar sizes in list items
 
 ## [1.4.0] - 2025-10-12
 ### Added
@@ -171,6 +173,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
 [#350]: https://github.com/FossifyOrg/Messages/issues/350
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
+[#376]: https://github.com/FossifyOrg/Messages/issues/376
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 
