@@ -91,6 +91,7 @@
         android:id="@+id/pin_indicator"
         android:layout_width="@dimen/pin_icon_size"
         android:layout_height="@dimen/pin_icon_size"
+        android:alpha="0.7"
         android:src="@drawable/ic_pin_filled_vector"
         app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
         app:layout_constraintEnd_toEndOf="parent"
