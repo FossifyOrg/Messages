@@ -17,9 +17,9 @@
         android:id="@+id/conversation_image"
         android:layout_width="@dimen/list_avatar_size"
         android:layout_height="@dimen/list_avatar_size"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/conversation_address"
         tools:src="@mipmap/ic_launcher" />
 
     <TextView
@@ -32,6 +32,7 @@
         android:textAlignment="viewStart"
         android:textDirection="locale"
         android:textSize="@dimen/bigger_text_size"
+        app:layout_constraintBottom_toTopOf="@id/conversation_body_short"
         app:layout_constraintEnd_toStartOf="@id/conversation_date"
         app:layout_constraintStart_toEndOf="@id/conversation_image"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,10 +51,11 @@
         android:textDirection="locale"
         android:textSize="@dimen/normal_text_size"
         android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
         app:layout_constraintEnd_toStartOf="@id/conversation_body_short"
         app:layout_constraintStart_toEndOf="@id/conversation_image"
         app:layout_constraintStart_toStartOf="@id/conversation_address"
-        app:layout_constraintTop_toBottomOf="@id/conversation_address" />
+        app:layout_constraintTop_toTopOf="@id/conversation_body_short" />
 
     <TextView
         android:id="@+id/conversation_body_short"
@@ -65,6 +67,7 @@
         android:textAlignment="viewStart"
         android:textDirection="locale"
         android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/pin_indicator"
         app:layout_constraintStart_toEndOf="@id/draft_indicator"
         app:layout_constraintTop_toBottomOf="@id/conversation_address"

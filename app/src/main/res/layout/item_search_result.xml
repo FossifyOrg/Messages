@@ -15,21 +15,10 @@
         android:id="@+id/search_result_image"
         android:layout_width="@dimen/list_avatar_size"
         android:layout_height="@dimen/list_avatar_size"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/search_result_snippet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/search_result_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.7"
-        android:textSize="@dimen/smaller_text_size"
-        app:layout_constraintBottom_toBottomOf="@id/search_result_title"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/search_result_title"
-        tools:text="08/02/2021" />
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/search_result_title"
@@ -39,6 +28,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="@dimen/bigger_text_size"
+        app:layout_constraintBottom_toTopOf="@id/search_result_snippet"
         app:layout_constraintEnd_toStartOf="@id/search_result_date"
         app:layout_constraintStart_toEndOf="@id/search_result_image"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,9 +43,21 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/search_result_image"
         app:layout_constraintTop_toBottomOf="@id/search_result_title"
         tools:text="Hey buddy!" />
+
+    <TextView
+        android:id="@+id/search_result_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:textSize="@dimen/smaller_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/search_result_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/search_result_title"
+        tools:text="08/02/2021" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
