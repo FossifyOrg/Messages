@@ -36,12 +36,6 @@
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin">
 
-            <ImageView
-                android:id="@+id/pin_indicator"
-                android:layout_width="@dimen/pin_icon_size"
-                android:layout_height="@dimen/pin_icon_size"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_pin_filled_vector" />
 
         </RelativeLayout>
 
@@ -82,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/conversation_address"
             android:layout_toEndOf="@+id/draft_indicator"
+            android:layout_toStartOf="@id/pin_indicator"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingStart="0dp"
@@ -103,6 +98,15 @@
             android:textAlignment="viewStart"
             android:textSize="@dimen/smaller_text_size"
             tools:text="13:30" />
+
+        <ImageView
+            android:id="@+id/pin_indicator"
+            android:layout_width="@dimen/pin_icon_size"
+            android:layout_height="@dimen/pin_icon_size"
+            android:layout_alignTop="@+id/conversation_body_short"
+            android:layout_alignBottom="@+id/conversation_body_short"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_pin_filled_vector" />
 
     </RelativeLayout>
 </FrameLayout>
