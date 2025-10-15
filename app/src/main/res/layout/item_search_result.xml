@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/search_result_image"
-        android:layout_width="@dimen/normal_icon_size"
-        android:layout_height="@dimen/normal_icon_size"
+        android:layout_width="@dimen/list_avatar_size"
+        android:layout_height="@dimen/list_avatar_size"
         android:layout_marginEnd="@dimen/normal_margin"
         tools:src="@mipmap/ic_launcher" />
 
