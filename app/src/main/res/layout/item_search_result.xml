@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search_result_holder"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/two_line_list_item_min_height"
     android:background="?attr/selectableItemBackground"
     android:paddingStart="@dimen/activity_margin"
     android:paddingTop="@dimen/medium_margin"
@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/search_result_image"
-        android:layout_width="@dimen/list_avatar_size"
-        android:layout_height="@dimen/list_avatar_size"
+        android:layout_width="@dimen/list_icon_size_medium"
+        android:layout_height="@dimen/list_icon_size_medium"
         app:layout_constraintBottom_toBottomOf="@id/search_result_snippet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/search_result_title"

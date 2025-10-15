@@ -5,6 +5,7 @@
     android:id="@+id/conversation_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minHeight="@dimen/two_line_list_item_min_height"
     android:layout_marginBottom="@dimen/tiny_margin"
     android:clickable="true"
     android:focusable="true"
@@ -15,8 +16,8 @@
 
     <ImageView
         android:id="@+id/conversation_image"
-        android:layout_width="@dimen/list_avatar_size"
-        android:layout_height="@dimen/list_avatar_size"
+        android:layout_width="@dimen/list_icon_size_medium"
+        android:layout_height="@dimen/list_icon_size_medium"
         app:layout_constraintBottom_toBottomOf="@id/conversation_body_short"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/conversation_address"
