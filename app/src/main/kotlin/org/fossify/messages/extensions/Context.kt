@@ -318,6 +318,34 @@ fun Context.getMMSSender(msgId: Long): String {
     return ""
 }
 
+fun Context.getUnreadCountsByThread(): Map<Long, Int> {
+    val result = HashMap<Long, Int>(128)
+
+    fun bump(id: Long) {
+        result[id] = (result[id] ?: 0) + 1
+    }
+
+    // Unread SMS
+    queryCursor(
+        uri = Sms.CONTENT_URI,
+        projection = arrayOf(Sms.THREAD_ID),
+        selection = "${Sms.READ}=0 AND ${Sms.TYPE}=${Sms.MESSAGE_TYPE_INBOX}",
+        selectionArgs = null,
+        showErrors = false
+    ) { bump(it.getLongValue(Sms.THREAD_ID)) }
+
+    // Unread MMS
+    queryCursor(
+        uri = Mms.CONTENT_URI,
+        projection = arrayOf(Mms.THREAD_ID),
+        selection = "${Mms.READ}=0 AND ${Mms.MESSAGE_BOX}=${Mms.MESSAGE_BOX_INBOX}",
+        selectionArgs = null,
+        showErrors = false
+    ) { bump(it.getLongValue(Mms.THREAD_ID)) }
+
+    return result
+}
+
 fun Context.getConversations(
     threadId: Long? = null,
     privateContacts: ArrayList<SimpleContact> = ArrayList(),
@@ -349,6 +377,7 @@ fun Context.getConversations(
     val conversations = ArrayList<Conversation>()
     val simpleContactHelper = SimpleContactsHelper(this)
     val blockedNumbers = getBlockedNumbers()
+    val unreadMap = getUnreadCountsByThread()
     try {
         queryCursorUnsafe(
             uri,
@@ -397,6 +426,7 @@ fun Context.getConversations(
             val read = cursor.getIntValue(Threads.READ) == 1
             val archived =
                 if (archiveAvailable) cursor.getIntValue(Threads.ARCHIVED) == 1 else false
+            val unreadCount = if (!read) unreadMap[id] ?: 0 else 0
             val conversation = Conversation(
                 threadId = id,
                 snippet = snippet,
@@ -406,7 +436,8 @@ fun Context.getConversations(
                 photoUri = photoUri,
                 isGroupConversation = isGroupConversation,
                 phoneNumber = phoneNumbers.first(),
-                isArchived = archived
+                isArchived = archived,
+                unreadCount = unreadCount,
             )
             conversations.add(conversation)
         }
@@ -1258,7 +1289,8 @@ fun Context.createTemporaryThread(
         phoneNumber = addresses.first(),
         isScheduled = true,
         usesCustomTitle = cachedConv?.usesCustomTitle == true,
-        isArchived = false
+        isArchived = false,
+        unreadCount = 0,
     )
     try {
         conversationsDB.insertOrUpdate(conversation)

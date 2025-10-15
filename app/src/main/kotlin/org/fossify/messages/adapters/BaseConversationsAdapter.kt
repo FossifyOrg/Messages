@@ -14,6 +14,7 @@ import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.setupViewBackground
 import org.fossify.commons.helpers.SimpleContactsHelper
@@ -171,19 +172,33 @@ abstract class BaseConversationsAdapter(
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.8f)
             }
 
-            val style = if (conversation.read) {
-                conversationBodyShort.alpha = 0.7f
-                if (conversation.isScheduled) Typeface.ITALIC else Typeface.NORMAL
-            } else {
+            val isUnread = !conversation.read
+            val style = if (isUnread) {
                 conversationBodyShort.alpha = 1f
                 if (conversation.isScheduled) Typeface.BOLD_ITALIC else Typeface.BOLD
-
+            } else {
+                conversationBodyShort.alpha = 0.7f
+                if (conversation.isScheduled) Typeface.ITALIC else Typeface.NORMAL
             }
             conversationAddress.setTypeface(null, style)
             conversationBodyShort.setTypeface(null, style)
+            conversationDate.setTypeface(null, style)
 
             arrayListOf(conversationAddress, conversationBodyShort, conversationDate).forEach {
                 it.setTextColor(textColor)
+            }
+
+            unreadCountBadge.apply {
+                beVisibleIf(isUnread)
+                if (isUnread) {
+                    text = when {
+                        conversation.unreadCount > MAX_UNREAD_BADGE_COUNT -> "$MAX_UNREAD_BADGE_COUNT+"
+                        conversation.unreadCount == 0 -> ""
+                        else -> conversation.unreadCount.toString()
+                    }
+                    setTextColor(properPrimaryColor.getContrastColor())
+                    background?.applyColorFilter(properPrimaryColor)
+                }
             }
 
             // at group conversations we use an icon as the placeholder, not any letter
@@ -220,5 +235,9 @@ abstract class BaseConversationsAdapter(
         override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean {
             return Conversation.areContentsTheSame(oldItem, newItem)
         }
+    }
+
+    companion object {
+        private const val MAX_UNREAD_BADGE_COUNT = 99
     }
 }
