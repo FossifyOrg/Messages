@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Optimized loading messages in conversations
 - Updated conversation item design to be more compact ([#376])
+- Pin/unpin actions now always show as action buttons in menu ([#561])
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
@@ -182,6 +183,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#376]: https://github.com/FossifyOrg/Messages/issues/376
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
+[#561]: https://github.com/FossifyOrg/Messages/pull/561
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.4.0...HEAD
 [1.4.0]: https://github.com/FossifyOrg/Messages/compare/1.3.0...1.4.0
