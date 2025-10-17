@@ -9,10 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unread badge count for conversations ([#177])
 
 ### Changed
-- Optimized loading messages in conversations
+- Optimized loading messages in conversations ([#234])
 - Updated conversation item design to be more compact ([#376])
-- Pin/unpin actions now always show as action buttons in menu ([#561])
-- Added showing seconds in the message properties dialog ([#260])
+- Pin/unpin actions now always show as action buttons in the menu ([#561])
+- Message time in the properties dialog now includes seconds ([#260])
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
@@ -168,6 +168,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
+[#234]: https://github.com/FossifyOrg/Messages/issues/234
 [#243]: https://github.com/FossifyOrg/Messages/issues/243
 [#260]: https://github.com/FossifyOrg/Messages/issues/260
 [#262]: https://github.com/FossifyOrg/Messages/issues/262
