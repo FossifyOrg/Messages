@@ -453,7 +453,7 @@ class ThreadActivity : SimpleActivity() {
             setupAdapter()
 
             runOnUiThread {
-                if (messages.isEmpty()) {
+                if (messages.isEmpty() && !isSpecialNumber()) {
                     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
                     binding.messageHolder.threadTypeMessage.requestFocus()
                 }
@@ -981,6 +981,8 @@ class ThreadActivity : SimpleActivity() {
 
     private fun maybeDisableShortCodeReply() {
         if (isSpecialNumber() && !isRecycleBin) {
+            currentFocus?.clearFocus()
+            hideKeyboard()
             binding.messageHolder.threadTypeMessage.text?.clear()
             binding.messageHolder.root.beGone()
             binding.shortCodeHolder.root.beVisible()
