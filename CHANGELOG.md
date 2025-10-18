@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimized loading messages in conversations ([#234])
 - Updated conversation item design to be more compact ([#376])
 - Pin/unpin actions now always show as action buttons in the menu ([#561])
-- Message time in the properties dialog now includes seconds ([#260])
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
