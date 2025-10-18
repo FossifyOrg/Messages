@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
 - Fixed automatic scroll to searched message in conversations ([#350])
-- Fixed non-standard text and avatar sizes in list items
 - Fixed "Mark as read" not working in some cases ([#264])
 
 ## [1.4.0] - 2025-10-12
