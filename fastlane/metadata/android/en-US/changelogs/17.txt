@@ -1,0 +1,18 @@
+Added:
+
+• Unread badge count for conversations 
+
+Changed:
+
+• Optimized loading messages in conversations 
+• Updated conversation item design to be more compact 
+• Pin/unpin actions now always show as action buttons in the menu 
+• Updated translations
+
+Fixed:
+
+• Fixed position reset when opening attachments in conversations 
+• Fixed automatic scroll to searched message in conversations 
+• Fixed non-standard text and avatar sizes in list items
+• Fixed "Mark as read" not working in some cases 
+

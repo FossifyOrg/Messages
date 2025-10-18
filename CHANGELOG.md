@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.5.0] - 2025-10-18
 ### Added
 - Unread badge count for conversations ([#177])
 
@@ -12,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimized loading messages in conversations ([#234])
 - Updated conversation item design to be more compact ([#376])
 - Pin/unpin actions now always show as action buttons in the menu ([#561])
+- Updated translations
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
@@ -169,7 +172,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
 [#234]: https://github.com/FossifyOrg/Messages/issues/234
 [#243]: https://github.com/FossifyOrg/Messages/issues/243
-[#260]: https://github.com/FossifyOrg/Messages/issues/260
 [#262]: https://github.com/FossifyOrg/Messages/issues/262
 [#264]: https://github.com/FossifyOrg/Messages/issues/264
 [#274]: https://github.com/FossifyOrg/Messages/issues/274
@@ -185,9 +187,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#376]: https://github.com/FossifyOrg/Messages/issues/376
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
-[#561]: https://github.com/FossifyOrg/Messages/pull/561
+[#561]: https://github.com/FossifyOrg/Messages/issues/561
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/FossifyOrg/Messages/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/FossifyOrg/Messages/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/FossifyOrg/Messages/compare/1.2.3...1.3.0
 [1.2.3]: https://github.com/FossifyOrg/Messages/compare/1.2.2...1.2.3
