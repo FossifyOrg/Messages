@@ -124,4 +124,6 @@
     <string name="restore_whole_conversation_confirmation">האם אתה בטוח שברצונך לשחזר את כל ההודעות של השיחה הזו?</string>
     <string name="invalid_short_code_desc">אתה יכול להשיב רק לקודים קצרים עם מספרים כמו \"503501\" אך לא לקודים המכילים אותיות ומספרים כמו \"AB-CD0\".</string>
     <string name="keep_conversations_archived">שמור את השיחות בארכיון</string>
+    <string name="faq_4_title">מדוע תשובות להודעות הקבוצתיות שלי מופיעות כהודעות טקסט אישיות לנמענים?</string>
+    <string name="faq_4_text">עליך להפעיל את האפשרות \"שליחת הודעות קבוצתיות כ-MMS\" בהגדרות האפליקציה. פעולה זו תבטיח שהודעות הקבוצה יישלחו כ-MMS תקינות, כך שכל המשתתפים יוכלו לראות את תשובותיהם של אחרים.</string>
 </resources>
