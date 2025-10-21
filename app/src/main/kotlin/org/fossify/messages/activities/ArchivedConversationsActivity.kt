@@ -33,16 +33,13 @@ class ArchivedConversationsActivity : SimpleActivity() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupOptionsMenu()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.archiveCoordinator,
-            nestedView = binding.conversationsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
+        updateEdgeToEdge(
+            topAppBar = binding.archiveToolbar,
+            scrollingView = binding.conversationsList,
         )
         setupMaterialScrollListener(scrollingView = binding.conversationsList, toolbar = binding.archiveToolbar)
 

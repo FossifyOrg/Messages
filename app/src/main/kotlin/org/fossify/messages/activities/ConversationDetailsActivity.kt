@@ -43,15 +43,12 @@ class ConversationDetailsActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityConversationDetailsBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.conversationDetailsCoordinator,
-            nestedView = binding.participantsRecyclerview,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
+        updateEdgeToEdge(
+            topAppBar = binding.conversationDetailsToolbar,
+            scrollingView = binding.conversationDetailsNestedScrollview,
         )
         setupMaterialScrollListener(
             scrollingView = binding.conversationDetailsNestedScrollview,

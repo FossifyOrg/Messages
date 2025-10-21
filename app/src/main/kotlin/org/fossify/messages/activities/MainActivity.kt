@@ -77,6 +77,8 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : SimpleActivity() {
+    override var isSearchBarEnabled = true
+    
     private val MAKE_DEFAULT_APP_REQUEST = 1
 
     private var storedTextColor = 0
@@ -88,18 +90,15 @@ class MainActivity : SimpleActivity() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.mainCoordinator,
-            nestedView = binding.conversationsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = true
+        updateEdgeToEdge(
+            topAppBar = binding.mainSearchMenu.getToolbar(),
+            scrollingView = binding.conversationsList,
         )
 
         checkAndDeleteOldRecycleBinMessages()

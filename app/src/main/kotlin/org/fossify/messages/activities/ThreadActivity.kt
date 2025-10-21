@@ -237,17 +237,13 @@ class ThreadActivity : SimpleActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupOptionsMenu()
         refreshMenuItems()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.threadCoordinator,
-            nestedView = null,
-            useTransparentNavigation = false,
-            useTopSearchMenu = false
+        updateEdgeToEdge(
+            topAppBar = binding.threadToolbar,
         )
         setupMaterialScrollListener(null, binding.threadToolbar)
 

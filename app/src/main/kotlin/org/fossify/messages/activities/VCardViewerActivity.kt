@@ -24,11 +24,10 @@ class VCardViewerActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityVcardViewerBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateMaterialActivityViews(binding.vcardViewerCoordinator, binding.contactsList, useTransparentNavigation = true, useTopSearchMenu = false)
+        updateEdgeToEdge(topAppBar = binding.vcardViewerToolbar, scrollingView = binding.contactsList)
         setupMaterialScrollListener(binding.contactsList, binding.vcardToolbar)
 
         val vCardUri = intent.getParcelableExtra(EXTRA_VCARD_URI) as? Uri
