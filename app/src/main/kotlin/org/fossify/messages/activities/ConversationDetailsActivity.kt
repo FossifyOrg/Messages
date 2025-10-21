@@ -46,13 +46,10 @@ class ConversationDetailsActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateEdgeToEdge(
-            topAppBar = binding.conversationDetailsToolbar,
-            scrollingView = binding.conversationDetailsNestedScrollview,
-        )
+        setupEdgeToEdge(padBottomSystem = listOf(binding.conversationDetailsNestedScrollview))
         setupMaterialScrollListener(
             scrollingView = binding.conversationDetailsNestedScrollview,
-            toolbar = binding.conversationDetailsToolbar
+            topAppBar = binding.conversationDetailsAppbar,
         )
 
         threadId = intent.getLongExtra(THREAD_ID, 0L)
@@ -74,7 +71,7 @@ class ConversationDetailsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.conversationDetailsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.conversationDetailsAppbar, NavigationIcon.Arrow)
         updateTextColors(binding.conversationDetailsHolder)
 
         val primaryColor = getProperPrimaryColor()

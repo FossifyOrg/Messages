@@ -37,20 +37,18 @@ class ArchivedConversationsActivity : SimpleActivity() {
         setContentView(binding.root)
         setupOptionsMenu()
 
-        updateEdgeToEdge(
-            topAppBar = binding.archiveToolbar,
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList))
+        setupMaterialScrollListener(
             scrollingView = binding.conversationsList,
+            topAppBar = binding.archiveAppbar
         )
-        setupMaterialScrollListener(scrollingView = binding.conversationsList, toolbar = binding.archiveToolbar)
 
         loadArchivedConversations()
     }
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.archiveToolbar, NavigationIcon.Arrow)
-        updateMenuColors()
-
+        setupTopAppBar(binding.archiveAppbar, NavigationIcon.Arrow)
         loadArchivedConversations()
     }
 
@@ -74,10 +72,6 @@ class ArchivedConversationsActivity : SimpleActivity() {
         binding.archiveToolbar.menu.apply {
             findItem(R.id.empty_archive).isVisible = conversations.isNotEmpty()
         }
-    }
-
-    private fun updateMenuColors() {
-        updateStatusbarColor(getProperBackgroundColor())
     }
 
     private fun loadArchivedConversations() {

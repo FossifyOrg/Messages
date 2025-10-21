@@ -62,13 +62,10 @@ class NewConversationActivity : SimpleActivity() {
         title = getString(R.string.new_conversation)
         updateTextColors(binding.newConversationHolder)
 
-        updateEdgeToEdge(
-            topAppBar = binding.newConversationToolbar,
-            scrollingView = binding.contactsList,
-        )
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.contactsList))
         setupMaterialScrollListener(
             scrollingView = binding.contactsList,
-            toolbar = binding.newConversationToolbar
+            topAppBar = binding.newConversationAppbar
         )
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
@@ -82,7 +79,7 @@ class NewConversationActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.newConversationToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.newConversationAppbar, NavigationIcon.Arrow)
         binding.noContactsPlaceholder2.setTextColor(getProperPrimaryColor())
         binding.noContactsPlaceholder2.underlineText()
         binding.suggestionsLabel.setTextColor(getProperPrimaryColor())

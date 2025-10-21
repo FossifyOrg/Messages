@@ -45,7 +45,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -74,6 +76,7 @@ import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.getProperTextColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.hideKeyboard
+import org.fossify.commons.extensions.insetsController
 import org.fossify.commons.extensions.isDynamicTheme
 import org.fossify.commons.extensions.isOrWasThankYouInstalled
 import org.fossify.commons.extensions.isVisible
@@ -241,11 +244,14 @@ class ThreadActivity : SimpleActivity() {
         setContentView(binding.root)
         setupOptionsMenu()
         refreshMenuItems()
-
-        updateEdgeToEdge(
-            topAppBar = binding.threadToolbar,
+        setupEdgeToEdge(
+            padBottomImeAndSystem = listOf(
+                binding.messageHolder.root,
+                binding.shortCodeHolder.root
+            )
         )
-        setupMaterialScrollListener(null, binding.threadToolbar)
+        setupMessagingEdgeToEdge()
+        setupMaterialScrollListener(null, binding.threadAppbar)
 
         val extras = intent.extras
         if (extras == null) {
@@ -266,7 +272,6 @@ class ThreadActivity : SimpleActivity() {
 
         loadConversation()
         setupAttachmentPickerView()
-        setupKeyboardListener()
         hideAttachmentPicker()
         maybeSetupRecycleBinView()
     }
@@ -274,9 +279,9 @@ class ThreadActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
         setupTopAppBar(
-            toolbar = binding.threadToolbar,
-            toolbarNavigationIcon = NavigationIcon.Arrow,
-            statusBarColor = getProperBackgroundColor()
+            topAppBar = binding.threadAppbar,
+            navigationIcon = NavigationIcon.Arrow,
+            topBarColor = getProperBackgroundColor()
         )
 
         isActivityVisible = true
@@ -306,7 +311,6 @@ class ThreadActivity : SimpleActivity() {
         val bottomBarColor = getBottomBarColor()
         binding.messageHolder.root.setBackgroundColor(bottomBarColor)
         binding.shortCodeHolder.root.setBackgroundColor(bottomBarColor)
-        updateNavigationBarColor(bottomBarColor)
     }
 
     override fun onPause() {
@@ -907,15 +911,16 @@ class ThreadActivity : SimpleActivity() {
             threadAddAttachment.setOnClickListener {
                 if (attachmentPickerHolder.isVisible()) {
                     isAttachmentPickerVisible = false
-                    WindowCompat.getInsetsController(window, threadTypeMessage)
+                    hideAttachmentPicker()
+                    window.insetsController(binding.messageHolder.threadTypeMessage)
                         .show(WindowInsetsCompat.Type.ime())
                 } else {
                     isAttachmentPickerVisible = true
-                    showOrHideAttachmentPicker()
-                    WindowCompat.getInsetsController(window, threadTypeMessage)
+                    showAttachmentPicker()
+                    window.insetsController(binding.messageHolder.threadTypeMessage)
                         .hide(WindowInsetsCompat.Type.ime())
                 }
-                window.decorView.requestApplyInsets()
+                binding.messageHolder.threadTypeMessage.requestApplyInsets()
             }
 
             if (intent.extras?.containsKey(THREAD_ATTACHMENT_URI) == true) {
@@ -2056,52 +2061,35 @@ class ThreadActivity : SimpleActivity() {
             .start()
     }
 
-    private fun setupKeyboardListener() {
-        window.decorView.setOnApplyWindowInsetsListener { view, insets ->
-            showOrHideAttachmentPicker()
-            view.onApplyWindowInsets(insets)
-        }
-
-        val callback =
-            object : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_CONTINUE_ON_SUBTREE) {
-                override fun onPrepare(animation: WindowInsetsAnimationCompat) {
-                    super.onPrepare(animation)
-                    showOrHideAttachmentPicker()
-                }
-
-                override fun onProgress(
-                    insets: WindowInsetsCompat,
-                    runningAnimations: MutableList<WindowInsetsAnimationCompat>,
-                ) = insets
-            }
-        ViewCompat.setWindowInsetsAnimationCallback(window.decorView, callback)
-    }
-
-    private fun showOrHideAttachmentPicker() {
-        val type = WindowInsetsCompat.Type.ime()
-        val insets = ViewCompat.getRootWindowInsets(window.decorView) ?: return
-        val isKeyboardVisible = insets.isVisible(type)
-
-        if (isKeyboardVisible) {
-            val keyboardHeight = insets.getInsets(type).bottom
-            val bottomBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-
-            // check keyboard height just to be sure, 150 seems like a good middle ground between ime and navigation bar
-            config.keyboardHeight = if (keyboardHeight > 150) {
-                keyboardHeight - bottomBarHeight
-            } else {
-                getDefaultKeyboardHeight()
-            }
-            hideAttachmentPicker()
-        } else if (isAttachmentPickerVisible) {
-            showAttachmentPicker()
-        }
-    }
-
     private fun getBottomBarColor() = if (isDynamicTheme()) {
         resources.getColor(org.fossify.commons.R.color.you_bottom_bar_color)
     } else {
         getBottomNavigationBackgroundColor()
+    }
+
+    fun setupMessagingEdgeToEdge() {
+        ViewCompat.setOnApplyWindowInsetsListener(
+            binding.messageHolder.threadTypeMessage
+        ) { view, insets ->
+            val type = WindowInsetsCompat.Type.ime()
+            val isKeyboardVisible = insets.isVisible(type)
+            if (isKeyboardVisible) {
+                val keyboardHeight = insets.getInsets(type).bottom
+                val bottomBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+
+                // check keyboard height just to be sure, 150 seems like a good middle ground between ime and navigation bar
+                config.keyboardHeight = if (keyboardHeight > 150) {
+                    keyboardHeight - bottomBarHeight
+                } else {
+                    getDefaultKeyboardHeight()
+                }
+                hideAttachmentPicker()
+            } else if (isAttachmentPickerVisible) {
+                showAttachmentPicker()
+            }
+
+            insets
+        }
     }
 
     companion object {
