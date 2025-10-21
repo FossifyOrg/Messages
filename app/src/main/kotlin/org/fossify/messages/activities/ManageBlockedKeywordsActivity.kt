@@ -60,7 +60,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.blockKeywordsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.blockKeywordsToolbar, NavigationIcon.Arrow)
     }
 
     private fun setupOptionsMenu() {

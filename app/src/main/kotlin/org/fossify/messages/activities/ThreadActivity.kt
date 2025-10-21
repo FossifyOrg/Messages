@@ -273,7 +273,7 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(
+        setupTopAppBar(
             toolbar = binding.threadToolbar,
             toolbarNavigationIcon = NavigationIcon.Arrow,
             statusBarColor = getProperBackgroundColor()

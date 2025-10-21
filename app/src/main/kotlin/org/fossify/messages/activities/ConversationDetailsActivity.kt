@@ -74,7 +74,7 @@ class ConversationDetailsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.conversationDetailsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.conversationDetailsToolbar, NavigationIcon.Arrow)
         updateTextColors(binding.conversationDetailsHolder)
 
         val primaryColor = getProperPrimaryColor()
