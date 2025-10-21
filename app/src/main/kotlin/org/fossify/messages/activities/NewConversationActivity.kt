@@ -57,17 +57,14 @@ class NewConversationActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityNewConversationBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         title = getString(R.string.new_conversation)
         updateTextColors(binding.newConversationHolder)
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.newConversationCoordinator,
-            nestedView = binding.contactsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
+        updateEdgeToEdge(
+            topAppBar = binding.newConversationToolbar,
+            scrollingView = binding.contactsList,
         )
         setupMaterialScrollListener(
             scrollingView = binding.contactsList,

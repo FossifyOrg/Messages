@@ -33,16 +33,13 @@ class RecycleBinConversationsActivity : SimpleActivity() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupOptionsMenu()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.recycleBinCoordinator,
-            nestedView = binding.conversationsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
+        updateEdgeToEdge(
+            topAppBar = binding.recycleBinToolbar,
+            scrollingView = binding.conversationsList,
         )
         setupMaterialScrollListener(
             scrollingView = binding.conversationsList,
