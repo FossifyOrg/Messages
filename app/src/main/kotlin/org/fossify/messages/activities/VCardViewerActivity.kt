@@ -27,8 +27,8 @@ class VCardViewerActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateEdgeToEdge(topAppBar = binding.vcardViewerToolbar, scrollingView = binding.contactsList)
-        setupMaterialScrollListener(binding.contactsList, binding.vcardToolbar)
+        setupEdgeToEdge(padBottomSystem = listOf(binding.contactsList))
+        setupMaterialScrollListener(binding.contactsList, binding.vcardAppbar)
 
         val vCardUri = intent.getParcelableExtra(EXTRA_VCARD_URI) as? Uri
         if (vCardUri != null) {
@@ -43,7 +43,7 @@ class VCardViewerActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.vcardToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.vcardAppbar, NavigationIcon.Arrow)
     }
 
     private fun setupOptionsMenu(vCardUri: Uri) {

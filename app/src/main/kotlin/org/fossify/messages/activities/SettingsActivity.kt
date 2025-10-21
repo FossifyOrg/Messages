@@ -88,19 +88,16 @@ class SettingsActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateEdgeToEdge(
-            topAppBar = binding.settingsToolbar,
-            scrollingView = binding.settingsNestedScrollview,
-        )
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.settingsNestedScrollview))
         setupMaterialScrollListener(
             scrollingView = binding.settingsNestedScrollview,
-            toolbar = binding.settingsToolbar
+            topAppBar = binding.settingsAppbar
         )
     }
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.settingsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.settingsAppbar, NavigationIcon.Arrow)
 
         setupCustomizeColors()
         setupCustomizeNotifications()

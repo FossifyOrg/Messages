@@ -39,13 +39,10 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
         updateBlockedKeywords()
         setupOptionsMenu()
 
-        updateEdgeToEdge(
-            topAppBar = binding.blockKeywordsToolbar,
-            scrollingView = binding.manageBlockedKeywordsList,
-        )
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.manageBlockedKeywordsList))
         setupMaterialScrollListener(
             scrollingView = binding.manageBlockedKeywordsList,
-            toolbar = binding.blockKeywordsToolbar
+            topAppBar = binding.blockKeywordsAppbar
         )
         updateTextColors(binding.manageBlockedKeywordsWrapper)
 
@@ -60,7 +57,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.blockKeywordsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.blockKeywordsAppbar, NavigationIcon.Arrow)
     }
 
     private fun setupOptionsMenu() {
