@@ -48,7 +48,7 @@ class ArchivedConversationsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.archiveToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.archiveToolbar, NavigationIcon.Arrow)
         updateMenuColors()
 
         loadArchivedConversations()

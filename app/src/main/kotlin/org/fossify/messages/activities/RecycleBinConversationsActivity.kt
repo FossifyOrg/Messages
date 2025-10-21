@@ -51,7 +51,7 @@ class RecycleBinConversationsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.recycleBinToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.recycleBinToolbar, NavigationIcon.Arrow)
         updateMenuColors()
 
         loadRecycleBinConversations()

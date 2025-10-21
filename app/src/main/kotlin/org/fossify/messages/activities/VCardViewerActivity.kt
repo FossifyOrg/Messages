@@ -43,7 +43,7 @@ class VCardViewerActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.vcardToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.vcardToolbar, NavigationIcon.Arrow)
     }
 
     private fun setupOptionsMenu(vCardUri: Uri) {
