@@ -1,0 +1,5 @@
+Changed:
+
+• Calling now works directly without launching dialpad 
+• Updated translations
+
