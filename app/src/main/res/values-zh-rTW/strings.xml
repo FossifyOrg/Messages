@@ -117,4 +117,6 @@
     <string name="export_blocked_keywords">匯出被封鎖的關鍵字</string>
     <string name="import_blocked_keywords">匯入被封鎖的關鍵字</string>
     <string name="keep_conversations_archived">保留對話封存</string>
+    <string name="faq_4_title">為何我的群組訊息回覆會顯示為收件者的個別簡訊？</string>
+    <string name="faq_4_text">您需要在應用程式設定中啟用「將群組訊息以多媒體簡訊形式傳送」功能。此設定可確保群組訊息以正確的多媒體簡訊格式傳送，讓所有參與者都能看見彼此的回覆內容。</string>
 </resources>

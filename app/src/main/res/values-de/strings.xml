@@ -120,4 +120,6 @@
     <string name="export_blocked_keywords">Blockierte Schlüsselwörter exportieren</string>
     <string name="keywords">Schlüsselwörter</string>
     <string name="keep_conversations_archived">Unterhaltungen archiviert lassen</string>
+    <string name="faq_4_title">Warum werden meine Antworten auf Gruppennachrichten den Empfängern als einzelne Textnachrichten angezeigt?</string>
+    <string name="faq_4_text">Du musst in den Einstellungen die Option „Gruppennachrichten als MMS versenden” aktivieren. Dadurch wird sichergestellt, dass Gruppennachrichten als richtige MMS gesendet werden, sodass alle Teilnehmer die Antworten der anderen sehen können.</string>
 </resources>

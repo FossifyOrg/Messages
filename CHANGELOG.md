@@ -5,14 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Calling now works directly without launching dialpad ([#562])
+
+## [1.5.0] - 2025-10-18
 ### Added
 - Unread badge count for conversations ([#177])
 
 ### Changed
-- Optimized loading messages in conversations
+- Optimized loading messages in conversations ([#234])
 - Updated conversation item design to be more compact ([#376])
-- Pin/unpin actions now always show as action buttons in menu ([#561])
-- Calling now works directly without launching dialpad ([#562])
+- Pin/unpin actions now always show as action buttons in the menu ([#561])
+- Updated translations
 
 ### Fixed
 - Fixed position reset when opening attachments in conversations ([#82])
@@ -168,6 +172,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
+[#234]: https://github.com/FossifyOrg/Messages/issues/234
 [#243]: https://github.com/FossifyOrg/Messages/issues/243
 [#262]: https://github.com/FossifyOrg/Messages/issues/262
 [#264]: https://github.com/FossifyOrg/Messages/issues/264
@@ -187,7 +192,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#561]: https://github.com/FossifyOrg/Messages/pull/561
 [#562]: https://github.com/FossifyOrg/Messages/issues/562
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/FossifyOrg/Messages/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/FossifyOrg/Messages/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/FossifyOrg/Messages/compare/1.2.3...1.3.0
 [1.2.3]: https://github.com/FossifyOrg/Messages/compare/1.2.2...1.2.3
