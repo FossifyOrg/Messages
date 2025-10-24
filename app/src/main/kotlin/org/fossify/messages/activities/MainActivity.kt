@@ -32,7 +32,6 @@ import org.fossify.commons.extensions.getProperBackgroundColor
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.getProperTextColor
 import org.fossify.commons.extensions.hideKeyboard
-import org.fossify.commons.extensions.navigationBarHeight
 import org.fossify.commons.extensions.openNotificationSettings
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.underlineText
@@ -135,9 +134,6 @@ class MainActivity : SimpleActivity() {
         binding.conversationsProgressBar.setIndicatorColor(properPrimaryColor)
         binding.conversationsProgressBar.trackColor = properPrimaryColor.adjustAlpha(LOWER_ALPHA)
         checkShortcut()
-        (binding.conversationsFab.layoutParams as? CoordinatorLayout.LayoutParams)?.bottomMargin =
-            navigationBarHeight + resources.getDimension(org.fossify.commons.R.dimen.activity_margin)
-                .toInt()
     }
 
     override fun onPause() {
