@@ -33,27 +33,22 @@ class ArchivedConversationsActivity : SimpleActivity() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupOptionsMenu()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.archiveCoordinator,
-            nestedView = binding.conversationsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList))
+        setupMaterialScrollListener(
+            scrollingView = binding.conversationsList,
+            topAppBar = binding.archiveAppbar
         )
-        setupMaterialScrollListener(scrollingView = binding.conversationsList, toolbar = binding.archiveToolbar)
 
         loadArchivedConversations()
     }
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.archiveToolbar, NavigationIcon.Arrow)
-        updateMenuColors()
-
+        setupTopAppBar(binding.archiveAppbar, NavigationIcon.Arrow)
         loadArchivedConversations()
     }
 
@@ -77,10 +72,6 @@ class ArchivedConversationsActivity : SimpleActivity() {
         binding.archiveToolbar.menu.apply {
             findItem(R.id.empty_archive).isVisible = conversations.isNotEmpty()
         }
-    }
-
-    private fun updateMenuColors() {
-        updateStatusbarColor(getProperBackgroundColor())
     }
 
     private fun loadArchivedConversations() {

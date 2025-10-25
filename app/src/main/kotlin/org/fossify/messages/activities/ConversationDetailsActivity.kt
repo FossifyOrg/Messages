@@ -43,19 +43,13 @@ class ConversationDetailsActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityConversationDetailsBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.conversationDetailsCoordinator,
-            nestedView = binding.participantsRecyclerview,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
-        )
+        setupEdgeToEdge(padBottomSystem = listOf(binding.conversationDetailsNestedScrollview))
         setupMaterialScrollListener(
             scrollingView = binding.conversationDetailsNestedScrollview,
-            toolbar = binding.conversationDetailsToolbar
+            topAppBar = binding.conversationDetailsAppbar,
         )
 
         threadId = intent.getLongExtra(THREAD_ID, 0L)
@@ -77,7 +71,7 @@ class ConversationDetailsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.conversationDetailsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.conversationDetailsAppbar, NavigationIcon.Arrow)
         updateTextColors(binding.conversationDetailsHolder)
 
         val primaryColor = getProperPrimaryColor()

@@ -32,7 +32,6 @@ import org.fossify.commons.extensions.getProperBackgroundColor
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.getProperTextColor
 import org.fossify.commons.extensions.hideKeyboard
-import org.fossify.commons.extensions.navigationBarHeight
 import org.fossify.commons.extensions.openNotificationSettings
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.underlineText
@@ -77,6 +76,8 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : SimpleActivity() {
+    override var isSearchBarEnabled = true
+    
     private val MAKE_DEFAULT_APP_REQUEST = 1
 
     private var storedTextColor = 0
@@ -88,19 +89,13 @@ class MainActivity : SimpleActivity() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.mainCoordinator,
-            nestedView = binding.conversationsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = true
-        )
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList))
 
         checkAndDeleteOldRecycleBinMessages()
         clearAllMessagesIfNeeded {
@@ -139,9 +134,6 @@ class MainActivity : SimpleActivity() {
         binding.conversationsProgressBar.setIndicatorColor(properPrimaryColor)
         binding.conversationsProgressBar.trackColor = properPrimaryColor.adjustAlpha(LOWER_ALPHA)
         checkShortcut()
-        (binding.conversationsFab.layoutParams as? CoordinatorLayout.LayoutParams)?.bottomMargin =
-            navigationBarHeight + resources.getDimension(org.fossify.commons.R.dimen.activity_margin)
-                .toInt()
     }
 
     override fun onPause() {
@@ -154,17 +146,18 @@ class MainActivity : SimpleActivity() {
         bus?.unregister(this)
     }
 
-    override fun onBackPressed() {
-        if (binding.mainMenu.isSearchOpen) {
+    override fun onBackPressedCompat(): Boolean {
+        return if (binding.mainMenu.isSearchOpen) {
             binding.mainMenu.closeSearch()
+            true
         } else {
             appLockManager.lock()
-            super.onBackPressed()
+            false
         }
     }
 
     private fun setupOptionsMenu() {
-        binding.mainMenu.getToolbar().inflateMenu(R.menu.menu_main)
+        binding.mainMenu.requireToolbar().inflateMenu(R.menu.menu_main)
         binding.mainMenu.toggleHideOnScroll(true)
         binding.mainMenu.setupMenu()
 
@@ -183,7 +176,7 @@ class MainActivity : SimpleActivity() {
             searchTextChanged(text)
         }
 
-        binding.mainMenu.getToolbar().setOnMenuItemClickListener { menuItem ->
+        binding.mainMenu.requireToolbar().setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.show_recycle_bin -> launchRecycleBin()
                 R.id.show_archived -> launchArchivedConversations()
@@ -196,7 +189,7 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun refreshMenuItems() {
-        binding.mainMenu.getToolbar().menu.apply {
+        binding.mainMenu.requireToolbar().menu.apply {
             findItem(R.id.show_recycle_bin).isVisible = config.useRecycleBin
             findItem(R.id.show_archived).isVisible = config.isArchiveAvailable
         }
@@ -219,7 +212,6 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun updateMenuColors() {
-        updateStatusbarColor(getProperBackgroundColor())
         binding.mainMenu.updateColors()
     }
 

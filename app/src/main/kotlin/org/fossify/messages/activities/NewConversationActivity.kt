@@ -57,21 +57,15 @@ class NewConversationActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityNewConversationBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         title = getString(R.string.new_conversation)
         updateTextColors(binding.newConversationHolder)
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.newConversationCoordinator,
-            nestedView = binding.contactsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
-        )
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.contactsList))
         setupMaterialScrollListener(
             scrollingView = binding.contactsList,
-            toolbar = binding.newConversationToolbar
+            topAppBar = binding.newConversationAppbar
         )
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
@@ -85,7 +79,7 @@ class NewConversationActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.newConversationToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.newConversationAppbar, NavigationIcon.Arrow)
         binding.noContactsPlaceholder2.setTextColor(getProperPrimaryColor())
         binding.noContactsPlaceholder2.underlineText()
         binding.suggestionsLabel.setTextColor(getProperPrimaryColor())
