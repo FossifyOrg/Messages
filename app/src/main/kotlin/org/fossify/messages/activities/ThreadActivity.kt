@@ -325,12 +325,13 @@ class ThreadActivity : SimpleActivity() {
         saveDraftMessage()
     }
 
-    override fun onBackPressed() {
+    override fun onBackPressedCompat(): Boolean {
         isAttachmentPickerVisible = false
-        if (binding.messageHolder.attachmentPickerHolder.isVisible()) {
+        return if (binding.messageHolder.attachmentPickerHolder.isVisible()) {
             hideAttachmentPicker()
+            true
         } else {
-            super.onBackPressed()
+            false
         }
     }
 
