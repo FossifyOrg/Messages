@@ -7,7 +7,6 @@ import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.extensions.areSystemAnimationsEnabled
 import org.fossify.commons.extensions.beGoneIf
 import org.fossify.commons.extensions.beVisibleIf
-import org.fossify.commons.extensions.getProperBackgroundColor
 import org.fossify.commons.extensions.hideKeyboard
 import org.fossify.commons.extensions.viewBinding
 import org.fossify.commons.helpers.NavigationIcon
@@ -33,20 +32,14 @@ class RecycleBinConversationsActivity : SimpleActivity() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupOptionsMenu()
 
-        updateMaterialActivityViews(
-            mainCoordinatorLayout = binding.recycleBinCoordinator,
-            nestedView = binding.conversationsList,
-            useTransparentNavigation = true,
-            useTopSearchMenu = false
-        )
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList))
         setupMaterialScrollListener(
             scrollingView = binding.conversationsList,
-            toolbar = binding.recycleBinToolbar
+            topAppBar = binding.recycleBinAppbar
         )
 
         loadRecycleBinConversations()
@@ -54,9 +47,7 @@ class RecycleBinConversationsActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.recycleBinToolbar, NavigationIcon.Arrow)
-        updateMenuColors()
-
+        setupTopAppBar(binding.recycleBinAppbar, NavigationIcon.Arrow)
         loadRecycleBinConversations()
     }
 
@@ -80,10 +71,6 @@ class RecycleBinConversationsActivity : SimpleActivity() {
         binding.recycleBinToolbar.menu.apply {
             findItem(R.id.empty_recycle_bin).isVisible = conversations.isNotEmpty()
         }
-    }
-
-    private fun updateMenuColors() {
-        updateStatusbarColor(getProperBackgroundColor())
     }
 
     private fun loadRecycleBinConversations() {

@@ -6,20 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/block_keywords_toolbar"
+    <org.fossify.commons.views.MyAppBarLayout
+        android:id="@+id/block_keywords_appbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_primary"
-        app:menu="@menu/menu_add_blocked_keyword"
-        app:title="@string/manage_blocked_keywords"
-        app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/block_keywords_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:menu="@menu/menu_add_blocked_keyword"
+            app:title="@string/manage_blocked_keywords"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    </org.fossify.commons.views.MyAppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/manage_blocked_keywords_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <org.fossify.commons.views.MyRecyclerView
             android:id="@+id/manage_blocked_keywords_list"

@@ -47,13 +47,6 @@
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$8</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$90f</ID>
     <ID>MagicNumber:MainActivity.kt$MainActivity$30</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$3</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$4</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$5</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$6</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$7</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$8</ID>
-    <ID>MagicNumber:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$9</ID>
     <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$23</ID>
     <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$5</ID>
     <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$59</ID>
@@ -134,6 +127,7 @@
     <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$val participant = SimpleContact(0, 0, senderName, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())</ID>
     <ID>MaxLineLength:SmsSender.kt$SmsSender$val intent = Intent(SendStatusReceiver.SMS_DELIVERED_ACTION, requestUri, app, SmsStatusDeliveredReceiver::class.java)</ID>
     <ID>MaxLineLength:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$// TODO: Need to check whether SC still trying to deliver the SMS to destination and will send the report again?</ID>
+    <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$// check keyboard height just to be sure, 150 seems like a good middle ground between ime and navigation bar</ID>
     <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$// do not show the date/time above every message, only if the difference between the 2 messages is at least MIN_DATE_TIME_DIFF_SECS,</ID>
     <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$if</ID>
     <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$privateContacts.firstOrNull { it.doesHavePhoneNumber(participant.phoneNumbers.first().normalizedNumber) }</ID>
@@ -149,7 +143,6 @@
     <ID>MaxLineLength:VCard.kt$VCardPropertyWrapper.Companion$is Note -&gt; VCardPropertyWrapper(value, context.getString(org.fossify.commons.R.string.notes), property)</ID>
     <ID>MaxLineLength:VCard.kt$VCardPropertyWrapper.Companion$is Telephone -&gt; VCardPropertyWrapper(text.normalizePhoneNumber(), getPropertyTypeString(context), property)</ID>
     <ID>MaxLineLength:VCard.kt$VCardWrapper$data</ID>
-    <ID>MaxLineLength:VCardViewerActivity.kt$VCardViewerActivity$updateMaterialActivityViews(binding.vcardViewerCoordinator, binding.contactsList, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
     <ID>MaxLineLength:VCardViewerAdapter.kt$VCardViewerAdapter.VCardPropertyViewHolder$inner</ID>
     <ID>NestedBlockDepth:AttachmentUtils.kt$AttachmentUtils$private fun readBody(parser: XmlPullParser): List&lt;String&gt;</ID>
     <ID>NestedBlockDepth:Context.kt$fun Context.getThreadParticipants( threadId: Long, contactsMap: HashMap&lt;Int, SimpleContact&gt;?, ): ArrayList&lt;SimpleContact&gt;</ID>

@@ -17,7 +17,7 @@ import org.joda.time.DateTime
 class MessageDetailsDialog(val activity: BaseSimpleActivity, val message: Message) : BasePropertiesDialog(activity) {
     init {
         @SuppressLint("MissingPermission")
-        val availableSIMs = activity.subscriptionManagerCompat().activeSubscriptionInfoList
+        val availableSIMs = activity.subscriptionManagerCompat().activeSubscriptionInfoList.orEmpty()
 
         addProperty(message.getSenderOrReceiverLabel(), message.getSenderOrReceiverPhoneNumbers())
         if (availableSIMs.count() > 1) {
