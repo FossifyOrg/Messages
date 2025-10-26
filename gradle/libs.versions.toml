@@ -11,6 +11,7 @@ detektCompose = "0.4.27"
 androidx-constraintlayout = "2.2.1"
 androidx-swiperefreshlayout = "1.1.0"
 androidx-lifecycleprocess = "2.8.7"
+androidx-documentfile = "1.1.0"
 #Eventbus
 eventbus = "3.3.1"
 #Room
@@ -34,6 +35,7 @@ ez-vcard = "0.12.1"
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidx-lifecycleprocess" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidx-swiperefreshlayout" }
+androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "androidx-documentfile" }
 #Room
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
