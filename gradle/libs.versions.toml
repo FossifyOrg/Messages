@@ -15,7 +15,7 @@ androidx-documentfile = "1.1.0"
 #Eventbus
 eventbus = "3.3.1"
 #Room
-room = "2.8.2"
+room = "2.8.3"
 #Fossify
 commons = "5.7.0"
 mmslib = "1.0.0"
