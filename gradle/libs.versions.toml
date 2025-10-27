@@ -17,7 +17,7 @@ eventbus = "3.3.1"
 #Room
 room = "2.8.2"
 #Fossify
-commons = "5.5.0"
+commons = "5.6.0"
 mmslib = "1.0.0"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
