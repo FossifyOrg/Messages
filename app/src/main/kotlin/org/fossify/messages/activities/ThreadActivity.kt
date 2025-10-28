@@ -2099,6 +2099,6 @@ class ThreadActivity : SimpleActivity() {
         private const val TYPE_DELETE = 16
         private const val MIN_DATE_TIME_DIFF_SECS = 300
         private const val SCROLL_TO_BOTTOM_FAB_LIMIT = 20
-        private const val PREFETCH_THRESHOLD = 50
+        private const val PREFETCH_THRESHOLD = 45
     }
 }
