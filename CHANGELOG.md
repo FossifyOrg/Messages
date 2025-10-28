@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-
 - Compatibility updates for Android 15 & 16
 - Calling now works directly without launching dialpad ([#562])
+
+### Fixed
+- Fixed freezing when sending messages ([#574])
 
 ## [1.5.0] - 2025-10-18
 ### Added
@@ -194,6 +196,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 [#561]: https://github.com/FossifyOrg/Messages/pull/561
 [#562]: https://github.com/FossifyOrg/Messages/issues/562
+[#574]: https://github.com/FossifyOrg/Messages/issues/574
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.5.0...HEAD
 [1.5.0]: https://github.com/FossifyOrg/Messages/compare/1.4.0...1.5.0
