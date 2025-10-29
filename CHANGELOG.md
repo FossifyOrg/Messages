@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Compatibility updates for Android 15 & 16
 - Calling now works directly without launching dialpad ([#562])
+- Search bar is now pinned to the top when scrolling
 
 ### Fixed
 - Fixed freezing when sending messages ([#574])
