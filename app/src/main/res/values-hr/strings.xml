@@ -122,4 +122,7 @@
     <string name="keywords">Ključne riječi</string>
     <string name="export_blocked_keywords">Izvezi blokirane ključne riječi</string>
     <string name="import_blocked_keywords">Uvezi blokirane ključne riječi</string>
+    <string name="keep_conversations_archived">Arhiviraj razgovore</string>
+    <string name="faq_4_title">Zašto se moji odgovori na grupne poruke primateljima prikazuju kao pojedinačne poruke?</string>
+    <string name="faq_4_text">U postavkama aplikacije morate omogućiti „Pošalji grupne poruka kao MMS”. To će osigurati da se grupne poruke šalju kao ispravni MMS, što će svim sudionicima omogućiti da vide međusobne odgovore.</string>
 </resources>
