@@ -1,0 +1,11 @@
+Changed:
+
+• Compatibility updates for Android 15 & 16
+• Calling now works directly without launching dialpad 
+• Search bar is now pinned to the top when scrolling
+• Updated translations
+
+Fixed:
+
+• Fixed freezing when sending messages 
+
