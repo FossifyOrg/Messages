@@ -65,7 +65,7 @@ class ShortcutHelper(private val context: Context) {
             setPersons(persons)
             setIntent(intent)
             setRank(1)
-            if (!conv.isGroupConversation && !conv.usesCustomTitle) {
+            if (!conv.isGroupConversation && !conv.usesCustomTitle && persons.isNotEmpty()) {
                 setIcon(persons[0].icon)
             } else {
                 val icon = if (conv.isGroupConversation) {
