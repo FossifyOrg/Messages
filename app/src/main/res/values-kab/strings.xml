@@ -13,4 +13,23 @@
     <string name="new_conversation">Adiwenni amaynut</string>
     <string name="conversation_name">Isem n udiwenni</string>
     <string name="conversation_details">Talqayt n udiwenni</string>
+    <string name="message_not_sent_short">Izen ur yettwazen ara</string>
+    <string name="message_not_sent_touch_retry">ur yettwazen ara. Nnal akken ad talseḍ.</string>
+    <string name="message_sending_error">Izen-ik i %s ur yettwazen ara</string>
+    <string name="no_conversations_found">Ur d-ufin ara idiwenniten yettwaḥerzen</string>
+    <string name="start_conversation">Bdu adiwenni</string>
+    <string name="show_character_counter">Sken-d amṣiden n yisekkilen deg tira n yiznan</string>
+    <string name="loading_messages">Asali n yiznan…</string>
+    <string name="no_reply_support">Amazan ur isefrak ara tiririyin</string>
+    <string name="sending">Tuzna…</string>
+    <string name="pin_conversation">Senṭeḍ ɣer tqacuct</string>
+    <string name="unpin_conversation">Senser</string>
+    <string name="forward_message">Ɣer zdat</string>
+    <string name="compress_error">Ur izmir ara uskkussem n tugna ɣer teɣzi yettwafernen</string>
+    <string name="duplicate_item_warning">Iferdisen n usleg ur d-ddin ara</string>
+    <plurals name="and_other_contacts">
+        <item quantity="one">akk d %d wayeḍ</item>
+        <item quantity="other">akk d %d wiyaḍ</item>
+    </plurals>
+    <string name="add_contact_or_number">Rnu anermis neɣ uṭṭun…</string>
 </resources>
