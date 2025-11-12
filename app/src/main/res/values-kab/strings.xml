@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_launcher_name">Iznan</string>
+    <string name="type_a_message">Aru izen…</string>
+    <string name="add_person">Rnu walbɛaḍ</string>
+    <string name="attachment">Amedday</string>
+    <string name="reply">Tiririt</string>
+    <string name="draft">Arewway</string>
+    <string name="suggestions">Isumar</string>
+    <string name="message_details_sender">Amazan</string>
+    <string name="me">Nekki</string>
+    <string name="messages">Iznan</string>
+    <string name="new_conversation">Adiwenni amaynut</string>
+    <string name="conversation_name">Isem n udiwenni</string>
+    <string name="conversation_details">Talqayt n udiwenni</string>
 </resources>
