@@ -32,4 +32,7 @@
         <item quantity="other">akk d %d nniḍen</item>
     </plurals>
     <string name="add_contact_or_number">Rnu anermis neɣ uṭṭun…</string>
+    <string name="schedule_send">Asɣiwes n iceyyeɛ</string>
+    <string name="cancel_schedule_send">Sefsex asɣiwes n uceyyeɛ</string>
+    <string name="must_pick_time_in_the_future">Yessefk ad tferneḍ akud deg yimal</string>
 </resources>
