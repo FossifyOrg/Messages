@@ -35,4 +35,8 @@
     <string name="schedule_send">Asɣiwes n iceyyeɛ</string>
     <string name="cancel_schedule_send">Sefsex asɣiwes n uceyyeɛ</string>
     <string name="must_pick_time_in_the_future">Yessefk ad tferneḍ akud deg yimal</string>
+    <string name="members">Imttekkiyen</string>
+    <string name="archived_conversations">Aɣbar</string>
+    <string name="archive">Aɣbar</string>
+    <string name="restore">Err-it-id</string>
 </resources>
