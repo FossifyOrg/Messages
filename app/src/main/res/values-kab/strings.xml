@@ -39,4 +39,12 @@
     <string name="archived_conversations">Aɣbar</string>
     <string name="archive">Aɣbar</string>
     <string name="restore">Err-it-id</string>
+    <string name="send_now">Azen tura</string>
+    <string name="message_details">Talqayt n yizen</string>
+    <string name="message_details_receiver">Anermas</string>
+    <string name="message_details_sent_at">Yettwazen ɣer</string>
+    <string name="message_details_received_at">Yettwarmes deg</string>
+    <string name="enable_custom_notifications">Rmed ilɣa udmawanen</string>
+    <string name="unarchive">Kkes aɣbar</string>
+    <string name="empty_archive">Kkes akk idiwenniyen yettwaɣbren</string>
 </resources>
