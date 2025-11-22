@@ -115,14 +115,14 @@ class ThreadAdapter(
 
     override fun prepareActionMode(menu: Menu) {
         val isOneItemSelected = isOneItemSelected()
-        val selectedItem = getSelectedItems().firstOrNull() as? Message
-        val hasText = selectedItem?.body != null && selectedItem.body != ""
+        val selectedMessages = getSelectedItems().filterIsInstance<Message>()
+        val hasText = selectedMessages.any { it.body.isNotEmpty() }
         val showSaveAs = getSelectedItems().all {
             it is Message && (it.attachment?.attachments?.size ?: 0) > 0
         } && getSelectedAttachments().isNotEmpty()
 
         menu.apply {
-            findItem(R.id.cab_copy_to_clipboard).isVisible = isOneItemSelected && hasText
+            findItem(R.id.cab_copy_to_clipboard).isVisible = hasText
             findItem(R.id.cab_save_as).isVisible = showSaveAs
             findItem(R.id.cab_share).isVisible = isOneItemSelected && hasText
             findItem(R.id.cab_forward_message).isVisible = isOneItemSelected
@@ -219,8 +219,14 @@ class ThreadAdapter(
     }
 
     private fun copyToClipboard() {
-        val firstItem = getSelectedItems().firstOrNull() as? Message ?: return
-        activity.copyToClipboard(firstItem.body)
+        val selectedMessages = getSelectedItems().filterIsInstance<Message>()
+        val textToCopy = selectedMessages
+            .mapNotNull { message -> message.body.takeIf { it.isNotEmpty() } }
+            .joinToString("\n\n")
+        
+        if (textToCopy.isNotEmpty()) {
+            activity.copyToClipboard(textToCopy)
+        }
     }
 
     private fun getSelectedAttachments(): List<Attachment> {
