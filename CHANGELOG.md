@@ -5,8 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.7.0] - 2025-12-02
 ### Added
 - Ability to select and copy multiple text messages at once ([#600])
+
+### Changed
+- Updated translations
 
 ## [1.6.0] - 2025-10-29
 ### Changed
@@ -204,7 +209,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#574]: https://github.com/FossifyOrg/Messages/issues/574
 [#600]: https://github.com/FossifyOrg/Messages/issues/600
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.6.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.7.0...HEAD
+[1.7.0]: https://github.com/FossifyOrg/Messages/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/FossifyOrg/Messages/compare/1.5.0...1.6.0
 [1.5.0]: https://github.com/FossifyOrg/Messages/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/FossifyOrg/Messages/compare/1.3.0...1.4.0

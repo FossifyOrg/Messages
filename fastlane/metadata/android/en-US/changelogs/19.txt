@@ -1,0 +1,8 @@
+Added:
+
+• Ability to select and copy multiple text messages at once 
+
+Changed:
+
+• Updated translations
+
