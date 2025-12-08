@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ability to select and copy multiple text messages at once ([#600])
 
 ### Fixed
-- Fixed new conversation shortcut behaving like in-app ([#416])
+- Fixed new conversation shortcut ([#416])
 
 ## [1.6.0] - 2025-10-29
 ### Changed
