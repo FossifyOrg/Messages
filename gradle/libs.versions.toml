@@ -9,7 +9,7 @@ detekt = "1.23.8"
 detektCompose = "0.4.28"
 #AndroidX
 androidx-constraintlayout = "2.2.1"
-androidx-swiperefreshlayout = "1.1.0"
+androidx-swiperefreshlayout = "1.2.0"
 androidx-lifecycleprocess = "2.10.0"
 androidx-documentfile = "1.1.0"
 #Eventbus
