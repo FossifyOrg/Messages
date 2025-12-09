@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Ability to select and copy multiple text messages at once ([#600])
 
+### Fixed
+- Fixed new conversation shortcut ([#416])
+
 ## [1.6.0] - 2025-10-29
 ### Changed
 - Compatibility updates for Android 15 & 16
@@ -197,6 +200,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#350]: https://github.com/FossifyOrg/Messages/issues/350
 [#359]: https://github.com/FossifyOrg/Messages/issues/359
 [#376]: https://github.com/FossifyOrg/Messages/issues/376
+[#416]: https://github.com/FossifyOrg/Messages/issues/416
 [#456]: https://github.com/FossifyOrg/Messages/issues/456
 [#461]: https://github.com/FossifyOrg/Messages/issues/461
 [#561]: https://github.com/FossifyOrg/Messages/issues/561

@@ -137,7 +137,8 @@ class NewConversationActivity : SimpleActivity() {
 
     private fun isThirdPartyIntent(): Boolean {
         val result = SmsIntentParser.parse(intent)
-        if (result != null) {
+
+        if (result != null && (result.first.isNotEmpty() || result.second.isNotEmpty())) {
             val (body, recipients) = result
             launchThreadActivity(
                 phoneNumber = URLDecoder.decode(recipients.replace("+", "%2b").trim()),
