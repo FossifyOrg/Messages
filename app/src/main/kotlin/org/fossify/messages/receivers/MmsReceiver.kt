@@ -29,7 +29,17 @@ class MmsReceiver : MmsReceivedReceiver() {
 
     override fun isAddressBlocked(context: Context, address: String): Boolean {
         val normalizedAddress = address.normalizePhoneNumber()
-        return context.isNumberBlocked(normalizedAddress)
+        if (context.isNumberBlocked(normalizedAddress)) return true
+        if (context.baseConfig.blockUnknownNumbers) {
+            val privateCursor = context.getMyContactsCursor(
+                favoritesOnly = false,
+                withPhoneNumbersOnly = true
+            )
+            val isKnownContact = SimpleContactsHelper(context).existsSync(address, privateCursor)
+            return !isKnownContact
+        }
+
+        return false
     }
 
     override fun isContentBlocked(context: Context, content: String): Boolean {
@@ -39,20 +49,9 @@ class MmsReceiver : MmsReceivedReceiver() {
     override fun onMessageReceived(context: Context, messageUri: Uri) {
         val mms = context.getLatestMMS() ?: return
         val address = mms.getSender()?.phoneNumbers?.first()?.normalizedNumber ?: ""
-
         val size = context.resources.getDimension(R.dimen.notification_large_icon_size).toInt()
-        val privateCursor = context.getMyContactsCursor(false, true)
         ensureBackgroundThread {
-            if (context.baseConfig.blockUnknownNumbers) {
-                val simpleContactsHelper = SimpleContactsHelper(context)
-                simpleContactsHelper.exists(address, privateCursor) { exists ->
-                    if (exists) {
-                        handleMmsMessage(context, mms, size, address)
-                    }
-                }
-            } else {
-                handleMmsMessage(context, mms, size, address)
-            }
+            handleMmsMessage(context, mms, size, address)
         }
     }
 
