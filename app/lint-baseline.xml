@@ -57,6 +57,17 @@
     </issue>
 
     <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.5.1"
+        errorLine1="detektCompose = &quot;0.4.28&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
+            line="9"
+            column="17"/>
+    </issue>
+
+    <issue
         id="SwitchIntDef"
         message="Switch statement on an `int` with known associated constant missing case `Cursor.FIELD_TYPE_BLOB`"
         errorLine1="        when (getType(i)) {"
