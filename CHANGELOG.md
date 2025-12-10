@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed new conversation shortcut ([#416])
+- Fixed blocking MMS messages from unknown numbers ([#610])
 
 ## [1.6.0] - 2025-10-29
 ### Changed
@@ -207,6 +208,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#562]: https://github.com/FossifyOrg/Messages/issues/562
 [#574]: https://github.com/FossifyOrg/Messages/issues/574
 [#600]: https://github.com/FossifyOrg/Messages/issues/600
+[#610]: https://github.com/FossifyOrg/Messages/issues/610
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.6.0...HEAD
 [1.6.0]: https://github.com/FossifyOrg/Messages/compare/1.5.0...1.6.0

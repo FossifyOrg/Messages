@@ -53,6 +53,7 @@ class SmsReceiver : BroadcastReceiver() {
             }
             if (context.baseConfig.blockUnknownNumbers) {
                 val simpleContactsHelper = SimpleContactsHelper(context)
+                // Maybe switch to existsSync()? No?
                 simpleContactsHelper.exists(address, privateCursor) { exists ->
                     if (exists) {
                         handleMessage(context, address, subject, body, date, read, threadId, type, subscriptionId, status)
