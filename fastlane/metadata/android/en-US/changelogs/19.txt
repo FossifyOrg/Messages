@@ -1,0 +1,17 @@
+Added:
+
+• Ability to select and copy multiple text messages at once 
+
+Changed:
+
+• Updated translations
+
+Deprecated:
+
+• Deprecated the recycle bin feature 
+
+Fixed:
+
+• Fixed new conversation shortcut 
+• Fixed blocking MMS messages from unknown numbers 
+
