@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Ability to select and copy multiple text messages at once ([#600])
 
+### Deprecated
+- Deprecated the recycle bin feature ([#290])
+
 ### Fixed
 - Fixed new conversation shortcut ([#416])
 - Fixed blocking MMS messages from unknown numbers ([#610])
@@ -194,6 +197,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#279]: https://github.com/FossifyOrg/Messages/issues/279
 [#287]: https://github.com/FossifyOrg/Messages/issues/287
 [#288]: https://github.com/FossifyOrg/Messages/issues/288
+[#290]: https://github.com/FossifyOrg/Messages/issues/290
 [#294]: https://github.com/FossifyOrg/Messages/issues/294
 [#309]: https://github.com/FossifyOrg/Messages/issues/309
 [#334]: https://github.com/FossifyOrg/Messages/issues/334
