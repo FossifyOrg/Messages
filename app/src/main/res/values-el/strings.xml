@@ -64,7 +64,7 @@
     <string name="delete_whole_conversation_confirmation">Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα μηνύματα αυτής της συνομιλίας;</string>
     <string name="archive_confirmation">Σίγουρα θέλετε να αρχειοθετήσετε %s;</string>
     <string name="restore_whole_conversation_confirmation">Είστε σίγουροι ότι θέλετε να επαναφέρετε όλα τα μηνύματα αυτής της συνομιλίας;</string>
-    <string name="restore_confirmation">Είστε σίγουροι ότι θέλετε να επαναφέρετε %s;</string>
+    <string name="restore_confirmation">Είστε σίγουροι ότι θέλετε να επαναφέρετε το %s;</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d συνομιλία</item>
         <item quantity="other">%d συνομιλίες</item>
@@ -78,7 +78,7 @@
     <string name="manage_blocked_keywords">Διαχείριση αποκλεισμένων λέξεων-κλειδιών</string>
     <string name="not_blocking_keywords">Δεν αποκλείετε καμία λέξη-κλειδί. Μπορείτε να προσθέσετε λέξεις-κλειδιά εδώ για να αποκλείσετε όλα τα μηνύματα που τα περιέχουν.</string>
     <string name="add_a_blocked_keyword">Προσθέστε μια αποκλεισμένη λέξη-κλειδί</string>
-    <string name="lock_screen_visibility">Εμφάνιση ειδοπ/σεων σε Κλειδωμένη οθόνη</string>
+    <string name="lock_screen_visibility">Εμφάνιση σε κλειδωμένη οθόνη</string>
     <string name="sender_and_message">Αποστολέας και μήνυμα</string>
     <string name="sender_only">Αποστολέας μόνο</string>
     <string name="enable_delivery_reports">Ενεργοποίηση αναφορών παράδοσης</string>
@@ -102,7 +102,7 @@
     <string name="error_service_is_unavailable">Αδυναμία αποστολής μηνύματος. Η υπηρεσία δεν είναι διαθέσιμη</string>
     <string name="error_radio_turned_off">Αδυναμία αποστολής μηνύματος, η οπρόσβαση radio απενεργοποιήθηκε</string>
     <string name="carrier_send_error">Αδυναμία αποστολής μηνύματος, σφάλμα φορέα</string>
-    <string name="unknown_error_occurred_sending_message">Αδυναμία αποστολής μηνύματος, κωδικός σφάλματος: %1$d</string>
+    <string name="unknown_error_occurred_sending_message">Αδυναμία αποστολής μηνύματος, κωδικός σφάλματος: %d</string>
     <string name="invalid_short_code">Αδυναμία απάντησης σε σύντομους κωδικούς όπως αυτός</string>
     <string name="invalid_short_code_desc">Μπορείτε να απαντήσετε μόνο σε σύντομους κωδικούς με αριθμούς όπως \"503501\" αλλά όχι σε κωδικούς που περιέχουν γράμματα και αριθμούς όπως \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Το μέγεθος συνημμένου υπερβαίνει το μέγιστο όριο MMS</string>
@@ -116,4 +116,9 @@
     <string name="faq_3_text">Ναι, μπορείτε να προγραμματίσετε την αποστολή μηνυμάτων στο μέλλον πατώντας παρατεταμένα το κουμπί \"Αποστολή\" και επιλέγοντας την επιθυμητή ημερομηνία και ώρα.</string>
     <string name="app_launcher_name">Μηνύματα</string>
     <string name="enable_custom_notifications">Ενεργοποίηση προσαρμοσμένων ειδοποιήσεων</string>
+    <string name="keep_conversations_archived">Διατήρηση των συνομιλιών αρχειοθετημένων</string>
+    <string name="faq_4_title">Γιατί οι απαντήσεις μου στα ομαδικά μηνύματα εμφανίζονται ως μεμονωμένα μηνύματα προς τους παραλήπτες;</string>
+    <string name="faq_4_text">Πρέπει να ενεργοποιήσετε την επιλογή \"Αποστολή ομαδικών μηνυμάτων ως MMS\" στις ρυθμίσεις της εφαρμογής. Αυτό θα διασφαλίσει ότι τα ομαδικά μηνύματα αποστέλλονται ως σωστά MMS, επιτρέποντας σε όλους τους συμμετέχοντες να βλέπουν τις απαντήσεις ο ένας του άλλου.</string>
+    <string name="import_blocked_keywords">Εισαγωγή αποκλεισμένων λέξεων-κλειδιών</string>
+    <string name="export_blocked_keywords">Εξαγωγή αποκλεισμένων λέξεων-κλειδιών</string>
 </resources>
