@@ -6,7 +6,7 @@ kotlinxSerializationJson = "1.9.0"
 ksp = "2.3.3"
 #Detekt
 detekt = "1.23.8"
-detektCompose = "0.4.28"
+detektCompose = "0.5.2"
 #AndroidX
 androidx-constraintlayout = "2.2.1"
 androidx-swiperefreshlayout = "1.2.0"
