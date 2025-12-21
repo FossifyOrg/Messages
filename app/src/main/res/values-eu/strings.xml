@@ -37,4 +37,18 @@
     <string name="schedule_send">Programatu bidalketa</string>
     <string name="cancel_schedule_send">Utzi programatutako bidalketa</string>
     <string name="must_pick_time_in_the_future">Etorkizuneko une bat aukeratu behar duzu</string>
+    <string name="schedule_send_warning">Mantendu mugikorra piztuta eta ziurtatu ezerk ez duela aplikazioa hiltzen atzeko planoan dagoen bitartean.</string>
+    <string name="update_message">Eguneratu mezua</string>
+    <string name="send_now">Bidali orain</string>
+    <string name="message_details">Mezuaren xehetasunak</string>
+    <string name="message_details_sender">Bidaltzailea</string>
+    <string name="message_details_receiver">Hartzailea</string>
+    <string name="message_details_sent_at">Honi bidalia</string>
+    <string name="message_details_received_at">Jasotze data</string>
+    <string name="channel_received_sms">Jasotako mezua</string>
+    <string name="new_message">Mezu berria</string>
+    <string name="mark_as_read">Markatu Irakurri gisa</string>
+    <string name="mark_as_unread">Markatu ez irakurri gisa</string>
+    <string name="me">Ni</string>
+    <string name="enable_custom_notifications">Gaitu jakinarazpen pertsonalizatuak</string>
 </resources>
