@@ -37,6 +37,7 @@ class SmsReceiver : BroadcastReceiver() {
                 val parts = Telephony.Sms.Intents.getMessagesFromIntent(intent)
                 if (parts.isEmpty()) return@ensureBackgroundThread
 
+                // this is how it has always worked, but need to revisit this.
                 val address = parts.last().originatingAddress.orEmpty()
                 if (address.isBlank()) return@ensureBackgroundThread
                 val subject = parts.last().pseudoSubject.orEmpty()
