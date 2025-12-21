@@ -88,7 +88,7 @@ class MmsReceiver : MmsReceivedReceiver() {
         )
 
         val conversation = context.getConversations(mms.threadId).firstOrNull() ?: return
-        context.insertOrUpdateConversation(conversation)
+        runCatching { context.insertOrUpdateConversation(conversation) }
         if (context.shouldUnarchive()) {
             context.updateConversationArchivedStatus(mms.threadId, false)
         }
