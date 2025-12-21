@@ -2,8 +2,6 @@ package org.fossify.messages.receivers
 
 import android.content.Context
 import android.net.Uri
-import android.os.Handler
-import android.os.Looper
 import com.bumptech.glide.Glide
 import com.klinker.android.send_message.MmsReceivedReceiver
 import org.fossify.commons.extensions.baseConfig
@@ -16,6 +14,7 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getLatestMMS
+import org.fossify.messages.extensions.getNameFromAddress
 import org.fossify.messages.extensions.insertOrUpdateConversation
 import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
@@ -31,12 +30,10 @@ class MmsReceiver : MmsReceivedReceiver() {
         val normalizedAddress = address.normalizePhoneNumber()
         if (context.isNumberBlocked(normalizedAddress)) return true
         if (context.baseConfig.blockUnknownNumbers) {
-            val privateCursor = context.getMyContactsCursor(
-                favoritesOnly = false,
-                withPhoneNumbersOnly = true
-            )
-            val isKnownContact = SimpleContactsHelper(context).existsSync(address, privateCursor)
-            return !isKnownContact
+            context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
+                val isKnownContact = SimpleContactsHelper(context).existsSync(address, it)
+                return !isKnownContact
+            }
         }
 
         return false
@@ -76,25 +73,26 @@ class MmsReceiver : MmsReceivedReceiver() {
             null
         }
 
-        Handler(Looper.getMainLooper()).post {
-            context.showReceivedMessageNotification(
-                messageId = mms.id,
-                address = address,
-                body = mms.body,
-                threadId = mms.threadId,
-                bitmap = glideBitmap
-            )
 
-            ensureBackgroundThread {
-                val conversation = context.getConversations(mms.threadId).firstOrNull()
-                    ?: return@ensureBackgroundThread
-                context.insertOrUpdateConversation(conversation)
-                if (context.shouldUnarchive()) {
-                    context.updateConversationArchivedStatus(mms.threadId, false)
-                }
-                refreshMessages()
-                refreshConversations()
-            }
+        val senderName = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
+            context.getNameFromAddress(address, it)
         }
+
+        context.showReceivedMessageNotification(
+            messageId = mms.id,
+            address = address,
+            senderName = senderName,
+            body = mms.body,
+            threadId = mms.threadId,
+            bitmap = glideBitmap
+        )
+
+        val conversation = context.getConversations(mms.threadId).firstOrNull() ?: return
+        context.insertOrUpdateConversation(conversation)
+        if (context.shouldUnarchive()) {
+            context.updateConversationArchivedStatus(mms.threadId, false)
+        }
+        refreshMessages()
+        refreshConversations()
     }
 }

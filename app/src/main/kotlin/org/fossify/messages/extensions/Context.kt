@@ -1050,24 +1050,20 @@ fun Context.getThreadId(addresses: Set<String>): Long {
 fun Context.showReceivedMessageNotification(
     messageId: Long,
     address: String,
+    senderName: String,
     body: String,
     threadId: Long,
     bitmap: Bitmap?,
 ) {
-    val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-    ensureBackgroundThread {
-        val senderName = getNameFromAddress(address, privateCursor)
-
-        Handler(Looper.getMainLooper()).post {
-            notificationHelper.showMessageNotification(
-                messageId = messageId,
-                address = address,
-                body = body,
-                threadId = threadId,
-                bitmap = bitmap,
-                sender = senderName
-            )
-        }
+    Handler(Looper.getMainLooper()).post {
+        notificationHelper.showMessageNotification(
+            messageId = messageId,
+            address = address,
+            body = body,
+            threadId = threadId,
+            bitmap = bitmap,
+            sender = senderName
+        )
     }
 }
 

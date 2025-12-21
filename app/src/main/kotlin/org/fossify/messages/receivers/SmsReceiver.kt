@@ -3,8 +3,6 @@ package org.fossify.messages.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
 import android.provider.Telephony
 import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.getMyContactsCursor
@@ -29,104 +27,127 @@ import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
 
 class SmsReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context, intent: Intent) {
-        val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
-        var address = ""
-        var body = ""
-        var subject = ""
-        var date = 0L
-        var threadId = 0L
-        var status = Telephony.Sms.STATUS_NONE
-        val type = Telephony.Sms.MESSAGE_TYPE_INBOX
-        val read = 0
-        val subscriptionId = intent.getIntExtra("subscription", -1)
 
-        val privateCursor = context.getMyContactsCursor(false, true)
+    override fun onReceive(context: Context, intent: Intent) {
+        val pending = goAsync()
+        val appContext = context.applicationContext
+
         ensureBackgroundThread {
-            messages.forEach {
-                address = it.originatingAddress ?: ""
-                subject = it.pseudoSubject
-                status = it.status
-                body += it.messageBody
-                date = System.currentTimeMillis()
-                threadId = context.getThreadId(address)
-            }
-            if (context.baseConfig.blockUnknownNumbers) {
-                val simpleContactsHelper = SimpleContactsHelper(context)
-                // Maybe switch to existsSync()? No?
-                simpleContactsHelper.exists(address, privateCursor) { exists ->
-                    if (exists) {
-                        handleMessage(context, address, subject, body, date, read, threadId, type, subscriptionId, status)
+            try {
+                val parts = Telephony.Sms.Intents.getMessagesFromIntent(intent)
+                if (parts.isEmpty()) return@ensureBackgroundThread
+
+                val address = parts.last().originatingAddress.orEmpty()
+                if (address.isBlank()) return@ensureBackgroundThread
+                val subject = parts.last().pseudoSubject.orEmpty()
+                val status = parts.last().status
+                val body = buildString { parts.forEach { append(it.messageBody.orEmpty()) } }
+
+                if (isMessageFilteredOut(appContext, body)) return@ensureBackgroundThread
+                if (appContext.isNumberBlocked(address)) return@ensureBackgroundThread
+                if (appContext.baseConfig.blockUnknownNumbers) {
+                    appContext.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
+                        val isKnownContact = SimpleContactsHelper(appContext).existsSync(address, it)
+                        if (!isKnownContact) return@ensureBackgroundThread
                     }
                 }
-            } else {
-                handleMessage(context, address, subject, body, date, read, threadId, type, subscriptionId, status)
+
+                val date = System.currentTimeMillis()
+                val threadId = appContext.getThreadId(address)
+                val subscriptionId = intent.getIntExtra("subscription", -1)
+
+                handleMessageSync(
+                    context = appContext,
+                    address = address,
+                    subject = subject,
+                    body = body,
+                    date = date,
+                    threadId = threadId,
+                    subscriptionId = subscriptionId,
+                    status = status
+                )
+            } finally {
+                pending.finish()
             }
         }
     }
 
-    private fun handleMessage(
+    private fun handleMessageSync(
         context: Context,
         address: String,
         subject: String,
         body: String,
         date: Long,
-        read: Int,
+        read: Int = 0,
         threadId: Long,
-        type: Int,
+        type: Int = Telephony.Sms.MESSAGE_TYPE_INBOX,
         subscriptionId: Int,
         status: Int
     ) {
-        if (isMessageFilteredOut(context, body)) {
-            return
-        }
-
         val photoUri = SimpleContactsHelper(context).getPhotoUriFromPhoneNumber(address)
         val bitmap = context.getNotificationBitmap(photoUri)
-        Handler(Looper.getMainLooper()).post {
-            if (!context.isNumberBlocked(address)) {
-                val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-                ensureBackgroundThread {
-                    val newMessageId = context.insertNewSMS(address, subject, body, date, read, threadId, type, subscriptionId)
 
-                    val conversation = context.getConversations(threadId).firstOrNull() ?: return@ensureBackgroundThread
-                    try {
-                        context.insertOrUpdateConversation(conversation)
-                    } catch (ignored: Exception) {
-                    }
+        val newMessageId = context.insertNewSMS(
+            address = address,
+            subject = subject,
+            body = body,
+            date = date,
+            read = read,
+            threadId = threadId,
+            type = type,
+            subscriptionId = subscriptionId
+        )
 
-                    val senderName = context.getNameFromAddress(address, privateCursor)
-                    val phoneNumber = PhoneNumber(address, 0, "", address)
-                    val participant = SimpleContact(0, 0, senderName, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())
-                    val participants = arrayListOf(participant)
-                    val messageDate = (date / 1000).toInt()
-
-                    val message =
-                        Message(
-                            newMessageId,
-                            body,
-                            type,
-                            status,
-                            participants,
-                            messageDate,
-                            false,
-                            threadId,
-                            false,
-                            null,
-                            address,
-                            senderName,
-                            photoUri,
-                            subscriptionId
-                        )
-                    context.messagesDB.insertOrUpdate(message)
-                    if (context.shouldUnarchive()) {
-                        context.updateConversationArchivedStatus(threadId, false)
-                    }
-                    refreshMessages()
-                    refreshConversations()
-                    context.showReceivedMessageNotification(newMessageId, address, body, threadId, bitmap)
-                }
-            }
+        context.getConversations(threadId).firstOrNull()?.let { conv ->
+            runCatching { context.insertOrUpdateConversation(conv) }
         }
+
+        val senderName = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
+            context.getNameFromAddress(address, it)
+        }
+
+        val participant = SimpleContact(
+            rawId = 0,
+            contactId = 0,
+            name = senderName,
+            photoUri = photoUri,
+            phoneNumbers = arrayListOf(PhoneNumber(value = address, type = 0, label = "", normalizedNumber = address)),
+            birthdays = ArrayList(),
+            anniversaries = ArrayList()
+        )
+
+        val message = Message(
+            id = newMessageId,
+            body = body,
+            type = type,
+            status = status,
+            participants = arrayListOf(participant),
+            date = (date / 1000).toInt(),
+            read = false,
+            threadId = threadId,
+            isMMS = false,
+            attachment = null,
+            senderPhoneNumber = address,
+            senderName = senderName,
+            senderPhotoUri = photoUri,
+            subscriptionId = subscriptionId
+        )
+
+        context.messagesDB.insertOrUpdate(message)
+
+        if (context.shouldUnarchive()) {
+            context.updateConversationArchivedStatus(threadId, false)
+        }
+
+        refreshMessages()
+        refreshConversations()
+        context.showReceivedMessageNotification(
+            messageId = newMessageId,
+            address = address,
+            senderName = senderName,
+            body = body,
+            threadId = threadId,
+            bitmap = bitmap
+        )
     }
 }
