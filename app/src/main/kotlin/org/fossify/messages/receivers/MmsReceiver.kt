@@ -7,7 +7,6 @@ import com.klinker.android.send_message.MmsReceivedReceiver
 import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.isNumberBlocked
-import org.fossify.commons.extensions.normalizePhoneNumber
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
@@ -27,8 +26,7 @@ import org.fossify.messages.models.Message
 class MmsReceiver : MmsReceivedReceiver() {
 
     override fun isAddressBlocked(context: Context, address: String): Boolean {
-        val normalizedAddress = address.normalizePhoneNumber()
-        if (context.isNumberBlocked(normalizedAddress)) return true
+        if (context.isNumberBlocked(address)) return true
         if (context.baseConfig.blockUnknownNumbers) {
             context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
                 val isKnownContact = SimpleContactsHelper(context).existsSync(address, it)
