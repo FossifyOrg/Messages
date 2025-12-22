@@ -51,4 +51,16 @@
     <string name="mark_as_unread">Markatu ez irakurri gisa</string>
     <string name="me">Ni</string>
     <string name="enable_custom_notifications">Gaitu jakinarazpen pertsonalizatuak</string>
+    <string name="unarchive">Desartxibatu</string>
+    <string name="empty_archive">Ezabatu gordetako elkarrizketa guztiak</string>
+    <string name="archived_conversations">Artxibatu</string>
+    <string name="show_archived_conversations">Erakutsi gordetako elkarrizketak</string>
+    <string name="archive">Artxiboa</string>
+    <string name="no_archived_conversations">Ez da aurkitu gordetako elkarrizketarik</string>
+    <string name="archive_emptied_successfully">Artxiboa behar bezala hustu da</string>
+    <string name="empty_archive_confirmation">Ziur zaude artxiboa hustu nahi duzula? Gordetako elkarrizketa guztiak galduko dira betiko.</string>
+    <string name="keep_conversations_archived">Mantendu elkarrizketak artxibatuta</string>
+    <string name="restore">Leheneratu</string>
+    <string name="restore_all_messages">Leheneratu mezu guztiak</string>
+    <string name="empty_recycle_bin_messages_confirmation">Ziur zaude zakarrontzia hustu nahi duzula? Mezuak betiko galduko dira.</string>
 </resources>
