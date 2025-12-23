@@ -1180,9 +1180,10 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun copyNumberToClipboard() {
-        val phoneNumber = participants.firstOrNull()?.phoneNumbers?.firstOrNull() ?: return
-        val numberToCopy = phoneNumber.value.ifBlank { phoneNumber.normalizedNumber }
-        copyToClipboard(numberToCopy)
+        val phoneNumber = conversation?.phoneNumber
+            ?.ifEmpty { participants.firstOrNull()?.phoneNumbers?.firstOrNull()?.value }
+            ?: return
+        copyToClipboard(phoneNumber)
     }
 
     private fun managePeople() {
