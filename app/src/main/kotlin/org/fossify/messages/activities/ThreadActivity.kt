@@ -370,12 +370,9 @@ class ThreadActivity : SimpleActivity() {
             findItem(R.id.manage_people).isVisible = !isSpecialNumber() && !isRecycleBin
             findItem(R.id.mark_as_unread).isVisible = threadItems.isNotEmpty() && !isRecycleBin
 
-            // allow saving number in cases when we don't have it stored yet and it is a casual readable number
+            // allow saving number in cases when we don't have it stored yet
             findItem(R.id.add_number_to_contact).isVisible =
-                participants.size == 1
-                        && participants.first().name == firstPhoneNumber
-                        && firstPhoneNumber.any { it.isDigit() }
-                        && !isRecycleBin
+                participants.size == 1 && participants.first().name == firstPhoneNumber && !isRecycleBin
             findItem(R.id.copy_number).isVisible =
                 participants.size == 1 && !firstPhoneNumber.isNullOrEmpty() && !isRecycleBin
         }
