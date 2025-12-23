@@ -5,11 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.8.0] - 2025-12-23
 ### Added
 - Added "Copy number to clipboard" option inside chat overflow menu ([#651])
 
 ### Changed
 - Made "Add number to contact" option visible for alphanumeric senders ([#232])
+- Updated translations
 
 ### Fixed
 - Fixed missing notifications in some cases ([#159])
@@ -204,6 +207,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
+[#232]: https://github.com/FossifyOrg/Messages/issues/232
 [#234]: https://github.com/FossifyOrg/Messages/issues/234
 [#243]: https://github.com/FossifyOrg/Messages/issues/243
 [#262]: https://github.com/FossifyOrg/Messages/issues/262
@@ -231,7 +235,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
 [#651]: https://github.com/FossifyOrg/Messages/issues/651
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.7.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.8.0...HEAD
+[1.8.0]: https://github.com/FossifyOrg/Messages/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/FossifyOrg/Messages/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/FossifyOrg/Messages/compare/1.5.0...1.6.0
 [1.5.0]: https://github.com/FossifyOrg/Messages/compare/1.4.0...1.5.0
