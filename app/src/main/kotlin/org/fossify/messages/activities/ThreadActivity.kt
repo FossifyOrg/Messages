@@ -28,6 +28,7 @@ import android.text.format.DateUtils.FORMAT_SHOW_TIME
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.OvershootInterpolator
@@ -42,12 +43,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +60,7 @@ import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beGone
 import org.fossify.commons.extensions.beVisible
 import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.copyToClipboard
 import org.fossify.commons.extensions.darkenColor
 import org.fossify.commons.extensions.formatDate
 import org.fossify.commons.extensions.getBottomNavigationBackgroundColor
@@ -374,34 +372,40 @@ class ThreadActivity : SimpleActivity() {
 
             // allow saving number in cases when we don't have it stored yet and it is a casual readable number
             findItem(R.id.add_number_to_contact).isVisible =
-                participants.size == 1 && participants.first().name == firstPhoneNumber && firstPhoneNumber.any {
-                    it.isDigit()
-                } && !isRecycleBin
+                participants.size == 1
+                        && participants.first().name == firstPhoneNumber
+                        && firstPhoneNumber.any { it.isDigit() }
+                        && !isRecycleBin
+            findItem(R.id.copy_number).isVisible =
+                participants.size == 1 && !firstPhoneNumber.isNullOrEmpty() && !isRecycleBin
         }
     }
 
     private fun setupOptionsMenu() {
         binding.threadToolbar.setOnMenuItemClickListener { menuItem ->
-            if (participants.isEmpty()) {
-                return@setOnMenuItemClickListener true
-            }
-
-            when (menuItem.itemId) {
-                R.id.block_number -> tryBlocking()
-                R.id.delete -> askConfirmDelete()
-                R.id.restore -> askConfirmRestoreAll()
-                R.id.archive -> archiveConversation()
-                R.id.unarchive -> unarchiveConversation()
-                R.id.rename_conversation -> renameConversation()
-                R.id.conversation_details -> launchConversationDetails(threadId)
-                R.id.add_number_to_contact -> addNumberToContact()
-                R.id.dial_number -> dialNumber()
-                R.id.manage_people -> managePeople()
-                R.id.mark_as_unread -> markAsUnread()
-                else -> return@setOnMenuItemClickListener false
-            }
-            return@setOnMenuItemClickListener true
+            if (participants.isEmpty()) return@setOnMenuItemClickListener true
+            return@setOnMenuItemClickListener handleMenuItemAction(menuItem)
         }
+    }
+
+    private fun handleMenuItemAction(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            R.id.block_number -> tryBlocking()
+            R.id.delete -> askConfirmDelete()
+            R.id.restore -> askConfirmRestoreAll()
+            R.id.archive -> archiveConversation()
+            R.id.unarchive -> unarchiveConversation()
+            R.id.rename_conversation -> renameConversation()
+            R.id.conversation_details -> launchConversationDetails(threadId)
+            R.id.add_number_to_contact -> addNumberToContact()
+            R.id.copy_number -> copyNumberToClipboard()
+            R.id.dial_number -> dialNumber()
+            R.id.manage_people -> managePeople()
+            R.id.mark_as_unread -> markAsUnread()
+            else -> return false
+        }
+
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -1173,6 +1177,13 @@ class ThreadActivity : SimpleActivity() {
     private fun dialNumber() {
         val phoneNumber = participants.first().phoneNumbers.first().normalizedNumber
         dialNumber(phoneNumber)
+    }
+
+    private fun copyNumberToClipboard() {
+        val phoneNumber = conversation?.phoneNumber
+            ?.ifEmpty { participants.firstOrNull()?.phoneNumbers?.firstOrNull()?.value }
+            ?: return
+        copyToClipboard(phoneNumber)
     }
 
     private fun managePeople() {

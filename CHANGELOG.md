@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added "Copy number to clipboard" option inside chat overflow menu ([#651])
+
 ### Fixed
 - Fixed missing notifications in some cases ([#159])
 - Fixed incorrect blocking of MMS messages in some rare cases ([#644])
@@ -223,6 +226,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#600]: https://github.com/FossifyOrg/Messages/issues/600
 [#610]: https://github.com/FossifyOrg/Messages/issues/610
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
+[#651]: https://github.com/FossifyOrg/Messages/issues/651
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.7.0...HEAD
 [1.7.0]: https://github.com/FossifyOrg/Messages/compare/1.6.0...1.7.0
