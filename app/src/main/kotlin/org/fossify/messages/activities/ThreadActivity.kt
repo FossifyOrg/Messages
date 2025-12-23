@@ -28,6 +28,7 @@ import android.text.format.DateUtils.FORMAT_SHOW_TIME
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.OvershootInterpolator
@@ -42,12 +43,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -386,27 +383,29 @@ class ThreadActivity : SimpleActivity() {
 
     private fun setupOptionsMenu() {
         binding.threadToolbar.setOnMenuItemClickListener { menuItem ->
-            if (participants.isEmpty()) {
-                return@setOnMenuItemClickListener true
-            }
-
-            when (menuItem.itemId) {
-                R.id.block_number -> tryBlocking()
-                R.id.delete -> askConfirmDelete()
-                R.id.restore -> askConfirmRestoreAll()
-                R.id.archive -> archiveConversation()
-                R.id.unarchive -> unarchiveConversation()
-                R.id.rename_conversation -> renameConversation()
-                R.id.conversation_details -> launchConversationDetails(threadId)
-                R.id.add_number_to_contact -> addNumberToContact()
-                R.id.copy_number -> copyNumberToClipboard()
-                R.id.dial_number -> dialNumber()
-                R.id.manage_people -> managePeople()
-                R.id.mark_as_unread -> markAsUnread()
-                else -> return@setOnMenuItemClickListener false
-            }
-            return@setOnMenuItemClickListener true
+            if (participants.isEmpty()) return@setOnMenuItemClickListener true
+            return@setOnMenuItemClickListener handleMenuItemAction(menuItem)
         }
+    }
+
+    private fun handleMenuItemAction(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            R.id.block_number -> tryBlocking()
+            R.id.delete -> askConfirmDelete()
+            R.id.restore -> askConfirmRestoreAll()
+            R.id.archive -> archiveConversation()
+            R.id.unarchive -> unarchiveConversation()
+            R.id.rename_conversation -> renameConversation()
+            R.id.conversation_details -> launchConversationDetails(threadId)
+            R.id.add_number_to_contact -> addNumberToContact()
+            R.id.copy_number -> copyNumberToClipboard()
+            R.id.dial_number -> dialNumber()
+            R.id.manage_people -> managePeople()
+            R.id.mark_as_unread -> markAsUnread()
+            else -> return false
+        }
+
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
