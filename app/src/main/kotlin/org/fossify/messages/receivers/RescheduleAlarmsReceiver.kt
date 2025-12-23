@@ -7,7 +7,7 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.extensions.rescheduleAllScheduledMessages
 
 /**
- * Reschedules exact alarms after boot/package updates and catches up overdue scheduled messages.
+ * Reschedules alarms after boot/package updates.
  */
 class RescheduleAlarmsReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
