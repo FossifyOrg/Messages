@@ -68,6 +68,7 @@ import org.fossify.messages.interfaces.MessagesDao
 import org.fossify.messages.messaging.MessagingUtils
 import org.fossify.messages.messaging.MessagingUtils.Companion.ADDRESS_SEPARATOR
 import org.fossify.messages.messaging.SmsSender
+import org.fossify.messages.messaging.scheduleMessage
 import org.fossify.messages.models.Attachment
 import org.fossify.messages.models.Conversation
 import org.fossify.messages.models.Draft
@@ -1329,6 +1330,18 @@ fun Context.clearExpiredScheduledMessages(threadId: Long, messagesToDelete: List
     } catch (e: Exception) {
         e.printStackTrace()
         return
+    }
+}
+
+fun Context.rescheduleAllScheduledMessages() {
+    val scheduledMessages = try {
+        messagesDB.getAllScheduledMessages()
+    } catch (_: Exception) {
+        return
+    }
+
+    scheduledMessages.forEach { message ->
+        runCatching { scheduleMessage(message) }
     }
 }
 

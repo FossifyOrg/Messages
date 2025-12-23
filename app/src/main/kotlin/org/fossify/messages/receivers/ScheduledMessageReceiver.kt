@@ -22,12 +22,24 @@ class ScheduledMessageReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-        val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "simple.messenger:scheduled.message.receiver")
-        wakelock.acquire(3000)
+        val wakelock = powerManager.newWakeLock(
+            PowerManager.PARTIAL_WAKE_LOCK,
+            "simple.messenger:scheduled.message.receiver"
+        )
+        wakelock.acquire(10_000)
 
-
+        val pendingResult = goAsync()
         ensureBackgroundThread {
-            handleIntent(context, intent)
+            try {
+                handleIntent(context, intent)
+            } finally {
+                try {
+                    if (wakelock.isHeld) wakelock.release()
+                } catch (_: Exception) {
+                }
+
+                pendingResult.finish()
+            }
         }
     }
 
