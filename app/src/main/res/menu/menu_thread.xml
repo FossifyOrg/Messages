@@ -31,6 +31,10 @@
         android:title="@string/add_number_to_contact"
         app:showAsAction="never" />
     <item
+        android:id="@+id/copy_number"
+        android:title="@string/copy_number_to_clipboard"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/rename_conversation"
         android:showAsAction="never"
         android:title="@string/rename_conversation"

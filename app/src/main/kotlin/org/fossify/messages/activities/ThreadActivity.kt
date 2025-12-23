@@ -63,6 +63,7 @@ import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beGone
 import org.fossify.commons.extensions.beVisible
 import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.copyToClipboard
 import org.fossify.commons.extensions.darkenColor
 import org.fossify.commons.extensions.formatDate
 import org.fossify.commons.extensions.getBottomNavigationBackgroundColor
@@ -353,6 +354,7 @@ class ThreadActivity : SimpleActivity() {
 
     private fun refreshMenuItems() {
         val firstPhoneNumber = participants.firstOrNull()?.phoneNumbers?.firstOrNull()?.value
+        val isGroupConversation = participants.size > 1
         val archiveAvailable = config.isArchiveAvailable
         binding.threadToolbar.menu.apply {
             findItem(R.id.delete).isVisible = threadItems.isNotEmpty()
@@ -362,21 +364,24 @@ class ThreadActivity : SimpleActivity() {
             findItem(R.id.unarchive).isVisible =
                 threadItems.isNotEmpty() && conversation?.isArchived == true && !isRecycleBin && archiveAvailable
             findItem(R.id.rename_conversation).isVisible =
-                participants.size > 1 && conversation != null && !isRecycleBin
+                isGroupConversation && conversation != null && !isRecycleBin
             findItem(R.id.conversation_details).isVisible = conversation != null && !isRecycleBin
             findItem(R.id.block_number).title =
                 addLockedLabelIfNeeded(org.fossify.commons.R.string.block_number)
             findItem(R.id.block_number).isVisible = !isRecycleBin
             findItem(R.id.dial_number).isVisible =
-                participants.size == 1 && !isSpecialNumber() && !isRecycleBin
+                !isGroupConversation && !isSpecialNumber() && !isRecycleBin
             findItem(R.id.manage_people).isVisible = !isSpecialNumber() && !isRecycleBin
             findItem(R.id.mark_as_unread).isVisible = threadItems.isNotEmpty() && !isRecycleBin
 
             // allow saving number in cases when we don't have it stored yet and it is a casual readable number
             findItem(R.id.add_number_to_contact).isVisible =
-                participants.size == 1 && participants.first().name == firstPhoneNumber && firstPhoneNumber.any {
-                    it.isDigit()
-                } && !isRecycleBin
+                !isGroupConversation
+                        && participants.first().name == firstPhoneNumber
+                        && firstPhoneNumber.any { it.isDigit() }
+                        && !isRecycleBin
+            findItem(R.id.copy_number).isVisible =
+                !isGroupConversation && !firstPhoneNumber.isNullOrEmpty() && !isRecycleBin
         }
     }
 
@@ -395,6 +400,7 @@ class ThreadActivity : SimpleActivity() {
                 R.id.rename_conversation -> renameConversation()
                 R.id.conversation_details -> launchConversationDetails(threadId)
                 R.id.add_number_to_contact -> addNumberToContact()
+                R.id.copy_number -> copyNumberToClipboard()
                 R.id.dial_number -> dialNumber()
                 R.id.manage_people -> managePeople()
                 R.id.mark_as_unread -> markAsUnread()
@@ -1173,6 +1179,12 @@ class ThreadActivity : SimpleActivity() {
     private fun dialNumber() {
         val phoneNumber = participants.first().phoneNumbers.first().normalizedNumber
         dialNumber(phoneNumber)
+    }
+
+    private fun copyNumberToClipboard() {
+        val phoneNumber = participants.firstOrNull()?.phoneNumbers?.firstOrNull() ?: return
+        val numberToCopy = phoneNumber.value.ifBlank { phoneNumber.normalizedNumber }
+        copyToClipboard(numberToCopy)
     }
 
     private fun managePeople() {
