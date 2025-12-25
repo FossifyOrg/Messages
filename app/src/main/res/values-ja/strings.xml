@@ -113,4 +113,5 @@
     <string name="archive_confirmation">%sをアーカイブしてよろしいですか？</string>
     <string name="restore_whole_conversation_confirmation">この会話の全てのメッセージを復元してよろしいですか？</string>
     <string name="couldnt_download_mms">MMSをダウンロードできませんでした</string>
+    <string name="keep_conversations_archived">会話をアーカイブに保存する</string>
 </resources>
