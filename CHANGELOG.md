@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed missing notifications in some cases ([#159])
 - Fixed incorrect blocking of MMS messages in some rare cases ([#644])
+- Fixed issue with importing alphanumeric blocked numbers ([#282])
 
 ## [1.7.0] - 2025-12-16
 ### Added
@@ -210,6 +211,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#264]: https://github.com/FossifyOrg/Messages/issues/264
 [#274]: https://github.com/FossifyOrg/Messages/issues/274
 [#279]: https://github.com/FossifyOrg/Messages/issues/279
+[#282]: https://github.com/FossifyOrg/Messages/issues/282
 [#287]: https://github.com/FossifyOrg/Messages/issues/287
 [#288]: https://github.com/FossifyOrg/Messages/issues/288
 [#290]: https://github.com/FossifyOrg/Messages/issues/290
