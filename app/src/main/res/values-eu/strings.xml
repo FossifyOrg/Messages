@@ -63,4 +63,29 @@
     <string name="restore">Leheneratu</string>
     <string name="restore_all_messages">Leheneratu mezu guztiak</string>
     <string name="empty_recycle_bin_messages_confirmation">Ziur zaude zakarrontzia hustu nahi duzula? Mezuak betiko galduko dira.</string>
+    <string name="skip_the_recycle_bin_messages">Saltatu zakarrontzia eta ezabatu mezuak zuzenean</string>
+    <string name="delete_whole_conversation_confirmation">Ziur zaude elkarrizketa honetako mezu guztiak ezabatu nahi dituzula?</string>
+    <string name="archive_confirmation">Ziur zaude %s artxibatu nahi duzula?</string>
+    <string name="restore_whole_conversation_confirmation">Ziur zaude elkarrizketa honetako mezu guztiak berreskuratu nahi dituzula?</string>
+    <string name="restore_confirmation">Ziur zaude %s berreskuratu nahi duzula?</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">Elkarrizketa %d</item>
+        <item quantity="other">%d elkarrizketa</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">Mezu %d</item>
+        <item quantity="other">%d mezu</item>
+    </plurals>
+    <string name="keyword">Hitz gakoa</string>
+    <string name="blocked_keywords">Blokeatutako hitz gakoak</string>
+    <string name="manage_blocked_keywords">Kudeatu blokeatutako hitz gakoak</string>
+    <string name="not_blocking_keywords">Ez zara hitz gakorik blokeatzen ari. Hitz gakoak hemen gehitu ditzakezu agertzen diren mezu guztiak blokeatzeko.</string>
+    <string name="add_a_blocked_keyword">Gehitu blokeatzeko hitz gakoa</string>
+    <string name="lock_screen_visibility">Blokeoko pantailaren jakinarazpenen ikusgarritasuna</string>
+    <string name="sender_and_message">Bidaltzailea eta mezua</string>
+    <string name="sender_only">Bidaltzailea bakarrik</string>
+    <string name="enable_delivery_reports">Gaitu entrega-txostenak</string>
+    <string name="use_simple_characters">Kendu azentu-markak eta diakritikoak mezuak bidaltzean</string>
+    <string name="send_on_enter">Bidali mezua Sartu sakatzean</string>
+    <string name="mms_file_size_limit">Aldatu bidalitako MMS irudien tamaina</string>
 </resources>
