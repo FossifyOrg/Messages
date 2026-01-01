@@ -27,7 +27,6 @@
     <ID>FunctionParameterNaming:Config.kt$Config$SIMId: Int</ID>
     <ID>LargeClass:ThreadActivity.kt$ThreadActivity : SimpleActivity</ID>
     <ID>LongMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
-    <ID>LongParameterList:SmsReceiver.kt$SmsReceiver$( context: Context, address: String, subject: String, body: String, date: Long, read: Int, threadId: Long, type: Int, subscriptionId: Int, status: Int )</ID>
     <ID>MagicNumber:Activity.kt$1000000</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.7f</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.8f</ID>
@@ -122,9 +121,6 @@
     <ID>MaxLineLength:SearchResult.kt$SearchResult</ID>
     <ID>MaxLineLength:SearchResultsAdapter.kt$SearchResultsAdapter$SimpleContactsHelper(activity).loadContactImage(searchResult.photoUri, searchResultImage, searchResult.title)</ID>
     <ID>MaxLineLength:SearchResultsAdapter.kt$SearchResultsAdapter$activity: SimpleActivity</ID>
-    <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$handleMessage(context, address, subject, body, date, read, threadId, type, subscriptionId, status)</ID>
-    <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$val newMessageId = context.insertNewSMS(address, subject, body, date, read, threadId, type, subscriptionId)</ID>
-    <ID>MaxLineLength:SmsReceiver.kt$SmsReceiver$val participant = SimpleContact(0, 0, senderName, photoUri, arrayListOf(phoneNumber), ArrayList(), ArrayList())</ID>
     <ID>MaxLineLength:SmsSender.kt$SmsSender$val intent = Intent(SendStatusReceiver.SMS_DELIVERED_ACTION, requestUri, app, SmsStatusDeliveredReceiver::class.java)</ID>
     <ID>MaxLineLength:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$// TODO: Need to check whether SC still trying to deliver the SMS to destination and will send the report again?</ID>
     <ID>MaxLineLength:ThreadActivity.kt$ThreadActivity$// check keyboard height just to be sure, 150 seems like a good middle ground between ime and navigation bar</ID>
