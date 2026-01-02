@@ -61,9 +61,9 @@
     <string name="empty_recycle_bin_messages_confirmation">是否确定要清空回收站？信息将会永久丢失。</string>
     <string name="skip_the_recycle_bin_messages">跳过回收站，直接删除信息</string>
     <string name="delete_whole_conversation_confirmation">是否确定要删除此对话的所有信息？</string>
-    <string name="archive_confirmation">是否确定要归档 %s？</string>
+    <string name="archive_confirmation">确定要归档 %s？</string>
     <string name="restore_whole_conversation_confirmation">是否确定要恢复此对话的所有信息？</string>
-    <string name="restore_confirmation">确定要恢复 %s 吗？</string>
+    <string name="restore_confirmation">确定要恢复 %s？</string>
     <plurals name="delete_conversations">
         <item quantity="other">%d 个对话</item>
     </plurals>
