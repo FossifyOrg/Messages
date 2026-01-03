@@ -67,7 +67,7 @@
     <string name="delete_whole_conversation_confirmation">Ziur zaude elkarrizketa honetako mezu guztiak ezabatu nahi dituzula?</string>
     <string name="archive_confirmation">Ziur zaude %s artxibatu nahi duzula?</string>
     <string name="restore_whole_conversation_confirmation">Ziur zaude elkarrizketa honetako mezu guztiak berreskuratu nahi dituzula?</string>
-    <string name="restore_confirmation">Ziur zaude %s berreskuratu nahi duzula?</string>
+    <string name="restore_confirmation">Ziur zaude %s leheneratu nahi duzula?</string>
     <plurals name="delete_conversations">
         <item quantity="one">Elkarrizketa %d</item>
         <item quantity="other">%d elkarrizketa</item>
@@ -117,4 +117,9 @@
     <string name="faq_1_title">Zergatik eskatzen du aplikazioak Interneterako sarbidea?</string>
     <string name="faq_1_text">Zoritxarrez MMS eranskinak bidaltzeko beharrezkoa da. MMS-ak ezin bidalitzea oso desabantaila handia izango litzateke beste aplikazioekin alderatuta, beraz, bide horretatik joatea erabaki genuen. Hala ere, beti bezala, ez dago inolako iragarkirik, jarraipenik edo analisirik, Internet MMS bidaltzeko soilik erabiltzen da.</string>
     <string name="faq_2_title">Beste muturrak ez du nire MMSrik jasotzen, zerbait egin dezaket?</string>
+    <string name="faq_2_text">MMSen tamaina operadorek mugatzen dute, aplikazioaren ezarpenetan muga txikiagoa ezartzen saia zaitezke.</string>
+    <string name="faq_3_title">Aplikazioak programatutako mezuak onartzen ditu?</string>
+    <string name="faq_3_text">Bai, aurrerago bidali beharreko mezuak antola ditzakezu Bidali botoia luze sakatuz eta nahi duzun data eta ordua hautatuta.</string>
+    <string name="faq_4_title">Zergatik agertzen zaie hartzaileei nire taldeko mezuen erantzunak banakako testu gisa?</string>
+    <string name="faq_4_text">Aplikazioaren ezarpenetan \"Bidali taldeko mezuak MMS gisa\" gaitu behar duzu. Honek taldeko mezuak MMS egoki gisa bidaliko direla ziurtatuko du, parte-hartzaile guztiek elkarren erantzunak ikusteko aukera emanez.</string>
 </resources>
