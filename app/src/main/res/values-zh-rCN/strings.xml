@@ -63,7 +63,7 @@
     <string name="delete_whole_conversation_confirmation">是否确定要删除此对话的所有信息？</string>
     <string name="archive_confirmation">确定要归档 %s？</string>
     <string name="restore_whole_conversation_confirmation">是否确定要恢复此对话的所有信息？</string>
-    <string name="restore_confirmation">确定要恢复 %s？</string>
+    <string name="restore_confirmation">确定要恢复 %s ？</string>
     <plurals name="delete_conversations">
         <item quantity="other">%d 个对话</item>
     </plurals>
