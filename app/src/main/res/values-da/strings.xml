@@ -73,7 +73,7 @@
     <string name="restore_confirmation">Er du sikker på, at du vil gendanne %s?</string>
     <string name="keyword">Nøgleord</string>
     <string name="blocked_keywords">Blokerede nøgleord</string>
-    <string name="manage_blocked_keywords">Administrer blokerede nøgleord</string>
+    <string name="manage_blocked_keywords">Administrér blokerede nøgleord</string>
     <string name="not_blocking_keywords">Du blokerer ikke nogen søgeord. Du kan tilføje nøgleord her for at blokere alle beskeder, der indeholder dem.</string>
     <string name="add_a_blocked_keyword">Tilføj et blokeret nøgleord</string>
     <string name="lock_screen_visibility">Synlighed af notifikation på låseskærmen</string>
