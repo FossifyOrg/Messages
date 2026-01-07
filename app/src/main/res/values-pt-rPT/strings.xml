@@ -47,9 +47,9 @@
     <string name="message_details_received_at">Recebida a</string>
     <string name="duplicate_item_warning">O item duplicado não foi incluído</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">e mais %d</item>
-        <item quantity="many">e mais %d</item>
-        <item quantity="other"/>
+        <item quantity="one">e %d outro</item>
+        <item quantity="many">e %d outros</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="new_conversation">Nova conversa</string>
     <string name="add_contact_or_number">Adicionar contacto ou número…</string>
@@ -122,4 +122,7 @@
     <string name="export_blocked_keywords">Exportar palavras-chave bloqueadas</string>
     <string name="keywords">Palavras-chave</string>
     <string name="import_blocked_keywords">Importar palavras-chave bloqueadas</string>
+    <string name="keep_conversations_archived">Manter conversas arquivadas</string>
+    <string name="faq_4_title">Por que as minhas respostas a mensagens em grupo aparecem como mensagens individuais para os destinatários?</string>
+    <string name="faq_4_text">Tem de ativar a opção “Enviar mensagens em grupo como MMS” nas configurações da aplicação. Isso garantirá que as mensagens em grupo sejam enviadas como MMS adequadas, permitindo que todos os participantes vejam as respostas uns dos outros.</string>
 </resources>
