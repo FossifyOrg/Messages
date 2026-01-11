@@ -363,6 +363,8 @@ class MainActivity : SimpleActivity() {
         // 如果没有开启分离功能，显示所有对话
         if (!config.separateNotifications) {
             setupConversations(allConversations, cached)
+            // 更新 adapter 的当前 tab 状态
+            (binding.conversationsList.adapter as? ConversationsAdapter)?.isInNotificationsTab = false
             return
         }
 
@@ -374,6 +376,9 @@ class MainActivity : SimpleActivity() {
 
         setupConversations(filtered, cached)
 
+        // 更新 adapter 的当前 tab 状态
+        (binding.conversationsList.adapter as? ConversationsAdapter)?.isInNotificationsTab = (currentTab == TAB_NOTIFICATIONS)
+
         // 更新空状态占位符文字
         if (currentTab == TAB_NOTIFICATIONS) {
             binding.noConversationsPlaceholder.text = getString(R.string.no_notifications_found)
@@ -383,7 +388,12 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun isNotificationSms(conversation: Conversation): Boolean {
-        // 首先检查是否手动标记为通知
+        // 首先检查是否手动排除（移出通知）
+        if (config.isExcludedNotificationConversation(conversation.threadId)) {
+            return false
+        }
+
+        // 然后检查是否手动标记为通知
         if (config.isNotificationConversation(conversation.threadId)) {
             return true
         }
@@ -395,6 +405,12 @@ class MainActivity : SimpleActivity() {
 
         // 检查是否以 +86106 开头
         if (number.startsWith("+86106")) return true
+
+        // 检查是否以 95 开头（银行、客服等）
+        if (number.startsWith("95")) return true
+
+        // 检查是否以 +8695 开头
+        if (number.startsWith("+8695")) return true
 
         // 检查是否包含字母（短码通知）
         if (number.any { it.isLetter() }) return true

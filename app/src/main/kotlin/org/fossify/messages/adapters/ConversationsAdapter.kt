@@ -35,6 +35,10 @@ class ConversationsAdapter(
     onRefresh: () -> Unit,
     itemClick: (Any) -> Unit
 ) : BaseConversationsAdapter(activity, recyclerView, onRefresh, itemClick) {
+
+    // 标记当前是否在通知页面
+    var isInNotificationsTab: Boolean = false
+
     override fun getActionMenuId() = R.menu.cab_conversations
 
     override fun prepareActionMode(menu: Menu) {
@@ -63,10 +67,9 @@ class ConversationsAdapter(
 
             // 分离通知功能的菜单项
             val separateNotifications = activity.config.separateNotifications
-            val hasNotificationConversation = selectedItems.any { activity.config.isNotificationConversation(it.threadId) }
-            val hasNonNotificationConversation = selectedItems.any { !activity.config.isNotificationConversation(it.threadId) }
-            findItem(R.id.cab_move_to_notifications).isVisible = separateNotifications && hasNonNotificationConversation
-            findItem(R.id.cab_move_from_notifications).isVisible = separateNotifications && hasNotificationConversation
+            // 在消息页面显示"移入通知"，在通知页面显示"移出通知"
+            findItem(R.id.cab_move_to_notifications).isVisible = separateNotifications && !isInNotificationsTab
+            findItem(R.id.cab_move_from_notifications).isVisible = separateNotifications && isInNotificationsTab
         }
     }
 
@@ -331,6 +334,7 @@ class ConversationsAdapter(
         }
 
         conversations.forEach {
+            // addNotificationConversation 会自动从排除列表中移除
             activity.config.addNotificationConversation(it.threadId)
         }
 
@@ -344,7 +348,8 @@ class ConversationsAdapter(
         }
 
         conversations.forEach {
-            activity.config.removeNotificationConversation(it.threadId)
+            // 使用排除列表，这样自动识别的通知也能被移出
+            activity.config.addExcludedNotificationConversation(it.threadId)
         }
 
         refreshConversationsAndFinishActMode()

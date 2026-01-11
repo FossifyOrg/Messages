@@ -50,6 +50,7 @@ const val IS_LAUNCHED_FROM_SHORTCUT = "is_launched_from_shortcut"
 const val KEEP_CONVERSATIONS_ARCHIVED = "keep_conversations_archived"
 const val SEPARATE_NOTIFICATIONS = "separate_notifications"
 const val NOTIFICATION_CONVERSATIONS = "notification_conversations"
+const val EXCLUDED_NOTIFICATION_CONVERSATIONS = "excluded_notification_conversations"
 const val ENABLE_VERIFICATION_CODE_DETECTION = "enable_verification_code_detection"
 
 private const val PATH = "org.fossify.org.fossify.messages.action."
