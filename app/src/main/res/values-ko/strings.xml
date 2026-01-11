@@ -113,4 +113,13 @@
     <string name="mark_as_unread">읽지 않음으로 표시</string>
     <string name="me">나</string>
     <string name="archive">보관</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">메시지</string>
+    <string name="tab_notifications">알림</string>
+    <string name="no_notifications_found">알림 문자가 없습니다</string>
+    <string name="separate_notifications">메시지와 알림 분리</string>
+    <string name="separate_notifications_desc">서비스 알림 문자를 개인 메시지와 분리하여 표시</string>
+    <string name="move_to_notifications">알림으로 이동</string>
+    <string name="move_from_notifications">알림에서 제거</string>
+    <string name="copy_code_action">복사 %s</string>
 </resources>

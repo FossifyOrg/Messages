@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">Mesej</string>
+    <string name="tab_notifications">Pemberitahuan</string>
+    <string name="no_notifications_found">Tiada SMS pemberitahuan</string>
+    <string name="separate_notifications">Pisahkan mesej dan pemberitahuan</string>
+    <string name="separate_notifications_desc">Papar SMS pemberitahuan perkhidmatan secara berasingan daripada mesej peribadi</string>
+    <string name="move_to_notifications">Alih ke pemberitahuan</string>
+    <string name="move_from_notifications">Alih keluar dari pemberitahuan</string>
+    <string name="copy_code_action">Salin %s</string>
+</resources>

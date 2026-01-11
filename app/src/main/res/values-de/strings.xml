@@ -121,5 +121,14 @@
     <string name="keywords">Schlüsselwörter</string>
     <string name="keep_conversations_archived">Unterhaltungen archiviert lassen</string>
     <string name="faq_4_title">Warum werden meine Antworten auf Gruppennachrichten den Empfängern als einzelne Textnachrichten angezeigt?</string>
-    <string name="faq_4_text">Du musst in den Einstellungen die Option „Gruppennachrichten als MMS versenden” aktivieren. Dadurch wird sichergestellt, dass Gruppennachrichten als richtige MMS gesendet werden, sodass alle Teilnehmer die Antworten der anderen sehen können.</string>
+    <string name="faq_4_text">Du musst in den Einstellungen die Option „Gruppennachrichten als MMS versenden" aktivieren. Dadurch wird sichergestellt, dass Gruppennachrichten als richtige MMS gesendet werden, sodass alle Teilnehmer die Antworten der anderen sehen können.</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">Nachrichten</string>
+    <string name="tab_notifications">Benachrichtigungen</string>
+    <string name="no_notifications_found">Keine Benachrichtigungs-SMS</string>
+    <string name="separate_notifications">Nachrichten und Benachrichtigungen trennen</string>
+    <string name="separate_notifications_desc">Service-Benachrichtigungs-SMS getrennt von persönlichen Nachrichten anzeigen</string>
+    <string name="move_to_notifications">Zu Benachrichtigungen verschieben</string>
+    <string name="move_from_notifications">Aus Benachrichtigungen entfernen</string>
+    <string name="copy_code_action">Kopieren %s</string>
 </resources>

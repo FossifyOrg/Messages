@@ -124,5 +124,14 @@
     <string name="keywords">Parole chiave</string>
     <string name="keep_conversations_archived">Mantieni le conversazioni archiviate</string>
     <string name="faq_4_title">Perché le risposte ai miei messaggi di gruppo appaiono come messaggi individuali ai destinatari?</string>
-    <string name="faq_4_text">È necessario abilitare l\'opzione “Invia messaggi di gruppo come MMS” nelle impostazioni dell\'app. In questo modo i messaggi di gruppo verranno inviati come MMS, consentendo a tutti i partecipanti di vedere le risposte degli altri.</string>
+    <string name="faq_4_text">È necessario abilitare l\'opzione "Invia messaggi di gruppo come MMS" nelle impostazioni dell\'app. In questo modo i messaggi di gruppo verranno inviati come MMS, consentendo a tutti i partecipanti di vedere le risposte degli altri.</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">Messaggi</string>
+    <string name="tab_notifications">Notifiche</string>
+    <string name="no_notifications_found">Nessun SMS di notifica</string>
+    <string name="separate_notifications">Separa messaggi e notifiche</string>
+    <string name="separate_notifications_desc">Mostra gli SMS di notifica del servizio separatamente dai messaggi personali</string>
+    <string name="move_to_notifications">Sposta in notifiche</string>
+    <string name="move_from_notifications">Rimuovi dalle notifiche</string>
+    <string name="copy_code_action">Copia %s</string>
 </resources>
