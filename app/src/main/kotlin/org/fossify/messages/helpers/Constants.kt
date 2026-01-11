@@ -51,13 +51,10 @@ const val KEEP_CONVERSATIONS_ARCHIVED = "keep_conversations_archived"
 const val SEPARATE_NOTIFICATIONS = "separate_notifications"
 const val NOTIFICATION_CONVERSATIONS = "notification_conversations"
 const val EXCLUDED_NOTIFICATION_CONVERSATIONS = "excluded_notification_conversations"
-const val ENABLE_VERIFICATION_CODE_DETECTION = "enable_verification_code_detection"
 
 private const val PATH = "org.fossify.org.fossify.messages.action."
 const val MARK_AS_READ = PATH + "mark_as_read"
 const val REPLY = PATH + "reply"
-const val COPY_VERIFICATION_CODE = PATH + "copy_verification_code"
-const val EXTRA_VERIFICATION_CODE = "verification_code"
 
 // view types for the thread list view
 const val THREAD_DATE_TIME = 1

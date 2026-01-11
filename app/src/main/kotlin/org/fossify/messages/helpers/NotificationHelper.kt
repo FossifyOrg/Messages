@@ -23,7 +23,7 @@ import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.shortcutHelper
 import org.fossify.messages.messaging.isShortCodeWithLetters
-import org.fossify.messages.receivers.CopyVerificationCodeReceiver
+import org.fossify.messages.receivers.CopyCodeReceiver
 import org.fossify.messages.receivers.DeleteSmsReceiver
 import org.fossify.messages.receivers.DirectReplyReceiver
 import org.fossify.messages.receivers.MarkAsReadReceiver
@@ -156,28 +156,10 @@ class NotificationHelper(private val context: Context) {
             builder.addAction(replyAction)
         }
 
-        // 检测并添加验证码复制按钮
-        if (context.config.enableVerificationCodeDetection) {
-            val verificationCode = VerificationCodeHelper.extractVerificationCode(body)
-            if (verificationCode != null) {
-                val copyCodeIntent = Intent(context, CopyVerificationCodeReceiver::class.java).apply {
-                    action = COPY_VERIFICATION_CODE
-                    putExtra(EXTRA_VERIFICATION_CODE, verificationCode)
-                }
-                val copyCodePendingIntent = PendingIntent.getBroadcast(
-                    context,
-                    notificationId + 1000, // 使用不同的请求码避免冲突
-                    copyCodeIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-                )
-                // 显示验证码，最多6位
-                val displayCode = if (verificationCode.length > 6) verificationCode.take(6) + "…" else verificationCode
-                builder.addAction(
-                    org.fossify.commons.R.drawable.ic_copy_vector,
-                    context.getString(R.string.copy_verification_code) + " ($displayCode)",
-                    copyCodePendingIntent
-                )
-            }
+        // 检测验证码并添加复制按钮
+        val verificationCode = VerificationCodeExtractor.extractCode(body)
+        if (verificationCode != null) {
+            addCopyCodeAction(builder, verificationCode, notificationId)
         }
 
         builder.addAction(
@@ -306,5 +288,42 @@ class NotificationHelper(private val context: Context) {
         } else {
             emptyList()
         }
+    }
+
+    private fun addCopyCodeAction(
+        builder: NotificationCompat.Builder,
+        verificationCode: String,
+        notificationId: Int
+    ) {
+        // 创建一个直接复制验证码的 BroadcastReceiver Intent
+        val copyIntent = Intent(context, CopyCodeReceiver::class.java).apply {
+            action = ACTION_COPY_CODE
+            putExtra(EXTRA_CODE, verificationCode)
+        }
+
+        val copyPendingIntent = PendingIntent.getBroadcast(
+            context,
+            notificationId + 2000,
+            copyIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+        )
+
+        // 显示验证码（最多6位）
+        val displayCode = if (verificationCode.length > 6) {
+            verificationCode.take(6) + "…"
+        } else {
+            verificationCode
+        }
+
+        builder.addAction(
+            org.fossify.commons.R.drawable.ic_copy_vector,
+            context.getString(R.string.copy_code_action, displayCode),
+            copyPendingIntent
+        )
+    }
+
+    companion object {
+        const val ACTION_COPY_CODE = "org.fossify.messages.action.COPY_CODE"
+        const val EXTRA_CODE = "extra_code"
     }
 }

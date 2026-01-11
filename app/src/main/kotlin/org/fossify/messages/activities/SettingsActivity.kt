@@ -109,7 +109,6 @@ class SettingsActivity : SimpleActivity() {
         setupChangeDateTimeFormat()
         setupFontSize()
         setupSeparateNotifications()
-        setupVerificationCode()
         setupShowCharacterCounter()
         setupUseSimpleCharacters()
         setupSendOnEnter()
@@ -265,14 +264,6 @@ class SettingsActivity : SimpleActivity() {
         settingsSeparateNotificationsHolder.setOnClickListener {
             settingsSeparateNotifications.toggle()
             config.separateNotifications = settingsSeparateNotifications.isChecked
-        }
-    }
-
-    private fun setupVerificationCode() = binding.apply {
-        settingsVerificationCode.isChecked = config.enableVerificationCodeDetection
-        settingsVerificationCodeHolder.setOnClickListener {
-            settingsVerificationCode.toggle()
-            config.enableVerificationCodeDetection = settingsVerificationCode.isChecked
         }
     }
 

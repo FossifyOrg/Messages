@@ -204,29 +204,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/settings_verification_code_holder"
-                style="@style/SettingsHolderTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyMaterialSwitch
-                    android:id="@+id/settings_verification_code"
-                    style="@style/SettingsSwitchStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/enable_verification_code" />
-
-                <org.fossify.commons.views.MyTextView
-                    android:id="@+id/settings_verification_code_desc"
-                    style="@style/SettingsTextValueStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/settings_verification_code"
-                    android:text="@string/enable_verification_code_desc" />
-
-            </RelativeLayout>
-
             <include
                 android:id="@+id/settings_general_settings_divider"
                 layout="@layout/divider" />

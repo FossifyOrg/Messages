@@ -192,9 +192,4 @@ class Config(context: Context) : BaseConfig(context) {
     fun isExcludedNotificationConversation(threadId: Long): Boolean {
         return excludedNotificationConversations.contains(threadId.toString())
     }
-
-    var enableVerificationCodeDetection: Boolean
-        get() = prefs.getBoolean(ENABLE_VERIFICATION_CODE_DETECTION, true)
-        set(enableVerificationCodeDetection) = prefs.edit()
-            .putBoolean(ENABLE_VERIFICATION_CODE_DETECTION, enableVerificationCodeDetection).apply()
 }
