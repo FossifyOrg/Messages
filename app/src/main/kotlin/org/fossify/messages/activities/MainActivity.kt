@@ -85,6 +85,14 @@ class MainActivity : SimpleActivity() {
     private var lastSearchedText = ""
     private var bus: EventBus? = null
 
+    private var currentTab = TAB_MESSAGES
+    private var allConversations: ArrayList<Conversation> = ArrayList()
+
+    companion object {
+        private const val TAB_MESSAGES = 0
+        private const val TAB_NOTIFICATIONS = 1
+    }
+
     private val binding by viewBinding(ActivityMainBinding::inflate)
 
     @SuppressLint("InlinedApi")
@@ -95,7 +103,7 @@ class MainActivity : SimpleActivity() {
         setupOptionsMenu()
         refreshMenuItems()
 
-        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList))
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.bottomNavigation))
 
         checkAndDeleteOldRecycleBinMessages()
         clearAllMessagesIfNeeded {
@@ -133,6 +141,16 @@ class MainActivity : SimpleActivity() {
         binding.conversationsFastscroller.updateColors(properPrimaryColor)
         binding.conversationsProgressBar.setIndicatorColor(properPrimaryColor)
         binding.conversationsProgressBar.trackColor = properPrimaryColor.adjustAlpha(LOWER_ALPHA)
+
+        // 根据设置显示/隐藏底栏
+        updateBottomNavigationVisibility()
+        updateBottomNavigationColors()
+
+        // 如果有对话数据则重新过滤显示
+        if (allConversations.isNotEmpty()) {
+            filterAndShowConversations()
+        }
+
         checkShortcut()
     }
 
@@ -285,6 +303,111 @@ class MainActivity : SimpleActivity() {
         binding.conversationsFab.setOnClickListener {
             launchNewConversation()
         }
+
+        setupBottomNavigation()
+    }
+
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_messages -> {
+                    currentTab = TAB_MESSAGES
+                    filterAndShowConversations()
+                    true
+                }
+                R.id.nav_notifications -> {
+                    currentTab = TAB_NOTIFICATIONS
+                    filterAndShowConversations()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        updateBottomNavigationColors()
+    }
+
+    private fun updateBottomNavigationColors() {
+        val properPrimaryColor = getProperPrimaryColor()
+        val properTextColor = getProperTextColor()
+        val backgroundColor = getProperBackgroundColor()
+        binding.bottomNavigation.setBackgroundColor(backgroundColor)
+
+        // 图标颜色保持不变
+        val iconColorStateList = android.content.res.ColorStateList.valueOf(properTextColor)
+        binding.bottomNavigation.itemIconTintList = iconColorStateList
+
+        // 文字颜色：选中时使用主色调，未选中时使用普通文字颜色
+        val textStates = arrayOf(
+            intArrayOf(android.R.attr.state_checked),
+            intArrayOf(-android.R.attr.state_checked)
+        )
+        val textColors = intArrayOf(properPrimaryColor, properTextColor.adjustAlpha(0.7f))
+        val textColorStateList = android.content.res.ColorStateList(textStates, textColors)
+        binding.bottomNavigation.itemTextColor = textColorStateList
+
+        // 设置选中项的指示器背景色
+        binding.bottomNavigation.itemActiveIndicatorColor = android.content.res.ColorStateList.valueOf(properPrimaryColor.adjustAlpha(0.2f))
+    }
+
+    private fun updateBottomNavigationVisibility() {
+        if (config.separateNotifications) {
+            binding.bottomNavigation.beVisible()
+        } else {
+            binding.bottomNavigation.beGone()
+            currentTab = TAB_MESSAGES // 重置为消息标签
+        }
+    }
+
+    private fun filterAndShowConversations(cached: Boolean = false) {
+        // 如果没有开启分离功能，显示所有对话
+        if (!config.separateNotifications) {
+            setupConversations(allConversations, cached)
+            return
+        }
+
+        val filtered = when (currentTab) {
+            TAB_MESSAGES -> allConversations.filter { !isNotificationSms(it) }
+            TAB_NOTIFICATIONS -> allConversations.filter { isNotificationSms(it) }
+            else -> allConversations
+        } as ArrayList<Conversation>
+
+        setupConversations(filtered, cached)
+
+        // 更新空状态占位符文字
+        if (currentTab == TAB_NOTIFICATIONS) {
+            binding.noConversationsPlaceholder.text = getString(R.string.no_notifications_found)
+        } else {
+            binding.noConversationsPlaceholder.text = getString(R.string.no_conversations_found)
+        }
+    }
+
+    private fun isNotificationSms(conversation: Conversation): Boolean {
+        // 首先检查是否手动标记为通知
+        if (config.isNotificationConversation(conversation.threadId)) {
+            return true
+        }
+
+        val number = conversation.phoneNumber.replace(" ", "").replace("-", "")
+
+        // 检查是否以 106 开头
+        if (number.startsWith("106")) return true
+
+        // 检查是否以 +86106 开头
+        if (number.startsWith("+86106")) return true
+
+        // 检查是否包含字母（短码通知）
+        if (number.any { it.isLetter() }) return true
+
+        // 检查是否是短码（通常少于6位的纯数字）
+        val digitsOnly = number.filter { it.isDigit() }
+        if (digitsOnly.length <= 6 && digitsOnly.isNotEmpty()) {
+            // 可能是短码，但需要进一步判断
+            // 检查是否以10、12等服务号码开头
+            if (digitsOnly.startsWith("10") || digitsOnly.startsWith("12") || digitsOnly.startsWith("95")) return true
+        }
+
+        return false
     }
 
     private fun getCachedConversations() {
@@ -302,7 +425,8 @@ class MainActivity : SimpleActivity() {
             }
 
             runOnUiThread {
-                setupConversations(conversations, cached = true)
+                allConversations = conversations
+                filterAndShowConversations(cached = true)
                 getNewConversations(
                     (conversations + archived).toMutableList() as ArrayList<Conversation>
                 )
@@ -365,9 +489,10 @@ class MainActivity : SimpleActivity() {
                 }
             }
 
-            val allConversations = conversationsDB.getNonArchived() as ArrayList<Conversation>
+            val allConversationsFromDb = conversationsDB.getNonArchived() as ArrayList<Conversation>
             runOnUiThread {
-                setupConversations(allConversations)
+                allConversations = allConversationsFromDb
+                filterAndShowConversations()
             }
 
             if (config.appRunCount == 1) {

@@ -139,6 +139,18 @@
     <string name="faq_3_text">Yes, you can schedule messages to be sent in the future by long pressing the Send button and picking the desired date and time.</string>
     <string name="faq_4_title">Why do my group message replies appear as individual texts to recipients?</string>
     <string name="faq_4_text">You need to enable \"Send group messages as MMS\" in the app settings. This will ensure that group messages are sent as proper MMS, allowing all participants to see each other\'s replies.</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">消息</string>
+    <string name="tab_notifications">通知</string>
+    <string name="no_notifications_found">暂无通知短信</string>
+    <string name="separate_notifications">分离消息和通知</string>
+    <string name="separate_notifications_desc">将服务商通知短信与个人消息分开显示</string>
+    <string name="move_to_notifications">移入通知</string>
+    <string name="move_from_notifications">移出通知</string>
+    <string name="enable_verification_code">验证码识别</string>
+    <string name="enable_verification_code_desc">自动识别短信中的验证码并提供复制功能</string>
+    <string name="copy_verification_code">复制验证码</string>
+    <string name="verification_code_copied">验证码已复制</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res

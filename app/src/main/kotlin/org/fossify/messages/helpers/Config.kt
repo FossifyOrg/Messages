@@ -148,4 +148,31 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(KEEP_CONVERSATIONS_ARCHIVED, false)
         set(keepConversationsArchived) = prefs.edit()
             .putBoolean(KEEP_CONVERSATIONS_ARCHIVED, keepConversationsArchived).apply()
+
+    var separateNotifications: Boolean
+        get() = prefs.getBoolean(SEPARATE_NOTIFICATIONS, false)
+        set(separateNotifications) = prefs.edit()
+            .putBoolean(SEPARATE_NOTIFICATIONS, separateNotifications).apply()
+
+    var notificationConversations: Set<String>
+        get() = prefs.getStringSet(NOTIFICATION_CONVERSATIONS, HashSet<String>())!!
+        set(notificationConversations) = prefs.edit()
+            .putStringSet(NOTIFICATION_CONVERSATIONS, notificationConversations).apply()
+
+    fun addNotificationConversation(threadId: Long) {
+        notificationConversations = notificationConversations.plus(threadId.toString())
+    }
+
+    fun removeNotificationConversation(threadId: Long) {
+        notificationConversations = notificationConversations.minus(threadId.toString())
+    }
+
+    fun isNotificationConversation(threadId: Long): Boolean {
+        return notificationConversations.contains(threadId.toString())
+    }
+
+    var enableVerificationCodeDetection: Boolean
+        get() = prefs.getBoolean(ENABLE_VERIFICATION_CODE_DETECTION, true)
+        set(enableVerificationCodeDetection) = prefs.edit()
+            .putBoolean(ENABLE_VERIFICATION_CODE_DETECTION, enableVerificationCodeDetection).apply()
 }

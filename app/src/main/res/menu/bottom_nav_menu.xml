@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_message_vector"
+        android:title="@string/tab_messages" />
+    <item
+        android:id="@+id/nav_notifications"
+        android:icon="@drawable/ic_notification_vector"
+        android:title="@string/tab_notifications" />
+</menu>
+
