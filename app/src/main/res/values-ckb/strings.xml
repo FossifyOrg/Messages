@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_launcher_name">پەیام</string>
+    <string name="type_a_message">نامەیەک بنووسە…</string>
+    <string name="message_not_sent_short">نامەکە نەچوو</string>
+</resources>
