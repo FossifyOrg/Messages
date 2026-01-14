@@ -5,6 +5,11 @@
 }
 -keep enum org.greenrobot.eventbus.ThreadMode { *; }
 
+# Kotlin Metadata - Fix R8 compatibility with newer Kotlin versions
+-dontwarn kotlin.**
+-keep class kotlin.Metadata { *; }
+-keepattributes RuntimeVisibleAnnotations
+
 # Keep `Companion` object fields of serializable classes.
 # This avoids serializer lookup through `getDeclaredClasses` as done for named companion objects.
 -if @kotlinx.serialization.Serializable class **
@@ -33,3 +38,14 @@
 -keep class org.fossify.commons.models.SimpleContact { *; }
 -keep class org.fossify.messages.models.Attachment { *; }
 -keep class org.fossify.messages.models.MessageAttachment { *; }
+
+# kotlinx.serialization - suppress R8 warnings
+-dontwarn kotlinx.serialization.**
+-keep,includedescriptorclasses class org.fossify.messages.**$$serializer { *; }
+-keepclassmembers class org.fossify.messages.** {
+    *** Companion;
+}
+-keepclasseswithmembers class org.fossify.messages.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
