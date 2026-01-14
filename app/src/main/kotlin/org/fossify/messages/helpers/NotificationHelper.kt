@@ -325,5 +325,6 @@ class NotificationHelper(private val context: Context) {
     companion object {
         const val ACTION_COPY_CODE = "org.fossify.messages.action.COPY_CODE"
         const val EXTRA_CODE = "extra_code"
+        const val EXTRA_THREAD_ID = "extra_thread_id"
     }
 }
