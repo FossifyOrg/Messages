@@ -18,6 +18,7 @@ import org.fossify.messages.extensions.insertOrUpdateConversation
 import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
 import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.helpers.ActiveThreadHolder
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
@@ -76,14 +77,17 @@ class MmsReceiver : MmsReceivedReceiver() {
             context.getNameFromAddress(address, it)
         }
 
-        context.showReceivedMessageNotification(
-            messageId = mms.id,
-            address = address,
-            senderName = senderName,
-            body = mms.body,
-            threadId = mms.threadId,
-            bitmap = glideBitmap
-        )
+        // 如果用户正在查看该会话，不显示通知
+        if (!ActiveThreadHolder.isThreadActive(mms.threadId)) {
+            context.showReceivedMessageNotification(
+                messageId = mms.id,
+                address = address,
+                senderName = senderName,
+                body = mms.body,
+                threadId = mms.threadId,
+                bitmap = glideBitmap
+            )
+        }
 
         val conversation = context.getConversations(mms.threadId).firstOrNull() ?: return
         runCatching { context.insertOrUpdateConversation(conversation) }

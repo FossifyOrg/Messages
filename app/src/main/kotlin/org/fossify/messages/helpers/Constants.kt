@@ -7,6 +7,29 @@ import org.joda.time.DateTimeZone
 import kotlin.math.abs
 import kotlin.random.Random
 
+/**
+ * 用于追踪当前用户正在查看的会话线程ID
+ * 当用户在ThreadActivity中时，会设置此值
+ * 用于判断是否应该显示通知和自动滚动
+ */
+object ActiveThreadHolder {
+    @Volatile
+    var activeThreadId: Long = -1L
+        private set
+
+    fun setActiveThread(threadId: Long) {
+        activeThreadId = threadId
+    }
+
+    fun clearActiveThread() {
+        activeThreadId = -1L
+    }
+
+    fun isThreadActive(threadId: Long): Boolean {
+        return activeThreadId == threadId
+    }
+}
+
 const val THREAD_ID = "thread_id"
 const val THREAD_TITLE = "thread_title"
 const val THREAD_TEXT = "thread_text"
