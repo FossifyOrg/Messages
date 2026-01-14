@@ -74,4 +74,14 @@
         android:showAsAction="never"
         android:title="@string/block_number"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_move_to_notifications"
+        android:showAsAction="never"
+        android:title="@string/move_to_notifications"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_move_from_notifications"
+        android:showAsAction="never"
+        android:title="@string/move_from_notifications"
+        app:showAsAction="never" />
 </menu>

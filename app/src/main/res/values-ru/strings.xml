@@ -128,4 +128,13 @@
     <string name="keep_conversations_archived">Оставить переписки архивными</string>
     <string name="faq_4_title">Почему мои ответы на групповые сообщения отображаются как отдельные для каждого получателя?</string>
     <string name="faq_4_text">Включите функцию \"Отправлять групповые сообщения как MMS\" в настройках приложения. Это гарантирует, что групповые сообщения будут отправляться как MMS, позволяя всем участникам видеть ответы друг друга.</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">Сообщения</string>
+    <string name="tab_notifications">Уведомления</string>
+    <string name="no_notifications_found">Нет уведомлений SMS</string>
+    <string name="separate_notifications">Разделить сообщения и уведомления</string>
+    <string name="separate_notifications_desc">Показывать сервисные SMS-уведомления отдельно от личных сообщений</string>
+    <string name="move_to_notifications">Переместить в уведомления</string>
+    <string name="move_from_notifications">Убрать из уведомлений</string>
+    <string name="copy_code_action">Копировать %s</string>
 </resources>

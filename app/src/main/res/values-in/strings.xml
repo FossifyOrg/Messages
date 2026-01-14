@@ -116,4 +116,13 @@
     <string name="export_blocked_keywords">Ekspor kata kunci yang diblokir</string>
     <string name="import_blocked_keywords">Impor kata kunci yang diblokir</string>
     <string name="keywords">Kata kunci</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">Pesan</string>
+    <string name="tab_notifications">Notifikasi</string>
+    <string name="no_notifications_found">Tidak ada SMS notifikasi</string>
+    <string name="separate_notifications">Pisahkan pesan dan notifikasi</string>
+    <string name="separate_notifications_desc">Tampilkan SMS notifikasi layanan terpisah dari pesan pribadi</string>
+    <string name="move_to_notifications">Pindahkan ke notifikasi</string>
+    <string name="move_from_notifications">Hapus dari notifikasi</string>
+    <string name="copy_code_action">Salin %s</string>
 </resources>

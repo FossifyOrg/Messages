@@ -113,4 +113,13 @@
     <string name="archive_confirmation">%sをアーカイブしてよろしいですか？</string>
     <string name="restore_whole_conversation_confirmation">この会話の全てのメッセージを復元してよろしいですか？</string>
     <string name="couldnt_download_mms">MMSをダウンロードできませんでした</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">メッセージ</string>
+    <string name="tab_notifications">通知</string>
+    <string name="no_notifications_found">通知SMSはありません</string>
+    <string name="separate_notifications">メッセージと通知を分離</string>
+    <string name="separate_notifications_desc">サービス通知SMSを個人メッセージと分けて表示</string>
+    <string name="move_to_notifications">通知に移動</string>
+    <string name="move_from_notifications">通知から移動</string>
+    <string name="copy_code_action">コピー %s</string>
 </resources>

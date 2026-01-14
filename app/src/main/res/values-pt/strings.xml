@@ -26,7 +26,7 @@
     </plurals>
     <string name="new_conversation">Nova conversa</string>
     <string name="add_contact_or_number">Adicionar contacto ou número…</string>
-    <string name="suggestions">Sugestões</string>
+    <string name="suggestions"> Sugestões</string>
     <string name="members">Membros</string>
     <string name="conversation_name">Nome da conversa</string>
     <string name="conversation_details">Detalhes da conversa</string>
@@ -122,4 +122,13 @@
     <string name="keywords">Palavras-chave</string>
     <string name="export_blocked_keywords">Exportar palavras-chave</string>
     <string name="import_blocked_keywords">Importar palavras-chave</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">Mensagens</string>
+    <string name="tab_notifications">Notificações</string>
+    <string name="no_notifications_found">Sem SMS de notificação</string>
+    <string name="separate_notifications">Separar mensagens e notificações</string>
+    <string name="separate_notifications_desc">Mostrar SMS de notificação de serviço separadamente das mensagens pessoais</string>
+    <string name="move_to_notifications">Mover para notificações</string>
+    <string name="move_from_notifications">Remover das notificações</string>
+    <string name="copy_code_action">Copiar %s</string>
 </resources>

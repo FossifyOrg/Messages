@@ -35,6 +35,10 @@ class ConversationsAdapter(
     onRefresh: () -> Unit,
     itemClick: (Any) -> Unit
 ) : BaseConversationsAdapter(activity, recyclerView, onRefresh, itemClick) {
+
+    // 标记当前是否在通知页面
+    var isInNotificationsTab: Boolean = false
+
     override fun getActionMenuId() = R.menu.cab_conversations
 
     override fun prepareActionMode(menu: Menu) {
@@ -60,6 +64,12 @@ class ConversationsAdapter(
             findItem(R.id.cab_mark_as_unread).isVisible = selectedItems.any { it.read }
             findItem(R.id.cab_archive).isVisible = archiveAvailable
             checkPinBtnVisibility(this)
+
+            // 分离通知功能的菜单项
+            val separateNotifications = activity.config.separateNotifications
+            // 在消息页面显示"移入通知"，在通知页面显示"移出通知"
+            findItem(R.id.cab_move_to_notifications).isVisible = separateNotifications && !isInNotificationsTab
+            findItem(R.id.cab_move_from_notifications).isVisible = separateNotifications && isInNotificationsTab
         }
     }
 
@@ -84,6 +94,8 @@ class ConversationsAdapter(
             R.id.cab_pin_conversation -> pinConversation(true)
             R.id.cab_unpin_conversation -> pinConversation(false)
             R.id.cab_select_all -> selectAll()
+            R.id.cab_move_to_notifications -> moveToNotifications()
+            R.id.cab_move_from_notifications -> moveFromNotifications()
         }
     }
 
@@ -313,6 +325,34 @@ class ConversationsAdapter(
             selectedConversations.any { !pinnedConversations.contains(it.threadId.toString()) }
         menu.findItem(R.id.cab_unpin_conversation).isVisible =
             selectedConversations.all { pinnedConversations.contains(it.threadId.toString()) }
+    }
+
+    private fun moveToNotifications() {
+        val conversations = getSelectedItems()
+        if (conversations.isEmpty()) {
+            return
+        }
+
+        conversations.forEach {
+            // addNotificationConversation 会自动从排除列表中移除
+            activity.config.addNotificationConversation(it.threadId)
+        }
+
+        refreshConversationsAndFinishActMode()
+    }
+
+    private fun moveFromNotifications() {
+        val conversations = getSelectedItems()
+        if (conversations.isEmpty()) {
+            return
+        }
+
+        conversations.forEach {
+            // 使用排除列表，这样自动识别的通知也能被移出
+            activity.config.addExcludedNotificationConversation(it.threadId)
+        }
+
+        refreshConversationsAndFinishActMode()
     }
 
     private fun refreshConversationsAndFinishActMode() {

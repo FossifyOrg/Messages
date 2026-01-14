@@ -119,4 +119,13 @@
     <string name="keep_conversations_archived">保留對話封存</string>
     <string name="faq_4_title">為何我的群組訊息回覆會顯示為收件者的個別簡訊？</string>
     <string name="faq_4_text">您需要在應用程式設定中啟用「將群組訊息以多媒體簡訊形式傳送」功能。此設定可確保群組訊息以正確的多媒體簡訊格式傳送，讓所有參與者都能看見彼此的回覆內容。</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">訊息</string>
+    <string name="tab_notifications">通知</string>
+    <string name="no_notifications_found">暫無通知簡訊</string>
+    <string name="separate_notifications">分離訊息和通知</string>
+    <string name="separate_notifications_desc">將服務商通知簡訊與個人訊息分開顯示</string>
+    <string name="move_to_notifications">移入通知</string>
+    <string name="move_from_notifications">移出通知</string>
+    <string name="copy_code_action">複製 %s</string>
 </resources>

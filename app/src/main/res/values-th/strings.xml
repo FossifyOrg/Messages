@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">ข้อความ</string>
+    <string name="tab_notifications">การแจ้งเตือน</string>
+    <string name="no_notifications_found">ไม่มีข้อความแจ้งเตือน</string>
+    <string name="separate_notifications">แยกข้อความและการแจ้งเตือน</string>
+    <string name="separate_notifications_desc">แยกข้อความแจ้งเตือนบริการออกจากข้อความส่วนตัว</string>
+    <string name="move_to_notifications">ย้ายไปการแจ้งเตือน</string>
+    <string name="move_from_notifications">ย้ายออกจากการแจ้งเตือน</string>
+    <string name="copy_code_action">คัดลอก %s</string>
+</resources>

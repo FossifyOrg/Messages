@@ -21,6 +21,7 @@ import org.fossify.messages.extensions.messagesDB
 import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
 import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.helpers.ActiveThreadHolder
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
@@ -142,13 +143,17 @@ class SmsReceiver : BroadcastReceiver() {
 
         refreshMessages()
         refreshConversations()
-        context.showReceivedMessageNotification(
-            messageId = newMessageId,
-            address = address,
-            senderName = senderName,
-            body = body,
-            threadId = threadId,
-            bitmap = bitmap
-        )
+
+        // 如果用户正在查看该会话，不显示通知
+        if (!ActiveThreadHolder.isThreadActive(threadId)) {
+            context.showReceivedMessageNotification(
+                messageId = newMessageId,
+                address = address,
+                senderName = senderName,
+                body = body,
+                threadId = threadId,
+                bitmap = bitmap
+            )
+        }
     }
 }

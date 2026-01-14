@@ -221,6 +221,15 @@
         </receiver>
 
         <receiver
+            android:name=".receivers.CopyCodeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="org.fossify.messages.action.COPY_CODE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
             android:name=".receivers.DirectReplyReceiver"
             android:enabled="true"
             android:exported="true">

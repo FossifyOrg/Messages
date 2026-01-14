@@ -148,4 +148,48 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(KEEP_CONVERSATIONS_ARCHIVED, false)
         set(keepConversationsArchived) = prefs.edit()
             .putBoolean(KEEP_CONVERSATIONS_ARCHIVED, keepConversationsArchived).apply()
+
+    var separateNotifications: Boolean
+        get() = prefs.getBoolean(SEPARATE_NOTIFICATIONS, false)
+        set(separateNotifications) = prefs.edit()
+            .putBoolean(SEPARATE_NOTIFICATIONS, separateNotifications).apply()
+
+    var notificationConversations: Set<String>
+        get() = prefs.getStringSet(NOTIFICATION_CONVERSATIONS, HashSet<String>())!!
+        set(notificationConversations) = prefs.edit()
+            .putStringSet(NOTIFICATION_CONVERSATIONS, notificationConversations).apply()
+
+    fun addNotificationConversation(threadId: Long) {
+        notificationConversations = notificationConversations.plus(threadId.toString())
+        // 同时从排除列表中移除
+        excludedNotificationConversations = excludedNotificationConversations.minus(threadId.toString())
+    }
+
+    fun removeNotificationConversation(threadId: Long) {
+        notificationConversations = notificationConversations.minus(threadId.toString())
+    }
+
+    fun isNotificationConversation(threadId: Long): Boolean {
+        return notificationConversations.contains(threadId.toString())
+    }
+
+    // 排除通知列表（手动移出通知的会话）
+    var excludedNotificationConversations: Set<String>
+        get() = prefs.getStringSet(EXCLUDED_NOTIFICATION_CONVERSATIONS, HashSet<String>())!!
+        set(excludedNotificationConversations) = prefs.edit()
+            .putStringSet(EXCLUDED_NOTIFICATION_CONVERSATIONS, excludedNotificationConversations).apply()
+
+    fun addExcludedNotificationConversation(threadId: Long) {
+        excludedNotificationConversations = excludedNotificationConversations.plus(threadId.toString())
+        // 同时从通知列表中移除
+        notificationConversations = notificationConversations.minus(threadId.toString())
+    }
+
+    fun removeExcludedNotificationConversation(threadId: Long) {
+        excludedNotificationConversations = excludedNotificationConversations.minus(threadId.toString())
+    }
+
+    fun isExcludedNotificationConversation(threadId: Long): Boolean {
+        return excludedNotificationConversations.contains(threadId.toString())
+    }
 }

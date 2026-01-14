@@ -108,6 +108,7 @@ class SettingsActivity : SimpleActivity() {
         setupManageBlockedKeywords()
         setupChangeDateTimeFormat()
         setupFontSize()
+        setupSeparateNotifications()
         setupShowCharacterCounter()
         setupUseSimpleCharacters()
         setupSendOnEnter()
@@ -255,6 +256,14 @@ class SettingsActivity : SimpleActivity() {
                 config.fontSize = it as Int
                 settingsFontSize.text = getFontSizeText()
             }
+        }
+    }
+
+    private fun setupSeparateNotifications() = binding.apply {
+        settingsSeparateNotifications.isChecked = config.separateNotifications
+        settingsSeparateNotificationsHolder.setOnClickListener {
+            settingsSeparateNotifications.toggle()
+            config.separateNotifications = settingsSeparateNotifications.isChecked
         }
     }
 

@@ -156,6 +156,7 @@ import org.fossify.messages.extensions.toArrayList
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.extensions.updateScheduledMessagesThreadId
+import org.fossify.messages.helpers.ActiveThreadHolder
 import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
@@ -222,6 +223,9 @@ class ThreadActivity : SimpleActivity() {
     private var isRecycleBin = false
     private var isLaunchedFromShortcut = false
 
+    // 追踪用户是否期望在底部（用于自动滚动判断）
+    private var isUserAtBottom = true
+
     private var isScheduledMessage: Boolean = false
     private var messageToResend: Long? = null
     private var scheduledMessage: Message? = null
@@ -283,6 +287,7 @@ class ThreadActivity : SimpleActivity() {
         )
 
         isActivityVisible = true
+        ActiveThreadHolder.setActiveThread(threadId)
 
         notificationManager.cancel(threadId.hashCode())
 
@@ -316,6 +321,7 @@ class ThreadActivity : SimpleActivity() {
         saveDraftMessage()
         bus?.post(Events.RefreshConversations())
         isActivityVisible = false
+        ActiveThreadHolder.clearActiveThread()
     }
 
     override fun onStop() {
@@ -592,12 +598,13 @@ class ThreadActivity : SimpleActivity() {
         runOnUiThread {
             refreshMenuItems()
             getOrCreateThreadAdapter().apply {
-                val layoutManager = binding.threadMessagesList.layoutManager as LinearLayoutManager
-                val lastPosition = itemCount - 1
-                val lastVisiblePosition = layoutManager.findLastVisibleItemPosition()
-                val shouldScrollToBottom =
-                    currentList.lastOrNull() != threadItems.lastOrNull() && lastPosition - lastVisiblePosition == 1
-                updateMessages(threadItems, if (shouldScrollToBottom) lastPosition else -1)
+                // 判断是否有新消息到达
+                val hasNewMessage = currentList.lastOrNull() != threadItems.lastOrNull()
+                // 使用 isUserAtBottom 标志来判断是否应该滚动到底部
+                // 这样即使键盘弹出导致可见区域变小，也能正确滚动
+                val shouldScrollToBottom = hasNewMessage && isUserAtBottom
+                val newLastPosition = threadItems.lastIndex
+                updateMessages(threadItems, if (shouldScrollToBottom) newLastPosition else -1)
             }
         }
 
@@ -660,6 +667,9 @@ class ThreadActivity : SimpleActivity() {
                     lastVisibleItemPosition >= getOrCreateThreadAdapter().itemCount - SCROLL_TO_BOTTOM_FAB_LIMIT
                 val fab = binding.scrollToBottomFab
                 if (isCloseToBottom) fab.hide() else fab.show()
+
+                // 更新用户是否在底部的状态
+                isUserAtBottom = isCloseToBottom
             },
             onScrollStateChanged = { newState ->
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) tryLoadMoreMessages()
@@ -1529,6 +1539,7 @@ class ThreadActivity : SimpleActivity() {
             showErrorToast(getString(org.fossify.commons.R.string.unknown_error_occurred))
             return
         }
+        isUserAtBottom = true
         scrollToBottom()
 
         text = removeDiacriticsIfNeeded(text)

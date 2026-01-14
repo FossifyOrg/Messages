@@ -124,4 +124,13 @@
     <string name="faq_3_title">هل يدعم التطبيق الرسائل المجدولة؟</string>
     <string name="faq_3_text">نعم ، يمكنك جدولة الرسائل ليتم إرسالها في المستقبل عن طريق الضغط مع الاستمرار على الزر \"إرسال\" واختيار التاريخ والوقت المطلوبين.</string>
     <string name="app_launcher_name">رسائل</string>
+    <!-- Bottom Navigation -->
+    <string name="tab_messages">الرسائل</string>
+    <string name="tab_notifications">الإشعارات</string>
+    <string name="no_notifications_found">لا توجد رسائل إشعارات</string>
+    <string name="separate_notifications">فصل الرسائل والإشعارات</string>
+    <string name="separate_notifications_desc">عرض رسائل الإشعارات من الخدمات منفصلة عن الرسائل الشخصية</string>
+    <string name="move_to_notifications">نقل إلى الإشعارات</string>
+    <string name="move_from_notifications">إزالة من الإشعارات</string>
+    <string name="copy_code_action">نسخ %s</string>
 </resources>
