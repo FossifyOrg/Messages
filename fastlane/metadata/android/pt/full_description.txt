@@ -1,0 +1,32 @@
+Fossify Messenger é o seu companheiro de mensagens confiável, projetado para melhorar a sua experiência de mensagens de várias maneiras.
+
+📱 FIQUE LIGADO COM FACILIDADE:
+Com o Fossify Messenger, você pode facilmente enviar mensagens SMS e MMS para ficar ligado com seus entes queridos. Desfrute de mensagens em grupo baseadas em SMS/ MMS e expresse-se com fotos, emojis e cumprimentos rápidos.
+
+🚫 BLOQUEAR MENSAGENS INDESEJADAS:
+Assuma o controle de sua experiência de mensagens com um recurso robusto de bloqueio, evitando facilmente mensagens indesejadas, mesmo de contatos desconhecidos. Você também pode exportar e importar números bloqueados para backup sem problemas. Além disso, personalize sua experiência impedindo que mensagens com palavras ou frases específicas cheguem à sua caixa de entrada.
+
+🔒 BACKUP SMS SEM ESFORÇO:
+Diga adeus às preocupações de perder mensagens importantes. Fossify Messenger oferece funcionalidade de backup SMS conveniente, permitindo que você exporte e importe suas mensagens. Este recurso garante que você pode facilmente mudar de dispositivo sem perder suas conversas valiosas.
+
+🚀 SUPER-RÁPIDO E LEVE:
+Apesar de seus recursos poderosos, o Fossify Messenger possui um tamanho de aplicativo notavelmente pequeno, tornando-o rápido e fácil de descarregar e instalar. Experimente velocidade e eficiência enquanto desfruta da tranquilidade que vem com o backup de SMS.
+
+🔐 MAIOR PRIVACIDADE:
+Personalize o que aparece no ecrã de bloqueio para maior privacidade. Escolha exibir apenas o remetente, o conteúdo da mensagem ou nada. Suas mensagens estão sob seu controle.
+
+🔍 PESQUISA DE MENSAGEM EFICIENTE:
+Diga adeus ao deslocamento sem fim através de conversas. Fossify Messenger simplifica a recuperação de mensagens com um recurso de pesquisa rápida e eficiente. Encontre o que precisa, quando precisar.
+
+🌈 DESIGN MODERNO & INTERFACE AMIGÁVEL:
+Desfrute de um design limpo e moderno com uma interface fácil de usar. O aplicativo apresenta um design de material e uma opção de tema escuro, proporcionando uma experiência do usuário visualmente atraente e confortável.
+
+🌐 TRANSPARÊNCIA DE CÓDIGO ABERTO:
+Sua privacidade é uma prioridade. O Fossify Messenger funciona sem necessidade de ligação à Internet, garantindo a segurança e estabilidade das mensagens. Nosso aplicativo é completamente livre de anúncios e não solicita permissões desnecessárias. Além disso, é totalmente código-aberto, proporcionando-lhe paz de espírito, como você tem acesso ao código fonte para auditorias de segurança e privacidade.
+
+Faça a mudança para o Fossify Messenger e experimente as mensagens da maneira que deveriam ser privadas, eficientes e fáceis de usar. Baixe agora e junte-se à nossa comunidade comprometida em proteger sua experiência de mensagens.
+
+Explore mais aplicações da Fossify: https://www.fossify.org
+Código aberto: https://www.github.com/FossifyOrg
+Junte-se à comunidade no Reddit: https://www.reddit.com/r/Fossify
+Ligue-se no Telegram: https://t. me/Fossify
