@@ -122,4 +122,6 @@
     <string name="keywords">Palavras-chave</string>
     <string name="export_blocked_keywords">Exportar palavras-chave</string>
     <string name="import_blocked_keywords">Importar palavras-chave</string>
+    <string name="keep_conversations_archived">Manter conversas arquivadas</string>
+    <string name="faq_4_title">Por que as minhas respostas a mensagens em grupo aparecem como mensagens individuais para os destinatários?</string>
 </resources>
