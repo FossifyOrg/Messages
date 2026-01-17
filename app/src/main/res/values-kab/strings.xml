@@ -47,4 +47,16 @@
     <string name="enable_custom_notifications">Rmed ilɣa udmawanen</string>
     <string name="unarchive">Kkes aɣbar</string>
     <string name="empty_archive">Kkes akk idiwenniyen yettwaɣbren</string>
+    <string name="rename_conversation">Snifel isem n udiwenni</string>
+    <string name="rename_conversation_warning">Ḥaca kečč i izemren ad twaliḍ isem-a n udiwenni</string>
+    <string name="scheduled_message">Izen yettwasɣiwsen</string>
+    <string name="schedule_message">Sɣiwes izen</string>
+    <string name="update_message">Leqqem izen</string>
+    <string name="channel_received_sms">Yettwarmes SMS</string>
+    <string name="new_message">Izen amaynut</string>
+    <string name="mark_as_read">Creḍ amzun yettwaɣṛa</string>
+    <string name="mark_as_unread">Creḍ amzun ur yettwaɣri ara</string>
+    <string name="show_archived_conversations">Sken idiwenniyen n uɣbar</string>
+    <string name="no_archived_conversations">Ulac idiwenniyen n uɣbar i yettwafen</string>
+    <string name="archive_emptied_successfully">Aɣbar yettwaxla akken iwata</string>
 </resources>
