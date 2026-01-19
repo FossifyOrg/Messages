@@ -38,6 +38,7 @@ import org.fossify.commons.extensions.formatDateOrTime
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.getTextSize
+import org.fossify.commons.extensions.getTimeFormat
 import org.fossify.commons.extensions.shareTextIntent
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.usableScreenSize
@@ -85,6 +86,7 @@ import org.fossify.messages.models.ThreadItem.ThreadDateTime
 import org.fossify.messages.models.ThreadItem.ThreadError
 import org.fossify.messages.models.ThreadItem.ThreadSending
 import org.fossify.messages.models.ThreadItem.ThreadSent
+import org.joda.time.DateTime
 
 class ThreadAdapter(
     activity: SimpleActivity,
@@ -220,10 +222,19 @@ class ThreadAdapter(
 
     private fun copyToClipboard() {
         val selectedMessages = getSelectedItems().filterIsInstance<Message>()
-        val textToCopy = selectedMessages
-            .mapNotNull { message -> message.body.takeIf { it.isNotEmpty() } }
-            .joinToString("\n\n")
-        
+        if (selectedMessages.isEmpty()) return
+
+        val textToCopy = if (selectedMessages.size == 1) {
+            selectedMessages.first().body
+        } else {
+            selectedMessages.filter { it.body.isNotEmpty() }.joinToString("\n") { message ->
+                val format = "${activity.getTimeFormat()}, ${activity.config.dateFormat}"
+                val dateTime = DateTime(message.millis()).toString(format)
+                val sender = if (message.isReceivedMessage()) message.senderName else activity.getString(R.string.me)
+                "[$dateTime] $sender: ${message.body}"
+            }
+        }
+
         if (textToCopy.isNotEmpty()) {
             activity.copyToClipboard(textToCopy)
         }

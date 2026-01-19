@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Made "Add number to contact" option visible for alphanumeric senders ([#232])
+- Improved multi-message copy formatting with timestamps and sender names
 
 ### Fixed
 - Fixed missing notifications in some cases ([#159])
