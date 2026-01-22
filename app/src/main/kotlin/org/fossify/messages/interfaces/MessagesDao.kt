@@ -1,3 +1,4 @@
+@file:Suppress("MaxLineLength")
 package org.fossify.messages.interfaces
 
 import androidx.room.Dao

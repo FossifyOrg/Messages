@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
 import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.helpers.MINUTE_SECONDS
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.extensions.conversationsDB
 import org.fossify.messages.extensions.deleteScheduledMessage
@@ -17,6 +18,7 @@ import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.sendMessageCompat
+import kotlin.time.Duration.Companion.milliseconds
 
 class ScheduledMessageReceiver : BroadcastReceiver() {
 
@@ -26,7 +28,7 @@ class ScheduledMessageReceiver : BroadcastReceiver() {
             PowerManager.PARTIAL_WAKE_LOCK,
             "simple.messenger:scheduled.message.receiver"
         )
-        wakelock.acquire(10_000)
+        wakelock.acquire(MINUTE_SECONDS.milliseconds.inWholeMilliseconds)
 
         val pendingResult = goAsync()
         ensureBackgroundThread {
@@ -69,7 +71,9 @@ class ScheduledMessageReceiver : BroadcastReceiver() {
         } catch (e: Exception) {
             context.showErrorToast(e)
         } catch (e: Error) {
-            context.showErrorToast(e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred))
+            context.showErrorToast(
+                e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred)
+            )
         }
     }
 }
