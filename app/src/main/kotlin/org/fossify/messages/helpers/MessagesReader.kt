@@ -239,19 +239,11 @@ class MessagesReader(private val context: Context) {
             Mms.SUBSCRIPTION_ID,
             Mms.TRANSACTION_ID
         )
-        val selection = if (includeTextOnlyAttachment) {
-            "${Mms.THREAD_ID} = ? AND ${Mms.TEXT_ONLY} = ?"
-        } else {
-            "${Mms.THREAD_ID} = ?"
-        }
+        val selection = "${Mms.THREAD_ID} = ?"
         val mmsList = mutableListOf<MmsBackup>()
 
         threadIds.map { it.toString() }.forEach { threadId ->
-            val selectionArgs = if (includeTextOnlyAttachment) {
-                arrayOf(threadId, "1")
-            } else {
-                arrayOf(threadId)
-            }
+            val selectionArgs = arrayOf(threadId)
             context.queryCursor(Mms.CONTENT_URI, projection, selection, selectionArgs) { cursor ->
                 val mmsId = cursor.getLongValue(Mms._ID)
                 val creator = cursor.getStringValueOrNull(Mms.CREATOR)
@@ -265,7 +257,7 @@ class MessagesReader(private val context: Context) {
                 val read = cursor.getIntValue(Mms.READ)
                 val readReport = cursor.getIntValue(Mms.READ_REPORT)
                 val seen = cursor.getIntValue(Mms.SEEN)
-                val textOnly = cursor.getIntValue(Mms.TEXT_ONLY)
+                var textOnly = cursor.getIntValue(Mms.TEXT_ONLY)
                 val status = cursor.getStringValueOrNull(Mms.STATUS)
                 val subject = cursor.getStringValueOrNull(Mms.SUBJECT)
                 val subjectCharSet = cursor.getStringValueOrNull(Mms.SUBJECT_CHARSET)
@@ -274,29 +266,51 @@ class MessagesReader(private val context: Context) {
 
                 val parts = getParts(mmsId)
                 val addresses = getMmsAddresses(mmsId)
-                mmsList.add(
-                    MmsBackup(
-                        creator = creator,
-                        contentType = contentType,
-                        deliveryReport = deliveryReport,
-                        date = date,
-                        dateSent = dateSent,
-                        locked = locked,
-                        messageType = messageType,
-                        messageBox = messageBox,
-                        read = read,
-                        readReport = readReport,
-                        seen = seen,
-                        textOnly = textOnly,
-                        status = status,
-                        subject = subject,
-                        subjectCharSet = subjectCharSet,
-                        subscriptionId = subscriptionId,
-                        transactionId = transactionId,
-                        addresses = addresses,
-                        parts = parts
+
+                // If textOnly was set to 1, we trust that judgement, as this was explicitly set.
+                // However, since 0 is the default value [1], it's common for "text only" messages to have
+                // this set to 0, despite. This is also the reason why we do not use this flag for filtering
+                // within the query.
+                //
+                // [1]: https://cs.android.com/android/platform/superproject/main/+/main:packages/providers/TelephonyProvider/src/com/android/providers/telephony/MmsSmsDatabaseHelper.java;l=2512;drc=61197364367c9e404c7da6900658f1b16c42d0da
+                if (textOnly == 0) {
+                    // Effectively the same logic as in AOSP [2] when categorizing incoming messages.
+                    //
+                    // [2]: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/telephony/common/com/google/android/mms/pdu/PduPersister.java;l=1346;drc=6a5fcafd33cb3068235f1d76a8a6939886e15a71
+                    textOnly = 1
+                    if (parts.size > 2) { textOnly = 0 }
+                    for (part in parts) {
+                        if (ContentType.APP_SMIL != part.contentType && ContentType.TEXT_PLAIN != part.contentType) {
+                            textOnly = 0
+                        }
+                    }
+                }
+
+                if (includeTextOnlyAttachment || textOnly == 0) {
+                    mmsList.add(
+                        MmsBackup(
+                            creator = creator,
+                            contentType = contentType,
+                            deliveryReport = deliveryReport,
+                            date = date,
+                            dateSent = dateSent,
+                            locked = locked,
+                            messageType = messageType,
+                            messageBox = messageBox,
+                            read = read,
+                            readReport = readReport,
+                            seen = seen,
+                            textOnly = textOnly,
+                            status = status,
+                            subject = subject,
+                            subjectCharSet = subjectCharSet,
+                            subscriptionId = subscriptionId,
+                            transactionId = transactionId,
+                            addresses = addresses,
+                            parts = parts
+                        )
                     )
-                )
+                }
             }
         }
         return mmsList
