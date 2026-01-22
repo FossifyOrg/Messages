@@ -115,6 +115,7 @@ class MessagesReader(private val context: Context) {
             Mms.SEEN,
             Mms.TEXT_ONLY,
             Mms.STATUS,
+            Mms.SUBJECT,
             Mms.SUBJECT_CHARSET,
             Mms.SUBSCRIPTION_ID,
             Mms.TRANSACTION_ID
