@@ -70,7 +70,7 @@ class MessagesReader(private val context: Context) {
                 val body = cursor.getStringValueOrNull(Sms.BODY)
                 val date = cursor.getLongValue(Sms.DATE)
                 val dateSent = cursor.getLongValue(Sms.DATE_SENT)
-                val locked = cursor.getIntValue(Sms.DATE_SENT)
+                val locked = cursor.getIntValue(Sms.LOCKED)
                 val protocol = cursor.getStringValueOrNull(Sms.PROTOCOL)
                 val read = cursor.getIntValue(Sms.READ)
                 val status = cursor.getIntValue(Sms.STATUS)
