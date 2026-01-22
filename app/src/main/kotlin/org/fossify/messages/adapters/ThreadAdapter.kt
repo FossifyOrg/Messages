@@ -227,8 +227,8 @@ class ThreadAdapter(
         val textToCopy = if (selectedMessages.size == 1) {
             selectedMessages.first().body
         } else {
-            selectedMessages.filter { it.body.isNotEmpty() }.joinToString("\n") { message ->
-                val format = "${activity.getTimeFormat()}, ${activity.config.dateFormat}"
+            selectedMessages.filter { it.body.isNotEmpty() }.joinToString("\n\n") { message ->
+                val format = "${activity.config.dateFormat}, ${activity.getTimeFormat()}"
                 val dateTime = DateTime(message.millis()).toString(format)
                 val sender = if (message.isReceivedMessage()) message.senderName else activity.getString(R.string.me)
                 "[$dateTime] $sender: ${message.body}"
