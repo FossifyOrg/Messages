@@ -101,6 +101,117 @@ class MessagesReader(private val context: Context) {
                 )
             }
         }
+
+        /* stores text only MMS as SMS */
+        if (!includeTextOnlyMMSasSMS) { return smsList }
+        val mmsProjection = arrayOf(
+            Mms._ID,
+
+            Mms.SUBSCRIPTION_ID,
+            /* ADDRESS : getMmsAddresses() */
+            /* BODY : getParts() */
+            Mms.DATE,
+            Mms.DATE_SENT,
+            Mms.LOCKED,
+            /* PROTOCOL : null */
+            Mms.READ,
+            Mms.STATUS,
+            Mms.MESSAGE_BOX,
+            /* SERVICE_CENTER : null */
+        )
+
+        val mmsSelection = "${Mms.THREAD_ID} = ?"
+
+        threadIds.map { it.toString() }.forEach { threadId ->
+            val selectionArgs = arrayOf(threadId)
+            context.queryCursor(Mms.CONTENT_URI, mmsProjection, mmsSelection, selectionArgs) { cursor ->
+                val mmsId = cursor.getLongValue(Mms._ID)
+
+                val subscriptionId = cursor.getLongValue(Mms.SUBSCRIPTION_ID)
+                val addresses = getMmsAddresses(mmsId)
+                val address = addresses.first { it.type == PduHeaders.FROM }.address
+
+                /* body done at the end */
+
+                val date = cursor.getLongValue(Mms.DATE) * 1000
+                val dateSent = cursor.getLongValue(Mms.DATE_SENT) * 1000
+                val locked = cursor.getIntValue(Mms.LOCKED)
+                val protocol = null
+                val read = cursor.getIntValue(Mms.READ)
+                val mmsStatus = cursor.getIntValueOrNull(Mms.STATUS)
+                val status = when (mmsStatus) {
+                    null, PduHeaders.STATUS_UNRECOGNIZED, PduHeaders.STATUS_INDETERMINATE -> {
+                        Telephony.TextBasedSmsColumns.STATUS_NONE
+                    }
+                    PduHeaders.STATUS_EXPIRED, PduHeaders.STATUS_UNREACHABLE, PduHeaders.STATUS_REJECTED -> {
+                        Telephony.TextBasedSmsColumns.STATUS_FAILED
+                    }
+                    PduHeaders.STATUS_DEFERRED, PduHeaders.STATUS_FORWARDED -> {
+                        Telephony.TextBasedSmsColumns.STATUS_PENDING
+                    }
+                    PduHeaders.STATUS_RETRIEVED -> {
+                        Telephony.TextBasedSmsColumns.STATUS_COMPLETE
+                    }
+                    else -> {
+                        /* unreachable? */
+                        Telephony.TextBasedSmsColumns.STATUS_NONE
+                    }
+                }
+
+                val messageBox = cursor.getIntValue(Mms.MESSAGE_BOX)
+                val type = when (messageBox) {
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_INBOX -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_INBOX
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_OUTBOX -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_OUTBOX
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_DRAFTS -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_DRAFT
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_FAILED -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_FAILED
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_SENT -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_SENT
+                    }
+                    else -> {
+                        /* unreachable */
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_ALL
+                    }
+                }
+
+                val serviceCenter = null
+
+                /* We do not rely on TEXT_ONLY MMS flag, see also getMmsMessages() */
+                val parts = getParts(mmsId)
+                val smil = parts.filter { it.contentType == ContentType.APP_SMIL }
+                val plain = parts.filter { it.contentType == ContentType.TEXT_PLAIN }
+                val others = parts.filter { it.contentType != ContentType.APP_SMIL && it.contentType != ContentType.TEXT_PLAIN }
+
+                if (smil.size <= 1 && plain.size == 1 && others.size == 0) {
+                    val body = plain.first().text
+
+                    smsList.add(
+                        SmsBackup(
+                            subscriptionId = subscriptionId,
+                            address = address,
+                            body = body,
+                            date = date,
+                            dateSent = dateSent,
+                            locked = locked,
+                            protocol = protocol,
+                            read = read,
+                            status = status,
+                            type = type,
+                            serviceCenter = serviceCenter
+                        )
+                    )
+                }
+            }
+        }
+
+
         return smsList
     }
 
