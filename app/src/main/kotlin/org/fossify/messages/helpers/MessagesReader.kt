@@ -3,10 +3,14 @@ package org.fossify.messages.helpers
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
+import android.provider.Telephony
 import android.provider.Telephony.Mms
 import android.provider.Telephony.Sms
 import android.util.Base64
+import com.google.android.mms.ContentType
+import com.google.android.mms.pdu_alt.PduHeaders
 import org.fossify.commons.extensions.getIntValue
+import org.fossify.commons.extensions.getIntValueOrNull
 import org.fossify.commons.extensions.getLongValue
 import org.fossify.commons.extensions.getStringValue
 import org.fossify.commons.extensions.getStringValueOrNull
@@ -31,16 +35,20 @@ class MessagesReader(private val context: Context) {
         var smsMessages = listOf<SmsBackup>()
         var mmsMessages = listOf<MmsBackup>()
 
+        // Special-case "Text only" MMS:
+        //  - If only-backup-sms: backup text-only MMS as SMS
+        //  - If only-backup-mms: exclude text-only MMS
+        //  - If both: backup text-only MMS as MMS
         if (getSms) {
-            smsMessages = getSmsMessages(conversationIds)
+            smsMessages = getSmsMessages(conversationIds, includeTextOnlyMMSasSMS = !getMms)
         }
         if (getMms) {
-            mmsMessages = getMmsMessages(conversationIds)
+            mmsMessages = getMmsMessages(conversationIds, getSms)
         }
         callback(smsMessages + mmsMessages)
     }
 
-    private fun getSmsMessages(threadIds: List<Long>): List<SmsBackup> {
+    private fun getSmsMessages(threadIds: List<Long>, includeTextOnlyMMSasSMS: Boolean = false): List<SmsBackup> {
         val projection = arrayOf(
             Sms.SUBSCRIPTION_ID,
             Sms.ADDRESS,
