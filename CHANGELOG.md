@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added "Copy number to clipboard" option inside chat overflow menu ([#651])
 
 ### Changed
-- Made "Add number to contact" option visible for alphanumeric senders ([#232])
 - Improved multi-message copy formatting with timestamps and sender names
 
 ### Fixed
