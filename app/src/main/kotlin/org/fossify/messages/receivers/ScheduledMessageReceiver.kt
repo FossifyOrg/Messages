@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
 import org.fossify.commons.extensions.showErrorToast
-import org.fossify.commons.helpers.MINUTE_SECONDS
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.extensions.conversationsDB
 import org.fossify.messages.extensions.deleteScheduledMessage
@@ -18,7 +17,7 @@ import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.sendMessageCompat
-import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.minutes
 
 class ScheduledMessageReceiver : BroadcastReceiver() {
 
@@ -28,7 +27,7 @@ class ScheduledMessageReceiver : BroadcastReceiver() {
             PowerManager.PARTIAL_WAKE_LOCK,
             "simple.messenger:scheduled.message.receiver"
         )
-        wakelock.acquire(MINUTE_SECONDS.milliseconds.inWholeMilliseconds)
+        wakelock.acquire(1.minutes.inWholeMilliseconds)
 
         val pendingResult = goAsync()
         ensureBackgroundThread {
