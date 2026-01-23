@@ -41,6 +41,7 @@ import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.trimToComparableNumber
 import org.fossify.commons.helpers.DAY_SECONDS
+import org.fossify.commons.helpers.MINUTE_SECONDS
 import org.fossify.commons.helpers.MONTH_SECONDS
 import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
@@ -49,6 +50,7 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
+import kotlin.time.Duration.Companion.milliseconds
 import org.fossify.messages.R
 import org.fossify.messages.databases.MessagesDatabase
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
@@ -1314,13 +1316,13 @@ fun Context.updateScheduledMessagesThreadId(messages: List<Message>, newThreadId
 
 fun Context.clearExpiredScheduledMessages(threadId: Long, messagesToDelete: List<Message>? = null) {
     val messages = messagesToDelete ?: messagesDB.getScheduledThreadMessages(threadId)
-    val now = System.currentTimeMillis() + 500L
+    val cutoff = System.currentTimeMillis() - MINUTE_SECONDS.milliseconds.inWholeMilliseconds
 
     try {
-        messages.filter { it.isScheduled && it.millis() < now }.forEach { msg ->
+        messages.filter { it.isScheduled && it.millis() < cutoff }.forEach { msg ->
             messagesDB.delete(msg.id)
         }
-        if (messages.filterNot { it.isScheduled && it.millis() < now }.isEmpty()) {
+        if (messages.filterNot { it.isScheduled && it.millis() < cutoff }.isEmpty()) {
             // delete empty temporary thread
             val conversation = conversationsDB.getConversationWithThreadId(threadId)
             if (conversation != null && conversation.isScheduled) {
