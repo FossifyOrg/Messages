@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.extensions.adjustAlpha
 import org.fossify.commons.extensions.appLaunched

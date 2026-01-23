@@ -8,6 +8,8 @@ import android.provider.ContactsContract
 import org.fossify.commons.FossifyApp
 import org.fossify.commons.extensions.hasPermission
 import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.messages.extensions.rescheduleAllScheduledMessages
 import org.fossify.messages.helpers.MessagingCache
 
 class App : FossifyApp() {
@@ -23,9 +25,13 @@ class App : FossifyApp() {
             ).forEach {
                 try {
                     contentResolver.registerContentObserver(it, true, contactsObserver)
-                } catch (_: Exception){
+                } catch (_: Exception) {
                 }
             }
+        }
+
+        ensureBackgroundThread {
+            rescheduleAllScheduledMessages()
         }
     }
 

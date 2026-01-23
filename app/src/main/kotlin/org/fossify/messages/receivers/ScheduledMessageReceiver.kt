@@ -17,17 +17,30 @@ import org.fossify.messages.helpers.THREAD_ID
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.messaging.sendMessageCompat
+import kotlin.time.Duration.Companion.minutes
 
 class ScheduledMessageReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-        val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "simple.messenger:scheduled.message.receiver")
-        wakelock.acquire(3000)
+        val wakelock = powerManager.newWakeLock(
+            PowerManager.PARTIAL_WAKE_LOCK,
+            "simple.messenger:scheduled.message.receiver"
+        )
+        wakelock.acquire(1.minutes.inWholeMilliseconds)
 
-
+        val pendingResult = goAsync()
         ensureBackgroundThread {
-            handleIntent(context, intent)
+            try {
+                handleIntent(context, intent)
+            } finally {
+                try {
+                    if (wakelock.isHeld) wakelock.release()
+                } catch (_: Exception) {
+                }
+
+                pendingResult.finish()
+            }
         }
     }
 
@@ -57,7 +70,9 @@ class ScheduledMessageReceiver : BroadcastReceiver() {
         } catch (e: Exception) {
             context.showErrorToast(e)
         } catch (e: Error) {
-            context.showErrorToast(e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred))
+            context.showErrorToast(
+                e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred)
+            )
         }
     }
 }
