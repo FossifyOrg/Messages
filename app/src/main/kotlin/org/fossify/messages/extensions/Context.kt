@@ -50,7 +50,6 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.helpers.isQPlus
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
-import kotlin.time.Duration.Companion.milliseconds
 import org.fossify.messages.R
 import org.fossify.messages.databases.MessagesDatabase
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
@@ -80,6 +79,8 @@ import org.fossify.messages.models.NamePhoto
 import org.fossify.messages.models.RecycleBinMessage
 import org.xmlpull.v1.XmlPullParserException
 import java.io.FileNotFoundException
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.minutes
 
 val Context.config: Config
     get() = Config.newInstance(applicationContext)
@@ -1316,7 +1317,7 @@ fun Context.updateScheduledMessagesThreadId(messages: List<Message>, newThreadId
 
 fun Context.clearExpiredScheduledMessages(threadId: Long, messagesToDelete: List<Message>? = null) {
     val messages = messagesToDelete ?: messagesDB.getScheduledThreadMessages(threadId)
-    val cutoff = System.currentTimeMillis() - MINUTE_SECONDS.milliseconds.inWholeMilliseconds
+    val cutoff = System.currentTimeMillis() - 1.minutes.inWholeMilliseconds
 
     try {
         messages.filter { it.isScheduled && it.millis() < cutoff }.forEach { msg ->
