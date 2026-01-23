@@ -41,7 +41,6 @@ import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
 import org.fossify.commons.extensions.trimToComparableNumber
 import org.fossify.commons.helpers.DAY_SECONDS
-import org.fossify.commons.helpers.MINUTE_SECONDS
 import org.fossify.commons.helpers.MONTH_SECONDS
 import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
@@ -79,7 +78,6 @@ import org.fossify.messages.models.NamePhoto
 import org.fossify.messages.models.RecycleBinMessage
 import org.xmlpull.v1.XmlPullParserException
 import java.io.FileNotFoundException
-import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
 
 val Context.config: Config
