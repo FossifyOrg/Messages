@@ -27,7 +27,7 @@
         android:layout_marginStart="@dimen/medium_margin"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/vcard_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             tools:text="Elon Reeve Musk"
             tools:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/vcard_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             tools:text="and 6 others"
             tools:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/view_contact_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

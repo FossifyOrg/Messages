@@ -18,6 +18,7 @@ import org.fossify.commons.extensions.formatDateOrTime
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.setupViewBackground
+import org.fossify.commons.helpers.FontHelper
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.views.MyRecyclerView
@@ -181,9 +182,10 @@ abstract class BaseConversationsAdapter(
                 conversationBodyShort.alpha = 0.7f
                 if (conversation.isScheduled) Typeface.ITALIC else Typeface.NORMAL
             }
-            conversationAddress.setTypeface(null, style)
-            conversationBodyShort.setTypeface(null, style)
-            conversationDate.setTypeface(null, style)
+            val customTypeface = FontHelper.getTypeface(activity)
+            conversationAddress.setTypeface(customTypeface, style)
+            conversationBodyShort.setTypeface(customTypeface, style)
+            conversationDate.setTypeface(customTypeface, style)
 
             arrayListOf(conversationAddress, conversationBodyShort, conversationDate).forEach {
                 it.setTextColor(textColor)

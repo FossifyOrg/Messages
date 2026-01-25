@@ -33,7 +33,7 @@
         android:layout_marginStart="@dimen/medium_margin"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/filename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:textStyle="bold"
             tools:text="Event_16_02_2022.ics" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/file_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
