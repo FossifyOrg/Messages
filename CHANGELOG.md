@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added support for custom fonts
 - Added "Copy number to clipboard" option inside chat overflow menu ([#651])
 
 ### Changed

@@ -51,7 +51,7 @@
             android:visibility="gone"
             tools:ignore="ContentDescription" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/thread_message_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="@id/conversation_address"
         tools:src="@mipmap/ic_launcher" />
 
-    <TextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/conversation_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="John" />
 
-    <TextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/draft_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="@id/conversation_address"
         app:layout_constraintTop_toTopOf="@id/conversation_body_short" />
 
-    <TextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/conversation_body_short"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/conversation_address"
         tools:text="Hey buddy!" />
 
-    <TextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/conversation_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toTopOf="@id/conversation_body_short"
         tools:visibility="visible" />
 
-    <TextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/unread_count_badge"
         android:layout_width="@dimen/small_icon_size"
         android:layout_height="@dimen/small_icon_size"

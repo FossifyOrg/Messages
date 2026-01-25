@@ -42,6 +42,7 @@ import org.fossify.commons.extensions.getTimeFormat
 import org.fossify.commons.extensions.shareTextIntent
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.usableScreenSize
+import org.fossify.commons.helpers.FontHelper
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.views.MyRecyclerView
@@ -473,7 +474,7 @@ class ThreadAdapter(
                 setLinkTextColor(contrastColor)
 
                 if (message.isScheduled) {
-                    typeface = Typeface.create(Typeface.DEFAULT, Typeface.ITALIC)
+                    typeface = Typeface.create(FontHelper.getTypeface(activity), Typeface.ITALIC)
                     val scheduledDrawable = AppCompatResources.getDrawable(activity, org.fossify.commons.R.drawable.ic_clock_vector)?.apply {
                         applyColorFilter(contrastColor)
                         val size = lineHeight
@@ -482,7 +483,7 @@ class ThreadAdapter(
 
                     setCompoundDrawables(null, null, scheduledDrawable, null)
                 } else {
-                    typeface = Typeface.DEFAULT
+                    typeface = FontHelper.getTypeface(activity)
                     setCompoundDrawables(null, null, null, null)
                 }
             }
