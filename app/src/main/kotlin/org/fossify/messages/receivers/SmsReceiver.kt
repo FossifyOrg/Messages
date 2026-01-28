@@ -7,6 +7,7 @@ import android.provider.Telephony
 import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.isNumberBlocked
+import org.fossify.commons.helpers.ContactLookupResult
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.PhoneNumber
@@ -47,10 +48,10 @@ class SmsReceiver : BroadcastReceiver() {
                 if (isMessageFilteredOut(appContext, body)) return@ensureBackgroundThread
                 if (appContext.isNumberBlocked(address)) return@ensureBackgroundThread
                 if (appContext.baseConfig.blockUnknownNumbers) {
-                    appContext.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
-                        val isKnownContact = SimpleContactsHelper(appContext).existsSync(address, it)
-                        if (!isKnownContact) return@ensureBackgroundThread
-                    }
+                    val privateCursor =
+                        appContext.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+                    val result = SimpleContactsHelper(appContext).existsSync(address, privateCursor)
+                    if (result == ContactLookupResult.NotFound) return@ensureBackgroundThread
                 }
 
                 val date = System.currentTimeMillis()

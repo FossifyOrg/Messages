@@ -8,6 +8,7 @@ import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.isNumberBlocked
 import org.fossify.commons.extensions.showErrorToast
+import org.fossify.commons.helpers.ContactLookupResult
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
@@ -28,10 +29,9 @@ class MmsReceiver : MmsReceivedReceiver() {
     override fun isAddressBlocked(context: Context, address: String): Boolean {
         if (context.isNumberBlocked(address)) return true
         if (context.baseConfig.blockUnknownNumbers) {
-            context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
-                val isKnownContact = SimpleContactsHelper(context).existsSync(address, it)
-                return !isKnownContact
-            }
+            val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+            val result = SimpleContactsHelper(context).existsSync(address, privateCursor)
+            return result == ContactLookupResult.NotFound
         }
 
         return false
@@ -43,7 +43,7 @@ class MmsReceiver : MmsReceivedReceiver() {
 
     override fun onMessageReceived(context: Context, messageUri: Uri) {
         val mms = context.getLatestMMS() ?: return
-        val address = mms.getSender()?.phoneNumbers?.first()?.normalizedNumber ?: ""
+        val address = mms.getSender()?.phoneNumbers?.firstOrNull()?.normalizedNumber ?: ""
         val size = context.resources.getDimension(R.dimen.notification_large_icon_size).toInt()
         ensureBackgroundThread {
             handleMmsMessage(context, mms, size, address)
