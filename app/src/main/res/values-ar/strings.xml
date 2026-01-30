@@ -125,7 +125,7 @@
     <string name="faq_3_text">نعم ، يمكنك جدولة الرسائل ليتم إرسالها في المستقبل عن طريق الضغط مع الاستمرار على الزر \"إرسال\" واختيار التاريخ والوقت المطلوبين.</string>
     <string name="app_launcher_name">رسائل</string>
     <string name="message_details">تفاصيل الرسالة</string>
-    <string name="keep_conversations_archived">ابقق المحادثات مؤرشفة</string>
+    <string name="keep_conversations_archived">أبقِ المحادثات مؤرشفة</string>
     <string name="me">أنا</string>
     <string name="enable_custom_notifications">تفعيل الإشعارات المخصصة</string>
 </resources>
