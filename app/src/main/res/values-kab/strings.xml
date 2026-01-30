@@ -68,7 +68,7 @@
     <string name="sender_only">Amazan kan</string>
     <string name="enable_delivery_reports">Rmed ineqqisen n usiweḍ</string>
     <string name="send_on_enter">Azen izen s usiti ɣef Kcem</string>
-    <string name="mms_file_size_limit">Ales tiddi n tugniwin MMS yettwaznen</string>
+    <string name="mms_file_size_limit">Talast tiddi n tugniwin MMS yettwaznen</string>
     <string name="mms_file_size_limit_none">Ulac talast</string>
     <string name="outgoing_messages">Iznan uffiɣen</string>
     <string name="group_message_mms">Azen tagrumma n yeznan am MMS</string>
