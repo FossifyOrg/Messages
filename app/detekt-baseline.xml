@@ -34,7 +34,6 @@
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$1.2f</ID>
     <ID>MagicNumber:ContactsAdapter.kt$ContactsAdapter$1.2f</ID>
     <ID>MagicNumber:Context.kt$10</ID>
-    <ID>MagicNumber:Context.kt$500L</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$0.6f</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$100</ID>
     <ID>MagicNumber:ImageCompressor.kt$ImageCompressor$180f</ID>
@@ -49,7 +48,6 @@
     <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$23</ID>
     <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$5</ID>
     <ID>MagicNumber:ScheduleMessageDialog.kt$ScheduleMessageDialog$59</ID>
-    <ID>MagicNumber:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$3000</ID>
     <ID>MagicNumber:SearchResultsAdapter.kt$SearchResultsAdapter$0.8f</ID>
     <ID>MagicNumber:SearchResultsAdapter.kt$SearchResultsAdapter$0.9f</ID>
     <ID>MagicNumber:SearchResultsAdapter.kt$SearchResultsAdapter$1.2f</ID>
@@ -94,11 +92,6 @@
     <ID>MaxLineLength:ImageCompressor.kt$ImageCompressor$fun</ID>
     <ID>MaxLineLength:ImageCompressor.kt$ImageCompressor$private</ID>
     <ID>MaxLineLength:ImageCompressor.kt$ImageCompressor$var imageFile = File(outputDirectory, System.currentTimeMillis().toString().plus(mimeType.getExtensionFromMimeType()))</ID>
-    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND recycle_bin_messages.deleted_ts &lt; :timestamp")</ID>
-    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL AND thread_id = :threadId")</ID>
-    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NOT NULL")</ID>
-    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND thread_id = :threadId AND is_scheduled = 1")</ID>
-    <ID>MaxLineLength:MessagesDao.kt$MessagesDao$@Query("SELECT messages.* FROM messages LEFT OUTER JOIN recycle_bin_messages ON messages.id = recycle_bin_messages.id WHERE recycle_bin_messages.id IS NULL AND thread_id = :threadId")</ID>
     <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$"INSERT OR IGNORE INTO conversations_new (thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number) "</ID>
     <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$"SELECT thread_id, snippet, date, read, title, photo_uri, is_group_conversation, phone_number FROM conversations"</ID>
     <ID>MaxLineLength:MessagesDatabase.kt$MessagesDatabase.Companion.&lt;no name provided&gt;$execSQL("CREATE TABLE IF NOT EXISTS `attachments` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `message_id` INTEGER NOT NULL, `uri_string` TEXT NOT NULL, `mimetype` TEXT NOT NULL, `width` INTEGER NOT NULL, `height` INTEGER NOT NULL, `filename` TEXT NOT NULL)")</ID>
@@ -116,8 +109,6 @@
     <ID>MaxLineLength:MmsPart.kt$MmsPart$return !(text != null || contentType.lowercase().startsWith("text") || contentType.lowercase() == "application/smil")</ID>
     <ID>MaxLineLength:NewConversationActivity.kt$NewConversationActivity$// READ_CONTACTS permission is not mandatory, but without it we won't be able to show any suggestions during typing</ID>
     <ID>MaxLineLength:RecycleBinConversationsAdapter.kt$RecycleBinConversationsAdapter$val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
-    <ID>MaxLineLength:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$context.showErrorToast(e.localizedMessage ?: context.getString(org.fossify.commons.R.string.unknown_error_occurred))</ID>
-    <ID>MaxLineLength:ScheduledMessageReceiver.kt$ScheduledMessageReceiver$val wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "simple.messenger:scheduled.message.receiver")</ID>
     <ID>MaxLineLength:SearchResult.kt$SearchResult</ID>
     <ID>MaxLineLength:SearchResultsAdapter.kt$SearchResultsAdapter$SimpleContactsHelper(activity).loadContactImage(searchResult.photoUri, searchResultImage, searchResult.title)</ID>
     <ID>MaxLineLength:SearchResultsAdapter.kt$SearchResultsAdapter$activity: SimpleActivity</ID>
@@ -159,7 +150,6 @@
     <ID>SpreadOperator:MainActivity.kt$MainActivity$(*currentMessages.toTypedArray())</ID>
     <ID>SpreadOperator:ThreadActivity.kt$ThreadActivity$(*currentMessages.toTypedArray())</ID>
     <ID>SwallowedException:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$e: Exception</ID>
-    <ID>SwallowedException:AttachmentPreviews.kt$e: Exception</ID>
     <ID>SwallowedException:BlockedKeywordsExporter.kt$BlockedKeywordsExporter$e: Exception</ID>
     <ID>SwallowedException:ImageCompressor.kt$ImageCompressor$e: Exception</ID>
     <ID>SwallowedException:JsonElement.kt$e: Exception</ID>
@@ -179,7 +169,6 @@
     <ID>ThrowsCount:SmsSender.kt$SmsSender$fun sendMessage( subId: Int, destination: String, body: String, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
     <ID>TooGenericExceptionCaught:Activity.kt$e: Exception</ID>
     <ID>TooGenericExceptionCaught:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:AttachmentPreviews.kt$e: Exception</ID>
     <ID>TooGenericExceptionCaught:BlockedKeywordsExporter.kt$BlockedKeywordsExporter$e: Exception</ID>
     <ID>TooGenericExceptionCaught:BlockedKeywordsImporter.kt$BlockedKeywordsImporter$e: Exception</ID>
     <ID>TooGenericExceptionCaught:Context.kt$e: Exception</ID>
@@ -238,7 +227,6 @@
     <ID>WildcardImport:DirectReplyReceiver.kt$import org.fossify.messages.extensions.*</ID>
     <ID>WildcardImport:JsonElement.kt$import com.google.gson.*</ID>
     <ID>WildcardImport:ManageBlockedKeywordsAdapter.kt$import android.view.*</ID>
-    <ID>WildcardImport:MessagesDao.kt$import androidx.room.*</ID>
     <ID>WildcardImport:VCard.kt$import ezvcard.property.*</ID>
     <ID>WildcardImport:VCardViewerAdapter.kt$import org.fossify.commons.extensions.*</ID>
   </CurrentIssues>
