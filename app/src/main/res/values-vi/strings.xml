@@ -35,7 +35,7 @@
     <string name="schedule_send">Lên lịch gửi</string>
     <string name="cancel_schedule_send">Hủy lên lịch gửi</string>
     <string name="must_pick_time_in_the_future">Bạn cần phải chọn một thời điểm trong tương lai</string>
-    <string name="schedule_send_warning">Giữ cho điện thoại bật và đảm bảo không có gì làm cho ứng dụng bị dừng khi đang hoạt động trong nền.</string>
+    <string name="schedule_send_warning">Đảm bảo điện thoại hoạt động và không có gì làm cho app bị dừng khi đang hoạt động trong nền.</string>
     <string name="update_message">Cập nhật tin nhắn</string>
     <string name="send_now">Gửi ngay</string>
     <string name="message_details">Chi tiết tin nhắn</string>
@@ -105,8 +105,8 @@
     <string name="attachment_sized_exceeds_max_limit">Kích cỡ tệp đính kèm vượt quá giới hạn MMS</string>
     <string name="sim_card_not_available">Thẻ SIM không khả dụng</string>
     <string name="couldnt_download_mms">Không thể tải xuống MMS</string>
-    <string name="faq_1_title">Tại sao ứng dụng cần quyền truy cập Internet\?</string>
-    <string name="faq_1_text">Nó cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các ứng dụng khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>
+    <string name="faq_1_title">Tại sao app cần quyền truy cập Internet?</string>
+    <string name="faq_1_text">Nó cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các app khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>
     <string name="faq_2_title">Làm sao khi đầu bên kia không nhận được MMS của tôi?</string>
     <string name="faq_2_text">Kích cỡ MMS bị giới hạn bởi nhà mạng, bạn có thể thử giảm giới hạn trong cài đặt app.</string>
     <string name="faq_3_title">App có hỗ trợ lên lịch gửi tin nhắn không?</string>
