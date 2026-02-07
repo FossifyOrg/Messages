@@ -1,6 +1,6 @@
 [versions]
 #jetbrains
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 kotlinxSerializationJson = "1.10.0"
 #KSP
 ksp = "2.3.5"
