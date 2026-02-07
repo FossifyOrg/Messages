@@ -24,6 +24,11 @@ fun hasSigningVars(): Boolean {
             && providers.environmentVariable("SIGNING_STORE_PASSWORD").orNull != null
 }
 
+base {
+    val versionCode = project.property("VERSION_CODE").toString().toInt()
+    archivesName = "messages-$versionCode"
+}
+
 android {
     compileSdk = project.libs.versions.app.build.compileSDKVersion.get().toInt()
 
@@ -33,7 +38,6 @@ android {
         targetSdk = project.libs.versions.app.build.targetSDK.get().toInt()
         versionName = project.property("VERSION_NAME").toString()
         versionCode = project.property("VERSION_CODE").toString().toInt()
-        setProperty("archivesBaseName", "messages-$versionCode")
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
