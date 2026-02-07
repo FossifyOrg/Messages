@@ -21,7 +21,7 @@ commons = "6.1.0"
 mmslib = "1.0.0"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "8.11.1"
+gradlePlugins-agp = "9.0.0"
 #build
 app-build-compileSDKVersion = "36"
 app-build-targetSDK = "36"
