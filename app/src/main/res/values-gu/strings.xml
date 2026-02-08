@@ -58,7 +58,7 @@
     <string name="restore">પુનઃસ્થાપિત</string>
     <string name="skip_the_recycle_bin_messages">કચરાપેટી છોડો, સીધા બધા સંદેશો કાઢી નાખો</string>
     <string name="delete_whole_conversation_confirmation">પાકુ આ વાતચીત માંથી બધા સંદેશો કાઢી નાખવા છે?</string>
-    <string name="restore_confirmation">પાકુ આ %s તમને પુનઃસ્થાપિત કરવું છે?</string>
+    <string name="restore_confirmation">પાક્કું તમને %s રિસ્ટોર કરવું છે ?</string>
     <plurals name="delete_conversations">
         <item quantity="one">%d વાતચીત</item>
         <item quantity="other">%d વાતો</item>
