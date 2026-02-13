@@ -35,7 +35,7 @@
     <string name="schedule_send">Lên lịch gửi</string>
     <string name="cancel_schedule_send">Hủy lên lịch gửi</string>
     <string name="must_pick_time_in_the_future">Bạn cần phải chọn một thời điểm trong tương lai</string>
-    <string name="schedule_send_warning">Đảm bảo điện thoại hoạt động và không có gì làm cho app bị dừng khi đang hoạt động trong nền.</string>
+    <string name="schedule_send_warning">Đảm bảo điện thoại hoạt động và không có gì làm cho ứng dụng bị dừng khi đang hoạt động trong nền.</string>
     <string name="update_message">Cập nhật tin nhắn</string>
     <string name="send_now">Gửi ngay</string>
     <string name="message_details">Chi tiết tin nhắn</string>
@@ -105,11 +105,11 @@
     <string name="attachment_sized_exceeds_max_limit">Kích cỡ tệp đính kèm vượt quá giới hạn MMS</string>
     <string name="sim_card_not_available">Thẻ SIM không khả dụng</string>
     <string name="couldnt_download_mms">Không thể tải xuống MMS</string>
-    <string name="faq_1_title">Tại sao app cần quyền truy cập Internet?</string>
-    <string name="faq_1_text">Nó cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các app khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>
+    <string name="faq_1_title">Tại sao ứng dụng cần quyền truy cập Internet?</string>
+    <string name="faq_1_text">Nó cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các ứng dụng khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>
     <string name="faq_2_title">Làm sao khi đầu bên kia không nhận được MMS của tôi?</string>
-    <string name="faq_2_text">Kích cỡ MMS bị giới hạn bởi nhà mạng, bạn có thể thử giảm giới hạn trong cài đặt app.</string>
-    <string name="faq_3_title">App có hỗ trợ lên lịch gửi tin nhắn không?</string>
+    <string name="faq_2_text">Kích cỡ MMS bị giới hạn bởi nhà mạng, bạn có thể thử giảm giới hạn trong cài đặt ứng dụng.</string>
+    <string name="faq_3_title">Ứng dụng có hỗ trợ lên lịch gửi tin nhắn không?</string>
     <string name="faq_3_text">Có, bạn có thể lên lịch gửi tin nhắn trong tương lai bằng cách nhấn giữ nút Gửi rồi chọn ngày giờ mong muốn.</string>
     <string name="enable_custom_notifications">Bật thông báo tùy chỉnh</string>
     <string name="app_launcher_name">Tin nhắn</string>
@@ -118,5 +118,5 @@
     <string name="export_blocked_keywords">Xuất từ khóa bị chặn</string>
     <string name="import_blocked_keywords">Nhập từ khóa bị chặn</string>
     <string name="faq_4_title">Tại sao tin nhắn nhóm của tôi lại hiển thị dưới dạng từng tin nhắn riêng với từng người nhận?</string>
-    <string name="faq_4_text">Bạn cần bật \"Gửi tin nhắn nhóm dưới dạng MMS\" trong cài đặt app. Điều này sẽ đảm bảo rằng các tin nhắn nhóm được gửi đúng dưới dạng MMS, cho phép tất cả người tham gia xem được câu trả lời của nhau.</string>
+    <string name="faq_4_text">Bạn cần bật \"Gửi tin nhắn nhóm dưới dạng MMS\" trong cài đặt ứng dụng. Điều này sẽ đảm bảo rằng các tin nhắn nhóm được gửi đúng dưới dạng MMS, cho phép tất cả người tham gia xem được câu trả lời của nhau.</string>
 </resources>
