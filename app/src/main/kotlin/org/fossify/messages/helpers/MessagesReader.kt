@@ -3,10 +3,14 @@ package org.fossify.messages.helpers
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
+import android.provider.Telephony
 import android.provider.Telephony.Mms
 import android.provider.Telephony.Sms
 import android.util.Base64
+import com.google.android.mms.ContentType
+import com.google.android.mms.pdu_alt.PduHeaders
 import org.fossify.commons.extensions.getIntValue
+import org.fossify.commons.extensions.getIntValueOrNull
 import org.fossify.commons.extensions.getLongValue
 import org.fossify.commons.extensions.getStringValue
 import org.fossify.commons.extensions.getStringValueOrNull
@@ -31,16 +35,20 @@ class MessagesReader(private val context: Context) {
         var smsMessages = listOf<SmsBackup>()
         var mmsMessages = listOf<MmsBackup>()
 
+        // Special-case "Text only" MMS:
+        //  - If only-backup-sms: backup text-only MMS as SMS
+        //  - If only-backup-mms: exclude text-only MMS
+        //  - If both: backup text-only MMS as MMS
         if (getSms) {
-            smsMessages = getSmsMessages(conversationIds)
+            smsMessages = getSmsMessages(conversationIds, includeTextOnlyMMSasSMS = !getMms)
         }
         if (getMms) {
-            mmsMessages = getMmsMessages(conversationIds)
+            mmsMessages = getMmsMessages(conversationIds, getSms)
         }
         callback(smsMessages + mmsMessages)
     }
 
-    private fun getSmsMessages(threadIds: List<Long>): List<SmsBackup> {
+    private fun getSmsMessages(threadIds: List<Long>, includeTextOnlyMMSasSMS: Boolean = false): List<SmsBackup> {
         val projection = arrayOf(
             Sms.SUBSCRIPTION_ID,
             Sms.ADDRESS,
@@ -93,6 +101,117 @@ class MessagesReader(private val context: Context) {
                 )
             }
         }
+
+        /* stores text only MMS as SMS */
+        if (!includeTextOnlyMMSasSMS) { return smsList }
+        val mmsProjection = arrayOf(
+            Mms._ID,
+
+            Mms.SUBSCRIPTION_ID,
+            /* ADDRESS : getMmsAddresses() */
+            /* BODY : getParts() */
+            Mms.DATE,
+            Mms.DATE_SENT,
+            Mms.LOCKED,
+            /* PROTOCOL : null */
+            Mms.READ,
+            Mms.STATUS,
+            Mms.MESSAGE_BOX,
+            /* SERVICE_CENTER : null */
+        )
+
+        val mmsSelection = "${Mms.THREAD_ID} = ?"
+
+        threadIds.map { it.toString() }.forEach { threadId ->
+            val selectionArgs = arrayOf(threadId)
+            context.queryCursor(Mms.CONTENT_URI, mmsProjection, mmsSelection, selectionArgs) { cursor ->
+                val mmsId = cursor.getLongValue(Mms._ID)
+
+                val subscriptionId = cursor.getLongValue(Mms.SUBSCRIPTION_ID)
+                val addresses = getMmsAddresses(mmsId)
+                val address = addresses.first { it.type == PduHeaders.FROM }.address
+
+                /* body done at the end */
+
+                val date = cursor.getLongValue(Mms.DATE) * 1000
+                val dateSent = cursor.getLongValue(Mms.DATE_SENT) * 1000
+                val locked = cursor.getIntValue(Mms.LOCKED)
+                val protocol = null
+                val read = cursor.getIntValue(Mms.READ)
+                val mmsStatus = cursor.getIntValueOrNull(Mms.STATUS)
+                val status = when (mmsStatus) {
+                    null, PduHeaders.STATUS_UNRECOGNIZED, PduHeaders.STATUS_INDETERMINATE -> {
+                        Telephony.TextBasedSmsColumns.STATUS_NONE
+                    }
+                    PduHeaders.STATUS_EXPIRED, PduHeaders.STATUS_UNREACHABLE, PduHeaders.STATUS_REJECTED -> {
+                        Telephony.TextBasedSmsColumns.STATUS_FAILED
+                    }
+                    PduHeaders.STATUS_DEFERRED, PduHeaders.STATUS_FORWARDED -> {
+                        Telephony.TextBasedSmsColumns.STATUS_PENDING
+                    }
+                    PduHeaders.STATUS_RETRIEVED -> {
+                        Telephony.TextBasedSmsColumns.STATUS_COMPLETE
+                    }
+                    else -> {
+                        /* unreachable? */
+                        Telephony.TextBasedSmsColumns.STATUS_NONE
+                    }
+                }
+
+                val messageBox = cursor.getIntValue(Mms.MESSAGE_BOX)
+                val type = when (messageBox) {
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_INBOX -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_INBOX
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_OUTBOX -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_OUTBOX
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_DRAFTS -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_DRAFT
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_FAILED -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_FAILED
+                    }
+                    Telephony.BaseMmsColumns.MESSAGE_BOX_SENT -> {
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_SENT
+                    }
+                    else -> {
+                        /* unreachable */
+                        Telephony.TextBasedSmsColumns.MESSAGE_TYPE_ALL
+                    }
+                }
+
+                val serviceCenter = null
+
+                /* We do not rely on TEXT_ONLY MMS flag, see also getMmsMessages() */
+                val parts = getParts(mmsId)
+                val smil = parts.filter { it.contentType == ContentType.APP_SMIL }
+                val plain = parts.filter { it.contentType == ContentType.TEXT_PLAIN }
+                val others = parts.filter { it.contentType != ContentType.APP_SMIL && it.contentType != ContentType.TEXT_PLAIN }
+
+                if (smil.size <= 1 && plain.size == 1 && others.size == 0) {
+                    val body = plain.first().text
+
+                    smsList.add(
+                        SmsBackup(
+                            subscriptionId = subscriptionId,
+                            address = address,
+                            body = body,
+                            date = date,
+                            dateSent = dateSent,
+                            locked = locked,
+                            protocol = protocol,
+                            read = read,
+                            status = status,
+                            type = type,
+                            serviceCenter = serviceCenter
+                        )
+                    )
+                }
+            }
+        }
+
+
         return smsList
     }
 
@@ -120,19 +239,11 @@ class MessagesReader(private val context: Context) {
             Mms.SUBSCRIPTION_ID,
             Mms.TRANSACTION_ID
         )
-        val selection = if (includeTextOnlyAttachment) {
-            "${Mms.THREAD_ID} = ? AND ${Mms.TEXT_ONLY} = ?"
-        } else {
-            "${Mms.THREAD_ID} = ?"
-        }
+        val selection = "${Mms.THREAD_ID} = ?"
         val mmsList = mutableListOf<MmsBackup>()
 
         threadIds.map { it.toString() }.forEach { threadId ->
-            val selectionArgs = if (includeTextOnlyAttachment) {
-                arrayOf(threadId, "1")
-            } else {
-                arrayOf(threadId)
-            }
+            val selectionArgs = arrayOf(threadId)
             context.queryCursor(Mms.CONTENT_URI, projection, selection, selectionArgs) { cursor ->
                 val mmsId = cursor.getLongValue(Mms._ID)
                 val creator = cursor.getStringValueOrNull(Mms.CREATOR)
@@ -146,7 +257,7 @@ class MessagesReader(private val context: Context) {
                 val read = cursor.getIntValue(Mms.READ)
                 val readReport = cursor.getIntValue(Mms.READ_REPORT)
                 val seen = cursor.getIntValue(Mms.SEEN)
-                val textOnly = cursor.getIntValue(Mms.TEXT_ONLY)
+                var textOnly = cursor.getIntValue(Mms.TEXT_ONLY)
                 val status = cursor.getStringValueOrNull(Mms.STATUS)
                 val subject = cursor.getStringValueOrNull(Mms.SUBJECT)
                 val subjectCharSet = cursor.getStringValueOrNull(Mms.SUBJECT_CHARSET)
@@ -155,29 +266,51 @@ class MessagesReader(private val context: Context) {
 
                 val parts = getParts(mmsId)
                 val addresses = getMmsAddresses(mmsId)
-                mmsList.add(
-                    MmsBackup(
-                        creator = creator,
-                        contentType = contentType,
-                        deliveryReport = deliveryReport,
-                        date = date,
-                        dateSent = dateSent,
-                        locked = locked,
-                        messageType = messageType,
-                        messageBox = messageBox,
-                        read = read,
-                        readReport = readReport,
-                        seen = seen,
-                        textOnly = textOnly,
-                        status = status,
-                        subject = subject,
-                        subjectCharSet = subjectCharSet,
-                        subscriptionId = subscriptionId,
-                        transactionId = transactionId,
-                        addresses = addresses,
-                        parts = parts
+
+                // If textOnly was set to 1, we trust that judgement, as this was explicitly set.
+                // However, since 0 is the default value [1], it's common for "text only" messages to have
+                // this set to 0, despite. This is also the reason why we do not use this flag for filtering
+                // within the query.
+                //
+                // [1]: https://cs.android.com/android/platform/superproject/main/+/main:packages/providers/TelephonyProvider/src/com/android/providers/telephony/MmsSmsDatabaseHelper.java;l=2512;drc=61197364367c9e404c7da6900658f1b16c42d0da
+                if (textOnly == 0) {
+                    // Effectively the same logic as in AOSP [2] when categorizing incoming messages.
+                    //
+                    // [2]: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/telephony/common/com/google/android/mms/pdu/PduPersister.java;l=1346;drc=6a5fcafd33cb3068235f1d76a8a6939886e15a71
+                    textOnly = 1
+                    if (parts.size > 2) { textOnly = 0 }
+                    for (part in parts) {
+                        if (ContentType.APP_SMIL != part.contentType && ContentType.TEXT_PLAIN != part.contentType) {
+                            textOnly = 0
+                        }
+                    }
+                }
+
+                if (includeTextOnlyAttachment || textOnly == 0) {
+                    mmsList.add(
+                        MmsBackup(
+                            creator = creator,
+                            contentType = contentType,
+                            deliveryReport = deliveryReport,
+                            date = date,
+                            dateSent = dateSent,
+                            locked = locked,
+                            messageType = messageType,
+                            messageBox = messageBox,
+                            read = read,
+                            readReport = readReport,
+                            seen = seen,
+                            textOnly = textOnly,
+                            status = status,
+                            subject = subject,
+                            subjectCharSet = subjectCharSet,
+                            subscriptionId = subscriptionId,
+                            transactionId = transactionId,
+                            addresses = addresses,
+                            parts = parts
+                        )
                     )
-                )
+                }
             }
         }
         return mmsList
