@@ -96,4 +96,22 @@
     <string name="faq_1_title">Iwacu asnas yesra ad yekcem ɣer internet ?</string>
     <string name="faq_3_title">Asnas yessefrak iznan yettusɣiwsen?</string>
     <string name="faq_3_text">Ih, iznan n usɣiwes zemren ad ttwaznen deg yimal s usiti ɣef teqfalt Azen sakin ad tferneḍ azemz akked wakud.</string>
+    <string name="schedule_send_warning">Eǧǧ tilifun yermed u tḥeqq d akken ulac d acu ara yenɣen asnas deg ugilal.</string>
+    <string name="keep_conversations_archived">Eǧǧ idiwenniyen deg uɣbaṛ</string>
+    <string name="restore_all_messages">Err-d akk iznan</string>
+    <string name="empty_recycle_bin_messages_confirmation">D tidet tebɣiḍ ad d-terreḍ d tilemt Taqecwalt Iḍumman? Iznan ad ṛuḥen s wudem imezgi.</string>
+    <string name="skip_the_recycle_bin_messages">Zgel taqecwalt Iḍumman, kkes iznan srid</string>
+    <string name="delete_whole_conversation_confirmation">Tebɣiḍ ad tekkseḍ akk iznan n udiwenni-agi?</string>
+    <string name="archive_confirmation">Tebɣiḍ ad terreḍ deg uɣbaṛ %s?</string>
+    <string name="restore_whole_conversation_confirmation">Tebɣiḍ ad terreḍ akk iznan n udiwenni-agi?</string>
+    <string name="restore_confirmation">D tidet tebɣiḍ ad terreḍ %s?</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d udiwenni</item>
+        <item quantity="other">%d idiwenniyen</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d izen</item>
+        <item quantity="other">%d iznan</item>
+    </plurals>
+    <string name="keyword">Awal yufraren</string>
 </resources>
