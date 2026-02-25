@@ -114,4 +114,6 @@
         <item quantity="other">%d iznan</item>
     </plurals>
     <string name="keyword">Awal yufraren</string>
+    <string name="empty_archive_confirmation">D tidet tebɣiḍ ad yili d ilem uɣbaṛ ? Akk idiwenniyen n uɣbar ara ruḥen s wudem imezgi.</string>
+    <string name="faq_2_title">Ixef nniḍen ur d-ettaṭṭaf ara MMS, yella kra i zemreɣ ad t-xedmeɣ?</string>
 </resources>
