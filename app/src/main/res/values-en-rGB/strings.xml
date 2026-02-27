@@ -2,4 +2,16 @@
 <resources>
     <string name="app_launcher_name">Messages</string>
     <string name="restore_confirmation">Are you sure you want to restore %s?</string>
+    <plurals name="and_other_contacts">
+        <item quantity="one">and %d other</item>
+        <item quantity="other">and %d others</item>
+    </plurals>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d conversation</item>
+        <item quantity="other">%d conversations</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d message</item>
+        <item quantity="other">%d messages</item>
+    </plurals>
 </resources>
