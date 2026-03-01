@@ -65,7 +65,7 @@
     <string name="delete_whole_conversation_confirmation">هل أنت متأكد أنك تريد حذف كافة رسائل هذه المحادثة؟</string>
     <string name="archive_confirmation">هل أنت متأكد من أنك تريد أرشفة %s؟</string>
     <string name="restore_whole_conversation_confirmation">هل أنت متأكد من أنك تريد استعادة جميع رسائل هذه المحادثة؟</string>
-    <string name="restore_confirmation">هل أنت متأكد من أنك تريد استعادة %s؟</string>
+    <string name="restore_confirmation">أمتأكد من أنك تريد استعادة %s؟</string>
     <plurals name="delete_conversations">
         <item quantity="zero">محادثة %d</item>
         <item quantity="one">محادثة %d</item>
@@ -96,7 +96,7 @@
     <string name="mms_file_size_limit">تغيير حجم صور MMS المرسلة</string>
     <string name="mms_file_size_limit_none">لا يوجد حد</string>
     <string name="outgoing_messages">الرسائل المرسلة</string>
-    <string name="group_message_mms">إرسال رسائل جماعية كرسائل MMS</string>
+    <string name="group_message_mms">إرسال رسائل المجموعة كرسائل MMS</string>
     <string name="send_long_message_mms">إرسال رسائل طويلة كرسائل MMS</string>
     <string name="messages">الرسائل</string>
     <string name="export_messages">تصدير الرسائل</string>
@@ -129,4 +129,9 @@
     <string name="me">أنا</string>
     <string name="enable_custom_notifications">تفعيل الإشعارات المخصصة</string>
     <string name="update_message">حدّث الرسالة</string>
+    <string name="keywords">الكلمات المفتاحية</string>
+    <string name="export_blocked_keywords">صدِّر الكلمات الرئيسية المحظورة</string>
+    <string name="import_blocked_keywords">استورد الكلمات الرئيسية المحظورة</string>
+    <string name="faq_4_title">لماذا ردودي على الرسائل الجماعية تظهر للمستلمين كأنها رسائل فردية؟</string>
+    <string name="faq_4_text">يجب عليك تفعيل خيار \"إرسال رسائل المجموعة كرسائل MMS\" في إعدادات التطبيق. سيضمن ذلك إرسال رسائل المجموعة بتنسيق MMS الصحيح، مما يتيح لجميع المشاركين رؤية ردود بعضهم البعض.</string>
 </resources>
