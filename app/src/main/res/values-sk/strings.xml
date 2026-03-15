@@ -122,4 +122,7 @@
     <string name="keywords">Kľúčové slová</string>
     <string name="export_blocked_keywords">Exportovať zablokované kľúčové slová</string>
     <string name="import_blocked_keywords">Importovať zablokované kľúčové slová</string>
+    <string name="keep_conversations_archived">Nechať konverzácie archivované</string>
+    <string name="faq_4_title">Prečo moje odpovedania na skupinové správy sú ukázané ako samostatné texty alebo recipenty?</string>
+    <string name="faq_4_text">Nastavenia aplikácie, všetky</string>
 </resources>
