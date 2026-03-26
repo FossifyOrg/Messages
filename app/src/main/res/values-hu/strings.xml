@@ -119,4 +119,7 @@
     <string name="import_blocked_keywords">Letiltott kulcsszavak importálása</string>
     <string name="export_blocked_keywords">Letiltott kulcsszavak exportálása</string>
     <string name="keywords">Kulcsszavak</string>
+    <string name="keep_conversations_archived">Beszélgetések archiválva tartása</string>
+    <string name="faq_4_title">Miért jelennek meg a csoportos üzenetekre adott válaszaim a címzettek számára egyéni üzenetként?</string>
+    <string name="faq_4_text">Az alkalmazás beállításaiban engedélyeznie kell a „Csoportos üzenetek MMS-ként való elküldése” opciót. Ezzel biztosíthatja, hogy a csoportos üzenetek valódi MMS-ként kerülnek elküldésre, így minden résztvevő láthatja a többiek válaszait.</string>
 </resources>
