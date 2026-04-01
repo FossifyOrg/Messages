@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 9.0.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.1)" variant="all" version="9.0.1">
+<issues format="6" by="lint 9.1.0" type="baseline" client="gradle" dependencies="false" name="AGP (9.1.0)" variant="all" version="9.1.0">
 
     <issue
         id="ExifInterface"
@@ -399,7 +399,7 @@
 
     <issue
         id="MissingTranslation"
-        message="&quot;and_other_contacts&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        message="&quot;and_other_contacts&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
         errorLine1="    &lt;plurals name=&quot;and_other_contacts&quot;>"
         errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -784,7 +784,7 @@
 
     <issue
         id="MissingTranslation"
-        message="&quot;empty_archive_confirmation&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;kab&quot; (Kabyle), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        message="&quot;empty_archive_confirmation&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
         errorLine1="    &lt;string name=&quot;empty_archive_confirmation&quot;>Are you sure you want to empty the archive? All archived conversations will be permanently lost.&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -894,7 +894,7 @@
 
     <issue
         id="MissingTranslation"
-        message="&quot;delete_conversations&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        message="&quot;delete_conversations&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
         errorLine1="    &lt;plurals name=&quot;delete_conversations&quot;>"
         errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -905,7 +905,7 @@
 
     <issue
         id="MissingTranslation"
-        message="&quot;delete_messages&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        message="&quot;delete_messages&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ms&quot; (Malay), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;cr&quot; (Cree), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
         errorLine1="    &lt;plurals name=&quot;delete_messages&quot;>"
         errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -1356,7 +1356,7 @@
 
     <issue
         id="MissingTranslation"
-        message="&quot;faq_2_title&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;kab&quot; (Kabyle), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;gu&quot; (Gujarati), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        message="&quot;faq_2_title&quot; is not translated in &quot;fil&quot; (Filipino; Pilipino), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;ms&quot; (Malay), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;my&quot; (Burmese), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;nn&quot; (Norwegian Nynorsk), &quot;br&quot; (Breton), &quot;bs&quot; (Bosnian), &quot;si&quot; (Sinhala), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;gu&quot; (Gujarati), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;th&quot; (Thai), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
         errorLine1="    &lt;string name=&quot;faq_2_title&quot;>The other end is not receiving my MMS, is there anything I can do about it?&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~">
         <location
