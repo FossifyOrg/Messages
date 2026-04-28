@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="type_a_message">Írjon be egy üzenetet…</string>
-    <string name="message_not_sent_short">Az üzenet nem lett elküldve</string>
+    <string name="message_not_sent_short">Az üzenet nem került elküldésre</string>
     <string name="message_not_sent_touch_retry">Nem lett elküldve. Érintse meg az újrapróbálkozáshoz.</string>
     <string name="message_sending_error">A(z) „%s” számára írt üzenete nem lett elküldve</string>
     <string name="add_person">Személy hozzáadása</string>
