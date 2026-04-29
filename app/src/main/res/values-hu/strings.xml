@@ -2,8 +2,8 @@
 <resources>
     <string name="type_a_message">Írjon be egy üzenetet…</string>
     <string name="message_not_sent_short">Az üzenet nem került elküldésre</string>
-    <string name="message_not_sent_touch_retry">Nem lett elküldve. Érintse meg az újrapróbálkozáshoz.</string>
-    <string name="message_sending_error">A(z) „%s” számára írt üzenete nem lett elküldve</string>
+    <string name="message_not_sent_touch_retry">Nem került elküldésre. Koppintson az újraküldéshez.</string>
+    <string name="message_sending_error">\'%s\' számára írt üzenete nem került elküldésre</string>
     <string name="add_person">Személy hozzáadása</string>
     <string name="attachment">Melléklet</string>
     <string name="no_conversations_found">Nem találhatók tárolt beszélgetések</string>
