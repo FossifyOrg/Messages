@@ -31,7 +31,7 @@
     <string name="scheduled_message">Planlagt besked</string>
     <string name="schedule_message">Planlæg besked</string>
     <string name="schedule_send">Planlæg afsendelse</string>
-    <string name="cancel_schedule_send">Annuller planlagt afsendelse</string>
+    <string name="cancel_schedule_send">Annullér planlagt afsendelse</string>
     <string name="must_pick_time_in_the_future">Du skal vælge et tidspunkt i fremtiden</string>
     <string name="schedule_send_warning">Hold telefonen tændt, og sørg for, at intet lukker appen, mens den er i baggrunden.</string>
     <string name="update_message">Opdater besked</string>

@@ -10,8 +10,8 @@
     <string name="mark_as_read">Marki kiel legitan</string>
     <string name="mark_as_unread">Marki kiel nelegitan</string>
     <plurals name="delete_conversations">
-        <item quantity="one">%d konversacio</item>
-        <item quantity="other">%d konversacioj</item>
+        <item quantity="one">%d konversacion</item>
+        <item quantity="other">%d konversaciojn</item>
     </plurals>
     <plurals name="delete_messages">
         <item quantity="one">%d mesaĝo</item>

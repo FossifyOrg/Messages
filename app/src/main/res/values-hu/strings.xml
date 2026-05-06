@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="type_a_message">Írjon be egy üzenetet…</string>
-    <string name="message_not_sent_short">Az üzenet nem lett elküldve</string>
-    <string name="message_not_sent_touch_retry">Nem lett elküldve. Érintse meg az újrapróbálkozáshoz.</string>
-    <string name="message_sending_error">A(z) „%s” számára írt üzenete nem lett elküldve</string>
+    <string name="message_not_sent_short">Az üzenet nem került elküldésre</string>
+    <string name="message_not_sent_touch_retry">Nem került elküldésre. Koppintson az újraküldéshez.</string>
+    <string name="message_sending_error">\'%s\' számára írt üzenete nem került elküldésre</string>
     <string name="add_person">Személy hozzáadása</string>
     <string name="attachment">Melléklet</string>
     <string name="no_conversations_found">Nem találhatók tárolt beszélgetések</string>
-    <string name="start_conversation">Beszélgetés indítása</string>
+    <string name="start_conversation">Csevegés indítása</string>
     <string name="reply">Válasz</string>
     <string name="show_character_counter">Karakterszámláló megjelenítése az üzenetek írásakor</string>
     <string name="loading_messages">Üzenetek betöltése…</string>
@@ -119,4 +119,7 @@
     <string name="import_blocked_keywords">Letiltott kulcsszavak importálása</string>
     <string name="export_blocked_keywords">Letiltott kulcsszavak exportálása</string>
     <string name="keywords">Kulcsszavak</string>
+    <string name="keep_conversations_archived">Beszélgetések archiválva tartása</string>
+    <string name="faq_4_title">Miért jelennek meg a csoportos üzenetekre adott válaszaim a címzettek számára egyéni üzenetként?</string>
+    <string name="faq_4_text">Az alkalmazás beállításaiban engedélyeznie kell a „Csoportos üzenetek MMS-ként való elküldése” opciót. Ezzel biztosíthatja, hogy a csoportos üzenetek valódi MMS-ként kerülnek elküldésre, így minden résztvevő láthatja a többiek válaszait.</string>
 </resources>

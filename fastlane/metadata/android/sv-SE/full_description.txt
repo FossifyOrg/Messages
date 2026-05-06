@@ -1,0 +1,32 @@
+Fossify Messenger är din pålitliga meddelandekompis, utformad för att förbättra din meddelandeupplevelse på olika sätt.
+
+📱 HÅLL KONTAKTEN MED LÄTTHET:
+Med Fossify Messenger kan du enkelt skicka SMS- och MMS-meddelanden för att hålla kontakten med dina nära och kära. Njut av SMS/MMS-baserade gruppmeddelanden och uttryck dig med foton, emojis och snabba hälsningar.
+
+🚫 BLOCKERA OÖNSKADE MEDDELANDEN:
+Ta kontroll över din meddelandeupplevelse med en robust blockeringsfunktion som enkelt förhindrar oönskade meddelanden, även från okända kontakter. Du kan också exportera och importera blockerade nummer för problemfri säkerhetskopiering. Dessutom kan du anpassa din upplevelse genom att förhindra att meddelanden med specifika ord eller fraser når din inkorg.
+
+🔒 ENKEL SÄKERHETSKOPIERING AV SMS:
+Säg adjö till oron för att förlora viktiga meddelanden. Fossify Messenger erbjuder bekväm SMS-backupfunktionalitet genom att låta dig exportera och importera dina meddelanden. Den här funktionen säkerställer att du enkelt kan byta enhet utan att förlora dina värdefulla konversationer.
+
+🚀 BLIXTSNABB OCH LÄTTVIKTIG:
+Trots sina kraftfulla funktioner har Fossify Messenger en anmärkningsvärt liten appstorlek, vilket gör det snabbt och enkelt att ladda ner och installera. Upplev snabbhet och effektivitet samtidigt som du kan njuta av sinnesfriden som kommer med SMS-backup.
+
+🔐 FÖRBÄTTRAD INTEGRITET:
+Anpassa vad som visas på din låsskärm för ökad integritet. Välj att bara visa avsändaren, meddelandets innehåll eller ingenting alls. Dina meddelanden är i din kontroll.
+
+🔍 EFFEKTIV SÖKNING AV MEDDELANDEN:
+Säg adjö till oändligt bläddrande genom konversationer. Fossify Messenger förenklar hämtning av meddelanden med en snabb och effektiv sökfunktion. Hitta det du behöver, när du behöver det.
+
+🌈 MODERN DESIGN OCH ANVÄNDARVÄNLIGT GRÄNSSNITT:
+Njut av en ren, modern design med ett användarvänligt gränssnitt. Appen har en materialdesign och ett mörkt temaalternativ, vilket ger en visuellt tilltalande och bekväm användarupplevelse.
+
+🌐 TRANSPARENS MED ÖPPEN KÄLLKOD:
+Din integritet är högsta prioritet. Fossify Messenger fungerar utan att kräva en internetanslutning, vilket garanterar meddelandesäkerhet och stabilitet. Vår app är helt fri från annonser och begär inte onödiga behörigheter. Dessutom är den helt öppen källkod, vilket ger dig sinnesfrid, eftersom du har tillgång till källkoden för säkerhets- och integritetsrevisioner.
+
+Byt till Fossify Messenger och upplev meddelandehantering som den ska vara - privat, effektiv och användarvänlig. Ladda ner nu och gå med i vårt community som är engagerat i att skydda din meddelandeupplevelse.
+
+Utforska fler Fossify-appar: https://www.fossify.org
+Kod med öppen källkod: https://www.github.com/FossifyOrg
+Gå med i communityn på Reddit: https://www.reddit.com/r/Fossify
+Anslut på Telegram: https://t.me/Fossify
