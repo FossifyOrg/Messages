@@ -119,4 +119,10 @@
     <string name="empty_archive_confirmation">Sigur dorești să golești arhiva? Toate conversațiile arhivate se vor pierde definitiv.</string>
     <string name="cancel_schedule_send">Anulează trimiterea programată</string>
     <string name="empty_destination_address">Nu se poate trimite mesaj la un număr gol</string>
+    <string name="keep_conversations_archived">Păstrează conversațiile arhivate</string>
+    <string name="keywords">Cuvinte cheie</string>
+    <string name="export_blocked_keywords">Exportă cuvintele cheie blocate</string>
+    <string name="import_blocked_keywords">Importă cuvintele cheie blocate</string>
+    <string name="faq_4_title">De ce răspunsurile la mesajele mele de grup apar ca mesaje texte individuale către destinatari?</string>
+    <string name="faq_4_text">Trebuie să activezi „Trimite mesaje de grup ca MMS” în setările aplicației. Acest lucru va asigura că mesajele de grup sunt trimise ca MMS adecvat, permițând tuturor participanților să vadă răspunsurile celuilalt.</string>
 </resources>
