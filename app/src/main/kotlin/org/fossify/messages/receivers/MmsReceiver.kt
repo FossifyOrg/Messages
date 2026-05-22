@@ -14,11 +14,13 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.extensions.getConversations
 import org.fossify.messages.extensions.getLatestMMS
+import org.fossify.messages.extensions.getMessages
 import org.fossify.messages.extensions.getNameFromAddress
 import org.fossify.messages.extensions.insertOrUpdateConversation
 import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
 import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.helpers.EmojiReactionHelper
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
@@ -76,14 +78,21 @@ class MmsReceiver : MmsReceivedReceiver() {
             context.getNameFromAddress(address, it)
         }
 
-        context.showReceivedMessageNotification(
-            messageId = mms.id,
-            address = address,
-            senderName = senderName,
-            body = mms.body,
-            threadId = mms.threadId,
-            bitmap = glideBitmap
-        )
+        val isVisibleMessage = EmojiReactionHelper.parseEmojiReaction(mms.body) == null ||
+            context.getMessages(threadId = mms.threadId, includeScheduledMessages = false).any {
+                it.id == mms.id && it.isMMS
+            }
+
+        if (isVisibleMessage) {
+            context.showReceivedMessageNotification(
+                messageId = mms.id,
+                address = address,
+                senderName = senderName,
+                body = mms.body,
+                threadId = mms.threadId,
+                bitmap = glideBitmap
+            )
+        }
 
         val conversation = context.getConversations(mms.threadId).firstOrNull() ?: return
         runCatching { context.insertOrUpdateConversation(conversation) }

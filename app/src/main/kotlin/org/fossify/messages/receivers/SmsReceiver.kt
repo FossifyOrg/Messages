@@ -13,6 +13,7 @@ import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.getMessages
 import org.fossify.messages.extensions.getNameFromAddress
 import org.fossify.messages.extensions.getNotificationBitmap
 import org.fossify.messages.extensions.getThreadId
@@ -23,6 +24,7 @@ import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
+import org.fossify.messages.helpers.EmojiReactionHelper
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
@@ -135,7 +137,14 @@ class SmsReceiver : BroadcastReceiver() {
             subscriptionId = subscriptionId
         )
 
-        context.messagesDB.insertOrUpdate(message)
+        val isVisibleMessage = EmojiReactionHelper.parseEmojiReaction(body) == null ||
+            context.getMessages(threadId = threadId, includeScheduledMessages = false).any {
+                it.id == newMessageId && !it.isMMS
+            }
+
+        if (isVisibleMessage) {
+            context.messagesDB.insertOrUpdate(message)
+        }
 
         if (context.shouldUnarchive()) {
             context.updateConversationArchivedStatus(threadId, false)
@@ -143,13 +152,15 @@ class SmsReceiver : BroadcastReceiver() {
 
         refreshMessages()
         refreshConversations()
-        context.showReceivedMessageNotification(
-            messageId = newMessageId,
-            address = address,
-            senderName = senderName,
-            body = body,
-            threadId = threadId,
-            bitmap = bitmap
-        )
+        if (isVisibleMessage) {
+            context.showReceivedMessageNotification(
+                messageId = newMessageId,
+                address = address,
+                senderName = senderName,
+                body = body,
+                threadId = threadId,
+                bitmap = bitmap
+            )
+        }
     }
 }

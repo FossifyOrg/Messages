@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_reaction_details_holder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/big_margin"
+    android:paddingTop="@dimen/medium_margin"
+    android:paddingEnd="@dimen/big_margin"
+    android:paddingBottom="@dimen/big_margin"
+    tools:ignore="UseCompoundDrawables">
+
+</LinearLayout>
