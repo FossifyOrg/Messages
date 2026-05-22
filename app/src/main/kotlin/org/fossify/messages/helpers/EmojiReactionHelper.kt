@@ -51,12 +51,9 @@ object EmojiReactionHelper {
     fun parseEmojiReaction(body: String): ParsedEmojiReaction? {
         parseRemoval(body)?.let { return it }
 
-        for ((pattern, parser) in reactionPatterns) {
-            val match = pattern.find(body) ?: continue
-            return parser(match) ?: continue
+        return reactionPatterns.firstNotNullOfOrNull { (pattern, parser) ->
+            pattern.find(body)?.let { match -> parser(match) }
         }
-
-        return null
     }
 
     fun applyEmojiReactions(messages: List<Message>): ArrayList<Message> {
@@ -96,12 +93,9 @@ object EmojiReactionHelper {
     }
 
     private fun parseRemoval(body: String): ParsedEmojiReaction? {
-        for ((pattern, parser) in removalPatterns) {
-            val match = pattern.find(body) ?: continue
-            return parser(match) ?: continue
+        return removalPatterns.firstNotNullOfOrNull { (pattern, parser) ->
+            pattern.find(body)?.let { match -> parser(match) }
         }
-
-        return null
     }
 
     private fun findTargetMessage(

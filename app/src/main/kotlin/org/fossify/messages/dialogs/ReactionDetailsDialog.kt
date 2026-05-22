@@ -25,7 +25,7 @@ class ReactionDetailsDialog(
                         )
                         text = reaction
                         setTextColor(activity.getProperTextColor())
-                        textSize = 22f
+                        textSize = REACTION_TEXT_SIZE
                         setPadding(0, rowPadding, 0, rowPadding)
                     }
                 )
@@ -39,5 +39,9 @@ class ReactionDetailsDialog(
 
     private fun Int.dpToPx(): Int {
         return (this * activity.resources.displayMetrics.density).toInt()
+    }
+
+    private companion object {
+        const val REACTION_TEXT_SIZE = 22f
     }
 }
