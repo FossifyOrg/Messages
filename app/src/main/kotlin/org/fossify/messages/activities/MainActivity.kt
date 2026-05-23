@@ -11,6 +11,9 @@ import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.view.ContextThemeWrapper
+import org.fossify.commons.extensions.getPopupMenuTheme
 import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.extensions.adjustAlpha
 import org.fossify.commons.extensions.appLaunched
@@ -79,6 +82,13 @@ class MainActivity : SimpleActivity() {
     
     private val MAKE_DEFAULT_APP_REQUEST = 1
 
+    private enum class Tab {
+        PERSONAL, FINANCIAL, OTHERS
+    }
+
+    private var currentTab = Tab.PERSONAL
+    private var allLoadedConversations = ArrayList<Conversation>()
+
     private var storedTextColor = 0
     private var storedFontSize = 0
     private var lastSearchedText = ""
@@ -92,9 +102,14 @@ class MainActivity : SimpleActivity() {
         setContentView(binding.root)
         appLaunched(BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
-        refreshMenuItems()
 
-        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList))
+        if (savedInstanceState != null) {
+            val tabOrdinal = savedInstanceState.getInt("current_tab", Tab.PERSONAL.ordinal)
+            currentTab = Tab.values()[tabOrdinal]
+        }
+
+        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList, binding.bottomNavigationBar))
+        setupBottomNavigation()
 
         checkAndDeleteOldRecycleBinMessages()
         clearAllMessagesIfNeeded {
@@ -106,10 +121,15 @@ class MainActivity : SimpleActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("current_tab", currentTab.ordinal)
+    }
+
     override fun onResume() {
         super.onResume()
         updateMenuColors()
-        refreshMenuItems()
+        updateBottomBar()
 
         getOrCreateConversationsAdapter().apply {
             if (storedTextColor != getProperTextColor()) {
@@ -156,7 +176,6 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun setupOptionsMenu() {
-        binding.mainMenu.requireToolbar().inflateMenu(R.menu.menu_main)
         binding.mainMenu.toggleHideOnScroll(true)
         binding.mainMenu.setupMenu()
 
@@ -174,24 +193,17 @@ class MainActivity : SimpleActivity() {
             }
             searchTextChanged(text)
         }
-
-        binding.mainMenu.requireToolbar().setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.show_recycle_bin -> launchRecycleBin()
-                R.id.show_archived -> launchArchivedConversations()
-                R.id.settings -> launchSettings()
-                R.id.about -> launchAbout()
-                else -> return@setOnMenuItemClickListener false
-            }
-            return@setOnMenuItemClickListener true
-        }
     }
 
-    private fun refreshMenuItems() {
-        binding.mainMenu.requireToolbar().menu.apply {
-            findItem(R.id.show_recycle_bin).isVisible = config.useRecycleBin
-            findItem(R.id.show_archived).isVisible = config.isArchiveAvailable
+    private fun handleMenuItemClick(itemId: Int): Boolean {
+        when (itemId) {
+            R.id.show_recycle_bin -> launchRecycleBin()
+            R.id.show_archived -> launchArchivedConversations()
+            R.id.settings -> launchSettings()
+            R.id.about -> launchAbout()
+            else -> return false
         }
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -403,6 +415,8 @@ class MainActivity : SimpleActivity() {
         conversations: ArrayList<Conversation>,
         cached: Boolean = false,
     ) {
+        allLoadedConversations = conversations
+
         val sortedConversations = conversations
             .sortedWith(
                 compareByDescending<Conversation> {
@@ -410,18 +424,24 @@ class MainActivity : SimpleActivity() {
                 }.thenByDescending { it.date }
             ).toMutableList() as ArrayList<Conversation>
 
+        val filteredConversations = when (currentTab) {
+            Tab.PERSONAL -> sortedConversations.filter { isPersonal(it) }
+            Tab.FINANCIAL -> sortedConversations.filter { isFinancial(it) }
+            Tab.OTHERS -> sortedConversations.filter { !isPersonal(it) && !isFinancial(it) }
+        }.toMutableList() as ArrayList<Conversation>
+
         if (cached && config.appRunCount == 1) {
             // there are no cached conversations on the first run so we show the
             // loading placeholder and progress until we are done loading from telephony
             showOrHideProgress(conversations.isEmpty())
         } else {
             showOrHideProgress(false)
-            showOrHidePlaceholder(conversations.isEmpty())
+            showOrHidePlaceholder(filteredConversations.isEmpty())
         }
 
         try {
             getOrCreateConversationsAdapter().apply {
-                updateConversations(sortedConversations) {
+                updateConversations(filteredConversations) {
                     if (!cached) {
                         showOrHidePlaceholder(currentList.isEmpty())
                     }
@@ -682,4 +702,125 @@ class MainActivity : SimpleActivity() {
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
+
+    private fun isFinancial(conversation: Conversation): Boolean {
+        val text = (conversation.snippet + " " + conversation.title).lowercase()
+        val financialKeywords = listOf(
+            "bank", "account", "txn", "transaction", "debit", "credit", "otp", 
+            "spent", "withdraw", "rs.", "inr", "paytm", "gpay", "card", "payment"
+        )
+        return financialKeywords.any { text.contains(it) }
+    }
+
+    private fun isPersonal(conversation: Conversation): Boolean {
+        if (isFinancial(conversation)) return false
+        
+        val number = conversation.phoneNumber.trim()
+        if (number.isEmpty()) return false
+        
+        if (conversation.title != conversation.phoneNumber) {
+            return true
+        }
+        
+        val digitsAndSymbols = number.filter { it.isDigit() || it == '+' || it == '-' || it == '(' || it == ')' || it.isWhitespace() }
+        if (digitsAndSymbols.length != number.length) {
+            return false
+        }
+        
+        val digitCount = number.filter { it.isDigit() }.length
+        if (digitCount < 7) {
+            return false
+        }
+        
+        return true
+    }
+
+    private fun setupBottomNavigation() {
+        binding.tabPersonalBtn.setOnClickListener {
+            if (currentTab != Tab.PERSONAL) {
+                currentTab = Tab.PERSONAL
+                updateBottomBar()
+                setupConversations(allLoadedConversations)
+            }
+        }
+
+        binding.tabFinancialBtn.setOnClickListener {
+            if (currentTab != Tab.FINANCIAL) {
+                currentTab = Tab.FINANCIAL
+                updateBottomBar()
+                setupConversations(allLoadedConversations)
+            }
+        }
+
+        binding.tabOthersBtn.setOnClickListener {
+            if (currentTab != Tab.OTHERS) {
+                currentTab = Tab.OTHERS
+                updateBottomBar()
+                setupConversations(allLoadedConversations)
+            }
+        }
+
+        binding.tabMenuBtn.setOnClickListener {
+            showPopupMenu()
+        }
+    }
+
+    private fun showPopupMenu() {
+        val theme = getPopupMenuTheme()
+        val contextTheme = ContextThemeWrapper(this, theme)
+        val popup = PopupMenu(contextTheme, binding.tabMenuBtn)
+        popup.menuInflater.inflate(R.menu.menu_main, popup.menu)
+        popup.menu.apply {
+            findItem(R.id.show_recycle_bin).isVisible = config.useRecycleBin
+            findItem(R.id.show_archived).isVisible = config.isArchiveAvailable
+        }
+        popup.setOnMenuItemClickListener { menuItem ->
+            handleMenuItemClick(menuItem.itemId)
+        }
+        popup.show()
+    }
+
+    private fun updateBottomBar() {
+        val primaryColor = getProperPrimaryColor()
+        val textColor = getProperTextColor()
+        val inactiveColor = textColor.adjustAlpha(0.6f)
+
+        binding.bottomNavigationBar.setBackgroundColor(getProperBackgroundColor())
+
+        if (currentTab == Tab.PERSONAL) {
+            binding.tabPersonalIcon.applyColorFilter(primaryColor)
+            binding.tabPersonalLabel.setTextColor(primaryColor)
+            binding.tabPersonalLabel.paint.isFakeBoldText = true
+        } else {
+            binding.tabPersonalIcon.applyColorFilter(inactiveColor)
+            binding.tabPersonalLabel.setTextColor(inactiveColor)
+            binding.tabPersonalLabel.paint.isFakeBoldText = false
+        }
+
+        if (currentTab == Tab.FINANCIAL) {
+            binding.tabFinancialIcon.applyColorFilter(primaryColor)
+            binding.tabFinancialLabel.setTextColor(primaryColor)
+            binding.tabFinancialLabel.paint.isFakeBoldText = true
+        } else {
+            binding.tabFinancialIcon.applyColorFilter(inactiveColor)
+            binding.tabFinancialLabel.setTextColor(inactiveColor)
+            binding.tabFinancialLabel.paint.isFakeBoldText = false
+        }
+
+        if (currentTab == Tab.OTHERS) {
+            binding.tabOthersIcon.applyColorFilter(primaryColor)
+            binding.tabOthersLabel.setTextColor(primaryColor)
+            binding.tabOthersLabel.paint.isFakeBoldText = true
+        } else {
+            binding.tabOthersIcon.applyColorFilter(inactiveColor)
+            binding.tabOthersLabel.setTextColor(inactiveColor)
+            binding.tabOthersLabel.paint.isFakeBoldText = false
+        }
+        
+        // Menu item is not a tab, so it always uses the inactive color
+        binding.tabMenuIcon.applyColorFilter(inactiveColor)
+        binding.tabMenuLabel.setTextColor(inactiveColor)
+        binding.tabMenuLabel.paint.isFakeBoldText = false
+    }
 }
+

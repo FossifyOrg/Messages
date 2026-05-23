@@ -21,13 +21,13 @@ commons = "6.1.6"
 mmslib = "1.0.0"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "9.2.0"
+gradlePlugins-agp = "9.0.1"
 #build
 app-build-compileSDKVersion = "36"
 app-build-targetSDK = "36"
 app-build-minimumSDK = "26"
-app-build-javaVersion = "VERSION_17"
-app-build-kotlinJVMTarget = "17"
+app-build-javaVersion = "VERSION_21"
+app-build-kotlinJVMTarget = "21"
 #Helpers
 ez-vcard = "0.12.2"
 [libraries]

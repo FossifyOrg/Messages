@@ -29,8 +29,8 @@ base {
 }
 
 android {
-    compileSdk = project.libs.versions.app.build.compileSDKVersion.get().toInt()
 
+    compileSdkVersion(project.libs.versions.app.build.compileSDKVersion.get().toInt())
     defaultConfig {
         applicationId = project.property("APP_ID").toString()
         minSdk = project.libs.versions.app.build.minimumSDK.get().toInt()
@@ -130,6 +130,9 @@ android {
         language {
             enableSplit = false
         }
+    }
+    kotlin {
+        jvmToolchain(21)
     }
 }
 
