@@ -140,7 +140,11 @@
     <string name="faq_4_title">Why do my group message replies appear as individual texts to recipients?</string>
     <string name="faq_4_text">You need to enable \"Send group messages as MMS\" in the app settings. This will ensure that group messages are sent as proper MMS, allowing all participants to see each other\'s replies.</string>
     <!--
-        Haven't found some strings? There's more at
+        Haven\'t found some strings? There\'s more at
         https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
+    <string name="tab_personal">Personal</string>
+    <string name="tab_financial">Financial</string>
+    <string name="tab_others">Others</string>
+    <string name="menu">Menu</string>
 </resources>
