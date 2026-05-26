@@ -7,68 +7,45 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
+import android.os.Build
 import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.PopupMenu
-import androidx.appcompat.view.ContextThemeWrapper
-import org.fossify.commons.extensions.getPopupMenuTheme
+import androidx.activity.compose.setContent
+import androidx.compose.animation.*
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import org.fossify.commons.dialogs.PermissionRequiredDialog
-import org.fossify.commons.extensions.adjustAlpha
-import org.fossify.commons.extensions.appLaunched
-import org.fossify.commons.extensions.appLockManager
-import org.fossify.commons.extensions.applyColorFilter
-import org.fossify.commons.extensions.areSystemAnimationsEnabled
-import org.fossify.commons.extensions.beGone
-import org.fossify.commons.extensions.beGoneIf
-import org.fossify.commons.extensions.beVisible
-import org.fossify.commons.extensions.beVisibleIf
-import org.fossify.commons.extensions.checkAppSideloading
-import org.fossify.commons.extensions.checkWhatsNew
-import org.fossify.commons.extensions.convertToBitmap
-import org.fossify.commons.extensions.fadeIn
-import org.fossify.commons.extensions.formatDateOrTime
-import org.fossify.commons.extensions.getMyContactsCursor
-import org.fossify.commons.extensions.getProperBackgroundColor
-import org.fossify.commons.extensions.getProperPrimaryColor
-import org.fossify.commons.extensions.getProperTextColor
-import org.fossify.commons.extensions.hideKeyboard
-import org.fossify.commons.extensions.openNotificationSettings
-import org.fossify.commons.extensions.toast
-import org.fossify.commons.extensions.underlineText
-import org.fossify.commons.extensions.updateTextColors
-import org.fossify.commons.extensions.viewBinding
-import org.fossify.commons.helpers.LICENSE_EVENT_BUS
-import org.fossify.commons.helpers.LICENSE_INDICATOR_FAST_SCROLL
-import org.fossify.commons.helpers.LICENSE_SMS_MMS
-import org.fossify.commons.helpers.LOWER_ALPHA
-import org.fossify.commons.helpers.MyContactsContentProvider
-import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
-import org.fossify.commons.helpers.PERMISSION_READ_SMS
-import org.fossify.commons.helpers.PERMISSION_SEND_SMS
-import org.fossify.commons.helpers.SHORT_ANIMATION_DURATION
-import org.fossify.commons.helpers.ensureBackgroundThread
-import org.fossify.commons.helpers.isQPlus
+import org.fossify.commons.extensions.*
+import org.fossify.commons.helpers.*
 import org.fossify.commons.models.FAQItem
 import org.fossify.commons.models.Release
 import org.fossify.messages.BuildConfig
 import org.fossify.messages.R
-import org.fossify.messages.adapters.ConversationsAdapter
-import org.fossify.messages.adapters.SearchResultsAdapter
-import org.fossify.messages.databinding.ActivityMainBinding
-import org.fossify.messages.extensions.checkAndDeleteOldRecycleBinMessages
-import org.fossify.messages.extensions.clearAllMessagesIfNeeded
-import org.fossify.messages.extensions.clearExpiredScheduledMessages
-import org.fossify.messages.extensions.config
-import org.fossify.messages.extensions.conversationsDB
-import org.fossify.messages.extensions.getConversations
-import org.fossify.messages.extensions.getMessages
-import org.fossify.messages.extensions.insertOrUpdateConversation
-import org.fossify.messages.extensions.messagesDB
-import org.fossify.messages.helpers.SEARCHED_MESSAGE_ID
-import org.fossify.messages.helpers.THREAD_ID
-import org.fossify.messages.helpers.THREAD_TITLE
+import org.fossify.messages.extensions.*
+import org.fossify.messages.helpers.*
 import org.fossify.messages.models.Conversation
 import org.fossify.messages.models.Events
 import org.fossify.messages.models.Message
@@ -76,83 +53,58 @@ import org.fossify.messages.models.SearchResult
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import kotlinx.coroutines.launch
+import java.util.ArrayList
+import java.util.Locale
 
 class MainActivity : SimpleActivity() {
     override var isSearchBarEnabled = true
     
     private val MAKE_DEFAULT_APP_REQUEST = 1
 
-    private enum class Tab {
+    enum class Tab {
         PERSONAL, FINANCIAL, OTHERS
     }
 
-    private var currentTab = Tab.PERSONAL
+    enum class ConversationFilter {
+        ALL, UNREAD, FAVOURITES, GROUP
+    }
+
     private var allLoadedConversations = ArrayList<Conversation>()
+    private val conversationsStateList = mutableStateListOf<Conversation>()
+    private var isProgressLoading = mutableStateOf(false)
+    private var lastSearchedText = mutableStateOf("")
+    private val searchResultsStateList = mutableStateListOf<SearchResult>()
+    private var isSearchOpen = mutableStateOf(false)
 
     private var storedTextColor = 0
     private var storedFontSize = 0
-    private var lastSearchedText = ""
     private var bus: EventBus? = null
-
-    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
         appLaunched(BuildConfig.APPLICATION_ID)
-        setupOptionsMenu()
 
-        if (savedInstanceState != null) {
-            val tabOrdinal = savedInstanceState.getInt("current_tab", Tab.PERSONAL.ordinal)
-            currentTab = Tab.values()[tabOrdinal]
+        setContent {
+            MessagesTheme {
+                MainScreen()
+            }
         }
-
-        setupEdgeToEdge(padBottomImeAndSystem = listOf(binding.conversationsList, binding.bottomNavigationBar))
-        setupBottomNavigation()
 
         checkAndDeleteOldRecycleBinMessages()
         clearAllMessagesIfNeeded {
             loadMessages()
         }
-
-        if (checkAppSideloading()) {
-            return
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("current_tab", currentTab.ordinal)
     }
 
     override fun onResume() {
         super.onResume()
-        updateMenuColors()
-        updateBottomBar()
-
-        getOrCreateConversationsAdapter().apply {
-            if (storedTextColor != getProperTextColor()) {
-                updateTextColor(getProperTextColor())
-            }
-
-            if (storedFontSize != config.fontSize) {
-                updateFontSize()
-            }
-
-            updateDrafts()
-        }
-
-        updateTextColors(binding.mainCoordinator)
-        binding.searchHolder.setBackgroundColor(getProperBackgroundColor())
-
-        val properPrimaryColor = getProperPrimaryColor()
-        binding.noConversationsPlaceholder2.setTextColor(properPrimaryColor)
-        binding.noConversationsPlaceholder2.underlineText()
-        binding.conversationsFastscroller.updateColors(properPrimaryColor)
-        binding.conversationsProgressBar.setIndicatorColor(properPrimaryColor)
-        binding.conversationsProgressBar.trackColor = properPrimaryColor.adjustAlpha(LOWER_ALPHA)
         checkShortcut()
+        bus = EventBus.getDefault()
+        try {
+            bus!!.register(this)
+        } catch (_: Exception) {}
     }
 
     override fun onPause() {
@@ -165,65 +117,20 @@ class MainActivity : SimpleActivity() {
         bus?.unregister(this)
     }
 
-    override fun onBackPressedCompat(): Boolean {
-        return if (binding.mainMenu.isSearchOpen) {
-            binding.mainMenu.closeSearch()
-            true
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("GestureBackNavigation")
+    override fun onBackPressed() {
+        if (isSearchOpen.value) {
+            isSearchOpen.value = false
+            lastSearchedText.value = ""
         } else {
-            appLockManager.lock()
-            false
-        }
-    }
-
-    private fun setupOptionsMenu() {
-        binding.mainMenu.toggleHideOnScroll(true)
-        binding.mainMenu.setupMenu()
-
-        binding.mainMenu.onSearchClosedListener = {
-            fadeOutSearch()
-        }
-
-        binding.mainMenu.onSearchTextChangedListener = { text ->
-            if (text.isNotEmpty()) {
-                if (binding.searchHolder.alpha < 1f) {
-                    binding.searchHolder.fadeIn()
-                }
-            } else {
-                fadeOutSearch()
-            }
-            searchTextChanged(text)
-        }
-    }
-
-    private fun handleMenuItemClick(itemId: Int): Boolean {
-        when (itemId) {
-            R.id.show_recycle_bin -> launchRecycleBin()
-            R.id.show_archived -> launchArchivedConversations()
-            R.id.settings -> launchSettings()
-            R.id.about -> launchAbout()
-            else -> return false
-        }
-        return true
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultData)
-        if (requestCode == MAKE_DEFAULT_APP_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                askPermissions()
-            } else {
-                finish()
-            }
+            super.onBackPressed()
         }
     }
 
     private fun storeStateVariables() {
         storedTextColor = getProperTextColor()
         storedFontSize = config.fontSize
-    }
-
-    private fun updateMenuColors() {
-        binding.mainMenu.updateColors()
     }
 
     private fun loadMessages() {
@@ -251,8 +158,6 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    // while SEND_SMS and READ_SMS permissions are mandatory, READ_CONTACTS is optional.
-    // If we don't have it, we just won't be able to show the contact name in some cases
     private fun askPermissions() {
         handlePermission(PERMISSION_READ_SMS) {
             if (it) {
@@ -269,11 +174,6 @@ class MainActivity : SimpleActivity() {
                             }
 
                             initMessenger()
-                            bus = EventBus.getDefault()
-                            try {
-                                bus!!.register(this)
-                            } catch (_: Exception) {
-                            }
                         }
                     } else {
                         finish()
@@ -289,13 +189,6 @@ class MainActivity : SimpleActivity() {
         checkWhatsNewDialog()
         storeStateVariables()
         getCachedConversations()
-        binding.noConversationsPlaceholder2.setOnClickListener {
-            launchNewConversation()
-        }
-
-        binding.conversationsFab.setOnClickListener {
-            launchNewConversation()
-        }
     }
 
     private fun getCachedConversations() {
@@ -314,10 +207,10 @@ class MainActivity : SimpleActivity() {
 
             runOnUiThread {
                 setupConversations(conversations, cached = true)
-                getNewConversations(
-                    (conversations + archived).toMutableList() as ArrayList<Conversation>
-                )
             }
+            getNewConversations(
+                (conversations + archived).toMutableList() as ArrayList<Conversation>
+            )
             conversations.forEach {
                 clearExpiredScheduledMessages(it.threadId)
             }
@@ -325,8 +218,8 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun getNewConversations(cachedConversations: ArrayList<Conversation>) {
-        val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ensureBackgroundThread {
+            val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
             val privateContacts = MyContactsContentProvider.getSimpleContacts(this, privateCursor)
             val conversations = getConversations(privateContacts = privateContacts)
 
@@ -350,8 +243,6 @@ class MainActivity : SimpleActivity() {
                 val newConversation =
                     conversations.find { it.phoneNumber == cachedConversation.phoneNumber }
                 if (isTemporaryThread && newConversation != null) {
-                    // delete the original temporary thread and move any scheduled messages
-                    // to the new thread
                     conversationsDB.deleteThreadId(threadId)
                     messagesDB.getScheduledThreadMessages(threadId)
                         .forEach { message ->
@@ -370,8 +261,6 @@ class MainActivity : SimpleActivity() {
                     )
                 }
                 if (conv != null) {
-                    // FIXME: Scheduled message date is being reset here. Conversations with
-                    //  scheduled messages will have their original date.
                     insertOrUpdateConversation(conv)
                 }
             }
@@ -392,171 +281,38 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    private fun getOrCreateConversationsAdapter(): ConversationsAdapter {
-        var currAdapter = binding.conversationsList.adapter
-        if (currAdapter == null) {
-            hideKeyboard()
-            currAdapter = ConversationsAdapter(
-                activity = this,
-                recyclerView = binding.conversationsList,
-                onRefresh = { notifyDatasetChanged() },
-                itemClick = { handleConversationClick(it) }
-            )
-
-            binding.conversationsList.adapter = currAdapter
-            if (areSystemAnimationsEnabled) {
-                binding.conversationsList.scheduleLayoutAnimation()
-            }
-        }
-        return currAdapter as ConversationsAdapter
-    }
-
     private fun setupConversations(
         conversations: ArrayList<Conversation>,
         cached: Boolean = false,
     ) {
         allLoadedConversations = conversations
-
-        val sortedConversations = conversations
-            .sortedWith(
-                compareByDescending<Conversation> {
-                    config.pinnedConversations.contains(it.threadId.toString())
-                }.thenByDescending { it.date }
-            ).toMutableList() as ArrayList<Conversation>
-
-        val filteredConversations = when (currentTab) {
-            Tab.PERSONAL -> sortedConversations.filter { isPersonal(it) }
-            Tab.FINANCIAL -> sortedConversations.filter { isFinancial(it) }
-            Tab.OTHERS -> sortedConversations.filter { !isPersonal(it) && !isFinancial(it) }
-        }.toMutableList() as ArrayList<Conversation>
-
-        if (cached && config.appRunCount == 1) {
-            // there are no cached conversations on the first run so we show the
-            // loading placeholder and progress until we are done loading from telephony
-            showOrHideProgress(conversations.isEmpty())
-        } else {
-            showOrHideProgress(false)
-            showOrHidePlaceholder(filteredConversations.isEmpty())
-        }
-
-        try {
-            getOrCreateConversationsAdapter().apply {
-                updateConversations(filteredConversations) {
-                    if (!cached) {
-                        showOrHidePlaceholder(currentList.isEmpty())
-                    }
-                }
-            }
-        } catch (_: Exception) {
-        }
-    }
-
-    private fun showOrHideProgress(show: Boolean) {
-        if (show) {
-            binding.conversationsProgressBar.show()
-            binding.noConversationsPlaceholder.beVisible()
-            binding.noConversationsPlaceholder.text = getString(R.string.loading_messages)
-        } else {
-            binding.conversationsProgressBar.hide()
-            binding.noConversationsPlaceholder.beGone()
-        }
-    }
-
-    private fun showOrHidePlaceholder(show: Boolean) {
-        binding.conversationsFastscroller.beGoneIf(show)
-        binding.noConversationsPlaceholder.beVisibleIf(show)
-        binding.noConversationsPlaceholder.text = getString(R.string.no_conversations_found)
-        binding.noConversationsPlaceholder2.beVisibleIf(show)
-    }
-
-    private fun fadeOutSearch() {
-        binding.searchHolder.animate()
-            .alpha(0f)
-            .setDuration(SHORT_ANIMATION_DURATION)
-            .withEndAction {
-                binding.searchHolder.beGone()
-                searchTextChanged("", true)
-            }.start()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun notifyDatasetChanged() {
-        getOrCreateConversationsAdapter().notifyDataSetChanged()
-    }
-
-    private fun handleConversationClick(any: Any) {
-        Intent(this, ThreadActivity::class.java).apply {
-            val conversation = any as Conversation
-            putExtra(THREAD_ID, conversation.threadId)
-            putExtra(THREAD_TITLE, conversation.title)
-            startActivity(this)
-        }
-    }
-
-    private fun launchNewConversation() {
-        hideKeyboard()
-        Intent(this, NewConversationActivity::class.java).apply {
-            startActivity(this)
-        }
-    }
-
-    @SuppressLint("NewApi")
-    private fun checkShortcut() {
-        val appIconColor = config.appIconColor
-        if (config.lastHandledShortcutColor != appIconColor) {
-            val newConversation = getCreateNewContactShortcut(appIconColor)
-
-            val manager = getSystemService(ShortcutManager::class.java)
-            try {
-                manager.dynamicShortcuts = listOf(newConversation)
-                config.lastHandledShortcutColor = appIconColor
-            } catch (_: Exception) {
+        runOnUiThread {
+            conversationsStateList.clear()
+            conversationsStateList.addAll(conversations)
+            
+            if (cached && config.appRunCount == 1) {
+                isProgressLoading.value = conversations.isEmpty()
+            } else {
+                isProgressLoading.value = false
             }
         }
     }
 
-    @SuppressLint("NewApi")
-    private fun getCreateNewContactShortcut(appIconColor: Int): ShortcutInfo {
-        val newEvent = getString(R.string.new_conversation)
-        val drawable =
-            AppCompatResources.getDrawable(this, org.fossify.commons.R.drawable.shortcut_plus)
-
-        (drawable as LayerDrawable).findDrawableByLayerId(
-            org.fossify.commons.R.id.shortcut_plus_background
-        ).applyColorFilter(appIconColor)
-
-        val bmp = drawable.convertToBitmap()
-
-        val intent = Intent(this, NewConversationActivity::class.java)
-        intent.action = Intent.ACTION_VIEW
-        return ShortcutInfo.Builder(this, "new_conversation")
-            .setShortLabel(newEvent)
-            .setLongLabel(newEvent)
-            .setIcon(Icon.createWithBitmap(bmp))
-            .setIntent(intent)
-            .setRank(0)
-            .build()
-    }
-
-    private fun searchTextChanged(text: String, forceUpdate: Boolean = false) {
-        if (!binding.mainMenu.isSearchOpen && !forceUpdate) {
-            return
-        }
-
-        lastSearchedText = text
-        binding.searchPlaceholder2.beGoneIf(text.length >= 2)
+    private fun searchTextChanged(text: String) {
+        lastSearchedText.value = text
         if (text.length >= 2) {
             ensureBackgroundThread {
                 val searchQuery = "%$text%"
                 val messages = messagesDB.getMessagesWithText(searchQuery)
                 val conversations = conversationsDB.getConversationsWithText(searchQuery)
-                if (text == lastSearchedText) {
+                if (text == lastSearchedText.value) {
                     showSearchResults(messages, conversations, text)
                 }
             }
         } else {
-            binding.searchPlaceholder.beVisible()
-            binding.searchResultsList.beGone()
+            runOnUiThread {
+                searchResultsStateList.clear()
+            }
         }
     }
 
@@ -609,40 +365,34 @@ class MainActivity : SimpleActivity() {
         }
 
         runOnUiThread {
-            binding.searchResultsList.beVisibleIf(searchResults.isNotEmpty())
-            binding.searchPlaceholder.beVisibleIf(searchResults.isEmpty())
+            searchResultsStateList.clear()
+            searchResultsStateList.addAll(searchResults)
+        }
+    }
 
-            val currAdapter = binding.searchResultsList.adapter
-            if (currAdapter == null) {
-                SearchResultsAdapter(this, searchResults, binding.searchResultsList, searchedText) {
-                    hideKeyboard()
-                    Intent(this, ThreadActivity::class.java).apply {
-                        putExtra(THREAD_ID, (it as SearchResult).threadId)
-                        putExtra(THREAD_TITLE, it.title)
-                        putExtra(SEARCHED_MESSAGE_ID, it.messageId)
-                        startActivity(this)
-                    }
-                }.apply {
-                    binding.searchResultsList.adapter = this
-                }
-            } else {
-                (currAdapter as SearchResultsAdapter).updateItems(searchResults, searchedText)
-            }
+    private fun handleConversationClick(conversation: Conversation) {
+        Intent(this, ThreadActivity::class.java).apply {
+            putExtra(THREAD_ID, conversation.threadId)
+            putExtra(THREAD_TITLE, conversation.title)
+            startActivity(this)
+        }
+    }
+
+    private fun launchNewConversation() {
+        Intent(this, NewConversationActivity::class.java).apply {
+            startActivity(this)
         }
     }
 
     private fun launchRecycleBin() {
-        hideKeyboard()
         startActivity(Intent(applicationContext, RecycleBinConversationsActivity::class.java))
     }
 
     private fun launchArchivedConversations() {
-        hideKeyboard()
         startActivity(Intent(applicationContext, ArchivedConversationsActivity::class.java))
     }
 
     private fun launchSettings() {
-        hideKeyboard()
         startActivity(Intent(applicationContext, SettingsActivity::class.java))
     }
 
@@ -650,18 +400,9 @@ class MainActivity : SimpleActivity() {
         val licenses = LICENSE_EVENT_BUS or LICENSE_SMS_MMS or LICENSE_INDICATOR_FAST_SCROLL
 
         val faqItems = arrayListOf(
-            FAQItem(
-                title = R.string.faq_2_title,
-                text = R.string.faq_2_text
-            ),
-            FAQItem(
-                title = R.string.faq_3_title,
-                text = R.string.faq_3_text
-            ),
-            FAQItem(
-                title = R.string.faq_4_title,
-                text = R.string.faq_4_text
-            ),
+            FAQItem(title = R.string.faq_2_title, text = R.string.faq_2_text),
+            FAQItem(title = R.string.faq_3_title, text = R.string.faq_3_text),
+            FAQItem(title = R.string.faq_4_title, text = R.string.faq_4_text),
             FAQItem(
                 title = org.fossify.commons.R.string.faq_9_title_commons,
                 text = org.fossify.commons.R.string.faq_9_text_commons
@@ -735,92 +476,596 @@ class MainActivity : SimpleActivity() {
         return true
     }
 
-    private fun setupBottomNavigation() {
-        binding.tabPersonalBtn.setOnClickListener {
-            if (currentTab != Tab.PERSONAL) {
-                currentTab = Tab.PERSONAL
-                updateBottomBar()
-                setupConversations(allLoadedConversations)
-            }
-        }
+    @SuppressLint("NewApi")
+    private fun checkShortcut() {
+        val appIconColor = config.appIconColor
+        if (config.lastHandledShortcutColor != appIconColor) {
+            val newConversation = getCreateNewContactShortcut(appIconColor)
 
-        binding.tabFinancialBtn.setOnClickListener {
-            if (currentTab != Tab.FINANCIAL) {
-                currentTab = Tab.FINANCIAL
-                updateBottomBar()
-                setupConversations(allLoadedConversations)
-            }
-        }
-
-        binding.tabOthersBtn.setOnClickListener {
-            if (currentTab != Tab.OTHERS) {
-                currentTab = Tab.OTHERS
-                updateBottomBar()
-                setupConversations(allLoadedConversations)
-            }
-        }
-
-        binding.tabMenuBtn.setOnClickListener {
-            showPopupMenu()
+            val manager = getSystemService(ShortcutManager::class.java)
+            try {
+                manager.dynamicShortcuts = listOf(newConversation)
+                config.lastHandledShortcutColor = appIconColor
+            } catch (_: Exception) {}
         }
     }
 
-    private fun showPopupMenu() {
-        val theme = getPopupMenuTheme()
-        val contextTheme = ContextThemeWrapper(this, theme)
-        val popup = PopupMenu(contextTheme, binding.tabMenuBtn)
-        popup.menuInflater.inflate(R.menu.menu_main, popup.menu)
-        popup.menu.apply {
-            findItem(R.id.show_recycle_bin).isVisible = config.useRecycleBin
-            findItem(R.id.show_archived).isVisible = config.isArchiveAvailable
-        }
-        popup.setOnMenuItemClickListener { menuItem ->
-            handleMenuItemClick(menuItem.itemId)
-        }
-        popup.show()
+    @SuppressLint("NewApi")
+    private fun getCreateNewContactShortcut(appIconColor: Int): ShortcutInfo {
+        val newEvent = getString(R.string.new_conversation)
+        val drawable =
+            ContextCompat.getDrawable(this, org.fossify.commons.R.drawable.shortcut_plus)
+
+        (drawable as LayerDrawable).findDrawableByLayerId(
+            org.fossify.commons.R.id.shortcut_plus_background
+        ).applyColorFilter(appIconColor)
+
+        val bmp = drawable.convertToBitmap()
+
+        val intent = Intent(this, NewConversationActivity::class.java)
+        intent.action = Intent.ACTION_VIEW
+        return ShortcutInfo.Builder(this, "new_conversation")
+            .setShortLabel(newEvent)
+            .setLongLabel(newEvent)
+            .setIcon(Icon.createWithBitmap(bmp))
+            .setIntent(intent)
+            .setRank(0)
+            .build()
     }
 
-    private fun updateBottomBar() {
-        val primaryColor = getProperPrimaryColor()
-        val textColor = getProperTextColor()
-        val inactiveColor = textColor.adjustAlpha(0.6f)
+    // -------------------------------------------------------------
+    // Compose User Interface Implementation (Jetpack Compose M3)
+    // -------------------------------------------------------------
 
-        binding.bottomNavigationBar.setBackgroundColor(getProperBackgroundColor())
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    private fun MainScreen() {
+        var currentTab by remember { mutableStateOf(Tab.PERSONAL) }
+        var currentFilter by remember { mutableStateOf(ConversationFilter.ALL) }
+        var isMenuSheetOpen by remember { mutableStateOf(false) }
 
-        if (currentTab == Tab.PERSONAL) {
-            binding.tabPersonalIcon.applyColorFilter(primaryColor)
-            binding.tabPersonalLabel.setTextColor(primaryColor)
-            binding.tabPersonalLabel.paint.isFakeBoldText = true
-        } else {
-            binding.tabPersonalIcon.applyColorFilter(inactiveColor)
-            binding.tabPersonalLabel.setTextColor(inactiveColor)
-            binding.tabPersonalLabel.paint.isFakeBoldText = false
+        // Compute list dynamically
+        val sortedConversations = remember {
+            derivedStateOf {
+                val pinned = config.pinnedConversations
+                conversationsStateList.sortedWith(
+                    compareByDescending<Conversation> {
+                        pinned.contains(it.threadId.toString())
+                    }.thenByDescending { it.date }
+                )
+            }
         }
 
-        if (currentTab == Tab.FINANCIAL) {
-            binding.tabFinancialIcon.applyColorFilter(primaryColor)
-            binding.tabFinancialLabel.setTextColor(primaryColor)
-            binding.tabFinancialLabel.paint.isFakeBoldText = true
-        } else {
-            binding.tabFinancialIcon.applyColorFilter(inactiveColor)
-            binding.tabFinancialLabel.setTextColor(inactiveColor)
-            binding.tabFinancialLabel.paint.isFakeBoldText = false
+        val tabFilteredList = remember {
+            derivedStateOf {
+                val list = sortedConversations.value
+                when (currentTab) {
+                    Tab.PERSONAL -> list.filter { isPersonal(it) }
+                    Tab.FINANCIAL -> list.filter { isFinancial(it) }
+                    Tab.OTHERS -> list.filter { !isPersonal(it) && !isFinancial(it) }
+                }
+            }
         }
 
-        if (currentTab == Tab.OTHERS) {
-            binding.tabOthersIcon.applyColorFilter(primaryColor)
-            binding.tabOthersLabel.setTextColor(primaryColor)
-            binding.tabOthersLabel.paint.isFakeBoldText = true
-        } else {
-            binding.tabOthersIcon.applyColorFilter(inactiveColor)
-            binding.tabOthersLabel.setTextColor(inactiveColor)
-            binding.tabOthersLabel.paint.isFakeBoldText = false
+        val finalList = remember {
+            derivedStateOf {
+                val list = tabFilteredList.value
+                val pinned = config.pinnedConversations
+                when (currentFilter) {
+                    ConversationFilter.ALL -> list
+                    ConversationFilter.UNREAD -> list.filter { !it.read || it.unreadCount > 0 }
+                    ConversationFilter.FAVOURITES -> list.filter { pinned.contains(it.threadId.toString()) }
+                    ConversationFilter.GROUP -> list.filter { it.isGroupConversation }
+                }
+            }
         }
-        
-        // Menu item is not a tab, so it always uses the inactive color
-        binding.tabMenuIcon.applyColorFilter(inactiveColor)
-        binding.tabMenuLabel.setTextColor(inactiveColor)
-        binding.tabMenuLabel.paint.isFakeBoldText = false
+
+        Scaffold(
+            topBar = {
+                MainSearchBar()
+            },
+            bottomBar = {
+                NavigationBar(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    tonalElevation = 8.dp
+                ) {
+                    NavigationBarItem(
+                        selected = currentTab == Tab.PERSONAL,
+                        onClick = { 
+                            currentTab = Tab.PERSONAL 
+                        },
+                        icon = { Icon(Icons.Default.Person, contentDescription = getString(R.string.tab_personal)) },
+                        label = { Text(getString(R.string.tab_personal), fontWeight = if (currentTab == Tab.PERSONAL) FontWeight.Bold else FontWeight.Normal) }
+                    )
+                    NavigationBarItem(
+                        selected = currentTab == Tab.FINANCIAL,
+                        onClick = { 
+                            currentTab = Tab.FINANCIAL
+                            if (currentFilter == ConversationFilter.FAVOURITES || currentFilter == ConversationFilter.GROUP) {
+                                currentFilter = ConversationFilter.ALL
+                            }
+                        },
+                        icon = { Icon(painterResource(R.drawable.ic_tab_financial), contentDescription = getString(R.string.tab_financial), modifier = Modifier.size(24.dp)) },
+                        label = { Text(getString(R.string.tab_financial), fontWeight = if (currentTab == Tab.FINANCIAL) FontWeight.Bold else FontWeight.Normal) }
+                    )
+                    NavigationBarItem(
+                        selected = currentTab == Tab.OTHERS,
+                        onClick = { 
+                            currentTab = Tab.OTHERS
+                            if (currentFilter == ConversationFilter.FAVOURITES || currentFilter == ConversationFilter.GROUP) {
+                                currentFilter = ConversationFilter.ALL
+                            }
+                        },
+                        icon = { Icon(painterResource(R.drawable.ic_tab_others), contentDescription = getString(R.string.tab_others), modifier = Modifier.size(24.dp)) },
+                        label = { Text(getString(R.string.tab_others), fontWeight = if (currentTab == Tab.OTHERS) FontWeight.Bold else FontWeight.Normal) }
+                    )
+                    NavigationBarItem(
+                        selected = false,
+                        onClick = { isMenuSheetOpen = true },
+                        icon = { Icon(Icons.Default.Menu, contentDescription = getString(R.string.menu)) },
+                        label = { Text(getString(R.string.menu)) }
+                    )
+                }
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = { launchNewConversation() },
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
+                    shape = RoundedCornerShape(16.dp)
+                ) {
+                    Icon(Icons.Default.Add, contentDescription = getString(R.string.new_conversation))
+                }
+            }
+        ) { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+            ) {
+                // Category filters
+                CategoryFilterRow(
+                    currentTab = currentTab,
+                    selectedFilter = currentFilter,
+                    onFilterSelected = { currentFilter = it }
+                )
+
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (isProgressLoading.value) {
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    } else if (finalList.value.isEmpty()) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = Modifier.padding(32.dp)
+                        ) {
+                            Text(
+                                text = getString(R.string.no_conversations_found),
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Medium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Button(onClick = { launchNewConversation() }) {
+                                Text(getString(R.string.start_conversation))
+                            }
+                        }
+                    } else {
+                        LazyColumn(modifier = Modifier.fillMaxSize()) {
+                            items(finalList.value, key = { it.threadId }) { conversation ->
+                                ConversationListItem(
+                                    conversation = conversation,
+                                    onClick = { handleConversationClick(conversation) }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Bottom sheet menu trigger
+        if (isMenuSheetOpen) {
+            ModalBottomSheet(
+                onDismissRequest = { isMenuSheetOpen = false },
+                containerColor = MaterialTheme.colorScheme.surfaceContainer
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 24.dp)
+                ) {
+                    ListItem(
+                        headlineContent = { Text(getString(org.fossify.commons.R.string.settings)) },
+                        leadingContent = { Icon(Icons.Default.Settings, contentDescription = null) },
+                        modifier = Modifier.clickable {
+                            isMenuSheetOpen = false
+                            launchSettings()
+                        }
+                    )
+                    if (config.isArchiveAvailable) {
+                        ListItem(
+                            headlineContent = { Text(getString(R.string.archived_conversations)) },
+                            leadingContent = { Icon(Icons.Default.MailOutline, contentDescription = null) },
+                            modifier = Modifier.clickable {
+                                isMenuSheetOpen = false
+                                launchArchivedConversations()
+                            }
+                        )
+                    }
+                    if (config.useRecycleBin) {
+                        ListItem(
+                            headlineContent = { Text(getString(org.fossify.commons.R.string.recycle_bin)) },
+                            leadingContent = { Icon(Icons.Default.Delete, contentDescription = null) },
+                            modifier = Modifier.clickable {
+                                isMenuSheetOpen = false
+                                launchRecycleBin()
+                            }
+                        )
+                    }
+                    ListItem(
+                        headlineContent = { Text(getString(org.fossify.commons.R.string.about)) },
+                        leadingContent = { Icon(Icons.Default.Info, contentDescription = null) },
+                        modifier = Modifier.clickable {
+                            isMenuSheetOpen = false
+                            launchAbout()
+                        }
+                    )
+                }
+            }
+        }
+    }
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    private fun MainSearchBar() {
+        var query by remember { mutableStateOf("") }
+        val searchBarState = rememberSearchBarState()
+        val scope = rememberCoroutineScope()
+        val context = LocalContext.current
+
+        val isExpanded = searchBarState.targetValue == SearchBarValue.Expanded
+
+        // Sync external isSearchOpen with searchBarState
+        LaunchedEffect(isExpanded) {
+            isSearchOpen.value = isExpanded
+            if (!isExpanded) {
+                query = ""
+                lastSearchedText.value = ""
+                searchResultsStateList.clear()
+            }
+        }
+
+        // Handle external requests to close search (e.g. from Activity.onBackPressed)
+        LaunchedEffect(isSearchOpen.value) {
+            if (!isSearchOpen.value && isExpanded) {
+                searchBarState.animateToCollapsed()
+            }
+        }
+
+        val inputField = @Composable {
+            SearchBarDefaults.InputField(
+                query = query,
+                onQueryChange = {
+                    query = it
+                    searchTextChanged(it)
+                },
+                onSearch = {
+                    searchTextChanged(it)
+                    scope.launch { searchBarState.animateToCollapsed() }
+                },
+                expanded = isExpanded,
+                onExpandedChange = { expanded ->
+                    scope.launch {
+                        if (expanded) searchBarState.animateToExpanded() else searchBarState.animateToCollapsed()
+                    }
+                },
+                placeholder = { Text("Search messages and contacts...") },
+                leadingIcon = {
+                    if (isExpanded) {
+                        IconButton(onClick = {
+                            scope.launch { searchBarState.animateToCollapsed() }
+                        }) {
+                            Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        }
+                    } else {
+                        Icon(Icons.Default.Search, contentDescription = "Search")
+                    }
+                },
+                trailingIcon = {
+                    if (query.isNotEmpty()) {
+                        IconButton(onClick = {
+                            query = ""
+                            searchTextChanged("")
+                        }) {
+                            Icon(Icons.Default.Clear, contentDescription = "Clear")
+                        }
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        ) {
+            SearchBar(
+                state = searchBarState,
+                inputField = inputField,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            ExpandedFullScreenSearchBar(
+                state = searchBarState,
+                inputField = inputField,
+            ) {
+                if (query.length < 2) {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = getString(org.fossify.commons.R.string.type_2_characters),
+                            fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                } else if (searchResultsStateList.isEmpty()) {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = getString(org.fossify.commons.R.string.no_items_found),
+                            fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                } else {
+                    LazyColumn(modifier = Modifier.fillMaxSize()) {
+                        items(searchResultsStateList) { result ->
+                            SearchResultItem(result = result) {
+                                scope.launch { searchBarState.animateToCollapsed() }
+                                Intent(context, ThreadActivity::class.java).apply {
+                                    putExtra(THREAD_ID, result.threadId)
+                                    putExtra(THREAD_TITLE, result.title)
+                                    putExtra(SEARCHED_MESSAGE_ID, result.messageId)
+                                    context.startActivity(this)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun CategoryFilterRow(
+        currentTab: Tab,
+        selectedFilter: ConversationFilter,
+        onFilterSelected: (ConversationFilter) -> Unit
+    ) {
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp, horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            item {
+                FilterChip(
+                    selected = selectedFilter == ConversationFilter.ALL,
+                    onClick = { onFilterSelected(ConversationFilter.ALL) },
+                    label = { Text("All") }
+                )
+            }
+            item {
+                FilterChip(
+                    selected = selectedFilter == ConversationFilter.UNREAD,
+                    onClick = { onFilterSelected(ConversationFilter.UNREAD) },
+                    label = { Text("Unread") }
+                )
+            }
+            if (currentTab == Tab.PERSONAL) {
+                item {
+                    FilterChip(
+                        selected = selectedFilter == ConversationFilter.FAVOURITES,
+                        onClick = { onFilterSelected(ConversationFilter.FAVOURITES) },
+                        label = { Text("Favourites") }
+                    )
+                }
+                item {
+                    FilterChip(
+                        selected = selectedFilter == ConversationFilter.GROUP,
+                        onClick = { onFilterSelected(ConversationFilter.GROUP) },
+                        label = { Text("Groups") }
+                    )
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun ConversationListItem(
+        conversation: Conversation,
+        onClick: () -> Unit
+    ) {
+        val isPinned = remember(conversation.threadId) {
+            config.pinnedConversations.contains(conversation.threadId.toString())
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onClick() }
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Avatar image
+            Box(
+                modifier = Modifier
+                    .size(52.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primaryContainer),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    Icons.Default.Person,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.size(32.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = conversation.title,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    
+                    val timeStr = remember(conversation.date) {
+                        (conversation.date * 1000L).formatDateOrTime(
+                            context = this@MainActivity,
+                            hideTimeOnOtherDays = true,
+                            showCurrentYear = true
+                        )
+                    }
+
+                    Text(
+                        text = timeStr,
+                        fontSize = 12.sp,
+                        color = if (conversation.unreadCount > 0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = conversation.snippet,
+                        fontSize = 14.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f)
+                    )
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        if (isPinned) {
+                            Icon(
+                                Icons.Default.Star,
+                                contentDescription = "Pinned",
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+
+                        if (conversation.unreadCount > 0) {
+                            Box(
+                                modifier = Modifier
+                                    .size(20.dp)
+                                    .clip(CircleShape)
+                                    .background(MaterialTheme.colorScheme.primary),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = conversation.unreadCount.toString(),
+                                    color = MaterialTheme.colorScheme.onPrimary,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun SearchResultItem(
+        result: SearchResult,
+        onClick: () -> Unit
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onClick() }
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    Icons.Default.MailOutline,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = result.title,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = result.date,
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = result.snippet,
+                    fontSize = 14.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
     }
 }
-

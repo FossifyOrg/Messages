@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.kotlinCompose)
 }
 
 val keystorePropertiesFile: File = rootProject.file("keystore.properties")
@@ -30,7 +31,7 @@ base {
 
 android {
 
-    compileSdkVersion(project.libs.versions.app.build.compileSDKVersion.get().toInt())
+    compileSdk = project.libs.versions.app.build.compileSDKVersion.get().toInt()
     defaultConfig {
         applicationId = project.property("APP_ID").toString()
         minSdk = project.libs.versions.app.build.minimumSDK.get().toInt()
@@ -67,6 +68,7 @@ android {
         viewBinding = true
         buildConfig = true
         resValues = true
+        compose = true
     }
 
     buildTypes {
@@ -159,4 +161,15 @@ dependencies {
     implementation(libs.bundles.room)
     ksp(libs.androidx.room.compiler)
     detektPlugins(libs.compose.detekt)
+
+    val composeBom = platform(libs.androidx.compose.bom)
+    implementation(enforcedPlatform(composeBom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 }
