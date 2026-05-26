@@ -2,4 +2,30 @@
 <resources>
     <string name="app_launcher_name">Mensajes</string>
     <string name="type_a_message">Escriba un mensaje…</string>
+    <string name="message_not_sent_short">Mensaje no enviado</string>
+    <string name="message_not_sent_touch_retry">No enviado. Toca para volver a intentarlo.</string>
+    <string name="message_sending_error">Tu mensaje a \'%s\' no ha sido enviado</string>
+    <string name="add_person">Añadir Persona</string>
+    <string name="attachment">Anexo</string>
+    <string name="no_conversations_found">No se han encontrado conversaciones almacenadas</string>
+    <string name="start_conversation">Inicia una conversación</string>
+    <string name="reply">Respuesta</string>
+    <string name="show_character_counter">Mostrar un contador de caracteres al escribir mensajes</string>
+    <string name="loading_messages">Cargando mensajes…</string>
+    <string name="no_reply_support">El remitente no admite respuestas</string>
+    <string name="draft">Borrador</string>
+    <string name="sending">Enviando…</string>
+    <string name="pin_conversation">Fijar encima</string>
+    <string name="unpin_conversation">Desfijar</string>
+    <string name="forward_message">Reenviar</string>
+    <string name="compress_error">No se puede comprimir la imagen al tamaño seleccionado</string>
+    <string name="duplicate_item_warning">No se incluyó el elemento duplicado</string>
+    <plurals name="and_other_contacts">
+        <item quantity="one">y %d otro</item>
+        <item quantity="many">y %d otros</item>
+        <item quantity="other">y %d otros</item>
+    </plurals>
+    <string name="new_conversation">Nueva conversación</string>
+    <string name="add_contact_or_number">Añadir contacto o número…</string>
+    <string name="suggestions">Sugerencias</string>
 </resources>
