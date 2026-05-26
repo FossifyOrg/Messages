@@ -580,7 +580,8 @@ class ThreadActivity : SimpleActivity() {
                         toRecycleBin,
                         fromRecycleBin
                     )
-                }
+                },
+                bottomBarColor = getBottomBarColor(),
             )
 
             binding.threadMessagesList.adapter = currAdapter

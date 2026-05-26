@@ -14,7 +14,6 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.DiffUtil
@@ -37,12 +36,10 @@ import org.fossify.commons.extensions.beVisible
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.copyToClipboard
 import org.fossify.commons.extensions.formatDateOrTime
-import org.fossify.commons.extensions.getBottomNavigationBackgroundColor
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getProperPrimaryColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.getTimeFormat
-import org.fossify.commons.extensions.isDynamicTheme
 import org.fossify.commons.extensions.shareTextIntent
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.usableScreenSize
@@ -99,7 +96,8 @@ class ThreadAdapter(
     recyclerView: MyRecyclerView,
     itemClick: (Any) -> Unit,
     val isRecycleBin: Boolean,
-    val deleteMessages: (messages: List<Message>, toRecycleBin: Boolean, fromRecycleBin: Boolean) -> Unit
+    val deleteMessages: (messages: List<Message>, toRecycleBin: Boolean, fromRecycleBin: Boolean) -> Unit,
+    val bottomBarColor: Int,
 ) : MyRecyclerViewListAdapter<ThreadItem>(activity, recyclerView, ThreadItemDiffCallback(), itemClick) {
     private var fontSize = activity.getTextSize()
 
@@ -721,15 +719,7 @@ class ThreadAdapter(
         return GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
             cornerRadius = 18.dpToPx()
-            setColor(getBottomBarColor())
-        }
-    }
-
-    private fun getBottomBarColor(): Int {
-        return if (activity.isDynamicTheme()) {
-            ContextCompat.getColor(activity, org.fossify.commons.R.color.you_bottom_bar_color)
-        } else {
-            activity.getBottomNavigationBackgroundColor()
+            setColor(bottomBarColor)
         }
     }
 }
