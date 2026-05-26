@@ -11,8 +11,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.animation.*
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -37,6 +39,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
@@ -76,6 +79,7 @@ class MainActivity : SimpleActivity() {
     private var lastSearchedText = mutableStateOf("")
     private val searchResultsStateList = mutableStateListOf<SearchResult>()
     private var isSearchOpen = mutableStateOf(false)
+    private val selectedThreadIds = mutableStateListOf<Long>()
 
     private var storedTextColor = 0
     private var storedFontSize = 0
@@ -120,7 +124,9 @@ class MainActivity : SimpleActivity() {
     @Deprecated("Deprecated in Java")
     @SuppressLint("GestureBackNavigation")
     override fun onBackPressed() {
-        if (isSearchOpen.value) {
+        if (selectedThreadIds.isNotEmpty()) {
+            selectedThreadIds.clear()
+        } else if (isSearchOpen.value) {
             isSearchOpen.value = false
             lastSearchedText.value = ""
         } else {
@@ -524,6 +530,15 @@ class MainActivity : SimpleActivity() {
         var currentFilter by remember { mutableStateOf(ConversationFilter.ALL) }
         var isMenuSheetOpen by remember { mutableStateOf(false) }
 
+        BackHandler(enabled = selectedThreadIds.isNotEmpty() || isSearchOpen.value) {
+            if (selectedThreadIds.isNotEmpty()) {
+                selectedThreadIds.clear()
+            } else {
+                isSearchOpen.value = false
+                lastSearchedText.value = ""
+            }
+        }
+
         // Compute list dynamically
         val sortedConversations = remember {
             derivedStateOf {
@@ -562,7 +577,28 @@ class MainActivity : SimpleActivity() {
 
         Scaffold(
             topBar = {
-                MainSearchBar()
+                if (selectedThreadIds.isEmpty()) {
+                    MainSearchBar()
+                } else {
+                    SelectionTopBar(
+                        selectedIds = selectedThreadIds,
+                        onClose = { selectedThreadIds.clear() },
+                        onDelete = {
+                            val selectedConversations = conversationsStateList.filter { selectedThreadIds.contains(it.threadId) }
+                            askConfirmDelete(selectedConversations) {
+                                deleteThreads(selectedThreadIds.toList())
+                                selectedThreadIds.clear()
+                            }
+                        },
+                        onArchive = {
+                            val selectedConversations = conversationsStateList.filter { selectedThreadIds.contains(it.threadId) }
+                            askConfirmArchive(selectedConversations) {
+                                archiveThreads(selectedThreadIds.toList())
+                                selectedThreadIds.clear()
+                            }
+                        }
+                    )
+                }
             },
             bottomBar = {
                 NavigationBar(
@@ -658,7 +694,23 @@ class MainActivity : SimpleActivity() {
                             items(finalList.value, key = { it.threadId }) { conversation ->
                                 ConversationListItem(
                                     conversation = conversation,
-                                    onClick = { handleConversationClick(conversation) }
+                                    isSelected = selectedThreadIds.contains(conversation.threadId),
+                                    onClick = {
+                                        if (selectedThreadIds.isNotEmpty()) {
+                                            if (selectedThreadIds.contains(conversation.threadId)) {
+                                                selectedThreadIds.remove(conversation.threadId)
+                                            } else {
+                                                selectedThreadIds.add(conversation.threadId)
+                                            }
+                                        } else {
+                                            handleConversationClick(conversation)
+                                        }
+                                    },
+                                    onLongClick = {
+                                        if (!selectedThreadIds.contains(conversation.threadId)) {
+                                            selectedThreadIds.add(conversation.threadId)
+                                        }
+                                    }
                                 )
                             }
                         }
@@ -891,10 +943,92 @@ class MainActivity : SimpleActivity() {
         }
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    private fun SelectionTopBar(
+        selectedIds: List<Long>,
+        onClose: () -> Unit,
+        onDelete: () -> Unit,
+        onArchive: () -> Unit
+    ) {
+        TopAppBar(
+            title = { Text(text = "${selectedIds.size}") },
+            navigationIcon = {
+                IconButton(onClick = onClose) {
+                    Icon(Icons.Default.Close, contentDescription = "Close selection")
+                }
+            },
+            actions = {
+                IconButton(onClick = onArchive) {
+                    Icon(painterResource(R.drawable.ic_archive_vector), contentDescription = "Archive")
+                }
+                IconButton(onClick = onDelete) {
+                    Icon(Icons.Default.Delete, contentDescription = "Delete")
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.surfaceContainer
+            )
+        )
+    }
+
+    private fun askConfirmDelete(conversations: List<Conversation>, callback: () -> Unit) {
+        val itemsCnt = conversations.size
+        val items = resources.getQuantityString(R.plurals.delete_conversations, itemsCnt, itemsCnt)
+
+        val baseString = org.fossify.commons.R.string.deletion_confirmation
+        val question = String.format(resources.getString(baseString), items)
+
+        ConfirmationDialog(this, question) {
+            callback()
+        }
+    }
+
+    private fun askConfirmArchive(conversations: List<Conversation>, callback: () -> Unit) {
+        val itemsCnt = conversations.size
+        val items = resources.getQuantityString(R.plurals.delete_conversations, itemsCnt, itemsCnt)
+
+        val baseString = R.string.archive_confirmation
+        val question = String.format(resources.getString(baseString), items)
+
+        ConfirmationDialog(this, question) {
+            callback()
+        }
+    }
+
+    private fun deleteThreads(threadIds: List<Long>) {
+        ensureBackgroundThread {
+            threadIds.forEach {
+                deleteConversation(it)
+                notificationManager.cancel(it.hashCode())
+            }
+            runOnUiThread {
+                conversationsStateList.removeAll { threadIds.contains(it.threadId) }
+                allLoadedConversations.removeAll { threadIds.contains(it.threadId) }
+            }
+        }
+    }
+
+    private fun archiveThreads(threadIds: List<Long>) {
+        ensureBackgroundThread {
+            threadIds.forEach {
+                updateConversationArchivedStatus(it, true)
+                notificationManager.cancel(it.hashCode())
+            }
+            runOnUiThread {
+                conversationsStateList.removeAll { threadIds.contains(it.threadId) }
+                allLoadedConversations.removeAll { threadIds.contains(it.threadId) }
+            }
+        }
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     private fun ConversationListItem(
         conversation: Conversation,
-        onClick: () -> Unit
+        isSelected: Boolean,
+        onClick: () -> Unit,
+        onLongClick: () -> Unit
     ) {
         val isPinned = remember(conversation.threadId) {
             config.pinnedConversations.contains(conversation.threadId.toString())
@@ -903,7 +1037,11 @@ class MainActivity : SimpleActivity() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onClick() }
+                .combinedClickable(
+                    onClick = onClick,
+                    onLongClick = onLongClick
+                )
+                .background(if (isSelected) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f) else Color.Transparent)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
