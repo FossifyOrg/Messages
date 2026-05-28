@@ -119,4 +119,6 @@
     <string name="import_blocked_keywords">Nhập từ khóa bị chặn</string>
     <string name="faq_4_title">Tại sao tin nhắn nhóm của tôi lại hiển thị dưới dạng từng tin nhắn riêng với từng người nhận?</string>
     <string name="faq_4_text">Bạn cần bật \"Gửi tin nhắn nhóm dưới dạng MMS\" trong cài đặt ứng dụng. Điều này sẽ đảm bảo rằng các tin nhắn nhóm được gửi đúng dưới dạng MMS, cho phép tất cả người tham gia xem được câu trả lời của nhau.</string>
+    <string name="play">Phát</string>
+    <string name="pause">Tạm dừng</string>
 </resources>

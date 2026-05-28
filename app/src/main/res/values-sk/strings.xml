@@ -122,4 +122,6 @@
     <string name="keywords">Kľúčové slová</string>
     <string name="export_blocked_keywords">Exportovať zablokované kľúčové slová</string>
     <string name="import_blocked_keywords">Importovať zablokované kľúčové slová</string>
+    <string name="play">Prehrať</string>
+    <string name="pause">Pozastaviť</string>
 </resources>

@@ -126,4 +126,6 @@
     <string name="keep_conversations_archived">שמור את השיחות בארכיון</string>
     <string name="faq_4_title">מדוע תשובות להודעות הקבוצתיות שלי מופיעות כהודעות טקסט אישיות לנמענים?</string>
     <string name="faq_4_text">עליך להפעיל את האפשרות \"שליחת הודעות קבוצתיות כ-MMS\" בהגדרות האפליקציה. פעולה זו תבטיח שהודעות הקבוצה יישלחו כ-MMS תקינות, כך שכל המשתתפים יוכלו לראות את תשובותיהם של אחרים.</string>
+    <string name="play">נגן</string>
+    <string name="pause">השהה</string>
 </resources>

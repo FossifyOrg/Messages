@@ -37,6 +37,7 @@ import org.fossify.commons.extensions.copyToClipboard
 import org.fossify.commons.extensions.formatDateOrTime
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getProperTextColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.getTimeFormat
 import org.fossify.commons.extensions.shareTextIntent
@@ -53,6 +54,7 @@ import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.activities.VCardViewerActivity
 import org.fossify.messages.databinding.ItemAttachmentDocumentBinding
 import org.fossify.messages.databinding.ItemAttachmentImageBinding
+import org.fossify.messages.databinding.ItemAttachmentAudioBinding
 import org.fossify.messages.databinding.ItemAttachmentVcardBinding
 import org.fossify.messages.databinding.ItemMessageBinding
 import org.fossify.messages.databinding.ItemThreadDateTimeBinding
@@ -65,6 +67,7 @@ import org.fossify.messages.dialogs.SelectTextDialog
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.getContactFromAddress
 import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.isPlayableAudioMimeType
 import org.fossify.messages.extensions.isVCardMimeType
 import org.fossify.messages.extensions.isVideoMimeType
 import org.fossify.messages.extensions.launchViewIntent
@@ -78,6 +81,8 @@ import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_ERROR
 import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENDING
 import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENT
 import org.fossify.messages.helpers.generateStableId
+import org.fossify.messages.helpers.setupAudio
+import org.fossify.messages.helpers.setupAudioPreview
 import org.fossify.messages.helpers.setupDocumentPreview
 import org.fossify.messages.helpers.setupVCardPreview
 import org.fossify.messages.models.Attachment
@@ -393,6 +398,8 @@ class ThreadAdapter(
                     val mimetype = attachment.mimetype
                     when {
                         mimetype.isImageMimeType() || mimetype.isVideoMimeType() -> setupImageView(holder, binding = this, message, attachment)
+                        mimetype.isPlayableAudioMimeType() ->
+                            setupAudioView(binding = this, attachment)
                         mimetype.isVCardMimeType() -> setupVCardView(holder, threadMessageAttachmentsHolder, message, attachment)
                         else -> setupFileView(holder, threadMessageAttachmentsHolder, message, attachment)
                     }
@@ -536,6 +543,16 @@ class ThreadAdapter(
             holder.viewLongClicked()
             true
         }
+    }
+
+    private fun setupAudioView(binding: ItemMessageBinding, attachment: Attachment) = binding.apply {
+        val uri = attachment.getUri()
+
+        val audioView = ItemAttachmentAudioBinding.inflate(layoutInflater).apply {
+            setupAudio(uri = uri)
+        }.root
+
+        threadMessageAttachmentsHolder.addView(audioView)
     }
 
     private fun setupVCardView(holder: ViewHolder, parent: LinearLayout, message: Message, attachment: Attachment) {
