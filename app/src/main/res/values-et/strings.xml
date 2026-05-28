@@ -126,4 +126,6 @@
     <string name="group_mms">MMS-rühmasõnumid</string>
     <string name="group_message_send_description">MMS-rühmasõnumid säilitavad vastused ühes jutulõngas, aga sellega võivad kaasneda võrguteenuste tasud. Eraldi saates saadetakse üks sõnum igale adressaadile eraldi. Sa saad seda hiljem seadistustest muuta.</string>
     <string name="separate_messages">Saada eraldi</string>
+    <string name="play">Esita</string>
+    <string name="pause">Peata</string>
 </resources>

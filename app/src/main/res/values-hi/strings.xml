@@ -119,4 +119,6 @@
     <string name="export_blocked_keywords">अवरुद्ध शब्द निर्यात करें</string>
     <string name="import_blocked_keywords">अवरुद्ध शब्द आयात करें</string>
     <string name="keywords">प्रमुख शब्द</string>
+    <string name="play">चलाएं</string>
+    <string name="pause">रोकें</string>
 </resources>

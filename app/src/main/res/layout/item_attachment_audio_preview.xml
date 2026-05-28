@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/thread_attachment_wrapper"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <include
+        android:id="@+id/audio_attachment_holder"
+        layout="@layout/item_attachment_audio"
+        android:layout_width="@dimen/attachment_preview_max_width"
+        android:layout_height="@dimen/attachment_preview_min_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1" />
+
+    <include
+        android:id="@+id/remove_attachment_button_holder"
+        layout="@layout/item_remove_attachment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/audio_attachment_holder"
+        app:layout_constraintEnd_toEndOf="@id/audio_attachment_holder"
+        app:layout_constraintStart_toEndOf="@id/audio_attachment_holder"
+        app:layout_constraintTop_toTopOf="@id/audio_attachment_holder" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

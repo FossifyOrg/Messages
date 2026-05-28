@@ -22,6 +22,7 @@ import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.extensions.*
 import org.fossify.messages.R
 import org.fossify.messages.activities.VCardViewerActivity
+import org.fossify.messages.databinding.ItemAttachmentAudioPreviewBinding
 import org.fossify.messages.databinding.ItemAttachmentDocumentPreviewBinding
 import org.fossify.messages.databinding.ItemAttachmentMediaPreviewBinding
 import org.fossify.messages.databinding.ItemAttachmentVcardPreviewBinding
@@ -53,6 +54,7 @@ class AttachmentsAdapter(
             ATTACHMENT_DOCUMENT -> ItemAttachmentDocumentPreviewBinding.inflate(inflater, parent, false)
             ATTACHMENT_VCARD -> ItemAttachmentVcardPreviewBinding.inflate(inflater, parent, false)
             ATTACHMENT_MEDIA -> ItemAttachmentMediaPreviewBinding.inflate(inflater, parent, false)
+            ATTACHMENT_AUDIO -> ItemAttachmentAudioPreviewBinding.inflate(inflater, parent, false)
             else -> throw IllegalArgumentException("Unknown view type: $viewType")
         }
 
@@ -91,6 +93,13 @@ class AttachmentsAdapter(
                     binding = binding as ItemAttachmentMediaPreviewBinding,
                     attachment = attachment
                 )
+
+                ATTACHMENT_AUDIO -> {
+                    (binding as ItemAttachmentAudioPreviewBinding).setupAudioPreview(
+                        uri = attachment.uri,
+                        onRemoveButtonClicked = { removeAttachment(attachment) }
+                    )
+                }
             }
         }
     }

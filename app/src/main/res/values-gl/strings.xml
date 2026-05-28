@@ -122,4 +122,6 @@
     <string name="couldnt_download_mms">Non se pode descargar o MMS</string>
     <string name="faq_4_title">¿Por qué as miñas respostas a mensaxes de grupo aparecen como textos individuais aos destinatarios?</string>
     <string name="faq_4_text">Precisas habilitar \"Enviar mensaxes de grupo como MMS\" na configuración do app. Isto asegurará que tales mensaxes se envíen como MMS axeitados, permitindo a todos os participantes ver as respostas dos demáis.</string>
+    <string name="play">Reproducir</string>
+    <string name="pause">Pausa</string>
 </resources>

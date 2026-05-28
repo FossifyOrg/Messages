@@ -69,4 +69,6 @@
     <string name="faq_2_text">Памер MMS абмежаваны аператарамі сувязі, магчыма паспрабаваць зменьшыць ліміт у наладах прыкладання.</string>
     <string name="restore_confirmation">Вы ўпэўнены, што хаціце аднавіць %s?</string>
     <string name="app_launcher_name">Паведамленні</string>
+    <string name="play">Прайграваць</string>
+    <string name="pause">Паўза</string>
 </resources>

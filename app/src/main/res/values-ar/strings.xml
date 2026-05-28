@@ -138,4 +138,6 @@
     <string name="group_message_send_description">تجمع رسائل الوسائط المتعدّدة الجماعية (MMS) الردود في محادثة واحدة، ولكن قد تُفرض رسوم من قبل شركة الاتصالات. أما الإرسال بشكل منفصل فيؤدي إلى إرسال رسالة واحدة لكل شخص. يمكنك تغيير هذا الإعداد لاحقًا من خلال إعدادات التطبيق.</string>
     <string name="group_mms">رسائل الوسائط المتعدّدة الجماعية (MMS)</string>
     <string name="separate_messages">أرسل منفصلاً</string>
+    <string name="play">تشغيل</string>
+    <string name="pause">إيقاف مؤقت</string>
 </resources>

@@ -126,4 +126,6 @@
     <string name="group_message_send_description">Bei Gruppen-MMS werden die Antworten in einem einzigen Gespräch zusammengefasst, es können jedoch Gebühren des Mobilfunkanbieters anfallen. Beim separaten Versand wird an jede Person eine eigene Nachricht gesendet. Du kannst dies später in den App-Einstellungen ändern.</string>
     <string name="group_mms">Gruppen-MMS</string>
     <string name="separate_messages">Separat senden</string>
+    <string name="play">Wiedergabe</string>
+    <string name="pause">Pause</string>
 </resources>

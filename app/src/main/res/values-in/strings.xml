@@ -119,4 +119,6 @@
     <string name="keep_conversations_archived">Pertahankan percakapan yang diarsipkan</string>
     <string name="faq_4_title">Mengapa balasan pesan grup saya muncul sebagai teks individual ke penerima?</string>
     <string name="faq_4_text">Anda perlu mengaktifkan \"Kirim pesan grup sebagai MMS\" di pengaturan aplikasi. Ini akan memastikan bahwa pesan grup dikirim sebagai MMS yang tepat, memungkinkan semua peserta melihat balasan satu sama lain.</string>
+    <string name="play">Putar</string>
+    <string name="pause">Jeda</string>
 </resources>

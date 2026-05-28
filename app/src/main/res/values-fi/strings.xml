@@ -122,4 +122,6 @@
     <string name="keep_conversations_archived">Pidä keskustelut arkistoituna</string>
     <string name="faq_4_title">Miksi ryhmäviestien vastaukset näkyvät vastaanottajille yksittäisinä tekstiviesteinä?</string>
     <string name="faq_4_text">Sinun on otettava käyttöön ”Lähetä ryhmäviestit MMS-viesteinä” -asetus sovelluksen asetuksissa. Tämä varmistaa, että ryhmäviestit lähetetään oikeina MMS-viesteinä, jolloin kaikki osallistujat voivat nähdä toistensa vastaukset.</string>
+    <string name="play">Toista</string>
+    <string name="pause">Tauko</string>
 </resources>

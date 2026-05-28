@@ -113,4 +113,6 @@
     <string name="mark_as_unread">읽지 않음으로 표시</string>
     <string name="me">나</string>
     <string name="archive">보관</string>
+    <string name="play">재생</string>
+    <string name="pause">일시정지</string>
 </resources>

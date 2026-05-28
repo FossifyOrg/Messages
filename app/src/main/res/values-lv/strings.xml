@@ -125,4 +125,6 @@
     <string name="keep_conversations_archived">Paturēt sarunas arhivētas</string>
     <string name="faq_4_text">Lietotnes iestatījumos nepieciešams iespējot “Nosūtīt kopu ziņas kā MMS”. Tas nodrošinās, ka kopu ziņas tiek pareizi nosūtītas kā MMS, ļaujot visiem dalībniekiem redzēt citam cita atbildes.</string>
     <string name="faq_4_title">Kādēļ manas kopu ziņu atbildes saņēmējiem parādās kā atsevišķas īsziņas?</string>
+    <string name="play">Atskaņot</string>
+    <string name="pause">Pauze</string>
 </resources>

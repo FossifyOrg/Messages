@@ -125,4 +125,6 @@
     <string name="keep_conversations_archived">Manter conversas arquivadas</string>
     <string name="faq_4_title">Por que as minhas respostas a mensagens em grupo aparecem como mensagens individuais para os destinatários?</string>
     <string name="faq_4_text">Tem de ativar a opção “Enviar mensagens em grupo como MMS” nas configurações da aplicação. Isso garantirá que as mensagens em grupo sejam enviadas como MMS adequadas, permitindo que todos os participantes vejam as respostas uns dos outros.</string>
+    <string name="play">Reproduzir</string>
+    <string name="pause">Pausar</string>
 </resources>

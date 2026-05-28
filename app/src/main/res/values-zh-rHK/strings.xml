@@ -117,4 +117,6 @@
     <string name="faq_2_text">MMS 的大小受到電訊商的限制，您可以嘗試在應用程式設定中設定較小的限制。</string>
     <string name="faq_3_title">應用程式是否支援排程訊息？</string>
     <string name="faq_3_text">是的，您可以長按「送出」按鈕並選擇所需的日期和時間，以排程將訊息送出。</string>
+    <string name="play">播放</string>
+    <string name="pause">暫停</string>
 </resources>

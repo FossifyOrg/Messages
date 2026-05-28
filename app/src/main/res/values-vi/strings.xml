@@ -123,4 +123,6 @@
     <string name="group_mms">MMS nhóm</string>
     <string name="separate_messages">Gửi riêng lẻ</string>
     <string name="send_group_message">Định dạng tin nhắn nhóm</string>
+    <string name="play">Phát</string>
+    <string name="pause">Tạm dừng</string>
 </resources>

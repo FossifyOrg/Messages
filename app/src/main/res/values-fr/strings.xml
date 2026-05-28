@@ -129,4 +129,6 @@
     <string name="group_message_send_description">Les groupes MMS regroupent les réponses dans une seule conversation, mais des frais d\'opérateur peuvent s\'appliquer. L\'envoi séparé envoie un message à chaque destinataire. Vous pouvez modifier ce paramètre ultérieurement dans les paramètres de l\'application.</string>
     <string name="group_mms">Groupe MMS</string>
     <string name="separate_messages">Envoyer séparément</string>
+    <string name="play">lire</string>
+    <string name="pause">mettre en pause</string>
 </resources>

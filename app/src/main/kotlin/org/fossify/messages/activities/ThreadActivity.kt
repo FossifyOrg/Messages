@@ -158,6 +158,7 @@ import org.fossify.messages.extensions.toSortedMessages
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.extensions.updateScheduledMessagesThreadId
+import org.fossify.messages.helpers.AudioPlayerManager
 import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
@@ -338,6 +339,11 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+
+        if (!isChangingConfigurations) {
+            AudioPlayerManager.release()
+        }
+
         bus?.unregister(this)
     }
 

@@ -119,4 +119,6 @@
     <string name="keywords">Ключови думи</string>
     <string name="export_blocked_keywords">Изнасяне на ключовите думи</string>
     <string name="import_blocked_keywords">Внасяне на ключови думи</string>
+    <string name="play">Пускане</string>
+    <string name="pause">Пауза</string>
 </resources>

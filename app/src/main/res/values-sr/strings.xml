@@ -123,4 +123,6 @@
     <string name="keywords">Кључне речи</string>
     <string name="export_blocked_keywords">Извези блокиране кључне речи</string>
     <string name="import_blocked_keywords">Увези блокиране кључне речи</string>
+    <string name="play">Пусти</string>
+    <string name="pause">Пауза</string>
 </resources>
