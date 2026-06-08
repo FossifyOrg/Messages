@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/small_margin"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:foreground="@drawable/selector"
     android:paddingHorizontal="@dimen/activity_margin">
 
@@ -13,6 +15,8 @@
         android:id="@+id/thread_message_wrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -65,5 +69,20 @@
             android:textSize="@dimen/normal_text_size"
             tools:drawableEndCompat="@drawable/scheduled_message_icon"
             tools:text="Message content" />
+
+        <org.fossify.commons.views.MyTextView
+            android:id="@+id/thread_message_reactions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thread_message_body"
+            android:layout_marginTop="-12dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="@dimen/medium_margin"
+            android:paddingVertical="@dimen/small_margin"
+            android:textSize="13sp"
+            android:visibility="gone"
+            tools:text="👍"
+            tools:visibility="visible" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
