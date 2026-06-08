@@ -72,4 +72,6 @@
     <string name="enable_custom_notifications">தனிப்பயன் அறிவிப்புகளை இயக்கு</string>
     <string name="empty_archive">காப்பகப்படுத்தப்பட்ட அனைத்து உரையாடல்களையும் நீக்கு.</string>
     <string name="show_archived_conversations">காப்பகப்படுத்தப்பட்ட உரையாடல்களைக் காட்டு</string>
+    <string name="play">இயக்கு</string>
+    <string name="pause">இடைநிறுத்து</string>
 </resources>

@@ -122,4 +122,6 @@
     <string name="keep_conversations_archived">Hold samtaler arkiveret</string>
     <string name="faq_4_title">Hvorfor vises mine svar i gruppebeskeder som individuelle beskeder for modtagerne?</string>
     <string name="faq_4_text">Du skal aktivere \"Send gruppebeskeder som MMS\" i appindstillingerne. Det sikrer, at gruppebeskeder sendes som rigtige MMS\'er, så alle kan se hinandens svar.</string>
+    <string name="play">Afspil</string>
+    <string name="pause">Pause</string>
 </resources>

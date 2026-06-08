@@ -122,4 +122,6 @@
     <string name="keep_conversations_archived">Unterhaltungen archiviert lassen</string>
     <string name="faq_4_title">Warum werden meine Antworten auf Gruppennachrichten den Empfängern als einzelne Textnachrichten angezeigt?</string>
     <string name="faq_4_text">Du musst in den Einstellungen die Option „Gruppennachrichten als MMS versenden” aktivieren. Dadurch wird sichergestellt, dass Gruppennachrichten als richtige MMS gesendet werden, sodass alle Teilnehmer die Antworten der anderen sehen können.</string>
+    <string name="play">Wiedergabe</string>
+    <string name="pause">Pause</string>
 </resources>

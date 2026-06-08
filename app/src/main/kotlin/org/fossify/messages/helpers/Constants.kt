@@ -69,6 +69,7 @@ const val THREAD_KEY_MASK = (1L shl THREAD_KEY_BITS) - 1
 const val ATTACHMENT_DOCUMENT = 7
 const val ATTACHMENT_MEDIA = 8
 const val ATTACHMENT_VCARD = 9
+const val ATTACHMENT_AUDIO = 10
 
 // lock screen visibility constants
 const val LOCK_SCREEN_SENDER_MESSAGE = 1

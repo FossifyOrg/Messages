@@ -14,4 +14,6 @@
         <item quantity="one">%d message</item>
         <item quantity="other">%d messages</item>
     </plurals>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
 </resources>

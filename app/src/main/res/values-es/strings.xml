@@ -125,4 +125,6 @@
     <string name="keep_conversations_archived">Mantener conversaciones archivadas</string>
     <string name="faq_4_title">¿Por qué mis respuestas a los mensajes grupales aparecen como textos individuales para los destinatarios?</string>
     <string name="faq_4_text">Necesitas habilitar \"Enviar mensajes grupales como MMS\" en la configuración de la aplicación. Esto asegurará que los mensajes grupales se envíen como MMS adecuados, permitiendo que todos los participantes vean las respuestas de los demás.</string>
+    <string name="play">Reproducir</string>
+    <string name="pause">Pausa</string>
 </resources>
