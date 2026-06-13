@@ -1,69 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/thread_message_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/small_margin"
-    android:foreground="@drawable/selector"
-    android:paddingHorizontal="@dimen/activity_margin">
+    android:orientation="vertical"
+    android:padding="4dp">
 
-    <RelativeLayout
-        android:id="@+id/thread_message_wrapper"
-        android:layout_width="0dp"
+    <!-- Pesan yang Diterima (Kiri) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_received_message"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8">
-
-        <ImageView
-            android:id="@+id/thread_message_sender_photo"
-            android:layout_width="@dimen/list_icon_size_medium"
-            android:layout_height="@dimen/list_icon_size_medium"
-            android:layout_alignBottom="@+id/thread_message_body"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="@dimen/medium_margin"
-            android:src="@drawable/ic_person_vector"
-            android:visibility="gone"
-            tools:ignore="ContentDescription"
-            tools:visibility="visible" />
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="4dp"
+        app:cardBackgroundColor="?attr/colorSurfaceVariant"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        style="@style/Widget.Messages.Card">
 
         <LinearLayout
-            android:id="@+id/thread_message_attachments_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/thread_message_sender_photo"
-            android:divider="@drawable/linear_layout_vertical_divider"
-            android:orientation="vertical"
-            android:showDividers="middle" />
-
-        <ImageView
-            android:id="@+id/thread_message_play_outline"
-            android:layout_width="@dimen/play_outline_size"
-            android:layout_height="@dimen/play_outline_size"
-            android:layout_alignEnd="@+id/thread_message_attachments_holder"
-            android:layout_alignBottom="@+id/thread_message_attachments_holder"
-            android:layout_marginEnd="@dimen/medium_margin"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:src="@drawable/ic_play_outline_vector"
-            android:visibility="gone"
-            tools:ignore="ContentDescription" />
-
-        <org.fossify.commons.views.MyTextView
-            android:id="@+id/thread_message_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/thread_message_attachments_holder"
-            android:layout_marginVertical="@dimen/tiny_margin"
-            android:layout_toEndOf="@id/thread_message_sender_photo"
-            android:autoLink="email|web"
-            android:background="@drawable/item_received_background"
-            android:drawablePadding="8dp"
-            android:padding="@dimen/normal_margin"
-            android:textSize="@dimen/normal_text_size"
-            tools:drawableEndCompat="@drawable/scheduled_message_icon"
-            tools:text="Message content" />
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Teks Pesan -->
+            <TextView
+                android:id="@+id/thread_message_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello, how are you?"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="14sp"
+                android:autoLink="email|web"
+                tools:text="Hello, how are you?" />
+
+            <!-- Waktu Pesan -->
+            <TextView
+                android:id="@+id/thread_message_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="10:30 AM"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="10sp"
+                tools:text="10:30 AM" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Pesan yang Dikirim (Kanan) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_sent_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        app:cardBackgroundColor="?attr/colorPrimaryContainer"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        style="@style/Widget.Messages.Card">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Teks Pesan -->
+            <TextView
+                android:id="@+id/thread_message_body_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I'm fine, thanks!"
+                android:textColor="?attr/colorOnPrimaryContainer"
+                android:textSize="14sp"
+                android:autoLink="email|web"
+                tools:text="I'm fine, thanks!" />
+
+            <!-- Status Pesan (Terkirim/Terbaca) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:gravity="end">
+
+                <!-- Indikator Terkirim -->
+                <ImageView
+                    android:id="@+id/iv_sent_status"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_check"
+                    android:tint="?attr/colorOnPrimaryContainer"
+                    android:visibility="visible" />
+
+                <!-- Indikator Terbaca -->
+                <ImageView
+                    android:id="@+id/iv_read_status"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="2dp"
+                    android:src="@drawable/ic_check_all"
+                    android:tint="?attr/colorOnPrimaryContainer"
+                    android:visibility="gone" />
+
+                <!-- Waktu Pesan -->
+                <TextView
+                    android:id="@+id/thread_message_time_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="10:31 AM"
+                    android:textColor="?attr/colorOnPrimaryContainer"
+                    android:textSize="10sp"
+                    tools:text="10:31 AM" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Pesan Sistem (Tengah) -->
+    <TextView
+        android:id="@+id/tv_system_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:background="?attr/colorSurfaceContainer"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:text="Message deleted"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:cornerRadius="16dp"
+        tools:text="Message deleted" />
+</LinearLayout>
