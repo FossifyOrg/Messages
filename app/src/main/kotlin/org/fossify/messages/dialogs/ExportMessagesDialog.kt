@@ -34,7 +34,7 @@ class ExportMessagesDialog(
         exportSmsCheckbox.isChecked = config.exportSms
         exportMmsCheckbox.isChecked = config.exportMms
         exportMessagesFilename.setText(
-            "${activity.getString(R.string.messages)}_${activity.getCurrentFormattedDateTime()}"
+            "${activity.getString(R.string.messages)}_${activity.getCurrentFormattedDateTime()}.json"
         )
     }
 
