@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.Menu
 import android.view.View
@@ -61,6 +62,7 @@ import org.fossify.messages.databinding.ItemThreadSendingBinding
 import org.fossify.messages.databinding.ItemThreadSuccessBinding
 import org.fossify.messages.dialogs.DeleteConfirmationDialog
 import org.fossify.messages.dialogs.MessageDetailsDialog
+import org.fossify.messages.dialogs.ReactionDetailsDialog
 import org.fossify.messages.dialogs.SelectTextDialog
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.getContactFromAddress
@@ -94,13 +96,17 @@ class ThreadAdapter(
     recyclerView: MyRecyclerView,
     itemClick: (Any) -> Unit,
     val isRecycleBin: Boolean,
-    val deleteMessages: (messages: List<Message>, toRecycleBin: Boolean, fromRecycleBin: Boolean) -> Unit
+    val deleteMessages: (messages: List<Message>, toRecycleBin: Boolean, fromRecycleBin: Boolean) -> Unit,
+    val bottomBarColor: Int,
 ) : MyRecyclerViewListAdapter<ThreadItem>(activity, recyclerView, ThreadItemDiffCallback(), itemClick) {
     private var fontSize = activity.getTextSize()
 
     @SuppressLint("MissingPermission")
     private val hasMultipleSIMCards = (activity.subscriptionManagerCompat().activeSubscriptionInfoList?.size ?: 0) > 1
     private val maxChatBubbleWidth = (activity.usableScreenSize.x * 0.8f).toInt()
+    private val reactionHorizontalOverlap = 8.dpToPx()
+    private val reactionVerticalOverlap = 4.dpToPx()
+    private val reactionElevation = 1.dpToPx()
 
     companion object {
         private const val MAX_MEDIA_HEIGHT_RATIO = 3
@@ -111,6 +117,7 @@ class ThreadAdapter(
     init {
         setupDragListener(true)
         setHasStableIds(true)
+        recyclerView.clipChildren = false
         (recyclerView.itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 
@@ -385,6 +392,7 @@ class ThreadAdapter(
             } else {
                 setupSentMessageView(messageBinding = this, message = message)
             }
+            setupEmojiReactions(messageBinding = this, message = message)
 
             if (message.attachment?.attachments?.isNotEmpty() == true) {
                 threadMessageAttachmentsHolder.beVisible()
@@ -404,6 +412,73 @@ class ThreadAdapter(
                 threadMessagePlayOutline.beGone()
             }
         }
+    }
+
+    private fun setupEmojiReactions(messageBinding: ItemMessageBinding, message: Message) {
+        val reactions = message.emojiReactions
+        messageBinding.threadMessageReactions.apply {
+            beVisibleIf(reactions.isNotEmpty())
+            if (reactions.isEmpty()) {
+                text = ""
+                setOnLongClickListener(null)
+                return
+            }
+
+            val uniqueEmojis = reactions.map { it.emoji }.distinct()
+            text = if (reactions.size == 1) {
+                uniqueEmojis.first()
+            } else {
+                "${uniqueEmojis.joinToString("")}\u00A0${reactions.size}"
+            }
+            setOnLongClickListener {
+                showReactionDetails(message)
+                true
+            }
+
+            if (message.isReceivedMessage()) {
+                background = createReactionBackground()
+                elevation = reactionElevation
+                translationX = reactionHorizontalOverlap
+                translationY = -reactionVerticalOverlap
+                setTextColor(textColor)
+                updateLayoutParams<RelativeLayout.LayoutParams> {
+                    removeRule(RelativeLayout.END_OF)
+                    removeRule(RelativeLayout.ALIGN_PARENT_END)
+                    removeRule(RelativeLayout.ALIGN_END)
+                    removeRule(RelativeLayout.ALIGN_RIGHT)
+                    removeRule(RelativeLayout.ALIGN_START)
+                    removeRule(RelativeLayout.ALIGN_LEFT)
+                    addRule(RelativeLayout.ALIGN_END, messageBinding.threadMessageBody.id)
+                }
+            } else {
+                background = createReactionBackground()
+                elevation = reactionElevation
+                translationX = -reactionHorizontalOverlap
+                translationY = -reactionVerticalOverlap
+                setTextColor(textColor)
+                updateLayoutParams<RelativeLayout.LayoutParams> {
+                    removeRule(RelativeLayout.END_OF)
+                    removeRule(RelativeLayout.ALIGN_PARENT_END)
+                    removeRule(RelativeLayout.ALIGN_END)
+                    removeRule(RelativeLayout.ALIGN_RIGHT)
+                    removeRule(RelativeLayout.ALIGN_LEFT)
+                    addRule(RelativeLayout.ALIGN_START, messageBinding.threadMessageBody.id)
+                }
+            }
+        }
+    }
+
+    private fun showReactionDetails(message: Message) {
+        val rows = message.emojiReactions.map { reaction ->
+            val contactName = message.participants
+                .firstOrNull { participant -> participant.doesHavePhoneNumber(reaction.senderPhoneNumber) }
+                ?.name
+                ?.takeIf { it.isNotBlank() }
+                ?: reaction.senderPhoneNumber
+
+            "${reaction.emoji} $contactName"
+        }
+        ReactionDetailsDialog(activity, rows)
     }
 
     private fun setupReceivedMessageView(messageBinding: ItemMessageBinding, message: Message) {
@@ -635,6 +710,18 @@ class ThreadAdapter(
     }
 
     inner class ThreadViewHolder(val binding: ViewBinding) : ViewHolder(binding.root)
+
+    private fun Int.dpToPx(): Float {
+        return this * resources.displayMetrics.density
+    }
+
+    private fun createReactionBackground(): GradientDrawable {
+        return GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            cornerRadius = 18.dpToPx()
+            setColor(bottomBarColor)
+        }
+    }
 }
 
 private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {
