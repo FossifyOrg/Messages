@@ -9,7 +9,7 @@
     <string name="no_conversations_found">Salvestatud vestlusi ei leidu</string>
     <string name="start_conversation">Alusta vestlust</string>
     <string name="reply">Vasta</string>
-    <string name="show_character_counter">Sõnumite kirjutamisel näita tähemärkide loenduri</string>
+    <string name="show_character_counter">Sõnumite kirjutamisel näita tähemärkide loendurit</string>
     <string name="loading_messages">Laadime sõnumeid…</string>
     <string name="no_reply_support">Sõnumi saatja ei toeta vastuste võimalust</string>
     <string name="draft">Kavand</string>
