@@ -122,4 +122,6 @@
     <string name="keep_conversations_archived">Håll konversationer arkiverade</string>
     <string name="faq_4_title">Varför visas mina svar på gruppmeddelanden som enskilda sms för mottagarna?</string>
     <string name="faq_4_text">Du måste aktivera \"Skicka gruppmeddelanden som mms\" i appinställningarna för att säkerställa att gruppmeddelanden skickas som riktiga mms, så att alla deltagare kan se varandras svar.</string>
+    <string name="play">Spela</string>
+    <string name="pause">Pausa</string>
 </resources>

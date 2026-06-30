@@ -13,5 +13,6 @@
     <dimen name="medium_icon_size">36dp</dimen>
     <dimen name="attachment_button_height">96dp</dimen>
     <dimen name="attachment_button_width">90dp</dimen>
+    <dimen name="audio_seekbar_min_width">90dp</dimen>
     <dimen name="default_keyboard_height">250dp</dimen>
 </resources>

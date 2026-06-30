@@ -94,4 +94,6 @@
         <item quantity="few">ir %d kiti</item>
         <item quantity="other">ir %d kiti</item>
     </plurals>
+    <string name="play">Groti</string>
+    <string name="pause">Pristabdyti</string>
 </resources>

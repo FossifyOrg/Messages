@@ -129,4 +129,6 @@
     <string name="me">أنا</string>
     <string name="enable_custom_notifications">تفعيل الإشعارات المخصصة</string>
     <string name="update_message">حدّث الرسالة</string>
+    <string name="play">تشغيل</string>
+    <string name="pause">إيقاف مؤقت</string>
 </resources>
