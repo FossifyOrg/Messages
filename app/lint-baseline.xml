@@ -47,6 +47,17 @@
 
     <issue
         id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-process than 2.10.0 is available: 2.11.0"
+        errorLine1="androidx-lifecycleprocess = &quot;2.10.0&quot;"
+        errorLine2="                            ~~~~~~~~">
+        <location
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
+            line="13"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
         message="A newer version of `app-build-compileSDKVersion` than 36 is available: 37"
         errorLine1="app-build-compileSDKVersion = &quot;36&quot;"
         errorLine2="                              ~~~~">
@@ -58,7 +69,7 @@
 
     <issue
         id="NewerVersionAvailable"
-        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.5.9"
+        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.6.2"
         errorLine1="detektCompose = &quot;0.4.28&quot;"
         errorLine2="                ~~~~~~~~">
         <location
