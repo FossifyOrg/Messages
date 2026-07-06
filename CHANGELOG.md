@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Fixed incomplete message exports ([#713])
+
 ## [1.8.0] - 2026-01-30
 ### Added
 - Added support for custom fonts
@@ -238,6 +241,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#641]: https://github.com/FossifyOrg/Messages/issues/641
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
 [#651]: https://github.com/FossifyOrg/Messages/issues/651
+[#713]: https://github.com/FossifyOrg/Messages/issues/713
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.8.0...HEAD
 [1.8.0]: https://github.com/FossifyOrg/Messages/compare/1.7.0...1.8.0
