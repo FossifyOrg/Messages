@@ -492,12 +492,13 @@ class ThreadActivity : SimpleActivity() {
                 }
             }
 
+            val providerParticipantsChanged = reconcileProviderParticipants()
             val hasParticipantWithoutName = participants.any { contact ->
                 contact.phoneNumbers.map { it.normalizedNumber }.contains(contact.name)
             }
 
             try {
-                if (participants.isNotEmpty() && messages.hashCode() == cachedMessagesCode && !hasParticipantWithoutName) {
+                if (canReuseLoadedThread(providerParticipantsChanged, cachedMessagesCode, hasParticipantWithoutName)) {
                     setupAdapter()
                     runOnUiThread { callback() }
                     return@ensureBackgroundThread
@@ -562,6 +563,18 @@ class ThreadActivity : SimpleActivity() {
                 callback()
             }
         }
+    }
+
+    private fun canReuseLoadedThread(
+        providerParticipantsChanged: Boolean,
+        cachedMessagesCode: Int,
+        hasParticipantWithoutName: Boolean,
+    ): Boolean {
+        if (providerParticipantsChanged || participants.isEmpty() || hasParticipantWithoutName) {
+            return false
+        }
+
+        return messages.hashCode() == cachedMessagesCode
     }
 
     private fun getOrCreateThreadAdapter(): ThreadAdapter {
@@ -962,9 +975,35 @@ class ThreadActivity : SimpleActivity() {
         }
     }
 
+    private fun hasOnlyScheduledMessages(): Boolean {
+        return messages.isNotEmpty() && messages.all { it.isScheduled }
+    }
+
+    private fun getProviderThreadParticipants(): ArrayList<SimpleContact>? {
+        if (isRecycleBin || threadId <= 0L || hasOnlyScheduledMessages()) {
+            return null
+        }
+
+        return getThreadParticipants(threadId, null).takeIf { it.isNotEmpty() }
+    }
+
+    private fun reconcileProviderParticipants(): Boolean {
+        val providerParticipants = getProviderThreadParticipants() ?: return false
+        val participantsChanged = participants.getAddresses() != providerParticipants.getAddresses()
+        participants = providerParticipants
+
+        if (participantsChanged) {
+            runOnUiThread {
+                maybeDisableShortCodeReply()
+            }
+        }
+
+        return participantsChanged
+    }
+
     private fun setupParticipants() {
         if (participants.isEmpty()) {
-            participants = if (messages.isEmpty()) {
+            participants = getProviderThreadParticipants() ?: if (messages.isEmpty()) {
                 val intentNumbers = getPhoneNumbersFromIntent()
                 val participants = getThreadParticipants(threadId, null)
                 fixParticipantNumbers(participants, intentNumbers)
@@ -1778,6 +1817,7 @@ class ThreadActivity : SimpleActivity() {
         }
 
         val lastMaxId = messages.filterNot { it.isScheduled }.maxByOrNull { it.id }?.id ?: 0L
+        val providerParticipantsChanged = reconcileProviderParticipants()
         val newThreadId = getThreadId(participants.getAddresses().toSet())
         val newMessages = getMessages(newThreadId, includeScheduledMessages = false)
         if (messages.isNotEmpty() && messages.all { it.isScheduled } && newMessages.isNotEmpty()) {
@@ -1806,6 +1846,9 @@ class ThreadActivity : SimpleActivity() {
 
         setupAdapter()
         runOnUiThread {
+            if (providerParticipantsChanged) {
+                setupThreadTitle()
+            }
             setupSIMSelector()
         }
     }
