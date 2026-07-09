@@ -123,6 +123,6 @@
     <string name="export_blocked_keywords">Exportovať zablokované kľúčové slová</string>
     <string name="import_blocked_keywords">Importovať zablokované kľúčové slová</string>
     <string name="keep_conversations_archived">Nechať konverzácie archivované</string>
-    <string name="faq_4_title">Prečo moje odpovedania na skupinové správy sú ukázané ako samostatné texty alebo recipenty?</string>
-    <string name="faq_4_text">Nastavenia aplikácie, všetky</string>
+    <string name="faq_4_title">Prečo sa moje odpovede na skupinové správy zobrazujú príjemcom ako samostatné správy?</string>
+    <string name="faq_4_text">V nastaveniach aplikácie musíte zapnúť možnosť „Odosielať skupinové správy ako MMS“. Tým sa zabezpečí, že skupinové správy sa budú odosielať ako správne MMS, takže všetci účastníci uvidia odpovede ostatných.</string>
 </resources>
