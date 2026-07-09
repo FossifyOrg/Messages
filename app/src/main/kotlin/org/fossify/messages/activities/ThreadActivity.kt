@@ -1003,12 +1003,12 @@ class ThreadActivity : SimpleActivity() {
 
     private fun setupParticipants() {
         if (participants.isEmpty()) {
-            participants = getProviderThreadParticipants() ?: if (messages.isEmpty()) {
+            participants = if (messages.isEmpty()) {
                 val intentNumbers = getPhoneNumbersFromIntent()
                 val participants = getThreadParticipants(threadId, null)
                 fixParticipantNumbers(participants, intentNumbers)
             } else {
-                messages.first().participants
+                getProviderThreadParticipants() ?: messages.first().participants
             }
             runOnUiThread {
                 maybeDisableShortCodeReply()
