@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed messages being sent to the wrong contact ([#615])
 
 ### Fixed
 - Fixed incomplete message exports ([#713])
@@ -238,6 +240,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#574]: https://github.com/FossifyOrg/Messages/issues/574
 [#600]: https://github.com/FossifyOrg/Messages/issues/600
 [#610]: https://github.com/FossifyOrg/Messages/issues/610
+[#615]: https://github.com/FossifyOrg/Messages/issues/615
 [#641]: https://github.com/FossifyOrg/Messages/issues/641
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
 [#651]: https://github.com/FossifyOrg/Messages/issues/651
