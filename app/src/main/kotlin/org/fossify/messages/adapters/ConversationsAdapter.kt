@@ -64,7 +64,8 @@ class ConversationsAdapter(
     }
 
     override fun actionItemPressed(id: Int) {
-        if (selectedKeys.isEmpty()) {
+        val selectedItems = getSelectedItems()
+        if (selectedItems.isEmpty()) {
             return
         }
 
@@ -75,9 +76,9 @@ class ConversationsAdapter(
             R.id.cab_copy_number -> copyNumberToClipboard()
             R.id.cab_delete -> askConfirmDelete()
             R.id.cab_archive -> askConfirmArchive()
-            R.id.cab_rename_conversation -> renameConversation(getSelectedItems().first())
+            R.id.cab_rename_conversation -> renameConversation(selectedItems.first())
             R.id.cab_conversation_details ->
-                activity.launchConversationDetails(getSelectedItems().first().threadId)
+                activity.launchConversationDetails(selectedItems.first().threadId)
 
             R.id.cab_mark_as_read -> markAsRead()
             R.id.cab_mark_as_unread -> markAsUnread()

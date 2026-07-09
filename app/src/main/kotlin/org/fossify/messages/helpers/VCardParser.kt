@@ -4,19 +4,60 @@ import android.content.Context
 import android.net.Uri
 import ezvcard.Ezvcard
 import ezvcard.VCard
+import ezvcard.io.scribe.LogoScribe
+import ezvcard.io.scribe.PhotoScribe
+import ezvcard.parameter.ImageType
 import org.fossify.commons.helpers.ensureBackgroundThread
 
 fun parseVCardFromUri(context: Context, uri: Uri, callback: (vCards: List<VCard>) -> Unit) {
     ensureBackgroundThread {
-        val inputStream = try {
-            context.contentResolver.openInputStream(uri)
+        val vCards = try {
+            context.contentResolver.openInputStream(uri)?.use { inputStream ->
+                Ezvcard.parse(inputStream)
+                    .register(LenientPhotoScribe())
+                    .register(LenientLogoScribe())
+                    .all()
+            } ?: emptyList()
         } catch (e: Exception) {
-            callback(emptyList())
-            return@ensureBackgroundThread
+            emptyList()
         }
-        val vCards = Ezvcard.parse(inputStream).all()
+
         callback(vCards)
     }
+}
+
+private class LenientPhotoScribe : PhotoScribe() {
+    override fun _mediaTypeFromTypeParameter(type: String?): ImageType? =
+        findImageType(type = type)
+
+    override fun _mediaTypeFromMediaTypeParameter(mediaType: String?): ImageType? =
+        findImageType(mediaType = mediaType)
+
+    override fun _mediaTypeFromFileExtension(extension: String?): ImageType? =
+        findImageType(extension = extension)
+}
+
+private class LenientLogoScribe : LogoScribe() {
+    override fun _mediaTypeFromTypeParameter(type: String?): ImageType? =
+        findImageType(type = type)
+
+    override fun _mediaTypeFromMediaTypeParameter(mediaType: String?): ImageType? =
+        findImageType(mediaType = mediaType)
+
+    override fun _mediaTypeFromFileExtension(extension: String?): ImageType? =
+        findImageType(extension = extension)
+}
+
+private fun findImageType(
+    type: String? = null,
+    mediaType: String? = null,
+    extension: String? = null,
+): ImageType? {
+    if (type == null && mediaType == null && extension == null) {
+        return null
+    }
+
+    return ImageType.find(type, mediaType, extension)
 }
 
 fun VCard?.parseNameFromVCard(): String? {
