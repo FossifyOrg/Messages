@@ -1,0 +1,11 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed messages being sent to the wrong contact 
+• Fixed incomplete message exports 
+• Fixed crash when viewing older messages
+• Other stability improvements
+
