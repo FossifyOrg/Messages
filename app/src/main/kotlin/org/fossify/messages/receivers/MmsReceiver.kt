@@ -43,7 +43,12 @@ class MmsReceiver : MmsReceivedReceiver() {
     }
 
     override fun onMessageReceived(context: Context, messageUri: Uri?) {
-        val mms = messageUri?.let { context.getMMS(it) } ?: context.getLatestMMS() ?: return
+        val mms = if (messageUri != null) {
+            context.getMMS(messageUri)
+        } else {
+            context.getLatestMMS()
+        } ?: return
+
         val address = mms.getSender()?.phoneNumbers?.firstOrNull()?.normalizedNumber ?: mms.senderPhoneNumber
         val size = context.resources.getDimension(R.dimen.notification_large_icon_size).toInt()
         ensureBackgroundThread {
