@@ -122,4 +122,6 @@
     <string name="import_blocked_keywords">Εισαγωγή αποκλεισμένων λέξεων-κλειδιών</string>
     <string name="export_blocked_keywords">Εξαγωγή αποκλεισμένων λέξεων-κλειδιών</string>
     <string name="keywords">Λέξεις κλειδιά</string>
+    <string name="play">Αναπαραγωγή</string>
+    <string name="pause">Παύση</string>
 </resources>

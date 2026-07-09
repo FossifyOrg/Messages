@@ -122,4 +122,6 @@
     <string name="keep_conversations_archived">Gardi arkivigitajn konversaciojn</string>
     <string name="faq_4_title">Kial miaj respondoj al mesaĝoj en grupoj aperas kiel unuopaj mesaĝoj por la ricevantoj?</string>
     <string name="faq_4_text">Vi devas ŝalti «sendi grupajn mesaĝojn kiel MMS» en la aplikaĵaj agordoj. Tio certigos, ke grupaj mesaĝoj estos ĝuste senditaj kiel MMS kaj permesos, ke ĉiuj partoprenantoj vidu la respondojn de la aliaj.</string>
+    <string name="play">Ludi</string>
+    <string name="pause">Paŭzi</string>
 </resources>

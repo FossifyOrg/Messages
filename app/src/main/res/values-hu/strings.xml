@@ -119,4 +119,6 @@
     <string name="import_blocked_keywords">Letiltott kulcsszavak importálása</string>
     <string name="export_blocked_keywords">Letiltott kulcsszavak exportálása</string>
     <string name="keywords">Kulcsszavak</string>
+    <string name="play">Lejátszás</string>
+    <string name="pause">Szünet</string>
 </resources>

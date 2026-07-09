@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added support for custom fonts
 - Added "Copy number to clipboard" option inside chat overflow menu ([#651])
+- Added inline audio player for MMS attachments
 
 ### Changed
 - Improved multi-message copy formatting with timestamps and sender names
