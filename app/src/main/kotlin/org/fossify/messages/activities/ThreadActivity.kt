@@ -153,6 +153,7 @@ import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showWithAnimation
 import org.fossify.messages.extensions.subscriptionManagerCompat
 import org.fossify.messages.extensions.toArrayList
+import org.fossify.messages.extensions.toSortedMessages
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.extensions.updateScheduledMessagesThreadId
@@ -1318,10 +1319,6 @@ class ThreadActivity : SimpleActivity() {
                 }
             }
         }
-    }
-
-    private fun Collection<Message>.toSortedMessages(): List<Message> {
-        return ArrayList(this).apply { sortBy { it.date } }
     }
 
     private fun shouldShowThreadDateTime(

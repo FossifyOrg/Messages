@@ -1,6 +1,7 @@
 package org.fossify.messages.extensions
 
 import android.content.ContentValues
+import org.fossify.messages.models.Message
 
 inline fun <T> List<T>.indexOfFirstOrNull(predicate: (T) -> Boolean): Int? {
     var index = 0
@@ -49,3 +50,8 @@ inline fun <T> Collection<T>.filterNotInByKey(
 
     return filter { seen.add(key(it)) }.toArrayList()
 }
+
+fun Collection<Message>.toSortedMessages(): List<Message> {
+    return ArrayList(this).apply { sortBy { it.date } }
+}
+
