@@ -347,7 +347,7 @@ class ThreadAdapter(
     private fun isThreadDateTime(position: Int) = currentList.getOrNull(position) is ThreadDateTime
 
     fun updateMessages(
-        newMessages: ArrayList<ThreadItem>,
+        newMessages: List<ThreadItem>,
         scrollPosition: Int = -1,
         smoothScroll: Boolean = false
     ) {
