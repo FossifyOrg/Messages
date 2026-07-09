@@ -808,9 +808,9 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun fetchOlderMessages(cutoff: Int): List<Message> {
+        val olderFromProvider = getMessages(threadId, cutoff)
         val messageSnapshot = messages.toSortedMessages()
-        val older = getMessages(threadId, cutoff)
-            .filterNotInByKey(messageSnapshot) { it.getStableId() }
+        val older = olderFromProvider.filterNotInByKey(messageSnapshot) { it.getStableId() }
 
         if (older.isEmpty()) {
             allMessagesFetched = true
