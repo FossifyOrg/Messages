@@ -159,6 +159,7 @@ import org.fossify.messages.extensions.updateScheduledMessagesThreadId
 import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
+import org.fossify.messages.helpers.EmojiReactionHelper
 import org.fossify.messages.helpers.FILE_SIZE_NONE
 import org.fossify.messages.helpers.IS_LAUNCHED_FROM_SHORTCUT
 import org.fossify.messages.helpers.IS_RECYCLE_BIN
@@ -447,6 +448,7 @@ class ThreadActivity : SimpleActivity() {
             messages.removeAll { it.isScheduled && it.millis() < System.currentTimeMillis() }
 
             messages.sortBy { it.date }
+            messages = EmojiReactionHelper.applyEmojiReactions(messages)
             if (messages.size > MESSAGES_LIMIT) {
                 messages = ArrayList(messages.takeLast(MESSAGES_LIMIT))
             }
@@ -591,7 +593,8 @@ class ThreadActivity : SimpleActivity() {
                         toRecycleBin,
                         fromRecycleBin
                     )
-                }
+                },
+                bottomBarColor = getBottomBarColor(),
             )
 
             binding.threadMessagesList.adapter = currAdapter

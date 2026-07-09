@@ -3,6 +3,7 @@ package org.fossify.messages.models
 import android.provider.Telephony
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import org.fossify.commons.models.SimpleContact
 import org.fossify.messages.helpers.THREAD_RECEIVED_MESSAGE
@@ -27,6 +28,11 @@ data class Message(
     @ColumnInfo(name = "subscription_id") var subscriptionId: Int,
     @ColumnInfo(name = "is_scheduled") var isScheduled: Boolean = false
 ) : ThreadItem() {
+    @Ignore
+    var isEmojiReaction: Boolean = false
+
+    @Ignore
+    var emojiReactions: List<EmojiReaction> = emptyList()
 
     fun isReceivedMessage() = type == Telephony.Sms.MESSAGE_TYPE_INBOX
 
@@ -62,7 +68,8 @@ data class Message(
                 old.senderPhoneNumber == new.senderPhoneNumber &&
                 old.senderName == new.senderName &&
                 old.senderPhotoUri == new.senderPhotoUri &&
-                old.isScheduled == new.isScheduled
+                old.isScheduled == new.isScheduled &&
+                old.emojiReactions == new.emojiReactions
         }
     }
 }
