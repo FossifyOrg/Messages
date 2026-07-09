@@ -13,6 +13,7 @@ import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.messages.R
 import org.fossify.messages.extensions.getConversations
+import org.fossify.messages.extensions.getMMS
 import org.fossify.messages.extensions.getLatestMMS
 import org.fossify.messages.extensions.getNameFromAddress
 import org.fossify.messages.extensions.insertOrUpdateConversation
@@ -41,9 +42,14 @@ class MmsReceiver : MmsReceivedReceiver() {
         return isMessageFilteredOut(context, content)
     }
 
-    override fun onMessageReceived(context: Context, messageUri: Uri) {
-        val mms = context.getLatestMMS() ?: return
-        val address = mms.getSender()?.phoneNumbers?.firstOrNull()?.normalizedNumber ?: ""
+    override fun onMessageReceived(context: Context, messageUri: Uri?) {
+        val mms = if (messageUri != null) {
+            context.getMMS(messageUri)
+        } else {
+            context.getLatestMMS()
+        } ?: return
+
+        val address = mms.getSender()?.phoneNumbers?.firstOrNull()?.normalizedNumber ?: mms.senderPhoneNumber
         val size = context.resources.getDimension(R.dimen.notification_large_icon_size).toInt()
         ensureBackgroundThread {
             handleMmsMessage(context, mms, size, address)

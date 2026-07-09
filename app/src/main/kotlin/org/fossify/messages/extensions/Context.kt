@@ -220,8 +220,8 @@ fun Context.getMMS(
     threadId: Long? = null,
     sortOrder: String? = null,
     dateFrom: Int = -1,
+    uri: Uri = Mms.CONTENT_URI,
 ): ArrayList<Message> {
-    val uri = Mms.CONTENT_URI
     val projection = arrayOf(
         Mms._ID,
         Mms.DATE,
@@ -563,6 +563,10 @@ fun Context.getMmsAttachment(id: Long): MessageAttachment {
 fun Context.getLatestMMS(): Message? {
     val sortOrder = "${Mms.DATE} DESC LIMIT 1"
     return getMMS(sortOrder = sortOrder).firstOrNull()
+}
+
+fun Context.getMMS(messageUri: Uri): Message? {
+    return getMMS(uri = messageUri).firstOrNull()
 }
 
 fun Context.getThreadSnippet(threadId: Long): String {

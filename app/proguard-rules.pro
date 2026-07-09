@@ -33,3 +33,14 @@
 -keep class org.fossify.commons.models.SimpleContact { *; }
 -keep class org.fossify.messages.models.Attachment { *; }
 -keep class org.fossify.messages.models.MessageAttachment { *; }
+
+# ez-vcard's parameter registries use reflection to enumerate public constants
+# and create runtime values for unknown TYPE/MEDIATYPE parameters.
+-keepclassmembers,allowobfuscation class ezvcard.parameter.* extends ezvcard.parameter.VCardParameter {
+    public static final <fields>;
+    <init>(java.lang.String);
+}
+
+-keepclassmembers,allowobfuscation class ezvcard.parameter.* extends ezvcard.parameter.MediaTypeParameter {
+    <init>(java.lang.String, java.lang.String, java.lang.String);
+}
