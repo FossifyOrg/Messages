@@ -111,6 +111,7 @@ import org.fossify.messages.adapters.AutoCompleteTextViewAdapter
 import org.fossify.messages.adapters.ThreadAdapter
 import org.fossify.messages.databinding.ActivityThreadBinding
 import org.fossify.messages.databinding.ItemSelectedContactBinding
+import org.fossify.messages.dialogs.GroupMessageSendDialog
 import org.fossify.messages.dialogs.InvalidNumberDialog
 import org.fossify.messages.dialogs.RenameConversationDialog
 import org.fossify.messages.dialogs.ScheduleMessageDialog
@@ -224,6 +225,7 @@ class ThreadActivity : SimpleActivity() {
     private var isLaunchedFromShortcut = false
 
     private var isScheduledMessage: Boolean = false
+    private var isGroupMessageConfirmationVisible = false
     private var messageToResend: Long? = null
     private var scheduledMessage: Message? = null
     private lateinit var scheduledDateTime: DateTime
@@ -1598,15 +1600,41 @@ class ThreadActivity : SimpleActivity() {
 
         if (isScheduledMessage) {
             sendScheduledMessage(text, subscriptionId)
-        } else {
+        } else if (!confirmGroupMessageSendIfNeeded()) {
             sendNormalMessage(text, subscriptionId)
         }
+    }
+
+    private fun confirmGroupMessageSendIfNeeded(): Boolean {
+        if (config.isGroupMessageMmsPreferenceResolved ||
+            participants.getAddresses().distinct().size < 2
+        ) {
+            return false
+        }
+        if (isGroupMessageConfirmationVisible) {
+            return true
+        }
+
+        isGroupMessageConfirmationVisible = true
+        GroupMessageSendDialog(
+            activity = this,
+            callback = { sendAsGroupMms ->
+                config.sendGroupMessageMMS = sendAsGroupMms
+                sendMessage()
+            },
+            onDismiss = { isGroupMessageConfirmationVisible = false }
+        )
+        return true
     }
 
     private fun sendScheduledMessage(text: String, subscriptionId: Int) {
         if (scheduledDateTime.millis < System.currentTimeMillis() + 1000L) {
             toast(R.string.must_pick_time_in_the_future)
             launchScheduleSendDialog(scheduledDateTime)
+            return
+        }
+
+        if (confirmGroupMessageSendIfNeeded()) {
             return
         }
 
