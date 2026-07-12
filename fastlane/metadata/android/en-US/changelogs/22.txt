@@ -1,0 +1,13 @@
+Added:
+
+• Added a group message format choice on the first group send 
+
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Partially fixed issue with sending MMS images 
+• Fixed slow loading of the conversation list 
+
