@@ -131,4 +131,8 @@
     <string name="keep_conversations_archived">Coinnigh comhráite cartlannaithe</string>
     <string name="faq_4_title">Cén fáth a bhfuil freagraí mo theachtaireachtaí grúpa le feiceáil mar théacsanna aonair chuig faighteoirí?</string>
     <string name="faq_4_text">Ní mór duit \"Seol teachtaireachtaí grúpa mar MMS\" a chumasú i socruithe an aip. Cinnteoidh sé seo go seolfar teachtaireachtaí grúpa mar MMS ceart, rud a ligfidh do na rannpháirtithe go léir freagraí a chéile a fheiceáil.</string>
+    <string name="send_group_message">Formáid teachtaireachta grúpa</string>
+    <string name="group_message_send_description">Coinníonn MMS grúpa freagraí i gcomhrá amháin, ach d’fhéadfadh táillí iompróra a bheith i bhfeidhm. Má sheoltar ar leithligh iad, cuirtear teachtaireacht amháin chuig gach duine. Is féidir leat é seo a athrú níos déanaí i socruithe an aip.</string>
+    <string name="group_mms">MMS Grúpa</string>
+    <string name="separate_messages">Seol ar leithligh</string>
 </resources>
