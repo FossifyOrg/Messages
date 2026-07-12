@@ -119,4 +119,8 @@
     <string name="keep_conversations_archived">保持对话归档状态</string>
     <string name="faq_4_title">为何我的群发信息对接收者来说显示为单独的短信？</string>
     <string name="faq_4_text">您需要在应用设置中启用“将群发信息作为彩信发送”。这将确保群发信息以彩信形式发送，使所有参与者都能看到彼此的回复。</string>
+    <string name="send_group_message">群发消息格式</string>
+    <string name="group_message_send_description">群发彩信将回复保留在一个对话中，但可能有运营商费用。“分别发送”会给每个收信人发送一则信息。可以之后在应用设置中更改。</string>
+    <string name="group_mms">群发彩信</string>
+    <string name="separate_messages">分别发送</string>
 </resources>
