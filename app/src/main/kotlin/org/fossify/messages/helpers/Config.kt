@@ -51,7 +51,7 @@ class Config(context: Context) : BaseConfig(context) {
             .putInt(LOCK_SCREEN_VISIBILITY, lockScreenVisibilitySetting).apply()
 
     var mmsFileSizeLimit: Long
-        get() = prefs.getLong(MMS_FILE_SIZE_LIMIT, FILE_SIZE_600_KB)
+        get() = prefs.getLong(MMS_FILE_SIZE_LIMIT, FILE_SIZE_200_KB)
         set(mmsFileSizeLimit) = prefs.edit().putLong(MMS_FILE_SIZE_LIMIT, mmsFileSizeLimit).apply()
 
     var pinnedConversations: Set<String>
