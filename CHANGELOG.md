@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Partially fixed issue with sending MMS images ([#45])
+- Fixed slow loading of the conversation list ([#234])
 
 ## [1.8.1] - 2026-07-09
 ### Changed
