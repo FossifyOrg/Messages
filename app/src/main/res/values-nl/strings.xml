@@ -122,4 +122,8 @@
     <string name="keep_conversations_archived">Gesprekken gearchiveerd houden</string>
     <string name="faq_4_title">Waarom worden mijn groepsberichten als individuele berichten aan de ontvangers getoond?</string>
     <string name="faq_4_text">Ga naar de app-instellingen en schakel \"Groepsberichten als MMS verzenden\" in. Hierdoor worden groepsberichten als MMS-berichten verzonden, zodat alle deelnemers elkaars antwoorden kunnen zien.</string>
+    <string name="send_group_message">Formaat voor groepsberichten</string>
+    <string name="group_message_send_description">Bij groeps-MMS worden de antwoorden in één gesprek gebundeld, maar er kunnen providerkosten in rekening worden gebracht. Afzonderlijk versturen betekent dat er naar iedere persoon één bericht wordt verzonden. Je kunt dit later aanpassen in de instellingen.</string>
+    <string name="group_mms">Groeps-MMS</string>
+    <string name="separate_messages">Afzonderlijk versturen</string>
 </resources>
