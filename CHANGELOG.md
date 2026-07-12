@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a group message format choice on the first group send ([#52])
 
 ### Fixed
+- Fixed group message creation on Xiaomi devices ([#41])
 - Partially fixed issue with sending MMS images ([#45])
 
 ## [1.8.1] - 2026-07-09
