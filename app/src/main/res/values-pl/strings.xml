@@ -127,5 +127,9 @@
     <string name="export_blocked_keywords">Eksportuj zablokowane słowa kluczowe</string>
     <string name="keep_conversations_archived">Pozostawiaj rozmowy zarchiwizowane</string>
     <string name="faq_4_title">Dlaczego moje odpowiedzi na wiadomości grupowe pojawiają się jako wiadomości tekstowe dla indywidualnych odbiorców?</string>
-    <string name="faq_4_text">Musisz włączyć „Wysyłaj wiadomości grupowe jako MMS-y” w ustawieniach aplikacji. To zapewni, że wiadomości grupowe będą wysyłane jako MMS-y, pozwalając wszystkim uczestnikom widzieć odpowiedzi każdego z nich.</string>
+    <string name="faq_4_text">Musisz włączyć „Wysyłaj wiadomości grupowe jako MMS-y” w ustawieniach aplikacji. Zapewni to, że wiadomości grupowe będą wysyłane jako MMS-y, pozwalając wszystkim uczestnikom widzieć odpowiedzi każdego z nich.</string>
+    <string name="send_group_message">Sposób wysyłania wiadomości grupowych</string>
+    <string name="group_message_send_description">Grupowe MMS-y przechowują odpowiedzi w jednej rozmowie, ale mogą obowiązywać opłaty operatora. Wysyłanie osobno oznacza wysłanie oddzielnej wiadomości do każdej osoby. Możesz to później zmienić w ustawieniach aplikacji.</string>
+    <string name="group_mms">Grupowe MMS-y</string>
+    <string name="separate_messages">Wysyłanie osobno</string>
 </resources>
