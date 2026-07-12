@@ -104,6 +104,10 @@
     <string name="mms_file_size_limit_none">No limit</string>
     <string name="outgoing_messages">Outgoing messages</string>
     <string name="group_message_mms">Send group messages as MMS</string>
+    <string name="send_group_message">Group message format</string>
+    <string name="group_message_send_description">Group MMS keeps replies in one conversation, but carrier charges may apply. Sending separately sends one message to each person. You can change this later in app settings.</string>
+    <string name="group_mms">Group MMS</string>
+    <string name="separate_messages">Send separately</string>
     <string name="send_long_message_mms">Send long messages as MMS</string>
     <!-- Export / Import -->
     <string name="messages">Messages</string>

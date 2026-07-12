@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added a group message format choice on the first group send ([#52])
+
 ### Fixed
 - Partially fixed issue with sending MMS images ([#45])
 
@@ -209,6 +212,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#13]: https://github.com/FossifyOrg/Messages/issues/13
 [#45]: https://github.com/FossifyOrg/Messages/issues/45
+[#52]: https://github.com/FossifyOrg/Messages/issues/52
 [#70]: https://github.com/FossifyOrg/Messages/issues/70
 [#75]: https://github.com/FossifyOrg/Messages/issues/75
 [#82]: https://github.com/FossifyOrg/Messages/issues/82

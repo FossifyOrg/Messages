@@ -45,6 +45,9 @@ class Config(context: Context) : BaseConfig(context) {
         set(sendGroupMessageMMS) = prefs.edit()
             .putBoolean(SEND_GROUP_MESSAGE_MMS, sendGroupMessageMMS).apply()
 
+    val isGroupMessageMmsPreferenceResolved: Boolean
+        get() = prefs.contains(SEND_GROUP_MESSAGE_MMS)
+
     var lockScreenVisibilitySetting: Int
         get() = prefs.getInt(LOCK_SCREEN_VISIBILITY, LOCK_SCREEN_SENDER_MESSAGE)
         set(lockScreenVisibilitySetting) = prefs.edit()
