@@ -122,4 +122,8 @@
     <string name="keep_conversations_archived">Hoia vestlused arhiveerituna</string>
     <string name="faq_4_title">Miks minu grupivestluste vastused on saajatel nähtavad üksikute tekstidena?</string>
     <string name="faq_4_text">Sa pead rakenduse seadistustest valima „Saada grupisõnumid MMS-idena“. See tagab korrektse MMS-vormingu kasutamise ja siis kõik osalejad näevad üksteise vastuseid.</string>
+    <string name="send_group_message">Rühmasõnumite vorming</string>
+    <string name="group_mms">MMS-rühmasõnumid</string>
+    <string name="group_message_send_description">MMS-rühmasõnumid säilitavad vastused ühes jutulõngas, aga sellega võivad kaasneda võrguteenuste tasud. Eraldi saates saadetakse üks sõnum igale adressaadile eraldi. Sa saad seda hiljem seadistustest muuta.</string>
+    <string name="separate_messages">Saada eraldi</string>
 </resources>
