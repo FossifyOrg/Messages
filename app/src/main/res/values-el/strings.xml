@@ -122,4 +122,8 @@
     <string name="import_blocked_keywords">Εισαγωγή αποκλεισμένων λέξεων-κλειδιών</string>
     <string name="export_blocked_keywords">Εξαγωγή αποκλεισμένων λέξεων-κλειδιών</string>
     <string name="keywords">Λέξεις κλειδιά</string>
+    <string name="separate_messages">Ξεχωριστή αποστολή</string>
+    <string name="group_mms">Ομαδοποίηση MMS</string>
+    <string name="group_message_send_description">Το ομαδικό MMS διατηρεί τις απαντήσεις σε μία συνομιλία, αλλά ενδέχεται να ισχύουν χρεώσεις παρόχου κινητής τηλεφωνίας. Η ξεχωριστή αποστολή αποστέλλει ένα μήνυμα σε κάθε άτομο. Μπορείτε να το αλλάξετε αυτό αργότερα στις ρυθμίσεις της εφαρμογής.</string>
+    <string name="send_group_message">Μορφή ομαδοποιημένων αποστολών</string>
 </resources>
