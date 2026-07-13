@@ -125,4 +125,8 @@
     <string name="keep_conversations_archived">Mantén les converses arxivades</string>
     <string name="faq_4_title">Per què les respostes dels missatges de grup apareixen com a textos individuals als destinataris?</string>
     <string name="faq_4_text">Heu d\'activar «Envia missatges de grup com a MMS» a la configuració de l\'aplicació. Això assegurarà que els missatges de grup s\'envien com un MMS adient, permetent a tots els participants veure les respostes dels altres.</string>
+    <string name="send_group_message">Format de missatges de grup</string>
+    <string name="group_message_send_description">L\'agrupació de MMS manté les respostes en una conversa única, però pot ser que s\'apliquin càrrecs de trànsit. L\'enviament per separat envia un missatge a cada persona. Podeu canviar-ho més tard a la configuració de l\'aplicació.</string>
+    <string name="group_mms">Agrupa els MMS</string>
+    <string name="separate_messages">Envia per separat</string>
 </resources>
