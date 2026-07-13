@@ -125,4 +125,8 @@
     <string name="keep_conversations_archived">Garder les conversations archivées</string>
     <string name="faq_4_text">Vous devez sélectionner \"Envoyer les messages groupés en MMS\" dans les paramètres de l\'application. Cela garantie que les messages groupés soient envoyés comme MMS, ce qui permet à tous les participants de voir les réponses des autres.</string>
     <string name="faq_4_title">Pourquoi mes réponses à des messages dans un groupe apparaissent comme messages individuels pour les destinataires ?</string>
+    <string name="send_group_message">Format des messages de groupe</string>
+    <string name="group_message_send_description">Les groupes MMS regroupent les réponses dans une seule conversation, mais des frais d\'opérateur peuvent s\'appliquer. L\'envoi séparé envoie un message à chaque destinataire. Vous pouvez modifier ce paramètre ultérieurement dans les paramètres de l\'application.</string>
+    <string name="group_mms">Groupe MMS</string>
+    <string name="separate_messages">Envoyer séparément</string>
 </resources>
