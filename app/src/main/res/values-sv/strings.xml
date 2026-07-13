@@ -125,4 +125,5 @@
     <string name="send_group_message">Format för gruppmeddelanden</string>
     <string name="group_mms">Grupp-mms</string>
     <string name="separate_messages">Skicka separat</string>
+    <string name="group_message_send_description">Grupp-mms samlar svaren i en konversation, men operatörsavgifter kan tillkomma. Om du väljer Skicka separat skickas ett meddelande till varje person. Du kan ändra detta senare i appinställningarna.</string>
 </resources>
