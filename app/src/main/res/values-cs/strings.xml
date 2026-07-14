@@ -125,4 +125,8 @@
     <string name="keep_conversations_archived">Ponechat konverzace archivované</string>
     <string name="faq_4_title">Proč se odpovědi na skupinové zprávy příjemcům zobrazují jako jednotlivé textové zprávy?</string>
     <string name="faq_4_text">V nastavení aplikace musíte povolit možnost „Odesílat skupinové zprávy jako MMS“. Tím zajistíte, že skupinové zprávy budou odesílány jako skutečné MMS, takže všichni účastníci uvidí odpovědi ostatních.</string>
+    <string name="send_group_message">Formát skupinových zpráv</string>
+    <string name="group_message_send_description">Skupinové MMS udržují odpovědi v jedné konverzaci, mohou se na ně ale vztahovat poplatky od operátora. Oddělené odesílání odešle jednu zprávu každé osobě. Tuto možnost můžete změnit později v nastavení aplikace.</string>
+    <string name="group_mms">Skupinové MMS</string>
+    <string name="separate_messages">Odesílat odděleně</string>
 </resources>
