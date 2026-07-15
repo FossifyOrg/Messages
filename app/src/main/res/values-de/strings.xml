@@ -122,4 +122,8 @@
     <string name="keep_conversations_archived">Unterhaltungen archiviert lassen</string>
     <string name="faq_4_title">Warum werden meine Antworten auf Gruppennachrichten den Empfängern als einzelne Textnachrichten angezeigt?</string>
     <string name="faq_4_text">Du musst in den Einstellungen die Option „Gruppennachrichten als MMS versenden” aktivieren. Dadurch wird sichergestellt, dass Gruppennachrichten als richtige MMS gesendet werden, sodass alle Teilnehmer die Antworten der anderen sehen können.</string>
+    <string name="send_group_message">Gruppennachrichtenformat</string>
+    <string name="group_message_send_description">Bei Gruppen-MMS werden die Antworten in einem einzigen Gespräch zusammengefasst, es können jedoch Gebühren des Mobilfunkanbieters anfallen. Beim separaten Versand wird an jede Person eine eigene Nachricht gesendet. Du kannst dies später in den App-Einstellungen ändern.</string>
+    <string name="group_mms">Gruppen-MMS</string>
+    <string name="separate_messages">Separat senden</string>
 </resources>
