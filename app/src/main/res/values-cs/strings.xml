@@ -47,7 +47,7 @@
     <string name="new_message">Nová zpráva</string>
     <string name="mark_as_read">Označit jako přečtené</string>
     <string name="mark_as_unread">Označit jako nepřečtené</string>
-    <string name="me">Mé</string>
+    <string name="me">Já</string>
     <string name="unarchive">Odarchivovat</string>
     <string name="empty_archive">Odstranit všechny archivované konverzace</string>
     <string name="archived_conversations">Archiv</string>
