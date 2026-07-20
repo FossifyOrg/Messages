@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated translations
 
 ### Fixed
+- Fixed group message creation on Xiaomi devices ([#41])
 - Partially fixed issue with sending MMS images ([#45])
 - Fixed slow loading of the conversation list ([#234])
 
