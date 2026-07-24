@@ -122,4 +122,8 @@
     <string name="keep_conversations_archived">Görüşmeleri arşivde tut</string>
     <string name="faq_4_text">Uygulama ayarlarında \"Grup mesajlarını MMS olarak gönder\" seçeneğini açmanız gerekiyor. Bu, mesajların düzgün bir şekilde MMS olarak gönderildiğinden emin olarak tüm katılımcıların diğerlerinin cevaplarını görmelerine olanak sağlar.</string>
     <string name="faq_4_title">Grup mesajı yanıtlarım neden alıcılara ayrı ayrı metinler olarak görünüyor?</string>
+    <string name="send_group_message">Grup mesajı şekli</string>
+    <string name="group_message_send_description">Grup MMS tüm yanıtları tek bir görüşmede tutar ancak ek operatör ücretleri uygulanabilir. Ayrı olarak göndermek her bir kişiye ayrı bir mesaj gönderir. Bunu daha sonra uygulama ayarlarından değiştirebilirsiniz.</string>
+    <string name="group_mms">Grup MMS</string>
+    <string name="separate_messages">Ayrı olarak gönder</string>
 </resources>
