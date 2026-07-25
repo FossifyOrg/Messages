@@ -124,4 +124,5 @@
     <string name="faq_4_text">Du skal aktivere \"Send gruppebeskeder som MMS\" i appindstillingerne. Det sikrer, at gruppebeskeder sendes som rigtige MMS\'er, så alle kan se hinandens svar.</string>
     <string name="group_mms">Gruppe MMS</string>
     <string name="separate_messages">Send separat</string>
+    <string name="send_group_message">Gruppebeskedformat</string>
 </resources>
