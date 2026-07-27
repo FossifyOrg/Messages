@@ -119,4 +119,8 @@
     <string name="import_blocked_keywords">Nhập từ khóa bị chặn</string>
     <string name="faq_4_title">Tại sao tin nhắn nhóm của tôi lại hiển thị dưới dạng từng tin nhắn riêng với từng người nhận?</string>
     <string name="faq_4_text">Bạn cần bật \"Gửi tin nhắn nhóm dưới dạng MMS\" trong cài đặt ứng dụng. Điều này sẽ đảm bảo rằng các tin nhắn nhóm được gửi đúng dưới dạng MMS, cho phép tất cả người tham gia xem được câu trả lời của nhau.</string>
+    <string name="group_message_send_description">Tính năng MMS nhóm giữ các tin nhắn phản hồi trong cùng một cuộc trò chuyện, nhưng nhà mạng có thể tính phí. Việc gửi riêng lẻ sẽ gửi một tin nhắn đến từng người. Bạn có thể thay đổi tùy chọn này sau trong phần cài đặt ứng dụng.</string>
+    <string name="group_mms">MMS nhóm</string>
+    <string name="separate_messages">Gửi riêng lẻ</string>
+    <string name="send_group_message">Định dạng tin nhắn nhóm</string>
 </resources>
