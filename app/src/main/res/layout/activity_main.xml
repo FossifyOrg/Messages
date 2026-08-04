@@ -1,148 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".activities.MainActivity">
 
-    <org.fossify.commons.views.MySearchMenu
-        android:id="@+id/main_menu"
+    <!-- AppBar dengan MaterialToolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurfaceContainer"
+        app:title="@string/app_name"
+        app:titleTextColor="?attr/colorOnSurface"
+        app:menu="@menu/main_menu"
+        app:layout_scrollFlags="scroll|enterAlways"
+        style="@style/Widget.Messages.Toolbar" />
 
-    <RelativeLayout
-        android:id="@+id/main_nested_scrollview"
+    <!-- FrameLayout untuk konten utama -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:scrollbars="none"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/main_coordinator_wrapper"
+        <!-- Progress Bar -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/conversations_progress_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:hideAnimationBehavior="outward"
+            app:showAnimationBehavior="inward"
+            app:showDelay="250"
+            tools:visibility="visible" />
 
-            <RelativeLayout
-                android:id="@+id/main_holder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/conversations_progress_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:indeterminate="true"
-                    android:visibility="gone"
-                    app:hideAnimationBehavior="outward"
-                    app:showAnimationBehavior="inward"
-                    app:showDelay="250"
-                    tools:visibility="visible" />
-
-                <org.fossify.commons.views.MyTextView
-                    android:id="@+id/no_conversations_placeholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/bigger_margin"
-                    android:alpha="0.8"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/activity_margin"
-                    android:paddingRight="@dimen/activity_margin"
-                    android:text="@string/no_conversations_found"
-                    android:textSize="@dimen/bigger_text_size"
-                    android:textStyle="italic"
-                    android:visibility="gone" />
-
-                <org.fossify.commons.views.MyTextView
-                    android:id="@+id/no_conversations_placeholder_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/no_conversations_placeholder"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/ripple_all_corners"
-                    android:gravity="center"
-                    android:padding="@dimen/activity_margin"
-                    android:text="@string/start_conversation"
-                    android:textSize="@dimen/bigger_text_size"
-                    android:visibility="gone" />
-
-                <com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
-                    android:id="@+id/conversations_fastscroller"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <org.fossify.commons.views.MyRecyclerView
-                        android:id="@+id/conversations_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clipToPadding="false"
-                        android:layoutAnimation="@anim/layout_animation"
-                        android:overScrollMode="ifContentScrolls"
-                        android:scrollbars="none"
-                        app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager" />
-
-                </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
-            </RelativeLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-        <RelativeLayout
-            android:id="@+id/search_holder"
+        <!-- Placeholder: Tidak ada percakapan -->
+        <LinearLayout
+            android:id="@+id/no_conversations_placeholder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0"
-            android:visibility="gone">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:padding="24dp">
 
-            <org.fossify.commons.views.MyTextView
-                android:id="@+id/search_placeholder"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_message_outline"
+                android:tint="?attr/colorOnSurfaceVariant"
+                android:contentDescription="@string/no_conversations" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/activity_margin"
-                android:alpha="0.8"
-                android:gravity="center"
-                android:paddingStart="@dimen/activity_margin"
-                android:paddingEnd="@dimen/activity_margin"
-                android:text="@string/no_items_found"
-                android:textSize="@dimen/bigger_text_size"
-                android:textStyle="italic" />
+                android:layout_marginTop="16dp"
+                android:text="@string/no_conversations"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="18sp" />
 
-            <org.fossify.commons.views.MyTextView
-                android:id="@+id/search_placeholder_2"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start_conversation"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/search_placeholder"
-                android:layout_centerHorizontal="true"
-                android:alpha="0.8"
-                android:gravity="center"
-                android:paddingStart="@dimen/activity_margin"
-                android:paddingTop="@dimen/medium_margin"
-                android:paddingEnd="@dimen/activity_margin"
-                android:paddingBottom="@dimen/medium_margin"
-                android:text="@string/type_2_characters"
-                android:textSize="@dimen/bigger_text_size"
-                android:textStyle="italic" />
+                android:layout_marginTop="16dp"
+                android:text="@string/start_conversation"
+                style="@style/Widget.Messages.Button.Outlined" />
+        </LinearLayout>
 
-            <org.fossify.commons.views.MyRecyclerView
-                android:id="@+id/search_results_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:scrollbars="vertical"
-                app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager" />
+        <!-- RecyclerView untuk Daftar Percakapan -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/conversations_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            style="@style/Widget.Messages.RecyclerView"
+            tools:listitem="@layout/item_conversation" />
+    </FrameLayout>
 
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <org.fossify.commons.views.MyFloatingActionButton
+    <!-- FloatingActionButton untuk Buat Pesan Baru -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/conversations_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_margin"
-        android:src="@drawable/ic_plus_vector"
-        app:applyWindowInsets="true" />
-
+        android:layout_margin="16dp"
+        android:text="@string/new_message"
+        android:contentDescription="@string/new_message"
+        app:icon="@drawable/ic_add"
+        app:iconTint="?attr/colorOnPrimaryContainer"
+        style="@style/Widget.Messages.FloatingActionButton" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

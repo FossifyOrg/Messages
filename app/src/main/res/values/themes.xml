@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base Theme (Material 3 + Dynamic Colors) -->
+    <style name="Theme.Messages" parent="Theme.Material3.DayNight.DynamicColors.DarkActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/md_ref_pal_primary</item>
+        <item name="colorPrimaryContainer">@color/md_ref_pal_primary_container</item>
+        <item name="colorOnPrimary">@color/md_ref_pal_on_primary</item>
+        <item name="colorOnPrimaryContainer">@color/md_ref_pal_on_primary_container</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/md_ref_pal_secondary</item>
+        <item name="colorSecondaryContainer">@color/md_ref_pal_secondary_container</item>
+        <item name="colorOnSecondary">@color/md_ref_pal_on_secondary</item>
+        <item name="colorOnSecondaryContainer">@color/md_ref_pal_on_secondary_container</item>
+
+        <!-- Tertiary Colors -->
+        <item name="colorTertiary">@color/md_ref_pal_tertiary</item>
+        <item name="colorTertiaryContainer">@color/md_ref_pal_tertiary_container</item>
+        <item name="colorOnTertiary">@color/md_ref_pal_on_tertiary</item>
+        <item name="colorOnTertiaryContainer">@color/md_ref_pal_on_tertiary_container</item>
+
+        <!-- Error Colors -->
+        <item name="colorError">@color/md_ref_pal_error</item>
+        <item name="colorErrorContainer">@color/md_ref_pal_error_container</item>
+        <item name="colorOnError">@color/md_ref_pal_on_error</item>
+        <item name="colorOnErrorContainer">@color/md_ref_pal_on_error_container</item>
+
+        <!-- Surface & Background -->
+        <item name="colorSurface">@color/md_ref_pal_surface</item>
+        <item name="colorSurfaceContainer">@color/md_ref_pal_surface_container</item>
+        <item name="colorOnSurface">@color/md_ref_pal_on_surface</item>
+        <item name="colorSurfaceVariant">@color/md_ref_pal_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/md_ref_pal_on_surface_variant</item>
+
+        <!-- Other Colors -->
+        <item name="colorOutline">@color/md_ref_pal_outline</item>
+        <item name="colorShadow">@color/md_ref_pal_shadow</item>
+        <item name="colorScrim">@color/md_ref_pal_scrim</item>
+
+        <!-- Typography -->
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/md_ref_pal_on_surface</item>
+
+        <!-- Window & Status Bar -->
+        <item name="android:windowBackground">@color/md_ref_pal_surface</item>
+        <item name="android:colorBackground">@color/md_ref_pal_surface</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSurfaceContainer</item>
+        <item name="android:navigationBarColor" tools:targetApi="l">?attr/colorSurfaceContainer</item>
+
+        <!-- Animasi Transisi -->
+        <item name="android:windowAnimationStyle">@style/WindowAnimation</item>
+    </style>
+
+    <!-- Animasi untuk Transisi Aktivitas -->
+    <style name="WindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_left</item>
+    </style>
+</resources>
