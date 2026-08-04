@@ -23,6 +23,7 @@ import org.fossify.messages.activities.ThreadActivity
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.shortcutHelper
 import org.fossify.messages.messaging.isShortCodeWithLetters
+import org.fossify.messages.receivers.CopyCodeReceiver
 import org.fossify.messages.receivers.DeleteSmsReceiver
 import org.fossify.messages.receivers.DirectReplyReceiver
 import org.fossify.messages.receivers.MarkAsReadReceiver
@@ -118,6 +119,26 @@ class NotificationHelper(private val context: Context) {
                 .build()
         }
 
+        val verificationCode = extractVerificationCode(body)
+        var copyCodeAction: NotificationCompat.Action? = null
+        if (verificationCode != null) {
+            val copyCodeIntent = Intent(context, CopyCodeReceiver::class.java).apply {
+                action = COPY_CODE
+                putExtra(CODE_TO_COPY, verificationCode)
+            }
+            val copyCodePendingIntent = PendingIntent.getBroadcast(
+                context,
+                notificationId,
+                copyCodeIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            )
+            copyCodeAction = NotificationCompat.Action.Builder(
+                org.fossify.commons.R.drawable.ic_copy_vector,
+                verificationCode,
+                copyCodePendingIntent
+            ).build()
+        }
+
         val largeIcon = bitmap ?: if (sender != null) {
             SimpleContactsHelper(context).getContactLetterIcon(sender)
         } else {
@@ -153,6 +174,10 @@ class NotificationHelper(private val context: Context) {
 
         if (replyAction != null && context.config.lockScreenVisibilitySetting == LOCK_SCREEN_SENDER_MESSAGE) {
             builder.addAction(replyAction)
+        }
+
+        if (copyCodeAction != null) {
+            builder.addAction(copyCodeAction)
         }
 
         builder.addAction(
@@ -281,5 +306,10 @@ class NotificationHelper(private val context: Context) {
         } else {
             emptyList()
         }
+    }
+
+    private fun extractVerificationCode(body: String): String? {
+        val verificationCodePattern = Regex("""\b(\d{4,8})\b""")
+        return verificationCodePattern.find(body)?.groupValues?.get(1)
     }
 }

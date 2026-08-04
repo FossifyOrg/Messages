@@ -240,6 +240,15 @@
         </receiver>
 
         <receiver
+            android:name=".receivers.CopyCodeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="org.fossify.messages.action.copy_code" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
             android:name=".receivers.ScheduledMessageReceiver"
             android:exported="false" />
 
