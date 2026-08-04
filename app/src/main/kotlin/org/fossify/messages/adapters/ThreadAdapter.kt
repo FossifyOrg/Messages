@@ -62,6 +62,7 @@ import org.fossify.messages.databinding.ItemThreadSuccessBinding
 import org.fossify.messages.dialogs.DeleteConfirmationDialog
 import org.fossify.messages.dialogs.MessageDetailsDialog
 import org.fossify.messages.dialogs.SelectTextDialog
+import org.fossify.messages.extensions.canResolveImagePath
 import org.fossify.messages.extensions.config
 import org.fossify.messages.extensions.getContactFromAddress
 import org.fossify.messages.extensions.isImageMimeType
@@ -440,12 +441,26 @@ class ThreadAdapter(
                     .error(placeholder)
                     .centerCrop()
 
-                Glide.with(activity)
-                    .load(message.senderPhotoUri)
-                    .placeholder(placeholder)
-                    .apply(options)
-                    .apply(RequestOptions.circleCropTransform())
-                    .into(threadMessageSenderPhoto)
+		// testing graceful fallback    
+
+		//Glide.with(activity)
+                //    .load(message.senderPhotoUri)
+                //    .placeholder(placeholder)
+                //    .apply(options)
+                //    .apply(RequestOptions.circleCropTransform())
+                //    .into(threadMessageSenderPhoto)
+
+		if (activity.canResolveImagePath(message.senderPhotoUri)) {
+		    Glide.with(activity)
+		        .load(message.senderPhotoUri)
+			.placeholder(placeholder)
+			.apply(options)
+			.apply(RequestOptions.circleCropTransform())
+			.into(threadMessageSenderPhoto)
+		} else {
+		    Glide.with(activity).clear(threadMessageSenderPhoto)
+		    threadMessageSenderPhoto.setImageDrawable(placeholder)
+		}
             }
         }
     }
