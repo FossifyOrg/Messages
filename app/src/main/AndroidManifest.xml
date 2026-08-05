@@ -147,6 +147,13 @@
             android:parentActivityName=".activities.SettingsActivity" />
 
         <activity
+            android:name=".activities.ManageAllowedKeywordsActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/allowed_keywords"
+            android:parentActivityName=".activities.SettingsActivity" />
+
+        <activity
             android:name=".activities.VCardViewerActivity"
             android:configChanges="orientation"
             android:exported="false"

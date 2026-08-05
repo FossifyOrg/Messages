@@ -106,6 +106,7 @@ class SettingsActivity : SimpleActivity() {
         setupLanguage()
         setupManageBlockedNumbers()
         setupManageBlockedKeywords()
+        setupManageAllowedKeywords()
         setupChangeDateTimeFormat()
         setupFontSize()
         setupShowCharacterCounter()
@@ -222,6 +223,21 @@ class SettingsActivity : SimpleActivity() {
         settingsManageBlockedKeywordsHolder.setOnClickListener {
             if (isOrWasThankYouInstalled()) {
                 Intent(this@SettingsActivity, ManageBlockedKeywordsActivity::class.java).apply {
+                    startActivity(this)
+                }
+            } else {
+                FeatureLockedDialog(this@SettingsActivity) { }
+            }
+        }
+    }
+
+    private fun setupManageAllowedKeywords() = binding.apply {
+        settingsManageAllowedKeywords.text =
+            addLockedLabelIfNeeded(R.string.manage_allowed_keywords)
+
+        settingsManageAllowedKeywordsHolder.setOnClickListener {
+            if (isOrWasThankYouInstalled()) {
+                Intent(this@SettingsActivity, ManageAllowedKeywordsActivity::class.java).apply {
                     startActivity(this)
                 }
             } else {

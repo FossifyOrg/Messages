@@ -16,6 +16,7 @@
     <ID>EmptyFunctionBlock:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter${}</ID>
     <ID>EmptyFunctionBlock:BaseConversationsAdapter.kt$BaseConversationsAdapter${}</ID>
     <ID>EmptyFunctionBlock:ContactsAdapter.kt$ContactsAdapter${}</ID>
+    <ID>EmptyFunctionBlock:ManageAllowedKeywordsAdapter.kt$ManageAllowedKeywordsAdapter${}</ID>
     <ID>EmptyFunctionBlock:ManageBlockedKeywordsAdapter.kt$ManageBlockedKeywordsAdapter${}</ID>
     <ID>EmptyFunctionBlock:RecycleBinConversationsAdapter.kt$RecycleBinConversationsAdapter${}</ID>
     <ID>EmptyFunctionBlock:SearchResultsAdapter.kt$SearchResultsAdapter${}</ID>
@@ -148,6 +149,7 @@
     <ID>SpreadOperator:MainActivity.kt$MainActivity$(*currentMessages.toTypedArray())</ID>
     <ID>SpreadOperator:ThreadActivity.kt$ThreadActivity$(*currentMessages.toTypedArray())</ID>
     <ID>SwallowedException:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$e: Exception</ID>
+    <ID>SwallowedException:AllowedKeywordsExporter.kt$AllowedKeywordsExporter$e: Exception</ID>
     <ID>SwallowedException:BlockedKeywordsExporter.kt$BlockedKeywordsExporter$e: Exception</ID>
     <ID>SwallowedException:ImageCompressor.kt$ImageCompressor$e: Exception</ID>
     <ID>SwallowedException:JsonElement.kt$e: Exception</ID>
@@ -167,6 +169,8 @@
     <ID>ThrowsCount:SmsSender.kt$SmsSender$fun sendMessage( subId: Int, destination: String, body: String, serviceCenter: String?, requireDeliveryReport: Boolean, messageUri: Uri )</ID>
     <ID>TooGenericExceptionCaught:Activity.kt$e: Exception</ID>
     <ID>TooGenericExceptionCaught:ArchivedConversationsActivity.kt$ArchivedConversationsActivity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AllowedKeywordsExporter.kt$AllowedKeywordsExporter$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AllowedKeywordsImporter.kt$AllowedKeywordsImporter$e: Exception</ID>
     <ID>TooGenericExceptionCaught:BlockedKeywordsExporter.kt$BlockedKeywordsExporter$e: Exception</ID>
     <ID>TooGenericExceptionCaught:BlockedKeywordsImporter.kt$BlockedKeywordsImporter$e: Exception</ID>
     <ID>TooGenericExceptionCaught:Context.kt$e: Exception</ID>
@@ -174,6 +178,7 @@
     <ID>TooGenericExceptionCaught:ExportMessagesDialog.kt$ExportMessagesDialog$e: Throwable</ID>
     <ID>TooGenericExceptionCaught:ImageCompressor.kt$ImageCompressor$e: Exception</ID>
     <ID>TooGenericExceptionCaught:JsonElement.kt$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ManageAllowedKeywordsActivity.kt$ManageAllowedKeywordsActivity$e: Exception</ID>
     <ID>TooGenericExceptionCaught:ManageBlockedKeywordsActivity.kt$ManageBlockedKeywordsActivity$e: Exception</ID>
     <ID>TooGenericExceptionCaught:MessagesImporter.kt$MessagesImporter$e: Exception</ID>
     <ID>TooGenericExceptionCaught:MessagesImporter.kt$MessagesImporter$e: Throwable</ID>
@@ -202,6 +207,8 @@
     <ID>TooManyFunctions:ConversationsDao.kt$ConversationsDao</ID>
     <ID>TooManyFunctions:JsonObject.kt$org.fossify.messages.extensions.gson.JsonObject.kt</ID>
     <ID>TooManyFunctions:MainActivity.kt$MainActivity : SimpleActivity</ID>
+    <ID>TooManyFunctions:ManageAllowedKeywordsActivity.kt$ManageAllowedKeywordsActivity : SimpleActivityRefreshRecyclerViewListener</ID>
+    <ID>TooManyFunctions:ManageAllowedKeywordsAdapter.kt$ManageAllowedKeywordsAdapter : MyRecyclerViewAdapter</ID>
     <ID>TooManyFunctions:ManageBlockedKeywordsActivity.kt$ManageBlockedKeywordsActivity : SimpleActivityRefreshRecyclerViewListener</ID>
     <ID>TooManyFunctions:ManageBlockedKeywordsAdapter.kt$ManageBlockedKeywordsAdapter : MyRecyclerViewAdapter</ID>
     <ID>TooManyFunctions:MessagesDao.kt$MessagesDao</ID>

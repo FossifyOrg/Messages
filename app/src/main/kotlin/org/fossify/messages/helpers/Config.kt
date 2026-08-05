@@ -91,6 +91,18 @@ class Config(context: Context) : BaseConfig(context) {
         blockedKeywords = blockedKeywords.minus(keyword)
     }
 
+    var allowedKeywords: Set<String>
+        get() = prefs.getStringSet(ALLOWED_KEYWORDS, HashSet<String>())!!
+        set(allowedKeywords) = prefs.edit().putStringSet(ALLOWED_KEYWORDS, allowedKeywords).apply()
+
+    fun addAllowedKeyword(keyword: String) {
+        allowedKeywords = allowedKeywords.plus(keyword)
+    }
+
+    fun removeAllowedKeyword(keyword: String) {
+        allowedKeywords = allowedKeywords.minus(keyword)
+    }
+
     var exportSms: Boolean
         get() = prefs.getBoolean(EXPORT_SMS, true)
         set(exportSms) = prefs.edit().putBoolean(EXPORT_SMS, exportSms).apply()
@@ -146,6 +158,11 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, "")!!
         set(lastBlockedNumbersExportPath) = prefs.edit()
             .putString(LAST_BLOCKED_KEYWORD_EXPORT_PATH, lastBlockedNumbersExportPath).apply()
+
+    var lastAllowedKeywordExportPath: String
+        get() = prefs.getString(LAST_ALLOWED_KEYWORD_EXPORT_PATH, "")!!
+        set(lastAllowedKeywordExportPath) = prefs.edit()
+            .putString(LAST_ALLOWED_KEYWORD_EXPORT_PATH, lastAllowedKeywordExportPath).apply()
 
     var keepConversationsArchived: Boolean
         get() = prefs.getBoolean(KEEP_CONVERSATIONS_ARCHIVED, false)

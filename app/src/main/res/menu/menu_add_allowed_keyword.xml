@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_allowed_keyword"
+        android:icon="@drawable/ic_plus_vector"
+        android:title="@string/add_an_allowed_keyword"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/import_allowed_keywords"
+        android:title="@string/import_allowed_keywords"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/export_allowed_keywords"
+        android:title="@string/export_allowed_keywords"
+        app:showAsAction="never" />
+</menu>

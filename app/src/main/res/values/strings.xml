@@ -94,6 +94,10 @@
     <string name="manage_blocked_keywords">Manage blocked keywords</string>
     <string name="not_blocking_keywords">You are not blocking any keywords. You may add keywords here to block all messages containing them.</string>
     <string name="add_a_blocked_keyword">Add a blocked keyword</string>
+    <string name="allowed_keywords">Allowed keywords</string>
+    <string name="manage_allowed_keywords">Manage allowed keywords</string>
+    <string name="not_allowing_keywords">You are not allowing any keywords. You may add phrases here to allow messages that would otherwise be blocked.</string>
+    <string name="add_an_allowed_keyword">Add an allowed keyword</string>
     <string name="lock_screen_visibility">Lock screen notification visibility</string>
     <string name="sender_and_message">Sender and message</string>
     <string name="sender_only">Sender only</string>
@@ -121,6 +125,8 @@
     <string name="no_option_selected">You have to select at least one item</string>
     <string name="export_blocked_keywords">Export blocked keywords</string>
     <string name="import_blocked_keywords">Import blocked keywords</string>
+    <string name="export_allowed_keywords">Export allowed keywords</string>
+    <string name="import_allowed_keywords">Import allowed keywords</string>
     <!-- Errors -->
     <string name="empty_destination_address">Can\'t send message to an empty number</string>
     <string name="unable_to_save_message">Unable to save message to the telephony database</string>
