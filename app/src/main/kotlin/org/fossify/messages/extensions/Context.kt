@@ -1061,6 +1061,7 @@ fun Context.getThreadId(addresses: Set<String>): Long {
 
 fun Context.showReceivedMessageNotification(
     messageId: Long,
+    isMms: Boolean,
     address: String,
     senderName: String,
     body: String,
@@ -1070,6 +1071,7 @@ fun Context.showReceivedMessageNotification(
     Handler(Looper.getMainLooper()).post {
         notificationHelper.showMessageNotification(
             messageId = messageId,
+            isMms = isMms,
             address = address,
             body = body,
             threadId = threadId,

@@ -58,6 +58,7 @@ class DirectReplyReceiver : BroadcastReceiver() {
                 Handler(Looper.getMainLooper()).post {
                     context.notificationHelper.showMessageNotification(
                         messageId = messageId,
+                        isMms = false,
                         address = address,
                         body = body,
                         threadId = threadId,

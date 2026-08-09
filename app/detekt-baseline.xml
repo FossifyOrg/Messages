@@ -8,7 +8,7 @@
     <ID>CyclomaticComplexMethod:ConversationsAdapter.kt$ConversationsAdapter$override fun actionItemPressed(id: Int)</ID>
     <ID>CyclomaticComplexMethod:MainActivity.kt$MainActivity$private fun getNewConversations(cachedConversations: ArrayList&lt;Conversation&gt;)</ID>
     <ID>CyclomaticComplexMethod:MessagesImporter.kt$MessagesImporter$private fun InputStream.importXml()</ID>
-    <ID>CyclomaticComplexMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
+    <ID>CyclomaticComplexMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, isMms: Boolean, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
     <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun refreshMenuItems()</ID>
     <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupButtons()</ID>
     <ID>CyclomaticComplexMethod:ThreadActivity.kt$ThreadActivity$private fun setupThread(callback: () -&gt; Unit)</ID>
@@ -25,7 +25,7 @@
     <ID>ForbiddenComment:SmsStatusDeliveredReceiver.kt$SmsStatusDeliveredReceiver$// TODO: Need to check whether SC still trying to deliver the SMS to destination and will send the report again?</ID>
     <ID>FunctionParameterNaming:Config.kt$Config$SIMId: Int</ID>
     <ID>LargeClass:ThreadActivity.kt$ThreadActivity : SimpleActivity</ID>
-    <ID>LongMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
+    <ID>LongMethod:NotificationHelper.kt$NotificationHelper$@SuppressLint("NewApi") fun showMessageNotification( messageId: Long, isMms: Boolean, address: String, body: String, threadId: Long, bitmap: Bitmap?, sender: String?, alertOnlyOnce: Boolean = false )</ID>
     <ID>MagicNumber:Activity.kt$1000000</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.7f</ID>
     <ID>MagicNumber:BaseConversationsAdapter.kt$BaseConversationsAdapter$0.8f</ID>

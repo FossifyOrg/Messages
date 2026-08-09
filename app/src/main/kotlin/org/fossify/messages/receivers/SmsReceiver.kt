@@ -145,6 +145,7 @@ class SmsReceiver : BroadcastReceiver() {
         refreshConversations()
         context.showReceivedMessageNotification(
             messageId = newMessageId,
+            isMms = false,
             address = address,
             senderName = senderName,
             body = body,

@@ -38,6 +38,7 @@ class NotificationHelper(private val context: Context) {
     @SuppressLint("NewApi")
     fun showMessageNotification(
         messageId: Long,
+        isMms: Boolean,
         address: String,
         body: String,
         threadId: Long,
@@ -74,19 +75,20 @@ class NotificationHelper(private val context: Context) {
                 context,
                 notificationId,
                 markAsReadIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
 
         val deleteSmsIntent = Intent(context, DeleteSmsReceiver::class.java).apply {
             putExtra(THREAD_ID, threadId)
             putExtra(MESSAGE_ID, messageId)
+            putExtra(IS_MMS, isMms)
         }
         val deleteSmsPendingIntent =
             PendingIntent.getBroadcast(
                 context,
                 notificationId,
                 deleteSmsIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
 
         var replyAction: NotificationCompat.Action? = null
