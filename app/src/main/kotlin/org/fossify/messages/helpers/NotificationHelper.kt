@@ -171,20 +171,18 @@ class NotificationHelper(private val context: Context) {
             ).setChannelId(notificationChannelId)
         }
 
-        var shortcut = context.shortcutHelper.getShortcut(threadId)
-        if (shortcut == null) {
-            ensureBackgroundThread {
-                shortcut = context.shortcutHelper.createOrUpdateShortcut(threadId)
-                builder.setShortcutInfo(shortcut)
-                notificationManager.notify(notificationId, builder.build())
-                context.shortcutHelper.reportReceiveMessageUsage(threadId)
-            }
-        } else {
+        // Only attach an existing shortcut to the notification. A conversation the user
+        // has never opened or replied to shouldn't get a new launcher shortcut just
+        // because a message arrived (e.g. one-off SMS/OTP senders), see #845.
+        val shortcut = context.shortcutHelper.getShortcut(threadId)
+        if (shortcut != null) {
             builder.setShortcutInfo(shortcut)
             notificationManager.notify(notificationId, builder.build())
             ensureBackgroundThread {
                 context.shortcutHelper.reportReceiveMessageUsage(threadId)
             }
+        } else {
+            notificationManager.notify(notificationId, builder.build())
         }
     }
 
