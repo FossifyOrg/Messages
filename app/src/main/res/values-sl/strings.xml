@@ -122,4 +122,14 @@
     <string name="invalid_short_code">Ni mogoče odgovoriti na kratke kode, kot je ta</string>
     <string name="unknown_error_occurred_sending_message">Sporočila ni bilo mogoče poslati, koda napake: %d</string>
     <string name="carrier_send_error">Sporočila ni bilo mogoče poslati, napaka operaterja</string>
+    <string name="keep_conversations_archived">Arhiviranje pogovorov</string>
+    <string name="send_group_message">Oblika skupinskih sporočil</string>
+    <string name="group_message_send_description">Skupinska sporočila MMS ohranijo odgovore v enem pogovoru, vendar se lahko zaračunajo stroški operaterja. Z ločenim pošiljanjem se vsaki osebi pošlje eno sporočilo. To lahko pozneje spremenite v nastavitvah aplikacije.</string>
+    <string name="group_mms">Skupinski MMS</string>
+    <string name="separate_messages">Pošlji ločeno</string>
+    <string name="keywords">Ključne besede</string>
+    <string name="export_blocked_keywords">Izvozi blokirane ključne besede</string>
+    <string name="import_blocked_keywords">Uvozi blokirane ključne besede</string>
+    <string name="faq_4_title">Zakaj se moji odgovori na skupinska sporočila prejemnikom prikažejo kot posamezna besedilna sporočila?</string>
+    <string name="faq_4_text">V nastavitvah aplikacije morate omogočiti možnost »Pošlji skupinska sporočila kot MMS«. To bo zagotovilo, da bodo skupinska sporočila poslana kot pravilna MMS sporočila, kar bo vsem udeležencem omogočilo, da vidijo odgovore drug drugega.</string>
 </resources>
