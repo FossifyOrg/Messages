@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.9.2] - 2026-09-01
+### Changed
+- Updated translations
+
 ### Fixed
 - Fixed exposed action receivers for security ([#834])
 - Fixed incorrect SMS/MMS deletion from notifications in rare cases
@@ -276,7 +281,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#829]: https://github.com/FossifyOrg/Messages/issues/829
 [#834]: https://github.com/FossifyOrg/Messages/issues/834
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.9.1...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.9.2...HEAD
+[1.9.2]: https://github.com/FossifyOrg/Messages/compare/1.9.1...1.9.2
 [1.9.1]: https://github.com/FossifyOrg/Messages/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/FossifyOrg/Messages/compare/1.8.1...1.9.0
 [1.8.1]: https://github.com/FossifyOrg/Messages/compare/1.8.0...1.8.1
