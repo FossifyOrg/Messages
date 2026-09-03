@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Material Design 3 - Seed Color (Primary) -->
+    <color name="md_ref_pal_primary">#6750A4</color>
+    <color name="md_ref_pal_primary_container">#EADDFF</color>
+    <color name="md_ref_pal_on_primary">#FFFFFF</color>
+    <color name="md_ref_pal_on_primary_container">#21005D</color>
 
+    <!-- Secondary Colors -->
+    <color name="md_ref_pal_secondary">#625B71</color>
+    <color name="md_ref_pal_secondary_container">#E8DEF8</color>
+    <color name="md_ref_pal_on_secondary">#FFFFFF</color>
+    <color name="md_ref_pal_on_secondary_container">#1E192B</color>
+
+    <!-- Tertiary Colors -->
+    <color name="md_ref_pal_tertiary">#7D5260</color>
+    <color name="md_ref_pal_tertiary_container">#FFD8E4</color>
+    <color name="md_ref_pal_on_tertiary">#FFFFFF</color>
+    <color name="md_ref_pal_on_tertiary_container">#31111D</color>
+
+    <!-- Error Colors -->
+    <color name="md_ref_pal_error">#B3261E</color>
+    <color name="md_ref_pal_error_container">#F9DEDC</color>
+    <color name="md_ref_pal_on_error">#FFFFFF</color>
+    <color name="md_ref_pal_on_error_container">#410E0B</color>
+
+    <!-- Surface & Background Colors -->
+    <color name="md_ref_pal_surface">#FFFBFE</color>
+    <color name="md_ref_pal_surface_container">#F3EDF7</color>
+    <color name="md_ref_pal_surface_variant">#E7E0EC</color>
+    <color name="md_ref_pal_on_surface">#1C1B1F</color>
+    <color name="md_ref_pal_on_surface_variant">#49454F</color>
+
+    <!-- Outline & Shadow -->
+    <color name="md_ref_pal_outline">#79747E</color>
+    <color name="md_ref_pal_shadow">#000000</color>
+    <color name="md_ref_pal_scrim">#000000</color>
+
+    <!-- Inverse Colors (Dark Mode) -->
+    <color name="md_ref_pal_inverse_surface">#313033</color>
+    <color name="md_ref_pal_inverse_on_surface">#F4EFF4</color>
+    <color name="md_ref_pal_inverse_primary">#D0BCFF</color>
+
+    <!-- Custom Colors (Untuk kompatibilitas) -->
+    <color name="colorPrimary">@color/md_ref_pal_primary</color>
+    <color name="colorPrimaryContainer">@color/md_ref_pal_primary_container</color>
+    <color name="colorOnPrimary">@color/md_ref_pal_on_primary</color>
+    <color name="colorOnPrimaryContainer">@color/md_ref_pal_on_primary_container</color>
+    <color name="colorSurface">@color/md_ref_pal_surface</color>
+    <color name="colorSurfaceContainer">@color/md_ref_pal_surface_container</color>
+    <color name="colorOnSurface">@color/md_ref_pal_on_surface</color>
+    <color name="colorOnSurfaceVariant">@color/md_ref_pal_on_surface_variant</color>
+    <color name="colorError">@color/md_ref_pal_error</color>
+    <color name="colorOutline">@color/md_ref_pal_outline</color>
 </resources>
