@@ -534,24 +534,26 @@ class ThreadActivity : SimpleActivity() {
 
             if (participants.isEmpty()) {
                 val name = intent.getStringExtra(THREAD_TITLE) ?: ""
-                val number = intent.getStringExtra(THREAD_NUMBER)
-                if (number == null) {
+                val numbers = getPhoneNumbersFromIntent()
+                if (numbers.isEmpty()) {
                     toast(org.fossify.commons.R.string.unknown_error_occurred)
                     finish()
                     return@ensureBackgroundThread
                 }
 
-                val phoneNumber = PhoneNumber(number, 0, "", number)
-                val contact = SimpleContact(
-                    rawId = 0,
-                    contactId = 0,
-                    name = name,
-                    photoUri = "",
-                    phoneNumbers = arrayListOf(phoneNumber),
-                    birthdays = ArrayList(),
-                    anniversaries = ArrayList()
-                )
-                participants.add(contact)
+                numbers.forEach { number ->
+                    val phoneNumber = PhoneNumber(number, 0, "", number)
+                    val contact = SimpleContact(
+                        rawId = number.hashCode(),
+                        contactId = number.hashCode(),
+                        name = if (numbers.size == 1) name else number,
+                        photoUri = "",
+                        phoneNumbers = arrayListOf(phoneNumber),
+                        birthdays = ArrayList(),
+                        anniversaries = ArrayList()
+                    )
+                    participants.add(contact)
+                }
             }
 
             if (!isRecycleBin) {
@@ -931,6 +933,7 @@ class ThreadActivity : SimpleActivity() {
                     hideKeyboard()
                     Intent(this@ThreadActivity, ThreadActivity::class.java).apply {
                         putExtra(THREAD_ID, newThreadId)
+                        putExtra(THREAD_NUMBER, Gson().toJson(numbers))
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(this)
                     }
