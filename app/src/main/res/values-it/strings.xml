@@ -125,4 +125,8 @@
     <string name="keep_conversations_archived">Mantieni le conversazioni archiviate</string>
     <string name="faq_4_title">Perché le risposte ai miei messaggi di gruppo appaiono come messaggi individuali ai destinatari?</string>
     <string name="faq_4_text">È necessario abilitare l\'opzione “Invia messaggi di gruppo come MMS” nelle impostazioni dell\'app. In questo modo i messaggi di gruppo verranno inviati come MMS, consentendo a tutti i partecipanti di vedere le risposte degli altri.</string>
+    <string name="send_group_message">Formato dei messaggi di gruppo</string>
+    <string name="group_message_send_description">Gli MMS di gruppo mantengono le risposte in un\'unica conversazione, ma potrebbero essere applicati costi dal gestore. L\'invio separato invia un messaggio a ogni persona. Puoi modificare questa impostazione in seguito nelle impostazioni dell\'app.</string>
+    <string name="group_mms">MMS di gruppo</string>
+    <string name="separate_messages">Invia separatamente</string>
 </resources>

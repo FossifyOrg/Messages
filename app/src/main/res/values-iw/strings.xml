@@ -127,4 +127,7 @@
     <string name="faq_4_title">מדוע תשובות להודעות הקבוצתיות שלי מופיעות כהודעות טקסט אישיות לנמענים?</string>
     <string name="faq_4_text">עליך להפעיל את האפשרות \"שליחת הודעות קבוצתיות כ-MMS\" בהגדרות האפליקציה. פעולה זו תבטיח שהודעות הקבוצה יישלחו כ-MMS תקינות, כך שכל המשתתפים יוכלו לראות את תשובותיהם של אחרים.</string>
     <string name="separate_messages">שלח בנפרד</string>
+    <string name="send_group_message">תבנית הודעה קבוצתית</string>
+    <string name="group_message_send_description">MMS קבוצתי משאיר את כל התגובות בשיחה אחת, אבל אולי יחוייב ע\"י המפעיל. שליחה בנפרד שולחת הודעה אחת לכל בן-אדם. ניתן לשנות הגדרה זו אח\"כ בהגדרות היישומון.</string>
+    <string name="group_mms">MMS קבוצתי</string>
 </resources>

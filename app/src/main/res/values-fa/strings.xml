@@ -116,4 +116,9 @@
     <string name="me">من</string>
     <string name="sender_only">فقط فرستنده</string>
     <string name="send_on_enter">ارسال پیام با کلید اینتر</string>
+    <string name="keep_conversations_archived">گفت‌و‌گو بایگانی شود</string>
+    <string name="send_group_message">قالب پیام گروهی</string>
+    <string name="group_mms">فراپیام گروهی</string>
+    <string name="separate_messages">ارسال جداگانه</string>
+    <string name="keywords">کلمه‌های کلیدی</string>
 </resources>
