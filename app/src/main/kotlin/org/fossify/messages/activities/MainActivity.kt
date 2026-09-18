@@ -259,7 +259,7 @@ class MainActivity : SimpleActivity() {
                             initMessenger()
                             bus = EventBus.getDefault()
                             try {
-                                bus!!.register(this)
+                                bus?.register(this)
                             } catch (_: Exception) {
                             }
                         }
