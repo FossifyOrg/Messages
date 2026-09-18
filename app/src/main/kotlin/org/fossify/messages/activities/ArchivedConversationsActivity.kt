@@ -89,7 +89,7 @@ class ArchivedConversationsActivity : SimpleActivity() {
 
         bus = EventBus.getDefault()
         try {
-            bus!!.register(this)
+            bus?.register(this)
         } catch (ignored: Exception) {
         }
     }
