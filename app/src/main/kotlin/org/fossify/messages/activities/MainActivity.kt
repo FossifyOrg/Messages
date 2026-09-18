@@ -217,7 +217,7 @@ class MainActivity : SimpleActivity() {
     private fun loadMessages() {
         if (isQPlus()) {
             val roleManager = getSystemService(RoleManager::class.java)
-            if (roleManager!!.isRoleAvailable(RoleManager.ROLE_SMS)) {
+            if (roleManager?.isRoleAvailable(RoleManager.ROLE_SMS) == true) {
                 if (roleManager.isRoleHeld(RoleManager.ROLE_SMS)) {
                     askPermissions()
                 } else {
