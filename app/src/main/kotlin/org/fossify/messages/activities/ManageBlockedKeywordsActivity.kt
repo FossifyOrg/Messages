@@ -119,7 +119,7 @@ class ManageBlockedKeywordsActivity : SimpleActivity(), RefreshRecyclerViewListe
 
     private fun tryImportBlockedKeywordsFromFile(uri: Uri) {
         when (uri.scheme) {
-            "file" -> importBlockedKeywords(uri.path!!)
+            "file" -> uri.path?.let { importBlockedKeywords(it) }
             "content" -> {
                 val tempFile = getTempFile("blocked", "blocked_keywords.txt")
                 if (tempFile == null) {
