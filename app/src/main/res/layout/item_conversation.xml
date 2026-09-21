@@ -88,6 +88,7 @@
 
     <ImageView
         android:id="@+id/pin_indicator"
+        android:contentDescription="@string/pin_conversation"
         android:layout_width="@dimen/small_icon_size"
         android:layout_height="@dimen/small_icon_size"
         android:alpha="0.7"
