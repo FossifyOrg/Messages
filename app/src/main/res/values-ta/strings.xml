@@ -54,7 +54,7 @@
     <string name="compress_error">தேர்ந்தெடுக்கப்பட்ட அளவுக்கு படத்தை சுருக்க முடியவில்லை</string>
     <string name="duplicate_item_warning">நகல் உருப்படி சேர்க்கப்படவில்லை</string>
     <plurals name="and_other_contacts">
-        <item quantity="one">மற்றும் %d மற்றவை</item>
+        <item quantity="one">மற்றும் %d மற்றவர்</item>
         <item quantity="other">மற்றும் %d பேர்</item>
     </plurals>
     <string name="members">உறுப்பினர்கள்</string>
@@ -74,9 +74,9 @@
     <string name="show_archived_conversations">காப்பகப்படுத்தப்பட்ட உரையாடல்களைக் காட்டு</string>
     <string name="app_launcher_name">செய்திகள்</string>
     <string name="scheduled_message">திட்டமிடப்பட்ட செய்தி</string>
-    <string name="schedule_message">அட்டவணை செய்தி</string>
-    <string name="schedule_send">அட்டவணை அனுப்பவும்</string>
-    <string name="cancel_schedule_send">அனுப்பிய அட்டவணையை நீக்கறல்</string>
+    <string name="schedule_message">செய்தியைத் திட்டமிடவும்</string>
+    <string name="schedule_send">அனுப்புவதைத் திட்டமிடவும்</string>
+    <string name="cancel_schedule_send">திட்டமிடப்பட்ட அனுப்புதலை ரத்து செய்யவும்</string>
     <string name="must_pick_time_in_the_future">நீங்கள் எதிர்காலத்தில் ஒரு நேரத்தைத் தேர்ந்தெடுக்க வேண்டும்</string>
     <string name="schedule_send_warning">ஃபோனை இயக்கி, பின்புலத்தில் இருக்கும்போது ஆப்சை அழிக்கும் எதுவும் இல்லை என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள்.</string>
     <string name="update_message">செய்தியைப் புதுப்பிக்கவும்</string>
@@ -86,7 +86,7 @@
     <string name="no_archived_conversations">காப்பகப்படுத்தப்பட்ட உரையாடல்கள் எதுவும் கண்டறியப்படவில்லை</string>
     <string name="archive_emptied_successfully">காப்பகம் வெற்றிகரமாக வெறுமை செய்யப்பட்டது</string>
     <string name="empty_archive_confirmation">காப்பகத்தை நிச்சயமாக வெறுமை செய்ய விரும்புகிறீர்களா? காப்பகப்படுத்தப்பட்ட அனைத்து உரையாடல்களும் நிரந்தரமாக இழக்கப்படும்.</string>
-    <string name="keep_conversations_archived">உரையாடல்களை காப்பகப்படுத்தவும்</string>
+    <string name="keep_conversations_archived">உரையாடல்களைக் காப்பகத்திலேயே வைத்திருக்கவும்</string>
     <string name="restore">மீட்டமை</string>
     <string name="restore_all_messages">எல்லா செய்திகளையும் மீட்டெடுக்கவும்</string>
     <string name="empty_recycle_bin_messages_confirmation">மறுசுழற்சி தொட்டியை நிச்சயமாக வெறுமை செய்ய விரும்புகிறீர்களா? செய்திகள் நிரந்தரமாக இழக்கப்படும்.</string>
@@ -121,7 +121,7 @@
     <string name="sim_card_not_available">சிம் அட்டை கிடைக்கவில்லை</string>
     <string name="couldnt_download_mms">MMSஐப் பதிவிறக்க முடியவில்லை</string>
     <string name="faq_2_title">மறுமுனை எனது MMS பெறவில்லை, இதற்கு நான் ஏதாவது செய்ய முடியுமா?</string>
-    <string name="faq_2_text">எம்எம்எச் அளவு கேரியர்களால் வரையறுக்கப்பட்டுள்ளது, ஆப்ச் அமைப்புகளில் சிறிய வரம்பை அமைக்க முயற்சி செய்யலாம்.</string>
+    <string name="faq_2_text">எம்எம்எஸ் அளவு கேரியர்களால் வரையறுக்கப்பட்டுள்ளது, ஆப்ச் அமைப்புகளில் சிறிய வரம்பை அமைக்க முயற்சி செய்யலாம்.</string>
     <string name="faq_3_title">திட்டமிடப்பட்ட செய்திகளை ஆப்ச் ஆதரிக்கிறதா?</string>
     <string name="faq_3_text">ஆம், அனுப்பு பொத்தானை நீண்ட நேரம் அழுத்தி, விரும்பிய தேதி மற்றும் நேரத்தைத் தேர்ந்தெடுப்பதன் மூலம் எதிர்காலத்தில் அனுப்ப வேண்டிய செய்திகளை திட்டமிடலாம்.</string>
     <string name="faq_4_title">எனது குழு செய்தி பதில்கள் பெறுநர்களுக்கு தனிப்பட்ட உரைகளாக ஏன் தோன்றும்?</string>
