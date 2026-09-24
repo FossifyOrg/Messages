@@ -1,0 +1,9 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed exposed action receivers for security 
+• Fixed incorrect SMS/MMS deletion from notifications in rare cases
+
