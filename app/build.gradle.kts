@@ -141,6 +141,9 @@ detekt {
 }
 
 dependencies {
+    // Material Design 3
+    implementation("com.google.android.material:material:1.11.0")
+
     implementation(libs.fossify.commons)
     implementation(libs.eventbus)
     implementation(libs.indicator.fast.scroll)
