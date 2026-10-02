@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 9.3.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.3.1)" variant="all" version="9.3.1">
+<issues format="6" by="lint 9.4.0" type="baseline" client="gradle" dependencies="false" name="AGP (9.4.0)" variant="all" version="9.4.0">
 
     <issue
         id="ExifInterface"
@@ -47,8 +47,8 @@
 
     <issue
         id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 9.6.1 is available: 9.7.1"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.6.1-bin.zip"
+        message="A newer version of Gradle than 9.7.1 is available: 9.8.0"
+        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.7.1-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="$HOME/work/Messages/Messages/gradle/wrapper/gradle-wrapper.properties"
@@ -58,8 +58,8 @@
 
     <issue
         id="AndroidGradlePluginVersion"
-        message="A newer version of com.android.application than 9.3.1 is available: 9.3.2"
-        errorLine1="gradlePlugins-agp = &quot;9.3.1&quot;"
+        message="A newer version of com.android.application than 9.4.0 is available: 9.4.1"
+        errorLine1="gradlePlugins-agp = &quot;9.4.0&quot;"
         errorLine2="                    ~~~~~~~">
         <location
             file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
@@ -80,6 +80,39 @@
 
     <issue
         id="GradleDependency"
+        message="A newer version of androidx.room:room-compiler than 2.8.4 is available: 2.8.5"
+        errorLine1="room = &quot;2.8.4&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
+            line="18"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room:room-ktx than 2.8.4 is available: 2.8.5"
+        errorLine1="room = &quot;2.8.4&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
+            line="18"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room:room-runtime than 2.8.4 is available: 2.8.5"
+        errorLine1="room = &quot;2.8.4&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/work/Messages/Messages/gradle/libs.versions.toml"
+            line="18"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
         message="A newer version of `app-build-compileSDKVersion` than 36 is available: 37"
         errorLine1="app-build-compileSDKVersion = &quot;36&quot;"
         errorLine2="                              ~~~~">
@@ -91,7 +124,7 @@
 
     <issue
         id="NewerVersionAvailable"
-        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.6.4"
+        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.6.7"
         errorLine1="detektCompose = &quot;0.4.28&quot;"
         errorLine2="                ~~~~~~~~">
         <location
