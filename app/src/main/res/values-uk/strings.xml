@@ -132,6 +132,4 @@
     <string name="group_message_send_description">Групові MMS зберігають відповіді в одній бесіді, але оператор може стягувати додаткову плату. Окреме надсилання надсилає повідомлення кожному учаснику окремо. Ви зможете змінити це пізніше в налаштуваннях застосунку.</string>
     <string name="group_mms">Групові MMS</string>
     <string name="separate_messages">Надіслати окремо</string>
-    <string name="play">Відтворити</string>
-    <string name="pause">Пауза</string>
 </resources>

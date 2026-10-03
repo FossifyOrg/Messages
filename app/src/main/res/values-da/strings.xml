@@ -125,6 +125,4 @@
     <string name="group_mms">Gruppe MMS</string>
     <string name="separate_messages">Send separat</string>
     <string name="send_group_message">Gruppebeskedformat</string>
-    <string name="play">Afspil</string>
-    <string name="pause">Pause</string>
 </resources>

@@ -126,6 +126,4 @@
     <string name="group_message_send_description">Bij groeps-MMS worden de antwoorden in één gesprek gebundeld, maar er kunnen providerkosten in rekening worden gebracht. Afzonderlijk versturen betekent dat er naar iedere persoon één bericht wordt verzonden. Je kunt dit later aanpassen in de instellingen.</string>
     <string name="group_mms">Groeps-MMS</string>
     <string name="separate_messages">Afzonderlijk versturen</string>
-    <string name="play">Afspelen</string>
-    <string name="pause">Pauzeren</string>
 </resources>

@@ -125,6 +125,4 @@
     <string name="keep_conversations_archived">Nechať konverzácie archivované</string>
     <string name="faq_4_title">Prečo sa moje odpovede na skupinové správy zobrazujú príjemcom ako samostatné správy?</string>
     <string name="faq_4_text">V nastaveniach aplikácie musíte zapnúť možnosť „Odosielať skupinové správy ako MMS“. Tým sa zabezpečí, že skupinové správy sa budú odosielať ako správne MMS, takže všetci účastníci uvidia odpovede ostatných.</string>
-    <string name="play">Prehrať</string>
-    <string name="pause">Pozastaviť</string>
 </resources>

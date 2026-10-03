@@ -129,6 +129,4 @@
     <string name="group_message_send_description">L\'agrupació de MMS manté les respostes en una conversa única, però pot ser que s\'apliquin càrrecs de trànsit. L\'enviament per separat envia un missatge a cada persona. Podeu canviar-ho més tard a la configuració de l\'aplicació.</string>
     <string name="group_mms">Agrupa els MMS</string>
     <string name="separate_messages">Envia per separat</string>
-    <string name="play">Reproduir</string>
-    <string name="pause">Pausa</string>
 </resources>

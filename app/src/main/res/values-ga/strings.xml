@@ -135,6 +135,4 @@
     <string name="group_message_send_description">Coinníonn MMS grúpa freagraí i gcomhrá amháin, ach d’fhéadfadh táillí iompróra a bheith i bhfeidhm. Má sheoltar ar leithligh iad, cuirtear teachtaireacht amháin chuig gach duine. Is féidir leat é seo a athrú níos déanaí i socruithe an aip.</string>
     <string name="group_mms">MMS Grúpa</string>
     <string name="separate_messages">Seol ar leithligh</string>
-    <string name="play">Seinn</string>
-    <string name="pause">Sos</string>
 </resources>

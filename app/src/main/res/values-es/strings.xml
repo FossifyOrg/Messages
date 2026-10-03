@@ -129,6 +129,4 @@
     <string name="group_message_send_description">El MMS grupal mantiene todas las respuestas en una sola conversación, pero pueden aplicarse cargos del operador. Enviar por separado envía un mensaje a cada persona. Puedes cambiar esto más adelante en los ajustes de la aplicación.</string>
     <string name="group_mms">MMS grupal</string>
     <string name="separate_messages">Enviar por separado</string>
-    <string name="play">Reproducir</string>
-    <string name="pause">Pausa</string>
 </resources>

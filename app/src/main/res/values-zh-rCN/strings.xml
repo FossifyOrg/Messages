@@ -123,6 +123,4 @@
     <string name="group_message_send_description">群发彩信将回复保留在一个对话中，但可能有运营商费用。“分别发送”会给每个收信人发送一则信息。可以之后在应用设置中更改。</string>
     <string name="group_mms">群发彩信</string>
     <string name="separate_messages">分别发送</string>
-    <string name="play">播放</string>
-    <string name="pause">暂停</string>
 </resources>

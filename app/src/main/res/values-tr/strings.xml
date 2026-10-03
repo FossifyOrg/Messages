@@ -126,6 +126,4 @@
     <string name="group_message_send_description">Grup MMS tüm yanıtları tek bir görüşmede tutar ancak ek operatör ücretleri uygulanabilir. Ayrı olarak göndermek her bir kişiye ayrı bir mesaj gönderir. Bunu daha sonra uygulama ayarlarından değiştirebilirsiniz.</string>
     <string name="group_mms">Grup MMS</string>
     <string name="separate_messages">Ayrı olarak gönder</string>
-    <string name="play">Oynat</string>
-    <string name="pause">Duraklat</string>
 </resources>
