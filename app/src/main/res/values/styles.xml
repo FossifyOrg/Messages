@@ -1,9 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Theme -->
+    <style name="AppTheme" parent="Theme.Messages" />
 
-    <style name="AppTheme" parent="AppTheme.Base" />
-
+    <!-- Style untuk ShapeableImageView (Avatar) -->
     <style name="roundedImageView" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/normal_margin</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Style untuk CircularImageView -->
+    <style name="CircularImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Style untuk MaterialButton -->
+    <style name="Widget.Messages.Button" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/md_ref_pal_onPrimary</item>
+        <item name="backgroundTint">@color/md_ref_pal_primary</item>
+        <item name="rippleColor">@color/md_ref_pal_on_primary</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">8dp</item>
+    </style>
+
+    <!-- Style untuk MaterialButton.Outlined -->
+    <style name="Widget.Messages.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/md_ref_pal_primary</item>
+        <item name="strokeColor">@color/md_ref_pal_outline</item>
+        <item name="rippleColor">@color/md_ref_pal_primary_container</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Style untuk MaterialCardView -->
+    <style name="Widget.Messages.Card" parent="Widget.Material3.CardView">
+        <item name="cardBackgroundColor">@color/md_ref_pal_surface_container</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">12dp</item>
+    </style>
+
+    <!-- Style untuk TextInputLayout -->
+    <style name="Widget.Messages.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/md_ref_pal_surface_container</item>
+        <item name="boxStrokeColor">@color/md_ref_pal_outline</item>
+        <item name="hintTextColor">@color/md_ref_pal_on_surface_variant</item>
+        <item name="android:textColor">@color/md_ref_pal_on_surface</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Style untuk FloatingActionButton -->
+    <style name="Widget.Messages.FloatingActionButton" parent="Widget.Material3.ExtendedFloatingActionButton">
+        <item name="backgroundTint">@color/md_ref_pal_primary_container</item>
+        <item name="iconTint">@color/md_ref_pal_on_primary_container</item>
+        <item name="rippleColor">@color/md_ref_pal_on_primary_container</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <!-- Style untuk MaterialToolbar -->
+    <style name="Widget.Messages.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/md_ref_pal_surface_container</item>
+        <item name="titleTextColor">@color/md_ref_pal_on_surface</item>
+        <item name="navigationIconTint">@color/md_ref_pal_on_surface</item>
+    </style>
+
+    <!-- Style untuk RecyclerView -->
+    <style name="Widget.Messages.RecyclerView" parent="Widget.AppCompat.RecyclerView">
+        <item name="android:padding">8dp</item>
+        <item name="android:clipToPadding">false</item>
     </style>
 </resources>

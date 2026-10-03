@@ -1,170 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/thread_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface"
+    tools:context=".activities.ThreadActivity">
 
-    <org.fossify.commons.views.MyAppBarLayout
-        android:id="@+id/thread_appbar"
+    <!-- AppBar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/thread_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurfaceContainer"
+        app:title="John Doe"
+        app:titleTextColor="?attr/colorOnSurface"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="?attr/colorOnSurface"
+        app:menu="@menu/menu_thread"
+        style="@style/Widget.Messages.Toolbar" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/thread_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_primary"
-            app:menu="@menu/menu_thread"
-            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
-
-    </org.fossify.commons.views.MyAppBarLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/thread_holder"
+    <!-- RecyclerView untuk Daftar Pesan -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/thread_messages_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:stackFromEnd="true"
+        style="@style/Widget.Messages.RecyclerView"
+        tools:listitem="@layout/item_message" />
 
-        <include
-            layout="@layout/divider"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!-- Input Pesan (Bottom Bar) -->
+    <LinearLayout
+        android:id="@+id/message_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?attr/colorSurfaceContainer"
+        android:gravity="center_vertical">
 
-        <RelativeLayout
-            android:id="@+id/thread_add_contacts"
-            android:layout_width="match_parent"
+        <!-- Tombol Lampirkan File -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_attach"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/attach"
+            app:icon="@drawable/ic_attach_file"
+            app:iconTint="?attr/colorOnSurfaceVariant"
+            style="@style/Widget.Messages.Button.Outlined" />
+
+        <!-- Input Pesan -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible">
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/type_a_message"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="?attr/colorSurface"
+            app:boxStrokeColor="?attr/colorOutline"
+            app:hintTextColor="?attr/colorOnSurfaceVariant"
+            style="@style/Widget.Messages.TextInputLayout">
 
-            <LinearLayout
-                android:id="@+id/selected_contacts"
+            <com.google.android.material.textfield.OutlinedTextInputEditText
+                android:id="@+id/et_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_margin"
-                android:orientation="vertical" />
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLines="5"
+                android:minLines="1"
+                android:textColor="?attr/colorOnSurface"
+                android:imeOptions="actionSend"
+                android:importantForAutofill="no" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
-                android:id="@+id/confirm_manage_contacts"
-                android:layout_width="@dimen/normal_icon_size"
-                android:layout_height="@dimen/normal_icon_size"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/medium_margin"
-                android:layout_marginTop="@dimen/normal_margin"
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:background="?selectableItemBackgroundBorderless"
-                android:padding="@dimen/small_margin"
-                android:src="@drawable/ic_check_vector" />
+        <!-- Tombol Kirim -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_send"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/send"
+            app:icon="@drawable/ic_send"
+            app:iconTint="?attr/colorOnPrimary"
+            style="@style/Widget.Messages.Button" />
+    </LinearLayout>
 
-            <View
-                android:id="@+id/message_divider_one"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                android:layout_below="@+id/selected_contacts"
-                android:background="@color/divider_grey"
-                android:importantForAccessibility="no" />
-
-            <org.fossify.commons.views.MyAutoCompleteTextView
-                android:id="@+id/add_contact_or_number"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/normal_icon_size"
-                android:layout_below="@+id/message_divider_one"
-                android:layout_marginStart="@dimen/activity_margin"
-                android:layout_marginEnd="@dimen/activity_margin"
-                android:layout_toStartOf="@+id/confirm_inserted_number"
-                android:background="@android:color/transparent"
-                android:completionThreshold="2"
-                android:gravity="center_vertical"
-                android:hint="@string/add_contact_or_number"
-                android:inputType="textCapWords"
-                android:textSize="@dimen/big_text_size" />
-
-            <ImageView
-                android:id="@+id/confirm_inserted_number"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignTop="@+id/add_contact_or_number"
-                android:layout_alignBottom="@+id/add_contact_or_number"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/medium_margin"
-                android:layout_marginEnd="@dimen/medium_margin"
-                android:background="?selectableItemBackgroundBorderless"
-                android:contentDescription="@string/confirm_selection"
-                android:paddingStart="@dimen/medium_margin"
-                android:paddingEnd="@dimen/medium_margin"
-                android:src="@drawable/ic_check_vector"
-                android:visibility="gone" />
-
-            <View
-                android:id="@+id/message_divider_two"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                android:layout_below="@+id/add_contact_or_number"
-                android:background="@color/divider_grey"
-                android:importantForAccessibility="no" />
-
-        </RelativeLayout>
-
-        <com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
-            android:id="@+id/thread_messages_fastscroller"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/short_code_holder"
-            app:layout_constraintTop_toBottomOf="@id/thread_add_contacts"
-            app:supportSwipeToRefresh="true">
-
-            <org.fossify.commons.views.MyRecyclerView
-                android:id="@+id/thread_messages_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:overScrollMode="ifContentScrolls"
-                android:paddingTop="@dimen/big_margin"
-                android:paddingBottom="@dimen/medium_margin"
-                android:scrollbars="none"
-                app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
-                app:stackFromEnd="true"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_message" />
-
-        </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
-
-        <org.fossify.commons.views.MyFloatingActionButton
-            android:id="@+id/scroll_to_bottom_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_margin"
-            android:src="@drawable/ic_arrow_down_vector"
-            android:visibility="invisible"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toBottomOf="@id/thread_messages_fastscroller"
-            app:layout_constraintEnd_toEndOf="@id/thread_messages_fastscroller"
-            tools:ignore="ContentDescription" />
-
-        <include
-            android:id="@+id/short_code_holder"
-            layout="@layout/layout_invalid_short_code_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/message_holder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thread_messages_fastscroller"
-            tools:visibility="visible" />
-
-        <include
-            android:id="@+id/message_holder"
-            layout="@layout/layout_thread_send_message_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!-- FloatingActionButton untuk Scroll ke Bawah -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/scroll_to_bottom_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_arrow_down_vector"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:backgroundTint="?attr/colorPrimaryContainer"
+        app:tint="?attr/colorOnPrimaryContainer" />
+</LinearLayout>

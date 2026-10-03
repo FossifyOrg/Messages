@@ -36,7 +36,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_launcher_name"
         android:roundIcon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.Messages">
 
         <activity
             android:name=".activities.SplashActivity"
