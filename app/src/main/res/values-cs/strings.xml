@@ -7,12 +7,12 @@
     <string name="add_person">Přidat osobu</string>
     <string name="attachment">Příloha</string>
     <string name="no_conversations_found">Nebyly nalezeny žádné uložené konverzace</string>
-    <string name="start_conversation">Zahajte konverzaci</string>
+    <string name="start_conversation">Zahájit konverzaci</string>
     <string name="reply">Odpovědět</string>
     <string name="show_character_counter">Zobrazit počítadlo znaků při psaní zpráv</string>
     <string name="loading_messages">Načítání zpráv…</string>
     <string name="no_reply_support">Odesílatel nepodporuje odpovědi</string>
-    <string name="draft">Návrh</string>
+    <string name="draft">Koncept</string>
     <string name="sending">Odesílá se…</string>
     <string name="pin_conversation">Připnout nahoru</string>
     <string name="unpin_conversation">Odepnout</string>
