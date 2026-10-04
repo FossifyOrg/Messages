@@ -546,7 +546,7 @@ class ThreadActivity : SimpleActivity() {
                     val contact = SimpleContact(
                         rawId = number.hashCode(),
                         contactId = number.hashCode(),
-                        name = if (numbers.size == 1) name else number,
+                        name = if (numbers.size == 1) name.ifBlank { number } else number,
                         photoUri = "",
                         phoneNumbers = arrayListOf(phoneNumber),
                         birthdays = ArrayList(),
