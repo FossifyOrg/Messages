@@ -158,6 +158,7 @@ import org.fossify.messages.extensions.toSortedMessages
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.extensions.updateScheduledMessagesThreadId
+import org.fossify.messages.helpers.AudioPlayerManager
 import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
@@ -323,6 +324,7 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onStop() {
         super.onStop()
+        AudioPlayerManager.release()
         saveDraftMessage()
     }
 
@@ -709,6 +711,9 @@ class ThreadActivity : SimpleActivity() {
         val hasMessages = messages.isNotEmpty()
 
         runOnUiThread {
+            messagesToRemove.forEach { message ->
+                message.attachment?.attachments?.forEach { AudioPlayerManager.release(it.getUri()) }
+            }
             threadItems = latestThreadItems
             if (!hasMessages) {
                 finish()
@@ -1967,6 +1972,9 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun cancelScheduledMessageAndRefresh(messageId: Long) {
+        messages.firstOrNull { it.id == messageId && it.isScheduled }?.attachment?.attachments?.forEach {
+            AudioPlayerManager.release(it.getUri())
+        }
         ensureBackgroundThread {
             deleteScheduledMessage(messageId)
             cancelScheduleSendPendingIntent(messageId)
