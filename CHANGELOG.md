@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added inline audio player for MMS attachments ([#261])
+
 ### Fixed
 - Fixed exposed action receivers for security ([#834])
 - Fixed incorrect SMS/MMS deletion from notifications in rare cases
@@ -41,7 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added support for custom fonts
 - Added "Copy number to clipboard" option inside chat overflow menu ([#651])
-- Added inline audio player for MMS attachments
 
 ### Changed
 - Improved multi-message copy formatting with timestamps and sender names
@@ -274,6 +276,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
 [#651]: https://github.com/FossifyOrg/Messages/issues/651
 [#713]: https://github.com/FossifyOrg/Messages/issues/713
+[#261]: https://github.com/FossifyOrg/Messages/issues/261
 [#829]: https://github.com/FossifyOrg/Messages/issues/829
 [#834]: https://github.com/FossifyOrg/Messages/issues/834
 

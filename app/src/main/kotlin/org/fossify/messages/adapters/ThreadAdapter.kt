@@ -37,7 +37,6 @@ import org.fossify.commons.extensions.copyToClipboard
 import org.fossify.commons.extensions.formatDateOrTime
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getProperPrimaryColor
-import org.fossify.commons.extensions.getProperTextColor
 import org.fossify.commons.extensions.getTextSize
 import org.fossify.commons.extensions.getTimeFormat
 import org.fossify.commons.extensions.shareTextIntent
@@ -82,7 +81,6 @@ import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENDING
 import org.fossify.messages.helpers.THREAD_SENT_MESSAGE_SENT
 import org.fossify.messages.helpers.generateStableId
 import org.fossify.messages.helpers.setupAudio
-import org.fossify.messages.helpers.setupAudioPreview
 import org.fossify.messages.helpers.setupDocumentPreview
 import org.fossify.messages.helpers.setupVCardPreview
 import org.fossify.messages.models.Attachment
@@ -391,15 +389,15 @@ class ThreadAdapter(
                 setupSentMessageView(messageBinding = this, message = message)
             }
 
+            threadMessageAttachmentsHolder.removeAllViews()
             if (message.attachment?.attachments?.isNotEmpty() == true) {
                 threadMessageAttachmentsHolder.beVisible()
-                threadMessageAttachmentsHolder.removeAllViews()
                 for (attachment in message.attachment.attachments) {
                     val mimetype = attachment.mimetype
                     when {
                         mimetype.isImageMimeType() || mimetype.isVideoMimeType() -> setupImageView(holder, binding = this, message, attachment)
                         mimetype.isPlayableAudioMimeType() ->
-                            setupAudioView(binding = this, attachment)
+                            setupAudioView(holder, threadMessageAttachmentsHolder, message, attachment)
                         mimetype.isVCardMimeType() -> setupVCardView(holder, threadMessageAttachmentsHolder, message, attachment)
                         else -> setupFileView(holder, threadMessageAttachmentsHolder, message, attachment)
                     }
@@ -545,14 +543,16 @@ class ThreadAdapter(
         }
     }
 
-    private fun setupAudioView(binding: ItemMessageBinding, attachment: Attachment) = binding.apply {
-        val uri = attachment.getUri()
-
+    private fun setupAudioView(holder: ViewHolder, parent: LinearLayout, message: Message, attachment: Attachment) {
         val audioView = ItemAttachmentAudioBinding.inflate(layoutInflater).apply {
-            setupAudio(uri = uri)
+            setupAudio(
+                uri = attachment.getUri(),
+                onSelect = { holder.viewClicked(message) },
+                onLongClick = { holder.viewLongClicked() },
+                isSelecting = { actModeCallback.isSelectable }
+            )
         }.root
-
-        threadMessageAttachmentsHolder.addView(audioView)
+        parent.addView(audioView)
     }
 
     private fun setupVCardView(holder: ViewHolder, parent: LinearLayout, message: Message, attachment: Attachment) {

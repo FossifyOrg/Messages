@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/thread_attachment_wrapper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/section_holder_stroke"
     android:foreground="@drawable/ripple_all_corners"
-    android:padding="8dp"
-    android:scrollbarSize="4dp">
+    android:padding="8dp">
 
     <ImageButton
         android:id="@+id/play_button"
@@ -37,9 +35,9 @@
         app:layout_constraintStart_toEndOf="@+id/play_button"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <org.fossify.commons.views.MyTextView
         android:id="@+id/duration"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0:00"
         android:textColor="@color/design_default_color_primary"
