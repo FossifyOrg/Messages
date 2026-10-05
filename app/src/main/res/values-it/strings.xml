@@ -129,4 +129,6 @@
     <string name="group_message_send_description">Gli MMS di gruppo mantengono le risposte in un\'unica conversazione, ma potrebbero essere applicati costi dal gestore. L\'invio separato invia un messaggio a ogni persona. Puoi modificare questa impostazione in seguito nelle impostazioni dell\'app.</string>
     <string name="group_mms">MMS di gruppo</string>
     <string name="separate_messages">Invia separatamente</string>
+    <string name="play">Riproduci</string>
+    <string name="pause">Interrompi</string>
 </resources>
