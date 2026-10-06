@@ -126,4 +126,6 @@
     <string name="group_message_send_description">Grupa MMS metas ĉiujn respondojn en unu konversacio, sed operatoraj honorarioj eble aplikiĝos. Aparta sendado sendas unu mesaĝon al ĉiu ricevanto. Tio ĉi ŝanĝeblos poste per la aplikaĵaj agordoj.</string>
     <string name="group_mms">Grupa MMS</string>
     <string name="separate_messages">Aparta sendado</string>
+    <string name="play">Ludi</string>
+    <string name="pause">Paŭzi</string>
 </resources>
