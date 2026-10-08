@@ -158,6 +158,7 @@ import org.fossify.messages.extensions.toSortedMessages
 import org.fossify.messages.extensions.updateConversationArchivedStatus
 import org.fossify.messages.extensions.updateLastConversationMessage
 import org.fossify.messages.extensions.updateScheduledMessagesThreadId
+import org.fossify.messages.helpers.AudioPlayerManager
 import org.fossify.messages.helpers.CAPTURE_AUDIO_INTENT
 import org.fossify.messages.helpers.CAPTURE_PHOTO_INTENT
 import org.fossify.messages.helpers.CAPTURE_VIDEO_INTENT
@@ -323,6 +324,7 @@ class ThreadActivity : SimpleActivity() {
 
     override fun onStop() {
         super.onStop()
+        AudioPlayerManager.release()
         saveDraftMessage()
     }
 
@@ -534,24 +536,26 @@ class ThreadActivity : SimpleActivity() {
 
             if (participants.isEmpty()) {
                 val name = intent.getStringExtra(THREAD_TITLE) ?: ""
-                val number = intent.getStringExtra(THREAD_NUMBER)
-                if (number == null) {
+                val numbers = getPhoneNumbersFromIntent()
+                if (numbers.isEmpty()) {
                     toast(org.fossify.commons.R.string.unknown_error_occurred)
                     finish()
                     return@ensureBackgroundThread
                 }
 
-                val phoneNumber = PhoneNumber(number, 0, "", number)
-                val contact = SimpleContact(
-                    rawId = 0,
-                    contactId = 0,
-                    name = name,
-                    photoUri = "",
-                    phoneNumbers = arrayListOf(phoneNumber),
-                    birthdays = ArrayList(),
-                    anniversaries = ArrayList()
-                )
-                participants.add(contact)
+                numbers.forEach { number ->
+                    val phoneNumber = PhoneNumber(number, 0, "", number)
+                    val contact = SimpleContact(
+                        rawId = number.hashCode(),
+                        contactId = number.hashCode(),
+                        name = if (numbers.size == 1) name.ifBlank { number } else number,
+                        photoUri = "",
+                        phoneNumbers = arrayListOf(phoneNumber),
+                        birthdays = ArrayList(),
+                        anniversaries = ArrayList()
+                    )
+                    participants.add(contact)
+                }
             }
 
             if (!isRecycleBin) {
@@ -709,6 +713,9 @@ class ThreadActivity : SimpleActivity() {
         val hasMessages = messages.isNotEmpty()
 
         runOnUiThread {
+            messagesToRemove.forEach { message ->
+                message.attachment?.attachments?.forEach { AudioPlayerManager.release(it.getUri()) }
+            }
             threadItems = latestThreadItems
             if (!hasMessages) {
                 finish()
@@ -931,6 +938,7 @@ class ThreadActivity : SimpleActivity() {
                     hideKeyboard()
                     Intent(this@ThreadActivity, ThreadActivity::class.java).apply {
                         putExtra(THREAD_ID, newThreadId)
+                        putExtra(THREAD_NUMBER, Gson().toJson(numbers))
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(this)
                     }
@@ -1967,6 +1975,9 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun cancelScheduledMessageAndRefresh(messageId: Long) {
+        messages.firstOrNull { it.id == messageId && it.isScheduled }?.attachment?.attachments?.forEach {
+            AudioPlayerManager.release(it.getUri())
+        }
         ensureBackgroundThread {
             deleteScheduledMessage(messageId)
             cancelScheduleSendPendingIntent(messageId)

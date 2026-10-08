@@ -15,13 +15,13 @@ androidx-documentfile = "1.1.0"
 #Eventbus
 eventbus = "3.3.1"
 #Room
-room = "2.8.4"
+room = "2.8.5"
 #Fossify
 commons = "6.1.6"
 mmslib = "1.0.0"
 indicator-fast-scroll = "4524cd0b61"
 #Gradle
-gradlePlugins-agp = "9.4.0"
+gradlePlugins-agp = "9.4.1"
 #build
 app-build-compileSDKVersion = "36"
 app-build-targetSDK = "36"

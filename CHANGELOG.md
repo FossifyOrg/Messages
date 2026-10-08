@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added inline audio player for MMS attachments ([#261])
+
 ### Fixed
 - Fixed exposed action receivers for security ([#834])
 - Fixed incorrect SMS/MMS deletion from notifications in rare cases
@@ -24,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated translations
 
 ### Fixed
+- Fixed group message creation on Xiaomi devices ([#41])
 - Partially fixed issue with sending MMS images ([#45])
 - Fixed slow loading of the conversation list ([#234])
 
@@ -227,6 +231,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release
 
 [#13]: https://github.com/FossifyOrg/Messages/issues/13
+[#41]: https://github.com/FossifyOrg/Messages/issues/41
 [#45]: https://github.com/FossifyOrg/Messages/issues/45
 [#52]: https://github.com/FossifyOrg/Messages/issues/52
 [#70]: https://github.com/FossifyOrg/Messages/issues/70
@@ -273,6 +278,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
 [#651]: https://github.com/FossifyOrg/Messages/issues/651
 [#713]: https://github.com/FossifyOrg/Messages/issues/713
+[#261]: https://github.com/FossifyOrg/Messages/issues/261
 [#829]: https://github.com/FossifyOrg/Messages/issues/829
 [#834]: https://github.com/FossifyOrg/Messages/issues/834
 

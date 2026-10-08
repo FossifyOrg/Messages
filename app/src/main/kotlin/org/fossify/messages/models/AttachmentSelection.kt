@@ -2,11 +2,13 @@ package org.fossify.messages.models
 
 import android.net.Uri
 import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.isPlayableAudioMimeType
 import org.fossify.messages.extensions.isVCardMimeType
 import org.fossify.messages.extensions.isVideoMimeType
 import org.fossify.messages.helpers.ATTACHMENT_DOCUMENT
 import org.fossify.messages.helpers.ATTACHMENT_MEDIA
 import org.fossify.messages.helpers.ATTACHMENT_VCARD
+import org.fossify.messages.helpers.ATTACHMENT_AUDIO
 
 data class AttachmentSelection(
     val id: String,
@@ -20,6 +22,7 @@ data class AttachmentSelection(
         fun getViewTypeForMimeType(mimetype: String): Int {
             return when {
                 mimetype.isImageMimeType() || mimetype.isVideoMimeType() -> ATTACHMENT_MEDIA
+                mimetype.isPlayableAudioMimeType() -> ATTACHMENT_AUDIO
                 mimetype.isVCardMimeType() -> ATTACHMENT_VCARD
                 else -> ATTACHMENT_DOCUMENT
             }

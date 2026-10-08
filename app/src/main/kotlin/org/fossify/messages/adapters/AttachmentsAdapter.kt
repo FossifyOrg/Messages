@@ -19,14 +19,36 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import org.fossify.commons.activities.BaseSimpleActivity
-import org.fossify.commons.extensions.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.darkenColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.onGlobalLayout
+import org.fossify.commons.extensions.toast
 import org.fossify.messages.R
 import org.fossify.messages.activities.VCardViewerActivity
+import org.fossify.messages.databinding.ItemAttachmentAudioPreviewBinding
 import org.fossify.messages.databinding.ItemAttachmentDocumentPreviewBinding
 import org.fossify.messages.databinding.ItemAttachmentMediaPreviewBinding
 import org.fossify.messages.databinding.ItemAttachmentVcardPreviewBinding
-import org.fossify.messages.extensions.*
-import org.fossify.messages.helpers.*
+import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.isGifMimeType
+import org.fossify.messages.extensions.isImageMimeType
+import org.fossify.messages.extensions.isVideoMimeType
+import org.fossify.messages.extensions.launchViewIntent
+import org.fossify.messages.helpers.ATTACHMENT_AUDIO
+import org.fossify.messages.helpers.ATTACHMENT_DOCUMENT
+import org.fossify.messages.helpers.ATTACHMENT_MEDIA
+import org.fossify.messages.helpers.ATTACHMENT_VCARD
+import org.fossify.messages.helpers.AudioPlayerManager
+import org.fossify.messages.helpers.EXTRA_VCARD_URI
+import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.ImageCompressor
+import org.fossify.messages.helpers.setupAudioPreview
+import org.fossify.messages.helpers.setupDocumentPreview
+import org.fossify.messages.helpers.setupVCardPreview
 import org.fossify.messages.models.AttachmentSelection
 
 class AttachmentsAdapter(
@@ -53,6 +75,7 @@ class AttachmentsAdapter(
             ATTACHMENT_DOCUMENT -> ItemAttachmentDocumentPreviewBinding.inflate(inflater, parent, false)
             ATTACHMENT_VCARD -> ItemAttachmentVcardPreviewBinding.inflate(inflater, parent, false)
             ATTACHMENT_MEDIA -> ItemAttachmentMediaPreviewBinding.inflate(inflater, parent, false)
+            ATTACHMENT_AUDIO -> ItemAttachmentAudioPreviewBinding.inflate(inflater, parent, false)
             else -> throw IllegalArgumentException("Unknown view type: $viewType")
         }
 
@@ -68,7 +91,13 @@ class AttachmentsAdapter(
                         uri = attachment.uri,
                         title = attachment.filename,
                         mimeType = attachment.mimetype,
-                        onClick = { activity.launchViewIntent(attachment.uri, attachment.mimetype, attachment.filename) },
+                        onClick = {
+                            activity.launchViewIntent(
+                                attachment.uri,
+                                attachment.mimetype,
+                                attachment.filename
+                            )
+                        },
                         onRemoveButtonClicked = { removeAttachment(attachment) }
                     )
                 }
@@ -91,15 +120,23 @@ class AttachmentsAdapter(
                     binding = binding as ItemAttachmentMediaPreviewBinding,
                     attachment = attachment
                 )
+
+                ATTACHMENT_AUDIO -> {
+                    (binding as ItemAttachmentAudioPreviewBinding).setupAudioPreview(
+                        uri = attachment.uri,
+                        onRemoveButtonClicked = { removeAttachment(attachment) }
+                    )
+                }
             }
         }
     }
 
     fun clear() {
+        attachments.forEach { AudioPlayerManager.release(it.uri) }
         attachments.clear()
         submitList(emptyList())
         recyclerView.onGlobalLayout {
-            onAttachmentsRemoved()
+            if (attachments.isEmpty()) onAttachmentsRemoved()
         }
     }
 
@@ -110,6 +147,7 @@ class AttachmentsAdapter(
     }
 
     private fun removeAttachment(attachment: AttachmentSelection) {
+        AudioPlayerManager.release(attachment.uri)
         attachments.removeAll { AttachmentSelection.areItemsTheSame(it, attachment) }
         if (attachments.isEmpty()) {
             clear()
@@ -183,13 +221,24 @@ class AttachmentsAdapter(
             .override(size, size)
             .apply(options)
             .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>, isFirstResource: Boolean): Boolean {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>,
+                    isFirstResource: Boolean
+                ): Boolean {
                     removeAttachment(attachment)
                     activity.toast(org.fossify.commons.R.string.unknown_error_occurred)
                     return false
                 }
 
-                override fun onResourceReady(dr: Drawable, a: Any, t: Target<Drawable>, d: DataSource, i: Boolean): Boolean {
+                override fun onResourceReady(
+                    dr: Drawable,
+                    a: Any,
+                    t: Target<Drawable>,
+                    d: DataSource,
+                    i: Boolean
+                ): Boolean {
                     binding.thumbnail.beVisible()
                     binding.playIcon.beVisibleIf(attachment.mimetype.isVideoMimeType())
                     binding.compressionProgress.beGone()

@@ -132,4 +132,6 @@
     <string name="group_mms">Групповое MMS</string>
     <string name="separate_messages">Раздельная отправка</string>
     <string name="send_group_message">Формат группового сообщения</string>
+    <string name="play">Воспроизведение</string>
+    <string name="pause">Пауза</string>
 </resources>
