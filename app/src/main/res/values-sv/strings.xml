@@ -97,8 +97,8 @@
     <string name="import_sms">Importera sms</string>
     <string name="import_mms">Importera mms</string>
     <string name="no_option_selected">Du måste välja minst ett alternativ</string>
-    <string name="empty_destination_address">Det går inte att skicka meddelanden utan nummer</string>
-    <string name="unable_to_save_message">Det går inte att spara meddelandet på telefonen</string>
+    <string name="empty_destination_address">Lägg först till en mottagare</string>
+    <string name="unable_to_save_message">Det gick inte att spara meddelandet</string>
     <string name="error_service_is_unavailable">Det gick inte att skicka meddelandet, tjänsten är inte tillgänglig</string>
     <string name="error_radio_turned_off">Det gick inte att skicka meddelandet, radion är avstängd</string>
     <string name="invalid_short_code">Det går inte att svara på korta koder som den här</string>
