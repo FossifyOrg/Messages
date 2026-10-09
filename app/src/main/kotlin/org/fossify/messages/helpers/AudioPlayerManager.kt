@@ -33,6 +33,7 @@ object AudioPlayerManager {
     private var audioManager: AudioManager? = null
     private var noisyReceiverContext: Application? = null
     private var isPreparing = false
+    private var pendingSeekPositionMs = 0
     private val handler = Handler(Looper.getMainLooper())
     private val audioAttributes = AudioAttributes.Builder()
         .setUsage(AudioAttributes.USAGE_MEDIA)
@@ -90,9 +91,13 @@ object AudioPlayerManager {
     }
 
     fun seekTo(uri: Uri, positionMs: Int) {
-        if (currentUri != uri || isPreparing) return
+        if (currentUri != uri) return
         try {
-            mediaPlayer?.seekTo(positionMs)
+            if (isPreparing) {
+                pendingSeekPositionMs = positionMs
+            } else {
+                mediaPlayer?.seekTo(positionMs)
+            }
             currentListeners.forEach { it.onProgressUpdated(positionMs) }
         } catch (_: IllegalStateException) {
             playbackFailed()
@@ -125,6 +130,7 @@ object AudioPlayerManager {
         mediaPlayer = null
         currentUri = null
         isPreparing = false
+        pendingSeekPositionMs = 0
         player?.release()
         noisyReceiverContext?.unregisterReceiver(noisyReceiver)
         noisyReceiverContext = null
@@ -145,7 +151,7 @@ object AudioPlayerManager {
         return try {
             val playing = !isPreparing && player.isPlaying
             listener.onPlaybackStateChanged(playing)
-            if (!isPreparing) listener.onProgressUpdated(player.currentPosition)
+            listener.onProgressUpdated(if (isPreparing) pendingSeekPositionMs else player.currentPosition)
             handler.removeCallbacks(progressRunnable)
             if (playing) handler.post(progressRunnable)
             true
@@ -160,12 +166,13 @@ object AudioPlayerManager {
             val player = MediaPlayer()
             mediaPlayer = player
             isPreparing = true
+            pendingSeekPositionMs = positionMs
             player.apply {
                 setAudioAttributes(audioAttributes)
                 setOnPreparedListener {
                     isPreparing = false
-                    it.seekTo(positionMs)
-                    currentListeners.forEach { listener -> listener.onProgressUpdated(positionMs) }
+                    it.seekTo(pendingSeekPositionMs)
+                    currentListeners.forEach { listener -> listener.onProgressUpdated(pendingSeekPositionMs) }
                     startPlayback(context)
                 }
                 setOnCompletionListener {
