@@ -194,8 +194,10 @@ import org.fossify.messages.models.SIMCard
 import org.fossify.messages.models.ThreadItem
 import org.fossify.messages.models.ThreadItem.ThreadDateTime
 import org.fossify.messages.models.ThreadItem.ThreadError
+import org.fossify.messages.models.ThreadItem.ThreadMessage
 import org.fossify.messages.models.ThreadItem.ThreadSending
 import org.fossify.messages.models.ThreadItem.ThreadSent
+import org.fossify.messages.models.withSenderGrouping
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -703,7 +705,7 @@ class ThreadActivity : SimpleActivity() {
         fromRecycleBin: Boolean,
     ) {
         val messagesToRemoveSet = messagesToRemove.toSet()
-        val deletePosition = threadItems.indexOf(messagesToRemove.first())
+        val deletePosition = threadItems.indexOfFirst { (it as? ThreadMessage)?.message == messagesToRemove.first() }
         messages = messages.toSortedMessages()
             .filterNot { it in messagesToRemoveSet }
         val latestThreadItems = getThreadItems()
@@ -753,7 +755,7 @@ class ThreadActivity : SimpleActivity() {
 
     private fun jumpToMessage(messageId: Long) {
         if (messages.any { it.id == messageId }) {
-            val index = threadItems.indexOfFirst { (it as? Message)?.id == messageId }
+            val index = threadItems.indexOfFirst { (it as? ThreadMessage)?.message?.id == messageId }
             if (index != -1) binding.threadMessagesList.smoothScrollToPosition(index)
             return
         }
@@ -780,7 +782,7 @@ class ThreadActivity : SimpleActivity() {
             runOnUiThread {
                 threadItems = latestThreadItems
                 loadingOlderMessages = false
-                val index = latestThreadItems.indexOfFirst { (it as? Message)?.id == messageId }
+                val index = latestThreadItems.indexOfFirst { (it as? ThreadMessage)?.message?.id == messageId }
                 getOrCreateThreadAdapter().updateMessages(
                     newMessages = latestThreadItems, scrollPosition = index, smoothScroll = true
                 )
@@ -1358,7 +1360,7 @@ class ThreadActivity : SimpleActivity() {
                 items.add(ThreadDateTime(message.date, simCardID))
                 prevDateTime = message.date
             }
-            items.add(message)
+            items.add(ThreadMessage(message))
 
             if (message.type == Telephony.Sms.MESSAGE_TYPE_FAILED) {
                 items.add(ThreadError(message.id, message.body))
@@ -1389,7 +1391,7 @@ class ThreadActivity : SimpleActivity() {
             bus?.post(Events.RefreshConversations())
         }
 
-        return items
+        return items.withSenderGrouping(participants.getAddresses().distinct().size > 1)
     }
 
     private fun launchActivityForResult(

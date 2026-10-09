@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added sender names in group conversations ([#81])
+
+### Changed
+- Removed avatars from one-to-one conversations ([#215])
+- Reduced avatar sizes in group conversations ([#215])
 
 ## [1.10.1] - 2026-10-10
 ### Changed
@@ -251,6 +257,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#52]: https://github.com/FossifyOrg/Messages/issues/52
 [#70]: https://github.com/FossifyOrg/Messages/issues/70
 [#75]: https://github.com/FossifyOrg/Messages/issues/75
+[#81]: https://github.com/FossifyOrg/Messages/issues/81
 [#82]: https://github.com/FossifyOrg/Messages/issues/82
 [#99]: https://github.com/FossifyOrg/Messages/issues/99
 [#115]: https://github.com/FossifyOrg/Messages/issues/115
@@ -262,6 +269,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#180]: https://github.com/FossifyOrg/Messages/issues/180
 [#185]: https://github.com/FossifyOrg/Messages/issues/185
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
+[#215]: https://github.com/FossifyOrg/Messages/issues/215
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
 [#234]: https://github.com/FossifyOrg/Messages/issues/234
