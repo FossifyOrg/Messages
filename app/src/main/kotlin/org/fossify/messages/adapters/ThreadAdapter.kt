@@ -547,6 +547,9 @@ class ThreadAdapter(
         val audioView = ItemAttachmentAudioBinding.inflate(layoutInflater).apply {
             setupAudio(
                 uri = attachment.getUri(),
+                onOpenWith = {
+                    activity.launchViewIntent(attachment.getUri(), attachment.mimetype, attachment.filename)
+                },
                 onSelect = { holder.viewClicked(message) },
                 onLongClick = { holder.viewLongClicked() },
                 isSelecting = { actModeCallback.isSelectable }

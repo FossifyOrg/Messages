@@ -99,9 +99,10 @@ fun ItemAttachmentDocumentBinding.setupDocumentPreview(
 
 fun ItemAttachmentAudioPreviewBinding.setupAudioPreview(
     uri: Uri,
+    onOpenWith: () -> Unit,
     onRemoveButtonClicked: (() -> Unit)? = null,
 ) {
-    audioAttachmentHolder.setupAudio(uri)
+    audioAttachmentHolder.setupAudio(uri, onOpenWith)
     removeAttachmentButtonHolder.removeAttachmentButton.apply {
         beVisible()
         background.applyColorFilter(context.getProperPrimaryColor())
@@ -116,6 +117,7 @@ fun ItemAttachmentAudioPreviewBinding.setupAudioPreview(
 @SuppressLint("ClickableViewAccessibility")
 fun ItemAttachmentAudioBinding.setupAudio(
     uri: Uri,
+    onOpenWith: () -> Unit,
     onSelect: (() -> Unit)? = null,
     onLongClick: (() -> Unit)? = null,
     isSelecting: () -> Boolean = { false }
@@ -162,6 +164,7 @@ fun ItemAttachmentAudioBinding.setupAudio(
         override fun onPlaybackError() {
             onPlaybackCompleted()
             context.toast(org.fossify.commons.R.string.unknown_error_occurred)
+            onOpenWith()
         }
 
         override fun onViewAttachedToWindow(view: View) {

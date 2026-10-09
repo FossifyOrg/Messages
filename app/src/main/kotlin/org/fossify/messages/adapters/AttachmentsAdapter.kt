@@ -124,6 +124,9 @@ class AttachmentsAdapter(
                 ATTACHMENT_AUDIO -> {
                     (binding as ItemAttachmentAudioPreviewBinding).setupAudioPreview(
                         uri = attachment.uri,
+                        onOpenWith = {
+                            activity.launchViewIntent(attachment.uri, attachment.mimetype, attachment.filename)
+                        },
                         onRemoveButtonClicked = { removeAttachment(attachment) }
                     )
                 }
