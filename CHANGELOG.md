@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed exposed action receivers for security ([#834])
 - Fixed incorrect SMS/MMS deletion from notifications in rare cases
+- Fixed MMS images stuck on "Sending" when sent together ([#185])
+- Partially fixed MMS image sending failures ([#45])
 
 ## [1.9.1] - 2026-07-19
 ### Changed
@@ -248,6 +250,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#165]: https://github.com/FossifyOrg/Messages/issues/165
 [#177]: https://github.com/FossifyOrg/Messages/issues/177
 [#180]: https://github.com/FossifyOrg/Messages/issues/180
+[#185]: https://github.com/FossifyOrg/Messages/issues/185
 [#209]: https://github.com/FossifyOrg/Messages/issues/209
 [#217]: https://github.com/FossifyOrg/Messages/issues/217
 [#225]: https://github.com/FossifyOrg/Messages/issues/225
