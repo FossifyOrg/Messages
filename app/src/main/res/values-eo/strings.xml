@@ -87,14 +87,12 @@
     <string name="error_radio_turned_off">Ne povis sendi mesaĝon (radioaparato estas malŝaltita)</string>
     <string name="invalid_short_code">Ne eblas respondi al mallongaj telefonnumeroj kiel tiu ĉi</string>
     <string name="invalid_short_code_desc">Nur eblas respondi al mallongaj telefonnumeroj kiel \"503501\", ne al tiuj enhavantaj leterojn kaj nombrojn kiel \"AB-CD0\".</string>
-    <string name="sim_card_not_available">SIM-karto ne disponeblas</string>
     <string name="couldnt_download_mms">Ne povis elŝuti MMS</string>
     <string name="export_blocked_keywords">Eksporti blokitajn ŝlosilvortojn</string>
     <string name="import_blocked_keywords">Importi blokitajn ŝlosilvortojn</string>
     <string name="faq_2_title">La ricevonto ne ricevas miajn MMS. Ĉu mi povus ion ajn fari pri tio?</string>
     <string name="faq_2_text">La grandeco de MMS estis limigita pro operatoroj. Vi povas provi difini pli malgrandan limigon en la aplikaĵaj agordoj.</string>
     <string name="faq_3_title">Ĉu la aplikaĵo subtenas planitajn mesaĝojn?</string>
-    <string name="carrier_send_error">Ne povis sendi mesaĝon (eraro de operatoro)</string>
     <string name="conversation_details">Konversaciaj detaloj</string>
     <string name="channel_received_sms">Ricevis SMS-mesaĝon</string>
     <string name="reply">Respondi</string>
@@ -118,7 +116,6 @@
     <string name="empty_archive_confirmation">Ĉu vi certas, ke vi volas malplenigi la arkivon? Ĉiuj enarkivitaj konversacioj estos perditaj.</string>
     <string name="keyword">Ŝlosilvorto</string>
     <string name="faq_1_text">Bedaŭrinde, necesas por sendi MMS-ajn kunsendaĵojn. Ne povis sendi MMS estus grandega malavantaĝon komparita kun aliaj aplikaĵojn, do ni decidi preni tiun ĉi vojon. Tamen, kiel kutime, estas neniom da reklamoj, spurado nek analizoj. La interreto nur estas uzata por la sendado de MMS.</string>
-    <string name="unknown_error_occurred_sending_message">Ne povis sendi mesaĝon (erarkodo: %d)</string>
     <string name="keep_conversations_archived">Gardi arkivigitajn konversaciojn</string>
     <string name="faq_4_title">Kial miaj respondoj al mesaĝoj en grupoj aperas kiel unuopaj mesaĝoj por la ricevantoj?</string>
     <string name="faq_4_text">Vi devas ŝalti «sendi grupajn mesaĝojn kiel MMS» en la aplikaĵaj agordoj. Tio certigos, ke grupaj mesaĝoj estos ĝuste senditaj kiel MMS kaj permesos, ke ĉiuj partoprenantoj vidu la respondojn de la aliaj.</string>

@@ -76,8 +76,6 @@
     <string name="unable_to_save_message">Az üzenet nem menthető a telefónia-adatbázisba</string>
     <string name="error_service_is_unavailable">Nem sikerült az üzenet elküldése, a szolgáltatás nem érhető el</string>
     <string name="error_radio_turned_off">Nem sikerült az üzenet elküldése, a rádió ki van kapcsolva</string>
-    <string name="carrier_send_error">Nem sikerült az üzenet elküldése, szolgáltatói hiba</string>
-    <string name="unknown_error_occurred_sending_message">Nem sikerült az üzenet elküldése, hibakód: %d</string>
     <string name="invalid_short_code">Nem válaszolhat így a rövid kódokra</string>
     <string name="invalid_short_code_desc">Csak a számokat tartalmazó rövid kódokra válaszolhat, például a „503501”-re, de a számokat és betűket tartalmazókra, például a „AB-CD0”-ra, nem.</string>
     <string name="faq_1_title">Miért kér az alkalmazás hozzáférést az internethez\?</string>
@@ -99,7 +97,6 @@
     <string name="empty_archive_confirmation">Biztos benne, hogy ki akarja üríteni az archívumot? Az összes archivált beszélgetés véglegesen elvész.</string>
     <string name="manage_blocked_keywords">Letiltott kulcsszavak kezelése</string>
     <string name="attachment_sized_exceeds_max_limit">A melléklet mérete meghaladja a maximális MMS-korlátot</string>
-    <string name="sim_card_not_available">SIM-kártya nem elérhető</string>
     <string name="couldnt_download_mms">Az MMS letöltése nem sikerült</string>
     <string name="empty_archive">Törölje az összes archivált beszélgetést</string>
     <string name="empty_recycle_bin_messages_confirmation">Biztosan ki szeretné üríteni a Lomtárat? Az üzenetek véglegesen elvesznek.</string>

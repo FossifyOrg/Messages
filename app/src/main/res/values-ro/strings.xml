@@ -111,9 +111,6 @@
     <string name="restore">Restaurare</string>
     <string name="enable_custom_notifications">Activează notificările personalizate</string>
     <string name="error_service_is_unavailable">Nu s-a putut trimite mesajul, serviciul nu este disponibil</string>
-    <string name="carrier_send_error">Nu s-a putut trimite mesajul, eroare de operator</string>
-    <string name="unknown_error_occurred_sending_message">Nu s-a putut trimite mesajul, cod de eroare: %d</string>
-    <string name="sim_card_not_available">Cartela SIM nu este disponibilă</string>
     <string name="faq_3_title">Aplicația acceptă mesajele programate?</string>
     <string name="archive">Arhivează</string>
     <string name="empty_archive_confirmation">Sigur dorești să golești arhiva? Toate conversațiile arhivate se vor pierde definitiv.</string>

@@ -104,12 +104,9 @@
     <string name="unable_to_save_message">No se puede guardar el mensaje en la base de datos del teléfono</string>
     <string name="error_service_is_unavailable">No se ha podido enviar el mensaje, el servicio no está disponible</string>
     <string name="error_radio_turned_off">No se pudo enviar el mensaje, la radio está apagada</string>
-    <string name="carrier_send_error">No se pudo enviar el mensaje, error del operador</string>
-    <string name="unknown_error_occurred_sending_message">No se ha podido enviar el mensaje, código de error: %d</string>
     <string name="invalid_short_code">No se puede responder a códigos cortos como este</string>
     <string name="invalid_short_code_desc">Sólo puede responder a códigos cortos con números como \"503501\", pero no a códigos que contengan letras y números como \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">El tamaño del archivo adjunto supera el límite máximo de MMS</string>
-    <string name="sim_card_not_available">No hay una tarjeta SIM disponible</string>
     <string name="couldnt_download_mms">No se puede descargar el MMS</string>
     <string name="faq_1_title">¿Por qué la aplicación requiere acceso a internet\?</string>
     <string name="faq_1_text">Tristemente es necesitado para enviar archivos adjuntos MMS. El no poder enviar MMS sería una desventaja realmente enorme comparada con otras aplicaciones, así que decidimos tomar este camino. Sin embargo, como siempre, no hay anuncios, rastreo o análisis, por lo que el internet solo es usado para enviar MMS.</string>

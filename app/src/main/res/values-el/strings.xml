@@ -101,12 +101,9 @@
     <string name="unable_to_save_message">Αδυναμία αποθήκευσης μηνύματος στη βάση δεδομένων τηλεφωνίας</string>
     <string name="error_service_is_unavailable">Αδυναμία αποστολής μηνύματος. Η υπηρεσία δεν είναι διαθέσιμη</string>
     <string name="error_radio_turned_off">Αδυναμία αποστολής μηνύματος, η οπρόσβαση radio απενεργοποιήθηκε</string>
-    <string name="carrier_send_error">Αδυναμία αποστολής μηνύματος, σφάλμα φορέα</string>
-    <string name="unknown_error_occurred_sending_message">Αδυναμία αποστολής μηνύματος, κωδικός σφάλματος: %d</string>
     <string name="invalid_short_code">Αδυναμία απάντησης σε σύντομους κωδικούς όπως αυτός</string>
     <string name="invalid_short_code_desc">Μπορείτε να απαντήσετε μόνο σε σύντομους κωδικούς με αριθμούς όπως \"503501\" αλλά όχι σε κωδικούς που περιέχουν γράμματα και αριθμούς όπως \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Το μέγεθος συνημμένου υπερβαίνει το μέγιστο όριο MMS</string>
-    <string name="sim_card_not_available">Δεν διατίθεται κάρτα SIM</string>
     <string name="couldnt_download_mms">Δεν ήταν δυνατή η λήψη MMS</string>
     <string name="faq_1_title">Γιατί η εφαρμογή απαιτεί πρόσβαση στο διαδίκτυο;</string>
     <string name="faq_1_text">Δυστυχώς, απαιτείται για την αποστολή συνημμένων MMS. Το να μην είμαστε σε θέση να στείλουμε MMS θα αποτελούσε πραγματικά τεράστιο μειονέκτημα σε σύγκριση με άλλες εφαρμογές, επομένως αποφασίσαμε να ακολουθήσουμε αυτόν τον δρόμο. Ωστόσο, όπως συνήθως, δεν υπάρχουν καθόλου διαφημίσεις, παρακολούθηση ή αναλύσεις, το διαδίκτυο χρησιμοποιείται μόνο για την αποστολή MMS.</string>

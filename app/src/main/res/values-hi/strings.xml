@@ -59,7 +59,6 @@
     <string name="no_option_selected">आपको कम से कम एक आइटम का चयन करना होगा</string>
     <string name="empty_destination_address">खाली नंबर पर संदेश नहीं भेजा जा सकता</string>
     <string name="error_service_is_unavailable">संदेश नहीं भेजा जा सका, सेवा अनुपलब्ध है</string>
-    <string name="carrier_send_error">संदेश नहीं भेजा जा सका, वाहक त्रुटि</string>
     <string name="couldnt_download_mms">MMS डाउनलोड नहीं हो सका</string>
     <string name="faq_1_title">ऐप को इंटरनेट तक पहुंच की आवश्यकता क्यों है?</string>
     <string name="faq_2_title">दूसरे पक्ष को मेरा MMS प्राप्त नहीं हो रहा है, क्या मैं इसके बारे में कुछ कर सकता हूँ?</string>
@@ -68,7 +67,6 @@
     <string name="group_message_mms">समूह संदेशों को MMS के रूप में भेजें</string>
     <string name="send_long_message_mms">ग्रुप वर्चस्व को MMS के रूप में शेयर में रखा गया</string>
     <string name="import_sms">SMS आयात करें</string>
-    <string name="sim_card_not_available">SIM कार्ड उपलब्ध नहीं है</string>
     <string name="faq_1_text">अफसोस की बात है कि MMS अनुलग्नक भेजने के लिए इसकी आवश्यकता है। MMS नहीं भेज पाना अन्य ऐप्स की तुलना में वास्तव में एक बड़ा नुकसान होगा, इसलिए हमने इस रास्ते पर जाने का फैसला किया। हालाँकि, जैसा कि आमतौर पर होता है, इसमें कोई विज्ञापन, ट्रैकिंग या विश्लेषण नहीं होता है, इंटरनेट का उपयोग केवल MMS भेजने के लिए किया जाता है।</string>
     <string name="me">मैं</string>
     <string name="sender_only">केवल प्रेषक</string>
@@ -110,7 +108,6 @@
     <string name="keyword">कीवर्ड</string>
     <string name="enable_delivery_reports">डिलीवरी रिपोर्ट सक्षम करें</string>
     <string name="invalid_short_code_desc">आप केवल \"503501\" जैसे नंबरों वाले छोटे कोड का उत्तर दे सकते हैं, लेकिन \"AB-CD0\" जैसे अक्षरों और संख्याओं वाले कोड का नहीं।</string>
-    <string name="unknown_error_occurred_sending_message">संदेश नहीं भेजा जा सका, त्रुटि कोड: %d</string>
     <string name="invalid_short_code">इस तरह के छोटे कोड का उत्तर नहीं दे सकते</string>
     <string name="faq_3_text">हां, आप भेजें बटन को देर तक दबाकर और वांछित दिनांक और समय चुनकर भविष्य में भेजे जाने वाले संदेशों को शेड्यूल कर सकते हैं।</string>
     <string name="empty_archive">सभी संग्रहीत वार्तालाप हटाएँ</string>

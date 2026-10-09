@@ -25,18 +25,18 @@ class SmsStatusSentReceiver : SendStatusReceiver() {
 
     override fun updateAndroidDatabase(context: Context, intent: Intent, receiverResultCode: Int) {
         val messageUri: Uri? = intent.data
-        val resultCode = resultCode
         val messagingUtils = context.messagingUtils
 
-        val type = if (resultCode == Activity.RESULT_OK) {
+        val type = if (receiverResultCode == Activity.RESULT_OK) {
             Sms.MESSAGE_TYPE_SENT
         } else {
             Sms.MESSAGE_TYPE_FAILED
         }
         messagingUtils.updateSmsMessageSendingStatus(messageUri, type)
         messagingUtils.maybeShowErrorToast(
-            resultCode = resultCode,
-            errorCode = intent.getIntExtra(EXTRA_ERROR_CODE, NO_ERROR_CODE)
+            resultCode = receiverResultCode,
+            errorCode = intent.getIntExtra(EXTRA_ERROR_CODE, NO_ERROR_CODE),
+            noDefault = intent.getBooleanExtra(EXTRA_NO_DEFAULT, false)
         )
     }
 

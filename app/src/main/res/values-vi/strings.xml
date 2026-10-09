@@ -98,12 +98,9 @@
     <string name="unable_to_save_message">Không thể lưu tin nhắn vào cơ sở dữ liệu điện thoại</string>
     <string name="error_service_is_unavailable">Không thể gửi tin nhắn, dịch vụ không khả dụng</string>
     <string name="error_radio_turned_off">Không thể gửi tin nhắn, radio bị tắt</string>
-    <string name="carrier_send_error">Không thể gửi tin nhắn, lỗi nhà mạng</string>
-    <string name="unknown_error_occurred_sending_message">Không thể gửi tin nhắn, mã lỗi: %d</string>
     <string name="invalid_short_code">Không thể trả lời các mã ngắn</string>
     <string name="invalid_short_code_desc">Bạn chỉ có thể trả lời các mã ngắn có số như \"503501\" chứ không thể trả lời các mã bao gồm cả ký tự và số như \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Kích cỡ tệp đính kèm vượt quá giới hạn MMS</string>
-    <string name="sim_card_not_available">Thẻ SIM không khả dụng</string>
     <string name="couldnt_download_mms">Không thể tải xuống MMS</string>
     <string name="faq_1_title">Tại sao ứng dụng cần quyền truy cập Internet?</string>
     <string name="faq_1_text">Nó cần thiết để gửi tệp đính kèm MMS. Không thể gửi MMS sẽ là một bất lợi thực sự rất lớn so với các ứng dụng khác, vì vậy chúng tôi quyết định đi theo hướng này. Tuy nhiên, như thường lệ, không có quảng cáo, theo dõi hay phân tích nào, internet chỉ được sử dụng để gửi MMS.</string>

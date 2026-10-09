@@ -33,7 +33,6 @@
     <string name="export_mms">Izgūt MMS</string>
     <string name="import_sms">Ievietot SMS</string>
     <string name="empty_destination_address">Nevar nosūtīt ziņojumu tukšam numuram</string>
-    <string name="carrier_send_error">Nevarēja nosūtīt ziņojumu, operatora kļūda</string>
     <string name="faq_1_title">Kādēļ lietotnei ir nepieciešama piekļuve internetam?</string>
     <string name="faq_2_text">Operatori ierobežo MMS lielumu. Lietotnes iestatījumos var mēģināt iestatīt mazāku ierobežojumu.</string>
     <string name="add_person">Pievienot cilvēku</string>
@@ -92,7 +91,6 @@
     <string name="error_service_is_unavailable">Nevarēja nosūtīt ziņojumu, pakalpojums nav pieejams</string>
     <string name="invalid_short_code_desc">Var atbildēt uz īsajiem kodiem ar cipariem, piemēram, \"503501\", bet ne uz kodiem, kas satur burtus un ciparus, piemēram, \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Pielikuma lielums pārsniedz MMS ierobežojumu</string>
-    <string name="sim_card_not_available">SIM karte nav pieejama</string>
     <string name="enable_custom_notifications">Iespējot pielāgotus paziņojumus</string>
     <string name="keywords">Atslēgvārdi</string>
     <string name="faq_3_title">Vai lietotne nodrošina ieplānotus ziņojumus?</string>
@@ -120,7 +118,6 @@
     <string name="restore_all_messages">Atjaunot visus ziņojumus</string>
     <string name="suggestions">Ieteikumi</string>
     <string name="skip_the_recycle_bin_messages">Izlaist atkritni, izdzēst ziņojumus uzreiz</string>
-    <string name="unknown_error_occurred_sending_message">Nevarēja nosūtīt ziņojumu, kļūdas kods: %d</string>
     <string name="faq_1_text">Diemžēl tas ir nepieciešams MMS pielikumu nosūtīšanai. Nevarēšana nosūtīt MMS būtu ļoti liels trūkums salīdzinājumā ar citām lietotnēm, tādēļ mēs izlēmām rīkoties šādi. Tomēr, kā ierasts, šeit nav nekādu reklāmu, izsekošanas vai datu apkopošanas, internets tiek izmantots tikai MMS nosūtīšanai.</string>
     <string name="keep_conversations_archived">Paturēt sarunas arhivētas</string>
     <string name="faq_4_text">Lietotnes iestatījumos nepieciešams iespējot “Nosūtīt kopu ziņas kā MMS”. Tas nodrošinās, ka kopu ziņas tiek pareizi nosūtītas kā MMS, ļaujot visiem dalībniekiem redzēt citam cita atbildes.</string>

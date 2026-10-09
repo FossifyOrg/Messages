@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added inline audio player for MMS attachments ([#261])
 
+### Changed
+- Improved error messages when a message fails to send ([#315])
+
 ### Fixed
 - Fixed exposed action receivers for security ([#834])
 - Fixed incorrect SMS/MMS deletion from notifications in rare cases
@@ -260,6 +263,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#290]: https://github.com/FossifyOrg/Messages/issues/290
 [#294]: https://github.com/FossifyOrg/Messages/issues/294
 [#309]: https://github.com/FossifyOrg/Messages/issues/309
+[#315]: https://github.com/FossifyOrg/Messages/issues/315
 [#334]: https://github.com/FossifyOrg/Messages/issues/334
 [#349]: https://github.com/FossifyOrg/Messages/issues/349
 [#350]: https://github.com/FossifyOrg/Messages/issues/350

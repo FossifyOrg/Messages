@@ -99,12 +99,9 @@
     <string name="unable_to_save_message">Kan ikke gemme besked i telefonens database</string>
     <string name="error_service_is_unavailable">Kunne ikke sende besked; tjeneste ikke tilgængelig</string>
     <string name="error_radio_turned_off">Kunne ikke sende besked; radio er slukket</string>
-    <string name="carrier_send_error">Kunne ikke sende besked; operatørfejl</string>
-    <string name="unknown_error_occurred_sending_message">Kunne ikke sende besked. Fejlkode: %d</string>
     <string name="invalid_short_code">Kan ikke svare på korte koder som denne</string>
     <string name="invalid_short_code_desc">Du kan kun svare på korte koder med tal som \"503501\", men ikke på koder, der indeholder bogstaver og tal som \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Vedhæftningsstørrelse overskrider MMS-grænse</string>
-    <string name="sim_card_not_available">SIM-kort ikke tilgængeligt</string>
     <string name="couldnt_download_mms">Kunne ikke hente MMS</string>
     <string name="faq_1_title">Hvorfor kræver appen adgang til internettet\?</string>
     <string name="faq_1_text">Desværre er det nødvendigt for at sende MMS-vedhæftninger. Det ville være en stor ulempe ikke at kunne sende MMS\'er sammenlignet med andre apps, så vi valgte at gå denne vej. Men som sædvanlig er der ingen annoncer, sporing eller analyser overhovedet, og internettet bruges kun til at sende MMS\'er.</string>

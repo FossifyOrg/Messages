@@ -100,12 +100,9 @@
     <string name="unable_to_save_message">Impossible d\'enregistrer le message dans la base de données téléphonique</string>
     <string name="error_service_is_unavailable">Impossible d\'envoyer le message, service indisponible</string>
     <string name="error_radio_turned_off">Impossible d\'envoyer le message, la data est désactivée</string>
-    <string name="carrier_send_error">Impossible d\'envoyer le message, erreur de l\'opérateur</string>
-    <string name="unknown_error_occurred_sending_message">Impossible d\'envoyer le message, code d\'erreur : %d</string>
     <string name="invalid_short_code">Impossible de répondre à des codes courts comme celui-ci</string>
     <string name="invalid_short_code_desc">Vous pouvez répondre uniquement à des codes courts composés de chiffres tels que \"503501\", mais pas à des codes contenant des lettres et des chiffres tels que \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">La taille de la pièce jointe dépasse la limite maximale d\'un MMS</string>
-    <string name="sim_card_not_available">Carte SIM indisponible</string>
     <string name="couldnt_download_mms">Impossible de télécharger le MMS</string>
     <string name="faq_1_title">Pourquoi l\'application nécessite-t-elle un accès à Internet \?</string>
     <string name="faq_1_text">Malheureusement, il est nécessaire pour envoyer des pièces jointes MMS. Ne pas pouvoir envoyer de MMS serait un énorme inconvénient par rapport à d\'autres applications. Nous avons donc décidé de suivre cette voie. Cependant, comme d’habitude, il n’y a aucune publicité, suivi ou analyse. Internet est utilisé uniquement pour l’envoi de MMS.</string>

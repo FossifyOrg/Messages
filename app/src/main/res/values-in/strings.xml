@@ -65,8 +65,6 @@
     <string name="unable_to_save_message">Tidak dapat menyimpan pesan ke basis data telefoni</string>
     <string name="error_service_is_unavailable">Tidak dapat mengirim pesan, layanan tidak tersedia</string>
     <string name="error_radio_turned_off">Tidak dapat mengirim pesan, radio dimatikan</string>
-    <string name="carrier_send_error">Tidak dapat mengirim pesan, kesalahan penyedia jaringan</string>
-    <string name="unknown_error_occurred_sending_message">Tidak dapat mengirim pesan, kode kesalahan: %d</string>
     <string name="invalid_short_code">Tidak dapat membalas ke kode pendek seperti ini</string>
     <string name="invalid_short_code_desc">Anda hanya dapat membalas ke kode pendek dengan nomor seperti \"503501\" tetapi tidak ke kode berisi huruf dan angka seperti \"AB-CD0\".</string>
     <string name="faq_1_title">Mengapa aplikasi ini membutuhkan akses ke internet\?</string>
@@ -104,7 +102,6 @@
     <string name="attachment_sized_exceeds_max_limit">Ukuran lampiran melebihi batas maksimum yang diizinkan untuk MMS</string>
     <string name="blocked_keywords">Kata kunci yang diblokir</string>
     <string name="export_messages">Ekspor pesan</string>
-    <string name="sim_card_not_available">Kartu SIM tidak tersedia</string>
     <string name="not_blocking_keywords">Anda belum memblokir kata kunci apa pun. Anda dapat menambahkan kata kunci di sini untuk memblokir semua pesan yang mengandung kata kunci tersebut.</string>
     <string name="messages">Pesan</string>
     <string name="manage_blocked_keywords">Kelola kata kunci yang diblokir</string>

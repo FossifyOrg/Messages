@@ -25,10 +25,7 @@
     <string name="import_mms">MMS 불러오기</string>
     <string name="no_option_selected">한 개 이상의 항목을 선택해야 합니다</string>
     <string name="error_radio_turned_off">무선 통신이 사용 중지되어 있어 메시지가 전송되지 않았습니다</string>
-    <string name="carrier_send_error">통신 오류로 인해 메시지가 전송되지 않았습니다</string>
-    <string name="unknown_error_occurred_sending_message">다음 오류로 인해 메시지가 전송되지 않았습니다: %d</string>
     <string name="invalid_short_code">해당 단축 코드에는 답장할 수 없습니다</string>
-    <string name="sim_card_not_available">SIM 카드를 사용할 수 없습니다</string>
     <string name="couldnt_download_mms">MMS를 다운로드할 수 없습니다</string>
     <string name="attachment_sized_exceeds_max_limit">첨부 파일의 크기가 MMS 제한을 초과합니다</string>
     <string name="faq_1_title">왜 인터넷 접근 권한이 필요한가요?</string>

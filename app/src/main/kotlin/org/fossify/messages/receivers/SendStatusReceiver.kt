@@ -24,8 +24,9 @@ abstract class SendStatusReceiver : BroadcastReceiver() {
         const val SMS_SENT_ACTION = "org.fossify.org.fossify.messages.receiver.SMS_SENT"
         const val SMS_DELIVERED_ACTION = "org.fossify.org.fossify.messages.receiver.SMS_DELIVERED"
 
-        // Defined by platform, but no constant provided. See docs for SmsManager.sendTextMessage.
+        // Platform callback extras documented by SmsManager.sendTextMessage.
         const val EXTRA_ERROR_CODE = "errorCode"
+        const val EXTRA_NO_DEFAULT = "noDefault"
         const val EXTRA_SUB_ID = "subId"
 
         const val NO_ERROR_CODE = -1

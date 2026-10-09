@@ -107,12 +107,9 @@
     <string name="unable_to_save_message">Ezin izan dira gorde mezuak telefonoaren datu basean</string>
     <string name="error_service_is_unavailable">Ezin izan dira mezuak bidali, zerbitzua ez dago erabilgarri</string>
     <string name="error_radio_turned_off">Ezin izan da mezua bidali, irratia itzalita dago</string>
-    <string name="carrier_send_error">Ezin izan da mezua bidali, operadorearen errorea</string>
-    <string name="unknown_error_occurred_sending_message">Ezin izan da mezua bidali, errorearen kodea: %d</string>
     <string name="invalid_short_code">Ezin dira honelako kode laburrak erantzun</string>
     <string name="invalid_short_code_desc">Kode laburrei \"503501\" bezalako zenbakiekin soilik erantzun diezaiekezu, baina ez \"AB-CD0\" bezalako letrak eta zenbakiak dituzten kodeei.</string>
     <string name="attachment_sized_exceeds_max_limit">Eranskinaren tamainak MMSren gehienekoa gainditzen du</string>
-    <string name="sim_card_not_available">Ez dago SIM txartel erabilgarririk</string>
     <string name="couldnt_download_mms">Ezin dira MMSak deskargatu</string>
     <string name="faq_1_title">Zergatik eskatzen du aplikazioak Interneterako sarbidea?</string>
     <string name="faq_1_text">Zoritxarrez MMS eranskinak bidaltzeko beharrezkoa da. MMS-ak ezin bidalitzea oso desabantaila handia izango litzateke beste aplikazioekin alderatuta, beraz, bide horretatik joatea erabaki genuen. Hala ere, beti bezala, ez dago inolako iragarkirik, jarraipenik edo analisirik, Internet MMS bidaltzeko soilik erabiltzen da.</string>

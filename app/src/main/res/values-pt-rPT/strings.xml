@@ -26,9 +26,7 @@
     <string name="send_long_message_mms">Enviar mensagens longas como MMS</string>
     <string name="messages">Mensagens</string>
     <string name="export_messages">Exportar mensagens</string>
-    <string name="unknown_error_occurred_sending_message">Não foi possível enviar a mensagem. Erro: %d</string>
     <string name="attachment_sized_exceeds_max_limit">O anexo excede o tamanho máximo permitido para MMS</string>
-    <string name="sim_card_not_available">Cartão SIM não encontrado</string>
     <string name="couldnt_download_mms">Não foi possível descarregar a MMS</string>
     <string name="faq_1_title">Porque é que a aplicação requer acesso à Internet?</string>
     <string name="faq_3_title">Posso agendar mensagens com esta aplicação?</string>
@@ -95,7 +93,6 @@
     <string name="sender_and_message">Remetente e mensagem</string>
     <string name="sender_only">Apenas remetente</string>
     <string name="enable_delivery_reports">Ativar relatórios de entrega</string>
-    <string name="carrier_send_error">Erro da operadora. Não pode enviar a mensagem</string>
     <string name="faq_1_text">Infelizmente, é a única forma de poder enviar anexos MMS. Não ter a capacidade de enviar MMS representaria uma enorme desvantagem comparativamente a outras aplicações e foi por isso que tomámos esta decisão. Mas, como habitualmente, a aplicação não tem anúncios, não rastreia os utilizadores nem recolhe dados pessoais. Esta permissão apenas é necessária para enviar MMS.</string>
     <string name="faq_2_title">O destinatário não recebe as minhas MMS, o que posso fazer?</string>
     <string name="keyword">Palavra-chave</string>

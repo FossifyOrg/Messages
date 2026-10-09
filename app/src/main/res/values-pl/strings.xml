@@ -108,12 +108,9 @@
     <string name="unable_to_save_message">Nie udało się zapisać wiadomości w bazie danych telefonu</string>
     <string name="error_service_is_unavailable">Nie udało się wysłać wiadomości z powodu niedostępności usługi</string>
     <string name="error_radio_turned_off">Nie udało się wysłać wiadomości z powodu wyłączonej sieci komórkowej</string>
-    <string name="carrier_send_error">Nie udało się wysłać wiadomości z powodu błędu operatora</string>
-    <string name="unknown_error_occurred_sending_message">Nie udało się wysłać wiadomości. Kod błędu: %1$d</string>
     <string name="invalid_short_code">Nie można odpowiadać na numery Short Code tego typu</string>
     <string name="invalid_short_code_desc">Możesz odpowiadać tylko na numery Short Code zawierające same cyfry, np. „503501”, ale nie na takie, które zawierają inne znaki, jak „AB-CD0”.</string>
     <string name="attachment_sized_exceeds_max_limit">Rozmiar załącznika przekracza maksymalny limit MMS-ów</string>
-    <string name="sim_card_not_available">Karta SIM niedostępna</string>
     <string name="couldnt_download_mms">Nie udało się pobrać MMS-a</string>
     <string name="faq_1_title">Dlaczego aplikacja wymaga dostępu do Internetu\?</string>
     <string name="faq_1_text">Niestety jest to konieczne do wysyłania załączników MMS. Brak możliwości wysyłania MMS-ów byłby naprawdę ogromną wadą w porównaniu z innymi aplikacjami, więc zdecydowaliśmy się pójść tą drogą. Jednak, jak zwykle, nie ma żadnych reklam, śledzenia ani analityki, a Internet służy tylko do wysyłania MMS-ów.</string>

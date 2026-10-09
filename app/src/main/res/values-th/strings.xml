@@ -104,12 +104,9 @@
     <string name="unable_to_save_message">ไม่สามารถบันทึกข้อความลงในฐานข้อมูลโทรศัพท์</string>
     <string name="error_service_is_unavailable">ไม่สามารถส่งข้อความได้ บริการไม่พร้อมใช้งาน</string>
     <string name="error_radio_turned_off">ไม่สามารถส่งข้อความได้ วิทยุถูกปิดอยู่</string>
-    <string name="carrier_send_error">ไม่สามารถส่งข้อความได้ เกิดข้อผิดพลาดจากผู้ให้บริการ</string>
-    <string name="unknown_error_occurred_sending_message">ไม่สามารถส่งข้อความได้ รหัสข้อผิดพลาด: %d</string>
     <string name="invalid_short_code">ไม่สามารถตอบกลับรหัสสั้นแบบนี้ได้</string>
     <string name="invalid_short_code_desc">คุณสามารถตอบกลับรหัสสั้นที่เป็นตัวเลขเท่านั้น เช่น \"503501\" แต่ไม่สามารถตอบกลับรหัสที่มีทั้งตัวอักษรและตัวเลข เช่น \"AB-CD0\" ได้</string>
     <string name="attachment_sized_exceeds_max_limit">ขนาดไฟล์แนบเกินขีดจำกัดสูงสุดของ MMS</string>
-    <string name="sim_card_not_available">ไม่พบซิมการ์ด</string>
     <string name="couldnt_download_mms">ไม่สามารถดาวน์โหลด MMS ได้</string>
     <string name="faq_1_title">เหตุใดแอปจึงต้องการสิทธิ์เข้าถึงอินเทอร์เน็ต?</string>
     <string name="faq_1_text">น่าเสียดายที่จำเป็นต้องใช้สำหรับการส่งไฟล์แนบ MMS การไม่สามารถส่ง MMS ได้ถือเป็นข้อเสียเปรียบอย่างมากเมื่อเทียบกับแอปอื่นๆ จึงตัดสินใจใช้วิธีนี้ อย่างไรก็ตาม เช่นเคย ไม่มีโฆษณา การติดตาม หรือการวิเคราะห์ใดๆ ทั้งสิ้น อินเทอร์เน็ตใช้เพื่อการส่ง MMS เท่านั้น</string>

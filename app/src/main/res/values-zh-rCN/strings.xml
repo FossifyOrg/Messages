@@ -98,12 +98,9 @@
     <string name="unable_to_save_message">无法将信息保存到电话数据库</string>
     <string name="error_service_is_unavailable">无法发送信息，服务不可用</string>
     <string name="error_radio_turned_off">无法发送信息，无线装置关闭</string>
-    <string name="carrier_send_error">无法发送信息，运营商错误</string>
-    <string name="unknown_error_occurred_sending_message">无法发送信息，错误代码：%d</string>
     <string name="invalid_short_code">无法回复此类短代码</string>
     <string name="invalid_short_code_desc">您只能回复类似“503501”这样的纯数字短代码，而不能回复类似“AB-CD0”这样包含字母和数字混合的代码。</string>
     <string name="attachment_sized_exceeds_max_limit">附件大小超出了彩信上限</string>
-    <string name="sim_card_not_available">SIM 卡不可用</string>
     <string name="couldnt_download_mms">无法下载彩信</string>
     <string name="faq_1_title">为什么该应用需要访问互联网？</string>
     <string name="faq_1_text">遗憾的是，发送彩信附件需要它。如果无法发送彩信，与其他应用相比将是一个巨大的劣势，所以我们决定采用这种方式。 不过，与往常一样，本应用没有广告、追踪或者分析， 互联网仅用于发送彩信。</string>

@@ -7,13 +7,14 @@ import android.content.Intent
 import android.database.sqlite.SQLiteException
 import android.net.Uri
 import android.provider.Telephony
+import android.telephony.SmsManager
 import android.widget.Toast
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
-import org.fossify.messages.R
 import org.fossify.messages.extensions.deleteMessage
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
+import org.fossify.messages.messaging.getMmsSendingError
 import java.io.File
 
 /** Handles updating databases and states when a MMS message is sent. */
@@ -25,8 +26,12 @@ class MmsSentReceiver : SendStatusReceiver() {
         val messageBox = if (receiverResultCode == Activity.RESULT_OK) {
             Telephony.Mms.MESSAGE_BOX_SENT
         } else {
-            val msg = context.getString(R.string.unknown_error_occurred_sending_message, receiverResultCode)
-            context.toast(msg = msg, length = Toast.LENGTH_LONG)
+            context.getMmsSendingError(
+                receiverResultCode,
+                intent.getIntExtra(SmsManager.EXTRA_MMS_HTTP_STATUS, 0)
+            )?.let { msg ->
+                context.toast(msg = msg, length = Toast.LENGTH_LONG)
+            }
             Telephony.Mms.MESSAGE_BOX_FAILED
         }
 

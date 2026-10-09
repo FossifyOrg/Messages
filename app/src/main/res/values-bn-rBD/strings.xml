@@ -9,11 +9,8 @@
     <string name="empty_destination_address">একটি খালি নম্বরে বার্তা পাঠাতে পারবেন না</string>
     <string name="unable_to_save_message">টেলিফোনি ডাটাবেসে বার্তা সংরক্ষণ করতে অক্ষম</string>
     <string name="error_radio_turned_off">বার্তা পাঠানো যায়নি, রেডিও বন্ধ আছে</string>
-    <string name="carrier_send_error">বার্তা পাঠানো যায়নি, ক্যারিয়ার ত্রুটি</string>
-    <string name="unknown_error_occurred_sending_message">বার্তা পাঠানো যায়নি, ত্রুটি কোড: %d</string>
     <string name="invalid_short_code">এর মত শর্ট কোডে উত্তর দিতে পারবেন না</string>
     <string name="attachment_sized_exceeds_max_limit">সংযুক্তির আকার সর্বাধিক এমএমএস সীমা ছাড়িয়ে গেছে</string>
-    <string name="sim_card_not_available">সিম কার্ড উপলব্ধ নেই</string>
     <string name="couldnt_download_mms">এমএমএস ডাউনলোড করা যায়নি</string>
     <string name="faq_1_title">কেন অ্যাপটির ইন্টারনেট অ্যাক্সেস প্রয়োজন?</string>
     <string name="faq_2_text">এমএমএস আকার ক্যারিয়ার দ্বারা সীমিত, আপনি অ্যাপ সেটিংসে একটি ছোট সীমা সেট করে চেষ্টা করতে পারেন।</string>

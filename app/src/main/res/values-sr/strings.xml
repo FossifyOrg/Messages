@@ -111,12 +111,9 @@
     <string name="unable_to_save_message">Није могуће сачувати поруку у базу података телефоније</string>
     <string name="error_service_is_unavailable">Порука није послата, услуга је недоступна</string>
     <string name="error_radio_turned_off">Порука није послата, радио је искључен</string>
-    <string name="carrier_send_error">Порука није послата, грешка оператера</string>
-    <string name="unknown_error_occurred_sending_message">Порука није послата, број грешке: %d</string>
     <string name="invalid_short_code">Није могуће одговорити на ове кратке кодове</string>
     <string name="invalid_short_code_desc">Можеш одговарати само на кратке кодове који садрже бројеве нпр. „503501“ али не и на кодове који садрже и слова и бројеве нпр. „AB-CD0.</string>
     <string name="attachment_sized_exceeds_max_limit">Величина прилога превазилази ограничење ММС-а</string>
-    <string name="sim_card_not_available">СИМ картица није доступна</string>
     <string name="couldnt_download_mms">Преузимање MMS-а није успело</string>
     <string name="enable_custom_notifications">Укључи прилагођена обавештења</string>
     <string name="keep_conversations_archived">Задржи разговоре архивиране</string>

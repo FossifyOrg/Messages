@@ -101,12 +101,9 @@
     <string name="unable_to_save_message">Nachricht konnte nicht in der Telefondatenbank gespeichert werden</string>
     <string name="error_service_is_unavailable">Nachricht konnte nicht gesendet werden, Dienst nicht verfügbar</string>
     <string name="error_radio_turned_off">Nachricht konnte nicht gesendet werden, Mobilfunk ausgeschaltet</string>
-    <string name="carrier_send_error">Nachricht konnte nicht gesendet werden, Netzbetreiberfehler</string>
-    <string name="unknown_error_occurred_sending_message">Nachricht konnte nicht gesendet werden, Fehlercode: %d</string>
     <string name="invalid_short_code">Auf solche Short Codes kann nicht geantwortet werden</string>
     <string name="invalid_short_code_desc">Du kannst nur auf Short Codes mit Nummern wie „503501“ antworten, nicht aber auf Codes mit Buchstaben und Zahlen wie „AB-CD0“.</string>
     <string name="attachment_sized_exceeds_max_limit">Die Größe des Anhangs überschreitet das MMS-Limit</string>
-    <string name="sim_card_not_available">SIM-Karte nicht verfügbar</string>
     <string name="couldnt_download_mms">MMS konnte nicht heruntergeladen werden</string>
     <string name="faq_1_title">Warum benötigt die App einen Internetzugang?</string>
     <string name="faq_1_text">Leider ist dies nötig, um MMS-Anhänge zu versenden. Es wäre ein großer Nachteil gegenüber anderen Apps, wenn keine MMS versendet werden könnten, also haben wir uns für diesen Weg entschieden. Jedoch gibt es wie immer keine Werbung, Tracking oder Analytics, der Internetzugriff wird also nur für das Versenden von MMS verwendet.</string>
