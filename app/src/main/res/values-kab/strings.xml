@@ -87,11 +87,8 @@
     <string name="unable_to_save_message">Ur izmir ara ad isekles izen deg taffa n isefka n tiliɣri</string>
     <string name="error_service_is_unavailable">D awezɣi tuzzna n yizen, ameẓlu ulac-it</string>
     <string name="error_radio_turned_off">D awezɣi tuzzna n yizen, ṛṛadyu yensa</string>
-    <string name="carrier_send_error">D awezɣi tuzzna n yizen, tuccḍa n umahal</string>
-    <string name="unknown_error_occurred_sending_message">D awezɣi tuzzna n yizen, tangalt n tuccḍa: %d</string>
     <string name="invalid_short_code">Ur izmir ara ad yerr i tengalt wezzilen am ta</string>
     <string name="attachment_sized_exceeds_max_limit">Tiddi n ufaylu yeddan tɛedda talast tafellayt MMS</string>
-    <string name="sim_card_not_available">Ulac takarḍa SIM</string>
     <string name="couldnt_download_mms">Ur izmir ara ad isidar MMS</string>
     <string name="faq_1_title">Iwacu asnas yesra ad yekcem ɣer internet ?</string>
     <string name="faq_3_title">Asnas yessefrak iznan yettusɣiwsen?</string>

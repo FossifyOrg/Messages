@@ -1,13 +1,11 @@
 package org.fossify.messages.messaging
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Telephony.Sms
-import android.telephony.SmsManager
 import android.telephony.SmsMessage
 import android.widget.Toast
 import com.klinker.android.send_message.Message
@@ -15,14 +13,12 @@ import com.klinker.android.send_message.Settings
 import com.klinker.android.send_message.Transaction
 import org.fossify.commons.extensions.showErrorToast
 import org.fossify.commons.extensions.toast
-import org.fossify.messages.R
 import org.fossify.messages.extensions.getThreadId
 import org.fossify.messages.extensions.isPlainTextMimeType
 import org.fossify.messages.extensions.smsSender
 import org.fossify.messages.messaging.SmsException.Companion.ERROR_PERSISTING_MESSAGE
 import org.fossify.messages.models.Attachment
 import org.fossify.messages.receivers.MmsSentReceiver
-import org.fossify.messages.receivers.SendStatusReceiver
 
 class MessagingUtils(val context: Context) {
 
@@ -199,21 +195,9 @@ class MessagingUtils(val context: Context) {
         }
     }
 
-    fun maybeShowErrorToast(resultCode: Int, errorCode: Int) {
-        if (resultCode != Activity.RESULT_OK) {
-            val msg = if (errorCode != SendStatusReceiver.NO_ERROR_CODE) {
-                context.getString(R.string.carrier_send_error)
-            } else {
-                when (resultCode) {
-                    SmsManager.RESULT_ERROR_NO_SERVICE -> context.getString(R.string.error_service_is_unavailable)
-                    SmsManager.RESULT_ERROR_RADIO_OFF -> context.getString(R.string.error_radio_turned_off)
-                    SmsManager.RESULT_NO_DEFAULT_SMS_APP -> context.getString(R.string.sim_card_not_available)
-                    else -> context.getString(R.string.unknown_error_occurred_sending_message, resultCode)
-                }
-            }
+    fun maybeShowErrorToast(resultCode: Int, errorCode: Int, noDefault: Boolean = false) {
+        context.getSmsSendingError(resultCode, errorCode, noDefault)?.let { msg ->
             context.toast(msg = msg, length = Toast.LENGTH_LONG)
-        } else {
-            // no-op
         }
     }
 

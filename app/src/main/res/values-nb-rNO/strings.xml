@@ -71,7 +71,6 @@
     <string name="import_sms">Importer SMS</string>
     <string name="import_mms">Importer MMS</string>
     <string name="no_option_selected">Du må velge minst ett element</string>
-    <string name="unknown_error_occurred_sending_message">Kunne ikke sende melding, feilkode: %d</string>
     <string name="attachment_sized_exceeds_max_limit">Vedleggstørrelse overskrider maksgrense for MMS</string>
     <string name="faq_1_title">Hvorfor krever appen tilgang til internett\?</string>
     <string name="faq_1_text">Dessverre er det nødvendig for å sende MMS-vedlegg. Å ikke kunne sende MMS ville være en veldig stor ulempe sammenlignet med andre apper, så vi bestemte oss for å gå denne veien. Som vanlig er det imidlertid ingen annonser, sporing eller analyse overhodet, internett brukes bare til å sende MMS.</string>
@@ -94,7 +93,6 @@
     <string name="invalid_short_code_desc">Du kan kun svare til kortnummer med sifre som «503501», men ikke til numre som inneholder tall og sifre som «AB-CD0».</string>
     <string name="restore_whole_conversation_confirmation">Er du sikker på at du vil gjenopprette alle meldingene i denne samtalen?</string>
     <string name="couldnt_download_mms">Kunne ikke laste ned MMS</string>
-    <string name="sim_card_not_available">SIM-kort ikke tilgjengelig</string>
     <string name="empty_recycle_bin_messages_confirmation">Er du sikker på at du vil tømme papirkurven? Meldingene vil slettes permanent.</string>
     <string name="enable_custom_notifications">Aktiver tilpassede varslinger</string>
     <string name="message_details">Meldingsdetaljer</string>
@@ -113,7 +111,6 @@
     <string name="empty_destination_address">Kan ikke sende melding til et tomt nummer</string>
     <string name="unable_to_save_message">Kunne ikke lagre meldinger til telefonens database</string>
     <string name="error_service_is_unavailable">Kunne ikke sende melding, tjenesten er ikke tilgjengelig</string>
-    <string name="carrier_send_error">Kunne ikke sende melding, operatørfeil</string>
     <string name="invalid_short_code">Kan ikke svare til kortnummer som dette</string>
     <string name="error_radio_turned_off">Kunne ikke sende melding, radio er avslått</string>
 </resources>

@@ -101,12 +101,9 @@
     <string name="unable_to_save_message">Viestin tallennus puhelintietokantaan ei onnistu</string>
     <string name="error_service_is_unavailable">Viestin lähetys ei onnistu, palvelua ei tavoiteta</string>
     <string name="error_radio_turned_off">Viestin lähetys ei onnistu, verkko on poistettu käytöstä</string>
-    <string name="carrier_send_error">Viestin lähetys ei onnistu, operaattorin virhe</string>
-    <string name="unknown_error_occurred_sending_message">Viestin lähetys ei onnistu, virhekoodi: %d</string>
     <string name="invalid_short_code">Et voi vastata tällaisiin lyhytkoodeihin</string>
     <string name="invalid_short_code_desc">Voit vastata vain numeroita sisältäviin lyhytkoodeihin kuten \"503501\", muttet kirjaimia ja numeroita sisältäviin koodeihin kuten \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Liitteen koko ylittää MMS-viestin enimmäiskoon</string>
-    <string name="sim_card_not_available">SIM kortti ei saatavilla</string>
     <string name="couldnt_download_mms">MMS lataus epäonnistui</string>
     <string name="faq_1_title">Miksi sovellus vaatii Internet-yhteyden\?</string>
     <string name="faq_1_text">Valitettavasti sitä tarvitaan multimediaviestin liitteiden lähettämiseen. Multimediaviestien lähettämättä jättäminen olisi todella valtava haitta muihin sovelluksiin verrattuna, joten päätimme mennä tällä tavalla. Kuten yleensä, mainoksia, seurantaa tai analytiikkaa ei kuitenkaan ole, internetiä käytetään vain multimediaviestien lähettämiseen.</string>

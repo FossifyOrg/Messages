@@ -98,12 +98,9 @@
     <string name="unable_to_save_message">Неуспешен запис на съобщението в телефонната база данни</string>
     <string name="error_service_is_unavailable">Неуспешно изпращане на съобщението, услугата на оператора е недостъпна</string>
     <string name="error_radio_turned_off">Неуспешно изпращане на съобщението, радиото е изключено</string>
-    <string name="carrier_send_error">Неуспешно изпращане на съобщението, грешка на оператора</string>
-    <string name="unknown_error_occurred_sending_message">Неуспешно изпращане на съобщението, код на грешката: %d</string>
     <string name="invalid_short_code">Невъзможен отговор на кратки кодове като този</string>
     <string name="invalid_short_code_desc">Можете да отговаряте само на кратки кодове с цифри като \"503501\", но не и на кодове, съдържащи букви и цифри като \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Размерът на прикачения файл надвишава ограничението за MMS</string>
-    <string name="sim_card_not_available">SIM картата е недостъпна</string>
     <string name="couldnt_download_mms">Неуспешно изтегляне на MMS</string>
     <string name="faq_1_title">Защо приложението изисква достъп до интернет\?</string>
     <string name="faq_1_text">За съжаление това е нужно за изпращане на прикачени MMS. Да не може да се праща MMS би било наистина голям недостатък в сравнение с други приложения, така че решихме да тръгнем по този път. Въпреки това, както обикновено, няма реклами, следене или каквито и да е други анализаторски програми, интернетът се ползва само за изпращане на MMS.</string>

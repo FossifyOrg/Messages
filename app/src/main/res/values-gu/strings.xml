@@ -83,8 +83,6 @@
     <string name="export_blocked_keywords">અવરોધિત કીવર્ડ એક્સપોર્ટ કરો</string>
     <string name="import_blocked_keywords">અવરોધિત કીવર્ડ ઈમ્પોર્ટ કરો</string>
     <string name="error_service_is_unavailable">સંદેશ મોકલી શકાયા નથી (સેવા ઉપલબ્ધ નથી)</string>
-    <string name="carrier_send_error">સંદેશ મોકલી શકાયા નથી (વાહક ભૂલ)</string>
-    <string name="unknown_error_occurred_sending_message">સંદેશ મોકલી શકાયા નથી (ત્રુટિ કોડ: %d)</string>
     <string name="empty_destination_address">ખાલી નંબર પર સંદેશ નહી મોકલી શકો</string>
     <string name="empty_recycle_bin_messages_confirmation">પાકુ તમને કચરાપેટી ખાલી કરવી છે? બધા સંદેશો સદા માટે જતા રહેશે.</string>
     <string name="archive">સંગ્રહાલય</string>

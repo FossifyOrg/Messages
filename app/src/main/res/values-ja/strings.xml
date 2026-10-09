@@ -73,8 +73,6 @@
     <string name="unable_to_save_message">メッセージを電話データベースに保存できませんでした</string>
     <string name="error_service_is_unavailable">メッセージを送信できませんでした (サービス利用不可)</string>
     <string name="error_radio_turned_off">メッセージを送信できませんでした (無線オフにより)</string>
-    <string name="carrier_send_error">メッセージを送信できませんでした (通信キャリアエラー)</string>
-    <string name="unknown_error_occurred_sending_message">メッセージを送信できませんでした (エラーコード: %d)</string>
     <string name="invalid_short_code">このようなショートコードには返信できません</string>
     <string name="invalid_short_code_desc">「503501」のような数字のみのショートコードには返信できますが、「AB-CD0」のようなアルファベットと数字を含んだショートコードには返信できません。</string>
     <string name="faq_1_title">なぜアプリの使用にインターネットへのアクセスが必要なのですか？</string>
@@ -103,7 +101,6 @@
     <string name="not_blocking_keywords">キーワードをブロックしていません。 ここでキーワードを追加して、それらを含むすべてのメッセージをブロックすることができます。</string>
     <string name="skip_the_recycle_bin_messages">ごみ箱に入れずメッセージを直接削除</string>
     <string name="attachment_sized_exceeds_max_limit">添付ファイルのサイズがMMSの制限を超えています</string>
-    <string name="sim_card_not_available">SIMカードは利用できません</string>
     <string name="message_details_sent_at">送信時間</string>
     <string name="message_details_received_at">受信時間</string>
     <string name="archive_emptied_successfully">アーカイブを空にしました</string>

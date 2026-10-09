@@ -118,10 +118,7 @@
     <string name="manage_blocked_keywords">Upravljanje blokiranih ključnih besed</string>
     <string name="unarchive">Vrni iz arhiva</string>
     <string name="keyword">Ključna beseda</string>
-    <string name="sim_card_not_available">Kartica SIM ni na voljo</string>
     <string name="invalid_short_code">Ni mogoče odgovoriti na kratke kode, kot je ta</string>
-    <string name="unknown_error_occurred_sending_message">Sporočila ni bilo mogoče poslati, koda napake: %d</string>
-    <string name="carrier_send_error">Sporočila ni bilo mogoče poslati, napaka operaterja</string>
     <string name="keep_conversations_archived">Ohrani pogovore arhivirane</string>
     <string name="send_group_message">Oblika skupinskih sporočil</string>
     <string name="group_message_send_description">Skupinska sporočila MMS ohranijo odgovore v enem pogovoru, vendar se lahko zaračunajo stroški operaterja. Z ločenim pošiljanjem se vsaki osebi pošlje eno sporočilo. To lahko pozneje spremenite v nastavitvah aplikacije.</string>

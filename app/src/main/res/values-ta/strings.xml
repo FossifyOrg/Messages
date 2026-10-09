@@ -113,12 +113,9 @@
     <string name="unable_to_save_message">தொலைபேசி தரவுத்தளத்தில் செய்தியைச் சேமிக்க முடியவில்லை</string>
     <string name="error_service_is_unavailable">செய்தியை அனுப்ப முடியவில்லை, பணி கிடைக்கவில்லை</string>
     <string name="error_radio_turned_off">செய்தியை அனுப்ப முடியவில்லை, ரேடியோ ஆஃப் செய்யப்பட்டது</string>
-    <string name="carrier_send_error">செய்தியை அனுப்ப முடியவில்லை, கேரியர் பிழை</string>
-    <string name="unknown_error_occurred_sending_message">செய்தியை அனுப்ப முடியவில்லை, பிழைக் குறியீடு: %d</string>
     <string name="invalid_short_code">இது போன்ற குறுகிய குறியீடுகளுக்கு பதிலளிக்க முடியாது</string>
     <string name="invalid_short_code_desc">\"503501\" போன்ற எண்களைக் கொண்ட குறுகிய குறியீடுகளுக்கு மட்டுமே நீங்கள் பதிலளிக்க முடியும், ஆனால் \"AB-CD0\" போன்ற எழுத்துக்கள் மற்றும் எண்களைக் கொண்ட குறியீடுகளுக்குப் பதிலளிக்க முடியாது.</string>
     <string name="attachment_sized_exceeds_max_limit">இணைப்பு அளவு அதிகபட்ச MMS வரம்பை மீறுகிறது</string>
-    <string name="sim_card_not_available">சிம் அட்டை கிடைக்கவில்லை</string>
     <string name="couldnt_download_mms">MMSஐப் பதிவிறக்க முடியவில்லை</string>
     <string name="faq_2_title">மறுமுனை எனது MMS பெறவில்லை, இதற்கு நான் ஏதாவது செய்ய முடியுமா?</string>
     <string name="faq_2_text">எம்எம்எஸ் அளவு கேரியர்களால் வரையறுக்கப்பட்டுள்ளது, ஆப்ச் அமைப்புகளில் சிறிய வரம்பை அமைக்க முயற்சி செய்யலாம்.</string>

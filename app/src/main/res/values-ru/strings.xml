@@ -107,12 +107,9 @@
     <string name="unable_to_save_message">Невозможно сохранить сообщение в базу данных</string>
     <string name="error_service_is_unavailable">Невозможно отправить сообщение: служба недоступна</string>
     <string name="error_radio_turned_off">Невозможно отправить сообщение: радиомодуль отключён</string>
-    <string name="carrier_send_error">Невозможно отправить сообщение: ошибка оператора связи</string>
-    <string name="unknown_error_occurred_sending_message">Невозможно отправить сообщение. Код ошибки: %d</string>
     <string name="invalid_short_code">Невозможно отвечать на такие короткие номера</string>
     <string name="invalid_short_code_desc">Отвечать можно только на короткие номера, состоящие из цифр, такие как \"503501\", но не на номера, содержащие буквы и цифры, такие как \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Размер вложения превышает максимальный лимит MMS</string>
-    <string name="sim_card_not_available">SIM-карта недоступна</string>
     <string name="couldnt_download_mms">Невозможно загрузить MMS</string>
     <string name="faq_1_title">Почему приложение требует доступ в интернет\?</string>
     <string name="faq_1_text">К сожалению, это необходимо для отправки вложений MMS. Отсутствие возможности отправлять MMS-сообщения было бы огромным недостатком нашего приложения по сравнению с другими, поэтому мы решили пойти этим путём. Тем не менее, как и в других наших приложениях, это не содержит никакой рекламы, отслеживания или аналитики, интернет используется только для отправки MMS.</string>

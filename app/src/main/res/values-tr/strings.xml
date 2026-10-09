@@ -101,12 +101,9 @@
     <string name="unable_to_save_message">Mesaj, telefon veri tabanına kaydedilemiyor</string>
     <string name="error_service_is_unavailable">Mesaj gönderilemedi, hizmet kullanılabilir değil</string>
     <string name="error_radio_turned_off">Mesaj gönderilemedi, radyo kapalı</string>
-    <string name="carrier_send_error">Mesaj gönderilemedi, operatör hatası</string>
-    <string name="unknown_error_occurred_sending_message">Mesaj gönderilemedi, hata kodu: %d</string>
     <string name="invalid_short_code">Bunun gibi kısa kodlara yanıt verilemiyor</string>
     <string name="invalid_short_code_desc">Yalnızca \"503501\" gibi sayı içeren kısa kodlara yanıt verebilirsiniz ancak \"AB-CD0\" gibi harf ve rakam içeren kodlara yanıt veremezsiniz.</string>
     <string name="attachment_sized_exceeds_max_limit">Ek boyutu MMS sınırını aşıyor</string>
-    <string name="sim_card_not_available">SIM kart kullanılamıyor</string>
     <string name="couldnt_download_mms">MMS indirilemedi</string>
     <string name="faq_1_title">Uygulama neden internet erişimi gerektiriyor?</string>
     <string name="faq_1_text">Ne yazık ki MMS eklerini göndermek için internet erişimi gerekli. MMS gönderememek, diğer uygulamalara kıyasla gerçekten çok büyük bir dezavantaj olacağı için bu şekilde yapmaya karar verdik. Ancak her zaman olduğu gibi reklamlar, takipçiler ve analiz hizmetlerinin hiçbiri kullanılmamaktadır. İnternet erişimi sadece MMS göndermek için kullanılmaktadır.</string>

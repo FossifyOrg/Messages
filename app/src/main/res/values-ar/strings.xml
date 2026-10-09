@@ -110,12 +110,9 @@
     <string name="unable_to_save_message">غير قادر على حفظ الرسالة في قاعدة بيانات الاتصالات الهاتفية</string>
     <string name="error_service_is_unavailable">لا يمكن إرسال رسالة، الخدمة غير متوفرة</string>
     <string name="error_radio_turned_off">لا يمكن إرسال الرسالة، الراديو متوقف</string>
-    <string name="carrier_send_error">لا يمكن إرسال الرسالة، خطأ في الناقل</string>
-    <string name="unknown_error_occurred_sending_message">تعذر إرسال الرسالة، رمز الخطأ: %d</string>
     <string name="invalid_short_code">لا يمكن الرد على أمثال هذه الرموز القصيرة</string>
     <string name="invalid_short_code_desc">يمكنك فقط الرد على الرموز القصيرة بأرقام مثل \"503501\" ولكن ليس على الرموز التي تحتوي على أحرف وأرقام مثل \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">يتجاوز حجم المرفق الحد الأقصى لرسائل الوسائط المتعددة</string>
-    <string name="sim_card_not_available">بطاقة SIM غير متوفرة</string>
     <string name="couldnt_download_mms">لا يمكن تحميل MMS</string>
     <string name="faq_1_title">لماذا يتطلب التطبيق الوصول إلى الإنترنت؟</string>
     <string name="faq_1_text">للأسف هناك حاجة لإرسال مرفقات رسائل الوسائط . عدم القدرة على إرسال رسائل الوسائط هذا سيكون عيبا كبيرا حقا بالمقارنة مع التطبيقات الأخرى ، لذلك قررنا الذهاب من هذا الطريق. ومع ذلك ، كما هو الحال عادة ، لا توجد إعلانات أو تتبع أو تحليلات للنشاط على الإطلاق ، يتم استخدام صلاحية الإنترنت فقط لإرسال رسائل الوسائط المتعددة.</string>

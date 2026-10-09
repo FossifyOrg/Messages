@@ -107,12 +107,9 @@
     <string name="unable_to_save_message">Неможливо зберегти повідомлення до бази даних телефону</string>
     <string name="error_service_is_unavailable">Не вдалося надіслати повідомлення, послуга недоступна</string>
     <string name="error_radio_turned_off">Не вдалося надіслати повідомлення, радіо вимкнено</string>
-    <string name="carrier_send_error">Не вдалося надіслати повідомлення, помилка оператора</string>
-    <string name="unknown_error_occurred_sending_message">Не вдалося надіслати повідомлення, код помилки: %d</string>
     <string name="invalid_short_code">Не можна відповідати на такі короткі коди</string>
     <string name="invalid_short_code_desc">Ви можете відповідати лише на короткі коди з цифрами, як-от «503501», але не на коди, що містять літери та цифри, як-от «AB-CD0».</string>
     <string name="attachment_sized_exceeds_max_limit">Розмір вкладеного файлу перевищує максимальний ліміт MMS</string>
-    <string name="sim_card_not_available">SIM-картка не доступна</string>
     <string name="couldnt_download_mms">Не вдалося завантажити MMS</string>
     <string name="faq_1_title">Чому застосунок вимагає доступ до Інтернету?</string>
     <string name="faq_1_text">Нажаль, це необхідно для відправки вкладень MMS. Неспроможність надсилати MMS-повідомлення була б великим недоліком нашого застосунку порівняно з іншими, тому ми так зробили. Тим не менше, як і в інших наших застосунках, цей не містить реклами, відстеження та аналітики. Інтернет використовується лише для відправки MMS.</string>

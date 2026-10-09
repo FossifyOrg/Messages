@@ -36,9 +36,7 @@
     <string name="invalid_short_code">پاسخ به کدهای کوتاه مثل این امکان‌پذیر نیست</string>
     <string name="error_service_is_unavailable">پیام ارسال نشد، خارج از دسترس</string>
     <string name="error_radio_turned_off">پیام ارسال نشد، فرستنده خاموش است</string>
-    <string name="carrier_send_error">پیام ارسال نشد، خطای اپراتور</string>
     <string name="attachment_sized_exceeds_max_limit">اندازه‌ی پیوست بیشتر از حد مجاز فراپیام است</string>
-    <string name="sim_card_not_available">سیم‌کارت نیست</string>
     <string name="faq_1_title">این برنامه چه نیازی به دسترسی به اینترنت دارد؟</string>
     <string name="faq_2_title">طرف مقابل فراپیام مرا نمی‌گیرد، چه کار می‌توانم بکنم؟</string>
     <string name="faq_2_text">اندازه‌ی فراپیام از سوی اپراتور محدود شده است؛ می‌توانید در تنظیمات برنامه، حد کمتری را امتحان کنید.</string>
@@ -46,7 +44,6 @@
     <string name="type_a_message">متن پیام…‏</string>
     <string name="message_not_sent_touch_retry">ارسال نشد. برای تلاش دوباره، لمس کنید.</string>
     <string name="message_sending_error">پیام شما به %s ارسال نشده</string>
-    <string name="unknown_error_occurred_sending_message">پیام ارسال نشد، خطای کد %d‏</string>
     <string name="duplicate_item_warning">مورد تکراری درج نشد</string>
     <plurals name="and_other_contacts">
         <item quantity="one">و %d نفر دیگر</item>

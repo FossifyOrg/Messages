@@ -104,12 +104,9 @@
     <string name="unable_to_save_message">無法將訊息儲存至電訊資料庫</string>
     <string name="error_service_is_unavailable">無法送出訊息，服務無法使用</string>
     <string name="error_radio_turned_off">無法送出訊息，無線電已關閉</string>
-    <string name="carrier_send_error">遇到電訊商問題，無法傳送訊息</string>
-    <string name="unknown_error_occurred_sending_message">無法送出訊息，錯誤代碼：%d</string>
     <string name="invalid_short_code">無法回覆此類短碼</string>
     <string name="invalid_short_code_desc">您只能回覆像「503501」這樣的數字短碼，而不能回覆包含字母和數字的短碼，如「AB-CD0」。</string>
     <string name="attachment_sized_exceeds_max_limit">附件大小超過最大 MMS 限制</string>
-    <string name="sim_card_not_available">SIM 卡無法使用</string>
     <string name="couldnt_download_mms">無法下載 MMS</string>
     <string name="faq_1_title">為什麼這個程式需要存取網路？</string>
     <string name="faq_1_text">傳送 MMS 附件需要這個功能。相較於其他應用程式，不能傳送 MMS 將是一大劣勢，所以我們才會選擇這樣做。不過我們依然不會有任何形式的廣告、追蹤或分析，網路連線僅用於傳送 MMS 。</string>

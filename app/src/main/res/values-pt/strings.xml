@@ -103,12 +103,9 @@
     <string name="unable_to_save_message">Não foi possível guardar a mensagem na base de dados do telefone</string>
     <string name="error_service_is_unavailable">Serviço indisponível. Não pode enviar a mensagem</string>
     <string name="error_radio_turned_off">Rádio desligado. Não pode enviar a mensagem</string>
-    <string name="carrier_send_error">Erro da operadora. Não pode enviar a mensagem</string>
-    <string name="unknown_error_occurred_sending_message">Não foi possível enviar a mensagem. Erro: %d</string>
     <string name="invalid_short_code">Não é possível responder a códigos deste tipo</string>
     <string name="invalid_short_code_desc">Apenas é possível responder a códigos curtos com números como, por exemplo, e não a códigos que combinem letras e números com, por exemplo, \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">O anexo excede o tamanho máximo permitido para MMS</string>
-    <string name="sim_card_not_available">Cartão SIM não encontrado</string>
     <string name="couldnt_download_mms">Não foi possível descarregar a MMS</string>
     <string name="faq_1_title">Porque é que a aplicação requer acesso à Internet\?</string>
     <string name="faq_1_text">Infelizmente, é a única forma de poder enviar anexos MMS. Não ter a capacidade de enviar MMS representaria uma enorme desvantagem comparativamente a outras aplicações e foi por isso que tomámos esta decisão. Mas, como habitualmente, a aplicação não tem anúncios, não rastreia os utilizadores nem recolhe dados pessoais. Esta permissão apenas é necessária para enviar MMS.</string>
