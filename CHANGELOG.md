@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed exposed action receivers for security ([#834])
+- Fixed group message creation on Xiaomi devices ([#41])
 - Fixed incorrect SMS/MMS deletion from notifications in rare cases
 - Fixed MMS images stuck on "Sending" when sent together ([#185])
 - Partially fixed MMS image sending failures ([#45])
@@ -32,7 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated translations
 
 ### Fixed
-- Fixed group message creation on Xiaomi devices ([#41])
 - Partially fixed issue with sending MMS images ([#45])
 - Fixed slow loading of the conversation list ([#234])
 
