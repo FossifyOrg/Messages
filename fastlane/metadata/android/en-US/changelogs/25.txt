@@ -1,0 +1,17 @@
+Added:
+
+• Added inline audio player for MMS attachments 
+
+Changed:
+
+• Improved error messages when a message fails to send 
+• Updated translations
+
+Fixed:
+
+• Fixed exposed action receivers for security 
+• Fixed group message creation on Xiaomi devices 
+• Fixed incorrect SMS/MMS deletion from notifications in rare cases
+• Fixed MMS images stuck on "Sending" when sent together 
+• Partially fixed MMS image sending failures 
+
