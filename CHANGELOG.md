@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.10.1] - 2026-10-10
+### Changed
+- Updated translations
+
 ### Fixed
 - Fixed startup crash on Android 11 and below
 
@@ -294,7 +299,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#829]: https://github.com/FossifyOrg/Messages/issues/829
 [#834]: https://github.com/FossifyOrg/Messages/issues/834
 
-[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.10.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.10.1...HEAD
+[1.10.1]: https://github.com/FossifyOrg/Messages/compare/1.10.0...1.10.1
 [1.10.0]: https://github.com/FossifyOrg/Messages/compare/1.9.1...1.10.0
 [1.9.1]: https://github.com/FossifyOrg/Messages/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/FossifyOrg/Messages/compare/1.8.1...1.9.0
