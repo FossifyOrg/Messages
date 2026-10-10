@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
-- Fixed startup crash
+- Fixed startup crash on Android 11 and below
 
 ## [1.10.0] - 2026-10-10
 ### Added
