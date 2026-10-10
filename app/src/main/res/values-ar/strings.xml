@@ -72,7 +72,7 @@
         <item quantity="two">%d محادثتان</item>
         <item quantity="few">%d محادثات</item>
         <item quantity="many">%d محادثة</item>
-        <item quantity="other">%d محادثات</item>
+        <item quantity="other">%d محادثة</item>
     </plurals>
     <plurals name="delete_messages">
         <item quantity="zero">%d رسالة</item>
