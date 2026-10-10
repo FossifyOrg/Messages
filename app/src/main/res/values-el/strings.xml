@@ -97,10 +97,10 @@
     <string name="import_sms">Εισαγωγή SMS</string>
     <string name="import_mms">Εισαγωγή MMS</string>
     <string name="no_option_selected">Πρέπει να επιλέξετε τουλάχιστον ένα στοιχείο</string>
-    <string name="empty_destination_address">Αδυναμία αποστολής του μηνύματος σε έναν κενό αριθμό</string>
-    <string name="unable_to_save_message">Αδυναμία αποθήκευσης μηνύματος στη βάση δεδομένων τηλεφωνίας</string>
-    <string name="error_service_is_unavailable">Αδυναμία αποστολής μηνύματος. Η υπηρεσία δεν είναι διαθέσιμη</string>
-    <string name="error_radio_turned_off">Αδυναμία αποστολής μηνύματος, η οπρόσβαση radio απενεργοποιήθηκε</string>
+    <string name="empty_destination_address">Προσθέστε πρώτα έναν παραλήπτη</string>
+    <string name="unable_to_save_message">Αδυναμία αποθήκευσης του μηνύματος</string>
+    <string name="error_service_is_unavailable">Το μήνυμα δεν απεστάλη: Η υπηρεσία δεν είναι διαθέσιμη</string>
+    <string name="error_radio_turned_off">Το μήνυμα δεν απεστάλη. Ελέγξτε τη λειτουργία πτήσης</string>
     <string name="invalid_short_code">Αδυναμία απάντησης σε σύντομους κωδικούς όπως αυτός</string>
     <string name="invalid_short_code_desc">Μπορείτε να απαντήσετε μόνο σε σύντομους κωδικούς με αριθμούς όπως \"503501\" αλλά όχι σε κωδικούς που περιέχουν γράμματα και αριθμούς όπως \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Το μέγεθος συνημμένου υπερβαίνει το μέγιστο όριο MMS</string>
@@ -123,4 +123,9 @@
     <string name="group_mms">Ομαδοποίηση MMS</string>
     <string name="group_message_send_description">Το ομαδικό MMS διατηρεί τις απαντήσεις σε μία συνομιλία, αλλά ενδέχεται να ισχύουν χρεώσεις παρόχου κινητής τηλεφωνίας. Η ξεχωριστή αποστολή αποστέλλει ένα μήνυμα σε κάθε άτομο. Μπορείτε να το αλλάξετε αυτό αργότερα στις ρυθμίσεις της εφαρμογής.</string>
     <string name="send_group_message">Μορφή ομαδοποιημένων αποστολών</string>
+    <string name="sms_error_radio_unavailable">Το μήνυμα δεν απεστάλη: Δεν υπάρχει σύνδεση</string>
+    <string name="sms_error_encoding">Το μήνυμα δεν απεστάλη: Αδυναμία επεξεργασίας του κειμένου</string>
+    <string name="sms_error_limit_exceeded">Το μήνυμα δεν απεστάλη: Φτάσατε το όριο αποστολών</string>
+    <string name="sms_error_fixed_dialing">Το μήνυμα δεν απεστάλη: μπλοκαρίστηκε από τους καθορισμένους αριθμούς κλήσης</string>
+    <string name="sms_error_short_code_not_allowed">Το μήνυμα δεν απεστάλη: Ελέγξτε την υπηρεσία premium SMS</string>
 </resources>
