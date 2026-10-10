@@ -146,7 +146,7 @@
     <string name="mms_error_no_network">Besked blev ikke sendt: Ingen data-forbindelse</string>
     <string name="message_send_sim_unavailable">Besked blev ikke sendt: SIM-kort utilgængeligt</string>
     <string name="mms_error_sim_inactive">Besked blev ikke sendt: SIM-kort er inaktivt</string>
-    <string name="mms_error_data_disabled">Besked blev ikke sendt: Tjek mobildataindstillinger</string>
+    <string name="mms_error_data_disabled">Besked blev ikke sendt: Tjek mobildata-indstillinger</string>
     <string name="mms_error_carrier_disabled">Besked blev ikke sendt: Udbyder tillader ikke MMS</string>
     <string name="mms_sending_error_details">%1$s (M%2$d)</string>
     <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
