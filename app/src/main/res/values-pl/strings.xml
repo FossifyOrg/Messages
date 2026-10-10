@@ -169,7 +169,7 @@
     <string name="message_send_sim_unavailable">Wiadomość niewysłana: karta SIM niedostępna</string>
     <string name="mms_error_sim_inactive">Wiadomość niewysłana: karta SIM jest nieaktywna</string>
     <string name="mms_error_data_disabled">Wiadomość niewysłana. Sprawdź ustawienia komórkowej transmisji danych.</string>
-    <string name="mms_error_carrier_disabled">Wiadomość niedostępna: operator nie obsługuje MMS-ów</string>
+    <string name="mms_error_carrier_disabled">Wiadomość niewysłana: operator nie obsługuje MMS-ów</string>
     <string name="mms_sending_error_details">%1$s (M%2$d)</string>
     <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
 </resources>
