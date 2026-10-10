@@ -99,8 +99,8 @@
     <string name="no_option_selected">Du måste välja minst ett alternativ</string>
     <string name="empty_destination_address">Lägg först till en mottagare</string>
     <string name="unable_to_save_message">Det gick inte att spara meddelandet</string>
-    <string name="error_service_is_unavailable">Det gick inte att skicka meddelandet, tjänsten är inte tillgänglig</string>
-    <string name="error_radio_turned_off">Det gick inte att skicka meddelandet, radion är avstängd</string>
+    <string name="error_service_is_unavailable">Meddelandet skickades inte: ingen tjänst</string>
+    <string name="error_radio_turned_off">Meddelandet skickades inte. Kontrollera flygplansläge</string>
     <string name="invalid_short_code">Det går inte att svara på korta koder som den här</string>
     <string name="invalid_short_code_desc">Du kan svara på korta koder med siffror som \"503501\", men inte på koder som innehåller bokstäver och siffror som \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Bilagans storlek överskrider maxgränsen för mms</string>
@@ -125,4 +125,12 @@
     <string name="group_message_send_description">Grupp-mms samlar svaren i en konversation, men operatörsavgifter kan tillkomma. Om du väljer Skicka separat skickas ett meddelande till varje person. Du kan ändra detta senare i appinställningarna.</string>
     <string name="play">Spela upp</string>
     <string name="pause">Pausa</string>
+    <string name="sms_error_radio_unavailable">Meddelandet skickades inte: mobilanslutning är inte tillgänglig</string>
+    <string name="sms_error_encoding">Meddelandet skickades inte: det gick inte att bearbeta texten</string>
+    <string name="sms_error_limit_exceeded">Meddelandet skickades inte: sändningsgränsen har nåtts</string>
+    <string name="sms_error_fixed_dialing">Meddelandet skickades inte: blockerat av fasta nummer</string>
+    <string name="sms_error_short_code_not_allowed">Meddelandet skickades inte. Kontrollera åtkomst till premium-sms</string>
+    <string name="sms_error_network_rejected">Meddelandet skickades inte: nätverket avvisade det</string>
+    <string name="sms_error_invalid_arguments">Meddelandet skickades inte: ogiltiga sändningsuppgifter</string>
+    <string name="sms_error_invalid_state">Meddelandet skickades inte: telefonen är inte redo</string>
 </resources>
