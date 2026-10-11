@@ -133,4 +133,20 @@
     <string name="sms_error_network_rejected">Meddelandet skickades inte: nätverket avvisade det</string>
     <string name="sms_error_invalid_arguments">Meddelandet skickades inte: ogiltiga sändningsuppgifter</string>
     <string name="sms_error_invalid_state">Meddelandet skickades inte: telefonen är inte redo</string>
+    <string name="sms_error_no_memory">Meddelandet skickades inte: inte tillräckligt med minne</string>
+    <string name="sms_error_invalid_format">Meddelandet skickades inte: meddelandeformatfel</string>
+    <string name="sms_error_system">Meddelandet skickades inte: telefontjänstfel</string>
+    <string name="sms_error_modem">Meddelandet skickades inte: telefonanslutningsfel</string>
+    <string name="sms_error_network">Meddelandet skickades inte: nätverksfel</string>
+    <string name="sms_error_service_center">Meddelandet skickades inte. Kontrollera numret till SMS-centralen</string>
+    <string name="sms_error_not_allowed">Meddelandet skickades inte: sändning tillåts inte</string>
+    <string name="message_send_retry_later">Meddelandet skickades inte. Försök igen senare</string>
+    <string name="sms_error_cancelled">Sändningen har avbrutits</string>
+    <string name="sms_error_not_supported">Meddelandet skickades inte: sändningsmetoden stöds inte</string>
+    <string name="sms_error_bluetooth">Meddelandet skickades inte: Bluetooth-fel</string>
+    <string name="sms_error_emergency">Meddelandet skickades inte: nödläget är aktiverat</string>
+    <string name="sms_error_no_sim_selected">Meddelandet skickades inte: välj ett SIM-kort för meddelanden</string>
+    <string name="sms_error_user_not_allowed">Meddelandet skickades inte: den här användaren kan inte skicka meddelanden</string>
+    <string name="sms_error_network_not_ready">Meddelandet skickades inte: nätverket är inte redo</string>
+    <string name="sms_error_sim_missing">Meddelandet skickades inte: inget SIM-kort hittades</string>
 </resources>
