@@ -136,7 +136,7 @@
     <string name="sms_error_modem">Sõnumi saatmine ei õnnestu: telefoniühenduse viga</string>
     <string name="sms_error_network">Sõnumi saatmine ei õnnestu: võrguviga</string>
     <string name="sms_error_not_allowed">Sõnumi saatmine ei õnnestu: saatmine pole lubatud</string>
-    <string name="message_send_retry_later">Sõnumi saatmine ei õnnestu. Proovi hiljem uuestiˇ&lt;</string>
+    <string name="message_send_retry_later">Sõnumi saatmine ei õnnestu. Proovi hiljem uuesti</string>
     <string name="sms_error_cancelled">Saatmine on katkestatud</string>
     <string name="sms_error_not_supported">Sõnumi saatmine ei õnnestu: saatmismeetod pole toetatud</string>
     <string name="sms_error_bluetooth">Sõnumi saatmine ei õnnestu: Bluetoothi viga</string>
