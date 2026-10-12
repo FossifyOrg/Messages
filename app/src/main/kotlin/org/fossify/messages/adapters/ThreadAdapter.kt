@@ -3,14 +3,11 @@ package org.fossify.messages.adapters
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.Menu
-import android.view.MotionEvent
-import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -408,7 +405,6 @@ class ThreadAdapter(
                 setupSentMessageView(messageBinding = this, message = message)
             }
 
-            threadMessageHolder.touchDelegate = null
             val bodyTopPadding = if (threadMessageSenderName.isVisible && attachments.isEmpty()) {
                 CommonsR.dimen.tiny_margin
             } else {
@@ -479,11 +475,6 @@ class ThreadAdapter(
                 item.isLastInRun -> View.VISIBLE
                 else -> View.INVISIBLE
             }
-            threadMessageHolder.minimumHeight = if (threadMessageSenderPhoto.isVisible) {
-                resources.getDimensionPixelSize(CommonsR.dimen.list_touch_target_min)
-            } else {
-                0
-            }
             threadMessageSenderPhoto.contentDescription =
                 "$senderName, ${activity.getString(CommonsR.string.view_contact_details)}"
             threadMessageSenderPhoto.setOnClickListener {
@@ -521,36 +512,6 @@ class ThreadAdapter(
         }
     }
 
-    private fun updateAvatarTouchTarget(binding: ItemMessageBinding) {
-        val parent = binding.threadMessageHolder
-        val avatar = binding.threadMessageSenderPhoto
-        parent.touchDelegate = null
-        if (!avatar.isVisible) return
-
-        val size = resources.getDimensionPixelSize(CommonsR.dimen.list_touch_target_min)
-        val avatarBounds = Rect(0, 0, avatar.width, avatar.height)
-        parent.offsetDescendantRectToMyCoords(avatar, avatarBounds)
-        val content = binding.threadMessageContent
-        val contentBounds = Rect(0, 0, content.width, content.height)
-        parent.offsetDescendantRectToMyCoords(content, contentBounds)
-        val left = if (parent.layoutDirection == View.LAYOUT_DIRECTION_RTL) {
-            contentBounds.right
-        } else {
-            contentBounds.left - size
-        }
-        val top = (avatarBounds.centerY() - size / 2).coerceIn(0, parent.height - size)
-        parent.touchDelegate = object : TouchDelegate(Rect(left, top, left + size, top + size), avatar) {
-            override fun onTouchEvent(event: MotionEvent): Boolean {
-                val delegatedEvent = MotionEvent.obtain(event)
-                return try {
-                    super.onTouchEvent(delegatedEvent)
-                } finally {
-                    delegatedEvent.recycle()
-                }
-            }
-        }
-    }
-
     private fun setupSentMessageView(messageBinding: ItemMessageBinding, message: Message) {
         messageBinding.apply {
             with(ConstraintSet()) {
@@ -568,7 +529,6 @@ class ThreadAdapter(
             }
             threadMessageSenderName.beGone()
             threadMessageSenderPhoto.beGone()
-            threadMessageHolder.minimumHeight = 0
 
             val primaryColor = activity.getProperPrimaryColor()
             val contrastColor = primaryColor.getContrastColor()
@@ -789,15 +749,7 @@ class ThreadAdapter(
         }
     }
 
-    inner class ThreadViewHolder(val binding: ViewBinding) : ViewHolder(binding.root) {
-        init {
-            if (binding is ItemMessageBinding) {
-                binding.root.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-                    updateAvatarTouchTarget(binding)
-                }
-            }
-        }
-    }
+    inner class ThreadViewHolder(val binding: ViewBinding) : ViewHolder(binding.root)
 }
 
 private class ThreadItemDiffCallback : DiffUtil.ItemCallback<ThreadItem>() {
