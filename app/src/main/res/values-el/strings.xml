@@ -137,7 +137,7 @@
     <string name="sms_error_modem">Το μήνυμα δεν απεστάλη: Σφάλμα σύνδεσης τηλεφώνου</string>
     <string name="sms_error_network">Το μήνυμα δεν απεστάλη: Σφάλμα δικτύου</string>
     <string name="sms_error_service_center">Το μήνυμα δεν απεστάλη. Ελέγξτε τον αριθμό του κέντρου SMS</string>
-    <string name="sms_error_not_allowed">Το μήνυμα δεν απεστάλη:Η αποστολή δεν επιτρέπεται</string>
+    <string name="sms_error_not_allowed">Το μήνυμα δεν απεστάλη: Η αποστολή δεν επιτρέπεται</string>
     <string name="message_send_retry_later">Το μήνυμα δεν απεστάλη. Δοκιμάστε αργότερα</string>
     <string name="sms_error_cancelled">Η αποστολή ακυρώθηκε</string>
     <string name="sms_error_not_supported">Το μήνυμα δεν απεστάλη: Η μέθοδος αποστολής δεν υποστηρίζεται</string>
@@ -155,7 +155,7 @@
     <string name="mms_error_invalid_apn">Το μήνυμα δεν απεστάλη: Ελέγξτε τις ρυθμίσεις APN</string>
     <string name="mms_error_connection">Το μήνυμα δεν απεστάλη: Αδυναμία πρόσβασης παρόχου</string>
     <string name="mms_error_http">Το μήνυμα δεν απεστάλη: Το αίτημα παρόχου απέτυχε</string>
-    <string name="mms_error_io">Το μήνυμα δεν απεστάλη: Αδυναμία πρόσβασης στο περιεχόμενο του</string>
+    <string name="mms_error_io">Το μήνυμα δεν απεστάλη: Αδυναμία πρόσβασης στο περιεχόμενό του</string>
     <string name="mms_error_configuration">Το μήνυμα δεν απεστάλη: Οι ρυθμίσεις παρόχου δεν είναι διαθέσιμες</string>
     <string name="mms_error_no_network">Το μήνυμα δεν απεστάλη: Καμία σύνδεση δεδομένων</string>
     <string name="message_send_sim_unavailable">Το μήνυμα δεν απεστάλη: Μη διαθέσιμη SIM</string>
