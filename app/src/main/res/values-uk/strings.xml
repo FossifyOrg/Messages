@@ -137,7 +137,7 @@
     <string name="sms_error_fixed_dialing">Повідомлення не надіслано: заблоковано через режим фіксованого набору номерів</string>
     <string name="sms_error_short_code_not_allowed">Повідомлення не надіслано. Перевірте доступ до преміум SMS</string>
     <string name="sms_error_network_rejected">Повідомлення не надіслано: мережа відхилила його</string>
-    <string name="sms_error_invalid_arguments">Повідомлення не надіслано: недійсні дані відправника</string>
+    <string name="sms_error_invalid_arguments">Повідомлення не надіслано: недійсні дані надсилання</string>
     <string name="sms_error_invalid_state">Повідомлення не надіслано: телефон не готовий</string>
     <string name="sms_error_no_memory">Повідомлення не надіслано: недостатньо пам’яті</string>
     <string name="sms_error_invalid_format">Повідомлення не надіслано: помилка формату повідомлення</string>
