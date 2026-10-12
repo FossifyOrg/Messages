@@ -149,4 +149,9 @@
     <string name="sms_error_user_not_allowed">Meddelandet skickades inte: den här användaren kan inte skicka meddelanden</string>
     <string name="sms_error_network_not_ready">Meddelandet skickades inte: nätverket är inte redo</string>
     <string name="sms_error_sim_missing">Meddelandet skickades inte: inget SIM-kort hittades</string>
+    <string name="sms_error_call_in_progress">Meddelandet skickades inte. Försök igen efter samtalet</string>
+    <string name="sms_error_access_barred">Meddelandet skickades inte: nätverksåtkomsten är blockerad</string>
+    <string name="sms_sending_error_details">%1$s (S%2$d)</string>
+    <string name="sms_sending_error_radio_details">%1$s (S%2$d/%3$d)</string>
+    <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
 </resources>
