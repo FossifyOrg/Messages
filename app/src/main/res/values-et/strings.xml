@@ -149,7 +149,7 @@
     <string name="sms_error_network_not_ready">Sõnumi saatmine ei õnnestu: võrk pole valmis</string>
     <string name="sms_error_user_not_allowed">Sõnumi saatmine ei õnnestu: see kasutaja ei tohi saata sõnumeid</string>
     <string name="sms_error_no_sim_selected">Sõnumi saatmine ei õnnestu: vali SIM-kaart, mida kasutatakse sõnumite saatmisel</string>
-    <string name="sms_error_emergency">Sõnumi saatmine ei õnnestu: hädaabirežiim pole aktiivne</string>
+    <string name="sms_error_emergency">Sõnumi saatmine ei õnnestu: hädaabirežiim on aktiivne</string>
     <string name="sms_error_service_center">Sõnumi saatmine ei õnnestu: kontrolli sõnumikeskuse numbri õigsust</string>
     <string name="sms_error_limit_exceeded">Sõnumi saatmine ei õnnestu: saatmiste ülempiir on käes</string>
     <string name="sms_error_fixed_dialing">Sõnumi saatmine ei õnnestu: keelatud Fixed Dialing Numbers teenuse poolt</string>
@@ -161,7 +161,7 @@
     <string name="mms_error_no_network">Sõnumi saatmine ei õnnestu: andmesideühendust pole</string>
     <string name="message_send_sim_unavailable">Sõnumi saatmine ei õnnestu: SIM-kaart pole saadaval</string>
     <string name="mms_error_sim_inactive">Sõnumi saatmine ei õnnestu: SIM-kaart pole aktiivne</string>
-    <string name="mms_error_carrier_disabled">Sõnumi saatmine ei õnnestu: võrguoperaatori ei luba MMS-i saata</string>
+    <string name="mms_error_carrier_disabled">Sõnumi saatmine ei õnnestu: võrguoperaator ei luba MMS-i saata</string>
     <string name="mms_sending_error_details">%1$s (M%2$d)</string>
     <string name="mms_error_data_disabled">Sõnumi saatmine ei õnnestu: kontrolli mobiilse andmeside seadistusi</string>
     <string name="sms_error_short_code_not_allowed">Sõnumi saatmine ei õnnestu: kontrolli, kas Premium SMS teenuse ligipääs on olemas</string>
