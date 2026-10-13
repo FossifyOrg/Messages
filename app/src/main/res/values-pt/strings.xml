@@ -122,7 +122,7 @@
     <string name="keep_conversations_archived">Manter conversas arquivadas</string>
     <string name="faq_4_title">Por que as minhas respostas a mensagens em grupo aparecem como mensagens individuais para os destinatários?</string>
     <string name="send_group_message">Formato da mensagem de grupo</string>
-    <string name="group_message_send_description">As mensagens de grupo mantêm as respostas em apenas uma conversa mas podem ser aplicadas taxas pela operadora. I envio em separado envia a mesma mensagem para cada um dos destinatários. Pode alterar a opção nas definições.</string>
+    <string name="group_message_send_description">As mensagens de grupo mantêm as respostas em apenas uma conversa mas podem ser aplicadas taxas pela operadora. O envio em separado envia a mesma mensagem para cada um dos destinatários. Pode alterar a opção nas definições.</string>
     <string name="group_mms">MMS de grupo</string>
     <string name="separate_messages">Enviar em separado</string>
     <string name="sms_error_radio_unavailable">Mensagem não enviada. Serviço móvel não disponível.</string>
