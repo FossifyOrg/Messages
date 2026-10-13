@@ -59,7 +59,7 @@
     <string name="empty_archive_confirmation">Tem a certeza de que pretende limpar o arquivo\? Todas as conversas arquivadas serão eliminadas.</string>
     <string name="restore">Restaurar</string>
     <string name="restore_all_messages">Restaurar todas as mensagens</string>
-    <string name="empty_recycle_bin_messages_confirmation">Tem a certeza de que pretende esvaziar a reciclagem\? As mensagens não poderão ser recuperadas.</string>
+    <string name="empty_recycle_bin_messages_confirmation">Tem a certeza de que pretende limpar a reciclagem? As mensagens não poderão ser recuperadas.</string>
     <string name="skip_the_recycle_bin_messages">Eliminar mensagens sem as colocar na reciclagem</string>
     <string name="delete_whole_conversation_confirmation">Tem a certeza de que pretende eliminar todas as mensagens desta conversa?</string>
     <string name="archive_confirmation">Tem a certeza de que pretende arquivar %s\?</string>
