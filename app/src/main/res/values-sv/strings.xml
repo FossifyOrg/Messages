@@ -154,4 +154,5 @@
     <string name="sms_sending_error_details">%1$s (S%2$d)</string>
     <string name="sms_sending_error_radio_details">%1$s (S%2$d/%3$d)</string>
     <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
+    <string name="mms_error_invalid_apn">Meddelandet skickades inte. Kontrollera APN-inställningarna</string>
 </resources>
