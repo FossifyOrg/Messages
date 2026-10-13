@@ -100,7 +100,7 @@
     <string name="import_mms">Importar MMS</string>
     <string name="no_option_selected">Tem que selecionar, pelo menos, 1 item</string>
     <string name="empty_destination_address">Não pode enviar mensagens se não existir um destinatário</string>
-    <string name="unable_to_save_message">Não foi possível guardar a mensagem na base de dados do telefone</string>
+    <string name="unable_to_save_message">Não foi possível guardar a mensagem</string>
     <string name="error_service_is_unavailable">Serviço indisponível. Não pode enviar a mensagem</string>
     <string name="error_radio_turned_off">Mensagem não enviada. Verifique se o modo avião está ativado.</string>
     <string name="invalid_short_code">Não é possível responder a códigos deste tipo</string>
