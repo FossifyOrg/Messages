@@ -155,4 +155,10 @@
     <string name="sms_sending_error_radio_details">%1$s (S%2$d/%3$d)</string>
     <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
     <string name="mms_error_invalid_apn">Meddelandet skickades inte. Kontrollera APN-inställningarna</string>
+    <string name="mms_error_connection">Meddelandet skickades inte: det gick inte att nå operatören</string>
+    <string name="mms_error_http">Meddelandet skickades inte: operatörsbegäran misslyckades</string>
+    <string name="mms_error_io">Meddelandet skickades inte: det gick inte att komma åt innehållet</string>
+    <string name="mms_error_configuration">Meddelandet skickades inte: operatörsinställningarna är inte tillgängliga</string>
+    <string name="mms_error_no_network">Meddelandet skickades inte: ingen dataanslutning</string>
+    <string name="message_send_sim_unavailable">Meddelandet skickades inte: SIM-kortet är inte tillgängligt</string>
 </resources>
