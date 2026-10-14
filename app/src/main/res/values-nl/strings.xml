@@ -125,4 +125,9 @@
     <string name="separate_messages">Afzonderlijk versturen</string>
     <string name="pause">Pauzeren</string>
     <string name="play">Afspelen</string>
+    <string name="mms_error_io">Bericht niet verzonden: geen toegang tot de inhoud</string>
+    <string name="mms_error_configuration">Bericht niet verzonden: netwerkinstellingen niet beschikbaar</string>
+    <string name="mms_error_no_network">Bericht niet verzonden: geen dataverbinding</string>
+    <string name="message_send_sim_unavailable">Bericht niet verzonden: simkaart niet beschikbaar</string>
+    <string name="mms_error_sim_inactive">Bericht niet verzonden: simkaart is niet actief</string>
 </resources>
