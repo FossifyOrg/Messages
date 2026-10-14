@@ -128,7 +128,7 @@
     <string name="separate_messages">Invia separatamente</string>
     <string name="play">Riproduci</string>
     <string name="pause">Interrompi</string>
-    <string name="sms_error_radio_unavailable">Messaggio non inviato: connessione dati mobili non disponibile</string>
+    <string name="sms_error_radio_unavailable">Messaggio non inviato: connessione mobile non disponibile</string>
     <string name="sms_error_encoding">Messaggio non inviato: impossibile elaborare il testo</string>
     <string name="sms_error_limit_exceeded">Messaggio non inviato: raggiunto il limite di invio</string>
     <string name="sms_error_fixed_dialing">Messaggio non inviato: bloccato dai numeri a selezione fissa</string>
