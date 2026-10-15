@@ -157,7 +157,7 @@
     <string name="mms_error_io">Chưa gửi được tin nhắn: không thể truy cập nội dung của nó</string>
     <string name="mms_error_configuration">Chưa gửi được tin nhắn: không có cài đặt nhà cung cấp dịch vụ</string>
     <string name="mms_error_no_network">Chưa gửi được tin nhắn: không có kết nối dữ liệu</string>
-    <string name="message_send_sim_unavailable">Chưa gửi được tin nhắn: không có SIM</string>
+    <string name="message_send_sim_unavailable">Chưa gửi được tin nhắn: SIM không khả dụng</string>
     <string name="mms_error_sim_inactive">Chưa gửi được tin nhắn: SIM không hoạt động</string>
     <string name="mms_error_data_disabled">Chưa gửi được tin nhắn. Kiểm tra cài đặt dữ liệu di động</string>
     <string name="mms_error_carrier_disabled">Chưa gửi được tin nhắn: nhà cung cấp dịch vụ không cho phép MMS</string>
