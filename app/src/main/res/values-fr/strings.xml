@@ -135,7 +135,7 @@
     <string name="sms_error_encoding">Message non envoyé : impossible de traiter le texte</string>
     <string name="sms_error_limit_exceeded">Message non envoyé : limite d\'envoi atteinte</string>
     <string name="sms_error_fixed_dialing">Message non envoyé : bloqué par le mode Appels autorisés</string>
-    <string name="sms_error_short_code_not_allowed">Message non envoyé. Vérifier l\'accès Premium aux SMS</string>
+    <string name="sms_error_short_code_not_allowed">Message non envoyé. Vérifier l\'accès aux SMS Premium</string>
     <string name="sms_error_network_rejected">Message non envoyé : le réseau l\'a rejeté</string>
     <string name="sms_error_invalid_arguments">Message non envoyé : détails d\'envoi invalides</string>
     <string name="sms_error_invalid_state">Message non envoyé : le téléphone n\'est pas prêt</string>
