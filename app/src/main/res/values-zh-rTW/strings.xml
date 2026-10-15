@@ -94,10 +94,10 @@
     <string name="import_sms">匯入簡訊</string>
     <string name="import_mms">匯入 MMS</string>
     <string name="no_option_selected">最少要選擇一個項目</string>
-    <string name="empty_destination_address">無法向空號碼送出訊息</string>
-    <string name="unable_to_save_message">無法將訊息儲存至電信資料庫</string>
-    <string name="error_service_is_unavailable">無法送出訊息，服務無法使用</string>
-    <string name="error_radio_turned_off">無法送出訊息，無線電已關閉</string>
+    <string name="empty_destination_address">請先新增一位收話人</string>
+    <string name="unable_to_save_message">無法儲存訊息</string>
+    <string name="error_service_is_unavailable">訊息未送出：沒有服務</string>
+    <string name="error_radio_turned_off">訊息無法送出。請檢查是否開啟飛航模式</string>
     <string name="invalid_short_code">無法回覆此類短碼</string>
     <string name="invalid_short_code_desc">您只能回覆像「503501」這樣的數字短碼，而不能回覆包含字母和數字的短碼，如「AB-CD0」。</string>
     <string name="attachment_sized_exceeds_max_limit">附件大小超過最大 MMS 限制</string>
@@ -120,4 +120,8 @@
     <string name="group_message_send_description">群組 MMS 會將所有回覆集中在同一個對話中，但電信業者可能會收取額外費用。分開發送則會單獨傳送訊息給每一個人。您稍後隨時可以在應用程式設定中變更此選項。</string>
     <string name="group_mms">群組 MMS</string>
     <string name="separate_messages">分開發送</string>
+    <string name="sms_error_radio_unavailable">訊息發送失敗：無網路連線</string>
+    <string name="sms_error_encoding">訊息發送失敗：無法處理文字</string>
+    <string name="sms_error_limit_exceeded">訊息發送失敗：已達傳送上限</string>
+    <string name="sms_error_bluetooth">訊息發送失敗：藍牙錯誤</string>
 </resources>
