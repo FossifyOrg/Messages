@@ -161,4 +161,9 @@
     <string name="mms_error_configuration">Meddelandet skickades inte: operatörsinställningarna är inte tillgängliga</string>
     <string name="mms_error_no_network">Meddelandet skickades inte: ingen dataanslutning</string>
     <string name="message_send_sim_unavailable">Meddelandet skickades inte: SIM-kortet är inte tillgängligt</string>
+    <string name="mms_error_sim_inactive">Meddelandet skickades inte: SIM-kortet är inaktivt</string>
+    <string name="mms_error_data_disabled">Meddelandet skickades inte. Kontrollera inställningarna för mobildata</string>
+    <string name="mms_error_carrier_disabled">Meddelandet skickades inte: operatören tillåter inte mms</string>
+    <string name="mms_sending_error_details">%1$s (M%2$d)</string>
+    <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
 </resources>
