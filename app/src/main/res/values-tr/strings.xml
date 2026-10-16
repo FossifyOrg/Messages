@@ -128,7 +128,7 @@
     <string name="sms_error_radio_unavailable">Mesaj gönderilmedi: Mobil bağlantı kullanılabilir değil</string>
     <string name="sms_error_encoding">Mesaj gönderilmedi: metin işlenemedi</string>
     <string name="sms_error_limit_exceeded">Mesaj gönderilmedi: gönderim sınırına ulaşıldı</string>
-    <string name="sms_error_fixed_dialing">Mesaj gönderilmedi: arama kısıtlama tarafından engellendi</string>
+    <string name="sms_error_fixed_dialing">Mesaj gönderilmedi: sabit arama tarafından engellendi</string>
     <string name="sms_error_short_code_not_allowed">Mesaj gönderilmedi. Premium SMS erişimini gözden geçirin</string>
     <string name="sms_error_network_rejected">Mesaj gönderilmedi: ağ tarafından reddedildi</string>
     <string name="sms_error_invalid_arguments">Mesaj gönderilmedi: geçersiz gönderim bilgileri</string>
