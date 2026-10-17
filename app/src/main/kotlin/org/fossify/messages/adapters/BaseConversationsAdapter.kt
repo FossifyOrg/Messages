@@ -1,6 +1,7 @@
 package org.fossify.messages.adapters
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.Typeface
 import android.os.Parcelable
 import android.util.TypedValue
@@ -25,6 +26,7 @@ import org.fossify.commons.views.MyRecyclerView
 import org.fossify.messages.activities.SimpleActivity
 import org.fossify.messages.databinding.ItemConversationBinding
 import org.fossify.messages.extensions.config
+import org.fossify.messages.extensions.canResolveImagePath
 import org.fossify.messages.extensions.getAllDrafts
 import org.fossify.messages.models.Conversation
 
@@ -192,19 +194,45 @@ abstract class BaseConversationsAdapter(
             }
 
             setupBadgeCount(unreadCountBadge, isUnread, conversation.unreadCount)
-            // at group conversations we use an icon as the placeholder, not any letter
-            val placeholder = if (conversation.isGroupConversation) {
-                SimpleContactsHelper(activity).getColoredGroupIcon(conversation.title)
-            } else {
-                null
-            }
 
-            SimpleContactsHelper(activity).loadContactImage(
-                path = conversation.photoUri,
-                imageView = conversationImage,
-                placeholderName = conversation.title,
-                placeholderImage = placeholder
-            )
+	    // at group conversations we use an icon as the placeholder, not any letter
+
+	    //val placeholder = if (conversation.isGroupConversation) {
+            //    SimpleContactsHelper(activity).getColoredGroupIcon(conversation.title)
+            //} else {
+            //    null
+            //}
+	    //
+            //SimpleContactsHelper(activity).loadContactImage(
+            //    path = conversation.photoUri,
+            //    imageView = conversationImage,
+            //    placeholderName = conversation.title,
+            //    placeholderImage = placeholder
+            //)
+	    
+	    // attempt to gracefully fall back to placeholder when contactsprovider is not available
+
+	    val contactsHelper = SimpleContactsHelper(activity)
+	    val placeholder = if (conversation.isGroupConversation) {
+	        contactsHelper.getColoredGroupIcon(conversation.title)
+	    } else {
+	        null
+	    }
+
+	    if (activity.canResolveImagePath(conversation.photoUri)) {
+	        contactsHelper.loadContactImage(
+	            path = conversation.photoUri,
+	            imageView = conversationImage,
+	            placeholderName = conversation.title,
+	            placeholderImage = placeholder
+	        )
+	    } else {
+	        val fallback = placeholder ?: BitmapDrawable(
+	            activity.resources,
+	            contactsHelper.getContactLetterIcon(conversation.title)
+	        )
+	        conversationImage.setImageDrawable(fallback)
+	    }
         }
     }
 
