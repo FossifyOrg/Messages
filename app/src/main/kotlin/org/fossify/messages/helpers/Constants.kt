@@ -52,6 +52,8 @@ const val KEEP_CONVERSATIONS_ARCHIVED = "keep_conversations_archived"
 private const val PATH = "org.fossify.org.fossify.messages.action."
 const val MARK_AS_READ = PATH + "mark_as_read"
 const val REPLY = PATH + "reply"
+const val COPY_CODE = PATH + "copy_code"
+const val CODE_TO_COPY = "code_to_copy"
 
 // view types for the thread list view
 const val THREAD_DATE_TIME = 1
