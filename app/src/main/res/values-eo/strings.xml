@@ -22,8 +22,8 @@
     <string name="messages">Mesaĝoj</string>
     <string name="app_launcher_name">Mesaĝoj</string>
     <string name="send_long_message_mms">Sendi longajn mesaĝojn kiel MMS</string>
-    <string name="error_service_is_unavailable">Ne povis sendi mesaĝon (servo ne disponeblas)</string>
-    <string name="unable_to_save_message">Ne eblas konservi mesaĝon al la telefona datumbazo</string>
+    <string name="error_service_is_unavailable">Mesaĝo ne sendita: servo ne disponeblas</string>
+    <string name="unable_to_save_message">Ne eblis konservi la mesaĝon</string>
     <string name="attachment_sized_exceeds_max_limit">Grandeco de la kunsendaĵo superas la limigon de MMS</string>
     <string name="faq_3_text">Jes, vi povas plani mesaĝojn por esti senditaj estontece per longe premi la butonon de Sendi kaj elekti la deziratajn daton kaj horon.</string>
     <string name="message_not_sent_short">Mesaĝo ne sendita</string>
@@ -83,8 +83,8 @@
     <string name="import_sms">Importi SMS-mesaĝojn</string>
     <string name="import_mms">Importi MMS-mesaĝojn</string>
     <string name="no_option_selected">Vi devas elekti almenaŭ unu elementon</string>
-    <string name="empty_destination_address">Ne eblas sendi mesaĝon al malplena telefonnumero</string>
-    <string name="error_radio_turned_off">Ne povis sendi mesaĝon (radioaparato estas malŝaltita)</string>
+    <string name="empty_destination_address">Aldonu ricevanton unue</string>
+    <string name="error_radio_turned_off">Mesaĝo ne sendita. Kontrolu la avian reĝimon</string>
     <string name="invalid_short_code">Ne eblas respondi al mallongaj telefonnumeroj kiel tiu ĉi</string>
     <string name="invalid_short_code_desc">Nur eblas respondi al mallongaj telefonnumeroj kiel \"503501\", ne al tiuj enhavantaj leterojn kaj nombrojn kiel \"AB-CD0\".</string>
     <string name="couldnt_download_mms">Ne povis elŝuti MMS</string>
@@ -125,4 +125,8 @@
     <string name="separate_messages">Aparta sendado</string>
     <string name="play">Ludi</string>
     <string name="pause">Paŭzi</string>
+    <string name="sms_error_radio_unavailable">Mesaĝo ne sendita: la telefona retkonekto de disponeblas</string>
+    <string name="sms_error_encoding">Mesaĝo ne sendita: malsukcesis trakti tekston</string>
+    <string name="sms_error_limit_exceeded">Mesaĝo ne sendita: atingis limon de sendado</string>
+    <string name="sms_error_fixed_dialing">Mesaĝo ne sendita: blokita de fiksitaj telefonnumeroj (FDN)</string>
 </resources>
