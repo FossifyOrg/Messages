@@ -125,7 +125,7 @@
     <string name="separate_messages">Aparta sendado</string>
     <string name="play">Ludi</string>
     <string name="pause">Paŭzi</string>
-    <string name="sms_error_radio_unavailable">Mesaĝo ne sendita: la telefona retkonekto de disponeblas</string>
+    <string name="sms_error_radio_unavailable">Mesaĝo ne sendita: la telefona retkonekto ne disponeblas</string>
     <string name="sms_error_encoding">Mesaĝo ne sendita: malsukcesis trakti tekston</string>
     <string name="sms_error_limit_exceeded">Mesaĝo ne sendita: atingis limon de sendado</string>
     <string name="sms_error_fixed_dialing">Mesaĝo ne sendita: blokita de fiksitaj telefonnumeroj (FDN)</string>
