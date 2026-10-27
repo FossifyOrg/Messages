@@ -139,7 +139,7 @@
     <string name="sms_error_modem">Mesaĝo ne sendita: eraro de konekto de telefono</string>
     <string name="sms_error_network">Mesaĝo ne sendita: eraro de reto</string>
     <string name="sms_error_service_center">Mesaĝo ne sendita. Kontrolu numeron de SMS-centro</string>
-    <string name="sms_error_not_allowed">Mesaĝo ne sendita: sendado de estas permesita</string>
+    <string name="sms_error_not_allowed">Mesaĝo ne sendita: sendado ne estas permesita</string>
     <string name="message_send_retry_later">Mesaĝo ne sendita. Provu denove poste</string>
     <string name="sms_error_cancelled">Sendado nuligita</string>
     <string name="sms_error_not_supported">Mesaĝo ne sendita: nesubtenata sendometodo</string>
