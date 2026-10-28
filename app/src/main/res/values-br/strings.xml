@@ -118,4 +118,17 @@
     <string name="add_a_blocked_keyword">Ouzhpennañ ur ger-alc’hwez da stankañ</string>
     <string name="manage_blocked_keywords">Merañ ar gerioù-alc\'hwez stanket</string>
     <string name="not_blocking_keywords">Ne vez ket stanket ger-alc\'hwez ebet ganeoc\'h. Gallout a rit o ouzhpennañ amañ evit stankañ ar c’hemennadennoù gant ar gerioù-se enno.</string>
+    <string name="sender_and_message">Kaser ha kemennadenn</string>
+    <string name="faq_3_title">Ha moaien \'vez steuñviñ ar c\'hemennadennoù gant an arload ?</string>
+    <string name="sms_error_invalid_state">N\'eo ket bet kaset ar gemennadenn : n\'eo ket prest ar pellgomzer</string>
+    <string name="sms_error_modem">N\'eo ket bet kaset ar gemennadenn : fazi kennaskañ gant ar pellgomzer</string>
+    <string name="faq_1_title">Perak e vez implijet internet gant an arload ?</string>
+    <string name="sms_error_encoding">N\'eo ket bet kaset ar gemennadenn : fazi gant an destenn</string>
+    <string name="send_on_enter">Pouezan war Enankañ evit kas ar gemennadenn</string>
+    <string name="mms_error_connection">N\'eo ket bet kaset ar gemennadenn : dibosupl tizhout an oberataer</string>
+    <string name="mms_error_http">N\'eo ket bet kaset ar gemennadenn : c\'hwitet an azgoulenn d\'an oberataer</string>
+    <string name="mms_error_configuration">N\'eo ket bet kaset ar gemennadenn : dihegerz arventennoù an oberataer</string>
+    <string name="mms_error_carrier_disabled">N\'eo ket bet kaset ar gemennadenn : n\'eo ket aotreet an MMS gant an oberataer</string>
+    <string name="export_blocked_keywords">Ezporzhiañ gerioù-alc\'hwez stanket</string>
+    <string name="import_blocked_keywords">Enporzhiañ gerioù-alc\'hwez stanket</string>
 </resources>
