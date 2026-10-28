@@ -133,7 +133,7 @@
     <string name="sms_error_encoding">Sporočilo ni bilo poslano: besedila ni bilo mogoče obdelati</string>
     <string name="sms_error_limit_exceeded">Sporočilo ni bilo poslano: dosežena omejitev pošiljanja</string>
     <string name="sms_error_short_code_not_allowed">Sporočilo ni bilo poslano: preverite Premium SMS dostop</string>
-    <string name="sms_error_network_rejected">Sporočilo ni bilo poslano: zavrnejno s strani omrežja</string>
+    <string name="sms_error_network_rejected">Sporočilo ni bilo poslano: zavrnjeno s strani omrežja</string>
     <string name="sms_error_invalid_arguments">Sporočilo ni bilo poslano: podatki za pošiljanje neveljavni</string>
     <string name="sms_error_invalid_state">Sporočilo ni bilo poslano: telefon ni pripravljen</string>
     <string name="sms_error_no_memory">Sporočilo ni bilo poslano: premalo spomina</string>
