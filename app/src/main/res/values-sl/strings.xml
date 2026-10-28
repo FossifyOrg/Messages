@@ -170,5 +170,5 @@
     <string name="mms_sending_error_details">%1$s (M%2$d)</string>
     <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
     <string name="play">Predvajaj</string>
-    <string name="pause">Ustavi</string>
+    <string name="pause">Premor</string>
 </resources>
