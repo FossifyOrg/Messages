@@ -141,7 +141,7 @@
     <string name="sms_error_system">Sporočilo ni bilo poslano: napaka telefonske storitve</string>
     <string name="sms_error_modem">Sporočilo ni bilo poslano: napaka pri telefonski povezavi</string>
     <string name="sms_error_network">Sporočilo ni bilo poslano: napaka omrežja</string>
-    <string name="sms_error_service_center">Sporočilo ni bilo poslano. Preverite številko SMS-centra.</string>
+    <string name="sms_error_service_center">Sporočilo ni bilo poslano. Preverite številko SMS-centra</string>
     <string name="sms_error_not_allowed">Sporočilo ni bilo poslano: pošiljanje ni dovoljeno</string>
     <string name="message_send_retry_later">Sporočilo ni bilo poslano. Poskusite ponovno pozneje</string>
     <string name="sms_error_cancelled">Pošiljanje preklicano</string>
@@ -171,4 +171,5 @@
     <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
     <string name="play">Predvajaj</string>
     <string name="pause">Premor</string>
+    <string name="sms_error_fixed_dialing">Sporočilo ni bilo poslano: onemogočeno zaradi omejitve telefonskih številk</string>
 </resources>
