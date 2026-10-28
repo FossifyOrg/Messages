@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Kemenadennoù</string>
+    <string name="app_launcher_name">Kemennadennoù</string>
     <string name="type_a_message">Skrivañ ur gemennadenn…</string>
     <string name="message_not_sent_short">N\'eo ket bet kaset ar gemennadenn</string>
     <string name="message_not_sent_touch_retry">N\'eo ket bet kaset. Stokit evit kas en-dro.</string>
@@ -18,7 +18,7 @@
     <string name="unpin_conversation">Dispilhennañ</string>
     <string name="forward_message">Treuzkas</string>
     <string name="compress_error">Dibosupl eo koazhañ ar skeudenn d\'ar ment choazet</string>
-    <string name="duplicate_item_warning">An eflenn e doubl n\'eo ket bet lakaet e-barzh</string>
+    <string name="duplicate_item_warning">An elfenn e doubl n\'eo ket bet lakaet e-barzh</string>
     <plurals name="and_other_contacts">
         <item quantity="one">hag %d all</item>
         <item quantity="two">ha %d all</item>
@@ -41,7 +41,7 @@
     <string name="must_pick_time_in_the_future">Ret eo deoc\'h choaz un deiziad en amzer da zont</string>
     <string name="keywords">Gerioù-alc\'hwez</string>
     <string name="keyword">Ger-alc\'hwez</string>
-    <string name="messages">Kemenadennoù</string>
+    <string name="messages">Kemennadennoù</string>
     <string name="restore">Adsevel</string>
     <string name="archive">Diell</string>
     <string name="message_details_sender">Kaser</string>
