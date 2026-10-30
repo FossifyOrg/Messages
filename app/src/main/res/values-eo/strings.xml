@@ -156,7 +156,7 @@
     <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
     <string name="mms_error_invalid_apn">Mesaĝo ne sendita. Kontrolu agordon de nomo de retkaptejo (APN)</string>
     <string name="mms_error_connection">Mesaĝo ne sendita: malsukcesis atingi operatoron</string>
-    <string name="mms_error_http">Mesaĝo ne sendita: peto de operatoro malsukcesis</string>
+    <string name="mms_error_http">Mesaĝo ne sendita: peto al operatoro malsukcesis</string>
     <string name="mms_error_io">Mesaĝo ne sendita: ne povis atingi enhavon</string>
     <string name="mms_error_configuration">Mesaĝo ne sendita: operatora agordo ne disponeblas</string>
     <string name="mms_error_no_network">Mesaĝo ne sendita: neniu konekto de datumoj</string>
