@@ -124,7 +124,7 @@
     <string name="sms_error_modem">Kemennadenn nann kaset : fazi kennaskañ gant ar pellgomzer</string>
     <string name="faq_1_title">Perak e vez implijet internet gant an arload ?</string>
     <string name="sms_error_encoding">Kemennadenn nann kaset : fazi gant an destenn</string>
-    <string name="send_on_enter">Pouezan war Enankañ evit kas ar gemennadenn</string>
+    <string name="send_on_enter">Pouezañ war Enankañ evit kas ar gemennadenn</string>
     <string name="mms_error_connection">Kemennadenn nann kaset : dibosupl tizhout an oberataer</string>
     <string name="mms_error_http">Kemennadenn nann kaset : c\'hwitet an azgoulenn d\'an oberataer</string>
     <string name="mms_error_configuration">Kemennadenn nann kaset : dihegerz arventennoù an oberataer</string>
