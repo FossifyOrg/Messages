@@ -75,10 +75,6 @@
     <ID>MaxLineLength:AddBlockedKeywordDialog.kt$AddBlockedKeywordDialog$class</ID>
     <ID>MaxLineLength:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter$val conversationsToRemove = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
     <ID>MaxLineLength:ArchivedConversationsAdapter.kt$ArchivedConversationsAdapter$val conversationsToUnarchive = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList&lt;Conversation&gt;</ID>
-    <ID>MaxLineLength:AttachmentPreviews.kt$vcardAttachmentHolder</ID>
-    <ID>MaxLineLength:AttachmentPreviews.kt$vcardSubtitle.text = context.resources.getQuantityString(R.plurals.and_other_contacts, quantity, quantity)</ID>
-    <ID>MaxLineLength:AttachmentsAdapter.kt$AttachmentsAdapter$onClick = { activity.launchViewIntent(attachment.uri, attachment.mimetype, attachment.filename) }</ID>
-    <ID>MaxLineLength:AttachmentsAdapter.kt$AttachmentsAdapter.&lt;no name provided&gt;$override</ID>
     <ID>MaxLineLength:AutoCompleteTextViewAdapter.kt$AutoCompleteTextViewAdapter$class</ID>
     <ID>MaxLineLength:Constants.kt$/** Not to be used with real messages persisted in the telephony db. This is for internal use only (e.g. scheduled messages, notification ids etc). */</ID>
     <ID>MaxLineLength:ContactsAdapter.kt$ContactsAdapter$activity: SimpleActivity</ID>
@@ -217,11 +213,6 @@
     <ID>UseRequire:SmsSender.kt$SmsSender$throw IllegalArgumentException("SmsSender: empty text message")</ID>
     <ID>VariableNaming:MainActivity.kt$MainActivity$private val MAKE_DEFAULT_APP_REQUEST = 1</ID>
     <ID>VariableNaming:MessagesWriter.kt$MessagesWriter$private val INVALID_ID = -1L</ID>
-    <ID>WildcardImport:AttachmentPreviews.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:AttachmentPreviews.kt$import org.fossify.messages.extensions.*</ID>
-    <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.messages.extensions.*</ID>
-    <ID>WildcardImport:AttachmentsAdapter.kt$import org.fossify.messages.helpers.*</ID>
     <ID>WildcardImport:DirectReplyReceiver.kt$import org.fossify.messages.extensions.*</ID>
     <ID>WildcardImport:JsonElement.kt$import com.google.gson.*</ID>
     <ID>WildcardImport:ManageBlockedKeywordsAdapter.kt$import android.view.*</ID>
