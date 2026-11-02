@@ -104,13 +104,13 @@
     <string name="restore">Obnovi</string>
     <string name="blocked_keywords">Blokirane ključne besede</string>
     <string name="add_a_blocked_keyword">Dodajanje blokirane ključne besede</string>
-    <string name="error_service_is_unavailable">Sporočila ni bilo mogoče poslati: storitev ni na voljo</string>
+    <string name="error_service_is_unavailable">Sporočilo ni bilo poslano: ni signala</string>
     <string name="unable_to_save_message">Sporočila ni bilo mogoče shraniti</string>
     <string name="empty_destination_address">Najprej dodajte prejemnika</string>
     <string name="couldnt_download_mms">Ni bilo mogoče prenesti MMS</string>
     <string name="attachment_sized_exceeds_max_limit">Velikost priloge presega najvišjo mejo za MMS</string>
     <string name="invalid_short_code_desc">Odgovorite lahko le na kratke kode s številkami, kot je \"503501\", ne pa tudi na kode, ki vsebujejo črke in številke, kot je \"AB-CD0\".</string>
-    <string name="error_radio_turned_off">Sporočila ni bilo mogoče poslati, preverite način za letalo</string>
+    <string name="error_radio_turned_off">Sporočilo ni bilo poslano. Preverite letalski način</string>
     <string name="restore_confirmation">Ste prepričani, da želite obnoviti %s?</string>
     <string name="restore_whole_conversation_confirmation">Ste prepričani, da želite obnoviti vsa sporočila tega pogovora?</string>
     <string name="archive_confirmation">Ste prepričani, da želite arhivirati %s?</string>
@@ -132,9 +132,9 @@
     <string name="sms_error_radio_unavailable">Sporočilo ni bilo poslano: mobilna povezava ni na voljo</string>
     <string name="sms_error_encoding">Sporočilo ni bilo poslano: besedila ni bilo mogoče obdelati</string>
     <string name="sms_error_limit_exceeded">Sporočilo ni bilo poslano: dosežena omejitev pošiljanja</string>
-    <string name="sms_error_short_code_not_allowed">Sporočilo ni bilo poslano: preverite Premium SMS dostop</string>
+    <string name="sms_error_short_code_not_allowed">Sporočilo ni bilo poslano: preverite dostop za plačljiva SMS sporočila</string>
     <string name="sms_error_network_rejected">Sporočilo ni bilo poslano: zavrnjeno s strani omrežja</string>
-    <string name="sms_error_invalid_arguments">Sporočilo ni bilo poslano: podatki za pošiljanje neveljavni</string>
+    <string name="sms_error_invalid_arguments">Sporočilo ni bilo poslano: podatki za pošiljanje so neveljavni</string>
     <string name="sms_error_invalid_state">Sporočilo ni bilo poslano: telefon ni pripravljen</string>
     <string name="sms_error_no_memory">Sporočilo ni bilo poslano: premalo spomina</string>
     <string name="sms_error_invalid_format">Sporočilo ni bilo poslano: napaka v formatu sporočila</string>
@@ -171,5 +171,5 @@
     <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
     <string name="play">Predvajaj</string>
     <string name="pause">Premor</string>
-    <string name="sms_error_fixed_dialing">Sporočilo ni bilo poslano: onemogočeno zaradi omejitve telefonskih številk</string>
+    <string name="sms_error_fixed_dialing">Sporočilo ni bilo poslano: blokirano zaradi omejitve telefonskih številk (FDN)</string>
 </resources>
