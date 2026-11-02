@@ -97,10 +97,10 @@
     <string name="import_sms">SMS-berichten importeren</string>
     <string name="import_mms">MMS-berichten importeren</string>
     <string name="no_option_selected">Selecteer tenminste één van de opties</string>
-    <string name="empty_destination_address">Voer een nummer in om dit bericht te kunnen versturen</string>
-    <string name="unable_to_save_message">Kan het bericht niet opslaan in de database</string>
-    <string name="error_service_is_unavailable">Kon het bericht niet verzenden: geen bereik</string>
-    <string name="error_radio_turned_off">Kon het bericht niet verzenden: vliegtuigmodus</string>
+    <string name="empty_destination_address">Voer eerst een nummer in</string>
+    <string name="unable_to_save_message">Kan het bericht niet opslaan</string>
+    <string name="error_service_is_unavailable">Bericht niet verzonden: geen bereik</string>
+    <string name="error_radio_turned_off">Bericht niet verzonden: controleer vliegtuigmodus</string>
     <string name="invalid_short_code">Op dit bericht kan niet worden gereageerd</string>
     <string name="invalid_short_code_desc">Er kan alleen worden gereageerd op korte codes met cijfers, zoals \"503501\", maar niet op codes met letters en cijfers, zoals \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">De bestandsgrootte van de bijlage overschrijdt de limiet voor MMS</string>
@@ -130,4 +130,20 @@
     <string name="mms_error_no_network">Bericht niet verzonden: geen dataverbinding</string>
     <string name="message_send_sim_unavailable">Bericht niet verzonden: simkaart niet beschikbaar</string>
     <string name="mms_error_sim_inactive">Bericht niet verzonden: simkaart is niet actief</string>
+    <string name="mms_sending_error_details">%1$s (M%2$d)</string>
+    <string name="mms_error_carrier_disabled">Bericht niet verzonden: provider ondersteunt geen MMS</string>
+    <string name="mms_error_data_disabled">Bericht niet verzonden. Controleer de instellingen voor mobiele data.</string>
+    <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
+    <string name="sms_error_radio_unavailable">Bericht niet verzonden: geen mobiele verbinding</string>
+    <string name="sms_error_encoding">Bericht niet verzonden: de tekst kon niet worden verwerkt</string>
+    <string name="sms_error_limit_exceeded">Bericht niet verzonden: verzendlimiet bereikt</string>
+    <string name="sms_error_fixed_dialing">Bericht niet verzonden: vaste nummers geblokkeerd</string>
+    <string name="sms_error_network">Bericht niet verzonden: netwerkfout</string>
+    <string name="sms_error_service_center">Bericht niet verzonden. Controleer het nummer van het sms-centrum.</string>
+    <string name="sms_error_not_allowed">Bericht niet verzonden: niet toegestaan</string>
+    <string name="message_send_retry_later">Bericht niet verzonden. Probeer het later opnieuw.</string>
+    <string name="sms_error_cancelled">Verzending afgebroken</string>
+    <string name="sms_error_not_supported">Bericht niet verzonden: zendmethode niet ondersteund</string>
+    <string name="sms_error_bluetooth">Bericht niet verzonden: Bluetooth-fout</string>
+    <string name="sms_error_emergency">Bericht niet verzonden: noodmodus is actief</string>
 </resources>
