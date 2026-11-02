@@ -129,7 +129,7 @@
     <string name="sms_error_encoding">Mesaĝo ne sendita: malsukcesis trakti tekston</string>
     <string name="sms_error_limit_exceeded">Mesaĝo ne sendita: atingis limon de sendado</string>
     <string name="sms_error_fixed_dialing">Mesaĝo ne sendita: blokita de fiksitaj telefonnumeroj (FDN)</string>
-    <string name="sms_error_short_code_not_allowed">Mesaĝo ne sendita. Kontrolu la atingon de supera SMS</string>
+    <string name="sms_error_short_code_not_allowed">Mesaĝo ne sendita. Kontrolu la atingon de altpreza SMS</string>
     <string name="sms_error_network_rejected">Mesaĝo ne sendita: malakceptita de la reto</string>
     <string name="sms_error_invalid_arguments">Mesaĝo ne sendita: nevalidaj detaloj de sendado</string>
     <string name="sms_error_invalid_state">Mesaĝo ne sendita: telefono ne pretas</string>
