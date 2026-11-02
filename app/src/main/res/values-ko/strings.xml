@@ -24,7 +24,7 @@
     <string name="import_sms">SMS 불러오기</string>
     <string name="import_mms">MMS 불러오기</string>
     <string name="no_option_selected">한 개 이상의 항목을 선택해야 합니다</string>
-    <string name="error_radio_turned_off">무선 통신이 사용 중지되어 있어 메시지가 전송되지 않았습니다</string>
+    <string name="error_radio_turned_off">메시지 전송 실패. 비행기 모드를 확인하세요</string>
     <string name="invalid_short_code">해당 단축 코드에는 답장할 수 없습니다</string>
     <string name="couldnt_download_mms">MMS를 다운로드할 수 없습니다</string>
     <string name="attachment_sized_exceeds_max_limit">첨부 파일의 크기가 MMS 제한을 초과합니다</string>
@@ -45,9 +45,9 @@
     </plurals>
     <string name="not_blocking_keywords">차단한 키워드가 없습니다. 특정 키워드를 포함한 메시지를 차단하려면 여기에 단어를 추가하세요.</string>
     <string name="lock_screen_visibility">잠금 화면 알림 표시 여부</string>
-    <string name="empty_destination_address">빈 번호로 메지지를 보낼 수 없습니다</string>
-    <string name="unable_to_save_message">메시지를 Telephony 저장소에 저장할 수 없습니다</string>
-    <string name="error_service_is_unavailable">통신 서비스를 사용할 수 없어 메시지가 전송되지 않았습니다</string>
+    <string name="empty_destination_address">먼저 수신자를 추가하세요</string>
+    <string name="unable_to_save_message">메시지를 저장할 수 없습니다</string>
+    <string name="error_service_is_unavailable">메시지 전송 실패: 서비스 없음</string>
     <string name="invalid_short_code_desc">\"AB-CD0\"과 같은 단어를 포함한 단축 코드가 아닌 \"503501\"과 같은 숫자 단축 코드에만 답장할 수 있습니다.</string>
     <string name="faq_1_text">안타깝게도 MMS 첨부 파일을 전송하려면 인터넷 접근이 필요합니다. MMS를 전송하지 못한다면 다른 앱과 비교하여 큰 단점이 될 것입니다. 하지만 저희의 다른 앱과 마찬가지로 광고나 추적, 분석따위는 포함되어 있지 않고, 인터넷은 MMS 전송을 위해서만 사용됩니다.</string>
     <string name="message_not_sent_short">메시지 전송 안 됨</string>
