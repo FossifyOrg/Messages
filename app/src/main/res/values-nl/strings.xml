@@ -137,7 +137,7 @@
     <string name="sms_error_radio_unavailable">Bericht niet verzonden: geen mobiele verbinding</string>
     <string name="sms_error_encoding">Bericht niet verzonden: de tekst kon niet worden verwerkt</string>
     <string name="sms_error_limit_exceeded">Bericht niet verzonden: verzendlimiet bereikt</string>
-    <string name="sms_error_fixed_dialing">Bericht niet verzonden: vaste nummers geblokkeerd</string>
+    <string name="sms_error_fixed_dialing">Bericht niet verzonden: geblokkeerd door vaste nummers</string>
     <string name="sms_error_network">Bericht niet verzonden: netwerkfout</string>
     <string name="sms_error_service_center">Bericht niet verzonden. Controleer het nummer van het sms-centrum.</string>
     <string name="sms_error_not_allowed">Bericht niet verzonden: niet toegestaan</string>
