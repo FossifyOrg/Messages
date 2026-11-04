@@ -146,4 +146,6 @@
     <string name="sms_error_not_supported">Bericht niet verzonden: zendmethode niet ondersteund</string>
     <string name="sms_error_bluetooth">Bericht niet verzonden: Bluetooth-fout</string>
     <string name="sms_error_emergency">Bericht niet verzonden: noodmodus is actief</string>
+    <string name="sms_error_no_memory">Bericht niet verzonden: onvoldoende geheugen</string>
+    <string name="sms_error_invalid_format">Bericht niet verzonden: ongeldig berichtformaat</string>
 </resources>
