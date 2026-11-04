@@ -123,4 +123,21 @@
     <string name="group_message_send_description">Taldeko MMS-k erantzunak elkarrizketa batean gordetzen ditu, baina baliteke operadoreak kobratzea. Bereiz bidaltzeak mezu bat bidaltzen dio pertsona bakoitzari. Geroago alda dezakezu aplikazioaren ezarpenetan.</string>
     <string name="group_mms">Taldeko MMS</string>
     <string name="separate_messages">Bidali bereizita</string>
+    <string name="sms_error_radio_unavailable">Mezua ez da bidali: mugikorraren konexioa ez dago erabilgarri</string>
+    <string name="sms_error_encoding">Mezua ez da bidali: ezin izan da testua prozesatu</string>
+    <string name="sms_error_limit_exceeded">Mezua ez da bidali: bidalketen mugara iritsi da</string>
+    <string name="sms_error_fixed_dialing">Mezua ez da bidali: Markatze Finkoko Zenbakiek blokeatuta</string>
+    <string name="sms_error_short_code_not_allowed">Mezua ez da bidali. Begiratu SMS Premium sarbidea</string>
+    <string name="sms_error_network_rejected">Mezua ez da bidali: sareak baztertu egin du</string>
+    <string name="sms_error_invalid_arguments">Mezua ez da bidali: bidaltzeko xehetasun baliogabeak</string>
+    <string name="sms_error_invalid_state">Mezua ez da bidali: telefonoa ez dago prest</string>
+    <string name="sms_error_no_memory">Mezua ez da bidali: ez dago memoria nahikorik</string>
+    <string name="sms_error_invalid_format">Mezua ez da bidali: mezuaren formatu errorea</string>
+    <string name="sms_error_system">Mezua ez da bidali: telefono zerbitzuaren akatsa</string>
+    <string name="sms_error_modem">Mezua ez da bidali: telefonoaren konexio akatsa</string>
+    <string name="sms_error_network">Mezua ez da bidali: sareko errorea</string>
+    <string name="sms_error_service_center">Mezua ez da bidali: begiratu SMS zentroaren zenbakia</string>
+    <string name="sms_error_not_allowed">Mezua ez da bidali: ez dago bidaltzeko baimenik</string>
+    <string name="message_send_retry_later">Mezua ez da bidali. Saiatu berriro beranduago</string>
+    <string name="sms_error_cancelled">Bidalketa bertan behera geratu da</string>
 </resources>
