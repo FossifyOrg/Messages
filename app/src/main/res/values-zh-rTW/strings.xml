@@ -124,4 +124,5 @@
     <string name="sms_error_encoding">訊息發送失敗：無法處理文字</string>
     <string name="sms_error_limit_exceeded">訊息發送失敗：已達傳送上限</string>
     <string name="sms_error_bluetooth">訊息發送失敗：藍牙錯誤</string>
+    <string name="sms_error_fixed_dialing">訊息未送出：被固定的撥號阻擋</string>
 </resources>
