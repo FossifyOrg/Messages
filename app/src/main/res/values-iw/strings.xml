@@ -31,7 +31,7 @@
     <string name="mark_as_read">סימון שקראתי</string>
     <string name="mark_as_unread">סימון שלא קראתי</string>
     <string name="me">אני</string>
-    <string name="delete_whole_conversation_confirmation">האם אתה בטוח שברצונך למחוק את כל ההודעות של השיחה הזו\?</string>
+    <string name="delete_whole_conversation_confirmation">למחוק את כל ההודעות משיחה זו?</string>
     <plurals name="delete_conversations">
         <item quantity="one">שיחה %d</item>
         <item quantity="two">%d שיחות</item>
@@ -61,10 +61,10 @@
     <string name="import_sms">ייבוא SMS</string>
     <string name="import_mms">ייבוא MMS</string>
     <string name="no_option_selected">עליך לבחור לפחות פריט אחד</string>
-    <string name="faq_1_title">מדוע האפליקציה דורשת גישה לאינטרנט\?</string>
+    <string name="faq_1_title">למה היישום צריך גישה לאינטרנט?</string>
     <string name="faq_1_text">למרבה הצער, זה נחוץ לשליחת קבצי MMS מצורפים. אי היכולת לשלוח MMS תהיה חיסרון עצום בהשוואה לאפליקציות אחרות, אז החלטנו ללכת בדרך זו. עם זאת, כמו בדרך כלל, אין מודעות, מעקב או ניתוח כלשהם, האינטרנט משמש רק לשליחת MMS.</string>
     <string name="faq_2_title">הודעות ה־MMS לא מתקבלות אצל הצד השני, האם יש משהו שאפשר לעשות לגבי זה?</string>
-    <string name="faq_2_text">גודל ה-MMS מוגבל על ידי הספקים, אתה יכול לנסות להגדיר מגבלה קטנה יותר בהגדרות האפליקציה.</string>
+    <string name="faq_2_text">גודל הודעת ה־MMS מוגבל על ידי הספקים, אפשר לנסות להגדיר מגבלה קטנה יותר בהגדרות היישום.</string>
     <string name="app_launcher_name">הודעות</string>
     <string name="members">חברים</string>
     <string name="conversation_name">שם שיחה</string>
@@ -80,9 +80,9 @@
     <string name="faq_3_text">כן, אפשר לתזמן שליחת הודעות עתידית בעזרת לחיצה ארוכה על כפתור השליחה ובחירת התאריך והשעה הרצויים.</string>
     <string name="duplicate_item_warning">הפריט הכפול לא נכלל</string>
     <string name="archive_emptied_successfully">הארכיון רוקן בהצלחה</string>
-    <string name="archive_confirmation">האם אתה בטוח שברצונך להעביר שיחה %s לארכיון?</string>
-    <string name="unable_to_save_message">לא ניתן לשמור הודעה במסד הנתונים של הטלפוניה</string>
-    <string name="error_service_is_unavailable">לא ניתן לשלוח הודעה, השירות לא זמין</string>
+    <string name="archive_confirmation">להעביר את %s לארכיון?</string>
+    <string name="unable_to_save_message">לא היה ניתן לשמור את ההודעה</string>
+    <string name="error_service_is_unavailable">ההודעה לא נשלחה: אין שירות</string>
     <string name="invalid_short_code">לא יכול להגיב לקודים קצרים כמו זה</string>
     <string name="faq_3_title">האם היישום תומך בהודעות מתוזמנות?</string>
     <string name="send_now">שליחה כעת</string>
@@ -100,14 +100,14 @@
     <string name="restore_all_messages">שחזור כל ההודעות</string>
     <string name="skip_the_recycle_bin_messages">אפשר לדלג על סל המחזור ולמחוק לצמיתות ישר</string>
     <string name="schedule_send_warning">יש להשאיר את הטלפון דולק ולוודא שאין דבר שמפסיק את פעולת היישום ברקע.</string>
-    <string name="restore_confirmation">האם אתה בטוח שברצונך לשחזר את %s?</string>
+    <string name="restore_confirmation">לשחזר את %s?</string>
     <string name="keyword">מילת מפתח</string>
     <string name="blocked_keywords">מילות מפתח חסומות</string>
     <string name="manage_blocked_keywords">נהל מילות מפתח חסומות</string>
-    <string name="not_blocking_keywords">לא חסמת מילות מפתח. אתה יכול להוסיף כאן מילות מפתח כדי לחסום ההודעות המכילות אותן.</string>
+    <string name="not_blocking_keywords">לא חסמת אף מילת מפתח. אפשר להוסיף לכאן מילות מפתח כדי לחסום את כל ההודעות שהן יופיעו בהן.</string>
     <string name="send_on_enter">שלח הודעה בלחיצה על אנטר</string>
-    <string name="empty_destination_address">לא ניתן לשלוח הודעה למספר ריק</string>
-    <string name="error_radio_turned_off">לא ניתן לשלוח הודעה, הרדיו כבוי</string>
+    <string name="empty_destination_address">יש להוסיף נמענים תחילה</string>
+    <string name="error_radio_turned_off">ההודעה לא נשלחה. נא לבדוק אם מופעל מצב טיסה</string>
     <string name="attachment_sized_exceeds_max_limit">גודל הקובץ המצורף חורג ממגבלת ה-MMS המקסימלית</string>
     <string name="couldnt_download_mms">לא ניתן היה להוריד MMS</string>
     <string name="enable_custom_notifications">לאפשר התראות מותאמות אישית</string>
@@ -118,8 +118,8 @@
     <string name="no_archived_conversations">לא נמצאו שיחות בארכיון</string>
     <string name="empty_recycle_bin_messages_confirmation">לרוקן את האשפה? ההודעות יאבדו לצמיתות.</string>
     <string name="message_details_sent_at">נשלחה במועד</string>
-    <string name="restore_whole_conversation_confirmation">האם אתה בטוח שברצונך לשחזר את כל ההודעות של השיחה הזו?</string>
-    <string name="invalid_short_code_desc">אתה יכול להשיב רק לקודים קצרים עם מספרים כמו \"503501\" אך לא לקודים המכילים אותיות ומספרים כמו \"AB-CD0\".</string>
+    <string name="restore_whole_conversation_confirmation">לשחזר את כל ההודעות של שיחה זו?</string>
+    <string name="invalid_short_code_desc">לקודים קצרים אפשר להשיב רק עם מספרים כגון „503501”, אך אי אפשר להגיב לקודים שמורכבים מאותיות ומספרים, כגון „AB-CD0”.</string>
     <string name="keep_conversations_archived">שמירת השיחות בארכיון</string>
     <string name="faq_4_title">מדוע תשובות להודעות הקבוצתיות שלי מופיעות כהודעות טקסט אישיות לנמענים?</string>
     <string name="faq_4_text">עליך להפעיל את האפשרות \"שליחת הודעות קבוצתיות כ-MMS\" בהגדרות האפליקציה. פעולה זו תבטיח שהודעות הקבוצה יישלחו כ-MMS תקינות, כך שכל המשתתפים יוכלו לראות את תשובותיהם של אחרים.</string>
@@ -127,4 +127,7 @@
     <string name="send_group_message">תבנית הודעה קבוצתית</string>
     <string name="group_message_send_description">MMS קבוצתי משאיר את כל התגובות בשיחה אחת, אבל אולי יחויב ע\"י המפעיל. שליחה בנפרד שולחת הודעה אחת לכל בן-אדם. ניתן לשנות הגדרה זו אח\"כ בהגדרות היישומון.</string>
     <string name="group_mms">MMS קבוצתי</string>
+    <string name="sms_error_radio_unavailable">ההודעה לא נשלחה: אין חיבור סלולרי</string>
+    <string name="sms_error_encoding">ההודעה לא נשלחה: לא היה ניתן לעבד את הטקסט</string>
+    <string name="sms_error_cancelled">השליחה בוטלה</string>
 </resources>
