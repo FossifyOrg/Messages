@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed navigation bar overlapping content when using 3-button navigation ([#759], [#919])
 
 ## [1.10.2] - 2026-10-21
 ### Changed
@@ -300,8 +302,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#644]: https://github.com/FossifyOrg/Messages/issues/644
 [#651]: https://github.com/FossifyOrg/Messages/issues/651
 [#713]: https://github.com/FossifyOrg/Messages/issues/713
+[#759]: https://github.com/FossifyOrg/Messages/issues/759
 [#829]: https://github.com/FossifyOrg/Messages/issues/829
 [#834]: https://github.com/FossifyOrg/Messages/issues/834
+[#919]: https://github.com/FossifyOrg/Messages/issues/919
 
 [Unreleased]: https://github.com/FossifyOrg/Messages/compare/1.10.2...HEAD
 [1.10.2]: https://github.com/FossifyOrg/Messages/compare/1.10.1...1.10.2
