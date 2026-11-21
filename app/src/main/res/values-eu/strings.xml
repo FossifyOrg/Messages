@@ -140,4 +140,20 @@
     <string name="sms_error_not_allowed">Mezua ez da bidali: ez dago bidaltzeko baimenik</string>
     <string name="message_send_retry_later">Mezua ez da bidali. Saiatu berriro beranduago</string>
     <string name="sms_error_cancelled">Bidalketa bertan behera geratu da</string>
+    <string name="sms_error_not_supported">Mezua ez da bidali: bidaltzeko metodoa ez da onartzen</string>
+    <string name="sms_error_bluetooth">Mezua ez da bidali: Bluetooth errorea</string>
+    <string name="sms_error_emergency">Mezua ez da bidali: larrialdi modua aktibo dago</string>
+    <string name="sms_error_no_sim_selected">Bidali gabeko mezua: aukeratu mezuetarako SIM bat</string>
+    <string name="sms_error_user_not_allowed">Mezua ez da bidali: erabiltzaile honek ezin du mezurik bidali</string>
+    <string name="sms_error_network_not_ready">Mezua ez da bidali: sarea ez dago prest</string>
+    <string name="sms_error_sim_missing">Mezua ez da bidali: ez da SIM txartelik aurkitu</string>
+    <string name="sms_error_call_in_progress">Mezua ez da bidali. Saiatu berriro zure deiaren ondoren</string>
+    <string name="sms_error_access_barred">Mezua ez da bidali: sareko sarbidea blokeatuta dago</string>
+    <string name="sms_sending_error_details">%1$s (S%2$d)</string>
+    <string name="sms_sending_error_radio_details">%1$s (S%2$d/%3$d)</string>
+    <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
+    <string name="mms_error_invalid_apn">Mezua ez da bidali. Egiaztatu APN ezarpenak</string>
+    <string name="mms_error_connection">Ez da bidali mezua: ezin izan da operadorearekin harremanetan jarri</string>
+    <string name="mms_error_http">Mezua ez da bidali: operadorearen eskaerak huts egin du</string>
+    <string name="mms_error_io">Ez da bidali mezua: ezin izan da bere edukia atzitu</string>
 </resources>
