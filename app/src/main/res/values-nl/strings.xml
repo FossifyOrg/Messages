@@ -59,7 +59,7 @@
     <string name="empty_archive_confirmation">Het archief wissen\? Alle gearchiveerde gesprekken zullen permanent verwijderd worden.</string>
     <string name="restore">Herstellen</string>
     <string name="restore_all_messages">Alle berichten herstellen</string>
-    <string name="empty_recycle_bin_messages_confirmation">Alle berichten in de prullenbak permanent verwijderen\?</string>
+    <string name="empty_recycle_bin_messages_confirmation">Alle berichten in de prullenbak permanent verwijderen? De berichten gaan definitief verloren.</string>
     <string name="skip_the_recycle_bin_messages">De prullenbak overslaan en berichten permanent verwijderen</string>
     <string name="delete_whole_conversation_confirmation">Alle berichten in dit gesprek verwijderen\?</string>
     <string name="archive_confirmation">%s archiveren\?</string>
@@ -132,16 +132,16 @@
     <string name="mms_error_sim_inactive">Bericht niet verzonden: simkaart is niet actief</string>
     <string name="mms_sending_error_details">%1$s (M%2$d)</string>
     <string name="mms_error_carrier_disabled">Bericht niet verzonden: provider ondersteunt geen MMS</string>
-    <string name="mms_error_data_disabled">Bericht niet verzonden. Controleer de instellingen voor mobiele data.</string>
+    <string name="mms_error_data_disabled">Bericht niet verzonden. Controleer de instellingen voor mobiele data</string>
     <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
     <string name="sms_error_radio_unavailable">Bericht niet verzonden: geen mobiele verbinding</string>
     <string name="sms_error_encoding">Bericht niet verzonden: de tekst kon niet worden verwerkt</string>
     <string name="sms_error_limit_exceeded">Bericht niet verzonden: verzendlimiet bereikt</string>
     <string name="sms_error_fixed_dialing">Bericht niet verzonden: geblokkeerd door vaste nummers</string>
     <string name="sms_error_network">Bericht niet verzonden: netwerkfout</string>
-    <string name="sms_error_service_center">Bericht niet verzonden. Controleer het nummer van het sms-centrum.</string>
+    <string name="sms_error_service_center">Bericht niet verzonden. Controleer het Service Center number</string>
     <string name="sms_error_not_allowed">Bericht niet verzonden: niet toegestaan</string>
-    <string name="message_send_retry_later">Bericht niet verzonden. Probeer het later opnieuw.</string>
+    <string name="message_send_retry_later">Bericht niet verzonden. Probeer het later opnieuw</string>
     <string name="sms_error_cancelled">Verzending afgebroken</string>
     <string name="sms_error_not_supported">Bericht niet verzonden: zendmethode niet ondersteund</string>
     <string name="sms_error_bluetooth">Bericht niet verzonden: Bluetooth-fout</string>
@@ -156,4 +156,14 @@
     <string name="sms_error_call_in_progress">Bericht niet verzonden. Probeer opnieuw na uw gesprek</string>
     <string name="sms_error_access_barred">Bericht niet verzonden: netwerk toegang geblokkeerd</string>
     <string name="mms_error_invalid_apn">Bericht niet verzonden. Controleer APN instellingen</string>
+    <string name="sms_sending_error_details">%1$s (S%2$d)</string>
+    <string name="sms_sending_error_radio_details">%1$s (S%2$d/%3$d)</string>
+    <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
+    <string name="mms_error_connection">Bericht niet verzonden: kon de operator niet bereiken</string>
+    <string name="mms_error_http">Bericht niet verzonden: verzoek aan de operator mislukt</string>
+    <string name="sms_error_network_rejected">Bericht niet verzonden: geweigerd door het netwerk</string>
+    <string name="sms_error_short_code_not_allowed">Bericht niet verstuurd. Controleer Premium SMS toegang</string>
+    <string name="sms_error_invalid_arguments">Bericht niet verzonden: ongeldige verzenddetails</string>
+    <string name="sms_error_system">Bericht niet verzonden: fout in telefoonservice</string>
+    <string name="sms_error_modem">Bericht niet verstuurd: fout bij telefoonverbinding</string>
 </resources>
