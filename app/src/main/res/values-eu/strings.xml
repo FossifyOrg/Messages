@@ -103,10 +103,10 @@
     <string name="no_option_selected">Gutxienez elementu bat hautatu behar duzu</string>
     <string name="export_blocked_keywords">Esportatu blokeatutako gako hitzak</string>
     <string name="import_blocked_keywords">Inportatu blokeatutako gako hitzak</string>
-    <string name="empty_destination_address">Ezin da mezua bidali telefono zenbakirik gabe</string>
-    <string name="unable_to_save_message">Ezin izan dira gorde mezuak telefonoaren datu basean</string>
-    <string name="error_service_is_unavailable">Ezin izan dira mezuak bidali, zerbitzua ez dago erabilgarri</string>
-    <string name="error_radio_turned_off">Ezin izan da mezua bidali, irratia itzalita dago</string>
+    <string name="empty_destination_address">Gehitu hartzaile bat lehenik</string>
+    <string name="unable_to_save_message">Ezin izan da mezua gorde</string>
+    <string name="error_service_is_unavailable">Mezua ez da bidali: ez dago zerbitzurik</string>
+    <string name="error_radio_turned_off">Mezua ez da bidali. Begiratu hegazkin modua</string>
     <string name="invalid_short_code">Ezin dira honelako kode laburrak erantzun</string>
     <string name="invalid_short_code_desc">Kode laburrei \"503501\" bezalako zenbakiekin soilik erantzun diezaiekezu, baina ez \"AB-CD0\" bezalako letrak eta zenbakiak dituzten kodeei.</string>
     <string name="attachment_sized_exceeds_max_limit">Eranskinaren tamainak MMSren gehienekoa gainditzen du</string>
@@ -156,4 +156,14 @@
     <string name="mms_error_connection">Ez da bidali mezua: ezin izan da operadorearekin harremanetan jarri</string>
     <string name="mms_error_http">Mezua ez da bidali: operadorearen eskaerak huts egin du</string>
     <string name="mms_error_io">Ez da bidali mezua: ezin izan da bere edukia atzitu</string>
+    <string name="mms_error_configuration">Mezua ez da bidali: operadorearen ezarpenak ez daude erabilgarri</string>
+    <string name="mms_error_no_network">Mezua ez da bidali: ez dago datu-konexiorik</string>
+    <string name="message_send_sim_unavailable">Mezua ez da bidali: SIMa ez dago erabilgarri</string>
+    <string name="mms_error_sim_inactive">Mezua ez da bidali: SIM inaktibo dago</string>
+    <string name="mms_error_data_disabled">Mezua ez da bidali. Egiaztatu datu mugikorren ezarpenak</string>
+    <string name="mms_error_carrier_disabled">Mezua ez da bidali: operadoreak ez du MMSrik onartzen</string>
+    <string name="mms_sending_error_details">%1$s (M%2$d)</string>
+    <string name="play">Erreproduzitu</string>
+    <string name="pause">Pausatu</string>
+    <string name="mms_sending_error_http_details">%1$s (M%2$d/%3$d)</string>
 </resources>
