@@ -59,7 +59,7 @@
     <string name="empty_archive_confirmation">Het archief wissen\? Alle gearchiveerde gesprekken zullen permanent verwijderd worden.</string>
     <string name="restore">Herstellen</string>
     <string name="restore_all_messages">Alle berichten herstellen</string>
-    <string name="empty_recycle_bin_messages_confirmation">Alle berichten in de prullenbak permanent verwijderen\?</string>
+    <string name="empty_recycle_bin_messages_confirmation">Alle berichten in de prullenbak permanent verwijderen?</string>
     <string name="skip_the_recycle_bin_messages">De prullenbak overslaan en berichten permanent verwijderen</string>
     <string name="delete_whole_conversation_confirmation">Alle berichten in dit gesprek verwijderen\?</string>
     <string name="archive_confirmation">%s archiveren\?</string>
@@ -148,4 +148,22 @@
     <string name="sms_error_emergency">Bericht niet verzonden: noodmodus is actief</string>
     <string name="sms_error_no_memory">Bericht niet verzonden: onvoldoende geheugen</string>
     <string name="sms_error_invalid_format">Bericht niet verzonden: ongeldig berichtformaat</string>
+    <string name="sms_error_invalid_state">Bericht niet verzonden: telefoon is niet gereed</string>
+    <string name="sms_error_no_sim_selected">Bericht niet verzonden: kies een simkaart voor berichten</string>
+    <string name="sms_error_user_not_allowed">Bericht niet verzonden: deze gebruiker kan geen berichten versturen</string>
+    <string name="sms_error_network_not_ready">Bericht niet verzonden: netwerk niet gereed</string>
+    <string name="sms_error_sim_missing">Bericht niet verzonden: geen simkaart gevonden</string>
+    <string name="sms_error_call_in_progress">Bericht niet verzonden. Probeer het opnieuw na de oproep.</string>
+    <string name="sms_error_access_barred">Bericht niet verzonden: netwerktoegang geblokkeerd</string>
+    <string name="mms_error_invalid_apn">Bericht niet verzonden. Controleer de APN-instellingen.</string>
+    <string name="sms_sending_error_details">%1$s (S%2$d)</string>
+    <string name="sms_sending_error_radio_details">%1$s (S%2$d/%3$d)</string>
+    <string name="sms_preparation_error_details">%1$s (A%2$d)</string>
+    <string name="mms_error_connection">Bericht niet verzonden: kon de operator niet bereiken</string>
+    <string name="mms_error_http">Bericht niet verzonden: verzoek aan de operator mislukt</string>
+    <string name="sms_error_network_rejected">Bericht niet verzonden: geweigerd door het netwerk</string>
+    <string name="sms_error_short_code_not_allowed">Bericht niet verstuurd. Controleer Premium SMS-toegang.</string>
+    <string name="sms_error_invalid_arguments">Bericht niet verzonden: ongeldige verzenddetails</string>
+    <string name="sms_error_system">Bericht niet verzonden: fout met telefoonservice</string>
+    <string name="sms_error_modem">Bericht niet verstuurd: fout bij telefoonverbinding</string>
 </resources>
