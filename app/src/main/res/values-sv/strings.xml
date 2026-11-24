@@ -6,7 +6,7 @@
     <string name="message_sending_error">Meddelandet till \'%s\' har inte skickats</string>
     <string name="add_person">Lägg till person</string>
     <string name="attachment">Bilaga</string>
-    <string name="no_conversations_found">Inga konversationer hittades</string>
+    <string name="no_conversations_found">Inga sparade konversationer hittades</string>
     <string name="start_conversation">Starta en konversation</string>
     <string name="reply">Svara</string>
     <string name="show_character_counter">Visa antal tecken när jag skriver meddelanden</string>
@@ -33,7 +33,7 @@
     <string name="rename_conversation_warning">Bara du kan se det här konversationsnamnet</string>
     <string name="scheduled_message">Schemalagt meddelande</string>
     <string name="schedule_message">Schemalägg meddelande</string>
-    <string name="schedule_send">Schemalägg skicka</string>
+    <string name="schedule_send">Schemalägg sändning</string>
     <string name="cancel_schedule_send">Avbryt schemaläggning</string>
     <string name="must_pick_time_in_the_future">Du måste välja en tid i framtiden</string>
     <string name="schedule_send_warning">Ha telefonen påslagen och kontrollera att inget avslutar appen i bakgrunden.</string>
@@ -84,7 +84,7 @@
     <string name="enable_delivery_reports">Aktivera leveransrapporter</string>
     <string name="use_simple_characters">Ta bort diakritiska tecken när meddelanden skickas</string>
     <string name="send_on_enter">Skicka meddelanden vid tryck på Enter</string>
-    <string name="mms_file_size_limit">Ändra storlek på mms-bilder</string>
+    <string name="mms_file_size_limit">Ändra storlek på skickade mms-bilder</string>
     <string name="mms_file_size_limit_none">Ingen gräns</string>
     <string name="outgoing_messages">Utgående meddelanden</string>
     <string name="group_message_mms">Skicka gruppmeddelanden som mms</string>
@@ -100,7 +100,7 @@
     <string name="empty_destination_address">Lägg först till en mottagare</string>
     <string name="unable_to_save_message">Det gick inte att spara meddelandet</string>
     <string name="error_service_is_unavailable">Meddelandet skickades inte: ingen tjänst</string>
-    <string name="error_radio_turned_off">Meddelandet skickades inte. Kontrollera flygplansläge</string>
+    <string name="error_radio_turned_off">Meddelandet skickades inte. Kontrollera flygplansläget</string>
     <string name="invalid_short_code">Det går inte att svara på korta koder som den här</string>
     <string name="invalid_short_code_desc">Du kan svara på korta koder med siffror som \"503501\", men inte på koder som innehåller bokstäver och siffror som \"AB-CD0\".</string>
     <string name="attachment_sized_exceeds_max_limit">Bilagans storlek överskrider maxgränsen för mms</string>
@@ -133,7 +133,7 @@
     <string name="sms_error_network_rejected">Meddelandet skickades inte: nätverket avvisade det</string>
     <string name="sms_error_invalid_arguments">Meddelandet skickades inte: ogiltiga sändningsuppgifter</string>
     <string name="sms_error_invalid_state">Meddelandet skickades inte: telefonen är inte redo</string>
-    <string name="sms_error_no_memory">Meddelandet skickades inte: inte tillräckligt med minne</string>
+    <string name="sms_error_no_memory">Meddelandet skickades inte: otillräckligt med minne</string>
     <string name="sms_error_invalid_format">Meddelandet skickades inte: meddelandeformatfel</string>
     <string name="sms_error_system">Meddelandet skickades inte: telefontjänstfel</string>
     <string name="sms_error_modem">Meddelandet skickades inte: telefonanslutningsfel</string>
